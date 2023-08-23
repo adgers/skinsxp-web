@@ -1,6 +1,7 @@
 import Banner from './banner';
-import './index.less';
 import Case from './case';
+import Giveaways from './giveaways';
+import './index.less';
 import TopIcons from './topIcons';
 
 export default function Home() {
@@ -8,6 +9,7 @@ export default function Home() {
     <>
       <Banner />
       <TopIcons />
+      <Giveaways />
       <Case />
     </>
   );

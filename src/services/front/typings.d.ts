@@ -175,8 +175,8 @@ declare namespace API {
   };
 
   type boxDetailUsingGETParams = {
-    /** boxId */
-    boxId: number;
+    /** caseId */
+    caseId: number;
   };
 
   type BoxDetailVo = {
@@ -206,8 +206,8 @@ declare namespace API {
   };
 
   type boxGiftListUsingGETParams = {
-    /** boxId */
-    boxId: number;
+    /** caseId */
+    caseId: number;
   };
 
   type BoxGiftListVo = {
@@ -417,12 +417,12 @@ declare namespace API {
     createTime?: string;
     cycleType?: string;
     delFlag?: boolean;
-    receiveStatus?: boolean;
     endTime?: string;
     id?: number;
     leftTime?: number;
     modifyTime?: string;
     num?: number;
+    receiveStatus?: boolean;
     remark?: string;
     startTime?: string;
     state?: number;
@@ -433,8 +433,8 @@ declare namespace API {
   };
 
   type detailUsingGETParams = {
-    /** rollId */
-    rollId: number;
+    /** giveawayId */
+    giveawayId: number;
   };
 
   type exchangeOrnamentToQuantityUsingPOSTParams = {
@@ -659,8 +659,8 @@ declare namespace API {
   };
 
   type giftListUsingGETParams = {
-    /** rollId */
-    rollId?: number;
+    /** giveawayId */
+    giveawayId?: number;
   };
 
   type GradeGiftProb = {
@@ -903,11 +903,13 @@ declare namespace API {
     channelName?: string;
     channelType?: number;
     createTime?: string;
+    currency?: string;
     customerId?: number;
     delFlag?: boolean;
     id?: number;
     modifyTime?: string;
     orderId?: string;
+    parentId?: string;
     payUrl?: string;
     quantity?: number;
     rechargeChannelId?: number;
@@ -1230,12 +1232,22 @@ declare namespace API {
   };
 
   type pageUsingGET1Params = {
-    /** giftName */
+    /** 外观 */
+    exterior?: string;
+    /** 物品名称 */
     giftName?: string;
+    /** 价格排序 */
+    orderByPrice?: boolean;
     /** page */
     page?: number;
     /** pageSize */
     pageSize?: number;
+    /** 品质 */
+    quality?: string;
+    /** 稀有度 */
+    rarity?: string;
+    /** 类型 */
+    type?: string;
   };
 
   type pageUsingGETParams = {
@@ -1250,15 +1262,15 @@ declare namespace API {
   };
 
   type partakeListUsingGETParams = {
-    /** rollId */
-    rollId?: number;
+    /** giveawayId */
+    giveawayId?: number;
   };
 
   type partakeUsingPOSTParams = {
+    /** giveawayId */
+    giveawayId?: number;
     /** pwd */
     pwd?: string;
-    /** rollId */
-    rollId?: number;
   };
 
   type paymentStateUsingGETParams = {
@@ -1294,6 +1306,7 @@ declare namespace API {
     nextPromotionGrade?: number;
     promotionGrade?: number;
     rebateRate?: number;
+    upInvitationCode?: string;
   };
 
   type RandKeyVo = {
@@ -1324,8 +1337,10 @@ declare namespace API {
   };
 
   type recentBoxGiftUsingGETParams = {
-    /** boxId */
-    boxId: number;
+    /** caseId */
+    caseId: number;
+    /** isTop */
+    isTop?: boolean;
     /** limit */
     limit?: number;
   };
@@ -1343,6 +1358,29 @@ declare namespace API {
     nickname?: string;
     recoveryPrice?: number;
     voucherName?: string;
+  };
+
+  type recentDropUsingGETParams = {
+    /** isTop */
+    isTop?: boolean;
+    /** limit */
+    limit?: number;
+  };
+
+  type RecentDropVo = {
+    createTime?: string;
+    giftImage?: string;
+    giftName?: string;
+    grade?: number;
+    headGround?: string;
+    headPic?: string;
+    id?: number;
+    nickname?: string;
+    recoveryPrice?: number;
+    sourceId?: number;
+    sourceImage?: string;
+    sourceName?: string;
+    sourceType?: number;
   };
 
   type RechargeChannelVo = {
@@ -1397,11 +1435,13 @@ declare namespace API {
     amount?: number;
     channelType?: number;
     createTime?: string;
+    currency?: string;
     customerId?: number;
     delFlag?: boolean;
     id?: number;
     modifyTime?: string;
     orderId?: string;
+    parentId?: string;
     payUrl?: string;
     quantity?: number;
     rechargeChannelId?: number;
@@ -1501,6 +1541,12 @@ declare namespace API {
     status?: number;
   };
 
+  type ResultDataListBattleVo_ = {
+    data?: BattleVo[];
+    msg?: string;
+    status?: number;
+  };
+
   type ResultDataListBoxThemeListVo_ = {
     data?: BoxThemeListVo[];
     msg?: string;
@@ -1549,6 +1595,12 @@ declare namespace API {
     status?: number;
   };
 
+  type ResultDataListRecentDropVo_ = {
+    data?: RecentDropVo[];
+    msg?: string;
+    status?: number;
+  };
+
   type ResultDataListRechargeCouponRecordVo_ = {
     data?: RechargeCouponRecordVo[];
     msg?: string;
@@ -1569,6 +1621,12 @@ declare namespace API {
 
   type ResultDataListRollRoomGiftVo_ = {
     data?: RollRoomGiftVo[];
+    msg?: string;
+    status?: number;
+  };
+
+  type ResultDataListRollRoomPageVo_ = {
+    data?: RollRoomPageVo[];
     msg?: string;
     status?: number;
   };
@@ -2023,8 +2081,8 @@ declare namespace API {
   };
 
   type v2OpenBoxUsingGETParams = {
-    /** boxId */
-    boxId: number;
+    /** caseId */
+    caseId: number;
     /** couponId */
     couponId?: number;
     /** number */
@@ -2103,7 +2161,7 @@ declare namespace API {
   };
 
   type winnerListUsingGETParams = {
-    /** rollId */
-    rollId?: number;
+    /** giveawayId */
+    giveawayId?: number;
   };
 }

@@ -42,6 +42,7 @@ export async function pageUsingGET1(
       page: '1',
       // pageSize has a default value: 15
       pageSize: '15',
+
       ...params,
     },
     ...(options || {}),

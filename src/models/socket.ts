@@ -34,7 +34,6 @@ export default () => {
   useEffect(() => {
     if (recentBoxResult.data) {
       setRecentBox(recentBoxResult.data);
-      console.log(recentBoxResult.data,'recentBoxResult.data')
     }
   }, [recentBoxResult.data]);
 

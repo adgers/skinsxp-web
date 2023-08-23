@@ -11,7 +11,7 @@
       "url": "http://www.apache.org/licenses/LICENSE-2.0"
     }
   },
-  "host": "127.0.0.1:9999",
+  "host": "localhost:9999",
   "basePath": "/",
   "tags": [
     {
@@ -68,6 +68,10 @@
     },
     {
       "name": "秘钥种子相关",
+      "x-order": "2147483647"
+    },
+    {
+      "name": "站点维度数据",
       "x-order": "2147483647"
     },
     {
@@ -1236,6 +1240,37 @@
         "x-order": "2147483647"
       }
     },
+    "/api/battle/getHostList": {
+      "get": {
+        "tags": [
+          "对战相关"
+        ],
+        "summary": "首页对战列表",
+        "operationId": "getHostListUsingGET",
+        "produces": [
+          "*/*"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/ResultData«List«BattleVo»»",
+              "originalRef": "ResultData«List«BattleVo»»"
+            }
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        },
+        "x-order": "2147483647"
+      }
+    },
     "/api/battle/getMyPage": {
       "get": {
         "tags": [
@@ -1513,386 +1548,6 @@
           }
         },
         "x-order": "1"
-      }
-    },
-    "/api/box/boxDetail": {
-      "get": {
-        "tags": [
-          "开箱相关"
-        ],
-        "summary": "箱子详情",
-        "operationId": "boxDetailUsingGET",
-        "produces": [
-          "*/*"
-        ],
-        "parameters": [
-          {
-            "name": "boxId",
-            "in": "query",
-            "description": "boxId",
-            "required": true,
-            "type": "integer",
-            "format": "int64"
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "OK",
-            "schema": {
-              "$ref": "#/definitions/ResultData«BoxDetailVo»",
-              "originalRef": "ResultData«BoxDetailVo»"
-            }
-          },
-          "401": {
-            "description": "Unauthorized"
-          },
-          "403": {
-            "description": "Forbidden"
-          },
-          "404": {
-            "description": "Not Found"
-          }
-        },
-        "x-order": "2147483647"
-      }
-    },
-    "/api/box/boxGiftList": {
-      "get": {
-        "tags": [
-          "开箱相关"
-        ],
-        "summary": "包含礼物",
-        "operationId": "boxGiftListUsingGET",
-        "produces": [
-          "*/*"
-        ],
-        "parameters": [
-          {
-            "name": "boxId",
-            "in": "query",
-            "description": "boxId",
-            "required": true,
-            "type": "integer",
-            "format": "int64"
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "OK",
-            "schema": {
-              "$ref": "#/definitions/ResultData«BoxGiftInfoVo»",
-              "originalRef": "ResultData«BoxGiftInfoVo»"
-            }
-          },
-          "401": {
-            "description": "Unauthorized"
-          },
-          "403": {
-            "description": "Forbidden"
-          },
-          "404": {
-            "description": "Not Found"
-          }
-        },
-        "x-order": "2147483647"
-      }
-    },
-    "/api/box/boxPage": {
-      "get": {
-        "tags": [
-          "开箱相关"
-        ],
-        "summary": "箱子分页",
-        "description": "箱子类型,-1->全部,0->免费,1->正常,2->推广",
-        "operationId": "boxPageUsingGET",
-        "produces": [
-          "*/*"
-        ],
-        "parameters": [
-          {
-            "name": "boxType",
-            "in": "query",
-            "description": "boxType",
-            "required": false,
-            "type": "integer",
-            "default": -1,
-            "format": "int32"
-          },
-          {
-            "name": "moduleId",
-            "in": "query",
-            "description": "moduleId",
-            "required": false,
-            "type": "integer",
-            "default": -1,
-            "format": "int64"
-          },
-          {
-            "name": "page",
-            "in": "query",
-            "description": "page",
-            "required": false,
-            "type": "integer",
-            "default": 1,
-            "format": "int32"
-          },
-          {
-            "name": "pageSize",
-            "in": "query",
-            "description": "pageSize",
-            "required": false,
-            "type": "integer",
-            "default": 100,
-            "format": "int32"
-          },
-          {
-            "name": "visibleRoom",
-            "in": "query",
-            "description": "visibleRoom",
-            "required": false,
-            "type": "boolean",
-            "default": false
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "OK",
-            "schema": {
-              "$ref": "#/definitions/ResultData«PageInfo«BoxPageVo»»",
-              "originalRef": "ResultData«PageInfo«BoxPageVo»»"
-            }
-          },
-          "401": {
-            "description": "Unauthorized"
-          },
-          "403": {
-            "description": "Forbidden"
-          },
-          "404": {
-            "description": "Not Found"
-          }
-        },
-        "x-order": "2147483647"
-      }
-    },
-    "/api/box/exchangeQuantity": {
-      "post": {
-        "tags": [
-          "开箱相关"
-        ],
-        "summary": "回收兑换券",
-        "operationId": "exchangeQuantityUsingPOST",
-        "consumes": [
-          "application/json"
-        ],
-        "produces": [
-          "*/*"
-        ],
-        "parameters": [
-          {
-            "name": "ids",
-            "in": "query",
-            "description": "ids",
-            "required": true,
-            "type": "array",
-            "items": {
-              "type": "integer",
-              "format": "int64"
-            },
-            "collectionFormat": "multi"
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "OK",
-            "schema": {
-              "$ref": "#/definitions/ResultData«boolean»",
-              "originalRef": "ResultData«boolean»"
-            }
-          },
-          "201": {
-            "description": "Created"
-          },
-          "401": {
-            "description": "Unauthorized"
-          },
-          "403": {
-            "description": "Forbidden"
-          },
-          "404": {
-            "description": "Not Found"
-          }
-        },
-        "x-order": "2147483647"
-      }
-    },
-    "/api/box/getBoxList": {
-      "get": {
-        "tags": [
-          "开箱相关"
-        ],
-        "summary": "箱子详情分页",
-        "description": "箱子类型,-1->全部,0->免费,1->正常,2->推广",
-        "operationId": "getBoxListUsingGET",
-        "produces": [
-          "*/*"
-        ],
-        "parameters": [
-          {
-            "name": "boxType",
-            "in": "query",
-            "description": "boxType",
-            "required": false,
-            "type": "integer",
-            "default": -1,
-            "format": "int32"
-          },
-          {
-            "name": "moduleId",
-            "in": "query",
-            "description": "moduleId",
-            "required": false,
-            "type": "integer",
-            "default": -1,
-            "format": "int64"
-          },
-          {
-            "name": "visibleRoom",
-            "in": "query",
-            "description": "visibleRoom",
-            "required": false,
-            "type": "boolean",
-            "default": false
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "OK",
-            "schema": {
-              "$ref": "#/definitions/ResultData«List«BoxThemeListVo»»",
-              "originalRef": "ResultData«List«BoxThemeListVo»»"
-            }
-          },
-          "401": {
-            "description": "Unauthorized"
-          },
-          "403": {
-            "description": "Forbidden"
-          },
-          "404": {
-            "description": "Not Found"
-          }
-        },
-        "x-order": "2147483647"
-      }
-    },
-    "/api/box/recentBoxGift": {
-      "get": {
-        "tags": [
-          "开箱相关"
-        ],
-        "summary": "最近掉落",
-        "operationId": "recentBoxGiftUsingGET",
-        "produces": [
-          "*/*"
-        ],
-        "parameters": [
-          {
-            "name": "boxId",
-            "in": "query",
-            "description": "boxId",
-            "required": true,
-            "type": "integer",
-            "format": "int64"
-          },
-          {
-            "name": "limit",
-            "in": "query",
-            "description": "limit",
-            "required": false,
-            "type": "integer",
-            "default": 20,
-            "format": "int32"
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "OK",
-            "schema": {
-              "$ref": "#/definitions/ResultData«List«RecentBoxGiftVo»»",
-              "originalRef": "ResultData«List«RecentBoxGiftVo»»"
-            }
-          },
-          "401": {
-            "description": "Unauthorized"
-          },
-          "403": {
-            "description": "Forbidden"
-          },
-          "404": {
-            "description": "Not Found"
-          }
-        },
-        "x-order": "2147483647"
-      }
-    },
-    "/api/box/v2/openBox": {
-      "get": {
-        "tags": [
-          "开箱相关"
-        ],
-        "summary": "v2开箱",
-        "description": "在个人中心相关,找到:获取我的折扣券接口,可以获得可用的优惠券,如需使用优惠券,则将couponId传入本接口,不使用,则留空或-1",
-        "operationId": "v2OpenBoxUsingGET",
-        "produces": [
-          "*/*"
-        ],
-        "parameters": [
-          {
-            "name": "boxId",
-            "in": "query",
-            "description": "boxId",
-            "required": true,
-            "type": "integer",
-            "format": "int64"
-          },
-          {
-            "name": "couponId",
-            "in": "query",
-            "description": "couponId",
-            "required": false,
-            "type": "integer",
-            "format": "int64"
-          },
-          {
-            "name": "number",
-            "in": "query",
-            "description": "number",
-            "required": false,
-            "type": "integer",
-            "default": 1,
-            "format": "int32"
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "OK",
-            "schema": {
-              "$ref": "#/definitions/ResultData«OpenBoxResult»",
-              "originalRef": "ResultData«OpenBoxResult»"
-            }
-          },
-          "401": {
-            "description": "Unauthorized"
-          },
-          "403": {
-            "description": "Forbidden"
-          },
-          "404": {
-            "description": "Not Found"
-          }
-        },
-        "x-order": "2147483647"
       }
     },
     "/api/callback/adaPayCallback": {
@@ -2174,6 +1829,720 @@
           },
           "201": {
             "description": "Created"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        },
+        "x-order": "2147483647"
+      }
+    },
+    "/api/case/caseDetail": {
+      "get": {
+        "tags": [
+          "开箱相关"
+        ],
+        "summary": "箱子详情",
+        "operationId": "boxDetailUsingGET",
+        "produces": [
+          "*/*"
+        ],
+        "parameters": [
+          {
+            "name": "caseId",
+            "in": "query",
+            "description": "caseId",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/ResultData«BoxDetailVo»",
+              "originalRef": "ResultData«BoxDetailVo»"
+            }
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        },
+        "x-order": "2147483647"
+      }
+    },
+    "/api/case/caseGiftList": {
+      "get": {
+        "tags": [
+          "开箱相关"
+        ],
+        "summary": "包含礼物",
+        "operationId": "boxGiftListUsingGET",
+        "produces": [
+          "*/*"
+        ],
+        "parameters": [
+          {
+            "name": "caseId",
+            "in": "query",
+            "description": "caseId",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/ResultData«BoxGiftInfoVo»",
+              "originalRef": "ResultData«BoxGiftInfoVo»"
+            }
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        },
+        "x-order": "2147483647"
+      }
+    },
+    "/api/case/casePage": {
+      "get": {
+        "tags": [
+          "开箱相关"
+        ],
+        "summary": "箱子分页",
+        "description": "箱子类型,-1->全部,0->免费,1->正常,2->推广",
+        "operationId": "boxPageUsingGET",
+        "produces": [
+          "*/*"
+        ],
+        "parameters": [
+          {
+            "name": "boxType",
+            "in": "query",
+            "description": "boxType",
+            "required": false,
+            "type": "integer",
+            "default": -1,
+            "format": "int32"
+          },
+          {
+            "name": "moduleId",
+            "in": "query",
+            "description": "moduleId",
+            "required": false,
+            "type": "integer",
+            "default": -1,
+            "format": "int64"
+          },
+          {
+            "name": "page",
+            "in": "query",
+            "description": "page",
+            "required": false,
+            "type": "integer",
+            "default": 1,
+            "format": "int32"
+          },
+          {
+            "name": "pageSize",
+            "in": "query",
+            "description": "pageSize",
+            "required": false,
+            "type": "integer",
+            "default": 100,
+            "format": "int32"
+          },
+          {
+            "name": "visibleRoom",
+            "in": "query",
+            "description": "visibleRoom",
+            "required": false,
+            "type": "boolean",
+            "default": false
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/ResultData«PageInfo«BoxPageVo»»",
+              "originalRef": "ResultData«PageInfo«BoxPageVo»»"
+            }
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        },
+        "x-order": "2147483647"
+      }
+    },
+    "/api/case/exchangeQuantity": {
+      "post": {
+        "tags": [
+          "开箱相关"
+        ],
+        "summary": "回收兑换券",
+        "operationId": "exchangeQuantityUsingPOST",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "*/*"
+        ],
+        "parameters": [
+          {
+            "name": "ids",
+            "in": "query",
+            "description": "ids",
+            "required": true,
+            "type": "array",
+            "items": {
+              "type": "integer",
+              "format": "int64"
+            },
+            "collectionFormat": "multi"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/ResultData«boolean»",
+              "originalRef": "ResultData«boolean»"
+            }
+          },
+          "201": {
+            "description": "Created"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        },
+        "x-order": "2147483647"
+      }
+    },
+    "/api/case/getCaseList": {
+      "get": {
+        "tags": [
+          "开箱相关"
+        ],
+        "summary": "箱子详情分页",
+        "description": "箱子类型,-1->全部,0->免费,1->正常,2->推广",
+        "operationId": "getBoxListUsingGET",
+        "produces": [
+          "*/*"
+        ],
+        "parameters": [
+          {
+            "name": "boxType",
+            "in": "query",
+            "description": "boxType",
+            "required": false,
+            "type": "integer",
+            "default": -1,
+            "format": "int32"
+          },
+          {
+            "name": "moduleId",
+            "in": "query",
+            "description": "moduleId",
+            "required": false,
+            "type": "integer",
+            "default": -1,
+            "format": "int64"
+          },
+          {
+            "name": "visibleRoom",
+            "in": "query",
+            "description": "visibleRoom",
+            "required": false,
+            "type": "boolean",
+            "default": false
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/ResultData«List«BoxThemeListVo»»",
+              "originalRef": "ResultData«List«BoxThemeListVo»»"
+            }
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        },
+        "x-order": "2147483647"
+      }
+    },
+    "/api/case/openCase": {
+      "get": {
+        "tags": [
+          "开箱相关"
+        ],
+        "summary": "开箱",
+        "description": "在个人中心相关,找到:获取我的折扣券接口,可以获得可用的优惠券,如需使用优惠券,则将couponId传入本接口,不使用,则留空或-1",
+        "operationId": "v2OpenBoxUsingGET",
+        "produces": [
+          "*/*"
+        ],
+        "parameters": [
+          {
+            "name": "caseId",
+            "in": "query",
+            "description": "caseId",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "name": "couponId",
+            "in": "query",
+            "description": "couponId",
+            "required": false,
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "name": "number",
+            "in": "query",
+            "description": "number",
+            "required": false,
+            "type": "integer",
+            "default": 1,
+            "format": "int32"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/ResultData«OpenBoxResult»",
+              "originalRef": "ResultData«OpenBoxResult»"
+            }
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        },
+        "x-order": "2147483647"
+      }
+    },
+    "/api/case/recentCaseGift": {
+      "get": {
+        "tags": [
+          "开箱相关"
+        ],
+        "summary": "最近掉落",
+        "operationId": "recentBoxGiftUsingGET",
+        "produces": [
+          "*/*"
+        ],
+        "parameters": [
+          {
+            "name": "caseId",
+            "in": "query",
+            "description": "caseId",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "name": "isTop",
+            "in": "query",
+            "description": "isTop",
+            "required": false,
+            "type": "boolean",
+            "default": false
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "description": "limit",
+            "required": false,
+            "type": "integer",
+            "default": 20,
+            "format": "int32"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/ResultData«List«RecentBoxGiftVo»»",
+              "originalRef": "ResultData«List«RecentBoxGiftVo»»"
+            }
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        },
+        "x-order": "2147483647"
+      }
+    },
+    "/api/giveaway/detail": {
+      "get": {
+        "tags": [
+          "ROLL房相关"
+        ],
+        "summary": "roll详情",
+        "description": "state: 1->进行中 2->完成",
+        "operationId": "detailUsingGET",
+        "produces": [
+          "*/*"
+        ],
+        "parameters": [
+          {
+            "name": "giveawayId",
+            "in": "query",
+            "description": "giveawayId",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/ResultData«RollRoomPageVo»",
+              "originalRef": "ResultData«RollRoomPageVo»"
+            }
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        },
+        "x-order": "2147483647"
+      }
+    },
+    "/api/giveaway/giftList": {
+      "get": {
+        "tags": [
+          "ROLL房相关"
+        ],
+        "summary": "奖品列表",
+        "description": "state: 1->进行中 2->完成",
+        "operationId": "giftListUsingGET",
+        "produces": [
+          "*/*"
+        ],
+        "parameters": [
+          {
+            "name": "giveawayId",
+            "in": "query",
+            "description": "giveawayId",
+            "required": false,
+            "type": "integer",
+            "default": 0,
+            "format": "int64"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/ResultData«List«RollRoomGiftVo»»",
+              "originalRef": "ResultData«List«RollRoomGiftVo»»"
+            }
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        },
+        "x-order": "2147483647"
+      }
+    },
+    "/api/giveaway/listHostGiveaway": {
+      "get": {
+        "tags": [
+          "ROLL房相关"
+        ],
+        "summary": "roll房首页列表",
+        "description": "state: 1->进行中 2->完成",
+        "operationId": "listHostGiveawayUsingGET",
+        "produces": [
+          "*/*"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/ResultData«List«RollRoomPageVo»»",
+              "originalRef": "ResultData«List«RollRoomPageVo»»"
+            }
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        },
+        "x-order": "2147483647"
+      }
+    },
+    "/api/giveaway/page": {
+      "get": {
+        "tags": [
+          "ROLL房相关"
+        ],
+        "summary": "roll房分页列表",
+        "description": "state: 1->进行中 2->完成",
+        "operationId": "pageUsingGET",
+        "produces": [
+          "*/*"
+        ],
+        "parameters": [
+          {
+            "name": "page",
+            "in": "query",
+            "description": "page",
+            "required": false,
+            "type": "integer",
+            "default": 1,
+            "format": "int32"
+          },
+          {
+            "name": "pageSize",
+            "in": "query",
+            "description": "pageSize",
+            "required": false,
+            "type": "integer",
+            "default": 15,
+            "format": "int32"
+          },
+          {
+            "name": "state",
+            "in": "query",
+            "description": "state",
+            "required": false,
+            "type": "integer",
+            "default": -1,
+            "format": "int32"
+          },
+          {
+            "name": "type",
+            "in": "query",
+            "description": "type",
+            "required": false,
+            "type": "integer",
+            "default": 1,
+            "format": "int32"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/ResultData«PageInfo«RollRoomPageVo»»",
+              "originalRef": "ResultData«PageInfo«RollRoomPageVo»»"
+            }
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        },
+        "x-order": "2147483647"
+      }
+    },
+    "/api/giveaway/partake": {
+      "post": {
+        "tags": [
+          "ROLL房相关"
+        ],
+        "summary": "加入房间",
+        "operationId": "partakeUsingPOST",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "*/*"
+        ],
+        "parameters": [
+          {
+            "name": "giveawayId",
+            "in": "query",
+            "description": "giveawayId",
+            "required": false,
+            "type": "integer",
+            "default": 0,
+            "format": "int64"
+          },
+          {
+            "name": "pwd",
+            "in": "query",
+            "description": "pwd",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/ResultData«boolean»",
+              "originalRef": "ResultData«boolean»"
+            }
+          },
+          "201": {
+            "description": "Created"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        },
+        "x-order": "2147483647"
+      }
+    },
+    "/api/giveaway/partakeList": {
+      "get": {
+        "tags": [
+          "ROLL房相关"
+        ],
+        "summary": "参与列表",
+        "operationId": "partakeListUsingGET",
+        "produces": [
+          "*/*"
+        ],
+        "parameters": [
+          {
+            "name": "giveawayId",
+            "in": "query",
+            "description": "giveawayId",
+            "required": false,
+            "type": "integer",
+            "default": 0,
+            "format": "int64"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/ResultData«List«RollCustomerVo»»",
+              "originalRef": "ResultData«List«RollCustomerVo»»"
+            }
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        },
+        "x-order": "2147483647"
+      }
+    },
+    "/api/giveaway/winnerList": {
+      "get": {
+        "tags": [
+          "ROLL房相关"
+        ],
+        "summary": "中奖客户列表",
+        "operationId": "winnerListUsingGET",
+        "produces": [
+          "*/*"
+        ],
+        "parameters": [
+          {
+            "name": "giveawayId",
+            "in": "query",
+            "description": "giveawayId",
+            "required": false,
+            "type": "integer",
+            "default": 0,
+            "format": "int64"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/ResultData«List«RollCustomerWithGiftVo»»",
+              "originalRef": "ResultData«List«RollCustomerWithGiftVo»»"
+            }
           },
           "401": {
             "description": "Unauthorized"
@@ -4701,33 +5070,42 @@
         "x-order": "2147483647"
       }
     },
-    "/api/roll/detail": {
+    "/api/stat/recentDrop": {
       "get": {
         "tags": [
-          "ROLL房相关"
+          "站点维度数据"
         ],
-        "summary": "roll详情",
-        "description": "state: 1->进行中 2->完成",
-        "operationId": "detailUsingGET",
+        "summary": "最近掉落",
+        "description": "limit: 长度限制, isTop: 是否最佳掉落",
+        "operationId": "recentDropUsingGET",
         "produces": [
           "*/*"
         ],
         "parameters": [
           {
-            "name": "rollId",
+            "name": "isTop",
             "in": "query",
-            "description": "rollId",
-            "required": true,
+            "description": "isTop",
+            "required": false,
+            "type": "boolean",
+            "default": false
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "description": "limit",
+            "required": false,
             "type": "integer",
-            "format": "int64"
+            "default": 20,
+            "format": "int32"
           }
         ],
         "responses": {
           "200": {
             "description": "OK",
             "schema": {
-              "$ref": "#/definitions/ResultData«RollRoomPageVo»",
-              "originalRef": "ResultData«RollRoomPageVo»"
+              "$ref": "#/definitions/ResultData«List«RecentDropVo»»",
+              "originalRef": "ResultData«List«RecentDropVo»»"
             }
           },
           "401": {
@@ -4743,126 +5121,14 @@
         "x-order": "2147483647"
       }
     },
-    "/api/roll/giftList": {
-      "get": {
-        "tags": [
-          "ROLL房相关"
-        ],
-        "summary": "奖品列表",
-        "description": "state: 1->进行中 2->完成",
-        "operationId": "giftListUsingGET",
-        "produces": [
-          "*/*"
-        ],
-        "parameters": [
-          {
-            "name": "rollId",
-            "in": "query",
-            "description": "rollId",
-            "required": false,
-            "type": "integer",
-            "default": 0,
-            "format": "int64"
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "OK",
-            "schema": {
-              "$ref": "#/definitions/ResultData«List«RollRoomGiftVo»»",
-              "originalRef": "ResultData«List«RollRoomGiftVo»»"
-            }
-          },
-          "401": {
-            "description": "Unauthorized"
-          },
-          "403": {
-            "description": "Forbidden"
-          },
-          "404": {
-            "description": "Not Found"
-          }
-        },
-        "x-order": "2147483647"
-      }
-    },
-    "/api/roll/page": {
-      "get": {
-        "tags": [
-          "ROLL房相关"
-        ],
-        "summary": "roll房分页列表",
-        "description": "state: 1->进行中 2->完成",
-        "operationId": "pageUsingGET",
-        "produces": [
-          "*/*"
-        ],
-        "parameters": [
-          {
-            "name": "page",
-            "in": "query",
-            "description": "page",
-            "required": false,
-            "type": "integer",
-            "default": 1,
-            "format": "int32"
-          },
-          {
-            "name": "pageSize",
-            "in": "query",
-            "description": "pageSize",
-            "required": false,
-            "type": "integer",
-            "default": 15,
-            "format": "int32"
-          },
-          {
-            "name": "state",
-            "in": "query",
-            "description": "state",
-            "required": false,
-            "type": "integer",
-            "default": -1,
-            "format": "int32"
-          },
-          {
-            "name": "type",
-            "in": "query",
-            "description": "type",
-            "required": false,
-            "type": "integer",
-            "default": 0,
-            "format": "int32"
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "OK",
-            "schema": {
-              "$ref": "#/definitions/ResultData«PageInfo«RollRoomPageVo»»",
-              "originalRef": "ResultData«PageInfo«RollRoomPageVo»»"
-            }
-          },
-          "401": {
-            "description": "Unauthorized"
-          },
-          "403": {
-            "description": "Forbidden"
-          },
-          "404": {
-            "description": "Not Found"
-          }
-        },
-        "x-order": "2147483647"
-      }
-    },
-    "/api/roll/partake": {
+    "/api/store/exchangeVoucherStock": {
       "post": {
         "tags": [
-          "ROLL房相关"
+          "兑换券商城相关"
         ],
-        "summary": "加入房间",
-        "operationId": "partakeUsingPOST",
+        "summary": "商城商品兑换",
+        "description": "在个人中心相关,找到:获取我的折扣券接口,可以获得可用的优惠券,如需使用优惠券,则将couponId传入本接口,不使用,则留空或-1",
+        "operationId": "exchangeVoucherStockUsingPOST",
         "consumes": [
           "application/json"
         ],
@@ -4871,19 +5137,19 @@
         ],
         "parameters": [
           {
-            "name": "pwd",
+            "name": "couponId",
             "in": "query",
-            "description": "pwd",
-            "required": false,
-            "type": "string"
-          },
-          {
-            "name": "rollId",
-            "in": "query",
-            "description": "rollId",
+            "description": "couponId",
             "required": false,
             "type": "integer",
-            "default": 0,
+            "format": "int64"
+          },
+          {
+            "name": "stockId",
+            "in": "query",
+            "description": "stockId",
+            "required": true,
+            "type": "integer",
             "format": "int64"
           }
         ],
@@ -4911,75 +5177,96 @@
         "x-order": "2147483647"
       }
     },
-    "/api/roll/partakeList": {
+    "/api/store/getItemPage": {
       "get": {
         "tags": [
-          "ROLL房相关"
+          "兑换券商城相关"
         ],
-        "summary": "参与列表",
-        "operationId": "partakeListUsingGET",
+        "summary": "商城商品分页",
+        "operationId": "getVoucherStockPageUsingGET",
         "produces": [
           "*/*"
         ],
         "parameters": [
           {
-            "name": "rollId",
+            "name": "exterior",
             "in": "query",
-            "description": "rollId",
+            "description": "exterior",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "keyword",
+            "in": "query",
+            "description": "keyword",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "moduleId",
+            "in": "query",
+            "description": "模块ID",
             "required": false,
             "type": "integer",
-            "default": 0,
+            "default": -1,
             "format": "int64"
+          },
+          {
+            "name": "orderByPrice",
+            "in": "query",
+            "description": "orderByPrice",
+            "required": false,
+            "type": "boolean",
+            "default": true
+          },
+          {
+            "name": "page",
+            "in": "query",
+            "description": "page",
+            "required": false,
+            "type": "integer",
+            "default": 1,
+            "format": "int32"
+          },
+          {
+            "name": "pageSize",
+            "in": "query",
+            "description": "pageSize",
+            "required": false,
+            "type": "integer",
+            "default": 15,
+            "format": "int32"
+          },
+          {
+            "name": "priceMax",
+            "in": "query",
+            "description": "priceMax",
+            "required": false,
+            "type": "number",
+            "default": -1
+          },
+          {
+            "name": "priceMin",
+            "in": "query",
+            "description": "priceMin",
+            "required": false,
+            "type": "number",
+            "default": -1
+          },
+          {
+            "name": "weaponType",
+            "in": "query",
+            "description": "weaponType",
+            "required": false,
+            "type": "string"
           }
         ],
         "responses": {
           "200": {
             "description": "OK",
             "schema": {
-              "$ref": "#/definitions/ResultData«List«RollCustomerVo»»",
-              "originalRef": "ResultData«List«RollCustomerVo»»"
-            }
-          },
-          "401": {
-            "description": "Unauthorized"
-          },
-          "403": {
-            "description": "Forbidden"
-          },
-          "404": {
-            "description": "Not Found"
-          }
-        },
-        "x-order": "2147483647"
-      }
-    },
-    "/api/roll/winnerList": {
-      "get": {
-        "tags": [
-          "ROLL房相关"
-        ],
-        "summary": "中奖客户列表",
-        "operationId": "winnerListUsingGET",
-        "produces": [
-          "*/*"
-        ],
-        "parameters": [
-          {
-            "name": "rollId",
-            "in": "query",
-            "description": "rollId",
-            "required": false,
-            "type": "integer",
-            "default": 0,
-            "format": "int64"
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "OK",
-            "schema": {
-              "$ref": "#/definitions/ResultData«List«RollCustomerWithGiftVo»»",
-              "originalRef": "ResultData«List«RollCustomerWithGiftVo»»"
+              "$ref": "#/definitions/ResultData«PageInfo«VoucherStockPageVo»»",
+              "originalRef": "ResultData«PageInfo«VoucherStockPageVo»»"
             }
           },
           "401": {
@@ -5089,11 +5376,25 @@
         ],
         "parameters": [
           {
-            "name": "giftName",
+            "name": "exterior",
             "in": "query",
-            "description": "giftName",
+            "description": "外观",
             "required": false,
             "type": "string"
+          },
+          {
+            "name": "giftName",
+            "in": "query",
+            "description": "物品名称",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "orderByPrice",
+            "in": "query",
+            "description": "价格排序",
+            "required": false,
+            "type": "boolean"
           },
           {
             "name": "page",
@@ -5112,6 +5413,27 @@
             "type": "integer",
             "default": 15,
             "format": "int32"
+          },
+          {
+            "name": "quality",
+            "in": "query",
+            "description": "品质",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "rarity",
+            "in": "query",
+            "description": "稀有度",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "type",
+            "in": "query",
+            "description": "类型",
+            "required": false,
+            "type": "string"
           }
         ],
         "responses": {
@@ -5245,167 +5567,6 @@
           },
           "201": {
             "description": "Created"
-          },
-          "401": {
-            "description": "Unauthorized"
-          },
-          "403": {
-            "description": "Forbidden"
-          },
-          "404": {
-            "description": "Not Found"
-          }
-        },
-        "x-order": "2147483647"
-      }
-    },
-    "/api/voucherMall/exchangeVoucherStock": {
-      "post": {
-        "tags": [
-          "兑换券商城相关"
-        ],
-        "summary": "商城商品兑换",
-        "description": "在个人中心相关,找到:获取我的折扣券接口,可以获得可用的优惠券,如需使用优惠券,则将couponId传入本接口,不使用,则留空或-1",
-        "operationId": "exchangeVoucherStockUsingPOST",
-        "consumes": [
-          "application/json"
-        ],
-        "produces": [
-          "*/*"
-        ],
-        "parameters": [
-          {
-            "name": "couponId",
-            "in": "query",
-            "description": "couponId",
-            "required": false,
-            "type": "integer",
-            "format": "int64"
-          },
-          {
-            "name": "stockId",
-            "in": "query",
-            "description": "stockId",
-            "required": true,
-            "type": "integer",
-            "format": "int64"
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "OK",
-            "schema": {
-              "$ref": "#/definitions/ResultData«boolean»",
-              "originalRef": "ResultData«boolean»"
-            }
-          },
-          "201": {
-            "description": "Created"
-          },
-          "401": {
-            "description": "Unauthorized"
-          },
-          "403": {
-            "description": "Forbidden"
-          },
-          "404": {
-            "description": "Not Found"
-          }
-        },
-        "x-order": "2147483647"
-      }
-    },
-    "/api/voucherMall/getVoucherStockPage": {
-      "get": {
-        "tags": [
-          "兑换券商城相关"
-        ],
-        "summary": "商城商品分页",
-        "operationId": "getVoucherStockPageUsingGET",
-        "produces": [
-          "*/*"
-        ],
-        "parameters": [
-          {
-            "name": "exterior",
-            "in": "query",
-            "description": "exterior",
-            "required": false,
-            "type": "string"
-          },
-          {
-            "name": "keyword",
-            "in": "query",
-            "description": "keyword",
-            "required": false,
-            "type": "string"
-          },
-          {
-            "name": "moduleId",
-            "in": "query",
-            "description": "模块ID",
-            "required": false,
-            "type": "integer",
-            "default": -1,
-            "format": "int64"
-          },
-          {
-            "name": "orderByPrice",
-            "in": "query",
-            "description": "orderByPrice",
-            "required": false,
-            "type": "boolean",
-            "default": true
-          },
-          {
-            "name": "page",
-            "in": "query",
-            "description": "page",
-            "required": false,
-            "type": "integer",
-            "default": 1,
-            "format": "int32"
-          },
-          {
-            "name": "pageSize",
-            "in": "query",
-            "description": "pageSize",
-            "required": false,
-            "type": "integer",
-            "default": 15,
-            "format": "int32"
-          },
-          {
-            "name": "priceMax",
-            "in": "query",
-            "description": "priceMax",
-            "required": false,
-            "type": "number",
-            "default": -1
-          },
-          {
-            "name": "priceMin",
-            "in": "query",
-            "description": "priceMin",
-            "required": false,
-            "type": "number",
-            "default": -1
-          },
-          {
-            "name": "weaponType",
-            "in": "query",
-            "description": "weaponType",
-            "required": false,
-            "type": "string"
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "OK",
-            "schema": {
-              "$ref": "#/definitions/ResultData«PageInfo«VoucherStockPageVo»»",
-              "originalRef": "ResultData«PageInfo«VoucherStockPageVo»»"
-            }
           },
           "401": {
             "description": "Unauthorized"
@@ -6539,6 +6700,9 @@
           "type": "integer",
           "format": "int32"
         },
+        "receiveStatus": {
+          "type": "boolean"
+        },
         "remark": {
           "type": "string"
         },
@@ -7102,6 +7266,9 @@
           "type": "string",
           "format": "date-time"
         },
+        "currency": {
+          "type": "string"
+        },
         "customerId": {
           "type": "integer",
           "format": "int64"
@@ -7118,6 +7285,9 @@
           "format": "date-time"
         },
         "orderId": {
+          "type": "string"
+        },
+        "parentId": {
           "type": "string"
         },
         "payUrl": {
@@ -8258,6 +8428,9 @@
         },
         "rebateRate": {
           "type": "number"
+        },
+        "upInvitationCode": {
+          "type": "string"
         }
       },
       "title": "PromotionInfoVo"
@@ -8361,6 +8534,56 @@
         }
       },
       "title": "RecentBoxGiftVo"
+    },
+    "RecentDropVo": {
+      "type": "object",
+      "properties": {
+        "createTime": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "giftImage": {
+          "type": "string"
+        },
+        "giftName": {
+          "type": "string"
+        },
+        "grade": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "headGround": {
+          "type": "string"
+        },
+        "headPic": {
+          "type": "string"
+        },
+        "id": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "nickname": {
+          "type": "string"
+        },
+        "recoveryPrice": {
+          "type": "number"
+        },
+        "sourceId": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "sourceImage": {
+          "type": "string"
+        },
+        "sourceName": {
+          "type": "string"
+        },
+        "sourceType": {
+          "type": "integer",
+          "format": "int32"
+        }
+      },
+      "title": "RecentDropVo"
     },
     "RechargeChannelVo": {
       "type": "object",
@@ -8537,6 +8760,9 @@
           "type": "string",
           "format": "date-time"
         },
+        "currency": {
+          "type": "string"
+        },
         "customerId": {
           "type": "integer",
           "format": "int64"
@@ -8553,6 +8779,9 @@
           "format": "date-time"
         },
         "orderId": {
+          "type": "string"
+        },
+        "parentId": {
           "type": "string"
         },
         "payUrl": {
@@ -8807,6 +9036,26 @@
       },
       "title": "ResultData«GradeInfoVo»"
     },
+    "ResultData«List«BattleVo»»": {
+      "type": "object",
+      "properties": {
+        "data": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/BattleVo",
+            "originalRef": "BattleVo"
+          }
+        },
+        "msg": {
+          "type": "string"
+        },
+        "status": {
+          "type": "integer",
+          "format": "int32"
+        }
+      },
+      "title": "ResultData«List«BattleVo»»"
+    },
     "ResultData«List«BoxThemeListVo»»": {
       "type": "object",
       "properties": {
@@ -8947,6 +9196,26 @@
       },
       "title": "ResultData«List«RecentBoxGiftVo»»"
     },
+    "ResultData«List«RecentDropVo»»": {
+      "type": "object",
+      "properties": {
+        "data": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/RecentDropVo",
+            "originalRef": "RecentDropVo"
+          }
+        },
+        "msg": {
+          "type": "string"
+        },
+        "status": {
+          "type": "integer",
+          "format": "int32"
+        }
+      },
+      "title": "ResultData«List«RecentDropVo»»"
+    },
     "ResultData«List«RechargeCouponRecordVo»»": {
       "type": "object",
       "properties": {
@@ -9026,6 +9295,26 @@
         }
       },
       "title": "ResultData«List«RollRoomGiftVo»»"
+    },
+    "ResultData«List«RollRoomPageVo»»": {
+      "type": "object",
+      "properties": {
+        "data": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/RollRoomPageVo",
+            "originalRef": "RollRoomPageVo"
+          }
+        },
+        "msg": {
+          "type": "string"
+        },
+        "status": {
+          "type": "integer",
+          "format": "int32"
+        }
+      },
+      "title": "ResultData«List«RollRoomPageVo»»"
     },
     "ResultData«List«UseRewardVoucherResultVo»»": {
       "type": "object",
