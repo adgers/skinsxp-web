@@ -1,1 +1,0 @@
-"use strict";(self.webpackChunkmucsgo=self.webpackChunkmucsgo||[]).push([[571],{36066:function(e,n,s){s.r(n),s.d(n,{default:function(){return c}});var u=s.p+"static/404.66defe5f.png",t=s(85893);function c(){return(0,t.jsx)("div",{className:"flex justify-center py-20",children:(0,t.jsx)("img",{src:u,alt:"",className:"w-[750px]"})})}}}]);
