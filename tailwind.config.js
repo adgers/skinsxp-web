@@ -3,8 +3,6 @@ module.exports = {
     './src/pages/**/*.tsx',
     './src/components/**/*.tsx',
     './src/layout/**/*.tsx',
-    'node_modules/daisyui/dist/**/*.js',
-    'node_modules/react-daisyui/dist/**/*.js',
   ],
   theme: {
     extend: {
@@ -14,25 +12,18 @@ module.exports = {
       animation: {
         'spin-slow': 'spin 3s linear infinite',
       },
+      colors: {
+        green: '#35F05E',
+        purple: '#AB6AFC',
+        red: '#ED3838',
+        yellow: '#FFEE51',
+        blue: '#6DA1AC',
+        dark: '#161616',
+        light: '#636363',
+        grey: '#A4A4A4',
+        black: '#322D36',
+      },
     },
   },
-  plugins: [require('daisyui'), require('@tailwindcss/typography')],
-  daisyui: {
-    themes: [
-      {
-        mytheme: {
-          primary: '#FFFC01',
-          secondary: '#25CBD6',
-          accent: '#B5C4FF',
-          neutral: '#1a1b2b',
-          'base-100': '#131314',
-          'base-content': '#FAFAFF',
-          info: '#285ef0',
-          success: '#3BF659',
-          warning: '#fac31e',
-          error: '#F63B3B',
-        },
-      },
-    ],
-  },
+  plugins: [require('@tailwindcss/typography')],
 };

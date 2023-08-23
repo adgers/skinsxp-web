@@ -195,5 +195,10 @@ export default defineConfig({
     },
   ],
   tailwindcss: {},
-  extraPostCSSPlugins: [postcssGapProperties(), require('autoprefixer')],
+  extraPostCSSPlugins: [
+    postcssGapProperties(),
+    require('postcss-import'),
+    require('@tailwindcss/nesting')(require('postcss-nesting')),
+    require('autoprefixer'),
+  ],
 });
