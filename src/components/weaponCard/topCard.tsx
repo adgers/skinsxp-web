@@ -35,6 +35,7 @@ export default React.memo(function TopCard({ data, loading }: TopCardProps) {
         </div>
         <div className="item-footer">
           <div className="item-title">{data?.boxName}</div>
+          <div className="item-nick">{data?.nickname}</div>
         </div>
       </div>
       <div className="back">
