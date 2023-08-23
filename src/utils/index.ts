@@ -3,9 +3,9 @@ import { logoutUsingPOST } from '@/services/front/qiantaishouquanxiangguan';
 import Big from 'big.js';
 import { EventEmitter } from 'events';
 //@ts-ignore
+import { BOX_GRADES } from '@/constants';
 import { history } from '@umijs/max';
 import qs from 'qs';
-import { BOX_GRADES } from '@/constants';
 
 const globalEventEmitter = new EventEmitter();
 
@@ -14,6 +14,8 @@ export function getApiDomain() {
     location.href.indexOf('localhost') > -1 ||
     location.href.indexOf('127.0.0.1') > -1
   ) {
+    return '//116.62.22.23:9999';
+
     return 'http://127.0.0.1:9999';
     // return '//api-test.xgskins.com';
 

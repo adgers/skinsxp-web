@@ -35,7 +35,7 @@ export default function OpenHistory() {
           </span>
         </div>
       </div>
-      <div className="flex gap-[2px]">
+      <div className="flex gap-[5px]">
         {recentBox.length > 0
           ? recentBox?.map((item) => (
               <Link

@@ -145,7 +145,6 @@ export default function Header() {
 
   return (
     <div className="sticky left-0 top-0 z-[99]">
-      <OpenHistory />
       <Navbar className="bg-base-100 bg-opacity-95 px-3">
         <div className="flex-1">
           <Link to={'/'} className="inline-block">
@@ -545,6 +544,8 @@ export default function Header() {
           )}
         </div>
       </Navbar>
+      <OpenHistory />
+
       {!hidePlacard() && <Placard />}
       {smsLoginShow && <MobileLogin />}
       {loginShow && <Login />}

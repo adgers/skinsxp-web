@@ -1,25 +1,49 @@
 .weapon-card {
+  position: relative;
   width: 100%;
   height: 140px;
-  position: relative;
-  border-radius: 6px;
   overflow: hidden;
+  border-radius: 6px;
   cursor: pointer;
 
   &.weapon-card-grade-0 {
-    background: linear-gradient(180deg, #1E1913 0%, #3A3327 33.33%, #584A34 69.79%, #796446 100%);
+    background: linear-gradient(
+      180deg,
+      #1e1913 0%,
+      #3a3327 33.33%,
+      #584a34 69.79%,
+      #796446 100%
+    );
   }
 
   &.weapon-card-grade-1 {
-    background: linear-gradient(180deg, #1E1619 0%, #382427 33.33%, #602E31 69.79%, #8C3B3B 100%);
+    background: linear-gradient(
+      180deg,
+      #1e1619 0%,
+      #382427 33.33%,
+      #602e31 69.79%,
+      #8c3b3b 100%
+    );
   }
 
   &.weapon-card-grade-2 {
-    background: linear-gradient(180deg, #1C1928 0%, #272337 33.33%, #3D2D5F 69.79%, #523D7D 100%);
+    background: linear-gradient(
+      180deg,
+      #1c1928 0%,
+      #272337 33.33%,
+      #3d2d5f 69.79%,
+      #523d7d 100%
+    );
   }
 
   &.weapon-card-grade-3 {
-    background: linear-gradient(180deg, #141A20 0%, #1E262D 33.33%, #2E404D 69.79%, #49677C 100%);
+    background: linear-gradient(
+      180deg,
+      #141a20 0%,
+      #1e262d 33.33%,
+      #2e404d 69.79%,
+      #49677c 100%
+    );
   }
 
   .img-wrapper {
@@ -33,8 +57,8 @@
     height: 100%;
 
     img {
-      height: 97px;
       width: 130px;
+      height: 97px;
     }
   }
 
@@ -49,22 +73,22 @@
 
   .item-prop {
     position: absolute;
-    right: 0;
     top: 0;
+    right: 0;
     z-index: 2;
     padding: 8px;
   }
 
   .item-roll {
     position: absolute;
-    left: 0;
     top: 0;
     left: 0;
+    left: 0;
     z-index: 2;
+    display: none;
     width: 100%;
     height: 100%;
     backdrop-filter: blur(7px);
-    display: none;
   }
 }
 
@@ -76,18 +100,17 @@
   }
 }
 
-
 @media (max-width: 1200px) {
   .weapon-card .img-wrapper img {
     width: 117px;
-    height: auto
+    height: auto;
   }
 }
 
 @media (max-width: 599px) {
   .weapon-card .img-wrapper img {
     width: 110px;
-    height: auto
+    height: auto;
   }
 }
 
@@ -101,7 +124,7 @@
   margin-left: -40px;
   background: url('@/assets/union.png') no-repeat;
   background-size: contain;
-  content: ""
+  content: '';
 }
 
 @media (max-width: 1200px) {
@@ -109,7 +132,7 @@
     width: 72px;
     height: 72px;
     margin-top: -36px;
-    margin-left: -36px
+    margin-left: -36px;
   }
 }
 
@@ -118,7 +141,7 @@
     width: 72px;
     height: 72px;
     margin-top: -36px;
-    margin-left: -36px
+    margin-left: -36px;
   }
 }
 
@@ -127,35 +150,62 @@
     width: 50px;
     height: 50px;
     margin-top: -25px;
-    margin-left: -25px
+    margin-left: -25px;
   }
 }
 
 .weapon-card-top {
-  width: 160px;
-  height: 104px;
   position: relative;
+  display: inline-block;
+  width: 178px;
+  height: 116px;
   overflow: hidden;
   cursor: pointer;
-  display: inline-block;
-
+  &::before {
+    background: url('@/assets/iv.png') no-repeat;
+    background-size: contain;
+    opacity: 0.3;
+  }
 
   &.weapon-card-grade-0 {
-    background: radial-gradient(76.44% 76.44% at 50.00% 23.56%, #635540 4.69%, #322C23 100%);
+    background: radial-gradient(
+        110% 100% at 49.87% 100%,
+        rgba(236, 198, 0, 0.6) 0%,
+        rgba(40, 40, 40, 0) 100%
+      ),
+      #1e1d22;
+    border-bottom: 3px solid var(--4, #ffee51);
   }
 
   &.weapon-card-grade-1 {
-    background: radial-gradient(76.44% 76.44% at 50.00% 23.56%, #723A3A 4.69%, #2F2428 100%);
+    background: radial-gradient(
+        147.37% 100% at 49.87% 100%,
+        rgba(255, 27, 68, 0.6) 0%,
+        rgba(40, 40, 40, 0) 100%
+      ),
+      #1e1d22;
+    border-bottom: 3px solid var(--3, #ed3838);
   }
 
   &.weapon-card-grade-2 {
-    background: radial-gradient(76.44% 76.44% at 50.00% 23.56%, #3C2A63 4.69%, #262235 100%);
+    background: radial-gradient(
+        124.94% 91.38% at 49.87% 100%,
+        rgba(141, 27, 255, 0.6) 0%,
+        rgba(40, 40, 40, 0) 100%
+      ),
+      #1e1d22;
+    border-bottom: 3px solid var(--3, #ab6afc);
   }
 
   &.weapon-card-grade-3 {
-    background: radial-gradient(76.44% 76.44% at 50.00% 23.56%, #385261 4.69%, #262E37 100%);
+    background: radial-gradient(
+        98.6% 106.9% at 49.87% 106.9%,
+        rgba(89, 154, 169, 0.6) 0%,
+        rgba(40, 40, 40, 0) 100%
+      ),
+      #1e1d22;
+    border-bottom: 3px solid var(--5, #6da1ac);
   }
-
 
   .img-wrapper {
     position: absolute;
@@ -169,7 +219,7 @@
 
     img {
       width: 110px;
-      height: 82px
+      height: 82px;
     }
   }
 
@@ -179,13 +229,28 @@
     bottom: 0;
     left: 0;
     z-index: 2;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     padding: 10px;
 
     .item-title {
+      width: fit-content;
+      max-width: 100%;
       overflow: hidden;
+      font-weight: 600;
       font-size: 12px;
       white-space: nowrap;
       text-overflow: ellipsis;
+    }
+    .item-nick {
+      width: fit-content;
+      max-width: 100%;
+      font-weight: 600;
+      font-size: 12px;
+      font-style: normal;
+      line-height: normal;
+      opacity: 0.37;
     }
   }
 
@@ -199,13 +264,13 @@
     right: -35px;
     bottom: -25px;
     transform: translateY(30px);
-    transition: transform .7s ease;
+    transition: transform 0.7s ease;
 
     img {
       height: 135px;
     }
   }
-  &:hover{
+  &:hover {
     .box-img-wrapper {
       transform: none;
     }
@@ -224,7 +289,7 @@
 
     .img-wrapper img {
       width: 90px;
-      height: 67px
+      height: 67px;
     }
 
     .box-img-wrapper {
@@ -250,7 +315,7 @@
 
     .img-wrapper img {
       width: 85px;
-      height: 63px
+      height: 63px;
     }
 
     .box-img-wrapper {
@@ -271,7 +336,7 @@
 
     .img-wrapper img {
       width: 60px;
-      height: 45px
+      height: 45px;
     }
   }
 }
@@ -288,13 +353,12 @@
   position: absolute;
   top: 50%;
   left: 50%;
-  width: 66px;
-  height: 66px;
+  width: 88px;
+  height: 50px;
   margin-top: -33px;
   margin-left: -33px;
-  background: url('@/assets/union.png') no-repeat;
   background-size: contain;
-  content: ""
+  content: '';
 }
 
 @media (max-width: 1200px) {
@@ -302,7 +366,7 @@
     width: 54px;
     height: 54px;
     margin-top: -27px;
-    margin-left: -27px
+    margin-left: -27px;
   }
 }
 
@@ -311,7 +375,7 @@
     width: 50px;
     height: 50px;
     margin-top: -25px;
-    margin-left: -25px
+    margin-left: -25px;
   }
 }
 
@@ -320,6 +384,6 @@
     width: 30px;
     height: 30px;
     margin-top: -15px;
-    margin-left: -15px
+    margin-left: -15px;
   }
 }
