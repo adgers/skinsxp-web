@@ -145,7 +145,7 @@ export default function Header() {
 
   return (
     <div className="sticky left-0 top-0 z-[99]">
-      <Navbar className="bg-base-100 bg-opacity-95 px-3">
+      <Navbar className="p-3 bg-dark">
         <div className="flex-1">
           <Link to={'/'} className="inline-block">
             <img
@@ -156,7 +156,7 @@ export default function Header() {
           </Link>
 
           <Menu as="div" className="relative ml-4">
-            <Menu.Button className="select select-xs select-accent flex items-center  border-opacity-50 rounded uppercase font-semibold focus:outline-none bg-neutral">
+            <Menu.Button className="select select-xs select-accent flex items-center border-opacity-50 rounded uppercase font-semibold focus:outline-none bg-neutral">
               {langs.filter((item) => item.value === locale)[0].title}
             </Menu.Button>
             <Transition
@@ -195,8 +195,8 @@ export default function Header() {
                 <Link
                   key={i}
                   to={item.link}
-                  className={`px-3 py-2 uppercase transition-colors duration-200 hover:text-primary hover:bg-neutral text-sm rounded-md ${
-                    isActive ? 'text-primary' : ''
+                  className={`px-3 py-2 uppercase transition-colors duration-200 text-white hover:text-green text-sm rounded-md ${
+                    isActive ? 'text-green' : ''
                   }`}
                 >
                   {item.icon && <IconFont type={item.icon} className="mr-1" />}
@@ -204,13 +204,6 @@ export default function Header() {
                 </Link>
               );
             })}
-            <div
-              onClick={showBenefit}
-              className={`cursor-pointer px-3 py-2 uppercase transition-colors duration-200 hover:text-primary hover:bg-neutral text-sm rounded-md `}
-            >
-              <IconFont type="icon-hongbao" className="mr-1" />
-              <FormattedMessage id="mine_fllq" />
-            </div>
           </div>
         </div>
         <div className="flex-none flex gap-3">
