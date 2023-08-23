@@ -1,0 +1,35 @@
+.lottery-card {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  flex-shrink: 0;
+
+  .lottery-card-bg {
+    width: 50%;
+    height: 50%;
+    position: absolute;
+    left: 25%;
+    top: 25%;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    z-index: 1;
+
+    &.lottery-card-0 {
+      background-image: url('@/assets/w1.png');
+    }
+
+    &.lottery-card-1 {
+      background-image: url('@/assets/w2.png');
+    }
+
+    &.lottery-card-2 {
+      background-image: url('@/assets/w3.png');
+    }
+
+    &.lottery-card-3 {
+      background-image: url('@/assets/w4.png');
+    }
+  }
+}

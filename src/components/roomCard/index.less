@@ -1,0 +1,180 @@
+//trackProgress 宽度从 0% 到 100% 的动画
+@keyframes progressAnimation {
+  0% {
+    width: 0%;
+  }
+
+  100% {
+    width: 100%;
+  }
+}
+
+@keyframes statusProcessing {
+  0% {
+    transform: scale(0.8);
+    opacity: 0.5;
+  }
+
+  100% {
+    transform: scale(2.4);
+    opacity: 0;
+  }
+}
+
+.animat-status {
+  position: relative;
+}
+
+.animat-status {
+  &::before {
+    position: absolute;
+    top: 0;
+    inset-inline-start: 0;
+    width: 100%;
+    height: 100%;
+    border-width: 1px;
+    border-style: solid;
+    border-radius: 50%;
+    animation: statusProcessing 1.2s ease-in-out infinite;
+    content: "";
+  }
+}
+
+.battle-room {
+  display: flex;
+  flex-direction: column;
+  border-radius: 4px;
+  overflow: hidden;
+  position: relative;
+  cursor: pointer;
+  z-index: 2;
+
+  .add-room-bg {
+    background: linear-gradient(180deg, #030303 0%, rgba(3, 3, 3, 0.50) 100%);
+  }
+
+  .process {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 5px;
+
+    &::before {
+      content: "";
+      display: block;
+      width: 0;
+      height: 100%;
+      animation: progressAnimation 4s linear infinite;
+      border-radius: 5px;
+    }
+  }
+
+  &.battle-mode-0 {
+    .process {
+      &::before {
+        background: #FF9FA5;
+        box-shadow: 0px 0px 10px 0px #FF9FA5;
+      }
+    }
+  }
+
+  &.battle-mode-1 {
+    .process {
+      &::before {
+        background: #84A8FF;
+        box-shadow: 0px 0px 10px 0px #84A8FF;
+      }
+    }
+  }
+
+  &::before {
+    position: absolute;
+    top: 50%;
+    left: 0;
+    margin-top: -23%;
+    width: 6px;
+    height: 46%;
+    display: block;
+    background: url('@/assets/bc-bg.png') no-repeat;
+    background-size: contain;
+    content: ''
+  }
+
+  .room-bg::before {
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+    position: absolute;
+    top: 10px;
+    bottom: 10px;
+    width: 100%;
+    content: "";
+    z-index: -1;
+  }
+
+
+  &.battle-mode-0 {
+    background: linear-gradient(180deg, #6A3235 0%, #AB5050 100%);
+
+    .animat-status {
+      background: #fff;
+
+      &::before {
+        background: #fff;
+      }
+    }
+
+    &.battle-state-1 {
+      background: radial-gradient(79.81% 38.79% at 50.00% 65.00%, #FFB4B7 0%, #90464C 100%);
+
+      .animat-status {
+        background: #FF9FA5;
+
+        &::before {
+          background: #FF9FA5;
+        }
+      }
+    }
+
+    &.battle-state-2 {
+      background: linear-gradient(180deg, #4C4F5E 0%, #5E647A 47.40%);
+
+      .animat-status {
+        background: #FFF;
+      }
+    }
+  }
+
+  &.battle-mode-1 {
+    background: linear-gradient(180deg, #303754 0%, #434D77 47.40%);
+
+    .animat-status {
+      background: #fff;
+
+      &::before {
+        background: #fff;
+      }
+    }
+
+    &.battle-state-1 {
+      background: radial-gradient(79.81% 38.79% at 50.00% 65.00%, #B3C0FA 0%, #3B4362 100%);
+
+      .animat-status {
+        background: #84A8FF;
+
+        &::before {
+          background: #84A8FF;
+        }
+      }
+    }
+
+    &.battle-state-2 {
+      background: linear-gradient(180deg, #4C4F5E 0%, #5E647A 47.40%);
+
+      .animat-status {
+        background: #FFF;
+      }
+    }
+  }
+}

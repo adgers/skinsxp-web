@@ -1,0 +1,325 @@
+.weapon-card {
+  width: 100%;
+  height: 140px;
+  position: relative;
+  border-radius: 6px;
+  overflow: hidden;
+  cursor: pointer;
+
+  &.weapon-card-grade-0 {
+    background: linear-gradient(180deg, #1E1913 0%, #3A3327 33.33%, #584A34 69.79%, #796446 100%);
+  }
+
+  &.weapon-card-grade-1 {
+    background: linear-gradient(180deg, #1E1619 0%, #382427 33.33%, #602E31 69.79%, #8C3B3B 100%);
+  }
+
+  &.weapon-card-grade-2 {
+    background: linear-gradient(180deg, #1C1928 0%, #272337 33.33%, #3D2D5F 69.79%, #523D7D 100%);
+  }
+
+  &.weapon-card-grade-3 {
+    background: linear-gradient(180deg, #141A20 0%, #1E262D 33.33%, #2E404D 69.79%, #49677C 100%);
+  }
+
+  .img-wrapper {
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+
+    img {
+      height: 97px;
+      width: 130px;
+    }
+  }
+
+  .item-footer {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 2;
+    padding: 6px 8px;
+  }
+
+  .item-prop {
+    position: absolute;
+    right: 0;
+    top: 0;
+    z-index: 2;
+    padding: 8px;
+  }
+
+  .item-roll {
+    position: absolute;
+    left: 0;
+    top: 0;
+    left: 0;
+    z-index: 2;
+    width: 100%;
+    height: 100%;
+    backdrop-filter: blur(7px);
+    display: none;
+  }
+}
+
+.weapon-card:hover {
+  .item-roll {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+}
+
+
+@media (max-width: 1200px) {
+  .weapon-card .img-wrapper img {
+    width: 117px;
+    height: auto
+  }
+}
+
+@media (max-width: 599px) {
+  .weapon-card .img-wrapper img {
+    width: 110px;
+    height: auto
+  }
+}
+
+.weapon-card:before {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 80px;
+  height: 80px;
+  margin-top: -40px;
+  margin-left: -40px;
+  background: url('@/assets/union.png') no-repeat;
+  background-size: contain;
+  content: ""
+}
+
+@media (max-width: 1200px) {
+  .weapon-card:before {
+    width: 72px;
+    height: 72px;
+    margin-top: -36px;
+    margin-left: -36px
+  }
+}
+
+@media (max-width: 900px) {
+  .weapon-card:before {
+    width: 72px;
+    height: 72px;
+    margin-top: -36px;
+    margin-left: -36px
+  }
+}
+
+@media (max-width: 599px) {
+  .weapon-card:before {
+    width: 50px;
+    height: 50px;
+    margin-top: -25px;
+    margin-left: -25px
+  }
+}
+
+.weapon-card-top {
+  width: 160px;
+  height: 104px;
+  position: relative;
+  overflow: hidden;
+  cursor: pointer;
+  display: inline-block;
+
+
+  &.weapon-card-grade-0 {
+    background: radial-gradient(76.44% 76.44% at 50.00% 23.56%, #635540 4.69%, #322C23 100%);
+  }
+
+  &.weapon-card-grade-1 {
+    background: radial-gradient(76.44% 76.44% at 50.00% 23.56%, #723A3A 4.69%, #2F2428 100%);
+  }
+
+  &.weapon-card-grade-2 {
+    background: radial-gradient(76.44% 76.44% at 50.00% 23.56%, #3C2A63 4.69%, #262235 100%);
+  }
+
+  &.weapon-card-grade-3 {
+    background: radial-gradient(76.44% 76.44% at 50.00% 23.56%, #385261 4.69%, #262E37 100%);
+  }
+
+
+  .img-wrapper {
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+
+    img {
+      width: 110px;
+      height: 82px
+    }
+  }
+
+  .item-footer {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 2;
+    padding: 10px;
+
+    .item-title {
+      overflow: hidden;
+      font-size: 12px;
+      white-space: nowrap;
+      text-overflow: ellipsis;
+    }
+  }
+
+  .avatar {
+    width: 36px;
+    height: 36px;
+  }
+
+  .box-img-wrapper {
+    position: absolute;
+    right: -35px;
+    bottom: -25px;
+    transform: translateY(30px);
+    transition: transform .7s ease;
+
+    img {
+      height: 135px;
+    }
+  }
+  &:hover{
+    .box-img-wrapper {
+      transform: none;
+    }
+  }
+}
+
+@media (max-width: 1200px) {
+  .weapon-card-top {
+    width: 140px;
+    height: 90px;
+
+    .avatar {
+      width: 30px;
+      height: 30px;
+    }
+
+    .img-wrapper img {
+      width: 90px;
+      height: 67px
+    }
+
+    .box-img-wrapper {
+      right: -25px;
+      bottom: -15px;
+
+      img {
+        height: 100px;
+      }
+    }
+  }
+}
+
+@media (max-width: 900px) {
+  .weapon-card-top {
+    width: 120px;
+    height: 77px;
+
+    .avatar {
+      width: 25px;
+      height: 25px;
+    }
+
+    .img-wrapper img {
+      width: 85px;
+      height: 63px
+    }
+
+    .box-img-wrapper {
+      right: -20px;
+      bottom: -10px;
+
+      img {
+        height: 80px;
+      }
+    }
+  }
+}
+
+@media (max-width: 599px) {
+  .weapon-card-top {
+    width: 85px;
+    height: 50px;
+
+    .img-wrapper img {
+      width: 60px;
+      height: 45px
+    }
+  }
+}
+
+@media (max-width: 599px) {
+  .weapon-card-top {
+    .item-footer {
+      display: none;
+    }
+  }
+}
+
+.weapon-card-top:before {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 66px;
+  height: 66px;
+  margin-top: -33px;
+  margin-left: -33px;
+  background: url('@/assets/union.png') no-repeat;
+  background-size: contain;
+  content: ""
+}
+
+@media (max-width: 1200px) {
+  .weapon-card-top:before {
+    width: 54px;
+    height: 54px;
+    margin-top: -27px;
+    margin-left: -27px
+  }
+}
+
+@media (max-width: 900px) {
+  .weapon-card-top:before {
+    width: 50px;
+    height: 50px;
+    margin-top: -25px;
+    margin-left: -25px
+  }
+}
+
+@media (max-width: 599px) {
+  .weapon-card-top:before {
+    width: 30px;
+    height: 30px;
+    margin-top: -15px;
+    margin-left: -15px
+  }
+}

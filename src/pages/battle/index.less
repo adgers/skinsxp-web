@@ -1,0 +1,274 @@
+.my-swiper {
+  .swiper-slide {
+    width: 80px;
+  }
+}
+
+@media(min-width: 640px) {
+  .my-swiper {
+    .swiper-slide {
+      width: 106px;
+    }
+  }
+}
+
+.battle-rank-point {
+  background: radial-gradient(52.71% 53.03% at 50.00% 40.45%, #D79A58 0%, #131314 100%);
+  height: 330px;
+  display: flex;
+  justify-content: center;
+
+  &::before {
+    content: "";
+    width: 270px;
+    height: 100%;
+    background: url('@/assets/rankbg-1.png') no-repeat;
+    background-size: contain;
+    background-position: center;
+    z-index: 2;
+  }
+
+  .battle-rank-ring {
+    background: url('@/assets/rankbg-2.png') no-repeat;
+    width: 236px;
+    height: 236px;
+    background-size: contain;
+    background-position: center;
+    position: absolute;
+    z-index: 1;
+  }
+}
+
+.battle-ranks {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  background: linear-gradient(90deg, #312F40 0%, #13131D 100%);
+
+  .my-rank {
+    width: 100%;
+    text-align: center;
+    height: 56px;
+    line-height: 56px;
+  }
+
+  .tab-item.tab-active .tab-item-c::after {
+    background: #FFD284 !important;
+    box-shadow: 0px 2px 7.5px 0px #9C8152 !important;
+  }
+
+}
+
+.bgm-rank {
+  background: linear-gradient(180deg, #121A24 50%, #2A2C32 100%);
+  height: 48px;
+  padding: 0 8px;
+
+  .bgm-star {
+    background-image: url('@/assets/star4.png');
+    color: #fff;
+    background-size: contain;
+    background-position: center;
+    width: 36px;
+    height: 36px;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+  }
+}
+
+.rank-item::after {}
+
+.bgm-rank1 {
+  background: linear-gradient(101deg, #241E12 50%, #635130 100%);
+
+  .bgm-star {
+    background-image: url('@/assets/star1.png');
+    color: #EFD196;
+  }
+}
+
+.bgm-rank2 {
+  background: linear-gradient(86deg, #121524 50%, #304463 100%);
+
+  .bgm-star {
+    background-image: url('@/assets/star2.png');
+    color: #ABC5F8;
+  }
+}
+
+.bgm-rank3 {
+  background: linear-gradient(91deg, #241212 50%, #633030 100%);
+
+  .bgm-star {
+    background-image: url('@/assets/star3.png');
+    color: #FF8285;
+  }
+}
+
+.battle-title {
+  background: url('@/assets/bat-bg.png') no-repeat;
+  background-size: cover;
+  background-position: center;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+
+.round-bg {
+  background: url('@/assets/round-bg.png') no-repeat;
+  background-size: contain;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  left: 0;
+  top: 0;
+}
+
+.battle-seat-bg {
+  border-radius: 6px;
+  background: linear-gradient(180deg, #3E3E50 0%, rgba(23, 23, 23, 0.44) 94.79%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+.battle-user {
+  background: linear-gradient(180deg, #212126 36.46%, #353A40 100%);
+  border-radius: 6px;
+  display: flex;
+}
+
+.battle-user-win {
+  background: linear-gradient(180deg, #1C1C22 23.44%, #605A2C 100%);
+}
+
+.seat-1 {
+  &::before {
+    background: url('@/assets/seat.png') no-repeat;
+    background-size: contain;
+    content: "";
+    position: absolute;
+    width: 15px;
+    height: 44px;
+    left: -6px;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+}
+
+.seat-2,
+.seat-3,
+.seat-4 {
+  &::before {
+    background: url('@/assets/vs.png') no-repeat;
+    background-size: contain;
+    content: "";
+    width: 42px;
+    height: 42px;
+    position: absolute;
+    left: -27px;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+}
+
+.seat-last {
+  &::after {
+    background: url('@/assets/seat.png') no-repeat;
+    background-size: contain;
+    content: "";
+    position: absolute;
+    width: 15px;
+    height: 44px;
+    right: -6px;
+    top: 50%;
+    transform: rotateY(180deg) translateY(-50%);
+  }
+}
+
+@media (max-width: 599px) {
+  .seat-1 {
+    &::before {
+      width: 14px;
+      height: 44px;
+      left: -6px;
+      top: 50%;
+      transform: translateY(-50%);
+    }
+  }
+
+  .seat-2,
+  .seat-3,
+  .seat-4 {
+    &::before {
+      width: 21px;
+      height: 21px;
+      position: absolute;
+      left: -14px;
+      top: 50%;
+      transform: translateY(-50%);
+    }
+  }
+
+  .seat-last {
+    &::after {
+      width: 14px;
+      height: 44px;
+      right: -6px;
+      top: 50%;
+      transform: rotateY(180deg) translateY(-50%);
+    }
+  }
+}
+
+.win-text {
+  background: linear-gradient(180deg, #FFF494 0%, #131314 100%);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.lose-text {
+  background: linear-gradient(180deg, #FFF 0%, #5D5D6D 100%);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.win-user-bg {
+  background: linear-gradient(180deg, #1C1C22 23.44%, #605A2C 100%);
+}
+
+.animate-item-enter {
+  animation-duration: 800ms;
+  animation-name: zoomIn;
+}
+
+.animate-item-enter-active {
+  animation-duration: 800ms;
+  animation-name: zoomIn;
+}
+
+.animate-item-enter-done {
+  animation-duration: 800ms;
+  animation-name: zoomIn;
+}
+
+.animate-item-exit {
+  animation-duration: 800ms;
+  animation-name: bounceOut;
+}
+
+.animate-item-exit-active {
+  animation-duration: 800ms;
+  animation-name: bounceOut;
+}
+
+.animate-item-exit-done {
+  animation-duration: 800ms;
+  animation-name: bounceOut;
+}

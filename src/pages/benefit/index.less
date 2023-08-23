@@ -1,0 +1,134 @@
+.benefit-bg {
+  background: url('@/assets/benefit-bg.png') no-repeat;
+  width: 560px;
+  height: 460px;
+  background-size: contain;
+  position: relative;
+
+  .benefit-info {
+    width: 320px;
+    position: absolute;
+    top: 170px;
+    left: 120px;
+
+    .benefit-title {
+      font-size: 18px;
+      color: #131314;
+      font-weight: 600;
+    }
+  }
+
+  .benefit-btn {
+    width: 320px;
+    height: 48px;
+    line-height: 48px;
+    cursor: pointer;
+    font-size: 28px;
+    color: #000;
+    text-transform: uppercase;
+    font-family: 'Gotham';
+    font-weight: 500;
+    position: absolute;
+    bottom: 68px;
+    left: 120px;
+    text-align: center;
+  }
+
+  .benefit-input {
+    border-radius: 6px;
+    border: 1 solid #F6E2B5;
+    background: linear-gradient(180deg, #000 0%, #72664A 100%);
+    height: 48px;
+    width: 320px;
+    outline: none;
+    padding: 0 20px;
+    letter-spacing: 6px;
+    font-family: 'Gotham';
+    font-size: 22px;
+  }
+}
+
+@media (max-width: 599px) {
+  .benefit-bg {
+    width: 375px;
+    height: 310px;
+
+    .benefit-info {
+      width: 220px;
+      top: 107px;
+      left: 78px;
+
+      .benefit-title {
+        font-size: 14px;
+      }
+    }
+
+    .benefit-btn {
+      width: 220px;
+      height: 32px;
+      line-height: 32px;
+      font-size: 24px;
+      bottom: 46px;
+      left: 78px;
+      text-align: center;
+    }
+
+    .benefit-input {
+      height: 32px;
+      width: 220px;
+      padding: 0 10px;
+      letter-spacing: 3px;
+    }
+  }
+}
+
+.redbag-box {
+  border-radius: 6px;
+  border: 1px solid #C0A987;
+  background: linear-gradient(180deg, #1E1913 0%, #3A3327 33.33%, #584A34 69.79%, #796446 100%);
+  padding: 16px 12px;
+  display: flex;
+  max-width: 400px;
+  gap: 18px;
+  align-items: center;
+  width: 100%;
+
+  &.disabled {
+    border-color: #F5F5F5;
+    background: linear-gradient(180deg, #242424 0%, #424242 33.33%, #5C5C5C 69.79%, #7D7D7D 100%);
+
+    .redbag-btn {
+      border-color: #FAFAFF;
+      background: rgba(250, 250, 255, 0.20);
+    }
+  }
+
+  .redbag-box-left {
+    position: relative;
+    background: url('@/assets/redbg-bg.png') no-repeat;
+    width: 115px;
+    height: 120px;
+    background-size: contain;
+
+    .left-top {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      display: flex;
+      align-items: center;
+    }
+  }
+
+  .redbag-btn {
+    border-radius: 4px;
+    background: rgba(255, 252, 1, 0.20);
+    border: 1px solid #FFFC01;
+    height: 28px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+  }
+}

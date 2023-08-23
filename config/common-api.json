@@ -1,0 +1,1478 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "description": "Api Documentation",
+    "version": "1.0",
+    "title": "Api Documentation",
+    "termsOfService": "urn:tos",
+    "contact": {},
+    "license": {
+      "name": "Apache 2.0",
+      "url": "http://www.apache.org/licenses/LICENSE-2.0"
+    }
+  },
+  "host": "127.0.0.1:9999",
+  "basePath": "/",
+  "tags": [
+    {
+      "name": "通用相关",
+      "x-order": "2147483647"
+    }
+  ],
+  "paths": {
+    "/api/common/bannerList": {
+      "get": {
+        "tags": [
+          "通用相关"
+        ],
+        "summary": "banner列表",
+        "operationId": "getBannerListUsingGET",
+        "produces": [
+          "*/*"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "originalRef": "ResultData«List«Banner»»",
+              "$ref": "#/definitions/ResultData«List«Banner»»"
+            }
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        },
+        "x-order": "2147483647"
+      }
+    },
+    "/api/common/captcha": {
+      "get": {
+        "tags": [
+          "通用相关"
+        ],
+        "summary": "获取图像验证码(base64格式)",
+        "operationId": "captchaUsingGET",
+        "produces": [
+          "*/*"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "originalRef": "ResultData«CaptchaVo»",
+              "$ref": "#/definitions/ResultData«CaptchaVo»"
+            }
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        },
+        "x-order": "2147483647"
+      }
+    },
+    "/api/common/documentPage": {
+      "get": {
+        "tags": [
+          "通用相关"
+        ],
+        "summary": "文档列表",
+        "operationId": "documentPageUsingGET",
+        "produces": [
+          "*/*"
+        ],
+        "parameters": [
+          {
+            "name": "documentType",
+            "in": "query",
+            "description": "documentType",
+            "required": false,
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "name": "page",
+            "in": "query",
+            "description": "page",
+            "required": false,
+            "type": "integer",
+            "default": 1,
+            "format": "int32"
+          },
+          {
+            "name": "pageSize",
+            "in": "query",
+            "description": "pageSize",
+            "required": false,
+            "type": "integer",
+            "default": 15,
+            "format": "int32"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "originalRef": "ResultData«PageInfo«Document»»",
+              "$ref": "#/definitions/ResultData«PageInfo«Document»»"
+            }
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        },
+        "x-order": "2147483647"
+      }
+    },
+    "/api/common/getBoxThemeList": {
+      "get": {
+        "tags": [
+          "通用相关"
+        ],
+        "summary": "获取箱子主题列表",
+        "operationId": "getBoxThemeListUsingGET",
+        "produces": [
+          "*/*"
+        ],
+        "parameters": [
+          {
+            "name": "boxType",
+            "in": "query",
+            "description": "boxType",
+            "required": false,
+            "type": "integer",
+            "default": -1,
+            "format": "int32"
+          },
+          {
+            "name": "moduleId",
+            "in": "query",
+            "description": "moduleId",
+            "required": false,
+            "type": "integer",
+            "default": -1,
+            "format": "int64"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "originalRef": "ResultData«List«BoxThemeListVo»»",
+              "$ref": "#/definitions/ResultData«List«BoxThemeListVo»»"
+            }
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        },
+        "x-order": "2147483647"
+      }
+    },
+    "/api/common/getDashBoardUrl": {
+      "get": {
+        "tags": [
+          "通用相关"
+        ],
+        "summary": "getDashBoardUrl",
+        "operationId": "getDashBoardUrlUsingGET",
+        "produces": [
+          "*/*"
+        ],
+        "parameters": [
+          {
+            "name": "dashboard",
+            "in": "query",
+            "description": "dashboard",
+            "required": true,
+            "type": "integer",
+            "format": "int32"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "originalRef": "ResultData«string»",
+              "$ref": "#/definitions/ResultData«string»"
+            }
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        },
+        "x-order": "2147483647"
+      }
+    },
+    "/api/common/getDefaultHeadPictureList": {
+      "get": {
+        "tags": [
+          "通用相关"
+        ],
+        "summary": "查询默认图片list",
+        "operationId": "getDefaultHeadPictureListUsingGET",
+        "produces": [
+          "*/*"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "originalRef": "ResultData«List«string»»",
+              "$ref": "#/definitions/ResultData«List«string»»"
+            }
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        },
+        "x-order": "99"
+      }
+    },
+    "/api/common/getDefaultInvitationCode": {
+      "get": {
+        "tags": [
+          "通用相关"
+        ],
+        "summary": "获取默认邀请码",
+        "operationId": "getDefaultInvitationCodeUsingGET",
+        "produces": [
+          "*/*"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "originalRef": "ResultData«string»",
+              "$ref": "#/definitions/ResultData«string»"
+            }
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        },
+        "x-order": "2147483647"
+      }
+    },
+    "/api/common/getLanguageList": {
+      "get": {
+        "tags": [
+          "通用相关"
+        ],
+        "summary": "getLanguageList",
+        "operationId": "getLanguageListUsingGET",
+        "produces": [
+          "*/*"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "originalRef": "ResultData«List«Map«string,object»»»",
+              "$ref": "#/definitions/ResultData«List«Map«string,object»»»"
+            }
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        },
+        "x-order": "2147483647"
+      }
+    },
+    "/api/common/getModuleList": {
+      "get": {
+        "tags": [
+          "通用相关"
+        ],
+        "summary": "获取模块列表",
+        "operationId": "getModuleListUsingGET",
+        "produces": [
+          "*/*"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "originalRef": "ResultData«List«Module»»",
+              "$ref": "#/definitions/ResultData«List«Module»»"
+            }
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        },
+        "x-order": "2147483647"
+      }
+    },
+    "/api/common/listInterface": {
+      "get": {
+        "tags": [
+          "通用相关"
+        ],
+        "summary": "listInterface",
+        "operationId": "listInterfaceUsingGET",
+        "produces": [
+          "*/*"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "originalRef": "ResultData«List»",
+              "$ref": "#/definitions/ResultData«List»"
+            }
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        },
+        "x-order": "2147483647"
+      }
+    },
+    "/api/common/mailCode": {
+      "get": {
+        "tags": [
+          "通用相关"
+        ],
+        "summary": "获取邮箱验证码",
+        "operationId": "mailCodeUsingGET",
+        "produces": [
+          "*/*"
+        ],
+        "parameters": [
+          {
+            "name": "captchaKey",
+            "in": "query",
+            "description": "captchaKey",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "captchaValue",
+            "in": "query",
+            "description": "captchaValue",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "mail",
+            "in": "query",
+            "description": "mail",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "originalRef": "ResultData«boolean»",
+              "$ref": "#/definitions/ResultData«boolean»"
+            }
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        },
+        "x-order": "2147483647"
+      }
+    },
+    "/api/common/recentOpenBox": {
+      "get": {
+        "tags": [
+          "通用相关"
+        ],
+        "summary": "最近掉落",
+        "operationId": "getRecentOpenBoxUsingGET",
+        "produces": [
+          "*/*"
+        ],
+        "parameters": [
+          {
+            "name": "grade",
+            "in": "query",
+            "description": "grade",
+            "required": false,
+            "type": "integer",
+            "default": 2,
+            "format": "int32"
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "description": "limit",
+            "required": false,
+            "type": "integer",
+            "default": 20,
+            "format": "int32"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "originalRef": "ResultData«List«RecentOpenBoxGiftVo»»",
+              "$ref": "#/definitions/ResultData«List«RecentOpenBoxGiftVo»»"
+            }
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        },
+        "x-order": "2147483647"
+      }
+    },
+    "/api/common/redirectQQ": {
+      "get": {
+        "tags": [
+          "通用相关"
+        ],
+        "summary": "qq客服链接",
+        "operationId": "redirectQQUsingGET",
+        "produces": [
+          "*/*"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        },
+        "x-order": "99"
+      }
+    },
+    "/api/common/smsCode": {
+      "get": {
+        "tags": [
+          "通用相关"
+        ],
+        "summary": "获取短信验证码",
+        "operationId": "smsCodeUsingGET_1",
+        "produces": [
+          "*/*"
+        ],
+        "parameters": [
+          {
+            "name": "captchaVerification",
+            "in": "query",
+            "description": "captchaVerification",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "phone",
+            "in": "query",
+            "description": "phone",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "originalRef": "ResultData«boolean»",
+              "$ref": "#/definitions/ResultData«boolean»"
+            }
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        },
+        "x-order": "2147483647"
+      },
+      "post": {
+        "tags": [
+          "通用相关"
+        ],
+        "summary": "获取短信验证码",
+        "operationId": "smsCodeUsingPOST",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "*/*"
+        ],
+        "parameters": [
+          {
+            "name": "captchaVerification",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "csessionid",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "ip",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "phone",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "sig",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "token",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "originalRef": "ResultData«boolean»",
+              "$ref": "#/definitions/ResultData«boolean»"
+            }
+          },
+          "201": {
+            "description": "Created"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        },
+        "x-order": "2147483647"
+      }
+    },
+    "/api/common/sysNotice": {
+      "get": {
+        "tags": [
+          "通用相关"
+        ],
+        "summary": "获取系统公告",
+        "operationId": "sysNoticeUsingGET",
+        "produces": [
+          "*/*"
+        ],
+        "parameters": [
+          {
+            "name": "topN",
+            "in": "query",
+            "description": "topN",
+            "required": false,
+            "type": "integer",
+            "default": 1,
+            "format": "int32"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "originalRef": "ResultData«List«Notice»»",
+              "$ref": "#/definitions/ResultData«List«Notice»»"
+            }
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        },
+        "x-order": "2147483647"
+      }
+    },
+    "/api/common/userSmsCode": {
+      "get": {
+        "tags": [
+          "通用相关"
+        ],
+        "summary": "为当前用户获取短信验证码",
+        "operationId": "userSmsCodeUsingGET",
+        "produces": [
+          "*/*"
+        ],
+        "parameters": [
+          {
+            "name": "captchaVerification",
+            "in": "query",
+            "description": "captchaVerification",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "originalRef": "ResultData«boolean»",
+              "$ref": "#/definitions/ResultData«boolean»"
+            }
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        },
+        "x-order": "2147483647"
+      },
+      "post": {
+        "tags": [
+          "通用相关"
+        ],
+        "summary": "为当前用户获取短信验证码",
+        "operationId": "userSmsCodeUsingPOST",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "*/*"
+        ],
+        "parameters": [
+          {
+            "name": "captchaVerification",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "csessionid",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "ip",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "phone",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "sig",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "token",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "originalRef": "ResultData«boolean»",
+              "$ref": "#/definitions/ResultData«boolean»"
+            }
+          },
+          "201": {
+            "description": "Created"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        },
+        "x-order": "2147483647"
+      }
+    },
+    "/api/common/viewImage": {
+      "get": {
+        "tags": [
+          "通用相关"
+        ],
+        "summary": "图片查看",
+        "operationId": "viewImageUsingGET",
+        "produces": [
+          "*/*"
+        ],
+        "parameters": [
+          {
+            "name": "serialNo",
+            "in": "query",
+            "description": "serialNo",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        },
+        "x-order": "2147483647"
+      }
+    },
+    "/api/common/viewImage/{serialNo}.png": {
+      "get": {
+        "tags": [
+          "通用相关"
+        ],
+        "summary": "图片查看",
+        "operationId": "viewImageNewUsingGET",
+        "produces": [
+          "*/*"
+        ],
+        "parameters": [
+          {
+            "name": "serialNo",
+            "in": "path",
+            "description": "serialNo",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        },
+        "x-order": "2147483647"
+      }
+    }
+  },
+  "definitions": {
+    "Banner": {
+      "type": "object",
+      "properties": {
+        "createTime": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "delFlag": {
+          "type": "boolean"
+        },
+        "id": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "image": {
+          "type": "string"
+        },
+        "modifyTime": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "remark": {
+          "type": "string"
+        },
+        "title": {
+          "type": "string"
+        },
+        "url": {
+          "type": "string"
+        },
+        "visible": {
+          "type": "boolean"
+        },
+        "weight": {
+          "type": "integer",
+          "format": "int32"
+        }
+      },
+      "title": "Banner"
+    },
+    "BoxPageVo": {
+      "type": "object",
+      "properties": {
+        "appId": {
+          "type": "string"
+        },
+        "boxImage": {
+          "type": "string"
+        },
+        "boxName": {
+          "type": "string"
+        },
+        "boxThemeId": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "boxType": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "createTime": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "delFlag": {
+          "type": "boolean"
+        },
+        "discount": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "id": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "modifyTime": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "moduleId": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "moduleName": {
+          "type": "string"
+        },
+        "openPrice": {
+          "type": "number"
+        },
+        "remark": {
+          "type": "string"
+        },
+        "secondVideo": {
+          "type": "string"
+        },
+        "video": {
+          "type": "string"
+        },
+        "visible": {
+          "type": "boolean"
+        },
+        "visibleRoom": {
+          "type": "boolean"
+        },
+        "weaponImage": {
+          "type": "string"
+        },
+        "weight": {
+          "type": "integer",
+          "format": "int32"
+        }
+      },
+      "title": "BoxPageVo"
+    },
+    "BoxThemeListVo": {
+      "type": "object",
+      "properties": {
+        "boxList": {
+          "type": "array",
+          "items": {
+            "originalRef": "BoxPageVo",
+            "$ref": "#/definitions/BoxPageVo"
+          }
+        },
+        "boxType": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "createTime": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "delFlag": {
+          "type": "boolean"
+        },
+        "id": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "modifyTime": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "moduleId": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "remark": {
+          "type": "string"
+        },
+        "themeName": {
+          "type": "string"
+        },
+        "weight": {
+          "type": "integer",
+          "format": "int32"
+        }
+      },
+      "title": "BoxThemeListVo"
+    },
+    "CaptchaVo": {
+      "type": "object",
+      "properties": {
+        "captchaKey": {
+          "type": "string"
+        },
+        "image": {
+          "type": "string"
+        }
+      },
+      "title": "CaptchaVo"
+    },
+    "Document": {
+      "type": "object",
+      "properties": {
+        "content": {
+          "type": "string"
+        },
+        "createTime": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "delFlag": {
+          "type": "boolean"
+        },
+        "documentType": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "id": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "image": {
+          "type": "string"
+        },
+        "modifyTime": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "remark": {
+          "type": "string"
+        },
+        "title": {
+          "type": "string"
+        },
+        "visible": {
+          "type": "boolean"
+        },
+        "weight": {
+          "type": "integer",
+          "format": "int32"
+        }
+      },
+      "title": "Document"
+    },
+    "Module": {
+      "type": "object",
+      "properties": {
+        "appid": {
+          "type": "string"
+        },
+        "createTime": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "delFlag": {
+          "type": "boolean"
+        },
+        "id": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "modifyTime": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "moduleName": {
+          "type": "string"
+        },
+        "remark": {
+          "type": "string"
+        }
+      },
+      "title": "Module"
+    },
+    "Notice": {
+      "type": "object",
+      "properties": {
+        "content": {
+          "type": "string"
+        },
+        "createTime": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "delFlag": {
+          "type": "boolean"
+        },
+        "id": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "modifyTime": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "remark": {
+          "type": "string"
+        },
+        "title": {
+          "type": "string"
+        },
+        "url": {
+          "type": "string"
+        }
+      },
+      "title": "Notice"
+    },
+    "PageInfo«Document»": {
+      "type": "object",
+      "properties": {
+        "page": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "pageData": {
+          "type": "array",
+          "items": {
+            "originalRef": "Document",
+            "$ref": "#/definitions/Document"
+          }
+        },
+        "pageSize": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "totalPages": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "totalRows": {
+          "type": "integer",
+          "format": "int32"
+        }
+      },
+      "title": "PageInfo«Document»"
+    },
+    "RecentOpenBoxGiftVo": {
+      "type": "object",
+      "properties": {
+        "boxId": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "boxImage": {
+          "type": "string"
+        },
+        "boxName": {
+          "type": "string"
+        },
+        "customerId": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "giftImage": {
+          "type": "string"
+        },
+        "giftTemplateId": {
+          "type": "string"
+        },
+        "grade": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "headGround": {
+          "type": "string"
+        },
+        "headPic": {
+          "type": "string"
+        },
+        "id": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "nickname": {
+          "type": "string"
+        },
+        "voucherName": {
+          "type": "string"
+        }
+      },
+      "title": "RecentOpenBoxGiftVo"
+    },
+    "ResultData«CaptchaVo»": {
+      "type": "object",
+      "properties": {
+        "data": {
+          "originalRef": "CaptchaVo",
+          "$ref": "#/definitions/CaptchaVo"
+        },
+        "msg": {
+          "type": "string"
+        },
+        "status": {
+          "type": "integer",
+          "format": "int32"
+        }
+      },
+      "title": "ResultData«CaptchaVo»"
+    },
+    "ResultData«List«Banner»»": {
+      "type": "object",
+      "properties": {
+        "data": {
+          "type": "array",
+          "items": {
+            "originalRef": "Banner",
+            "$ref": "#/definitions/Banner"
+          }
+        },
+        "msg": {
+          "type": "string"
+        },
+        "status": {
+          "type": "integer",
+          "format": "int32"
+        }
+      },
+      "title": "ResultData«List«Banner»»"
+    },
+    "ResultData«List«BoxThemeListVo»»": {
+      "type": "object",
+      "properties": {
+        "data": {
+          "type": "array",
+          "items": {
+            "originalRef": "BoxThemeListVo",
+            "$ref": "#/definitions/BoxThemeListVo"
+          }
+        },
+        "msg": {
+          "type": "string"
+        },
+        "status": {
+          "type": "integer",
+          "format": "int32"
+        }
+      },
+      "title": "ResultData«List«BoxThemeListVo»»"
+    },
+    "ResultData«List«Map«string,object»»»": {
+      "type": "object",
+      "properties": {
+        "data": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": {
+              "type": "object"
+            }
+          }
+        },
+        "msg": {
+          "type": "string"
+        },
+        "status": {
+          "type": "integer",
+          "format": "int32"
+        }
+      },
+      "title": "ResultData«List«Map«string,object»»»"
+    },
+    "ResultData«List«Module»»": {
+      "type": "object",
+      "properties": {
+        "data": {
+          "type": "array",
+          "items": {
+            "originalRef": "Module",
+            "$ref": "#/definitions/Module"
+          }
+        },
+        "msg": {
+          "type": "string"
+        },
+        "status": {
+          "type": "integer",
+          "format": "int32"
+        }
+      },
+      "title": "ResultData«List«Module»»"
+    },
+    "ResultData«List«Notice»»": {
+      "type": "object",
+      "properties": {
+        "data": {
+          "type": "array",
+          "items": {
+            "originalRef": "Notice",
+            "$ref": "#/definitions/Notice"
+          }
+        },
+        "msg": {
+          "type": "string"
+        },
+        "status": {
+          "type": "integer",
+          "format": "int32"
+        }
+      },
+      "title": "ResultData«List«Notice»»"
+    },
+    "ResultData«List«RecentOpenBoxGiftVo»»": {
+      "type": "object",
+      "properties": {
+        "data": {
+          "type": "array",
+          "items": {
+            "originalRef": "RecentOpenBoxGiftVo",
+            "$ref": "#/definitions/RecentOpenBoxGiftVo"
+          }
+        },
+        "msg": {
+          "type": "string"
+        },
+        "status": {
+          "type": "integer",
+          "format": "int32"
+        }
+      },
+      "title": "ResultData«List«RecentOpenBoxGiftVo»»"
+    },
+    "ResultData«List«string»»": {
+      "type": "object",
+      "properties": {
+        "data": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "msg": {
+          "type": "string"
+        },
+        "status": {
+          "type": "integer",
+          "format": "int32"
+        }
+      },
+      "title": "ResultData«List«string»»"
+    },
+    "ResultData«List»": {
+      "type": "object",
+      "properties": {
+        "data": {
+          "type": "array",
+          "items": {
+            "type": "object"
+          }
+        },
+        "msg": {
+          "type": "string"
+        },
+        "status": {
+          "type": "integer",
+          "format": "int32"
+        }
+      },
+      "title": "ResultData«List»"
+    },
+    "ResultData«PageInfo«Document»»": {
+      "type": "object",
+      "properties": {
+        "data": {
+          "originalRef": "PageInfo«Document»",
+          "$ref": "#/definitions/PageInfo«Document»"
+        },
+        "msg": {
+          "type": "string"
+        },
+        "status": {
+          "type": "integer",
+          "format": "int32"
+        }
+      },
+      "title": "ResultData«PageInfo«Document»»"
+    },
+    "ResultData«boolean»": {
+      "type": "object",
+      "properties": {
+        "data": {
+          "type": "boolean"
+        },
+        "msg": {
+          "type": "string"
+        },
+        "status": {
+          "type": "integer",
+          "format": "int32"
+        }
+      },
+      "title": "ResultData«boolean»"
+    },
+    "ResultData«string»": {
+      "type": "object",
+      "properties": {
+        "data": {
+          "type": "string"
+        },
+        "msg": {
+          "type": "string"
+        },
+        "status": {
+          "type": "integer",
+          "format": "int32"
+        }
+      },
+      "title": "ResultData«string»"
+    }
+  },
+  "x-markdownFiles": [],
+  "x-setting": [
+    {
+      "language": "zh-CN",
+      "enableSwaggerModels": true,
+      "swaggerModelName": "Swagger Models",
+      "enableReloadCacheParameter": false,
+      "enableAfterScript": true,
+      "enableDocumentManage": true,
+      "enableVersion": false,
+      "enableRequestCache": true,
+      "enableFilterMultipartApis": false,
+      "enableFilterMultipartApiMethodType": "POST",
+      "enableHost": false,
+      "enableHostText": "",
+      "enableDynamicParameter": false,
+      "enableDebug": true,
+      "enableFooter": true,
+      "enableFooterCustom": false,
+      "enableSearch": true,
+      "enableOpenApi": true,
+      "enableHomeCustom": false,
+      "enableGroup": true
+    }
+  ]
+}
