@@ -17,20 +17,22 @@ import * as qiantaishouquanxiangguan from './qiantaishouquanxiangguan';
 import * as shengjixiangguan from './shengjixiangguan';
 import * as tuiguangzhongxinxiangguan from './tuiguangzhongxinxiangguan';
 import * as yonghufulipeizhi from './yonghufulipeizhi';
+import * as zhandianweidushuju from './zhandianweidushuju';
 export default {
   huodongzhongxinxiangguan,
   qiantaishouquanxiangguan,
   duizhanxiangguan,
   yonghufulipeizhi,
-  kaixiangxiangguan,
   qianduanwuxuduijie,
+  kaixiangxiangguan,
+  ROLLfangxiangguan,
   miyaozhongzixiangguan,
   gezhongjiluxiangguan,
   gerenzhongxinxiangguan,
   tuiguangzhongxinxiangguan,
   chongzhixiangguan,
   hongbaoxiangguan,
-  ROLLfangxiangguan,
-  shengjixiangguan,
+  zhandianweidushuju,
   duihuanquanshangchengxiangguan,
+  shengjixiangguan,
 };

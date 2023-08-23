@@ -33,7 +33,7 @@ export default React.memo(function TopCard({ data, loading }: TopCardProps) {
         <div className="img-wrapper">
           <img src={data?.giftImage} />
         </div>
-        <div className="item-footer">
+        <div className="item-footer text-white">
           <div className="item-title">{data?.boxName}</div>
           <div className="item-nick">{data?.nickname}</div>
         </div>
