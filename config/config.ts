@@ -18,7 +18,7 @@ export default defineConfig({
     {
       name: 'viewport',
       content:
-        'viewport-fit=cover, width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no',
+        'viewport-fit=cover, width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, profile-scalable=no',
     },
   ],
   routes: [
@@ -29,23 +29,23 @@ export default defineConfig({
       routes: [
         {
           path: '/',
-          redirect: '/home',
+          redirect: '/case',
         },
         {
-          path: 'home',
-          component: 'home',
+          path: 'case',
+          component: 'case',
         },
         {
           path: 'case/:id',
-          component: 'box',
+          component: 'case-detail',
         },
         {
-          path: 'roll',
-          component: 'roll',
+          path: 'giveaways',
+          component: 'giveaways',
         },
         {
-          path: 'roll/:id',
-          component: 'roll/room',
+          path: 'giveaways/:id',
+          component: 'giveaways/room',
         },
         {
           path: 'battle',
@@ -56,12 +56,8 @@ export default defineConfig({
           component: 'battle/room',
         },
         {
-          path: 'mall',
-          component: 'mall',
-        },
-        {
-          path: 'dream',
-          component: 'dream',
+          path: 'shop',
+          component: 'shop',
         },
         {
           path: '/deposit',
@@ -76,98 +72,94 @@ export default defineConfig({
           component: 'login/callback',
         },
         {
-          path: 'user',
-          component: 'user',
+          path: 'profile',
+          component: 'profile',
           routes: [
             {
-              path: '/user',
-              redirect: '/user/info',
+              path: '/profile',
+              redirect: '/profile/info',
             },
             {
-              path: '/user/info',
-              component: 'user/info',
+              path: '/profile/info',
+              component: 'profile/info',
             },
             {
-              path: '/user/bag',
-              component: 'user/bag',
+              path: '/profile/bag',
+              component: 'profile/bag',
             },
             {
-              path: '/user/record',
-              component: 'user/record',
+              path: '/profile/record',
+              component: 'profile/record',
               routes: [
                 {
-                  path: '/user/record',
-                  redirect: '/user/record/game',
+                  path: '/profile/record',
+                  redirect: '/profile/record/game',
                 },
                 {
-                  path: '/user/record/game',
-                  component: 'user/record/game',
+                  path: '/profile/record/game',
+                  component: 'profile/record/game',
                 },
                 {
-                  path: '/user/record/take',
-                  component: 'user/record/take',
+                  path: '/profile/record/take',
+                  component: 'profile/record/take',
                 },
                 {
-                  path: '/user/record/flow',
-                  component: 'user/record/flow',
+                  path: '/profile/record/flow',
+                  component: 'profile/record/flow',
                 },
               ],
             },
             {
-              path: '/user/provably-fair',
-              component: 'user/provablyFair',
+              path: '/profile/provably-fair',
+              component: 'profile/provablyFair',
               routes: [
                 {
-                  path: '/user/provably-fair',
-                  redirect: '/user/provably-fair/config',
+                  path: '/profile/provably-fair',
+                  redirect: '/profile/provably-fair/config',
                 },
                 {
-                  path: '/user/provably-fair/config',
-                  component: 'user/provablyFair/config',
+                  path: '/profile/provably-fair/config',
+                  component: 'profile/provablyFair/config',
                 },
                 {
-                  path: '/user/provably-fair/verify',
-                  component: 'user/provablyFair/verify',
+                  path: '/profile/provably-fair/verify',
+                  component: 'profile/provablyFair/verify',
                 },
                 {
-                  path: '/user/provably-fair/verify/:id',
-                  component: 'user/provablyFair/verify',
+                  path: '/profile/provably-fair/verify/:id',
+                  component: 'profile/provablyFair/verify',
                 },
               ],
             },
             {
-              path: '/user/docs',
-              component: 'user/docs',
-              routes: [
-                {
-                  path: '/user/docs',
-                  redirect: '/user/docs/help',
-                },
-                {
-                  path: '/user/docs/help',
-                  component: 'user/docs/help',
-                },
-                {
-                  path: '/user/docs/help/:id',
-                  component: 'user/docs/help',
-                },
-                {
-                  path: '/user/docs/support',
-                  component: 'user/docs/support',
-                },
-                {
-                  path: '/user/docs/support/:id',
-                  component: 'user/docs/support',
-                },
-              ],
+              path: '/profile/promote',
+              component: 'profile/promote',
+            },
+          ],
+        },
+        {
+          path: '/docs',
+          component: 'docs',
+          routes: [
+            {
+              path: '/docs',
+              redirect: 'docs/help',
             },
             {
-              path: '/user/vip',
-              component: 'user/vip',
+              path: '/docs/help',
+              component: 'docs/help',
             },
             {
-              path: '/user/promote',
-              component: 'user/promote',
+              path: '/docs/help/:id',
+              component: 'docs/help',
+            },
+            {
+              path: '/docs/support',
+              component: 'docs/support',
+            },
+            {
+              path: '/docs/support/:id',
+              component: 'docs/support',
             },
           ],
         },

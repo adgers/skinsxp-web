@@ -3,6 +3,8 @@ module.exports = {
     './src/pages/**/*.tsx',
     './src/components/**/*.tsx',
     './src/layout/**/*.tsx',
+    'node_modules/daisyui/dist/**/*.js',
+    'node_modules/react-daisyui/dist/**/*.js',
   ],
   theme: {
     extend: {
@@ -25,5 +27,9 @@ module.exports = {
       },
     },
   },
-  plugins: [require('@tailwindcss/typography')],
+  plugins: [require('daisyui'), require('@tailwindcss/typography')],
+  daisyui: {
+    themes: false,
+    styled: false,
+  },
 };
