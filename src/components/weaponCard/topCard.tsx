@@ -14,10 +14,16 @@ export default React.memo(function TopCard({ data, loading }: TopCardProps) {
     const random = Math.floor(Math.random() * 4);
     return (
       <div className={`weapon-card-top weapon-card-grade-${random} `}>
-        <div className="flex w-full h-full justify-center items-center">
+        <div className="flex flex-col gap-2 w-full h-full justify-center items-center">
           <Skeleton
             width={70}
             height={30}
+            baseColor="rgba(0, 0, 0, 0.15)"
+            highlightColor="rgba(0, 0, 0, 0.2)"
+          />
+          <Skeleton
+            width={140}
+            height={15}
             baseColor="rgba(0, 0, 0, 0.15)"
             highlightColor="rgba(0, 0, 0, 0.2)"
           />
@@ -25,6 +31,9 @@ export default React.memo(function TopCard({ data, loading }: TopCardProps) {
       </div>
     );
   }
+
+  const name = data?.giftName || data?.voucherName || data?.winVoucherName;
+
   return (
     <div
       className={`weapon-card-top card-flip weapon-card-grade-${data?.grade}`}

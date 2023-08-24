@@ -6,7 +6,7 @@ export default function OpenHistory() {
   const { recentBox, setIsTop, isTop } = useModel('socket');
 
   return (
-    <div className="w-full open-history bg-base-100 bg-opacity-95 overflow-hidden flex">
+    <div className="w-full open-history bg-dark overflow-hidden flex">
       <div className="flex flex-col self-stretch overflow-hidden flex-shrink-0 mx-1">
         <div
           className={`flex flex-1 flex-col items-center justify-center px-2 md:px-0 gap-1 bg-neutral cursor-pointer ${

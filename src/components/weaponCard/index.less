@@ -168,42 +168,54 @@
   }
 
   &.weapon-card-grade-0 {
-    background: radial-gradient(
+    background: var(
+      --c-1,
+      radial-gradient(
         110% 100% at 49.87% 100%,
         rgba(236, 198, 0, 0.6) 0%,
         rgba(40, 40, 40, 0) 100%
       ),
-      #1e1d22;
+      #1e1d22
+    );
     border-bottom: 3px solid var(--4, #ffee51);
   }
 
   &.weapon-card-grade-1 {
-    background: radial-gradient(
+    background: var(
+      --c-2,
+      radial-gradient(
         147.37% 100% at 49.87% 100%,
         rgba(255, 27, 68, 0.6) 0%,
         rgba(40, 40, 40, 0) 100%
       ),
-      #1e1d22;
+      #1e1d22
+    );
     border-bottom: 3px solid var(--3, #ed3838);
   }
 
   &.weapon-card-grade-2 {
-    background: radial-gradient(
+    background: var(
+      --c-3,
+      radial-gradient(
         124.94% 91.38% at 49.87% 100%,
         rgba(141, 27, 255, 0.6) 0%,
         rgba(40, 40, 40, 0) 100%
       ),
-      #1e1d22;
+      #1e1d22
+    );
     border-bottom: 3px solid var(--3, #ab6afc);
   }
 
   &.weapon-card-grade-3 {
-    background: radial-gradient(
+    background: var(
+      --c-4,
+      radial-gradient(
         98.6% 106.9% at 49.87% 106.9%,
         rgba(89, 154, 169, 0.6) 0%,
         rgba(40, 40, 40, 0) 100%
       ),
-      #1e1d22;
+      #1e1d22
+    );
     border-bottom: 3px solid var(--5, #6da1ac);
   }
 
@@ -355,8 +367,8 @@
   left: 50%;
   width: 88px;
   height: 50px;
-  transform: translate(-50%, -50%);
   background-size: contain;
+  transform: translate(-50%, -50%);
   content: '';
 }
 
