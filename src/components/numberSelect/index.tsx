@@ -19,15 +19,15 @@ const NumberSelect = ({
   }, [value]);
 
   return (
-    <div className="flex flex-wrap justify-center gap-2">
+    <div className="flex justify-center h-10 sm:h-[60px]">
       {arr.map((item, index) => {
         const isSelect = select === item;
         return (
           <div
-            className={`w-16 h-8 sm:h-12 font-num inline-flex justify-center items-center rounded text-base cursor-pointer border ${
+            className={`w-full h-full font-num inline-flex justify-center items-center text-base cursor-pointer border ${
               isSelect
-                ? 'text-secondary border-secondary'
-                : 'border-accent border-opacity-20'
+                ? 'text-green border-green'
+                : 'border-light text-white'
             }`}
             key={index}
             onClick={() => {

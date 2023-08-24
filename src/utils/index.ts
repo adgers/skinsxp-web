@@ -14,7 +14,7 @@ export function getApiDomain() {
     location.href.indexOf('localhost') > -1 ||
     location.href.indexOf('127.0.0.1') > -1
   ) {
-    return '//116.62.22.23:9999';
+    // return '//116.62.22.23:9999';
 
     return 'http://127.0.0.1:9999';
     // return '//api-test.xgskins.com';

@@ -10,6 +10,6 @@
   @apply rounded btn bg-primary text-primary bg-opacity-20 border-primary hover:bg-primary hover:bg-opacity-30 hover:text-primary hover:border-primary 
 } */
 
-:root{
+:root {
   @apply bg-dark;
 }

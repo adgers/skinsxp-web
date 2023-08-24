@@ -1,4 +1,3 @@
-import logoImg from '@/assets/logo.png';
 import FindPwd from '@/components/account/findPwd';
 import Login from '@/components/account/login';
 import MobileLogin from '@/components/account/mobileLogin';
@@ -147,12 +146,8 @@ export default function Header() {
     <div className="sticky left-0 top-0 z-[99]">
       <Navbar className="p-3 bg-dark">
         <div className="flex-1">
-          <Link to={'/'} className="inline-block">
-            <img
-              src={logoImg}
-              alt="logo"
-              className="w-[85px] h-[19px] sm:w-[170px] sm:h-[38px]"
-            />
+          <Link to={'/'} className="inline-block text-green text-3xl">
+            WGSKINS
           </Link>
 
           <Menu as="div" className="relative ml-4">
@@ -393,8 +388,12 @@ export default function Header() {
                 pwd login
               </Button>
               <Button
-                className="btn btn-sm btn-primary rounded uppercase"
+                className="btn btn-sm text-black gap-1 rounded uppercase"
                 onClick={() => (window.location.href = getSteamLoginUrl())}
+                style={{
+                  background:
+                    'linear-gradient(270deg, #0BFF59 0.04%, #B4FC3B 99.77%)',
+                }}
               >
                 <IconFont type="icon-steam1" className="text-xl" />
                 <FormattedMessage id="register_ljdl" />

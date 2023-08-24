@@ -26,7 +26,6 @@ export default function Layout() {
       {!headHidden() && <Footer />}
       <ToastContainer
         theme="dark"
-        position="top-center"
         autoClose={2000}
         limit={1}
       />

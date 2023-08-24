@@ -1,5 +1,5 @@
 import spinVideo from '@/assets/audio/spin.mp3';
-import { sleep } from '@/utils';
+import { parseName, sleep } from '@/utils';
 import { animated, easings, useSpring } from '@react-spring/web';
 import { useCallback, useEffect, useRef, useState } from 'react';
 import './index.less';
@@ -18,7 +18,7 @@ const Lottery = ({
   lotteryIndex = 0,
 }: {
   giftList: API.BoxGiftListVo[];
-  lotteryWin: API.BattleBoxGainVo;
+  lotteryWin?: API.BattleBoxGainVo;
   onCompleted: (index: number) => void;
   vertical?: boolean;
   start: boolean;
@@ -29,7 +29,7 @@ const Lottery = ({
   fast?: boolean;
   voice?: boolean;
 }) => {
-  const baseNum = 40;
+  const baseNum = 36;
   const winLotteryIndex = 30;
   const duration = fast ? 100 * winLotteryIndex : 250 * winLotteryIndex;
   const [list, setList] = useState<API.BoxGiftListVo[]>([]);
@@ -91,19 +91,26 @@ const Lottery = ({
   };
 
   const initList = () => {
+    if (giftList.length === 0) return;
     let list = [...giftList];
-    //最少数量为baseNum，如果不足，随机补足
+    //最少数量为baseNum，如果不足，随机补足到最大baseNum个
     if (list.length < baseNum) {
-      for (let i = 0; i < baseNum; i++) {
-        const index = Math.floor(Math.random() * giftList.length);
-        list.push(giftList[index]);
+      const diffNum = baseNum - list.length;
+      for (let i = 0; i < diffNum; i++) {
+        const randomIndex = Math.floor(Math.random() * list.length);
+        list.splice(randomIndex, 0, list[randomIndex]);
       }
     }
+
     // 随机打乱顺序
     list.sort(() => Math.random() - 0.5);
-    // 添加中奖物品到中奖位置
-    list.splice(winLotteryIndex, 0, lotteryWin);
     setList(list);
+  };
+
+  const initWinItem = (lotteryWin: API.BattleBoxGainVo) => {
+    const newList = [...list];
+    newList[winLotteryIndex] = lotteryWin;
+    setList(newList);
   };
 
   const playSpinAudio = useCallback(async () => {
@@ -124,7 +131,9 @@ const Lottery = ({
       randomHeight = boxHeight / 2;
     }
 
-    const moveY = winLotteryIndex * boxHeight - wrapHeight / 2 + randomHeight;
+    const gapHeight = 8;
+    const moveY =
+      winLotteryIndex * (boxHeight + gapHeight) - wrapHeight / 2 + randomHeight;
 
     moveApi.start({
       from: { y: 0 },
@@ -157,8 +166,10 @@ const Lottery = ({
       randomWidth = boxWidth / 2;
     }
 
+    const gapWidth = 8;
     const wrapWidth = wrapRef.current?.offsetWidth || 0;
-    const moveX = winLotteryIndex * boxWidth - wrapWidth / 2 + randomWidth;
+    const moveX =
+      winLotteryIndex * (boxWidth + gapWidth) - wrapWidth / 2 + randomWidth;
 
     moveApi.start({
       from: { x: 0 },
@@ -184,13 +195,14 @@ const Lottery = ({
   };
 
   useEffect(() => {
-    if (!giftList && !lotteryWin) return;
     resetStyle();
     initList();
-  }, [giftList, lotteryWin]);
+  }, [giftList]);
 
   useEffect(() => {
-    if (!start) return;
+    if (!start || !lotteryWin) return;
+    initWinItem(lotteryWin);
+
     sleep(500 * lotteryIndex).then(() => {
       if (vertical) {
         goMoveY();
@@ -198,7 +210,7 @@ const Lottery = ({
         goMoveX();
       }
     });
-  }, [start]);
+  }, [start, lotteryWin]);
 
   return (
     <div
@@ -223,17 +235,18 @@ const Lottery = ({
         style={{
           ...moveSprings,
         }}
-        className={`flex items-center will-change-transform w-full h-full ${
+        className={`flex items-center will-change-transform gap-2 w-full h-full ${
           vertical ? 'flex-col' : 'flex-row'
         }`}
       >
         {list.map((item: any, index: number) => {
-          const isWin = item.id === lotteryWin.id;
+          const isWin = item.id === lotteryWin?.id;
           const grade = item.grade ?? item.giftGrade;
+          const name = parseName(item.giftName);
 
           return (
             <div
-              className="lottery-card"
+              className={`lottery-card lottery-card-${grade}`}
               key={index}
               style={{
                 width: boxSize.width,
@@ -245,14 +258,17 @@ const Lottery = ({
                   ...(isWin ? scaleSprings : opacitySprings),
                 }}
                 src={item.giftImage}
-                className={`sm:w-full sm:h-full z-10 will-change-transform`}
+                className={`mx-auto object-contain h-full w-4/5`}
               />
-              <animated.div
-                style={{
-                  ...(isWin ? rotateSprings : opacitySprings),
-                }}
-                className={`lottery-card-bg lottery-card-${grade}`}
-              />
+              <div className="hidden md:block absolute bottom-0 left-0 -mb-1 w-full p-2 font-semibold uppercase leading-tight md:p-3 css-185mzwb">
+                <div className="truncate text-xs md:text-sm text-center">
+                  <div className="text-white text-opacity-50">{name[1]}</div>
+                  <div className="text-white">{name[0]}</div>
+                </div>
+                <div className="truncate font-bold text-xs md:text-sm text-center text-white mt-1">
+                  $ {item.recoveryPrice}
+                </div>
+              </div>
             </div>
           );
         })}

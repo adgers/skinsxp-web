@@ -1,35 +1,50 @@
+.roll-wrap{
+  width: 100%;
+  height: 100%;
+  position: relative;
+  overflow: hidden;
+  perspective: 1000px;
+}
+.roll-item-list{
+  position: absolute;
+  transform-style: preserve-3d;
+  will-change: transform;
+  width: 100%;
+  height: 100%;
+}
+.roll-item{
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+  will-change: transform;
+}
+
+
+
 .lottery-card {
   display: flex;
   justify-content: center;
   align-items: center;
   position: relative;
   flex-shrink: 0;
+  backface-visibility: hidden;
 
-  .lottery-card-bg {
-    width: 50%;
-    height: 50%;
-    position: absolute;
-    left: 25%;
-    top: 25%;
-    background-size: contain;
-    background-repeat: no-repeat;
-    background-position: center;
-    z-index: 1;
+  &.lottery-card-0 {
+    background: linear-gradient(0deg, #59491E 0%, #1E1D22 100%);
+  }
 
-    &.lottery-card-0 {
-      background-image: url('@/assets/w1.png');
-    }
+  &.lottery-card-1 {
+    background: linear-gradient(0deg, #5C2630 0%, #1E1D22 100%);
+  }
 
-    &.lottery-card-1 {
-      background-image: url('@/assets/w2.png');
-    }
+  &.lottery-card-2 {
+    background: linear-gradient(0deg, #4A385B 0%, #1E1D22 100%);
+  }
 
-    &.lottery-card-2 {
-      background-image: url('@/assets/w3.png');
-    }
-
-    &.lottery-card-3 {
-      background-image: url('@/assets/w4.png');
-    }
+  &.lottery-card-3 {
+    background: linear-gradient(0deg, #4F595B 0%, #1E1D22 100%);
   }
 }
