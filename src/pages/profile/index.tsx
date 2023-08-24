@@ -122,14 +122,6 @@ export default function User() {
             <div className="flex gap-3 sm:gap-4 items-center">
               <div className="w-16 h-16 md:w-[120px] md:h-[120px] overflow-hidden group relative rounded-full border-1 border-solid border-light">
                 <img src={userInfo?.headPic||'https://key-drop.com/uploads/skins/XANTARES1.png'} className="w-full h-full" />
-                <span
-                  className="absolute w-full left-0 bottom-0 text-center text-white opacity-60 py-2 text-sm bg-black bg-opacity-80 cursor-pointer hidden group-hover:block"
-                  onClick={() => {
-                    toggleHeadPic();
-                  }}
-                >
-                  <FormattedMessage id="mine_xgtx" />,
-                </span>
 
                 <Modal open={headPicModalVisible} className="max-w-md">
                   <Modal.Header className="uppercase font-semibold leading-tight">
@@ -167,44 +159,8 @@ export default function User() {
                 </Modal>
               </div>
               <div className="flex flex-col gap-1 md:gap-2 flex-1 justify-center">
-                <div className="text-white text-base md:text-2xl flex items-center gap-2">
-                  <span>{userInfo?.nickname}</span>
-                  <FormOutlined className="text-sm" onClick={toggleNick} />
-
-                  <Modal open={nickInputVisible} className="max-w-md">
-                    <Modal.Header className="uppercase font-semibold leading-tight">
-                      <FormattedMessage id="mine_xgnc" />,
-                    </Modal.Header>
-                    <Button
-                      size="xs"
-                      shape="circle"
-                      color="ghost"
-                      className="absolute right-2 top-2"
-                      onClick={toggleNick}
-                    >
-                      ✕
-                    </Button>
-                    <Modal.Body className="flex flex-col gap-4">
-                      <Input
-                        placeholder="Enter new nickname"
-                        ref={nickRef}
-                        defaultValue={userInfo?.nickname}
-                      />
-                    </Modal.Body>
-                    <Modal.Actions className="flex flex-col mt-4">
-                      <Button
-                        className="btn-primary w-full rounded"
-                        onClick={updateNick}
-                      >
-                        <FormattedMessage id="confirm" />
-                      </Button>
-                    </Modal.Actions>
-                  </Modal>
-
-                  <div className="vip-level">
-                    <div className="vip-level-icon"></div>
-                    <div className="vip-level-num">{userInfo?.grade}</div>
-                  </div>
+                <div className="text-white text-base md:text-xl flex items-center gap-2">
+                  <span>{userInfo?.nickname ||'名字'}</span>
                 </div>
                 <div className="text-white text-xs md:text-sm flex items-center flex-wrap gap-2">
                   <div className="flex flex-1 gap-2 items-center">

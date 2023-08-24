@@ -43,8 +43,8 @@ export default React.memo(function TopCard({ data, loading }: TopCardProps) {
           <img src={data?.giftImage} />
         </div>
         <div className="item-footer text-white">
-          <div className="item-title">{data?.boxName}</div>
-          <div className="item-nick">{data?.nickname}</div>
+          <div className="item-title">{data?.boxName?.split('|')?.[0].trim()}</div>
+          <div className="item-nick">{data?.boxName?.split('|')?.[1].trim()}</div>
         </div>
       </div>
       <div className="back">
