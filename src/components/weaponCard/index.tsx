@@ -48,10 +48,10 @@ export default React.memo(function WeaponCard({
         <img src={img} />
       </div>
       <div className="item-footer flex flex-col gap-1">
-        <div className="text-xs truncate text-white">{name && parseName(name)?.[0]}</div>
+        <div className="text-xs truncate text-white/[0.5] ">{name && parseName(name)?.[0]}</div>
         {mini ? null : (
-          <div className="text-xs text-white">
-            <span className="truncate text-white/[0.5]">
+          <div>
+            <span className="truncate text-white text-base">
               {name && parseName(name)?.[1]}
             </span>
           </div>

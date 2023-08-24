@@ -3,47 +3,26 @@
   width: 100%;
   height: 202px;
   overflow: hidden;
-  border-radius: 6px;
   cursor: pointer;
 
   &.weapon-card-grade-0 {
-    background: linear-gradient(
-      180deg,
-      #1e1913 0%,
-      #3a3327 33.33%,
-      #584a34 69.79%,
-      #796446 100%
-    );
+    background: #3e3831;
+    border-bottom: 3px solid var(--4, #ffee51);
   }
 
   &.weapon-card-grade-1 {
-    background: linear-gradient(
-      180deg,
-      #1e1619 0%,
-      #382427 33.33%,
-      #602e31 69.79%,
-      #8c3b3b 100%get
-    );
+    background: #413636;
+    border-bottom: 3px solid var(--3, #ed3838);
   }
 
   &.weapon-card-grade-2 {
-    background: linear-gradient(
-      180deg,
-      #1c1928 0%,
-      #272337 33.33%,
-      #3d2d5f 69.79%,
-      #523d7d 100%
-    );
+    background: #35323d;
+    border-bottom: 3px solid var(--3, #ab6afc);
   }
 
   &.weapon-card-grade-3 {
-    background: linear-gradient(
-      180deg,
-      #141a20 0%,
-      #1e262d 33.33%,
-      #2e404d 69.79%,
-      #49677c 100%
-    );
+    background: #323638;
+    border-bottom: 3px solid var(--5, #6da1ac);
   }
 
   .img-wrapper {
@@ -70,8 +49,6 @@
     z-index: 2;
     padding: 6px 8px;
   }
-
-
 
   .item-roll {
     position: absolute;
@@ -114,10 +91,10 @@
   left: 50%;
   width: 138px;
   height: 74px;
-  transform: translate(-50%, -50%);
 
   background: url('@/assets/iv.png') no-repeat;
   background-size: contain;
+  transform: translate(-50%, -50%);
   opacity: 0.3;
   content: '';
 }
