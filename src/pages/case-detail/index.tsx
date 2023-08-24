@@ -52,6 +52,7 @@ export default function BoxPage() {
       refreshDeps: [caseId],
     },
   );
+  console.log(recentBoxs,'recentBoxs')
 
   const [openCount, setOpenCount] = useState(1);
   const [resultShow, setResultShow] = useState(false);
@@ -252,7 +253,7 @@ export default function BoxPage() {
       </div>
 
       <div className="box-title mt-10">
-        <span className="text-center text-base sm:text-2xl uppercase font-semibold">
+        <span className="text-center  text-white sm:text-2xl uppercase font-semibold">
           <FormattedMessage id="open_box_lastdrop" />
         </span>
       </div>
@@ -265,14 +266,15 @@ export default function BoxPage() {
               </div>
               <div className="back">
                 <div className="flex flex-col gap-3 items-center justify-center w-full h-full bg-neutral bg-opacity-70 cursor-pointer rounded-md">
-                  <div className="avatar w-10 h-10 relative rounded">
+                  <div className="avatar w-14 h-14 relative rounded">
                     <img src={item?.headPic} />
                     <img
                       src={item?.headGround}
                       className="absolute left-0 top-0 w-full h-full"
                     />
                   </div>
-                  <div className="text-sm">{item?.nickname}</div>
+                  <div className="text-white text-sm">{item?.nickname}</div>
+                  <div className="text-white text-sm">{item?.createTime}</div>
                 </div>
               </div>
             </div>

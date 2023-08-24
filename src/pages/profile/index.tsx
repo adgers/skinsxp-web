@@ -27,7 +27,7 @@ export default function User() {
   const [headPicModalVisible, { toggle: toggleHeadPic }] = useToggle(false);
   const location = useLocation();
   const [headPic, setHeadPic] = useState<string>();
-
+  console.log('userInfo',userInfo)
   const intl = useIntl();
 
   const nickRef = useRef<HTMLInputElement>(null);
@@ -120,12 +120,8 @@ export default function User() {
         <>
           <div className="p-3 sm:p-6 user-info bg-neutral user-info-bg">
             <div className="flex gap-3 sm:gap-4 items-center">
-              <div className="w-16 h-16 md:w-[120px] md:h-[120px] overflow-hidden group relative rounded">
-                <img src={userInfo?.headPic} className="w-full h-full" />
-                <img
-                  src={userInfo?.headGround}
-                  className="absolute left-0 top-0 w-full h-full"
-                />
+              <div className="w-16 h-16 md:w-[120px] md:h-[120px] overflow-hidden group relative rounded-full border-1 border-solid border-light">
+                <img src={userInfo?.headPic||'https://key-drop.com/uploads/skins/XANTARES1.png'} className="w-full h-full" />
                 <span
                   className="absolute w-full left-0 bottom-0 text-center text-white opacity-60 py-2 text-sm bg-black bg-opacity-80 cursor-pointer hidden group-hover:block"
                   onClick={() => {

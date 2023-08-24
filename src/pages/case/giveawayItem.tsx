@@ -43,7 +43,7 @@ export default function GiveawayItem(props: GiveawayItemProps) {
               </div>
             </div>
             <span className="mb-2 mt-auto truncate text-xs font-semibold text-white">
-              {item?.accumulatedAmount}
+              ${item?.accumulatedAmount}
             </span>
           </div>
           <a className="flex w-[55%] flex-col pr-2.5 justify-start" href="/">

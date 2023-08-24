@@ -48,10 +48,10 @@ export default function Case() {
                 />
                 <div className="w-full h-full absolute top-0 left-0">
                   {/* <div className="absolute top-[1.5] left-[1.75] text-green">New !</div> */}
-                  <div className="absolute top-[1.5] right-0 bg-white/[0.2] text-white px-2 py-1 font-num text-sm">
-                    {v?.discount}
+                  <div className="absolute top-[20px] right-0 bg-white/[0.2] text-white px-2 py-1 font-num text-sm">
+                    ${v?.discount}
                   </div>
-                  <div className="absolute bottom-0 left-0 w-full flex justify-center items-center text-white text-base h-[60px] bg-dark bg-opacity-50 backdrop-blur-[1px]">
+                  <div className="absolute bottom-0 left-0 w-full flex justify-center items-center text-white text-base h-[60px] bg-black bg-opacity-50 backdrop-blur-[1px]">
                     {v?.boxName}
                   </div>
                 </div>
