@@ -48,18 +48,18 @@ export default React.memo(function WeaponCard({
         <img src={img} />
       </div>
       <div className="item-footer flex flex-col gap-1">
-        <div className="text-xs truncate text-opacity-60">{name && parseName(name)?.[0]}</div>
+        <div className="text-xs truncate text-white">{name && parseName(name)?.[0]}</div>
         {mini ? null : (
           <div className="text-xs text-white">
-            <span className="text-base-content truncate">
+            <span className="truncate text-white/[0.5]">
               {name && parseName(name)?.[1]}
             </span>
           </div>
         )}
       </div>
 
-      <div className="absolute left-0 top-0 text-base text-white">
-        <span className="font-num">${price && numberFixed(Number(price))}</span>
+      <div className="absolute left-0 top-0 text-base text-white pt-[9px] pl-[11px]">
+        <span className="font-num" >${price && numberFixed(Number(price))}</span>
       </div>
     </div>
   );

@@ -1,5 +1,5 @@
 import { getBoxListUsingGET } from '@/services/front/kaixiangxiangguan';
-import { useRequest } from '@umijs/max';
+import { useRequest,history } from '@umijs/max';
 
 export default function Case() {
   const { data: boxList } = useRequest(() =>
@@ -37,6 +37,9 @@ export default function Case() {
                 key={idx}
                 // style={{ backgroundImage:`url(${v?.boxImage})`}}
                 className="w-full h-full bg-no-repeat bg-cover relative"
+                onClick={() => {
+                  history.push(`/case/${v?.id}`);
+                }}
               >
                 <img
                   src={v?.boxImage}
