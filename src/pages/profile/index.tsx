@@ -4,8 +4,7 @@ import {
   modifyNicknameUsingPOST,
   uploadAvatarV2UsingPOST,
 } from '@/services/front/gerenzhongxinxiangguan';
-import { getImgHost, headHidden, numberFixed } from '@/utils';
-import { FormOutlined } from '@ant-design/icons';
+import { headHidden, numberFixed } from '@/utils';
 import {
   FormattedMessage,
   Link,
@@ -16,8 +15,6 @@ import {
 } from '@umijs/max';
 import { useRequest, useToggle } from 'ahooks';
 import { useMemo, useRef, useState } from 'react';
-import CountUp from 'react-countup';
-import { Button, Input, Modal } from 'react-daisyui';
 import { toast } from 'react-toastify';
 import './index.less';
 
@@ -27,7 +24,7 @@ export default function User() {
   const [headPicModalVisible, { toggle: toggleHeadPic }] = useToggle(false);
   const location = useLocation();
   const [headPic, setHeadPic] = useState<string>();
-  console.log('userInfo',userInfo)
+  console.log('userInfo', userInfo);
   const intl = useIntl();
 
   const nickRef = useRef<HTMLInputElement>(null);
@@ -118,86 +115,33 @@ export default function User() {
     <div className="max-w-[1400px] m-auto px-3 mt-5">
       {!headHidden() && (
         <>
-          <div className="p-3 sm:p-6 user-info bg-neutral user-info-bg">
-            <div className="flex gap-3 sm:gap-4 items-center">
-              <div className="w-16 h-16 md:w-[120px] md:h-[120px] overflow-hidden group relative rounded-full border-1 border-solid border-light">
-                <img src={userInfo?.headPic||'https://key-drop.com/uploads/skins/XANTARES1.png'} className="w-full h-full" />
-
-                <Modal open={headPicModalVisible} className="max-w-md">
-                  <Modal.Header className="uppercase font-semibold leading-tight">
-                    <FormattedMessage id="mine_xztx" />,
-                  </Modal.Header>
-                  <Button
-                    size="xs"
-                    shape="circle"
-                    color="ghost"
-                    className="absolute right-2 top-2"
-                    onClick={toggleHeadPic}
-                  >
-                    ✕
-                  </Button>
-                  <Modal.Body className="grid grid-cols-4 md:grid-cols-5 gap-2">
-                    {headPicList?.data?.map((item, i) => (
-                      <img
-                        src={getImgHost() + item}
-                        className={`w-16 h-16 overflow-hidden group relative rounded-sm cursor-pointer ${
-                          item === headPic && 'ring-1 ring-primary'
-                        }`}
-                        onClick={() => setHeadPic(item)}
-                        key={i}
-                      />
-                    ))}
-                  </Modal.Body>
-                  <Modal.Actions className="flex mt-4">
-                    <Button
-                      className="btn-primary w-full rounded"
-                      onClick={updateHeadPic}
-                    >
-                      <FormattedMessage id="confirm" />
-                    </Button>
-                  </Modal.Actions>
-                </Modal>
+          <div className="p-3 sm:p-6 user-info bg-neutral user-info-bg grid grid-cols-2">
+            <div className="flex gap-3 sm:gap-4 items-center pr-16 user-info-left relative py-2">
+              <div className="w-16 h-16 md:w-[120px] md:h-[120px]  overflow-hidden group relative rounded-full border-1 border-solid border-light">
+                <img
+                  src={
+                    userInfo?.headPic ||
+                    'https://key-drop.com/uploads/skins/XANTARES1.png'
+                  }
+                  className="w-full h-full"
+                />
               </div>
-              <div className="flex flex-col gap-1 md:gap-2 flex-1 justify-center">
+              <div className="flex flex-col gap-1 md:gap-2 flex-1 justify-center ">
                 <div className="text-white text-base md:text-xl flex items-center gap-2">
-                  <span>{userInfo?.nickname ||'名字'}</span>
+                  <span>{userInfo?.nickname || '名字'}</span>
                 </div>
-                <div className="text-white text-xs md:text-sm flex items-center flex-wrap gap-2">
-                  <div className="flex flex-1 gap-2 items-center">
-                    <progress
-                      className="progress progress-secondary-l ring-1 ring-secondary bg-base-100 w-32"
-                      value={lvprocess}
-                      max="100"
-                    ></progress>
-                    <span>{lvprocess}%</span>
+                <div className="flex justify-between text-2xl font-bold items-center">
+                  <div className="text-green ">${userInfo?.balance || 111}</div>
+                  <div className=" text-purple">
+                    ${userInfo?.secondaryBalance || 111}
                   </div>
-                </div>
-                <div className="flex gap-4">
-                  <div className="flex items-center gap-1 text-sm sm:text-base">
-                    <IconFont type="icon-coin" />
-                    <CountUp
-                      end={numberFixed(userInfo?.balance || 0)}
-                      duration={1}
-                      decimals={2}
-                      separator=""
-                      className="font-num"
-                    />
-                  </div>
-                  <div className="flex items-center gap-1 text-sm sm:text-base">
-                    <IconFont type="icon-daimond" />
-                    <CountUp
-                      end={numberFixed(userInfo?.secondaryBalance || 0)}
-                      duration={1}
-                      decimals={2}
-                      separator=""
-                      className="font-num"
-                    />
-                  </div>
-                </div>
-                <div className="flex uppercase">
-                  SteamID: {userInfo?.steamId || '-'}
+                  <div className='btn px-[8px] rounded-none border border-green text-green'>Add balance</div>
                 </div>
               </div>
+            </div>
+            <div className="flex flex-col items-start justify-center gap-6 text-white pl-16">
+              <div className="btn rounded-none border border-light h-8 w-4/5">Add Trade URL</div>
+              <div className="btn rounded-none border border-green h-8 w-4/5">Steam</div>
             </div>
           </div>
           <div className="custom-tab w-full flex gap-8 overflow-y-hidden overflow-x-auto md:justify-evenly border-b border-[#45444B] my-2 md:my-4 hide-scrollbar">

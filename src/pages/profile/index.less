@@ -5,46 +5,55 @@
 }
 
 .vip-item {
-  width: 112px;
-  height: 64px;
   display: flex;
   align-items: center;
   justify-content: center;
+  width: 112px;
+  height: 64px;
   text-transform: uppercase;
 }
 
 .vip-level {
-  border-radius: 2px;
-  height: 22px;
-  line-height: 22px;
-  background: linear-gradient(180deg, #FFFC00 35.42%, #D7D400 100%);
   display: inline-flex;
+  height: 22px;
   overflow: hidden;
-
+  line-height: 22px;
+  background: linear-gradient(180deg, #fffc00 35.42%, #d7d400 100%);
+  border-radius: 2px;
 
   .vip-level-icon {
-    background: linear-gradient(90deg, #44425E 0%, #131314 100%);
-    padding: 0 5px 0 7px;
-    margin: 1px;
-    border-radius: 2px 0 0 2px;
     display: inline-flex;
     align-items: center;
+    margin: 1px;
+    padding: 0 5px 0 7px;
+    background: linear-gradient(90deg, #44425e 0%, #131314 100%);
+    border-radius: 2px 0 0 2px;
 
     &::before {
-      content: "";
       display: block;
       width: 20px;
       height: 10px;
-      background-size: contain;
       background-image: url('@/assets/vip-logo.png');
       background-repeat: no-repeat;
+      background-size: contain;
+      content: '';
     }
   }
 
   .vip-level-num {
-    font-family: 'Gotham';
-    color: #131314;
     padding: 0 7px 0 6px;
+    color: #131314;
     font-size: 12px;
+    font-family: 'Gotham';
   }
+}
+
+.user-info-left::after {
+  position: absolute;
+  right: 0;
+  width: 1px;
+  height: 100%;
+  background: #636363;
+  content: '';
+  display: block;
 }

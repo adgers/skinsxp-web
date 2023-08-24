@@ -10,7 +10,7 @@ export default function OpenHistory() {
       <div className="flex flex-col self-stretch overflow-hidden flex-shrink-0 mx-1">
         <div
           className={`flex flex-1 flex-col items-center justify-center px-2 md:px-0 gap-1 bg-neutral cursor-pointer ${
-            isTop ? 'text-green' : 'bg-opacity-50 text-grey'
+            isTop ? 'text-green' : 'bg-opacity-50 text-gray'
           }`}
           onClick={() => {
             setIsTop(true);
