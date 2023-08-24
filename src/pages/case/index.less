@@ -1,18 +1,83 @@
 .top-icons {
-  background: rgba(20, 20, 21, 0.20);
-  backdrop-filter: blur(9px);
-  border-width: 1px;
-  border-style: solid;
-  border-radius: 8px;
   position: relative;
+  background: rgba(20, 20, 21, 0.2);
+  border-style: solid;
+  border-width: 1px;
+  border-radius: 8px;
+  backdrop-filter: blur(9px);
 }
-
 
 body {
   .swiper-pagination-bullet {
-    background: #25CBD6;
+    background: #25cbd6;
   }
   .swiper-pagination-bullet-active {
-    background: #FFFC01;
+    background: #fffc01;
   }
+}
+
+.giveaways-grade {
+  &::before {
+    position: absolute;
+    top: 40px;
+    left: 30px;
+    width: 102px;
+    height: 58px;
+    background: url(@/assets/iv.png) no-repeat;
+    background-size: contain;
+    content: '';
+  }
+}
+.giveaways-grade-0 {
+  background: var(
+    --g-1,
+    radial-gradient(
+      249.96% 148.16% at 78.08% 128.82%,
+      rgba(233, 202, 40, 0.6) 0%,
+      rgba(255, 199, 0, 0.6) 55.88%,
+      rgba(231, 167, 42, 0.49) 100%
+    ),
+    #100f12
+  );
+  border: 1px solid var(--4, #ffee51);
+}
+.giveaways-grade-1 {
+  background: var(
+    --g-2,
+    radial-gradient(
+      249.96% 148.16% at 78.08% 128.82%,
+      rgba(182, 59, 74, 0.6) 0%,
+      rgba(246, 43, 43, 0.6) 55.88%,
+      rgba(231, 42, 87, 0.24) 100%
+    ),
+    #100f12
+  );
+
+  border: 1px solid var(--3, #ed3838);
+}
+.giveaways-grade-2 {
+  background: var(
+    --g-3,
+    radial-gradient(
+      249.96% 148.16% at 78.08% 128.82%,
+      rgba(128, 59, 182, 0.6) 0%,
+      rgba(187, 101, 255, 0.6) 55.88%,
+      rgba(148, 42, 231, 0.24) 100%
+    ),
+    #100f12
+  );
+  border: 1px solid #833cae;
+}
+.giveaways-grade-3 {
+  background: var(
+    --g-4,
+    radial-gradient(
+      249.96% 148.16% at 78.08% 128.82%,
+      rgba(74, 102, 128, 0.6) 0%,
+      rgba(144, 238, 232, 0.55) 55.88%,
+      rgba(103, 180, 224, 0.24) 100%
+    ),
+    #100f12
+  );
+  border: 1px solid #4d7d88;
 }

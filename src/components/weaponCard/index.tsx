@@ -48,39 +48,18 @@ export default React.memo(function WeaponCard({
         <img src={img} />
       </div>
       <div className="item-footer flex flex-col gap-1">
-        <div className="text-xs truncate">{name && parseName(name)?.[0]}</div>
-        {mini ? (
-          <div className="text-xs flex justify-center">
-            <IconFont type="icon-daimond" className="mr-1" />
-            <span className="font-num">
-              {price && numberFixed(Number(price))}
-            </span>
-          </div>
-        ) : (
-          <div className="text-xs flex justify-between">
-            <span className="text-base-content text-opacity-50 truncate">
+        <div className="text-xs truncate text-opacity-60">{name && parseName(name)?.[0]}</div>
+        {mini ? null : (
+          <div className="text-xs text-white">
+            <span className="text-base-content truncate">
               {name && parseName(name)?.[1]}
-            </span>
-            <span className='flex'>
-              <IconFont type="icon-daimond" className="mr-1 " />
-              <span className="font-num">
-                {price && numberFixed(Number(price))}
-              </span>
             </span>
           </div>
         )}
       </div>
 
-      <div className="item-prop flex flex-col gap-1 text-xs text-base-content text-opacity-50 text-right">
-        {data?.rollCodeHigh && data?.rollCodeLow && (
-          <div className="flex gap-1">
-            <IconFont type="icon-rollpoint" />
-            {data.rollCodeLow}-{data.rollCodeHigh}
-          </div>
-        )}
-        {data?.realProbability && (
-          <div>{numberFixed(data.realProbability * 100)}%</div>
-        )}
+      <div className="absolute left-0 top-0 text-base text-white">
+        <span className="font-num">${price && numberFixed(Number(price))}</span>
       </div>
     </div>
   );
