@@ -55,31 +55,56 @@ export default function GiveawayItem(props: GiveawayItemProps) {
                 {item?.giftVos?.[0]?.giftName?.split('|')?.[1]?.trim()}
               </span>
             </div>
-            <div
-              className="font-mono grid grid-flow-col justify-center items-center auto-cols-max gap-4 text-white p-[6px] mt-3"
-              style={{
-                background: 'rgba(198, 197, 197, 0.50)',
-                backgroundBlendMode: 'multiply',
-              }}
-            >
+            <div className="mb-2 mt-auto flex h-8 items-center justify-center p-2 w-full xl:w-min bg-black/[0.25]">
               {days > 0 && (
-                <div className="flex flex-col items-center">
-                  <Countdown value={days} />
-                  <span className="text-xs">days</span>
-                </div>
+                <>
+                  <div className="flex w-6 flex-shrink-0 flex-col items-center justify-center text-center">
+                    <Countdown
+                      value={days}
+                      className="days-value text-xs font-bold tabular-nums leading-none text-white"
+                    />
+                    <span className="hours-unit text-[6px] font-medium leading-none text-white text-opacity-70">
+                      days
+                    </span>
+                  </div>
+                  <div className="mx-0.5 text-center text-xs font-semibold text-navy-300 text-white">
+                    :
+                  </div>
+                </>
               )}
-              <div className="flex flex-col items-center">
-                <Countdown value={hours} />
-                <span className="text-xs">hours</span>
+              <div className="flex w-6 flex-shrink-0 flex-col items-center justify-center text-center">
+                <Countdown
+                  value={hours}
+                  className="days-value text-xs font-bold tabular-nums leading-none text-white"
+                />
+                <span className="hours-unit text-[6px] font-medium leading-none text-white text-opacity-70">
+                  hr.
+                </span>
+              </div>
+              <div className="mx-0.5 text-center text-xs font-semibold text-navy-300 text-white">
+                :
               </div>
 
-              <div className="flex flex-col items-center">
-                <Countdown value={minutes} />
-                <span className="text-xs">min</span>
+              <div className="flex w-6 flex-shrink-0 flex-col items-center justify-center text-center">
+                <Countdown
+                  value={minutes}
+                  className="days-value text-xs font-bold tabular-nums leading-none text-white"
+                />
+                <span className="hours-unit text-[6px] font-medium leading-none text-white text-opacity-70">
+                  min.
+                </span>
               </div>
-              <div className="flex flex-col items-center">
-                <Countdown value={seconds} />
-                <span className="text-xs">sec</span>
+              <div className="mx-0.5 text-center text-xs font-semibold text-navy-300 text-white">
+                :
+              </div>
+              <div className="flex w-6 flex-shrink-0 flex-col items-center justify-center text-center">
+                <Countdown
+                  value={seconds}
+                  className="days-value text-xs font-bold tabular-nums leading-none text-white"
+                />
+                <span className="hours-unit text-[6px] font-medium leading-none text-white text-opacity-70">
+                  sec.
+                </span>
               </div>
             </div>
           </a>
