@@ -25,7 +25,7 @@ export default function Giveaways() {
           </a>
         </div>
         <div className="w-full overflow-hidden">
-          <div className="flex w-full snap-x snap-mandatory overflow-x-auto xl:grid xl:snap-none xl:grid-cols-5 opacity-100">
+          <div className="flex w-full snap-x snap-mandatory overflow-x-auto xl:grid xl:snap-none xl:grid-cols-4 opacity-100">
             {giveawayList?.map((item, index) => {
               return <GiveawayItem index={index} item={item} key={index} />;
             })}
