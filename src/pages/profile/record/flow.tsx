@@ -19,12 +19,12 @@ export default function FlowRecord() {
 
   return (
     <div className="flex flex-col items-center">
-      <div className="custom-tab w-full flex  mb-4 gap-8 text-white justify-center border-b border-[#45444B]">
+      <div className="custom-tab w-full flex  mb-4 gap-8 text-white justify-center border-b border-[#45444B] h-[68px]">
         {roomStates.map((item, index) => {
 
           return (
             <div
-              className={`tab-item  h-full ${
+              className={`tab-item flex items-center  h-full ${
                 roomState === item.value ? 'text-green border-b-[1px] border-green' : 'text-white '
               }`}
               key={index}

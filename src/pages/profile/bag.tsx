@@ -1,4 +1,5 @@
 import Empty from '@/components/empty';
+import { IconFont } from '@/components/icons';
 import WeaponCard from '@/components/weaponCard';
 import {
   exchangeQuantityUsingPOST1,
@@ -38,6 +39,8 @@ export default function BagPage() {
       refreshDeps: [page, orderByPrice],
     },
   );
+
+  console.log(data, 'data');
 
   enum ItemState {
     ACTIVE = 0, // 已激活
@@ -82,10 +85,10 @@ export default function BagPage() {
     setAllChecked(!allChecked);
   };
 
-  const onTakeSteam = async () => {
+  const onTakeSteam = async (itemId?: string) => {
     setTakeLoading(true);
     const ret = await ornamentRetrievalUsingPOST({
-      ids: checkedList.join(','),
+      ids: itemId ?? checkedList.join(','),
     });
     setTakeLoading(false);
     setSteamConfirm(false);
@@ -98,9 +101,9 @@ export default function BagPage() {
     }
   };
 
-  const onExchangeCoin = async () => {
+  const onExchangeCoin = async (itemId?: string) => {
     const ret = await exchangeQuantityUsingPOST1({
-      ids: checkedList.join(','),
+      ids: itemId ?? checkedList.join(','),
     });
     setExchangeConfirm(false);
     if (ret.status === 0) {
@@ -150,8 +153,22 @@ export default function BagPage() {
                     onItemClick(item);
                   }}
                 >
-                  <div className=" transition-transform duration-200 will-change-transform real-group-hover:rounded-b-none group-hover:md:translate-y-[-25px] group-hover:overflow-visible">
+                  <div
+                    className={`transition-transform duration-200 will-change-transform real-group-hover:rounded-b-none ${
+                      item.state === ItemState.ACTIVE
+                        ? 'group-hover:md:translate-y-[-25px]'
+                        : ''
+                    } group-hover:overflow-visible`}
+                  >
                     <WeaponCard data={item} fromProfile={true} />
+                    <div className="absolute left-0 top-0 z-10 mt-5 flex gap-10 justify-between items-center w-full  opacity-0 transition-opacity duration-200 group-hover:opacity-100 sm:p-4">
+                        <div className="text-xs font-bold uppercase leading-none css-rgj8xp text-white ">
+                          {item?.sourceType}
+                        </div>
+                      <div className="ml-auto text-right text-xs text-white font-bold uppercase whitespace-pre-wrap flex-1">
+                        {item?.createTime}
+                      </div>
+                    </div>
                     {isChecked && (
                       <div className="absolute w-full h-full left-0 top-0 justify-center items-center bg-black bg-opacity-50 flex cursor-pointer">
                         <CheckCircleOutlined className="text-green text-2xl" />
@@ -170,25 +187,44 @@ export default function BagPage() {
                           }}
                         >
                           <div className="btn btn-sm flex w-full items-center justify-center text-sm font-semibold uppercase transition-colors duration-150 real-hover:text-white">
-                            <svg className="mr-2 h-4 w-4"></svg>
+                            <IconFont
+                              type="icon-shield"
+                              className="text-green mr-1"
+                            />
                             <span>Check roll</span>
                           </div>
                         </li>
-                        <li className="border-solid bg-purple">
-                          <div className="btn btn-sm flex w-full items-center justify-center text-sm  font-semibold uppercase transition-colors duration-150 real-hover:text-white">
-                            <svg className="mr-2 h-4 w-4"></svg>
-                            <span className=" flex-1 truncate">
-                              SELL for{' '}
-                              <span className="text-gold">$ {price}</span>
-                            </span>
-                          </div>
-                        </li>
+                        {item?.state === ItemState.ACTIVE && (
+                          <li
+                            className="border-solid bg-purple"
+                            onClick={(e) => {
+                              e.stopPropagation();
+                              onTakeSteam(item?.id);
+                            }}
+                          >
+                            <div className="btn btn-sm flex w-full items-center justify-center text-sm  font-semibold uppercase transition-colors duration-150 real-hover:text-white">
+                              <svg className="mr-2 h-4 w-4"></svg>
+                              <span className=" flex-1 truncate">
+                                SELL for{' '}
+                                <span className="text-gold">$ {price}</span>
+                              </span>
+                            </div>
+                          </li>
+                        )}
                       </ul>
-                      <div className="absolute bottom-0 flex w-full overflow-hidden rounded-b-lg transition-transform duration-200 will-change-transform z-[-1] h-[48px] translate-y-[48px] md:h-[50px] md:translate-y-[-1px] group-hover:md:translate-y-[50px]">
-                        <div className="btn btn-sm w-full bg-green text-dark text-sm rounded-none">
-                          COLLECT
+                      {item?.state === ItemState.ACTIVE && (
+                        <div
+                          className="absolute bottom-0 flex w-full overflow-hidden rounded-b-lg transition-transform duration-200 will-change-transform z-[-1] h-[48px] translate-y-[48px] md:h-[50px] md:translate-y-[-1px] group-hover:md:translate-y-[50px]"
+                          onClick={(e) => {
+                            e.stopPropagation();
+                            onExchangeCoin(item?.id);
+                          }}
+                        >
+                          <div className="btn btn-sm w-full bg-green text-dark text-sm rounded-none">
+                            COLLECT
+                          </div>
                         </div>
-                      </div>
+                      )}
                     </>
                   </div>
                 </div>

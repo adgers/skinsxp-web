@@ -77,9 +77,9 @@ export default function User() {
         link: '/profile/affiliate',
       },
       {
-        title:'Provable Fair',
-        link:'/profile/provably-fair'
-      }
+        title: 'Provable Fair',
+        link: '/profile/provably-fair',
+      },
     ];
   }, []);
 
@@ -102,22 +102,25 @@ export default function User() {
                 <div className="text-white text-base md:text-xl flex items-center gap-2">
                   <span>{userInfo?.nickname || '名字'}</span>
                 </div>
-                <div className="flex justify-between text-xl font-bold items-center flex-wrap">
-                  <div className="w-[50%] lg:w-fit">
+                <div className="flex justify-between text-xl font-bold items-center">
+                  <div className=" lg:w-fit">
                     <div className="text-white/70 text-sm font-normal">
                       Balance
                     </div>
                     <div className="text-green  truncate">
-                      ${userInfo?.balance || 111}
+                      ${userInfo?.balance}
                     </div>
                   </div>
-                  <div className="w-[50%] lg:w-fit">
+                  <div className=" lg:w-fit">
                     <div className="text-white/70 text-sm font-normal">
                       Integral
                     </div>
                     <div className=" text-purple truncate">
-                      ${userInfo?.secondaryBalance || 111}
+                      ${userInfo?.secondaryBalance}
                     </div>
+                  </div>
+                  <div className="btn px-[8px] rounded-none border border-green text-green disp invisible xl:visible ">
+                    Add balance
                   </div>
                 </div>
               </div>
@@ -131,7 +134,7 @@ export default function User() {
               </div>
             </div>
           </div>
-          <div className="custom-tab w-full flex gap-[100px] overflow-y-hidden overflow-x-auto md:justify-start border-b border-[#45444B] my-2 md:my-4 hide-scrollbar">
+          <div className="custom-tab w-full h-[68px] flex gap-[100px] overflow-y-hidden overflow-x-auto md:justify-start items-center border-b border-[#45444B] my-2 md:my-4 hide-scrollbar">
             {tabLinks.map((item, index) => {
               const isActive = location.pathname.startsWith(item.link);
               return (
@@ -140,7 +143,7 @@ export default function User() {
                     isActive
                       ? 'text-green border-b-[1px] border-green'
                       : 'text-white '
-                  } tab-item flex-shrink-0 h-full `}
+                  } tab-item flex-shrink-0 h-full flex items-center `}
                   key={index}
                 >
                   <Link

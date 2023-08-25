@@ -39,13 +39,13 @@ export default function ProvablyFair() {
           ></div>
         </div>
       </div>
-      <div className="custom-tab flex mt-4 text-white justify-center border-b border-[#45444B] w-full">
+      <div className="custom-tab flex mt-4 text-white justify-center border-b border-[#45444B] w-full h-[68px]">
         {tabLinks.map((item, index) => {
           const isActive = location.pathname.startsWith(item.link);
 
           return (
             <div
-              className={`tab-item px-4 h-full ${
+              className={`tab-item px-4 flex items-center h-full ${
                 isActive ? 'text-green border-b-[1px] border-green' : 'text-white '
               }`}
               key={index}
