@@ -89,15 +89,7 @@ export default defineConfig({
               routes: [
                 {
                   path: '/profile/record',
-                  redirect: '/profile/record/game',
-                },
-                {
-                  path: '/profile/record/game',
-                  component: 'profile/record/game',
-                },
-                {
-                  path: '/profile/record/take',
-                  component: 'profile/record/take',
+                  redirect: '/profile/record/flow',
                 },
                 {
                   path: '/profile/record/flow',
