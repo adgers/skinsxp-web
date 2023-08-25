@@ -232,7 +232,7 @@ export default function BoxPage() {
           <button
             type="button"
             onClick={openBox}
-            className="flex items-center justify-center sm:px-12 h-10 sm:h-[60px] uppercase border border-green text-white font-num font-semibold bg-[#18331F] sm:min-w-[310px]"
+            className="btn-green sm:px-12 h-10 sm:h-[60px] uppercase font-num font-semibold sm:min-w-[310px]"
           >
             <div className="flex gap-2 px-1 flex-1 justify-center">
               {openLoading && <LoadingOutlined />}

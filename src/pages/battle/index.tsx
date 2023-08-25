@@ -128,7 +128,7 @@ export default function BattlePage() {
           </div>
 
           <Link
-            className="btn btn-md border hidden sm:inline-flex border-purple gap-1 rounded bg-[#421F57] text-white absolute right-0 bottom-5"
+            className="btn-purple absolute right-0 bottom-5"
             to={`/battle/create`}
           >
             <IconFont type="icon-zhandou" />
@@ -137,7 +137,7 @@ export default function BattlePage() {
         </div>
 
         <Link
-          className="btn btn-md border sm:hidden border-purple gap-1 rounded bg-[#421F57] text-white mb-4"
+          className="sm:hidden btn-purple mb-4"
           to={`/battle/create`}
         >
           <IconFont type="icon-zhandou" />

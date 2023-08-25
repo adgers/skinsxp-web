@@ -156,12 +156,12 @@ const RoomCard = memo(
         >
           {state === 0 &&
             (mode === 0 ? (
-              <div className="btn border border-green w-full bg-[#18331F] rounded gap-1">
+              <div className="btn-green w-full">
                 <IconFont type="icon-zhandou" />
                 {modeName}
               </div>
             ) : (
-              <div className="btn border border-red w-full bg-[#630F14] rounded gap-1">
+              <div className="btn-red w-full">
                 <IconFont type="icon-zhandou" />
                 {modeName}
               </div>
