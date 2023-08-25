@@ -16,7 +16,6 @@ export default function User() {
   const [headPicModalVisible, { toggle: toggleHeadPic }] = useToggle(false);
   const location = useLocation();
   const [headPic, setHeadPic] = useState<string>();
-  console.log('userInfo', userInfo);
   const intl = useIntl();
 
   const nickRef = useRef<HTMLInputElement>(null);
