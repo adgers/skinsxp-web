@@ -100,12 +100,12 @@ export default function Header() {
   const headExt = [
     {
       title: <FormattedMessage id="home_item_hzhb" />,
-      link: '/user/promote',
+      link: '/profile/promote',
       icon: 'icon-tuiguang',
     },
     {
       title: <FormattedMessage id="home_item_hydj" />,
-      link: '/user/vip',
+      link: '/profile/vip',
       icon: 'icon-vip',
     },
   ];
@@ -113,12 +113,12 @@ export default function Header() {
   const menuLinks = [
     {
       title: <FormattedMessage id="mine_spbb" />,
-      link: '/user/bag',
+      link: '/profile/bag',
       icon: 'icon-beibao1',
     },
     {
       title: <FormattedMessage id="mine_jlzx" />,
-      link: '/user/record',
+      link: '/profile/record',
       icon: 'icon-jilu',
     },
     ...headExt,
@@ -132,12 +132,12 @@ export default function Header() {
   const customLinks = [
     {
       title: <FormattedMessage id="mine_bzzx" />,
-      link: '/user/docs',
+      link: '/profile/docs',
       icon: 'icon-help',
     },
     {
       title: <FormattedMessage id="mine_gpyz" />,
-      link: '/user/provably-fair',
+      link: '/profile/provably-fair',
       icon: 'icon-shield',
     },
   ];

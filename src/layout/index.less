@@ -1,29 +1,46 @@
 .topup-btn {
-  border-radius: 6px;
-  background: linear-gradient(90deg, #FFFB00 0%, #D4BF00 100%);
-  padding: 0 12px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
   position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 12px;
+  background: linear-gradient(90deg, #fffb00 0%, #d4bf00 100%);
+  border-radius: 6px;
 
   .plus-btn {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border-radius: 50%;
-    background: rgba(255, 255, 255, 0.20);
     position: absolute;
     z-index: 99;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     color: #fff;
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 50%;
   }
 }
 
 .open-history {
+  height: 122px;
   padding-top: 6px;
 }
 
+@media (max-width: 1200px) {
+  .open-history {
+    height: 90px;
+  }
+}
 
+@media (max-width: 900px) {
+  .open-history {
+    height: 77px;
+  }
+}
+
+@media (max-width: 599px) {
+  .open-history {
+    height: 50px;
+  }
+}
 
 .placard-icon {
   width: 20px;
@@ -33,10 +50,10 @@
 }
 
 .root-bg {
-  background-position: center top;
   background-repeat: no-repeat;
-  background-attachment: fixed;
+  background-position: center top;
   background-size: contain;
+  background-attachment: fixed;
 
   &.home,
   &.login,
@@ -58,7 +75,7 @@
   }
 }
 
-@media(max-width: 599px) {
+@media (max-width: 599px) {
   .root-bg {
     background-size: auto;
   }
@@ -79,16 +96,21 @@
 
 .top-wrapper {
   flex-shrink: 0;
-  animation-duration: 500ms;
+  height: 117px;
   animation-name: slideInLeft2;
+  animation-duration: 500ms;
 }
 
 .deposit-btn {
-  background: linear-gradient(90deg, rgba(255, 251, 0, 0.42) 0%, rgba(212, 191, 0, 0.00) 100%);
-  border-radius: 4px;
-  border: 1px solid #FFFB00;
-  padding: 3px 6px;
-  color: #FFFB00;
   display: flex;
+  padding: 3px 6px;
+  color: #fffb00;
+  background: linear-gradient(
+    90deg,
+    rgba(255, 251, 0, 0.42) 0%,
+    rgba(212, 191, 0, 0) 100%
+  );
+  border: 1px solid #fffb00;
+  border-radius: 4px;
   cursor: pointer;
 }

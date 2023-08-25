@@ -132,7 +132,7 @@ export default function BattlePage() {
         <div className="gap-4 items-center lg:absolute right-0 top-2 flex w-full sm:w-auto px-3 lg:px-0 justify-between flex-row-reverse lg:flex-row">
           <Link
             className="link text-sm link-secondary uppercase"
-            to="/user/docs"
+            to="/profile/docs"
             target="_blank"
           >
             <FormattedMessage id="arena_yxgz" />

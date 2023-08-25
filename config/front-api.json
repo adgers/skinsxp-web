@@ -11,7 +11,7 @@
       "url": "http://www.apache.org/licenses/LICENSE-2.0"
     }
   },
-  "host": "localhost:9999",
+  "host": "192.168.12.13:9999",
   "basePath": "/",
   "tags": [
     {
@@ -1550,6 +1550,53 @@
         "x-order": "1"
       }
     },
+    "/api/bonus/receive": {
+      "post": {
+        "tags": [
+          "用户福利配置"
+        ],
+        "summary": "领取等级福利",
+        "operationId": "listUsingPOST",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "*/*"
+        ],
+        "parameters": [
+          {
+            "name": "grade",
+            "in": "query",
+            "description": "grade",
+            "required": false,
+            "type": "integer",
+            "format": "int64"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/ResultData«boolean»",
+              "originalRef": "ResultData«boolean»"
+            }
+          },
+          "201": {
+            "description": "Created"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        },
+        "x-order": "2"
+      }
+    },
     "/api/callback/adaPayCallback": {
       "post": {
         "tags": [
@@ -2527,9 +2574,9 @@
         ],
         "parameters": [
           {
-            "name": "giveawayId",
+            "name": "rollId",
             "in": "query",
-            "description": "giveawayId",
+            "description": "rollId",
             "required": false,
             "type": "integer",
             "default": 0,
@@ -3920,6 +3967,15 @@
             "required": false,
             "type": "integer",
             "default": 15,
+            "format": "int32"
+          },
+          {
+            "name": "stat",
+            "in": "query",
+            "description": "stat",
+            "required": false,
+            "type": "integer",
+            "default": -1,
             "format": "int32"
           }
         ],
@@ -6498,8 +6554,8 @@
         "customerBounsVos": {
           "type": "array",
           "items": {
-            "$ref": "#/definitions/CustomerBounsVo",
-            "originalRef": "CustomerBounsVo"
+            "$ref": "#/definitions/GradeCustomerVo",
+            "originalRef": "GradeCustomerVo"
           }
         },
         "customerExp": {
@@ -6512,57 +6568,6 @@
         }
       },
       "title": "CustomerBounsPageVo"
-    },
-    "CustomerBounsVo": {
-      "type": "object",
-      "properties": {
-        "cdkInfo": {
-          "type": "string"
-        },
-        "couponInfo": {
-          "type": "string"
-        },
-        "createTime": {
-          "type": "string",
-          "format": "date-time"
-        },
-        "delFlag": {
-          "type": "boolean"
-        },
-        "expMax": {
-          "type": "integer",
-          "format": "int64"
-        },
-        "expMin": {
-          "type": "integer",
-          "format": "int64"
-        },
-        "grade": {
-          "type": "integer",
-          "format": "int64"
-        },
-        "headGround": {
-          "type": "string"
-        },
-        "id": {
-          "type": "integer",
-          "format": "int64"
-        },
-        "modifyTime": {
-          "type": "string",
-          "format": "date-time"
-        },
-        "rechargeDiscount": {
-          "type": "number"
-        },
-        "remark": {
-          "type": "string"
-        },
-        "rollInfo": {
-          "type": "string"
-        }
-      },
-      "title": "CustomerBounsVo"
     },
     "CustomerDetailVo": {
       "type": "object",
@@ -6794,6 +6799,67 @@
       },
       "title": "FuxinCallback"
     },
+    "GradeCustomerVo": {
+      "type": "object",
+      "properties": {
+        "cdkInfo": {
+          "type": "string"
+        },
+        "createTime": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "cuponInfo": {
+          "type": "string"
+        },
+        "cuponTitle": {
+          "type": "string"
+        },
+        "delFlag": {
+          "type": "boolean"
+        },
+        "expMax": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "expMin": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "grade": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "headGround": {
+          "type": "string"
+        },
+        "id": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "modifyTime": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "receive": {
+          "type": "boolean"
+        },
+        "rechargeDiscount": {
+          "type": "number"
+        },
+        "remark": {
+          "type": "string"
+        },
+        "rewardId": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "rollInfo": {
+          "type": "string"
+        }
+      },
+      "title": "GradeCustomerVo"
+    },
     "GradeGiftProb": {
       "type": "object",
       "properties": {
@@ -6810,9 +6876,18 @@
     "GradeInfoVo": {
       "type": "object",
       "properties": {
+        "cdkInfo": {
+          "type": "string"
+        },
         "createTime": {
           "type": "string",
           "format": "date-time"
+        },
+        "cuponInfo": {
+          "type": "string"
+        },
+        "cuponTitle": {
+          "type": "string"
         },
         "delFlag": {
           "type": "boolean"
@@ -6835,6 +6910,9 @@
             "$ref": "#/definitions/MyGradeBoxVo",
             "originalRef": "MyGradeBoxVo"
           }
+        },
+        "headGround": {
+          "type": "string"
         },
         "id": {
           "type": "integer",
@@ -6865,6 +6943,9 @@
           "type": "string"
         },
         "rewardName": {
+          "type": "string"
+        },
+        "rollInfo": {
           "type": "string"
         }
       },
@@ -9902,17 +9983,21 @@
       "type": "object",
       "properties": {
         "headGround": {
-          "type": "string"
+          "type": "string",
+          "refType": null
         },
         "headPic": {
-          "type": "string"
+          "type": "string",
+          "refType": null
         },
         "id": {
           "type": "integer",
-          "format": "int64"
+          "format": "int64",
+          "refType": null
         },
         "nickname": {
-          "type": "string"
+          "type": "string",
+          "refType": null
         }
       },
       "title": "RollCustomerVo"
@@ -9947,29 +10032,36 @@
       "type": "object",
       "properties": {
         "giftImage": {
-          "type": "string"
+          "type": "string",
+          "refType": null
         },
         "giftName": {
-          "type": "string"
+          "type": "string",
+          "refType": null
         },
         "giftTemplateId": {
           "type": "integer",
-          "format": "int64"
+          "format": "int64",
+          "refType": null
         },
         "grade": {
           "type": "integer",
-          "format": "int32"
+          "format": "int32",
+          "refType": null
         },
         "id": {
           "type": "integer",
-          "format": "int64"
+          "format": "int64",
+          "refType": null
         },
         "recoveryPrice": {
-          "type": "number"
+          "type": "number",
+          "refType": null
         },
         "winnerInfo": {
           "$ref": "#/definitions/RollCustomerVo",
-          "originalRef": "RollCustomerVo"
+          "originalRef": "RollCustomerVo",
+          "refType": "RollCustomerVo"
         }
       },
       "title": "RollRoomGiftVo"
@@ -9978,80 +10070,100 @@
       "type": "object",
       "properties": {
         "accumulatedAmount": {
-          "type": "number"
+          "type": "number",
+          "refType": null
         },
         "assignMethod": {
           "type": "integer",
-          "format": "int32"
+          "format": "int32",
+          "refType": null
         },
         "banner": {
-          "type": "string"
+          "type": "string",
+          "refType": null
         },
         "giftCount": {
           "type": "integer",
-          "format": "int32"
+          "format": "int32",
+          "refType": null
         },
         "giftVos": {
           "type": "array",
           "items": {
             "$ref": "#/definitions/RollRoomGiftVo",
             "originalRef": "RollRoomGiftVo"
-          }
+          },
+          "refType": "RollRoomGiftVo"
         },
         "id": {
           "type": "integer",
-          "format": "int64"
+          "format": "int64",
+          "refType": null
         },
         "joinFlag": {
-          "type": "boolean"
+          "type": "boolean",
+          "refType": null
         },
         "leftTime": {
           "type": "integer",
-          "format": "int64"
+          "format": "int64",
+          "refType": null
         },
         "openTime": {
           "type": "string",
-          "format": "date-time"
+          "format": "date-time",
+          "refType": null
         },
         "openType": {
           "type": "integer",
-          "format": "int32"
+          "format": "int32",
+          "refType": null
         },
         "poolValue": {
-          "type": "number"
+          "type": "number",
+          "refType": null
         },
         "pwdFlag": {
-          "type": "boolean"
+          "type": "boolean",
+          "refType": null
         },
         "rechargeEndTime": {
           "type": "string",
-          "format": "date-time"
+          "format": "date-time",
+          "refType": null
         },
         "rechargeStartTime": {
           "type": "string",
-          "format": "date-time"
+          "format": "date-time",
+          "refType": null
         },
         "remark": {
-          "type": "string"
+          "type": "string",
+          "refType": null
         },
         "roomType": {
           "type": "integer",
-          "format": "int32"
+          "format": "int32",
+          "refType": null
         },
         "state": {
           "type": "integer",
-          "format": "int32"
+          "format": "int32",
+          "refType": null
         },
         "title": {
-          "type": "string"
+          "type": "string",
+          "refType": null
         },
         "userCount": {
           "type": "integer",
-          "format": "int32"
+          "format": "int32",
+          "refType": null
         },
         "weight": {
           "type": "integer",
-          "format": "int32"
+          "format": "int32",
+          "refType": null
         }
       },
       "title": "RollRoomPageVo"
@@ -10498,6 +10610,10 @@
           "type": "string"
         },
         "state": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "targetType": {
           "type": "integer",
           "format": "int32"
         },

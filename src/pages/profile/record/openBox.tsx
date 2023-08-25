@@ -51,7 +51,7 @@ export default function OpenBoxRecord() {
         return (
           <div className="text-secondary flex items-center gap-1">
             {record.rollCode}{' '}
-            <Link to={`/user/provably-fair/verify/${record.verifyId}`}>
+            <Link to={`/profile/provably-fair/verify/${record.verifyId}`}>
               <IconFont type="icon-shield" className="text-success" />
             </Link>
           </div>

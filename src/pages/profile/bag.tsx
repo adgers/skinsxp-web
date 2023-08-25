@@ -1,5 +1,4 @@
 import Empty from '@/components/empty';
-import { IconFont } from '@/components/icons';
 import WeaponCard from '@/components/weaponCard';
 import {
   exchangeQuantityUsingPOST1,
@@ -7,23 +6,11 @@ import {
   ornamentRetrievalUsingPOST,
 } from '@/services/front/gerenzhongxinxiangguan';
 import { numberFixed } from '@/utils';
-import {
-  ArrowDownOutlined,
-  ArrowUpOutlined,
-  CheckCircleOutlined,
-  InfoCircleOutlined,
-} from '@ant-design/icons';
-import {
-  FormattedMessage,
-  Link,
-  useIntl,
-  useModel,
-  useRequest,
-} from '@umijs/max';
+import { CheckCircleOutlined } from '@ant-design/icons';
+import { FormattedMessage, useIntl, useModel, useRequest } from '@umijs/max';
 import { Pagination } from 'antd';
 import { useState } from 'react';
-import CountUp from 'react-countup';
-import { Button, Checkbox, Modal } from 'react-daisyui';
+import { Button, Modal } from 'react-daisyui';
 import { toast } from 'react-toastify';
 
 export default function BagPage() {
@@ -116,103 +103,15 @@ export default function BagPage() {
 
   return (
     <div className="w-full">
-      <div className="flex gap-2 sm:gap-4 p-3 flex-col sm:flex-row justify-between text-sm">
-        <div className="flex gap-2 sm:gap-4 items-center text-white flex-wrap">
-          <div
-            className="cursor-pointer"
-            onClick={() => {
-              setOrderByPrice(!orderByPrice);
-            }}
-          >
-            {orderByPrice ? (
-              <span className="flex gap-1 items-center">
-                <ArrowDownOutlined />
-                <FormattedMessage id="mall_sort_ascending" />
-              </span>
-            ) : (
-              <span className="flex gap-1 items-center">
-                <ArrowUpOutlined />
-                <FormattedMessage id="mall_sort_descending" />
-              </span>
-            )}
-          </div>
-
-          <div className="flex gap-2 items-center">
-            <div className="flex gap-1 items-center">
-              <Checkbox
-                color="primary"
-                size="xs"
-                checked={allChecked}
-                onChange={onSelectedAll}
-              />
-              <FormattedMessage id="my_package_qx" />
-            </div>
-
-            <div className="text-white">
-              <FormattedMessage id="has_select" />
-              <span className="text-primary mx-1">{checkedList.length}</span>
-            </div>
-            <div className="text-white inline-flex items-center">
-              <FormattedMessage id="total_price" />
-              <span className="text-primary mx-1 inline-flex gap-1">
-                <IconFont type="icon-daimond" />
-                <CountUp
-                  end={numberFixed(totalPrice)}
-                  duration={1}
-                  decimals={2}
-                  separator=""
-                />
-              </span>
-            </div>
-          </div>
-          <div
-            className="btn btn-xs sm:btn-sm rounded btn-outline btn-primary flex gap-1 items-center"
-            onClick={() => {
-              if (checkedList.length === 0) {
-                return;
-              }
-              setSteamConfirm(true);
-            }}
-          >
-            <IconFont type="icon-steam1" />
-            <FormattedMessage id="my_package_qhdsteam" />
-          </div>
-          <div
-            className="btn btn-xs sm:btn-sm rounded btn-outline btn-secondary flex gap-1 items-center"
-            onClick={() => {
-              if (checkedList.length === 0) {
-                return;
-              }
-              setExchangeConfirm(true);
-            }}
-          >
-            <IconFont type="icon-daimond" />
-            <FormattedMessage id="my_package_hczs" />
-          </div>
-          <Link
-            to="/help/docs?key=46"
-            target="_blank"
-            className="flex gap-1 link link-secondary"
-          >
-            <InfoCircleOutlined />
-            <FormattedMessage id="my_package_qhsm" />
-          </Link>
+      <div className="flex gap-2 sm:gap-4 px-3 pb-4 items-center justify-end text-sm">
+        <div className='text-white/[0.5] items-center flex '>
+          AVALIABLE FOR SALE
+          <input type="checkbox" className="toggle toggle-primary ml-4" checked />
         </div>
-        {extData?.totalPrice && (
-          <div className="flex flex-wrap items-center">
-            <div>
-              <FormattedMessage id="total_num" />
-              <span className="text-primary mx-1">{extData?.totalCount}</span>
-            </div>
-            <div>
-              <FormattedMessage id="total_price" />
-              <span className="text-primary mx-1">{extData?.totalPrice}</span>
-            </div>
-          </div>
-        )}
+        <div className='btn ml-12 text-white border border-white rounded-none px-16'>ALL SALE</div>
       </div>
       {!loading && pageData?.length === 0 && <Empty />}
-      <div className="grid grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-2 sm:gap-4">
+      <div className="grid grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-2 sm:gap-4 sm:gap-y-20">
         {loading
           ? Array.from({ length: pageSize }).map((_, i) => (
               <WeaponCard loading key={i} />
@@ -227,7 +126,7 @@ export default function BagPage() {
                     onItemClick(item);
                   }}
                 >
-                  <WeaponCard data={item} />
+                  <WeaponCard data={item} fromProfile={true}  />
                   {isChecked && (
                     <div className="absolute w-full h-full left-0 top-0 justify-center items-center bg-black bg-opacity-50 flex cursor-pointer">
                       <CheckCircleOutlined className="text-green-500 text-2xl" />

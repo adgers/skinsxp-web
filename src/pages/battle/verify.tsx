@@ -60,7 +60,7 @@ export default function Verify({
                   <WeaponCard key={i} data={urecord} />
                   <div className="mt-2 flex gap-1 text-xs font-bold uppercase">
                     <span>Roll ID {urecord.rollCode}</span>
-                    <Link to={`/user/provably-fair/verify/${urecord.verifyId}`}>
+                    <Link to={`/profile/provably-fair/verify/${urecord.verifyId}`}>
                       <IconFont type="icon-shield" className="text-success" />
                     </Link>
                   </div>

@@ -1,18 +1,10 @@
-import { IconFont } from '@/components/icons';
 import { getDefaultHeadPictureListUsingGET } from '@/services/common/tongyongxiangguan';
 import {
   modifyNicknameUsingPOST,
   uploadAvatarV2UsingPOST,
 } from '@/services/front/gerenzhongxinxiangguan';
 import { headHidden, numberFixed } from '@/utils';
-import {
-  FormattedMessage,
-  Link,
-  Outlet,
-  useIntl,
-  useLocation,
-  useModel,
-} from '@umijs/max';
+import { Link, Outlet, useIntl, useLocation, useModel } from '@umijs/max';
 import { useRequest, useToggle } from 'ahooks';
 import { useMemo, useRef, useState } from 'react';
 import { toast } from 'react-toastify';
@@ -74,39 +66,16 @@ export default function User() {
   const tabLinks = useMemo(() => {
     return [
       {
-        title: <FormattedMessage id="mine_spbb" />,
-        link: '/user/bag',
-        icon: 'icon-beibao1',
+        title: 'Items',
+        link: '/profile/bag',
       },
       {
-        title: <FormattedMessage id="mine_jlzx" />,
-        link: '/user/record',
-        icon: 'icon-jilu',
+        title: 'History',
+        link: '/profile/history',
       },
       {
-        title: <FormattedMessage id="home_item_hydj" />,
-        link: '/user/vip',
-        icon: 'icon-vip',
-      },
-      {
-        title: <FormattedMessage id="home_item_hzhb" />,
-        link: '/user/promote',
-        icon: 'icon-tuiguang',
-      },
-      {
-        title: <FormattedMessage id="mine_gpyz" />,
-        link: '/user/provably-fair',
-        icon: 'icon-shield',
-      },
-      {
-        title: <FormattedMessage id="mine_bzzx" />,
-        link: '/user/docs',
-        icon: 'icon-help',
-      },
-      {
-        title: <FormattedMessage id="mine_zhsz" />,
-        link: '/user/info',
-        icon: 'icon-bianji1',
+        title: 'AFFILIATE SYSTEM',
+        link: '/profile/affiliate',
       },
     ];
   }, []);
@@ -115,8 +84,8 @@ export default function User() {
     <div className="max-w-[1400px] m-auto px-3 mt-5">
       {!headHidden() && (
         <>
-          <div className="p-3 sm:p-6 user-info bg-neutral user-info-bg grid grid-cols-2">
-            <div className="flex gap-3 sm:gap-4 items-center pr-16 user-info-left relative py-2">
+          <div className="p-3 sm:p-6 user-info bg-neutral user-info-bg flex flex-col lg:flex-row">
+            <div className="flex gap-3 sm:gap-4 items-center pr-16 user-info-left relative py-2 w-full">
               <div className="w-16 h-16 md:w-[120px] md:h-[120px]  overflow-hidden group relative rounded-full border-1 border-solid border-light">
                 <img
                   src={
@@ -131,17 +100,35 @@ export default function User() {
                   <span>{userInfo?.nickname || '名字'}</span>
                 </div>
                 <div className="flex justify-between text-2xl font-bold items-center">
-                  <div className="text-green ">${userInfo?.balance || 111}</div>
-                  <div className=" text-purple">
-                    ${userInfo?.secondaryBalance || 111}
+                  <div>
+                    <div className="text-white/70 text-sm font-normal">
+                      Balance
+                    </div>
+                    <div className="text-green ">
+                      ${userInfo?.balance || 111}
+                    </div>
                   </div>
-                  <div className='btn px-[8px] rounded-none border border-green text-green'>Add balance</div>
+                  <div>
+                    <div className="text-white/70 text-sm font-normal">
+                      Integral
+                    </div>
+                    <div className=" text-purple">
+                      ${userInfo?.secondaryBalance || 111}
+                    </div>
+                  </div>
+                  <div className="btn px-[8px] rounded-none border border-green text-green">
+                    Add balance
+                  </div>
                 </div>
               </div>
             </div>
-            <div className="flex flex-col items-start justify-center gap-6 text-white pl-16">
-              <div className="btn rounded-none border border-light h-8 w-4/5">Add Trade URL</div>
-              <div className="btn rounded-none border border-green h-8 w-4/5">Steam</div>
+            <div className="flex flex-col items-start justify-center gap-6 text-white pl-16 w-full">
+              <div className="btn rounded-none border border-light h-8 w-4/5">
+                Add Trade URL
+              </div>
+              <div className="btn rounded-none border border-green h-8 w-4/5">
+                Steam
+              </div>
             </div>
           </div>
           <div className="custom-tab w-full flex gap-8 overflow-y-hidden overflow-x-auto md:justify-evenly border-b border-[#45444B] my-2 md:my-4 hide-scrollbar">
@@ -149,16 +136,17 @@ export default function User() {
               const isActive = location.pathname.startsWith(item.link);
               return (
                 <div
-                  className={`tab-item flex-shrink-0 ${
-                    isActive ? 'tab-active' : ''
-                  }`}
+                  className={`${
+                    isActive
+                      ? 'text-green border-b-4 border-green'
+                      : 'text-white '
+                  } tab-item flex-shrink-0 h-full `}
                   key={index}
                 >
                   <Link
                     to={item.link}
                     className="tab-item-c text-sm md:text-base flex gap-1 hover:text-primary"
                   >
-                    <IconFont type={item.icon} />
                     {item.title}
                   </Link>
                 </div>

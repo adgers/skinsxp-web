@@ -10,15 +10,15 @@ export default function Record() {
     return [
       {
         title: intl.formatMessage({ id: 'game_record' }),
-        link: '/user/record/game',
+        link: '/profile/record/game',
       },
       {
         title: intl.formatMessage({ id: 'take_record' }),
-        link: '/user/record/take',
+        link: '/profile/record/take',
       },
       {
         title: intl.formatMessage({ id: 'flow_record' }),
-        link: '/user/record/flow',
+        link: '/profile/record/flow',
       },
     ];
   }, []);

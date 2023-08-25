@@ -61,6 +61,22 @@
     height: 100%;
     backdrop-filter: blur(7px);
   }
+
+  &.weapon-card-profile {
+    transition: 0.3s ease;
+    overflow: hidden;
+    .weapon-card-profile-bottom{
+      display: none;
+    }
+    &:hover {
+      border-bottom: none;
+      height: 175px;
+      overflow: visible;
+      .weapon-card-profile-bottom{
+        display: block;
+      }
+    }
+  }
 }
 
 .weapon-card:hover {

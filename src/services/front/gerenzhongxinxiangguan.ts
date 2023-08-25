@@ -265,6 +265,8 @@ export async function getMyVoucherPageUsingGET(
         page: '1',
         // pageSize has a default value: 15
         pageSize: '15',
+        // stat has a default value: -1
+        stat: '-1',
         ...params,
       },
       ...(options || {}),

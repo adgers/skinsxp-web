@@ -77,11 +77,7 @@ export default defineConfig({
           routes: [
             {
               path: '/profile',
-              redirect: '/profile/info',
-            },
-            {
-              path: '/profile/info',
-              component: 'profile/info',
+              redirect: '/profile/bag',
             },
             {
               path: '/profile/bag',

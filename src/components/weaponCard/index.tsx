@@ -8,6 +8,7 @@ export default React.memo(function WeaponCard({
   loading,
   data,
   mini = false,
+  fromProfile = false,
 }: {
   loading?: boolean;
   data?: API.RollRoomGiftVo &
@@ -18,6 +19,7 @@ export default React.memo(function WeaponCard({
     API.UpgradePageVo &
     API.RollRoomGiftVo;
   mini?: boolean;
+  fromProfile?: boolean;
 }) {
   const [showChance, setShowChance] = useState<boolean>(false);
 
@@ -45,49 +47,64 @@ export default React.memo(function WeaponCard({
   const probability = data?.realProbability || 0;
 
   return (
-    <div className={`weapon-card relative weapon-card-grade-${grade}`}>
-      <div className="img-wrapper">
-        <img src={img} />
-      </div>
-      <div className="item-footer flex flex-col gap-1">
-        {mini ? null : (
-          <div>
-            <span className="truncate text-white/[0.5] text-xs">
-              {name && parseName(name)?.[1]}
-            </span>
+    <>
+      <div className={`weapon-card relative weapon-card-grade-${grade}`}>
+        {/* <div className="absolute left-0 top-0 hidden h-full w-full rounded-lg border-t border-solid bg-navy-900 transition-transform duration-200 will-change-transform border-blue real-group-hover:rounded-b-none group-hover:md:translate-y-[-25px] "> */}
+        <div className="img-wrapper">
+          <img src={img} />
+        </div>
+        <div className="item-footer flex flex-col gap-1">
+          {mini ? null : (
+            <div>
+              <span className="truncate text-white/[0.5] text-xs">
+                {name && parseName(name)?.[1]}
+              </span>
+            </div>
+          )}
+          <div className=" truncate text-white text-sm">
+            {name && parseName(name)?.[0]}
+          </div>
+        </div>
+
+        <div className="absolute left-0 top-0 text-sm text-white pt-[9px] pl-[11px]">
+          <span className="font-num">
+            ${price && numberFixed(Number(price))}
+          </span>
+        </div>
+        {probability > 0 && ( // 有概率才显示
+          <div className="absolute right-0 top-0 flex flex-col items-end text-right z-30 text-white/[0.5] text-sm font-semibold uppercase leading-none pt-[9px] pr-[11px] gap-2">
+            <div className="text-white/[0.5] text-xs font-num flex items-center gap-2">
+              {numberFixed(probability * 100, 2)}%
+              <div
+                className="flex h-5 w-5 items-center justify-center rounded-full bg-white/[0.10] text-center font-bold transition-colors duration-200 css-1t6ze00"
+                onClick={() => setShowChance(!showChance)}
+              >
+                {showChance ? 'x' : 'i'}
+              </div>
+            </div>
           </div>
         )}
-        <div className=" truncate text-white text-sm">
-          {name && parseName(name)?.[0]}
-        </div>
-      </div>
+        {showChance && (
+          <div className="z-20 absolute left-0 top-0 flex items-center justify-center h-full w-full rounded bg-[rgb(17,17,20)] bg-opacity-70 transition duration-300 sm:rounded-lg backdrop-blur-1">
+            <div className="flex flex-col items-center gap-1">
+              <div className="uppercase text-white text-center font-semibold text-sm">
+                Range Odds
+              </div>
+              <div className="text-white/[0.5] text-sm">99950 - 99973</div>
+            </div>
+          </div>
+        )}
+        {/* </div>  */}
 
-      <div className="absolute left-0 top-0 text-sm text-white pt-[9px] pl-[11px]">
-        <span className="font-num">${price && numberFixed(Number(price))}</span>
+        {/* {fromProfile && (
+          <div className="weapon-card-profile-bottom">
+            <div className="btn w-full text-white bg-purple text-xl rounded-none">
+              SELL FOR
+            </div>
+            <div className="btn w-full bg-green text-dark text-xl rounded-none">COLLECT</div>
+          </div>
+        )} */}
       </div>
-      {probability > 0 && ( // 有概率才显示
-        <div className="absolute right-0 top-0 flex flex-col items-end text-right z-30 text-white/[0.5] text-sm font-semibold uppercase leading-none pt-[9px] pr-[11px] gap-2">
-          <div className="text-white/[0.5] text-xs font-num flex items-center gap-2">
-            {numberFixed(probability * 100, 2)}%
-            <div
-              className="flex h-5 w-5 items-center justify-center rounded-full bg-white/[0.10] text-center font-bold transition-colors duration-200 css-1t6ze00"
-              onClick={() => setShowChance(!showChance)}
-            >
-              {showChance ? 'x' : 'i'}
-            </div>
-          </div>
-        </div>
-      )}
-      {showChance && (
-        <div className="z-20 absolute left-0 top-0 flex items-center justify-center h-full w-full rounded bg-[rgb(17,17,20)] bg-opacity-70 transition duration-300 sm:rounded-lg backdrop-blur-1">
-          <div className="flex flex-col items-center gap-1">
-            <div className="uppercase text-white text-center font-semibold text-sm">
-              Range Odds
-            </div>
-            <div className="text-white/[0.5] text-sm">99950 - 99973</div>
-          </div>
-        </div>
-      )}
-    </div>
+    </>
   );
 });

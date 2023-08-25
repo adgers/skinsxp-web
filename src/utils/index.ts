@@ -31,6 +31,7 @@ export function getSocketDomain() {
     location.href.indexOf('localhost') > -1 ||
     location.href.indexOf('127.0.0.1') > -1
   ) {
+    return 'http://192.168.12.13:9999'
     return 'ws://127.0.0.1:9999/ws';
     // return 'ws://api-test.xgskins.com/ws';
   } else if (location.href.indexOf('test.xgskins.com') > -1) {

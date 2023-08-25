@@ -8,11 +8,11 @@ export default function ProvablyFair() {
     return [
       {
         title: intl.formatMessage({ id: 'doc_help' }),
-        link: '/user/docs/help',
+        link: '/profile/docs/help',
       },
       {
         title: intl.formatMessage({ id: 'doc_support' }),
-        link: '/user/docs/support',
+        link: '/profile/docs/support',
       },
     ];
   }, []);

@@ -360,25 +360,9 @@ declare namespace API {
   };
 
   type CustomerBounsPageVo = {
-    customerBounsVos?: CustomerBounsVo[];
+    customerBounsVos?: GradeCustomerVo[];
     customerExp?: number;
     maxExp?: number;
-  };
-
-  type CustomerBounsVo = {
-    cdkInfo?: string;
-    couponInfo?: string;
-    createTime?: string;
-    delFlag?: boolean;
-    expMax?: number;
-    expMin?: number;
-    grade?: number;
-    headGround?: string;
-    id?: number;
-    modifyTime?: string;
-    rechargeDiscount?: number;
-    remark?: string;
-    rollInfo?: string;
   };
 
   type CustomerDetailVo = {
@@ -624,6 +608,8 @@ declare namespace API {
     page?: number;
     /** pageSize */
     pageSize?: number;
+    /** stat */
+    stat?: number;
   };
 
   type getPageUsingGETParams = {
@@ -663,18 +649,41 @@ declare namespace API {
     giveawayId?: number;
   };
 
+  type GradeCustomerVo = {
+    cdkInfo?: string;
+    createTime?: string;
+    cuponInfo?: string;
+    cuponTitle?: string;
+    delFlag?: boolean;
+    expMax?: number;
+    expMin?: number;
+    grade?: number;
+    headGround?: string;
+    id?: number;
+    modifyTime?: string;
+    receive?: boolean;
+    rechargeDiscount?: number;
+    remark?: string;
+    rewardId?: number;
+    rollInfo?: string;
+  };
+
   type GradeGiftProb = {
     grade?: number;
     prob?: number;
   };
 
   type GradeInfoVo = {
+    cdkInfo?: string;
     createTime?: string;
+    cuponInfo?: string;
+    cuponTitle?: string;
     delFlag?: boolean;
     expMax?: number;
     expMin?: number;
     grade?: number;
     gradeBoxes?: MyGradeBoxVo[];
+    headGround?: string;
     id?: number;
     modifyTime?: string;
     prizes?: PrizeVo[];
@@ -683,6 +692,7 @@ declare namespace API {
     rewardId?: number;
     rewardImage?: string;
     rewardName?: string;
+    rollInfo?: string;
   };
 
   type jjkCallbackUsingPOSTParams = {
@@ -727,6 +737,11 @@ declare namespace API {
     page?: number;
     /** pageSize */
     pageSize?: number;
+  };
+
+  type listUsingPOSTParams = {
+    /** grade */
+    grade?: number;
   };
 
   type loginForTrialUsingPOSTParams = {
@@ -2136,6 +2151,7 @@ declare namespace API {
     sourceId?: string;
     sourceType?: string;
     state?: number;
+    targetType?: number;
     voucherName?: string;
     zbtAcceptablePrice?: number;
   };
@@ -2161,7 +2177,7 @@ declare namespace API {
   };
 
   type winnerListUsingGETParams = {
-    /** giveawayId */
-    giveawayId?: number;
+    /** rollId */
+    rollId?: number;
   };
 }

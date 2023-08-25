@@ -15,11 +15,11 @@ export default function ProvablyFair() {
     return [
       {
         title: <FormattedMessage id="provably_fair_config" />,
-        link: '/user/provably-fair/config',
+        link: '/profile/provably-fair/config',
       },
       {
         title: <FormattedMessage id="provably_fair_verify" />,
-        link: '/user/provably-fair/verify',
+        link: '/profile/provably-fair/verify',
       },
     ];
   }, []);
