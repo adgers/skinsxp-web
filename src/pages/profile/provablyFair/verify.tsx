@@ -67,7 +67,7 @@ export default function ProvablyVerify() {
         <div className="gap-4 space-y-4 lg:grid lg:grid-cols-12 lg:space-y-0 text-white">
           <div className="flex flex-col space-y-4 lg:col-span-8">
             <div className="flex flex-col lg:h-14 lg:flex-row">
-              <div className="z-10 -mb-px  flex h-full w-full items-center justify-center rounded-none bg-light py-2 text-center font-bold uppercase lg:py-1 lg:mb-0 lg:max-w-xs ">
+              <div className="z-10 -mb-px  flex h-full w-full items-center justify-center rounded-none bg-neutral py-2 text-center font-bold uppercase lg:py-1 lg:mb-0 lg:max-w-xs ">
                 Client Seed
               </div>
               <div className="flex h-full flex-1 flex-col items-center rounded-b-lg border border-solid border-neutral-700 p-3 text-center md:flex-row lg:-ml-6  lg:pl-9">
@@ -77,7 +77,7 @@ export default function ProvablyVerify() {
               </div>
             </div>
             <div className="flex flex-col lg:h-14 lg:flex-row">
-              <div className="z-10 -mb-px flex h-full w-full items-center justify-center rounded-t bg-light py-2 text-center font-bold uppercase lg:py-1 lg:mb-0 lg:max-w-xs ">
+              <div className="z-10 -mb-px flex h-full w-full items-center justify-center rounded-t bg-neutral py-2 text-center font-bold uppercase lg:py-1 lg:mb-0 lg:max-w-xs ">
                 Server Seed
               </div>
 
@@ -88,7 +88,7 @@ export default function ProvablyVerify() {
                 {!currentKey.isPublic && (
                   <div className="mt-3 md:ml-auto md:mt-0">
                     <button
-                      className="flex h-10 items-center rounded-none justify-center rounded border border-solid border-light px-8 text-sm font-bold uppercase leading-none transition-colors duration-150 hover:bg-light"
+                      className="flex h-10 items-center rounded-none justify-center rounded border border-solid border-light px-8 text-sm font-bold uppercase leading-none transition-colors duration-150 hover:bg-neutral"
                       onClick={onShowServerSeed}
                       type='button'
                     >
@@ -99,7 +99,7 @@ export default function ProvablyVerify() {
               </div>
             </div>
             <div className="flex flex-col lg:h-14 lg:flex-row">
-              <div className="z-10 -mb-px flex h-full w-full items-center justify-center rounded-t bg-light py-2 text-center font-bold uppercase lg:py-1 lg:mb-0 lg:max-w-xs ">
+              <div className="z-10 -mb-px flex h-full w-full items-center justify-center rounded-t bg-neutral py-2 text-center font-bold uppercase lg:py-1 lg:mb-0 lg:max-w-xs ">
                 SECRET SALT
               </div>
               <div className="flex h-full flex-1 flex-col items-center rounded-b-lg border border-solid border-neutral-700 p-3 text-center md:flex-row lg:-ml-6  lg:pl-9">
@@ -109,7 +109,7 @@ export default function ProvablyVerify() {
               </div>
             </div>
             <div className="flex flex-col lg:h-14 lg:flex-row">
-              <div className="z-10 -mb-px flex h-full w-full items-center justify-center rounded-t bg-light py-2 text-center font-bold uppercase lg:py-1 lg:mb-0 lg:max-w-xs ">
+              <div className="z-10 -mb-px flex h-full w-full items-center justify-center rounded-t bg-neutral py-2 text-center font-bold uppercase lg:py-1 lg:mb-0 lg:max-w-xs ">
                 PUBLIC HASH
               </div>
               <div className="flex h-full flex-1 flex-col items-center rounded-b-lg border border-solid border-neutral-700 p-3 text-center md:flex-row lg:-ml-6  lg:pl-9">
@@ -119,7 +119,7 @@ export default function ProvablyVerify() {
               </div>
             </div>
             <div className="flex flex-col lg:h-14 lg:flex-row">
-              <div className="z-10 -mb-px flex h-full w-full items-center justify-center rounded-t bg-light py-2 text-center font-bold uppercase lg:py-1 lg:mb-0 lg:max-w-xs ">
+              <div className="z-10 -mb-px flex h-full w-full items-center justify-center rounded-t bg-neutral py-2 text-center font-bold uppercase lg:py-1 lg:mb-0 lg:max-w-xs ">
                 ROUND
               </div>
               <div className="flex h-full flex-1 flex-col items-center rounded-b-lg border border-solid border-neutral-700 p-3 text-center md:flex-row lg:-ml-6  lg:pl-9">
@@ -129,7 +129,7 @@ export default function ProvablyVerify() {
               </div>
             </div>
             <div className="flex flex-col lg:h-14 lg:flex-row">
-              <div className="z-10 -mb-px flex h-full w-full items-center justify-center rounded-t bg-light py-2 text-center font-bold uppercase lg:py-1 lg:mb-0 lg:max-w-xs ">
+              <div className="z-10 -mb-px flex h-full w-full items-center justify-center rounded-t bg-neutral py-2 text-center font-bold uppercase lg:py-1 lg:mb-0 lg:max-w-xs ">
                 ROLLED AT
               </div>
               <div className="flex h-full flex-1 flex-col items-center rounded-b-lg border border-solid border-neutral-700 p-3 text-center md:flex-row lg:-ml-6  lg:pl-9">
@@ -139,7 +139,7 @@ export default function ProvablyVerify() {
               </div>
             </div>
             <div className="flex flex-col lg:h-14 lg:flex-row">
-              <div className="z-10 -mb-px flex h-full w-full items-center justify-center rounded-t bg-light py-2 text-center font-bold uppercase lg:py-1 lg:mb-0 lg:max-w-xs ">
+              <div className="z-10 -mb-px flex h-full w-full items-center justify-center rounded-t bg-neutral py-2 text-center font-bold uppercase lg:py-1 lg:mb-0 lg:max-w-xs ">
                 ROLL
               </div>
               <div className="flex h-full flex-1 flex-col items-center rounded-b-lg border border-solid border-neutral-700 p-3 text-center md:flex-row lg:-ml-6  lg:pl-9">
@@ -150,7 +150,7 @@ export default function ProvablyVerify() {
             </div>
           </div>
           <div className="self-start lg:col-span-4">
-            <div className="relative flex flex-col overflow-hidden rounded-none border border-solid border-light bg-light p-1 text-xs">
+            <div className="relative flex flex-col overflow-hidden rounded-none border border-solid border-light bg-neutral p-1 text-xs">
               <pre className="h-full w-full overflow-auto p-5 pt-8">
                 {JSON.stringify(
                   {
@@ -166,13 +166,13 @@ export default function ProvablyVerify() {
                   2,
                 )}
               </pre>
-              <div className="absolute left-0 top-0 mr-auto rounded-br-lg bg-light-600 px-3 py-2 text-2xs font-bold leading-tight text-neutral-300">
+              <div className="absolute left-0 top-0 mr-auto rounded-br-lg bg-neutral-600 px-3 py-2 text-2xs font-bold leading-tight text-neutral-300">
                 JSON
               </div>
             </div>
 
             <div
-              className="link text-sm mt-2 link-secondary text-right"
+              className="link text-sm mt-2 text-purple text-right"
               onClick={() => {
                 window.open(
                   'https://codesandbox.io/embed/cranky-sun-ls9nmx?fontsize=14&hidenavigation=1&theme=dark',
