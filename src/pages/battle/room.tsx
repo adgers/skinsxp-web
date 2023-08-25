@@ -84,7 +84,7 @@ const WartingCard = ({
           </div>
           {isOwner ? (
             <div
-              className="rounded px-4 py-2 text-sm border border-green text-white bg-[#18331F] cursor-pointer flex gap-1 items-center justify-center uppercase font-semibold "
+              className="px-4 py-2 text-sm btn-green uppercase font-semibold "
               onClick={onJoinBot}
             >
               {joinLoading && <LoadingOutlined />}
@@ -93,10 +93,10 @@ const WartingCard = ({
             </div>
           ) : (
             <div
-              className={`rounded px-4 py-2 text-sm border  text-white cursor-pointer flex gap-1 items-center justify-center uppercase font-semibold ${
+              className={`px-4 py-2 text-sm cursor-pointer uppercase font-semibold ${
                 mode === 0
-                  ? 'border-green  bg-[#18331F]'
-                  : 'border-red bg-[#630F14]'
+                  ? 'btn-green'
+                  : 'btn-red'
               }`}
               onClick={onJoin}
             >
@@ -492,12 +492,12 @@ export default function RoomDetail() {
           Battle
         </div>
         <div className="relative">
-          <div className="flex flex-col md:flex-row gap-4 w-full md:pb-3">
+          <div className="flex flex-col md:flex-row gap-4 md:pb-3">
             <Link
-              className={`rounded btn btn-md text-sm border text-white cursor-pointer flex gap-1 items-center justify-center uppercase font-semibold ${
+              className={`uppercase font-semibold ${
                 mode === 0
-                  ? 'border-green  bg-[#18331F]'
-                  : 'border-red bg-[#630F14]'
+                  ? 'btn-green'
+                  : 'btn-red'
               }`}
               to={`/battle/create/${battleCode}`}
             >
@@ -506,7 +506,7 @@ export default function RoomDetail() {
             </Link>
 
             <Link
-              className="btn btn-md border inline-flex border-purple gap-1 rounded bg-[#421F57] text-white"
+              className="btn-purple "
               to={`/battle/create`}
             >
               <IconFont type="icon-zhandou" />
@@ -539,7 +539,7 @@ export default function RoomDetail() {
                 )}
               </div>
               <div className="text-xs font-semibold">
-                <div className="text-white uppercase ">BATTLE ROUNDS</div>
+                <div className="text-white uppercase">BATTLE ROUNDS</div>
                 <div className="font-num">
                   {index}/{boxList?.length}
                 </div>

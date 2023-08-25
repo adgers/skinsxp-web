@@ -77,7 +77,7 @@ export default function CaseModal({
       >
         ✕
       </Button>
-      <Modal.Header className="mb-2 text-center text-lg font-semibold uppercase">
+      <Modal.Header className="mb-2 text-center text-lg font-semibold uppercase text-white">
         select cases
       </Modal.Header>
       <Modal.Body>
@@ -151,7 +151,7 @@ export default function CaseModal({
         </div>
         <div className="flex items-center w-full justify-center mt-6">
           <Button
-            className="border border-green text-white bg-[#18331F] rounded max-w-xs uppercase font-semibold gap-1"
+            className="btn-green max-w-xs uppercase font-semibold gap-1"
             onClick={onCreate}
           >
             <FormattedMessage id="roll_detail_zjz" />

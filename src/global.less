@@ -1,3 +1,6 @@
+body {
+  color: #fff;
+}
 
 .box-title {
   display: flex;
@@ -176,7 +179,8 @@
       color: #c0c4cc;
     }
   }
-  .ant-spin-nested-loading .ant-spin-container::after{
+
+  .ant-spin-nested-loading .ant-spin-container::after {
     background: none;
   }
 }
@@ -194,11 +198,6 @@
   backdrop-filter: blur(21px);
   border: none;
 }
-
-.modal-open {
-  background-color: rgba(0, 0, 0, 0.3);
-}
-
 
 @font-face {
   font-family: 'Gotham';
@@ -297,6 +296,7 @@
 .card-flip {
   position: relative;
   overflow: hidden;
+
   .front {
     height: 100%;
     width: 100%;
@@ -330,9 +330,11 @@
 .progress-secondary-l::-moz-progress-bar {
   background: linear-gradient(90deg, #000 0%, rgba(0, 240, 255, 0.68) 100%);
 }
+
 .progress-secondary-l:indeterminate {
   --progress-color: hsl(var(--s));
 }
+
 .progress-secondary-l::-webkit-progress-value {
   background: linear-gradient(90deg, #000 0%, rgba(0, 240, 255, 0.68) 100%);
 }

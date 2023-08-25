@@ -29,7 +29,20 @@ module.exports = {
   },
   plugins: [require('daisyui'), require('@tailwindcss/typography')],
   daisyui: {
-    themes: false,
-    styled: false,
+    themes: [
+      {
+        mytheme: {
+          primary: '#35F05E',
+          secondary: '#25CBD6',
+          accent: '#636363',
+          neutral: '#161616',
+          'base-100': '#252228',
+          'base-content': '#ffffff',
+          success: '#35F05E',
+          error: '#ED3838',
+        },
+      },
+    ],
+    styled: true,
   },
 };
