@@ -57,12 +57,12 @@ export default function ProvablyConfig() {
   };
 
   return (
-    <div className="flex flex-col space-y-4 mt-4">
-      <div className="flex flex-col lg:h-16 lg:flex-row">
-        <div className="z-10 -mb-px flex h-full w-full items-center justify-center rounded-tbg-dark py-2 text-center font-bold uppercase lg:py-1 lg:mb-0 lg:max-w-xs lg:rounded-lg">
+    <div className="flex flex-col space-y-4 mt-4 text-white">
+      <div className="flex flex-col lg:h-14 lg:flex-row">
+        <div className="z-10 -mb-px flex h-full w-full items-center justify-center rounded-none bg-light py-2 text-center font-bold uppercase lg:py-1 lg:mb-0 lg:max-w-xs ">
           Client Seed
         </div>
-        <div className="flex h-full flex-1 flex-col items-center rounded-b-lg border border-solid border-neutral-700 p-3 text-center md:flex-row lg:-ml-6 lg:rounded-lg lg:pl-9">
+        <div className="flex h-full flex-1 flex-col items-center rounded-b-lg border border-solid border-neutral-700 p-3 text-center md:flex-row lg:-ml-6  lg:pl-9">
           <span className="mx-3 break-all font-mono text-sm">
             {currentKey?.clientSeed}
           </span>
@@ -70,7 +70,7 @@ export default function ProvablyConfig() {
             <button
               onClick={toggleEditSeed}
               type='button'
-              className="flex gap-1 h-10 items-center justify-center rounded border border-solid border-neutral-500 px-4 text-sm font-bold uppercase leading-none transition-colors duration-150 hover:bg-neutral-700 "
+              className="flex gap-1 h-10 items-center justify-center rounded-none border border-solid border-neutral-500 px-4 text-sm font-bold uppercase leading-none transition-colors duration-150 hover:bg-light-700 "
             >
               <EditFilled />
               Edit Client Seed
@@ -78,18 +78,18 @@ export default function ProvablyConfig() {
             <button
               onClick={toggleClientSeedHistory}
               type='button'
-              className="flex h-10 items-center justify-center rounded border border-solid border-neutral-500 px-4 text-sm font-bold uppercase leading-none transition-colors duration-150 hover:bg-neutral-700"
+              className="flex h-10 items-center justify-center rounded-none border border-solid border-neutral-500 px-4 text-sm font-bold uppercase leading-none transition-colors duration-150 hover:bg-light-700"
             >
               Client Seed History
             </button>
           </div>
         </div>
       </div>
-      <div className="flex flex-col lg:h-16 lg:flex-row">
-        <div className="z-10 -mb-px flex h-full w-full items-center justify-center rounded-tbg-dark py-2 text-center font-bold uppercase lg:py-1 lg:mb-0 lg:max-w-xs lg:rounded-lg">
+      <div className="flex flex-col lg:h-14 lg:flex-row">
+        <div className="z-10 -mb-px flex h-full w-full items-center justify-center rounded-none bg-light py-2 text-center font-bold uppercase lg:py-1 lg:mb-0 lg:max-w-xs ">
           Server Seed
         </div>
-        <div className="flex h-full flex-1 flex-col items-center rounded-b-lg border border-solid border-neutral-700 p-3 text-center md:flex-row lg:-ml-6 lg:rounded-lg lg:pl-9">
+        <div className="flex h-full flex-1 flex-col items-center rounded-b-lg border border-solid border-neutral-700 p-3 text-center md:flex-row lg:-ml-6  lg:pl-9">
           <span className="mx-3 break-all font-mono text-sm">
             {currentKey?.secretHash}
           </span>
@@ -97,38 +97,38 @@ export default function ProvablyConfig() {
             <button
               onClick={toggleServerSeedHistory}
               type='button'
-              className="flex h-10 items-center justify-center rounded border border-solid border-neutral-500 px-4 text-sm font-bold uppercase leading-none transition-colors duration-150 hover:bg-neutral-700"
+              className="flex h-10 items-center justify-center rounded-none border border-solid border-neutral-500 px-4 text-sm font-bold uppercase leading-none transition-colors duration-150 hover:bg-light-700"
             >
               Server Seed History
             </button>
           </div>
         </div>
       </div>
-      <div className="flex flex-col lg:h-16 lg:flex-row">
-        <div className="z-10 -mb-px flex h-full w-full items-center justify-center rounded-tbg-dark py-2 text-center font-bold uppercase lg:py-1 lg:mb-0 lg:max-w-xs lg:rounded-lg">
+      <div className="flex flex-col lg:h-14 lg:flex-row">
+        <div className="z-10 -mb-px flex h-full w-full items-center justify-center rounded-none bg-light py-2 text-center font-bold uppercase lg:py-1 lg:mb-0 lg:max-w-xs ">
           SECRET SALT
         </div>
-        <div className="flex h-full flex-1 flex-col items-center rounded-b-lg border border-solid border-neutral-700 p-3 text-center md:flex-row lg:-ml-6 lg:rounded-lg lg:pl-9">
+        <div className="flex h-full flex-1 flex-col items-center rounded-b-lg border border-solid border-neutral-700 p-3 text-center md:flex-row lg:-ml-6  lg:pl-9">
           <span className="mx-3 break-all font-mono text-sm">
             {currentKey?.secretSalt}
           </span>
         </div>
       </div>
-      <div className="flex flex-col lg:h-16 lg:flex-row">
-        <div className="z-10 -mb-px flex h-full w-full items-center justify-center rounded-tbg-dark py-2 text-center font-bold uppercase lg:py-1 lg:mb-0 lg:max-w-xs lg:rounded-lg">
+      <div className="flex flex-col lg:h-14 lg:flex-row">
+        <div className="z-10 -mb-px flex h-full w-full items-center justify-center rounded-none bg-light py-2 text-center font-bold uppercase lg:py-1 lg:mb-0 lg:max-w-xs ">
           PUBLIC HASH
         </div>
-        <div className="flex h-full flex-1 flex-col items-center rounded-b-lg border border-solid border-neutral-700 p-3 text-center md:flex-row lg:-ml-6 lg:rounded-lg lg:pl-9">
+        <div className="flex h-full flex-1 flex-col items-center rounded-b-lg border border-solid border-neutral-700 p-3 text-center md:flex-row lg:-ml-6  lg:pl-9">
           <span className="mx-3 break-all font-mono text-sm">
             {currentKey?.publicHash}
           </span>
         </div>
       </div>
-      <div className="flex flex-col lg:h-16 lg:flex-row">
-        <div className="z-10 -mb-px flex h-full w-full items-center justify-center rounded-tbg-dark py-2 text-center font-bold uppercase lg:py-1 lg:mb-0 lg:max-w-xs lg:rounded-lg">
+      <div className="flex flex-col lg:h-14 lg:flex-row">
+        <div className="z-10 -mb-px flex h-full w-full items-center justify-center rounded-none bg-light py-2 text-center font-bold uppercase lg:py-1 lg:mb-0 lg:max-w-xs ">
           ROUND
         </div>
-        <div className="flex h-full flex-1 flex-col items-center rounded-b-lg border border-solid border-neutral-700 p-3 text-center md:flex-row lg:-ml-6 lg:rounded-lg lg:pl-9">
+        <div className="flex h-full flex-1 flex-col items-center rounded-b-lg border border-solid border-neutral-700 p-3 text-center md:flex-row lg:-ml-6  lg:pl-9">
           <span className="mx-3 break-all font-mono text-sm">
             {currentKey?.round}
           </span>
@@ -136,7 +136,7 @@ export default function ProvablyConfig() {
       </div>
       <div className="flex justify-center">
         <button
-          className="btn btn-primary btn-outline uppercase rounded"
+          className="btn btn-primary btn-outline uppercase rounded-none border border-green  text-green"
           onClick={showServerSeed}
           type='button'
         >

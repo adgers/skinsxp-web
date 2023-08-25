@@ -71,17 +71,21 @@ export default function User() {
       },
       {
         title: 'History',
-        link: '/profile/history',
+        link: '/profile/record',
       },
       {
         title: 'AFFILIATE SYSTEM',
         link: '/profile/affiliate',
       },
+      {
+        title:'Provable Fair',
+        link:'/profile/provably-fair'
+      }
     ];
   }, []);
 
   return (
-    <div className="max-w-[1400px] m-auto px-3 mt-5">
+    <div className="max-w-[1400px] m-auto px-3 mt-5 mb-5 lg:mb-0">
       {!headHidden() && (
         <>
           <div className="p-3 sm:p-6 user-infobg-dark user-info-bg flex flex-col lg:flex-row">
@@ -99,25 +103,22 @@ export default function User() {
                 <div className="text-white text-base md:text-xl flex items-center gap-2">
                   <span>{userInfo?.nickname || '名字'}</span>
                 </div>
-                <div className="flex justify-between text-2xl font-bold items-center">
-                  <div>
+                <div className="flex justify-between text-xl font-bold items-center flex-wrap">
+                  <div className="w-[50%] lg:w-fit">
                     <div className="text-white/70 text-sm font-normal">
                       Balance
                     </div>
-                    <div className="text-green ">
+                    <div className="text-green  truncate">
                       ${userInfo?.balance || 111}
                     </div>
                   </div>
-                  <div>
+                  <div className="w-[50%] lg:w-fit">
                     <div className="text-white/70 text-sm font-normal">
                       Integral
                     </div>
-                    <div className=" text-purple">
+                    <div className=" text-purple truncate">
                       ${userInfo?.secondaryBalance || 111}
                     </div>
-                  </div>
-                  <div className="btn px-[8px] rounded-none border border-green text-green">
-                    Add balance
                   </div>
                 </div>
               </div>
@@ -131,21 +132,21 @@ export default function User() {
               </div>
             </div>
           </div>
-          <div className="custom-tab w-full flex gap-8 overflow-y-hidden overflow-x-auto md:justify-evenly border-b border-[#45444B] my-2 md:my-4 hide-scrollbar">
+          <div className="custom-tab w-full flex gap-[100px] overflow-y-hidden overflow-x-auto md:justify-start border-b border-[#45444B] my-2 md:my-4 hide-scrollbar">
             {tabLinks.map((item, index) => {
               const isActive = location.pathname.startsWith(item.link);
               return (
                 <div
                   className={`${
                     isActive
-                      ? 'text-green border-b-4 border-green'
+                      ? 'text-green border-b-[1px] border-green'
                       : 'text-white '
                   } tab-item flex-shrink-0 h-full `}
                   key={index}
                 >
                   <Link
                     to={item.link}
-                    className="tab-item-c text-sm md:text-base flex gap-1 hover:text-primary"
+                    className="tab-item-c text-sm md:text-base flex gap-1 hover:text-green"
                   >
                     {item.title}
                   </Link>

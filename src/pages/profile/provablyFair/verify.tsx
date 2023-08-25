@@ -45,18 +45,18 @@ export default function ProvablyVerify() {
   }, []);
 
   return (
-    <div className="mt-4">
+    <div className="my-4">
       <div className="flex justify-center pb-5 join">
-        <label className="join-item flex w-full max-w-sm cursor-text items-center rounded-lg border border-solid border-neutral-500 pl-5 text-sm">
+        <label className="join-item flex w-full max-w-sm cursor-text items-center rounded-none border border-solid border-neutral-500 pl-5 text-sm">
           <input
             type="text"
-            className="flex-1 border-none bg-transparent text-sm focus:outline-none"
+            className="flex-1 border-none bg-transparent text-sm text-white focus:outline-none"
             placeholder="ENTER VERIFY ID"
             ref={inputRef}
           />
         </label>
         <button
-          className="join-item btn btn-primary btn-outline uppercase rounded-md"
+          className="join-item btn btn-primary btn-outline uppercase rounded-none border border-green text-white"
           onClick={onVerify}
           type='button'
         >
@@ -64,31 +64,31 @@ export default function ProvablyVerify() {
         </button>
       </div>
       {currentKey && (
-        <div className="gap-4 space-y-4 lg:grid lg:grid-cols-12 lg:space-y-0">
+        <div className="gap-4 space-y-4 lg:grid lg:grid-cols-12 lg:space-y-0 text-white">
           <div className="flex flex-col space-y-4 lg:col-span-8">
-            <div className="flex flex-col lg:h-16 lg:flex-row">
-              <div className="z-10 -mb-px flex h-full w-full items-center justify-center rounded-tbg-dark py-2 text-center font-bold uppercase lg:py-1 lg:mb-0 lg:max-w-xs lg:rounded-lg">
+            <div className="flex flex-col lg:h-14 lg:flex-row">
+              <div className="z-10 -mb-px  flex h-full w-full items-center justify-center rounded-none bg-light py-2 text-center font-bold uppercase lg:py-1 lg:mb-0 lg:max-w-xs ">
                 Client Seed
               </div>
-              <div className="flex h-full flex-1 flex-col items-center rounded-b-lg border border-solid border-neutral-700 p-3 text-center md:flex-row lg:-ml-6 lg:rounded-lg lg:pl-9">
+              <div className="flex h-full flex-1 flex-col items-center rounded-b-lg border border-solid border-neutral-700 p-3 text-center md:flex-row lg:-ml-6  lg:pl-9">
                 <span className="mx-3 break-all font-mono text-sm">
                   {currentKey.clientSeed}
                 </span>
               </div>
             </div>
-            <div className="flex flex-col lg:h-16 lg:flex-row">
-              <div className="z-10 -mb-px flex h-full w-full items-center justify-center rounded-tbg-dark py-2 text-center font-bold uppercase lg:py-1 lg:mb-0 lg:max-w-xs lg:rounded-lg">
+            <div className="flex flex-col lg:h-14 lg:flex-row">
+              <div className="z-10 -mb-px flex h-full w-full items-center justify-center rounded-t bg-light py-2 text-center font-bold uppercase lg:py-1 lg:mb-0 lg:max-w-xs ">
                 Server Seed
               </div>
 
-              <div className="flex h-full flex-1 flex-col items-center rounded-b-lg border border-solid border-neutral-700 p-3 text-center md:flex-row lg:-ml-6 lg:rounded-lg lg:pl-9">
+              <div className="flex h-full flex-1 flex-col items-center rounded-b-lg border border-solid border-neutral-700 p-3 text-center md:flex-row lg:-ml-6  lg:pl-9">
                 <span className="mx-3 break-all font-mono text-sm">
                   {currentKey.secretHash}
                 </span>
                 {!currentKey.isPublic && (
                   <div className="mt-3 md:ml-auto md:mt-0">
                     <button
-                      className="flex h-10 items-center justify-center rounded border border-solid border-neutral-500 px-8 text-sm font-bold uppercase leading-none transition-colors duration-150 hover:bg-neutral-700"
+                      className="flex h-10 items-center rounded-none justify-center rounded border border-solid border-light px-8 text-sm font-bold uppercase leading-none transition-colors duration-150 hover:bg-light"
                       onClick={onShowServerSeed}
                       type='button'
                     >
@@ -98,51 +98,51 @@ export default function ProvablyVerify() {
                 )}
               </div>
             </div>
-            <div className="flex flex-col lg:h-16 lg:flex-row">
-              <div className="z-10 -mb-px flex h-full w-full items-center justify-center rounded-tbg-dark py-2 text-center font-bold uppercase lg:py-1 lg:mb-0 lg:max-w-xs lg:rounded-lg">
+            <div className="flex flex-col lg:h-14 lg:flex-row">
+              <div className="z-10 -mb-px flex h-full w-full items-center justify-center rounded-t bg-light py-2 text-center font-bold uppercase lg:py-1 lg:mb-0 lg:max-w-xs ">
                 SECRET SALT
               </div>
-              <div className="flex h-full flex-1 flex-col items-center rounded-b-lg border border-solid border-neutral-700 p-3 text-center md:flex-row lg:-ml-6 lg:rounded-lg lg:pl-9">
+              <div className="flex h-full flex-1 flex-col items-center rounded-b-lg border border-solid border-neutral-700 p-3 text-center md:flex-row lg:-ml-6  lg:pl-9">
                 <span className="mx-3 break-all font-mono text-sm">
                   {currentKey.secretSalt}
                 </span>
               </div>
             </div>
-            <div className="flex flex-col lg:h-16 lg:flex-row">
-              <div className="z-10 -mb-px flex h-full w-full items-center justify-center rounded-tbg-dark py-2 text-center font-bold uppercase lg:py-1 lg:mb-0 lg:max-w-xs lg:rounded-lg">
+            <div className="flex flex-col lg:h-14 lg:flex-row">
+              <div className="z-10 -mb-px flex h-full w-full items-center justify-center rounded-t bg-light py-2 text-center font-bold uppercase lg:py-1 lg:mb-0 lg:max-w-xs ">
                 PUBLIC HASH
               </div>
-              <div className="flex h-full flex-1 flex-col items-center rounded-b-lg border border-solid border-neutral-700 p-3 text-center md:flex-row lg:-ml-6 lg:rounded-lg lg:pl-9">
+              <div className="flex h-full flex-1 flex-col items-center rounded-b-lg border border-solid border-neutral-700 p-3 text-center md:flex-row lg:-ml-6  lg:pl-9">
                 <span className="mx-3 break-all font-mono text-sm">
                   {currentKey.publicHash}
                 </span>
               </div>
             </div>
-            <div className="flex flex-col lg:h-16 lg:flex-row">
-              <div className="z-10 -mb-px flex h-full w-full items-center justify-center rounded-tbg-dark py-2 text-center font-bold uppercase lg:py-1 lg:mb-0 lg:max-w-xs lg:rounded-lg">
+            <div className="flex flex-col lg:h-14 lg:flex-row">
+              <div className="z-10 -mb-px flex h-full w-full items-center justify-center rounded-t bg-light py-2 text-center font-bold uppercase lg:py-1 lg:mb-0 lg:max-w-xs ">
                 ROUND
               </div>
-              <div className="flex h-full flex-1 flex-col items-center rounded-b-lg border border-solid border-neutral-700 p-3 text-center md:flex-row lg:-ml-6 lg:rounded-lg lg:pl-9">
+              <div className="flex h-full flex-1 flex-col items-center rounded-b-lg border border-solid border-neutral-700 p-3 text-center md:flex-row lg:-ml-6  lg:pl-9">
                 <span className="mx-3 break-all font-mono text-sm">
                   {currentKey.round}
                 </span>
               </div>
             </div>
-            <div className="flex flex-col lg:h-16 lg:flex-row">
-              <div className="z-10 -mb-px flex h-full w-full items-center justify-center rounded-tbg-dark py-2 text-center font-bold uppercase lg:py-1 lg:mb-0 lg:max-w-xs lg:rounded-lg">
+            <div className="flex flex-col lg:h-14 lg:flex-row">
+              <div className="z-10 -mb-px flex h-full w-full items-center justify-center rounded-t bg-light py-2 text-center font-bold uppercase lg:py-1 lg:mb-0 lg:max-w-xs ">
                 ROLLED AT
               </div>
-              <div className="flex h-full flex-1 flex-col items-center rounded-b-lg border border-solid border-neutral-700 p-3 text-center md:flex-row lg:-ml-6 lg:rounded-lg lg:pl-9">
+              <div className="flex h-full flex-1 flex-col items-center rounded-b-lg border border-solid border-neutral-700 p-3 text-center md:flex-row lg:-ml-6  lg:pl-9">
                 <span className="mx-3 break-all font-mono text-sm">
                   {currentKey.createTime}
                 </span>
               </div>
             </div>
-            <div className="flex flex-col lg:h-16 lg:flex-row">
-              <div className="z-10 -mb-px flex h-full w-full items-center justify-center rounded-tbg-dark py-2 text-center font-bold uppercase lg:py-1 lg:mb-0 lg:max-w-xs lg:rounded-lg">
+            <div className="flex flex-col lg:h-14 lg:flex-row">
+              <div className="z-10 -mb-px flex h-full w-full items-center justify-center rounded-t bg-light py-2 text-center font-bold uppercase lg:py-1 lg:mb-0 lg:max-w-xs ">
                 ROLL
               </div>
-              <div className="flex h-full flex-1 flex-col items-center rounded-b-lg border border-solid border-neutral-700 p-3 text-center md:flex-row lg:-ml-6 lg:rounded-lg lg:pl-9">
+              <div className="flex h-full flex-1 flex-col items-center rounded-b-lg border border-solid border-neutral-700 p-3 text-center md:flex-row lg:-ml-6  lg:pl-9">
                 <span className="mx-3 break-all font-mono text-sm">
                   {currentKey.rollCode}
                 </span>
@@ -150,7 +150,7 @@ export default function ProvablyVerify() {
             </div>
           </div>
           <div className="self-start lg:col-span-4">
-            <div className="relative flex flex-col overflow-hidden rounded-lg border border-solid border-neutral-700bg-dark p-1 text-xs">
+            <div className="relative flex flex-col overflow-hidden rounded-none border border-solid border-light bg-light p-1 text-xs">
               <pre className="h-full w-full overflow-auto p-5 pt-8">
                 {JSON.stringify(
                   {
@@ -166,7 +166,7 @@ export default function ProvablyVerify() {
                   2,
                 )}
               </pre>
-              <div className="absolute left-0 top-0 mr-auto rounded-br-lgbg-dark-600 px-3 py-2 text-2xs font-bold leading-tight text-neutral-300">
+              <div className="absolute left-0 top-0 mr-auto rounded-br-lg bg-light-600 px-3 py-2 text-2xs font-bold leading-tight text-neutral-300">
                 JSON
               </div>
             </div>

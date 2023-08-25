@@ -19,21 +19,23 @@ export default function FlowRecord() {
 
   return (
     <div className="flex flex-col items-center">
-      <div className="join my-3 text-sm">
-        {roomStates.map((item, i) => (
-          <div
-            className={`join-item text-center border border-transparent cursor-pointer rounded-md px-4 py-1 outline-none ${
-              roomState === item.value
-                ? 'bg-primary text-black'
-                : 'border-white'
-            }`}
-            key={i}
-            onClick={() => setRoomState(item.value)}
-          >
-            {item.label}
-          </div>
-        ))}
+      <div className="custom-tab w-full flex  mb-4 gap-8 text-white justify-center border-b border-[#45444B]">
+        {roomStates.map((item, index) => {
+
+          return (
+            <div
+              className={`tab-item  h-full ${
+                roomState === item.value ? 'text-green border-b-[1px] border-green' : 'text-white '
+              }`}
+              key={index}
+              onClick={() => setRoomState(item.value)}
+            >
+              {item.label}
+            </div>
+          );
+        })}
       </div>
+    
       {roomState === 'recharge' && <RechargeRecord />}
       {roomState === 'balance' && <BalanceRecord />}
     </div>

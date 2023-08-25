@@ -26,7 +26,7 @@ export default function ProvablyFair() {
 
   return (
     <div className="w-full">
-      <div className="bg-neutral rounded p-5">
+      <div className="bg-black rounded p-5 text-white">
         <div className="text-xl font-bold uppercase flex gap-2 items-center">
           <img src={verifyIcon} className="w-10 h-10" />
           <FormattedMessage id="provably_fair_title" />
@@ -39,13 +39,15 @@ export default function ProvablyFair() {
           ></div>
         </div>
       </div>
-      <div className="custom-tab flex mt-4">
+      <div className="custom-tab flex mt-4 text-white justify-center border-b border-[#45444B] w-full">
         {tabLinks.map((item, index) => {
           const isActive = location.pathname.startsWith(item.link);
 
           return (
             <div
-              className={`tab-item px-4 ${isActive ? 'tab-active' : ''}`}
+              className={`tab-item px-4 h-full ${
+                isActive ? 'text-green border-b-[1px] border-green' : 'text-white '
+              }`}
               key={index}
             >
               <Link to={item.link} className="tab-item-c text-sm md:text-base">
