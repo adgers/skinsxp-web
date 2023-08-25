@@ -57,12 +57,7 @@ export default function MyRooms({
   return (
     <div className="flex-1 min-h-[500px]  items-center flex flex-col w-full relative">
       {rooms?.length === 0 && <Empty />}
-      {/* {loading && (
-        <div className="absolute top-0 left-0 w-full h-full flex justify-center items-center z-50 bg-black bg-opacity-50">
-          <LotterLoading />
-        </div>
-      )} */}
-      <div className="grid gap-2 md:gap-4 grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 w-full">
+      <div className="w-full flex flex-col gap-2">
         {rooms?.map((t) => (
           <RoomCard
             key={t.battleCode}

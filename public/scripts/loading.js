@@ -84,7 +84,7 @@
       </style>
 
       <div class="loading">
-        <h2>MUSKINS</h2>
+        <h2>WGSKINS</h2>
         <span></span>
         <span></span>
         <span></span>

@@ -8,7 +8,6 @@ export default function Case() {
       moduleId: 5,
     }),
   );
-  console.log('boxList', boxList);
   return (
     <>
       {boxList?.map((t, i) => (

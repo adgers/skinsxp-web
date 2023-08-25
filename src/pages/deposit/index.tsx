@@ -103,7 +103,7 @@ export default function Deposit() {
           <img src={depBg} className="w-full h-full hidden lg:block" />
           <div className="flex flex-col gap-6">
             <Menu as="div" className="relative">
-              <Menu.Button className="select select-sm md:select-md select-accent border-opacity-50 rounded uppercase w-full font-semibold flex justify-between items-center focus:outline-none bg-neutral">
+              <Menu.Button className="select select-sm md:select-md select-accent border-opacity-50 rounded uppercase w-full font-semibold flex justify-between items-center focus:outline-nonebg-dark">
                 <div>Currency</div>
                 <div>{selectCurrency?.currencyFrom || 'please select'}</div>
               </Menu.Button>
@@ -116,7 +116,7 @@ export default function Deposit() {
                 leaveFrom="transform opacity-100 scale-100"
                 leaveTo="transform opacity-0 scale-95"
               >
-                <Menu.Items className="absolute left-0 mt-2 w-full bg-neutral ring-1 ring-accent rounded origin-top-left p-1 z-50">
+                <Menu.Items className="absolute left-0 mt-2 w-fullbg-dark ring-1 ring-accent rounded origin-top-left p-1 z-50">
                   {currencyRateVoList?.map((item) => (
                     <Menu.Item key={item.id}>
                       {({ active }) => (
@@ -136,7 +136,7 @@ export default function Deposit() {
             </Menu>
 
             <Menu as="div" className="relative">
-              <Menu.Button className="select select-sm md:select-md select-accent border-opacity-50 rounded uppercase w-full font-semibold flex justify-between items-center focus:outline-none bg-neutral">
+              <Menu.Button className="select select-sm md:select-md select-accent border-opacity-50 rounded uppercase w-full font-semibold flex justify-between items-center focus:outline-nonebg-dark">
                 <div>Recharge channels</div>
                 <div>
                   {selectChannel ? selectChannel.channelName : 'please select'}
@@ -151,7 +151,7 @@ export default function Deposit() {
                 leaveFrom="transform opacity-100 scale-100"
                 leaveTo="transform opacity-0 scale-95"
               >
-                <Menu.Items className="absolute left-0 mt-2 w-full bg-neutral ring-1 ring-accent rounded origin-top-left p-1 z-50">
+                <Menu.Items className="absolute left-0 mt-2 w-fullbg-dark ring-1 ring-accent rounded origin-top-left p-1 z-50">
                   {rechargeChannelList?.map((item) => (
                     <Menu.Item key={item.rechargeConfigId}>
                       {({ active }) => (
@@ -204,7 +204,7 @@ export default function Deposit() {
             <div className="bg-base-content bg-opacity-10 rounded-lg p-3 md:p-6 flex flex-col gap-6">
               {couponList && couponList.length > 0 && (
                 <Menu as="div" className="relative">
-                  <Menu.Button className="select select-sm md:select-md select-accent border-opacity-50 rounded uppercase w-full font-semibold flex justify-between items-center focus:outline-none bg-neutral">
+                  <Menu.Button className="select select-sm md:select-md select-accent border-opacity-50 rounded uppercase w-full font-semibold flex justify-between items-center focus:outline-nonebg-dark">
                     <div>coupon</div>
                     <div>
                       {selectCoupon ? selectCoupon.couponName : 'please Select'}
@@ -219,7 +219,7 @@ export default function Deposit() {
                     leaveFrom="transform opacity-100 scale-100"
                     leaveTo="transform opacity-0 scale-95"
                   >
-                    <Menu.Items className="absolute left-0 mt-2 w-full bg-neutral ring-1 ring-accent rounded origin-top-left p-1 z-50">
+                    <Menu.Items className="absolute left-0 mt-2 w-fullbg-dark ring-1 ring-accent rounded origin-top-left p-1 z-50">
                       {couponList.map((item,i) => (
                         <Menu.Item key={i}>
                           {({ active }) => (

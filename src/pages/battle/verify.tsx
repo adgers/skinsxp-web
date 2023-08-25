@@ -37,18 +37,18 @@ export default function Verify({
                 <span>{record.nickname} </span>
                 <div>
                   {record.winner ? (
-                    <span className="text-success">
+                    <span className="text-green">
                       <FormattedMessage id="success" />
                     </span>
                   ) : (
-                    <span className="text-error">
+                    <span className="text-red">
                       <FormattedMessage id="failed" />
                     </span>
                   )}
                 </div>
               </div>
             </div>
-            <div className="flex gap-2 overflow-x-auto p-3 bg-neutral-900 rounded-md">
+            <div className="flex gap-2 overflow-x-auto p-3 bg-dark rounded-md">
               {record?.userOpenBoxRecord?.map((urecord, i) => (
                 <div
                   className="flex flex-col items-center flex-shrink-0 w-40 gap-1"
@@ -61,7 +61,7 @@ export default function Verify({
                   <div className="mt-2 flex gap-1 text-xs font-bold uppercase">
                     <span>Roll ID {urecord.rollCode}</span>
                     <Link to={`/profile/provably-fair/verify/${urecord.verifyId}`}>
-                      <IconFont type="icon-shield" className="text-success" />
+                      <IconFont type="icon-shield" className="text-green" />
                     </Link>
                   </div>
                 </div>

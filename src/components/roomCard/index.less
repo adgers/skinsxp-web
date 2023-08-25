@@ -49,9 +49,6 @@
   cursor: pointer;
   z-index: 2;
 
-  .add-room-bg {
-    background: linear-gradient(180deg, #030303 0%, rgba(3, 3, 3, 0.50) 100%);
-  }
 
   .process {
     position: absolute;
@@ -87,94 +84,16 @@
       }
     }
   }
+}
 
-  &::before {
-    position: absolute;
-    top: 50%;
-    left: 0;
-    margin-top: -23%;
-    width: 6px;
-    height: 46%;
-    display: block;
-    background: url('@/assets/bc-bg.png') no-repeat;
-    background-size: contain;
-    content: ''
+.battle-mode-0 {
+  &.battle-state-1 {
+    background: linear-gradient(90deg, rgba(39, 104, 53, 0.60) 0%, rgba(32, 77, 42, 0.00) 100%), rgba(22, 22, 22, 0.75);
   }
+}
 
-  .room-bg::before {
-    background-size: contain;
-    background-position: center;
-    background-repeat: no-repeat;
-    position: absolute;
-    top: 10px;
-    bottom: 10px;
-    width: 100%;
-    content: "";
-    z-index: -1;
-  }
-
-
-  &.battle-mode-0 {
-    background: linear-gradient(180deg, #6A3235 0%, #AB5050 100%);
-
-    .animat-status {
-      background: #fff;
-
-      &::before {
-        background: #fff;
-      }
-    }
-
-    &.battle-state-1 {
-      background: radial-gradient(79.81% 38.79% at 50.00% 65.00%, #FFB4B7 0%, #90464C 100%);
-
-      .animat-status {
-        background: #FF9FA5;
-
-        &::before {
-          background: #FF9FA5;
-        }
-      }
-    }
-
-    &.battle-state-2 {
-      background: linear-gradient(180deg, #4C4F5E 0%, #5E647A 47.40%);
-
-      .animat-status {
-        background: #FFF;
-      }
-    }
-  }
-
-  &.battle-mode-1 {
-    background: linear-gradient(180deg, #303754 0%, #434D77 47.40%);
-
-    .animat-status {
-      background: #fff;
-
-      &::before {
-        background: #fff;
-      }
-    }
-
-    &.battle-state-1 {
-      background: radial-gradient(79.81% 38.79% at 50.00% 65.00%, #B3C0FA 0%, #3B4362 100%);
-
-      .animat-status {
-        background: #84A8FF;
-
-        &::before {
-          background: #84A8FF;
-        }
-      }
-    }
-
-    &.battle-state-2 {
-      background: linear-gradient(180deg, #4C4F5E 0%, #5E647A 47.40%);
-
-      .animat-status {
-        background: #FFF;
-      }
-    }
+.battle-mode-1 {
+  &.battle-state-1 {
+    background: linear-gradient(90deg, rgba(150, 21, 44, 0.60) 0%, rgba(125, 25, 31, 0.00) 100%), rgba(22, 22, 22, 0.75);
   }
 }

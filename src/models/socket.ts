@@ -1,6 +1,6 @@
 import WsEventType from '@/constants/eventType';
-import { getRecentOpenBoxUsingGET } from '@/services/common/tongyongxiangguan';
 import { battleRankUsingGET } from '@/services/front/duizhanxiangguan';
+import { recentDropUsingGET } from '@/services/front/zhandianweidushuju';
 import { addImgHost, getSocketDomain } from '@/utils';
 import { Client } from '@stomp/stompjs';
 import { useRequest } from '@umijs/max';
@@ -15,9 +15,8 @@ export default () => {
   const [isTop, setIsTop] = useState<boolean>(false);
   const recentBoxResult = useRequest(
     () =>
-      getRecentOpenBoxUsingGET({
+      recentDropUsingGET({
         limit: 20,
-        grade: 0,
         isTop,
       }),
     {
@@ -45,7 +44,9 @@ export default () => {
       }
 
       switch (data.eventType) {
-        case WsEventType.RECENT_BOX:
+        case WsEventType.CASE_DROP ||
+          WsEventType.BATTLE_DROP ||
+          WsEventType.UPGRADE_DROP:
           if (isTop) {
             if (data.data.grade === 0 || data.data.grade === 1) {
               setRecentBox((prev) => {

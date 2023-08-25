@@ -52,8 +52,6 @@ export default function BoxPage() {
       refreshDeps: [caseId],
     },
   );
-  console.log(recentBoxs,'recentBoxs')
-
   const [openCount, setOpenCount] = useState(1);
   const [resultShow, setResultShow] = useState(false);
   const [results, setResults] = useState<API.OpenBoxResultVo[]>();
@@ -265,7 +263,7 @@ export default function BoxPage() {
                 <WeaponCard data={item} key={i} />
               </div>
               <div className="back">
-                <div className="flex flex-col gap-3 items-center justify-center w-full h-full bg-neutral bg-opacity-70 cursor-pointer rounded-md">
+                <div className="flex flex-col gap-3 items-center justify-center w-full h-fullbg-dark bg-opacity-70 cursor-pointer rounded-md">
                   <div className="avatar w-14 h-14 relative rounded">
                     <img src={item?.headPic} />
                     <img

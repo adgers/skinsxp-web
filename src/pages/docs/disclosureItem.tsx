@@ -27,7 +27,7 @@ export default function DisclosureItem({
       <Disclosure defaultOpen={isDefaultOpen}>
         {({ open }) => (
           <>
-            <Disclosure.Button className="flex w-full justify-between bg-neutral px-4 py-4 text-left text-sm font-medium rounded">
+            <Disclosure.Button className="flex w-full justify-betweenbg-dark px-4 py-4 text-left text-sm font-medium rounded">
               <span>{title}</span>
               <DownOutlined
                 className={`${open ? 'rotate-180 transform' : ''} `}

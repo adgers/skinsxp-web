@@ -7,7 +7,7 @@ export default function Placard() {
   return (
     <>
       {data?.length > 0 && (
-        <div className="h-8 bg-neutral bg-opacity-50 flex justify-center z-20">
+        <div className="h-8bg-dark bg-opacity-50 flex justify-center z-20">
           <div className="max-w-8xl px-3 sm:px-0 w-full m-auto text-white text-sm relative">
             <Marquee speed={40} pauseOnHover={true}>
               {data?.map((t,i) => (

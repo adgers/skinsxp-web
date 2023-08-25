@@ -33,10 +33,10 @@ import CountUp from 'react-countup';
 import { Button, Modal } from 'react-daisyui';
 import { toast } from 'react-toastify';
 import { CSSTransition, TransitionGroup } from 'react-transition-group';
-import 'swiper/css';
 import BoxDetail from './boxDetail';
-import './index.less';
 import Verify from './verify';
+
+import './index.less';
 
 const countTotalPrice = (record: any) => {
   if (!record) return numberFixed(0, 2);
@@ -54,6 +54,8 @@ const WartingCard = ({
   joinLoading,
   joinBotLoading,
   isOwner,
+  mode,
+  modeName,
 }: {
   user?: any;
   userList?: any;
@@ -62,38 +64,46 @@ const WartingCard = ({
   isOwner: boolean;
   joinLoading: boolean;
   joinBotLoading: boolean;
+  mode: number;
+  modeName: string;
 }) => {
   return (
     <div>
       {user?.customerId ? (
         <div className="flex flex-col gap-4 items-center">
           <div className="relative">
-            <CheckCircleFilled className="text-success text-[32px]" />
-            <div className="animate-circleChange absolute w-8 h-8 rounded-full left-0 top-0 border-2 border-success"></div>
+            <CheckCircleFilled className="text-green text-[32px]" />
+            <div className="animate-circleChange absolute w-8 h-8 rounded-full left-0 top-0 border-2 border-green"></div>
           </div>
-          <span className="font-num">Ready</span>
+          <span className="font-num text-white uppercase">Ready to battle</span>
         </div>
       ) : (
         <div className="flex flex-col gap-4 items-center">
-          <IconFont
-            type="icon-zhandou"
-            className="text-primary text-[28px] animate-bounce"
-          />
+          <div className="w-full font-num uppercase h-full flex items-center justify-center text-center animate-pulse text-white">
+            ARE YOU READY TO PLAY
+          </div>
           {isOwner ? (
             <div
-              className="rounded px-2 py-1 text-xs border border-primary text-primary cursor-pointer flex gap-1 items-center uppercase"
+              className="rounded px-4 py-2 text-sm border border-green text-white bg-[#18331F] cursor-pointer flex gap-1 items-center justify-center uppercase font-semibold "
               onClick={onJoinBot}
             >
               {joinLoading && <LoadingOutlined />}
+              <IconFont type="icon-zhandou" className="text-white text-sm" />
               <FormattedMessage id="battle_room_join_bot" />
             </div>
           ) : (
             <div
-              className="rounded px-2 py-1 text-xs border border-primary text-primary cursor-pointer flex gap-1 items-center uppercase"
+              className={`rounded px-4 py-2 text-sm border  text-white cursor-pointer flex gap-1 items-center justify-center uppercase font-semibold ${
+                mode === 0
+                  ? 'border-green  bg-[#18331F]'
+                  : 'border-red bg-[#630F14]'
+              }`}
               onClick={onJoin}
             >
               {joinBotLoading && <LoadingOutlined />}
+              <IconFont type="icon-zhandou" className="text-white text-sm" />
               <FormattedMessage id="battle_room_join" />
+              {modeName}
             </div>
           )}
         </div>
@@ -107,11 +117,11 @@ const ResultCard = ({ result }: { result: API.BattleCustomerGainVo }) => {
     <div className="flex flex-col animate__animated animate__zoomIn items-center">
       {result?.winner ? (
         <>
-          <div className="font-num win-text text-[21px] sm:text-[42px]">
-            WIN
+          <div className="font-num text-green text-[22px] sm:text-[42px]">
+            WINNER
           </div>
-          <div className="flex gap-1 items-center font-num text-[#D2C87B] text-xs sm:text-base">
-            <IconFont type="icon-daimond" />
+          <div className="flex gap-1 items-center font-num text-green text-xs sm:text-base">
+            $
             <CountUp
               end={result?.totalPrice || 0}
               duration={1}
@@ -122,11 +132,11 @@ const ResultCard = ({ result }: { result: API.BattleCustomerGainVo }) => {
         </>
       ) : (
         <>
-          <div className="font-num lose-text text-[21px] sm:text-[42px]">
+          <div className="font-num text-light text-[22px] sm:text-[42px]">
             LOSE
           </div>
           <div className="flex gap-1 items-center font-num text-xs sm:text-base">
-            <IconFont type="icon-daimond" />
+            $
             <CountUp
               end={result?.totalPrice || 0}
               duration={1}
@@ -451,8 +461,16 @@ export default function RoomDetail() {
     }
   }, [isEnd]);
 
-  const { countCustomer = 2, customerList, state, boxList, mode } = data || {};
+  const {
+    countCustomer = 2,
+    customerList,
+    state,
+    boxList,
+    mode = 0,
+  } = data || {};
   const isOwner = data?.customerId === userInfo?.id;
+
+  const modeName = battleMode[mode];
 
   const goHistory = () => {
     setOpenResult([]);
@@ -463,80 +481,68 @@ export default function RoomDetail() {
   };
 
   return (
-    <div className="max-w-[1400px] w-full m-auto mt-4">
+    <div className="max-w-[1400px] w-full m-auto mt-4 battle-detail p-3 sm:p-0">
       {countDownShow && <Countdown onFinish={onCountDownFinish} />}
-      <div className="battle-title h-[38px] sm:h-[76px]">
-        <Link
-          className="btn btn-xs sm:btn-sm btn-neutral absolute left-2 top-[50%] -mt-[12px] sm:-mt-[16px] rounded"
-          to="/battle"
-        >
-          <LeftOutlined />
-          <FormattedMessage id="common_back" />
-        </Link>
-        <div className="text-2xl sm:text-3xl">
-          {mode !== undefined && (
-            <>
-              <span>{`${battleMode[mode]}`}</span>
-              <span className="font-num">BATTLE</span>
-            </>
-          )}
+
+      <div className="my-5 flex w-full flex-col justify-between border-b border-light lg:mb-0 lg:mt-8 lg:flex-row">
+        <div className="-mb-px items-center border-b border-green pb-6 pr-6 font-semibold uppercase text-white flex">
+          <Link className="-my-2 -ml-3 px-3 py-2 text-white" to="/battle">
+            <LeftOutlined />
+          </Link>
+          Battle
+        </div>
+        <div className="relative">
+          <div className="flex flex-col md:flex-row gap-4 w-full md:pb-3">
+            <Link
+              className={`rounded btn btn-md text-sm border text-white cursor-pointer flex gap-1 items-center justify-center uppercase font-semibold ${
+                mode === 0
+                  ? 'border-green  bg-[#18331F]'
+                  : 'border-red bg-[#630F14]'
+              }`}
+              to={`/battle/create/${battleCode}`}
+            >
+              <IconFont type="icon-zhandou" />
+              Create the same battle $ {data?.totalPrice}
+            </Link>
+
+            <Link
+              className="btn btn-md border inline-flex border-purple gap-1 rounded bg-[#421F57] text-white"
+              to={`/battle/create`}
+            >
+              <IconFont type="icon-zhandou" />
+              <FormattedMessage id="arena_cjfy" />
+            </Link>
+          </div>
         </div>
       </div>
-      {data && (
-        <div className="px-3 sm:px-0">
-          <div className="flex justify-between my-3 sm:my-5">
-            <div className="flex items-center text-sm sm:text-base gap-2 font-num">
-              <span className="uppercase">Total</span>
-              <span className="mx-1">
-                <IconFont type="icon-coin" className="mr-1" />
-                {data?.totalPrice}
-              </span>
-            </div>
-            <div className="flex gap-3 items-center">
-              {roomResult && data.state === 2 && (
-                <>
-                  <Verify
-                    show={verifyShow}
-                    onClose={() => setVerifyShow(false)}
-                    data={roomResult}
-                  />
-                  <div
-                    className="cursor-pointer"
-                    onClick={() => setVerifyShow(true)}
-                  >
-                    <IconFont type="icon-shield" className="text-success" />
-                  </div>
-                  <IconFont type="icon-luxiang" onClick={goHistory} />
-                </>
-              )}
-              {isOwner && customerList && customerList?.length < 2 && (
-                <LogoutOutlined onClick={() => setCancelConfirmShow(true)} />
-              )}
 
-              <div
-                className={`cursor-pointer border border-accent p-1 rounded ${
-                  !voice && 'border-opacity-20'
-                }`}
-                onClick={toggleVoice}
-              >
-                {voice ? (
-                  <IconFont type="icon-shengyin" />
-                ) : (
-                  <IconFont type="icon-shengyinguanbi" />
-                )}
-              </div>
-            </div>
-          </div>
-          <div className="bg-neutral rounded sm:rounded-md py-5 flex px-5 sm:px-8 items-center gap-5">
+      {data && (
+        <div className="px-3 sm:px-0 flex flex-col gap-3 mt-4">
+          <div
+            className={`bg-black rounded sm:rounded-md py-5 flex px-5 sm:px-8 items-center gap-2 battle-mode-${mode}`}
+          >
             <div className="flex gap-4 items-center">
-              <div className="w-[78px] h-[78px] sm:w-[120px] sm:h-[120px] flex items-center justify-center relative">
-                <div className="round-bg animate-spin-slow"></div>
-                <span className="font-num text-[#A5DCFF] text-xl sm:text-4xl">
+              <div
+                className={`w-[60px] h-[60px] flex items-center justify-center rounded-full relative ring ${
+                  mode === 1 ? 'ring-red' : 'ring-green'
+                }`}
+              >
+                <span className="font-num text-white text-2xl">
                   {boxList?.length}
                 </span>
+                {state !== 2 && (
+                  <div
+                    className={`animate-circleChange absolute  h-full w-full rounded-full left-0 top-0 border ${
+                      mode === 1 ? 'border-red' : 'border-green'
+                    }`}
+                  ></div>
+                )}
               </div>
-              <div className="font-num sm:text-xl text-base-content text-opacity-60">
-                {index}/{boxList?.length}
+              <div className="text-xs font-semibold">
+                <div className="text-white uppercase ">BATTLE ROUNDS</div>
+                <div className="font-num">
+                  {index}/{boxList?.length}
+                </div>
               </div>
             </div>
             <div className="flex-1 overflow-x-auto hide-scrollbar">
@@ -568,141 +574,169 @@ export default function RoomDetail() {
               </div>
             </div>
           </div>
+          <div className="flex gap-3 items-center justify-end ">
+            {roomResult && data.state === 2 && (
+              <>
+                <Verify
+                  show={verifyShow}
+                  onClose={() => setVerifyShow(false)}
+                  data={roomResult}
+                />
+                <div
+                  className="cursor-pointer"
+                  onClick={() => setVerifyShow(true)}
+                >
+                  <IconFont type="icon-shield" className="text-green" />
+                </div>
+                <IconFont
+                  type="icon-luxiang"
+                  onClick={goHistory}
+                  className="text-white"
+                />
+              </>
+            )}
+            {isOwner && customerList && customerList?.length < 2 && (
+              <LogoutOutlined
+                onClick={() => setCancelConfirmShow(true)}
+                className="text-white"
+              />
+            )}
+
+            <div
+              className={`cursor-pointer text-white ${
+                !voice && 'text-opacity-50'
+              }`}
+              onClick={toggleVoice}
+            >
+              {voice ? (
+                <IconFont type="icon-shengyin" />
+              ) : (
+                <IconFont type="icon-shengyinguanbi" />
+              )}
+            </div>
+          </div>
         </div>
       )}
       {data && (
-        <div className="mt-4 p-3 bg-base-100">
-          <div
-            className={`grid grid-cols-${countCustomer} gap-2 sm:gap-3 w-full`}
-          >
-            {Array.from({ length: countCustomer }).map((_, i) => {
-              const isLast = i === countCustomer - 1;
-              const user = customerList?.filter(
-                (u) => Number(u?.pos) === i + 1,
-              )[0];
+        <div
+          className={`grid grid-cols-${countCustomer} gap-2 sm:gap-3 w-full mt-4`}
+        >
+          {Array.from({ length: countCustomer }).map((_, i) => {
+            const isLast = i === countCustomer - 1;
+            const user = customerList?.filter(
+              (u) => Number(u?.pos) === i + 1,
+            )[0];
 
-              const userOpenRecord = roomResult?.boxOpenRecords?.filter(
-                (item) => item.customerId === user?.customerId,
-              )[0];
+            const userOpenRecord = roomResult?.boxOpenRecords?.filter(
+              (item) => item.customerId === user?.customerId,
+            )[0];
 
-              const userLastResult = roomResult?.customerGainList?.filter(
-                (item) => item.customerId === user?.customerId,
-              )[0];
+            const userLastResult = roomResult?.customerGainList?.filter(
+              (item) => item.customerId === user?.customerId,
+            )[0];
 
-              const userOpeningReuslt = openResult?.filter(
-                (item) => item.customerId === user?.customerId,
-              )[0];
+            const userOpeningReuslt = openResult?.filter(
+              (item) => item.customerId === user?.customerId,
+            )[0];
 
-              const isWin = isEnd
-                ? userLastResult?.winner
-                : isWinUser(data?.mode, user?.customerId);
+            const isWin = isEnd
+              ? userLastResult?.winner
+              : isWinUser(data?.mode, user?.customerId);
 
-              const price = countTotalPrice(
-                userOpeningReuslt?.userOpenBoxRecord,
-              );
+            const price = countTotalPrice(userOpeningReuslt?.userOpenBoxRecord);
 
-              const lotteryWin = userOpenRecord?.userOpenBoxRecord?.[index - 1];
-              const giftList = boxList?.filter(
-                (t) => t.boxId === lotteryWin?.boxId,
-              )[0]?.giftList;
+            const lotteryWin = userOpenRecord?.userOpenBoxRecord?.[index - 1];
+            const giftList = boxList?.filter(
+              (t) => t.boxId === lotteryWin?.boxId,
+            )[0]?.giftList;
 
-              return (
-                <div className="flex flex-col" key={i}>
-                  <div
-                    className={`battle-seat-bg h-[152px] md:h-[304px] seat-${
-                      i + 1
-                    } ${isLast ? 'seat-last' : ''}`}
-                  >
-                    {state === 0 && (
-                      <WartingCard
-                        onJoin={() => {
-                          onJoin(i + 1);
-                        }}
-                        onJoinBot={() => {
-                          onJoinBot(i + 1);
-                        }}
-                        joinLoading={joinLoading}
-                        joinBotLoading={joinBotLoading}
-                        user={user}
-                        userList={customerList}
-                        isOwner={isOwner}
-                      />
-                    )}
-                    {isEnd && userLastResult && (
-                      <ResultCard result={userLastResult} />
-                    )}
-                    {lotteryShow && lotteryWin && (
-                      <Lottery
-                        giftList={giftList}
-                        lotteryWin={lotteryWin}
-                        randomPosition={false}
-                        vertical
-                        onCompleted={onLortteryCompleted}
-                        boxSize={
-                          responsive.md
-                            ? { width: 128, height: 112 }
-                            : { width: 64, height: 56 }
-                        }
-                        start={lotteryStart}
-                        wrapHeight={responsive.md ? 304 : 152}
-                        fast
-                        voice={voice}
-                      />
-                    )}
-                  </div>
-                  <div
-                    className={`battle-user gap-1 sm:justify-between items-center flex-col md:flex-row text-sm p-3 md:p-4 min-h-[104px] md:min-h-[72px] ${
-                      isWin && 'win-user-bg'
-                    }`}
-                  >
-                    {user?.customerId ? (
+            return (
+              <div className="flex flex-col" key={i}>
+                <div
+                  className={`battle-seat-bg h-[300px] px-2 md:h-[180] seat-${
+                    i + 1
+                  } ${isLast ? 'seat-last' : ''}`}
+                >
+                  {state === 0 && (
+                    <WartingCard
+                      onJoin={() => {
+                        onJoin(i + 1);
+                      }}
+                      onJoinBot={() => {
+                        onJoinBot(i + 1);
+                      }}
+                      joinLoading={joinLoading}
+                      joinBotLoading={joinBotLoading}
+                      user={user}
+                      userList={customerList}
+                      isOwner={isOwner}
+                      mode={mode}
+                      modeName={modeName}
+                    />
+                  )}
+                  {isEnd && userLastResult && (
+                    <ResultCard result={userLastResult} />
+                  )}
+                  {lotteryShow && lotteryWin && (
+                    <Lottery
+                      giftList={giftList}
+                      lotteryWin={lotteryWin}
+                      randomPosition={false}
+                      vertical
+                      onCompleted={onLortteryCompleted}
+                      boxSize={
+                        responsive.md
+                          ? { width: '100%', height: 200 }
+                          : { width: '100%', height: 100 }
+                      }
+                      start={lotteryStart}
+                      wrapHeight={responsive.md ? 300 : 180}
+                      fast
+                      voice={voice}
+                    />
+                  )}
+                </div>
+                <div
+                  className={`battle-user gap-1 sm:justify-between items-center flex-col md:flex-row text-sm p-3 md:p-4 min-h-[104px] md:min-h-[72px] ${
+                    isWin && 'win-user-bg'
+                  }`}
+                >
+                  <div className="flex flex-col md:flex-row gap-1 sm:gap-2 items-center">
+                    {user?.customerId && (
                       <>
-                        <div className="flex flex-col md:flex-row gap-1 sm:gap-2 items-center">
-                          <div className="relative">
-                            <img
-                              src={user?.headPic}
-                              className="w-8 h-8 md:w-10 md:h-10 rounded-sm"
-                            />
-                            {user?.headGround && (
-                              <img
-                                src={user?.headGround}
-                                className="absolute left-0 top-0 w-full h-full"
-                              />
-                            )}
-                          </div>
-
-                          <span className="text-base-content text-opacity-50 truncate text-xs sm:text-base">
-                            {user?.nickname}
-                          </span>
-                        </div>
-                        <div className="flex gap-1 items-center text-xs sm:text-base">
-                          <IconFont type="icon-daimond" />
-                          <CountUp
-                            end={price || 0}
-                            duration={1}
-                            decimals={2}
-                            separator=""
-                            className="font-num"
+                        <div className="relative">
+                          <img
+                            src={user?.headPic}
+                            className="w-8 h-8 md:w-10 md:h-10 rounded-full"
                           />
                         </div>
+
+                        <span className="truncate text-xs sm:text-sm text-white font-semibold">
+                          {user?.nickname}
+                        </span>
                       </>
-                    ) : (
-                      <div className="w-full font-num uppercase h-full flex items-center justify-center text-center animate-pulse">
-                        Waiting for player
-                      </div>
                     )}
                   </div>
-                  <div className="battle-result">
-                    <ResultBoxs
-                      boxs={userOpeningReuslt?.userOpenBoxRecord || []}
-                      cols={data.countCustomer || 2}
-                      mini={!responsive.md}
+                  <div className="flex gap-1 items-center text-xs sm:text-sm text-green font-num">
+                    $
+                    <CountUp
+                      end={price || 0}
+                      duration={1}
+                      decimals={2}
+                      separator=""
                     />
                   </div>
                 </div>
-              );
-            })}
-          </div>
+                <div className="battle-result">
+                  <ResultBoxs
+                    boxs={userOpeningReuslt?.userOpenBoxRecord || []}
+                    cols={data.countCustomer || 2}
+                    mini={!responsive.md}
+                  />
+                </div>
+              </div>
+            );
+          })}
         </div>
       )}
 

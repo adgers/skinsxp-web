@@ -59,7 +59,7 @@ export default function ProvablyConfig() {
   return (
     <div className="flex flex-col space-y-4 mt-4">
       <div className="flex flex-col lg:h-16 lg:flex-row">
-        <div className="z-10 -mb-px flex h-full w-full items-center justify-center rounded-t bg-neutral py-2 text-center font-bold uppercase lg:py-1 lg:mb-0 lg:max-w-xs lg:rounded-lg">
+        <div className="z-10 -mb-px flex h-full w-full items-center justify-center rounded-tbg-dark py-2 text-center font-bold uppercase lg:py-1 lg:mb-0 lg:max-w-xs lg:rounded-lg">
           Client Seed
         </div>
         <div className="flex h-full flex-1 flex-col items-center rounded-b-lg border border-solid border-neutral-700 p-3 text-center md:flex-row lg:-ml-6 lg:rounded-lg lg:pl-9">
@@ -86,7 +86,7 @@ export default function ProvablyConfig() {
         </div>
       </div>
       <div className="flex flex-col lg:h-16 lg:flex-row">
-        <div className="z-10 -mb-px flex h-full w-full items-center justify-center rounded-t bg-neutral py-2 text-center font-bold uppercase lg:py-1 lg:mb-0 lg:max-w-xs lg:rounded-lg">
+        <div className="z-10 -mb-px flex h-full w-full items-center justify-center rounded-tbg-dark py-2 text-center font-bold uppercase lg:py-1 lg:mb-0 lg:max-w-xs lg:rounded-lg">
           Server Seed
         </div>
         <div className="flex h-full flex-1 flex-col items-center rounded-b-lg border border-solid border-neutral-700 p-3 text-center md:flex-row lg:-ml-6 lg:rounded-lg lg:pl-9">
@@ -105,7 +105,7 @@ export default function ProvablyConfig() {
         </div>
       </div>
       <div className="flex flex-col lg:h-16 lg:flex-row">
-        <div className="z-10 -mb-px flex h-full w-full items-center justify-center rounded-t bg-neutral py-2 text-center font-bold uppercase lg:py-1 lg:mb-0 lg:max-w-xs lg:rounded-lg">
+        <div className="z-10 -mb-px flex h-full w-full items-center justify-center rounded-tbg-dark py-2 text-center font-bold uppercase lg:py-1 lg:mb-0 lg:max-w-xs lg:rounded-lg">
           SECRET SALT
         </div>
         <div className="flex h-full flex-1 flex-col items-center rounded-b-lg border border-solid border-neutral-700 p-3 text-center md:flex-row lg:-ml-6 lg:rounded-lg lg:pl-9">
@@ -115,7 +115,7 @@ export default function ProvablyConfig() {
         </div>
       </div>
       <div className="flex flex-col lg:h-16 lg:flex-row">
-        <div className="z-10 -mb-px flex h-full w-full items-center justify-center rounded-t bg-neutral py-2 text-center font-bold uppercase lg:py-1 lg:mb-0 lg:max-w-xs lg:rounded-lg">
+        <div className="z-10 -mb-px flex h-full w-full items-center justify-center rounded-tbg-dark py-2 text-center font-bold uppercase lg:py-1 lg:mb-0 lg:max-w-xs lg:rounded-lg">
           PUBLIC HASH
         </div>
         <div className="flex h-full flex-1 flex-col items-center rounded-b-lg border border-solid border-neutral-700 p-3 text-center md:flex-row lg:-ml-6 lg:rounded-lg lg:pl-9">
@@ -125,7 +125,7 @@ export default function ProvablyConfig() {
         </div>
       </div>
       <div className="flex flex-col lg:h-16 lg:flex-row">
-        <div className="z-10 -mb-px flex h-full w-full items-center justify-center rounded-t bg-neutral py-2 text-center font-bold uppercase lg:py-1 lg:mb-0 lg:max-w-xs lg:rounded-lg">
+        <div className="z-10 -mb-px flex h-full w-full items-center justify-center rounded-tbg-dark py-2 text-center font-bold uppercase lg:py-1 lg:mb-0 lg:max-w-xs lg:rounded-lg">
           ROUND
         </div>
         <div className="flex h-full flex-1 flex-col items-center rounded-b-lg border border-solid border-neutral-700 p-3 text-center md:flex-row lg:-ml-6 lg:rounded-lg lg:pl-9">

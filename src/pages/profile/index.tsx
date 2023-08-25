@@ -84,7 +84,7 @@ export default function User() {
     <div className="max-w-[1400px] m-auto px-3 mt-5">
       {!headHidden() && (
         <>
-          <div className="p-3 sm:p-6 user-info bg-neutral user-info-bg flex flex-col lg:flex-row">
+          <div className="p-3 sm:p-6 user-infobg-dark user-info-bg flex flex-col lg:flex-row">
             <div className="flex gap-3 sm:gap-4 items-center pr-16 user-info-left relative py-2 w-full">
               <div className="w-16 h-16 md:w-[120px] md:h-[120px]  overflow-hidden group relative rounded-full border-1 border-solid border-light">
                 <img

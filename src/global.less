@@ -182,8 +182,11 @@
 }
 
 .modal-box {
-  border: 1px solid rgba(181, 196, 255, 0.50);
-  background: #262635;
+  background: #322D36;
+  width: 100%;
+  padding: 20px;
+  border-radius: 6px;
+  position: relative;
 }
 
 .modal-box.confirm-modal-bg {
@@ -192,72 +195,10 @@
   border: none;
 }
 
-.custom-tab {
-  height: 48px;
-  align-items: center;
-
-  .tab-item {
-    text-align: center;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-    text-transform: uppercase;
-    font-weight: 600;
-
-    &.tab-active .tab-item-c {
-      position: relative;
-      height: 100%;
-      line-height: 48px;
-    }
-
-    &.tab-active .tab-item-c::after {
-      content: "";
-      display: block;
-      width: 60%;
-      left: 20%;
-      height: 2px;
-      background: linear-gradient(180deg, #FFFC01 0%, #FFFC01 24.48%, #FFFC01 100%);
-      box-shadow: 0px 4px 15px 0px #FFFC01;
-      position: absolute;
-      bottom: 0;
-      border-radius: 1px;
-    }
-  }
+.modal-open {
+  background-color: rgba(0, 0, 0, 0.3);
 }
 
-.corner-icon {
-  position: relative;
-  border-radius: 8px;
-
-  &::before {
-    border-left-width: 2px;
-    border-top-width: 2px;
-    border-style: solid;
-    border-radius: 8px 0 0 0;
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 16px;
-    height: 16px;
-    border-color: #FFFC01;
-    content: "";
-  }
-
-  &::after {
-    border-right-width: 2px;
-    border-top-width: 2px;
-    border-style: solid;
-    border-radius: 0 8px 0 0;
-    position: absolute;
-    top: 0;
-    right: 0;
-    width: 16px;
-    height: 16px;
-    border-color: #FFFC01;
-    content: "";
-  }
-}
 
 @font-face {
   font-family: 'Gotham';
@@ -350,7 +291,7 @@
 }
 
 .animate-circleChange {
-  animation: circleChange 1.2s linear infinite;
+  animation: circleChange 1.5s linear infinite;
 }
 
 .card-flip {
@@ -394,21 +335,4 @@
 }
 .progress-secondary-l::-webkit-progress-value {
   background: linear-gradient(90deg, #000 0%, rgba(0, 240, 255, 0.68) 100%);
-}
-
-.open-btn-arr{
-  background-size: cover;
-  background-image: url('@/assets/btn-arr.png');
-  background-position: center;
-  width: 100px;
-  height: 100%;
-}
-
-.open-btn-arr-right{
-  background-size: cover;
-  background-image: url('@/assets/btn-arr.png');
-  background-position: center;
-  transform: rotateY(180deg);
-  width: 100px;
-  height: 100%;
 }

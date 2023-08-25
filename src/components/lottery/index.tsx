@@ -46,10 +46,6 @@ const Lottery = ({
     from: { scale: 1 },
   }));
 
-  const [rotateSprings, rotateApi] = useSpring(() => ({
-    from: { rotate: 0 },
-  }));
-
   const [opacitySprings, opacityApi] = useSpring(() => ({
     from: { opacity: 1 },
   }));
@@ -61,20 +57,12 @@ const Lottery = ({
     scaleApi.start({
       from: { scale: 1 },
     });
-    rotateApi.start({
-      from: { rotate: 0 },
-    });
     opacityApi.start({
       from: { opacity: 1 },
     });
   };
 
   const animateEnd = () => {
-    rotateApi.start({
-      from: { rotate: 0 },
-      to: { rotate: 360 },
-      config: { duration: 500 },
-    });
     opacityApi.start({
       from: { opacity: 1 },
       to: { opacity: 0.3 },
@@ -82,7 +70,7 @@ const Lottery = ({
     });
     scaleApi.start({
       from: { scale: 1 },
-      to: { scale: 1.3 },
+      to: { scale: 1.1 },
       config: { duration: 500 },
       onResolve: () => {
         onCompleted(lotteryIndex);
@@ -264,9 +252,6 @@ const Lottery = ({
                 <div className="truncate text-xs md:text-sm text-center">
                   <div className="text-white text-opacity-50">{name[1]}</div>
                   <div className="text-white">{name[0]}</div>
-                </div>
-                <div className="truncate font-bold text-xs md:text-sm text-center text-white mt-1">
-                  $ {item.recoveryPrice}
                 </div>
               </div>
             </div>

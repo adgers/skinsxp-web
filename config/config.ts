@@ -52,6 +52,14 @@ export default defineConfig({
           component: 'battle',
         },
         {
+          path: 'battle/create',
+          component: 'battle/create',
+        },
+        {
+          path: 'battle/create/:id',
+          component: 'battle/create',
+        },
+        {
           path: 'battle/:id',
           component: 'battle/room',
         },

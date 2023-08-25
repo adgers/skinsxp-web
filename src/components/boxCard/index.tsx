@@ -43,7 +43,7 @@ export default React.memo(function BoxCard({ data }: { data: API.BoxPageVo }) {
 
   return (
     <div className="box-card relative" ref={wrapperRef}>
-      <div className="box-info bg-neutral">
+      <div className="box-infobg-dark">
         <LazyLoad height={200} className="img-wrapper w-full">
           <img src={data?.weaponImage} className="w-full h-full min-h-[100px]" />
           <video

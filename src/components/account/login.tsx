@@ -52,7 +52,7 @@ export default function Login() {
   return (
     <Modal open={loginShow} className="max-w-md">
       <Modal.Header className="flex flex-col items-center mb-2">
-        <div>欢迎来到 MUSKINS</div>
+        <div>欢迎</div>
         <div className="modal-sub-title">
           <div className="text-base">密码登录</div>
         </div>

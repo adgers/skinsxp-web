@@ -1,12 +1,24 @@
+import { FormattedMessage } from '@umijs/max';
+
 export default function Foot() {
   return (
-    <footer className="footer footer-center p-8 bg-base-200 text-base-content rounded gap-4">
+    <footer className="footer footer-center p-8 text-white text-sm rounded gap-4">
       <div className="flex justify-center gap-x-4 gap-y-2 uppercase flex-wrap">
-        <a className="link link-hover whitespace-nowrap">TERMS OF SERVICE</a>
-        <a className="link link-hover whitespace-nowrap">PRIVACY POLICY</a>
-        <a className="link link-hover whitespace-nowrap">SUPPORT</a>
-        <a className="link link-hover whitespace-nowrap">PROVABLY FAIR</a>
-        <a className="link link-hover whitespace-nowrap">about us</a>
+        <a className="link link-hover whitespace-nowrap">
+          <FormattedMessage id="terms_of_service" />
+        </a>
+        <a className="link link-hover whitespace-nowrap">
+          <FormattedMessage id="privacy_policy" />
+        </a>
+        <a className="link link-hover whitespace-nowrap">
+          <FormattedMessage id="doc_help" />
+        </a>
+        <a className="link link-hover whitespace-nowrap">
+          <FormattedMessage id="provably_fair_title" />
+        </a>
+        <a className="link link-hover whitespace-nowrap">
+          <FormattedMessage id="about_us" />
+        </a>
       </div>
       <div>
         <div className="grid grid-flow-col gap-4">
@@ -46,7 +58,7 @@ export default function Foot() {
         </div>
       </div>
       <div>
-        <p>Copyright © 2023 - All right reserved by Muskins.com</p>
+        <p>Copyright © 2023 - All right reserved by wgskins.com</p>
       </div>
     </footer>
   );

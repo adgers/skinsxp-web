@@ -55,7 +55,7 @@ export default function GiveawayItem(props: GiveawayItemProps) {
                 {item?.giftVos?.[0]?.giftName?.split('|')?.[1]?.trim()}
               </span>
             </div>
-            <div className="mb-2 mt-auto flex h-8 items-center justify-center p-2 w-full xl:w-min bg-black/[0.25]">
+            <div className="mb-2 mt-auto flex items-center justify-center p-2 w-full xl:w-min bg-black/[0.25]">
               {days > 0 && (
                 <>
                   <div className="flex w-6 flex-shrink-0 flex-col items-center justify-center text-center">
@@ -63,11 +63,11 @@ export default function GiveawayItem(props: GiveawayItemProps) {
                       value={days}
                       className="days-value text-xs font-bold tabular-nums leading-none text-white"
                     />
-                    <span className="hours-unit text-[6px] font-medium leading-none text-white text-opacity-70">
+                    <span className="transform scale-75 font-medium leading-none text-white text-opacity-70">
                       days
                     </span>
                   </div>
-                  <div className="mx-0.5 text-center text-xs font-semibold text-navy-300 text-white">
+                  <div className="mx-0.5 text-center text-xs font-semibold  text-white">
                     :
                   </div>
                 </>
@@ -77,11 +77,11 @@ export default function GiveawayItem(props: GiveawayItemProps) {
                   value={hours}
                   className="days-value text-xs font-bold tabular-nums leading-none text-white"
                 />
-                <span className="hours-unit text-[6px] font-medium leading-none text-white text-opacity-70">
+                <span className="transform scale-75  font-medium leading-none text-white text-opacity-70">
                   hr.
                 </span>
               </div>
-              <div className="mx-0.5 text-center text-xs font-semibold text-navy-300 text-white">
+              <div className="mx-0.5 text-center text-xs font-semibold text-white">
                 :
               </div>
 
@@ -90,11 +90,11 @@ export default function GiveawayItem(props: GiveawayItemProps) {
                   value={minutes}
                   className="days-value text-xs font-bold tabular-nums leading-none text-white"
                 />
-                <span className="hours-unit text-[6px] font-medium leading-none text-white text-opacity-70">
+                <span className="transform scale-75 font-medium leading-none text-white text-opacity-70">
                   min.
                 </span>
               </div>
-              <div className="mx-0.5 text-center text-xs font-semibold text-navy-300 text-white">
+              <div className="mx-0.5 text-center text-xs font-semibold text-white">
                 :
               </div>
               <div className="flex w-6 flex-shrink-0 flex-col items-center justify-center text-center">
@@ -102,7 +102,7 @@ export default function GiveawayItem(props: GiveawayItemProps) {
                   value={seconds}
                   className="days-value text-xs font-bold tabular-nums leading-none text-white"
                 />
-                <span className="hours-unit text-[6px] font-medium leading-none text-white text-opacity-70">
+                <span className="transform scale-75 font-medium leading-none text-white text-opacity-70">
                   sec.
                 </span>
               </div>

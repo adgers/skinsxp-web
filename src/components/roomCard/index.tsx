@@ -1,21 +1,23 @@
-import loseImg from '@/assets/lose.png';
-import winImg from '@/assets/win.png';
-import { numberFixed } from '@/utils';
-import { useIntl, useModel } from '@umijs/max';
-import { memo } from 'react';
+import { useIntl } from '@umijs/max';
+import { memo, useEffect, useState } from 'react';
 import './index.less';
 
 import { PlusOutlined } from '@ant-design/icons';
 import { IconFont } from '../icons';
 
+interface IBattleBox {
+  boxName: string;
+  boxImage: string;
+  count: number;
+}
+
 const RoomCard = memo(
   ({
     data,
     onSelect,
-    showTag = false,
   }: {
     data: API.BattleVo;
-    onSelect: (id: number) => void;
+    onSelect: () => void;
     showTag?: boolean;
   }) => {
     const {
@@ -25,12 +27,9 @@ const RoomCard = memo(
       totalPrice = 0,
       boxList = [],
       customerList = [],
-      id,
-      winners,
     } = data;
 
     const intl = useIntl();
-
     const battleStatus = [
       intl.formatMessage({ id: 'arena_battel_waiting' }),
       intl.formatMessage({ id: 'arena_battel_ing' }),
@@ -42,7 +41,7 @@ const RoomCard = memo(
       intl.formatMessage({ id: 'room_mode_fq' }),
     ];
 
-    const stateName = battleStatus[state];
+    const [boxListArr, setBoxListArr] = useState<IBattleBox[]>([]);
     const modeName = battleMode[mode];
 
     let list = customerList;
@@ -56,82 +55,123 @@ const RoomCard = memo(
       );
     }
 
-    //最多取boxList前6个
-    const boxs = boxList?.slice(0, 6);
+    const initBoxList = () => {
+      // 处理boxlist合并相同项，并计数
+      const boxListMap = new Map();
+      boxList.forEach((item) => {
+        if (boxListMap.has(item.boxName)) {
+          boxListMap.set(item.boxName, boxListMap.get(item.boxName) + 1);
+        } else {
+          boxListMap.set(item.boxName, 1);
+        }
+      });
+      const arr: IBattleBox[] = [];
+      boxListMap.forEach((value, key) => {
+        arr.push({
+          boxName: key,
+          boxImage: boxList.find((item) => item.boxName === key)?.boxImage,
+          count: value,
+        });
+      });
+      return arr;
+    };
 
-    const { userInfo } = useModel('user');
-    const isWin =
-      winners?.findIndex((item) => item.winnerId === userInfo?.id) !== -1;
+    useEffect(() => {
+      setBoxListArr(initBoxList());
+    }, []);
 
     return (
       <div
-        className={`battle-room animate__animated animate__zoomIn battle-state-${state} battle-mode-${mode}`}
-        onClick={() => id && onSelect(id)}
+        className={`relative flex flex-col md:flex md:flex-row gap-4 bg-black bg-opacity-75 animate__animated animate__zoomInUp rounded p-4 battle-mode-${mode} battle-state-${state}`}
       >
-        {showTag && winners && winners.length > 0 && state === 2 && (
-          <div className="absolute right-2 top-14 h-20 w-20">
-            {isWin ? <img src={winImg} /> : <img src={loseImg} />}
+        <div className="flex w-full overflow-hidden">
+          <div className="w-16 md:w-24 flex items-center justify-center">
+            <div
+              className={`relative rounded-full ring-2 md:text-2xl w-10 h-10 md:w-14 md:h-14 flex items-center justify-center font-semibold text-white ${
+                mode === 1 ? 'ring-red' : 'ring-green'
+              }`}
+            >
+              {boxList.length}
+              {state !== 2 && (
+                <div
+                  className={`animate-circleChange absolute h-full w-full rounded-full left-0 top-0 border ${
+                    mode === 1 ? 'border-red' : 'border-green'
+                  }`}
+                ></div>
+              )}
+            </div>
           </div>
-        )}
-        <div className="flex px-2 sm:px-3 py-3 justify-between text-xs sm:text-sm bg-base-100 bg-opacity-30">
-          <div className="flex text-base-content gap-2 items-center">
-            <span className={`w-2 h-2 rounded-full animat-status`}></span>
-            <span className="text-base-content text-opacity-60">
-              {stateName}
-            </span>
-          </div>
-          <div className="text-base-content flex gap-1 sm:gap-2 flex-wrap sm:flex-nowrap justify-center">
-            <span className="animate-pulse">{modeName}</span>
-            <span>{boxList.length} 回合</span>
+          <div className="flex-1 overflow-x-auto hide-scrollbar flex flex-nowrap gap-x-2">
+            {boxListArr.map((item, index) => (
+              <div
+                className="relative flex h-full w-[64px] md:w-[84px] flex-shrink-0 flex-col items-center overflow-hidden"
+                key={index}
+              >
+                <img
+                  src={item.boxImage}
+                  className="h-full w-full object-cover"
+                />
+                <p className="absolute left-0 bottom-0 w-full p-1 text-center font-semibold text-white truncate bg-black bg-opacity-70 text-[8px]">
+                  {item.boxName}
+                </p>
+                <div className="absolute top-0 right-0 w-5 h-5 flex items-center justify-center rounded-bl-md bg-black text-white text-xs font-semibold">
+                  {item.count}
+                </div>
+              </div>
+            ))}
           </div>
         </div>
-        <div className="flex flex-col justify-center items-center relative room-bg">
-          {state === 1 && <div className="process"></div>}
-          <div className="flex gap-1 items-center font-num text-base-content text-lg mt-3 sm:mt-5">
-            <IconFont type="icon-coin" />
-            {numberFixed(totalPrice)}
+        <div className="flex flex-col md:flex-row flex-shrink-0 gap-2 md:gap-0">
+          <div className="md:w-28 flex items-center justify-center">
+            <span className="text-green">$ {totalPrice}</span>
           </div>
-          <div className="items-center justify-center flex flex-wrap gap-3 sm:gap-4 mt-4 mb-5 sm:mt-6 sm:mb-7 h-[92px] w-[92px] sm:h-[112px] sm:w-[112px]">
-            {list?.map((t, i) => {
-              if (t?.nickname !== '') {
+          <div className="md:w-48 flex items-center justify-center">
+            <div className="flex gap-2 md:grid md:grid-cols-2">
+              {list?.map((t, i) => {
+                if (t?.nickname !== '') {
+                  return (
+                    <div
+                      className="w-8 h-8 rounded-full overflow-hidden"
+                      key={i}
+                    >
+                      <img src={t.headPic} />
+                    </div>
+                  );
+                }
                 return (
                   <div
-                    className="tooltip h-10 sm:h-12"
-                    data-tip={t.nickname}
                     key={i}
+                    className="flex w-8 h-8 rounded-full items-center justify-center bg-light bg-opacity-70"
                   >
-                    <div className="avatar">
-                      <div className="w-10 sm:w-12 rounded relative">
-                        <img src={t.headPic} />
-                        <img
-                          src={t.headGround}
-                          className="absolute left-0 top-0 w-full h-full"
-                        />
-                      </div>
-                    </div>
+                    <PlusOutlined className="font-bold text-lg text-white" />
                   </div>
                 );
-              }
-              return (
-                <div
-                  key={i}
-                  className="flex w-10 h-10 sm:w-12 sm:h-12 rounded items-center justify-center breathe add-room-bg"
-                >
-                  <PlusOutlined className="font-bold text-lg" />
-                </div>
-              );
-            })}
+              })}
+            </div>
           </div>
         </div>
-        <div className="flex bg-black bg-opacity-20 px-4 py-1.5 justify-center gap-3 items-center">
-          {boxs.map((t, i) => (
-            <img
-              src={t.boxImage}
-              key={i}
-              className="w-8 h-8"
-              title={t.boxName}
-            />
-          ))}
+        <div
+          className="w-full md:w-80 flex flex-shrink-0 items-center justify-center  text-white font-semibold"
+          onClick={onSelect}
+        >
+          {state === 0 &&
+            (mode === 0 ? (
+              <div className="btn border border-green w-full bg-[#18331F] rounded gap-1">
+                <IconFont type="icon-zhandou" />
+                {modeName}
+              </div>
+            ) : (
+              <div className="btn border border-red w-full bg-[#630F14] rounded gap-1">
+                <IconFont type="icon-zhandou" />
+                {modeName}
+              </div>
+            ))}
+
+          {(state === 1 || state === 2) && (
+            <div className="btn border border-light w-full text-white uppercase rounded">
+              watch
+            </div>
+          )}
         </div>
       </div>
     );

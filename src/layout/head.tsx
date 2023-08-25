@@ -151,7 +151,7 @@ export default function Header() {
           </Link>
 
           <Menu as="div" className="relative ml-4">
-            <Menu.Button className="select select-xs select-accent flex items-center border-opacity-50 rounded uppercase font-semibold focus:outline-none bg-neutral">
+            <Menu.Button className="select select-xs select-accent flex items-center border-opacity-50 rounded uppercase font-semibold focus:outline-nonebg-dark">
               {langs.filter((item) => item.value === locale)[0].title}
             </Menu.Button>
             <Transition
@@ -163,7 +163,7 @@ export default function Header() {
               leaveFrom="transform opacity-100 scale-100"
               leaveTo="transform opacity-0 scale-95"
             >
-              <Menu.Items className="z-50 flex flex-col focus:outline-none absolute left-0 top-8 h-auto overflow-hidden origin-top-right rounded transform opacity-100 bg-neutral w-full">
+              <Menu.Items className="z-50 flex flex-col focus:outline-none absolute left-0 top-8 h-auto overflow-hidden origin-top-right rounded transform opacity-100bg-dark w-full">
                 {langs.map((item, i) => (
                   <Menu.Item key={i}>
                     {({ active }) => (
@@ -204,10 +204,9 @@ export default function Header() {
         <div className="flex-none flex gap-3">
           {userInfo ? (
             <>
-              <div className="flex flex-col text-xs font-num">
-                <span>
-                  <IconFont type="icon-coin" className="mr-1 text-primary" />
-                  <CountUp
+              <div className="flex flex-col text-xs font-num ">
+                <span className='text-green'>
+                  $ <CountUp
                     end={numberFixed(userInfo?.balance || 0)}
                     duration={1}
                     decimals={2}
@@ -215,7 +214,7 @@ export default function Header() {
                     className="font-num"
                   />
                 </span>
-                <span>
+                <span className='text-purple'>
                   <IconFont type="icon-daimond" className="mr-1" />
                   <CountUp
                     end={numberFixed(userInfo?.secondaryBalance || 0)}

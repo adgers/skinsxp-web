@@ -46,29 +46,29 @@ export default function ServerSeedHistory({
               className="grid gap-y-px overflow-hidden break-all rounded-md text-xs leading-tight grid-cols-[auto_1fr]"
               key={item.id}
             >
-              <dt className="whitespace-nowrap bg-neutral-700 p-3 font-bold">
+              <dt className="whitespace-nowrapbg-dark-700 p-3 font-bold">
                 SERVER SEED
               </dt>
               <dd className="bg-base-100 bg-opacity-30 p-3">
                 {item.secretHash}
               </dd>
-              <dt className="whitespace-nowrap bg-neutral-700 p-3 font-bold ">
+              <dt className="whitespace-nowrapbg-dark-700 p-3 font-bold ">
                 SECRET SALT
               </dt>
               <dd className="bg-base-100 bg-opacity-30 p-3">
                 {item.secretSalt}
               </dd>
-              <dt className="whitespace-nowrap bg-neutral-700 p-3 font-bold ">
+              <dt className="whitespace-nowrapbg-dark-700 p-3 font-bold ">
                 PUBLIC HASH
               </dt>
               <dd className="bg-base-100 bg-opacity-30 p-3">
                 {item.publicHash}
               </dd>
-              <dt className="whitespace-nowrap bg-neutral-700 p-3 font-bold ">
+              <dt className="whitespace-nowrapbg-dark-700 p-3 font-bold ">
                 ROUND
               </dt>
               <dd className="bg-base-100 bg-opacity-30 p-3">{item.round}</dd>
-              <dt className="whitespace-nowrap bg-neutral-700 p-3 font-bold ">
+              <dt className="whitespace-nowrapbg-dark-700 p-3 font-bold ">
                 DATE
               </dt>
               <dd className="bg-base-100 bg-opacity-30 p-3">

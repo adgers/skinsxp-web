@@ -1,9 +1,10 @@
 import { IconFont } from '@/components/icons';
 import { listUsingGET } from '@/services/front/yonghufulipeizhi';
-import { useRequest } from '@umijs/max';
+import { useModel, useRequest } from '@umijs/max';
 
 export default function VipPage() {
   const { data, loading } = useRequest(() => listUsingGET());
+  const { userInfo } = useModel('user');
 
   return (
     <div className="w-full flex justify-center">
@@ -38,8 +39,11 @@ export default function VipPage() {
                 max={data?.maxExp}
               ></progress>
             </div>
-            {data?.customerBounsVos?.map((item,i) => (
-              <div className="flex flex-col text-sm flex-shrink-0 border-l border-neutral-700" key={i}>
+            {data?.customerBounsVos?.map((item, i) => (
+              <div
+                className="flex flex-col text-sm flex-shrink-0 border-l border-neutral-700"
+                key={i}
+              >
                 <div className="vip-item border-b border-neutral-700">
                   <div className="vip-level">
                     <div className="vip-level-icon"></div>
@@ -68,9 +72,25 @@ export default function VipPage() {
                   <img src={item.headGround} width={50} />
                 </div>
                 <div className="vip-item">
-                  <button className="btn btn-xs btn-secondary btn-outline rounded" type='button'>
-                    领取
-                  </button>
+                  {userInfo?.grade && userInfo?.grade > i + 1 && (
+                    <>
+                      {item.receive ? (
+                        <button
+                          className="btn btn-xs btn-disabled btn-outline rounded"
+                          type="button"
+                        >
+                          已领取
+                        </button>
+                      ) : (
+                        <button
+                          className="btn btn-xs btn-secondary btn-outline rounded"
+                          type="button"
+                        >
+                          领取
+                        </button>
+                      )}
+                    </>
+                  )}
                 </div>
               </div>
             ))}

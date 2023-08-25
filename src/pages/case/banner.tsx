@@ -10,7 +10,7 @@ export default function Banner() {
   const { data } = useRequest(() => getBannerListUsingGET({ topN: 10 }));
 
   return (
-    <div>
+    <div className='my-8'>
       {data && data?.length > 0 && (
         <Swiper
           centeredSlides={true}
@@ -28,7 +28,7 @@ export default function Banner() {
             <SwiperSlide key={i}>
               <img
                 src={t.image}
-                className="w-full h-[200px] md:h-full object-cover md:object-contain"
+                className="w-full h-[200px] object-cover md:object-contain"
               />
             </SwiperSlide>
           ))}

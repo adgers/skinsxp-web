@@ -9,7 +9,7 @@ export default function OpenHistory() {
     <div className="w-full open-history bg-dark overflow-hidden flex">
       <div className="flex flex-col self-stretch overflow-hidden flex-shrink-0 mx-1">
         <div
-          className={`flex flex-1 flex-col items-center justify-center px-2 md:px-0 gap-1 bg-neutral cursor-pointer ${
+          className={`flex flex-1 flex-col items-center justify-center px-2 md:px-0 gap-1bg-dark cursor-pointer ${
             isTop ? 'text-green' : 'bg-opacity-50 text-gray'
           }`}
           onClick={() => {
@@ -22,7 +22,7 @@ export default function OpenHistory() {
           </span>
         </div>
         <div
-          className={`flex flex-1 flex-col items-center justify-center px-2 md:px-0 gap-1 bg-neutral cursor-pointer ${
+          className={`flex flex-1 flex-col items-center justify-center px-2 md:px-0 gap-1bg-dark cursor-pointer ${
             !isTop ? 'text-green' : 'bg-opacity-50'
           }`}
           onClick={() => {
@@ -37,15 +37,23 @@ export default function OpenHistory() {
       </div>
       <div className="flex gap-[5px]">
         {recentBox.length > 0
-          ? recentBox?.map((item) => (
+          ? recentBox?.map((item) => {
+            let url = `/case/${item.sourceId}`;
+            if (item.sourceType === 22) {
+              url = `/dream`;
+            } else if (item.sourceType === 23) {
+              url = `/battle/${item.sourceName}`;
+            }
+            return (
               <Link
                 className="will-change-transform top-wrapper"
                 key={item.id}
-                to={`/case/${item.boxId}`}
+                to={url}
               >
                 <TopCard data={item} />
               </Link>
-            ))
+            );
+          })
           : Array.from({ length: 20 }).map((_, i) => (
               <div className="flex-shrink-0" key={i}>
                 <TopCard loading />

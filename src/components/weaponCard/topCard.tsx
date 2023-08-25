@@ -2,10 +2,12 @@ import React from 'react';
 import Skeleton from 'react-loading-skeleton';
 import 'react-loading-skeleton/dist/skeleton.css';
 
+import { parseName } from '@/utils';
+import { IconFont } from '../icons';
 import './index.less';
 
 interface TopCardProps {
-  data?: API.RecentOpenBoxGiftVo;
+  data?: API.RecentDropVo;
   loading?: boolean;
 }
 
@@ -32,7 +34,18 @@ export default React.memo(function TopCard({ data, loading }: TopCardProps) {
     );
   }
 
-  const name = data?.giftName || data?.voucherName || data?.winVoucherName;
+  const getTopIcon = () => {
+    let topIcon = <IconFont type="icon-home" />;
+
+    if (data?.sourceType === 22) {
+      topIcon = <IconFont type="icon-zhuimeng" />;
+    } else if (data?.sourceType === 23) {
+      topIcon = <IconFont type="icon-zhandou" />;
+    }
+    return topIcon;
+  };
+
+  const name = parseName(data?.giftName);
 
   return (
     <div
@@ -41,26 +54,44 @@ export default React.memo(function TopCard({ data, loading }: TopCardProps) {
       <div className="front">
         <div className="img-wrapper">
           <img src={data?.giftImage} />
+          <div className="absolute top-1 right-1 text-xs text-white">
+            {getTopIcon()}
+          </div>
         </div>
-        <div className="item-footer text-white">
-          <div className="item-title">{data?.boxName?.split('|')?.[0].trim()}</div>
-          <div className="item-nick">{data?.boxName?.split('|')?.[1].trim()}</div>
+        <div className="item-footer">
+          <div className="item-title text-white text-opacity-50">{name[1]}</div>
+          <div className="item-nick text-white truncate">{name[0]}</div>
         </div>
       </div>
       <div className="back">
-        <div className="box-img-wrapper">
-          <img src={data?.boxImage} />
-        </div>
-        <div className="item-footer">
-          <div className="avatar relative rounded">
-            <img src={data?.headPic} />
-            <img
-              src={data?.headGround}
-              className="absolute left-0 top-0 w-full h-full"
-            />
+        {data?.sourceType === 21 ? (
+          <>
+            <div className="box-img-wrapper">
+              <img src={data?.sourceImage} />
+            </div>
+            <div className="item-footer">
+              <div className="avatar relative rounded">
+                <img src={data?.headPic} />
+                <img
+                  src={data?.headGround}
+                  className="absolute left-0 top-0 w-full h-full"
+                />
+              </div>
+              <div className="text-white text-xs mt-2">{data?.nickname}</div>
+            </div>
+          </>
+        ) : (
+          <div className="item-footer items-center flex flex-col gap-1 justify-center">
+            <div className="avatar relative rounded">
+              <img src={data?.headPic} />
+              <img
+                src={data?.headGround}
+                className="absolute left-0 top-0 w-full h-full"
+              />
+            </div>
+            <div className="text-white text-xs mt-2">{data?.nickname}</div>
           </div>
-          <div className="item-title">{data?.nickname}</div>
-        </div>
+        )}
       </div>
     </div>
   );
