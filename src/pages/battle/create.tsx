@@ -344,7 +344,7 @@ export default function Create() {
               </span>
             </div>
             <Button
-              className="btn border border-purple gap-1 rounded bg-[#421F57] text-white uppercase font-semibold"
+              className="btn-purple uppercase font-semibold"
               loading={loading}
               onClick={onCreate}
             >
