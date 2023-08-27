@@ -1,5 +1,5 @@
 import { getBoxListUsingGET } from '@/services/front/kaixiangxiangguan';
-import { useRequest,history } from '@umijs/max';
+import { history, useRequest } from '@umijs/max';
 
 export default function Case() {
   const { data: boxList } = useRequest(() =>
@@ -11,8 +11,8 @@ export default function Case() {
   return (
     <>
       {boxList?.map((t, i) => (
-        <>
-          <div className="relative mb-10 flex border-b border-light" key={i}>
+        <div className="px-4" key={i}>
+          <div className="relative mb-10 flex border-b border-light">
             <div className="flex w-1/6 items-end sm:w-1/3"></div>
             <div className="flex w-4/6 items-center sm:w-1/3">
               <h2
@@ -30,11 +30,10 @@ export default function Case() {
             <div className="flex w-1/6 items-end sm:w-1/3"></div>
           </div>
 
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-x-4 gap-y-16 px-4">
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-x-4 gap-y-16">
             {t.boxList?.map((v, idx) => (
               <div
                 key={idx}
-                // style={{ backgroundImage:`url(${v?.boxImage})`}}
                 className="w-full h-full bg-no-repeat bg-cover relative"
                 onClick={() => {
                   history.push(`/case/${v?.id}`);
@@ -50,14 +49,16 @@ export default function Case() {
                   <div className="absolute top-[20px] right-0 bg-white/[0.2] text-white px-2 py-1 font-num text-sm">
                     ${v?.discount}
                   </div>
-                  <div className="absolute bottom-0 left-0 w-full flex justify-center items-center text-white text-base h-[60px] bg-black bg-opacity-50 backdrop-blur-[1px]">
-                    {v?.boxName}
+                  <div className="absolute bottom-0 left-0 w-full bg-black bg-opacity-50 backdrop-blur-sm py-3 px-2">
+                    <div className="w-full text-white truncate text-center">
+                      {v?.boxName}
+                    </div>
                   </div>
                 </div>
               </div>
             ))}
           </div>
-        </>
+        </div>
       ))}
     </>
   );

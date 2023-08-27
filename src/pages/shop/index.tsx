@@ -88,7 +88,7 @@ export default () => {
               leaveFrom="transform opacity-100 scale-100"
               leaveTo="transform opacity-0 scale-95"
             >
-              <Menu.Items className="absolute left-0 mt-2 w-fullbg-dark ring-1 ring-accent rounded-sm origin-top-left p-2 z-50">
+              <Menu.Items className="absolute left-0 mt-2 w-full bg-dark ring-1 ring-accent rounded-sm origin-top-left p-2 z-50">
                 <Menu.Item>
                   {({ active }) => (
                     <div
@@ -130,7 +130,7 @@ export default () => {
               leaveFrom="transform opacity-100 scale-100"
               leaveTo="transform opacity-0 scale-95"
             >
-              <Menu.Items className="absolute left-0 mt-2 w-fullbg-dark ring-1 ring-accent rounded origin-top-left p-2 z-50">
+              <Menu.Items className="absolute left-0 mt-2 w-full bg-dark ring-1 ring-accent rounded origin-top-left p-2 z-50">
                 {EXTERIOR.map((item, i) => (
                   <Menu.Item key={i}>
                     {({ active }) => (
@@ -164,7 +164,7 @@ export default () => {
               leaveFrom="transform opacity-100 scale-100"
               leaveTo="transform opacity-0 scale-95"
             >
-              <Menu.Items className="absolute left-0 mt-2 w-fullbg-dark ring-1 ring-accent rounded origin-top-left p-2 z-50 max-h-80 overflow-y-auto">
+              <Menu.Items className="absolute left-0 mt-2 w-full bg-dark ring-1 ring-accent rounded origin-top-left p-2 z-50 max-h-80 overflow-y-auto">
                 {WEAPON_TYPE.map((item, i) => (
                   <Menu.Item key={i}>
                     {({ active }) => (
@@ -210,7 +210,7 @@ export default () => {
               placeholder={intl.formatMessage({
                 id: 'mall_qsrspmc',
               })}
-              className="join-item input input-bordered w-full min-w-[250px] input-smbg-dark focus:outline-none"
+              className="join-item input input-bordered w-full min-w-[250px] input-sm bg-dark focus:outline-none"
               ref={keywordRef}
             />
 

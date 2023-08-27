@@ -45,7 +45,7 @@ export default React.memo(function TopCard({ data, loading }: TopCardProps) {
     return topIcon;
   };
 
-  const name = parseName(data?.giftName);
+  const name = parseName(data?.giftName || '');
 
   return (
     <div
@@ -54,13 +54,12 @@ export default React.memo(function TopCard({ data, loading }: TopCardProps) {
       <div className="front">
         <div className="img-wrapper">
           <img src={data?.giftImage} />
-          <div className="absolute top-1 right-1 text-xs text-white">
+          <div className="absolute top-1 right-1 transform scale-75 text-xs sm:scale-100 text-white">
             {getTopIcon()}
           </div>
         </div>
         <div className="item-footer">
-          <div className="item-title text-white text-opacity-50">{name[1]}</div>
-          <div className="item-nick text-white truncate">{name[0]}</div>
+          <div className="item-title">{name}</div>
         </div>
       </div>
       <div className="back">

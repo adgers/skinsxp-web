@@ -75,11 +75,11 @@ export default function Header() {
   ];
 
   const headLinks = [
-    {
-      title: <FormattedMessage id="main_tab_dream" />,
-      link: '/dream',
-      icon: 'icon-zhuimeng',
-    },
+    // {
+    //   title: <FormattedMessage id="main_tab_dream" />,
+    //   link: '/dream',
+    //   icon: 'icon-zhuimeng',
+    // },
     {
       title: <FormattedMessage id="main_tab_arena" />,
       link: '/battle',
@@ -87,12 +87,12 @@ export default function Header() {
     },
     {
       title: <FormattedMessage id="home_spsc" />,
-      link: '/mall',
+      link: '/shop',
       icon: 'icon-mall',
     },
     {
       title: <FormattedMessage id="roll_room_title" />,
-      link: '/roll',
+      link: '/giveaways',
       icon: 'icon-roll',
     },
   ];
@@ -102,11 +102,6 @@ export default function Header() {
       title: <FormattedMessage id="home_item_hzhb" />,
       link: '/profile/promote',
       icon: 'icon-tuiguang',
-    },
-    {
-      title: <FormattedMessage id="home_item_hydj" />,
-      link: '/profile/vip',
-      icon: 'icon-vip',
     },
   ];
 
@@ -146,7 +141,7 @@ export default function Header() {
     <div className="sticky left-0 top-0 z-[99]">
       <Navbar className="p-3 bg-dark">
         <div className="flex-1">
-          <Link to={'/'} className="inline-block text-green text-3xl">
+          <Link to={'/'} className="logo">
             WGSKINS
           </Link>
 
@@ -163,7 +158,7 @@ export default function Header() {
               leaveFrom="transform opacity-100 scale-100"
               leaveTo="transform opacity-0 scale-95"
             >
-              <Menu.Items className="z-50 flex flex-col focus:outline-none absolute left-0 top-8 h-auto overflow-hidden origin-top-right rounded transform opacity-100bg-dark w-full">
+              <Menu.Items className="z-50 flex flex-col focus:outline-none absolute left-0 top-8 h-auto overflow-hidden origin-top-right rounded transform opacity-100 bg-dark w-full">
                 {langs.map((item, i) => (
                   <Menu.Item key={i}>
                     {({ active }) => (
@@ -190,7 +185,7 @@ export default function Header() {
                 <Link
                   key={i}
                   to={item.link}
-                  className={`px-3 py-2 uppercase transition-colors duration-200 text-white hover:text-green text-sm rounded-md ${
+                  className={`px-3 py-2 uppercase transition-colors font-semibold duration-200 text-white hover:text-green text-sm rounded-md ${
                     isActive ? 'text-green' : ''
                   }`}
                 >

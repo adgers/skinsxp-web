@@ -116,7 +116,7 @@ export default function Deposit() {
                 leaveFrom="transform opacity-100 scale-100"
                 leaveTo="transform opacity-0 scale-95"
               >
-                <Menu.Items className="absolute left-0 mt-2 w-fullbg-dark ring-1 ring-accent rounded origin-top-left p-1 z-50">
+                <Menu.Items className="absolute left-0 mt-2 w-full bg-dark ring-1 ring-accent rounded origin-top-left p-1 z-50">
                   {currencyRateVoList?.map((item) => (
                     <Menu.Item key={item.id}>
                       {({ active }) => (
@@ -151,7 +151,7 @@ export default function Deposit() {
                 leaveFrom="transform opacity-100 scale-100"
                 leaveTo="transform opacity-0 scale-95"
               >
-                <Menu.Items className="absolute left-0 mt-2 w-fullbg-dark ring-1 ring-accent rounded origin-top-left p-1 z-50">
+                <Menu.Items className="absolute left-0 mt-2 w-full bg-dark ring-1 ring-accent rounded origin-top-left p-1 z-50">
                   {rechargeChannelList?.map((item) => (
                     <Menu.Item key={item.rechargeConfigId}>
                       {({ active }) => (
@@ -219,7 +219,7 @@ export default function Deposit() {
                     leaveFrom="transform opacity-100 scale-100"
                     leaveTo="transform opacity-0 scale-95"
                   >
-                    <Menu.Items className="absolute left-0 mt-2 w-fullbg-dark ring-1 ring-accent rounded origin-top-left p-1 z-50">
+                    <Menu.Items className="absolute left-0 mt-2 w-full bg-dark ring-1 ring-accent rounded origin-top-left p-1 z-50">
                       {couponList.map((item,i) => (
                         <Menu.Item key={i}>
                           {({ active }) => (

@@ -81,6 +81,7 @@ export default function MobileLogin() {
           ref={idRef}
           allowClear
           onChange={(e) => setPhone(e.target.value)}
+          size='large'
         />
 
         <CheckCode
@@ -106,7 +107,7 @@ export default function MobileLogin() {
       </Modal.Body>
       <Modal.Actions className="flex flex-col mt-4">
         <Button
-          className="btn-primary w-full btn-sm"
+          className="btn-primary w-full"
           onClick={onPwdLogin}
           loading={loading}
         >

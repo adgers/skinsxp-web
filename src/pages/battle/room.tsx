@@ -33,7 +33,6 @@ import CountUp from 'react-countup';
 import { Button, Modal } from 'react-daisyui';
 import { toast } from 'react-toastify';
 import { CSSTransition, TransitionGroup } from 'react-transition-group';
-import BoxDetail from './boxDetail';
 import Verify from './verify';
 
 import './index.less';
@@ -94,9 +93,7 @@ const WartingCard = ({
           ) : (
             <div
               className={`px-4 py-2 text-sm cursor-pointer uppercase font-semibold ${
-                mode === 0
-                  ? 'btn-green'
-                  : 'btn-red'
+                mode === 0 ? 'btn-green' : 'btn-red'
               }`}
               onClick={onJoin}
             >
@@ -495,9 +492,7 @@ export default function RoomDetail() {
           <div className="flex flex-col md:flex-row gap-4 md:pb-3">
             <Link
               className={`uppercase font-semibold ${
-                mode === 0
-                  ? 'btn-green'
-                  : 'btn-red'
+                mode === 0 ? 'btn-green' : 'btn-red'
               }`}
               to={`/battle/create/${battleCode}`}
             >
@@ -505,10 +500,7 @@ export default function RoomDetail() {
               Create the same battle $ {data?.totalPrice}
             </Link>
 
-            <Link
-              className="btn-purple "
-              to={`/battle/create`}
-            >
+            <Link className="btn-purple " to={`/battle/create`}>
               <IconFont type="icon-zhandou" />
               <FormattedMessage id="arena_cjfy" />
             </Link>
@@ -740,13 +732,6 @@ export default function RoomDetail() {
         </div>
       )}
 
-      <BoxDetail
-        boxInfo={boxDetail}
-        show={boxDetailShow}
-        onClose={() => {
-          setBoxDetailShow(false);
-        }}
-      />
       {data && (
         <>
           <Modal open={cancelConfrimShow} className="confirm-modal-bg max-w-sm">

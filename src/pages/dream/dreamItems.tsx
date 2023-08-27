@@ -94,7 +94,7 @@ export default function DreamItems({
                 leaveFrom="transform opacity-100 scale-100"
                 leaveTo="transform opacity-0 scale-95"
               >
-                <Menu.Items className="absolute left-0 mt-2 w-fullbg-dark ring-1 ring-accent rounded-sm origin-top-left p-2 z-50">
+                <Menu.Items className="absolute left-0 mt-2 w-full bg-dark ring-1 ring-accent rounded-sm origin-top-left p-2 z-50">
                   <Menu.Item>
                     {({ active }) => (
                       <div
@@ -136,7 +136,7 @@ export default function DreamItems({
                 leaveFrom="transform opacity-100 scale-100"
                 leaveTo="transform opacity-0 scale-95"
               >
-                <Menu.Items className="absolute left-0 mt-2 w-fullbg-dark ring-1 ring-accent rounded origin-top-left p-2 z-50">
+                <Menu.Items className="absolute left-0 mt-2 w-full bg-dark ring-1 ring-accent rounded origin-top-left p-2 z-50">
                   {EXTERIOR.map((item, i) => (
                     <Menu.Item key={i}>
                       {({ active }) => (
@@ -170,7 +170,7 @@ export default function DreamItems({
                 leaveFrom="transform opacity-100 scale-100"
                 leaveTo="transform opacity-0 scale-95"
               >
-                <Menu.Items className="absolute left-0 mt-2 w-fullbg-dark ring-1 ring-accent rounded origin-top-left p-2 z-50 max-h-80 overflow-y-auto">
+                <Menu.Items className="absolute left-0 mt-2 w-full bg-dark ring-1 ring-accent rounded origin-top-left p-2 z-50 max-h-80 overflow-y-auto">
                   {WEAPON_TYPE.map((item, i) => (
                     <Menu.Item key={i}>
                       {({ active }) => (

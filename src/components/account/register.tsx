@@ -96,6 +96,7 @@ export default function Register() {
           maxLength={11}
           ref={idRef}
           allowClear
+          size='large'
           onChange={(e) => setPhone(e.target.value)}
         />
 
@@ -111,6 +112,7 @@ export default function Register() {
           prefix={<LockOutlined />}
           autoComplete="off"
           allowClear
+          size='large'
         />
 
         <Input
@@ -118,6 +120,7 @@ export default function Register() {
           prefix={<GiftOutlined />}
           ref={promoteRef}
           allowClear
+          size='large'
         />
 
         <div className="flex gap-2 items-center mt-2">
@@ -129,7 +132,7 @@ export default function Register() {
       </Modal.Body>
       <Modal.Actions className="flex flex-col mt-4">
         <Button
-          className="btn-primary w-full btn-sm"
+          className="btn-primary w-full"
           onClick={onRegister}
           loading={loading}
         >

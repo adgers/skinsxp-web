@@ -80,6 +80,7 @@ export default function CheckCode({
         maxLength={6}
         onChange={onChange}
         prefix={<SafetyOutlined />}
+        size='large'
         addonAfter={
           <div
             onClick={isSelf ? sendUserMsg : sendMsg}

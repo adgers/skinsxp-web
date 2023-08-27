@@ -77,11 +77,11 @@ export default function CaseModal({
       >
         ✕
       </Button>
-      <Modal.Header className="mb-2 text-center text-lg font-semibold uppercase text-white">
+      <Modal.Header className="mb-4 text-center text-lg font-semibold uppercase text-white">
         select cases
       </Modal.Header>
       <Modal.Body>
-        <div className="max-h-[380px] md:max-h-[600px] overflow-y-scroll sm:overflow-y-auto w-full hide-scrollbar">
+        <div className="max-h-[580px] md:max-h-[600px] overflow-y-scroll sm:overflow-y-auto w-full hide-scrollbar p-2">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
             {battleBoxs?.map((t) => {
               //判断是否在boxList中，并统计数量
@@ -90,11 +90,14 @@ export default function CaseModal({
 
               return (
                 <div
-                  className={`w-full h-full relative cursor-pointer rounded border ${
-                    isSelect ? 'border-green' : 'border-transparent'
+                  className={`w-full h-full relative overflow-hidden cursor-pointer rounded-lg ring-1 ${
+                    isSelect ? 'ring-green' : 'ring-transparent'
                   }`}
                   key={t.id}
                   onClick={() => {
+                    if (isSelect) {
+                      return;
+                    }
                     increaseBox(t);
                   }}
                 >
@@ -113,9 +116,9 @@ export default function CaseModal({
                   </div>
                   {isSelect && (
                     <div className="absolute left-0 top-0 flex w-full h-full items-center justify-center bg-black bg-opacity-80">
-                      <div className="absolute left-1/2 top-1/2 z-20 mt-2 h-11 w-28 -translate-x-1/2 -translate-y-1/2 transform items-center justify-between rounded-md border border-light flex">
+                      <div className="absolute left-1/2 top-1/2 z-20 mt-2 h-8 -translate-x-1/2 -translate-y-1/2 transform items-center justify-between flex">
                         <button
-                          className="ml-2 flex h-6 w-6 flex-shrink-0 items-center justify-center rounded-md bg-light text-xs font-bold text-white"
+                          className="btn btn-sm bg-light font-bold text-white rounded-none border-0"
                           type="button"
                           onClick={(e) => {
                             e.preventDefault();
@@ -127,11 +130,11 @@ export default function CaseModal({
                         </button>
                         <input
                           type="text"
-                          className="input mx-1.5 w-full rounded-md border-0 bg-transparent p-0 text-center text-xs text-white outline-none"
+                          className="input w-8 h-8 px-2 bg-transparent p-0 text-center text-xs font-semibold text-white outline-none focus:outline-none border border-light rounded-none"
                           value={count}
                         ></input>
                         <button
-                          className="mr-2 flex h-6 w-6 flex-shrink-0 items-center justify-center rounded-md bg-light text-xs font-bold text-white"
+                          className="btn btn-sm bg-light font-bold text-white rounded-none border-0"
                           type="button"
                           onClick={(e) => {
                             e.preventDefault();

@@ -96,7 +96,6 @@ export default React.memo(function WeaponCard({
           </div>
         </div>
       )}
-      {/* </div>  */}
     </div>
   );
 });

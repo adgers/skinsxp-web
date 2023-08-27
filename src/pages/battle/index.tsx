@@ -1,9 +1,5 @@
 import { IconFont } from '@/components/icons';
-import {
-  boxGiftListUsingGET,
-  boxPageUsingGET,
-} from '@/services/front/kaixiangxiangguan';
-import { FormattedMessage, Link, useModel, useRequest } from '@umijs/max';
+import { FormattedMessage, Link, useModel } from '@umijs/max';
 import { useEffect, useRef, useState } from 'react';
 import CurrentRooms from './currentRooms';
 import EndRooms from './endRooms';
@@ -15,82 +11,45 @@ export default function BattlePage() {
     {
       name: <FormattedMessage id="arena_gftj" />,
       key: 'in',
+      icon: <IconFont type="icon-zhandou" />,
     },
     {
       name: <FormattedMessage id="arena_dzls" />,
       key: 'end',
+      icon: <IconFont type="icon-zhandou" />,
     },
     {
       name: <FormattedMessage id="arena_wcyd" />,
       key: 'my',
+      icon: <IconFont type="icon-zhandou" />,
     },
   ];
 
   const modfilters = [
     {
       name: 'all',
-      key: '',
+      key: -1,
     },
     {
       name: <FormattedMessage id="room_mode_oh" />,
-      key: '0',
+      key: 0,
     },
     {
       name: <FormattedMessage id="room_mode_fq" />,
-      key: '1',
+      key: 1,
     },
   ];
 
   const [filter, setFilter] = useState<string>('in');
-  const [modFilter, setModFilter] = useState<string>('');
-  const [boxDetail, setBoxDetail] = useState<{
-    boxName: string;
-    boxGiftVo: any;
-    gradeGiftProb: any;
-  }>();
-  const [boxDetailShow, setBoxDetailShow] = useState(false);
-  const [createShow, setCreateShow] = useState(false);
+  const [modFilter, setModFilter] = useState<number>(-1);
+
   const [recordTab, setRecordTab] = useState(0);
   const [rank, setRank] = useState<API.BattleRankVo[]>([]);
   const rankRef = useRef<HTMLDivElement>(null);
   const { battleRank } = useModel('socket');
 
-  const battleBoxs = useRequest(
-    () =>
-      boxPageUsingGET({
-        boxType: 1,
-        moduleId: -1,
-        page: 1,
-        pageSize: 1000,
-        visibleRoom: true,
-      }),
-    {
-      cacheKey: 'battleBoxs',
-    },
-  );
-
   const { topOneYesterday, todayRank, myReward, yesterdayRank } =
     battleRank || {};
-
-  const showBoxDetail = async (box: any) => {
-    const ret = await boxGiftListUsingGET({ boxId: box.id });
-    if (ret.status === 0) {
-      setBoxDetail({
-        boxName: box.boxName,
-        boxGiftVo: ret?.data?.boxGiftVo,
-        gradeGiftProb: ret.data?.gradeGiftProb,
-      });
-      setBoxDetailShow(true);
-    }
-  };
-
-  const onCreateRoom = async () => {
-    if (!battleBoxs?.data?.pageData) {
-      await battleBoxs.refresh();
-    }
-
-    setCreateShow(true);
-  };
 
   useEffect(() => {
     if (battleRank) {
@@ -111,7 +70,7 @@ export default function BattlePage() {
               const selected = t.key === filter;
               return (
                 <div
-                  className={`cursor-pointer px-6 text-base uppercase leading-none h-full inline-flex items-center transition-colors duration-200 hover:text-green border-b ${
+                  className={`cursor-pointer px-4 text-base uppercase leading-none h-full inline-flex gap-1 items-center transition-colors duration-200 hover:text-green border-b ${
                     selected
                       ? 'border-green text-green'
                       : 'text-white border-transparent'
@@ -121,25 +80,22 @@ export default function BattlePage() {
                     setFilter(t.key);
                   }}
                 >
+                  {t.icon}
                   {t.name}
                 </div>
               );
             })}
           </div>
 
-          <Link
-            className="btn-purple absolute right-0 bottom-5"
-            to={`/battle/create`}
-          >
-            <IconFont type="icon-zhandou" />
-            <FormattedMessage id="arena_cjfy" />
-          </Link>
+          <div className="hidden sm:block absolute right-0 bottom-5">
+            <Link className="btn-purple" to={`/battle/create`}>
+              <IconFont type="icon-zhandou" />
+              <FormattedMessage id="arena_cjfy" />
+            </Link>
+          </div>
         </div>
 
-        <Link
-          className="sm:hidden btn-purple mb-4"
-          to={`/battle/create`}
-        >
+        <Link className="sm:hidden btn-purple mb-4" to={`/battle/create`}>
           <IconFont type="icon-zhandou" />
           <FormattedMessage id="arena_cjfy" />
         </Link>
@@ -175,14 +131,18 @@ export default function BattlePage() {
           <div className="w-48 text-xs font-semibold uppercase text-white text-opacity-50">
             Players
           </div>
-          <div className="w-80 text-xs font-semibold uppercase text-white text-opacity-50">
+          <div className="w-72 text-xs font-semibold uppercase text-white text-opacity-50">
             Status
           </div>
         </div>
 
-        {filter === 'in' && <CurrentRooms show={filter === 'in'} />}
-        {filter === 'my' && <MyRooms show={filter === 'my'} />}
-        {filter === 'end' && <EndRooms show={filter === 'end'} />}
+        {filter === 'in' && (
+          <CurrentRooms show={filter === 'in'} mode={modFilter} />
+        )}
+        {filter === 'my' && <MyRooms show={filter === 'my'} mode={modFilter} />}
+        {filter === 'end' && (
+          <EndRooms show={filter === 'end'} mode={modFilter} />
+        )}
       </div>
 
       <div className="w-[330px] flex-shrink-0" ref={rankRef}>

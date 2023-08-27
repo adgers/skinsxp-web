@@ -151,7 +151,7 @@ const RoomCard = memo(
           </div>
         </div>
         <div
-          className="w-full md:w-80 flex flex-shrink-0 items-center justify-center  text-white font-semibold"
+          className="w-full md:w-72 flex flex-shrink-0 items-center justify-center  text-white font-semibold"
           onClick={onSelect}
         >
           {state === 0 &&
@@ -168,7 +168,7 @@ const RoomCard = memo(
             ))}
 
           {(state === 1 || state === 2) && (
-            <div className="btn border border-light w-full text-white uppercase rounded">
+            <div className="btn-light w-full uppercase">
               watch
             </div>
           )}

@@ -6,6 +6,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import BtmNav from './btm-nav';
 import Footer from './foot';
 import Header from './head';
+import RightNav from './right-nav';
 
 export default function Layout() {
   const { pathname } = useLocation();
@@ -24,6 +25,7 @@ export default function Layout() {
       </div>
       {!headHidden() && <BtmNav />}
       {!headHidden() && <Footer />}
+      {!headHidden() && <RightNav />}
       <ToastContainer
         theme="dark"
         autoClose={2000}

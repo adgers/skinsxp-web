@@ -1,11 +1,17 @@
 import Empty from '@/components/empty';
 import RoomCard from '@/components/roomCard';
 import { getCurrentPageUsingGET } from '@/services/front/duizhanxiangguan';
-import { history, useModel, useRequest } from '@umijs/max';
+import { FormattedMessage, history, useModel, useRequest } from '@umijs/max';
 import { useEffect, useState } from 'react';
 import { Button } from 'react-daisyui';
 
-export default function CurrentRooms({ show }: { show: boolean }) {
+export default function CurrentRooms({
+  show,
+  mode,
+}: {
+  show: boolean;
+  mode: number;
+}) {
   const { battleRoomCreate, battleState } = useModel('socket');
   const [rooms, setRooms] = useState<API.BattleVo[]>();
   const [pageSize, setPageSize] = useState(12);
@@ -19,9 +25,10 @@ export default function CurrentRooms({ show }: { show: boolean }) {
       show &&
       getCurrentPageUsingGET({
         pageSize,
+        mode,
       }),
     {
-      refreshDeps: [show, pageSize],
+      refreshDeps: [show, pageSize, mode],
       cacheKey: 'currentBattle',
     },
   );
@@ -79,13 +86,15 @@ export default function CurrentRooms({ show }: { show: boolean }) {
           />
         ))}
       </div>
-      {rooms && rooms?.length > 0 && (
-        <div className="flex items-center mt-4">
-          <Button className="btn btn-sm" loading={loading} onClick={loadMore}>
-            load more
-          </Button>
-        </div>
-      )}
+      {rooms &&
+        currentBattles?.totalRows &&
+        rooms?.length < currentBattles?.totalRows && (
+          <div className="flex items-center mt-4">
+            <Button className="btn btn-sm" loading={loading} onClick={loadMore}>
+              <FormattedMessage id="my_package_ckgd" />
+            </Button>
+          </div>
+        )}
     </div>
   );
 }

@@ -7,9 +7,11 @@ import { useEffect, useState } from 'react';
 
 export default function EndRooms({
   show,
+  mode,
   pageSize = 12,
 }: {
   show: boolean;
+  mode: number;
   pageSize?: number;
 }) {
   const { battleState } = useModel('socket');
@@ -17,13 +19,13 @@ export default function EndRooms({
   const [page, setPage] = useState(1);
   const [total, setTotal] = useState(0);
 
-  const {
-    data: endBattles,
-    refresh,
-  } = useRequest(() => show && getPageUsingGET({ pageSize, page, state: 2 }), {
-    refreshDeps: [show, page],
-    cacheKey: 'endBattle',
-  });
+  const { data: endBattles, refresh } = useRequest(
+    () => show && getPageUsingGET({ pageSize, page, state: 2, mode }),
+    {
+      refreshDeps: [show, page, mode],
+      cacheKey: 'endBattle',
+    },
+  );
 
   useEffect(() => {
     if (!show) {

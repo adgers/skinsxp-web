@@ -1,21 +1,35 @@
 import WeaponCard from '@/components/weaponCard';
+import { boxGiftListUsingGET } from '@/services/front/kaixiangxiangguan';
 import { getBoxColor, numberFixed } from '@/utils';
-import { FormattedMessage } from '@umijs/max';
+import { useRequest } from '@umijs/max';
 import { Button, Modal } from 'react-daisyui';
 
 export default function BoxDetail({
-  boxInfo,
+  caseId,
+  caseName,
   show,
   onClose,
 }: {
-  boxInfo?: API.BoxGiftInfoVo & { boxName: string };
+  caseId: number;
   show: boolean;
+  caseName: string;
   onClose: () => void;
 }) {
+  const { data: boxInfo } = useRequest(
+    () => {
+      if (show) {
+        return boxGiftListUsingGET({ caseId });
+      }
+    },
+    {
+      refreshDeps: [caseId, show],
+    },
+  );
+
   return (
     <Modal open={show} className="max-w-6xl">
       <Modal.Header className="mb-2 text-center text-lg">
-        {boxInfo?.boxName} <FormattedMessage id="include_gifts" />：
+        {caseName}
       </Modal.Header>
       <Button
         size="xs"
@@ -29,9 +43,6 @@ export default function BoxDetail({
       <Modal.Body className="overflow-y-scroll max-h-[600px] sm:overflow-y-auto sm:max-h-full">
         {boxInfo?.gradeGiftProb && (
           <div className="flex items-center justify-center gap-2 flex-wrap mb-4 font-num">
-            <span className="text-sm uppercase font-semibold">
-              <FormattedMessage id="drop_probability" />
-            </span>
             {boxInfo?.gradeGiftProb?.map((item, i: number) => {
               const color = getBoxColor(item.grade || 0);
               return (

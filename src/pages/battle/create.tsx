@@ -16,6 +16,7 @@ import {
 import { useEffect, useState } from 'react';
 import { Button } from 'react-daisyui';
 import { toast } from 'react-toastify';
+import BoxDetail from './boxDetail';
 import CaseModal from './caseModal';
 
 interface IBattleBox {
@@ -37,6 +38,9 @@ export default function Create() {
   const battleCode = useParams<{ id: string }>()?.id;
 
   const [caseModalShow, setCaseModalShow] = useState(false);
+  const [boxDetailShow, setBoxDetailShow] = useState(false);
+  const [caseId, setCaseId] = useState(0);
+  const [caseName, setCaseName] = useState('');
   const intl = useIntl();
 
   const battleBoxs = useRequest(
@@ -153,19 +157,30 @@ export default function Create() {
     const ret = await getBattleDetailUsingGET({ battleCode });
 
     if (ret.status === 0 && ret.data) {
-      const { mode, countCustomer, boxList, totalPrice } = ret.data;
-      setMode(mode);
-      setCountCustomer(countCustomer);
+      const {
+        mode,
+        countCustomer: battleCountCustomer,
+        boxList,
+        totalPrice,
+      } = ret.data;
+      setMode(mode ?? 0);
+      setCountCustomer(battleCountCustomer ?? 0);
       const lists = boxList?.map((item) => ({
         id: item.boxId,
         boxName: item.boxName,
         boxImage: item.boxImage,
         openPrice: item.boxPrice,
       }));
-      setBoxLists(lists);
-      setTotalPrice(totalPrice);
-      initBoxListArr(lists);
+      setBoxLists(lists ?? []);
+      setTotalPrice(totalPrice ?? 0);
+      initBoxListArr(lists ?? []);
     }
+  };
+
+  const showBoxDetail = (caseId: number, caseName: string) => {
+    setCaseId(caseId);
+    setCaseName(caseName);
+    setBoxDetailShow(true);
   };
 
   useEffect(() => {
@@ -175,7 +190,7 @@ export default function Create() {
   }, [battleCode]);
 
   return (
-    <div className="max-w-[1400px] w-full m-auto mt-4">
+    <div className="max-w-[1400px] w-full m-auto p-3">
       <div className="my-5 flex w-full border-b border-light lg:mt-8 lg:flex-row">
         <div className="-mb-px items-center border-b border-green pb-6 pr-6 font-semibold uppercase text-white flex">
           <Link className="-my-2 -ml-3 px-3 py-2 text-white" to="/battle">
@@ -203,6 +218,9 @@ export default function Create() {
               return (
                 <div
                   key={i}
+                  onClick={() => {
+                    showBoxDetail(item.id as number, item.boxName as string);
+                  }}
                   className={`w-16 h-16 flex-shrink-0 sm:w-24 sm:h-24 flex justify-center items-center cursor-pointer`}
                 >
                   <img src={item.boxImage} className="w-full h-full" />
@@ -213,16 +231,16 @@ export default function Create() {
         </div>
       </div>
 
-      <div className="my-8 grid grid-cols-2 md:grid-cols-5 flex-wrap gap-4">
+      <div className="my-5 grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 flex-wrap gap-4">
         {boxListArr.map((item, i) => {
           return (
-            <div className="relative h-80 w-full bg-black" key={i}>
+            <div className="relative h-80 w-full bg-black rounded-md" key={i}>
               <div className="flex flex-col h-64 w-full items-end justify-center rounded-lg pb-1 text-xs uppercase relative">
                 <img
                   src={item.boxImage}
                   className="w-full h-full object-cover"
                 />
-                <p className="absolute left-0 bottom-4 w-full mx-1 truncate text-center leading-tight text-white">
+                <p className="absolute left-0 bottom-4 w-full px-2 truncate text-center leading-tight text-white">
                   {item.boxName}
                 </p>
               </div>
@@ -232,9 +250,9 @@ export default function Create() {
                 </span>
               </div>
 
-              <div className="mt-2 z-20 flex items-center justify-between rounded-xl px-2.5">
+              <div className="mt-4 z-20 flex items-center justify-between rounded-xl px-2.5">
                 <button
-                  className="btn btn-sm font-bold bg-light bg-opacity-50 rounded-none"
+                  className="btn btn-sm font-bold bg-light rounded-none"
                   type="button"
                   onClick={() => {
                     reduceBox(item);
@@ -244,11 +262,11 @@ export default function Create() {
                 </button>
                 <input
                   type="text"
-                  className="input mx-1.5 h-auto w-full rounded-md border-0 bg-transparent text-center font-bold text-white outline-none"
+                  className="input mx-1.5 h-auto w-full rounded-md border-0 bg-transparent text-center font-bold text-white outline-none focus:outline-none"
                   value={item.count}
                 />
                 <button
-                  className="btn btn-sm bg-light bg-opacity-50 font-bold text-white rounded-none"
+                  className="btn btn-sm bg-light font-bold text-white rounded-none"
                   type="button"
                   onClick={() => {
                     increaseBox(item);
@@ -265,7 +283,7 @@ export default function Create() {
           className="group flex h-80 cursor-pointer flex-col items-center justify-center rounded-lg bg-black"
           onClick={() => setCaseModalShow(true)}
         >
-          <div className="flex w-10 h-10 rounded-full items-center justify-center bg-light bg-opacity-70">
+          <div className="flex w-10 h-10 rounded-full items-center justify-center bg-light hover:bg-opacity-70">
             <PlusOutlined className="font-bold text-lg text-white" />
           </div>
           <p className="mt-5 text-center text-sm font-semibold uppercase text-white">
@@ -274,7 +292,7 @@ export default function Create() {
         </div>
       </div>
 
-      <div className="my-8 flex flex-col flex-wrap gap-8 border-y border-light py-5 sm:flex-row sm:items-center xl:flex-nowrap ">
+      <div className="my-5 flex flex-col flex-wrap gap-4 sm:gap-8 border-y border-light py-5 sm:flex-row sm:items-center xl:flex-nowrap">
         <div className="flex flex-col">
           <div className="flex items-center gap-2">
             <p className="text-xs font-bold uppercase text-white">
@@ -330,16 +348,16 @@ export default function Create() {
             ))}
           </div>
         </div>
-        <div className="flex h-min basis-full flex-col rounded-lg bg-navy-700 p-4 sm:flex-row sm:px-8 sm:py-6 xl:ml-auto xl:basis-auto">
-          <div className="grid w-full grid-cols-2 justify-center sm:justify-start md:flex">
-            <div className="flex flex-col text-center sm:mr-12 md:text-left">
-              <p className="text-xs font-bold uppercase text-white text-opacity-50">
+        <div className="flex h-min basis-full flex-col sm:flex-row xl:ml-auto xl:basis-auto">
+          <div className="flex w-full sm:flex-row flex-col justify-center sm:justify-start gap-4 sm:gap-8">
+            <div className="flex flex-row sm:flex-col gap-2 sm:gap-1 justify-center text-center sm:text-left">
+              <p className="text-xs font-bold uppercase text-white">
                 Total cost
               </p>
               <p className="text-xs font-medium text-white text-opacity-50">
                 Total price of cases
               </p>
-              <span className="text-base font-semibold leading-none text-green mt-3">
+              <span className="text-base font-semibold leading-none text-green">
                 $ {totalPrice}
               </span>
             </div>
@@ -355,7 +373,16 @@ export default function Create() {
         </div>
       </div>
 
-      {battleBoxs?.data?.pageData && (
+      <BoxDetail
+        caseId={caseId}
+        caseName={caseName}
+        show={boxDetailShow}
+        onClose={() => {
+          setBoxDetailShow(false);
+        }}
+      />
+
+      {battleBoxs?.data?.pageData && caseModalShow && (
         <CaseModal
           show={caseModalShow}
           onSelect={onCaseSelect}

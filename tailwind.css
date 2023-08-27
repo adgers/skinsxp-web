@@ -12,13 +12,17 @@
 
 
 .btn-green {
-  @apply btn border border-green  bg-[#18331F] rounded gap-1 hover:border-green hover:bg-[#18331F] hover:bg-opacity-50 flex items-center justify-center
+  @apply btn border border-green bg-[#18331F] rounded gap-1 hover:border-green hover:bg-[#18331F] hover:bg-opacity-50 flex items-center justify-center
 }
 
-.btn-red { 
+.btn-red {
   @apply btn border border-red bg-[#630F14] rounded gap-1 hover:border-red hover:bg-[#630F14] hover:bg-opacity-50 flex items-center justify-center
 }
 
 .btn-purple {
   @apply btn border border-purple gap-1 rounded bg-[#421F57] text-white hover:border-purple hover:bg-[#421F57] hover:bg-opacity-50 flex items-center justify-center
+}
+
+.btn-light {
+  @apply btn border border-light gap-1 rounded bg-dark text-white hover:border-light hover:bg-black hover:bg-opacity-50 flex items-center justify-center
 }

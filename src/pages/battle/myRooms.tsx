@@ -8,8 +8,10 @@ import { useEffect, useState } from 'react';
 export default function MyRooms({
   show,
   pageSize = 12,
+  mode
 }: {
   show: boolean;
+  mode: number;
   pageSize?: number;
 }) {
   const { battleState } = useModel('socket');
@@ -23,9 +25,10 @@ export default function MyRooms({
       getMyPageUsingGET({
         pageSize,
         page,
+        mode
       }),
     {
-      refreshDeps: [show, page],
+      refreshDeps: [show, page,mode],
       cacheKey: 'myBattle',
     },
   );
