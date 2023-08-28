@@ -186,24 +186,6 @@ export default () => {
           </Menu>
         </div>
         <div className="w-full sm:w-auto flex gap-2 flex-col-reverse sm:flex-row">
-          {/* <div className="join">
-            <input
-              type="text"
-              placeholder="最低价"
-              className="join-item input w-20 input-bordered input-smbg-dark"
-            />
-            <div className="join-item flex items-center">
-              <div className=" bg-white w-[10px] h-[1px] mx-2"></div>
-            </div>
-            <input
-              type="text"
-              placeholder="最高价"
-              className="join-item input w-20 input-bordered input-smbg-dark"
-            />
-            <button className="join-item btn btn-primary btn-sm rounded">
-              搜索
-            </button>
-          </div> */}
           <div className="join">
             <input
               type="text"
@@ -225,11 +207,6 @@ export default () => {
         </div>
       </div>
       {!loading && data?.pageData?.length === 0 && <Empty />}
-      {/* {loading && (
-        <div className="absolute top-0 left-0 w-full h-full flex justify-center items-center z-50 bg-black bg-opacity-50">
-          <LotterLoading />
-        </div>
-      )} */}
       <div className="grid grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-2 sm:gap-4 p-2 sm:p-6 min-h-[200px]">
         {data?.pageData?.map((item, i: number) => {
           return (
