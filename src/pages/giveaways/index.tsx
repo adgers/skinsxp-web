@@ -1,8 +1,8 @@
 import Empty from '@/components/empty';
 import RollCard from '@/components/rollCard';
 import { pageUsingGET } from '@/services/front/ROLLfangxiangguan';
-import { FormattedMessage, Link, useRequest } from '@umijs/max';
-import { Pagination, Skeleton } from 'antd';
+import { FormattedMessage, useRequest } from '@umijs/max';
+import { Skeleton } from 'antd';
 import { useMemo, useState } from 'react';
 import './index.less';
 
@@ -18,7 +18,6 @@ export default function RollList() {
       refreshDeps: [page, roomState, roomType],
     },
   );
-
   const roomTypes = useMemo(() => {
     return [
       { label: <FormattedMessage id="roll_room_gftj" />, value: 1 },
@@ -36,20 +35,32 @@ export default function RollList() {
 
   return (
     <div className="max-w-[1400px] m-auto px-3">
-      <div className="flex flex-col items-center">
-        <div className="custom-tab w-full sm:w-[700px] flex justify-evenly">
-          {roomTypes.map((item, i) => (
-            <div
-              className={`tab-item ${
-                roomType === item.value ? 'tab-active' : ''
-              }`}
-              key={i}
-              onClick={() => setRoomType(item.value)}
-            >
-              <span className="tab-item-c">{item.label}</span>
-            </div>
-          ))}
+      <div className="flex flex-col w-full overflow-hidden">
+        <div className="my-4 flex w-full justify-center sm:justify-start border-b border-light relative h-[68px]">
+          <div className="flex items-center">
+            {roomTypes.map((t) => {
+              const selected = t.value === roomType;
+              return (
+                <div
+                  className={`cursor-pointer px-4 text-base uppercase leading-none h-full inline-flex gap-1 items-center transition-colors duration-200 hover:text-green border-b ${
+                    selected
+                      ? 'border-green text-green'
+                      : 'text-white border-transparent'
+                  }`}
+                  key={t.value}
+                  onClick={() => {
+                    // setFilter(t.key);
+                    setRoomType(t.value);
+                  }}
+                >
+                  {t.label}
+                </div>
+              );
+            })}
+          </div>
         </div>
+      </div>
+      <div className="flex flex-col items-center">
         <div className="join my-4 sm:my-6 text-sm">
           {roomStates.map((item, i) => (
             <div
@@ -67,7 +78,7 @@ export default function RollList() {
         </div>
       </div>
       {!loading && data?.pageData?.length === 0 && <Empty />}
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+      <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-x-4 gap-y-8">
         {loading
           ? Array.from({ length: 1 }).map((item, i) => (
               <Skeleton
@@ -84,12 +95,12 @@ export default function RollList() {
               ></Skeleton>
             ))
           : data?.pageData?.map((item, i) => (
-              <Link to={`/roll/${item.id}`} key={i}>
-                <RollCard key={i} data={item} />
-              </Link>
+              // <Link to={`/giveaways/${item.id}`} key={i}>
+              <RollCard key={i} data={item} />
+              // </Link>
             ))}
       </div>
-      {!loading && !!data?.totalRows && data?.totalRows > pageSize && (
+      {/* {!loading && !!data?.totalRows && data?.totalRows > pageSize && (
         <div className="flex justify-center items-center mt-4">
           <Pagination
             current={page}
@@ -101,7 +112,7 @@ export default function RollList() {
             }}
           />
         </div>
-      )}
+      )} */}
     </div>
   );
 }

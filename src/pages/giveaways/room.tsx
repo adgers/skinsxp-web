@@ -17,11 +17,19 @@ import { toast } from 'react-toastify';
 import './index.less';
 
 export default function Room() {
-  const rollId = Number(useParams()?.id);
-  const roomInfo = useRequest(() => rollId && detailUsingGET({ rollId }));
-  const giftList = useRequest(() => rollId && giftListUsingGET({ rollId }));
-  const userList = useRequest(() => rollId && partakeListUsingGET({ rollId }));
-  const winnerList = useRequest(() => rollId && winnerListUsingGET({ rollId }));
+  const giveawayId = Number(useParams()?.id);
+  const roomInfo = useRequest(
+    () => giveawayId && detailUsingGET({ giveawayId }),
+  );
+  const giftList = useRequest(
+    () => giveawayId && giftListUsingGET({ giveawayId }),
+  );
+  const userList = useRequest(
+    () => giveawayId && partakeListUsingGET({ giveawayId }),
+  );
+  const winnerList = useRequest(
+    () => giveawayId && winnerListUsingGET({ giveawayId }),
+  );
 
   const [leftTime, setLeftTime] = useState(0);
   const [countdown, formattedRes] = useCountDown({
@@ -48,7 +56,7 @@ export default function Room() {
     }
     const ret = await partakeUsingPOST({
       pwd,
-      rollId,
+      giveawayId,
     });
     if (ret.status === 0) {
       toast.success('参与成功');
@@ -79,93 +87,33 @@ export default function Room() {
           active
           round
           avatar={{
-            size: 144,
-            shape: 'square',
+            size: 122,
+            shape: 'circle',
           }}
           paragraph={{ rows: 1 }}
         >
-          <div className="absolute right-4 top-4">
-            <div className="text-secondary text-right text-sm sm:hidden">
-              {roomInfo?.data &&
-                intl
-                  .formatMessage({
-                    id: 'roll_detail_gcyr',
-                  })
-                  .replace('%s', String(roomInfo?.data?.userCount))}
-            </div>
-          </div>
-
           <div className="flex sm:justify-between flex-col sm:flex-row sm:gap-8">
             <div className="flex flex-col sm:flex-row items-center sm:items-start flex-1 gap-2 sm:gap-5">
               {roomInfo?.data?.banner && (
                 <div className="avatar relative">
-                  <div className="w-[70px] sm:w-36 rounded">
+                  <div className="w-[122px] rounded">
                     <img src={roomInfo?.data?.banner} />
-                  </div>
-                  <div className="avatar-tag leading-5 h-5 sm:leading-8 sm:h-8 rounded-b text-sm sm:text-base text-base-100">
-                    {roomInfo?.data.roomType === 1 ? (
-                      <FormattedMessage id="roll_room_gftj" />
-                    ) : (
-                      <FormattedMessage id="roll_room_zbfl" />
-                    )}
                   </div>
                 </div>
               )}
-              <div className="flex flex-col justify-between w-full h-full">
+              <div className="flex flex-col justify-center w-full h-full">
                 <div className="flex flex-col gap-2">
-                  <div className="text-center sm:text-left">
+                  <div className="text-center sm:text-left text-white">
                     {roomInfo?.data?.title}
                   </div>
-                  <div className="text-sm text-base-content text-opacity-50">
+                  <div className="  text-green text-xl">
                     {roomInfo?.data?.remark}
                   </div>
-                </div>
-                <div className="text-sm mb-3 sm:mb-0 flex gap-2 items-center">
-                  <div className="text-secondary text-right hidden sm:block">
-                    {roomInfo?.data &&
-                      intl
-                        .formatMessage({
-                          id: 'roll_detail_gcyr',
-                        })
-                        .replace('%s', String(roomInfo?.data?.userCount))}
-                  </div>
-                  {roomInfo?.data?.openTime && (
-                    <div className="flex items-center">
-                      {roomInfo?.data?.state === 2 ? (
-                        <FormattedMessage id="roll_yjs" />
-                      ) : (
-                        <>
-                          <FormattedMessage id="roll_detail_kjsj" />:
-                          <div className="ml-2 font-mono grid grid-flow-col justify-center items-center auto-cols-max gap-4">
-                            {days > 0 && (
-                              <div className="flex flex-col items-center">
-                                <Countdown value={days} />
-                                <span className="text-xs">days</span>
-                              </div>
-                            )}
-                            <div className="flex flex-col items-center">
-                              <Countdown value={hours} />
-                              <span className="text-xs">hours</span>
-                            </div>
-
-                            <div className="flex flex-col items-center">
-                              <Countdown value={minutes} />
-                              <span className="text-xs">min</span>
-                            </div>
-                            <div className="flex flex-col items-center">
-                              <Countdown value={seconds} />
-                              <span className="text-xs">sec</span>
-                            </div>
-                          </div>
-                        </>
-                      )}
-                    </div>
-                  )}
                 </div>
               </div>
             </div>
             {roomInfo?.data && (
-              <div className="flex gap-4 flex-col">
+              <div className="flex gap-4 flex-col justify-center">
                 {roomInfo?.data?.state === 1 &&
                   roomInfo?.data?.pwdFlag &&
                   !roomInfo?.data?.joinFlag && (
@@ -188,105 +136,169 @@ export default function Room() {
                     </button>
                   ) : (
                     <button
-                      className="btn btn-primary btn-sm rounded-xl"
+                      className="btn btn-primary btn-sm rounded-none "
                       onClick={joinRoom}
                       type="button"
+                      style={{
+                        background:
+                          'linear-gradient(270deg, #0BFF59 0%, #B4FC3B 100%',
+                      }}
                     >
                       <FormattedMessage id="roll_ljcy" />
                     </button>
                   )
                 ) : (
                   <button
-                    className="btn btn-sm rounded-xl bg-[#434363] border-[#434363]"
+                    className="btn btn-sm rounded-none"
                     type="button"
+                    style={{ background: 'rgba(85, 88, 84, 0.80)' }}
                   >
                     <FormattedMessage id="roll_yjs" />
                   </button>
+                )}
+                {roomInfo?.data?.state === 1 ? (
+                  <div className="font-mono flex justify-center items-center gap-1">
+                    {days > 0 && (
+                      <>
+                        <div className="flex items-center text-sm">
+                          <Countdown value={days} />
+                          <span className="text-sm">d</span>
+                        </div>
+                        <div className="mx-0.5 text-center text-sm font-normal text-white">
+                          :
+                        </div>
+                      </>
+                    )}
+                    <div className="flex items-center text-sm font">
+                      <Countdown value={hours} />
+                      <span className="text-sm">h</span>
+                    </div>
+                    <div className="mx-0.5 text-center text-xs font-normal text-white">
+                      :
+                    </div>
+                    <div className="flex items-center text-sm">
+                      <Countdown value={minutes} />
+                      <span className="text-sm">m</span>
+                    </div>
+                    <div className="mx-0.5 text-center text-xs font-normal text-white">
+                      :
+                    </div>
+                    <div className="flex items-center text-sm">
+                      <Countdown value={seconds} />
+                      <span className="text-sm">s</span>
+                    </div>
+                  </div>
+                ) : (
+                  <div className='text-sm'>{roomInfo?.data?.openTime}</div>
                 )}
               </div>
             )}
           </div>
         </Skeleton>
       </div>
-
-      <div className="box-title mt-4">
-        <span className="text-center text-base sm:text-2xl">
-          <FormattedMessage id="roll_detail_jclb" />
-        </span>
-      </div>
-      {!roomInfo?.loading && (
-        <div className="flex justify-between sm:justify-center gap-2 my-4">
-          <div>
-            <FormattedMessage id="roll_detail_zjz" />
-            <span className="text-primary ml-1">
-              {roomInfo?.data?.poolValue}
-            </span>
-          </div>
-          <div>
-            <FormattedMessage id="roll_detail_sl" />
-            <span className="text-primary ml-1">
-              {roomInfo?.data?.giftCount}
-            </span>
+      <div className="flex gap-10 py-4 border-b border-light">
+        <div>
+          <div className="text-lg">Total Prizes Sum</div>
+          <div className="text-xl text-green font-bold">
+            $ {roomInfo?.data?.accumulatedAmount}
           </div>
         </div>
-      )}
-      <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 xl:grid-cols-7 gap-2">
-        {giftList?.loading
-          ? Array.from({ length: 7 }).map((_, i) => (
-              <WeaponCard key={i} loading />
-            ))
-          : Array.isArray(giftList?.data) &&
-            giftList?.data?.map((item, i) => (
-              <WeaponCard key={i} data={item} />
-            ))}
-      </div>
-      <div className="box-title mt-4 sm:mt-8">
-        <span className="text-center text-base sm:text-2xl">
-          <FormattedMessage id="roll_detail_cyyh" />
-        </span>
-      </div>
-      <div className="flex flex-wrap gap-4">
-        {Array.from({ length: 6 }).map((item, i) => (
-          <Skeleton
-            loading={userList?.loading}
-            active
-            paragraph={false}
-            title={false}
-            avatar={{
-              size: 55,
-            }}
-            style={{
-              display: 'inline-block',
-              width: 'auto',
-            }}
-            key={i}
-          ></Skeleton>
-        ))}
-        {Array.isArray(userList?.data) &&
-          userList?.data?.map((item) => {
-            return (
-              <div className="flex flex-col gap-2" key={item.id}>
-                <div className="avatar flex-col">
-                  <div className="w-[55px] sm:w-20 rounded relative">
-                    <img src={item?.headPic} />
-                    <img
-                      src={item?.headGround}
-                      className="absolute left-0 top-0 w-full h-full"
-                    />
-                  </div>
-                </div>
-                <div className="inline-flex items-center justify-center text-xs w-[55px] sm:w-20">
-                  <span className="truncate">{item.nickname}</span>
-                </div>
-              </div>
-            );
-          })}
-        {userList?.data?.length === 0 && (
-          <div className="text-center text-base-content text-opacity-50 w-full">
-            <FormattedMessage id="roll_user_empty" />
+        <div>
+          <div className="text-lg">participants</div>
+          <div className="text-xl text-green font-bold">
+            {roomInfo?.data?.userCount}
           </div>
-        )}
+        </div>
+        <div>
+          <div className="text-lg">Prizes</div>
+          <div className="text-xl text-green font-bold">
+            {roomInfo?.data?.giftCount}
+          </div>
+        </div>
       </div>
+
+      {roomInfo?.data?.state === 1 && (
+        <>
+          <div className="box-title mt-6">
+            <span className="text-center text-base sm:text-2xl">
+              <FormattedMessage id="roll_detail_jclb" />
+            </span>
+          </div>
+          {!roomInfo?.loading && (
+            <div className="flex justify-between sm:justify-center gap-2 my-4">
+              <div>
+                <FormattedMessage id="roll_detail_zjz" />
+                <span className="text-primary ml-1">
+                  {roomInfo?.data?.poolValue}
+                </span>
+              </div>
+              <div>
+                <FormattedMessage id="roll_detail_sl" />
+                <span className="text-primary ml-1">
+                  {roomInfo?.data?.giftCount}
+                </span>
+              </div>
+            </div>
+          )}
+          <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 xl:grid-cols-7 gap-2">
+            {giftList?.loading
+              ? Array.from({ length: 7 }).map((_, i) => (
+                  <WeaponCard key={i} loading />
+                ))
+              : Array.isArray(giftList?.data) &&
+                giftList?.data?.map((item, i) => (
+                  <WeaponCard key={i} data={item} />
+                ))}
+          </div>
+          <div className="box-title mt-4 sm:mt-8">
+            <span className="text-center text-base sm:text-2xl">
+              <FormattedMessage id="roll_detail_cyyh" />
+            </span>
+          </div>
+          <div className="flex flex-wrap gap-4">
+            {Array.from({ length: 6 }).map((item, i) => (
+              <Skeleton
+                loading={userList?.loading}
+                active
+                paragraph={false}
+                title={false}
+                avatar={{
+                  size: 55,
+                }}
+                style={{
+                  display: 'inline-block',
+                  width: 'auto',
+                }}
+                key={i}
+              ></Skeleton>
+            ))}
+            {Array.isArray(userList?.data) &&
+              userList?.data?.map((item) => {
+                return (
+                  <div className="flex flex-col gap-2" key={item.id}>
+                    <div className="avatar flex-col">
+                      <div className="w-[55px] sm:w-20 rounded relative">
+                        <img src={item?.headPic} />
+                        <img
+                          src={item?.headGround}
+                          className="absolute left-0 top-0 w-full h-full"
+                        />
+                      </div>
+                    </div>
+                    <div className="inline-flex items-center justify-center text-xs w-[55px] sm:w-20">
+                      <span className="truncate">{item.nickname}</span>
+                    </div>
+                  </div>
+                );
+              })}
+            {userList?.data?.length === 0 && (
+              <div className="text-center text-base-content text-opacity-50 w-full">
+                <FormattedMessage id="roll_user_empty" />
+              </div>
+            )}
+          </div>
+        </>
+      )}
       {winnerList?.data && winnerList?.data?.length > 0 && (
         <>
           <div className="box-title mt-4 sm:mt-8">

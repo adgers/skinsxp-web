@@ -1,8 +1,8 @@
-import { FormattedMessage } from '@umijs/max';
+import { parseName } from '@/utils';
+import { FormattedMessage, history } from '@umijs/max';
 import { useCountDown } from 'ahooks';
 import React from 'react';
 import { Avatar, Countdown } from 'react-daisyui';
-import { IconFont } from '../icons';
 import './index.less';
 
 export default React.memo(function RollCard({
@@ -19,9 +19,23 @@ export default React.memo(function RollCard({
   });
 
   const { days, hours, minutes, seconds } = formattedRes;
+  const name = data?.giftVos?.[0]?.giftName;
 
   return (
-    <div className={`roll-card cursor-pointer ${isEnd ? 'end' : ''}`}>
+    <div
+      className={`roll-card cursor-pointer ${isEnd ? 'end' : ''}`}
+      style={
+        data?.roomType === 1
+          ? {
+              background:
+                'radial-gradient(341.21% 100.00% at 50.00% 100.00%, rgba(139, 59, 240, 0.60) 7.32%, rgba(40, 40, 40, 0.00) 100%), #1E1D22',
+            }
+          : {
+              background:
+                'radial-gradient(341.21% 100.00% at 50.00% 100.00%, rgba(35, 156, 55, 0.39) 7.32%, rgba(40, 40, 40, 0.00) 100%), #1E1D22',
+            }
+      }
+    >
       <div
         className="roll-card-banner blur-md"
         style={{
@@ -32,65 +46,87 @@ export default React.memo(function RollCard({
         <div className="flex justify-between items-center mt-2 sm:mt-4">
           <div className="pl-3 flex gap-2 items-center">
             {data?.banner && (
-              <Avatar src={data?.banner} size={36} shape="square" />
+              <Avatar src={data?.banner} size={25} shape="square" />
             )}
-            <span className="uppercase font-semibold">{data?.title}</span>
+            <span className="uppercase text-sm font-normal">{data?.title}</span>
           </div>
-          <div className="user-count">
-            <span className="text-neutral text-sm">
-              {data?.userCount}人参与
-            </span>
-          </div>
+          <div className="text-sm text-white pr-3">{data?.userCount}</div>
         </div>
-        <div className="roll-card-info">
-          <div className="flex gap-1">
-            {gifts?.map((item, i) => (
-              <div className="roll-card-info-item" key={i}>
-                <img src={item.giftImage} />
-              </div>
-            ))}
-          </div>
-          <div className="text-base flex gap-1">
-            <IconFont type="icon-coin" className="text-primary" />
-            {data?.poolValue}
-          </div>
-        </div>
+
         <div className="roll-card-top-img">
           <img src={topImg} />
         </div>
       </div>
+      <div className="mx-5 pb-2 border-b border-light mt-[28px]">
+        <div>
+          <span className="truncate text-white/[0.5] text-xs">
+            {name && parseName(name)?.[1]}
+          </span>
+        </div>
+
+        <div className=" truncate text-white text-sm">
+          {name && parseName(name)?.[0]}
+        </div>
+      </div>
+      <div className="mx-5 my-2 flex justify-between items-center text-sm">
+        <div>Prizes: {data?.giftCount}</div>
+        <div>
+          Total:{' '}
+          <span className="text-green font-bold">
+            $ {data?.accumulatedAmount}
+          </span>
+        </div>
+      </div>
+      <div
+        className={` mx-5 rounded-none ${
+          data?.roomType === 1 ? 'btn-purple' : 'btn-green'
+        }`}
+        onClick={() => {
+          history.push(`/giveaways/${data?.id}`);
+        }}
+      >
+        View Requirements
+      </div>
       <div className="roll-card-bottom">
-        <div className="animate-pulse btn-icon"></div>
         <div className="flex-1 justify-center text-center">
           {isEnd ? (
             <FormattedMessage id="roll_yjs" />
           ) : (
             data?.openTime && (
-              <div className="font-mono grid grid-flow-col justify-center items-center auto-cols-max gap-4">
+              <div className="font-mono flex justify-center items-center gap-1">
                 {days > 0 && (
-                  <div className="flex flex-col items-center">
-                    <Countdown value={days} />
-                    <span className="text-xs">days</span>
-                  </div>
+                  <>
+                    <div className="flex items-center text-sm">
+                      <Countdown value={days} />
+                      <span className="text-sm">d</span>
+                    </div>
+                    <div className="mx-0.5 text-center text-sm font-normal text-white">
+                      :
+                    </div>
+                  </>
                 )}
-                <div className="flex flex-col items-center">
+                <div className="flex items-center text-sm font">
                   <Countdown value={hours} />
-                  <span className="text-xs">hours</span>
+                  <span className="text-sm">h</span>
                 </div>
-
-                <div className="flex flex-col items-center">
+                <div className="mx-0.5 text-center text-xs font-normal text-white">
+                  :
+                </div>
+                <div className="flex items-center text-sm">
                   <Countdown value={minutes} />
-                  <span className="text-xs">min</span>
+                  <span className="text-sm">m</span>
                 </div>
-                <div className="flex flex-col items-center">
+                <div className="mx-0.5 text-center text-xs font-normal text-white">
+                  :
+                </div>
+                <div className="flex items-center text-sm">
                   <Countdown value={seconds} />
-                  <span className="text-xs">sec</span>
+                  <span className="text-sm">s</span>
                 </div>
               </div>
             )
           )}
         </div>
-        <div className="animate-pulse btn-icon-right"></div>
       </div>
     </div>
   );

@@ -76,9 +76,15 @@ export default React.memo(function WeaponCard({
       </div>
       {fromProfile && (
         <div className="absolute right-0 top-0 pt-[8px] pr-[10px] text-sm">
-          {data?.state === ItemState.SOLD && <span className='text-red font-bold'>SOLD</span>}
-          {data?.state === ItemState.RETRIEVED && <span className='text-gray font-bold'>RETRIEVED</span>}
-
+          <span
+            className={`${
+              data?.state === ItemState.SOLD
+                ? 'text-red/100 font-bold'
+                : 'text-white/60 '
+            }`}
+          >
+            {data?.stateStr}
+          </span>
         </div>
       )}
       {probability > 0 && ( // 有概率才显示
