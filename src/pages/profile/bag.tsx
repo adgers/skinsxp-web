@@ -7,7 +7,6 @@ import {
   ornamentRetrievalUsingPOST,
 } from '@/services/front/gerenzhongxinxiangguan';
 import { numberFixed } from '@/utils';
-import { CheckCircleOutlined } from '@ant-design/icons';
 import {
   FormattedMessage,
   history,
@@ -60,19 +59,19 @@ export default function BagPage() {
 
   const { pageData = [], extData = {}, totalRows = 0 } = data || {};
 
-  const onItemClick = (item: any) => {
-    if (checkedList.includes(item.id)) {
-      setCheckedList(checkedList.filter((i) => i !== item.id));
-      setTotalPrice(
-        numberFixed(Number(totalPrice) - Number(item.recoveryPrice)),
-      );
-    } else {
-      setCheckedList([...checkedList, item.id]);
-      setTotalPrice(
-        numberFixed(Number(totalPrice) + Number(item.recoveryPrice)),
-      );
-    }
-  };
+  // const onItemClick = (item: any) => {
+  //   if (checkedList.includes(item.id)) {
+  //     setCheckedList(checkedList.filter((i) => i !== item.id));
+  //     setTotalPrice(
+  //       numberFixed(Number(totalPrice) - Number(item.recoveryPrice)),
+  //     );
+  //   } else {
+  //     setCheckedList([...checkedList, item.id]);
+  //     setTotalPrice(
+  //       numberFixed(Number(totalPrice) + Number(item.recoveryPrice)),
+  //     );
+  //   }
+  // };
 
   const onSelectedAll = () => {
     if (loading) {
@@ -146,7 +145,21 @@ export default function BagPage() {
             }}
           />
         </div>
-        <div className="btn ml-12 text-white border border-white rounded-none px-16 btn-green">
+        <div
+          className="btn ml-12 text-white border border-white rounded-none px-16 btn-green"
+          onClick={() => {
+            setCheckedList(pageData?.map((item: any) => item.id));
+            setTotalPrice(
+              numberFixed(
+                pageData?.reduce(
+                  (a: any, b: any) => Number(a) + Number(b.recoveryPrice),
+                  0,
+                ),
+              ),
+            );
+            setExchangeConfirm(true);
+          }}
+        >
           ALL SALE
         </div>
       </div>
@@ -157,7 +170,7 @@ export default function BagPage() {
               <WeaponCard loading key={i} />
             ))
           : pageData?.map((item: any, i: number) => {
-              const isChecked = checkedList.includes(item.id);
+              // const isChecked = checkedList.includes(item.id);
               const price =
                 item?.recoveryPrice ||
                 item?.giftPrice ||
@@ -168,9 +181,9 @@ export default function BagPage() {
                 <div
                   className="group relative cursor-pointer overflow-y-visible"
                   key={i}
-                  onClick={() => {
-                    onItemClick(item);
-                  }}
+                  // onClick={() => {
+                  //   onItemClick(item);
+                  // }}
                 >
                   <div
                     className={`transition-transform duration-200 will-change-transform real-group-hover:rounded-b-none ${
@@ -188,11 +201,6 @@ export default function BagPage() {
                         {item?.createTime}
                       </div>
                     </div>
-                    {isChecked && (
-                      <div className="absolute w-full h-full left-0 top-0 justify-center items-center bg-black bg-opacity-50 flex cursor-pointer">
-                        <CheckCircleOutlined className="text-green text-2xl" />
-                      </div>
-                    )}
                     <>
                       <ul className="absolute bottom-0 left-0 z-[10] w-full  divide- whitespace-nowrap  text-white/50 text-xl font-bold leading-none transition-opacity duration-200 opacity-0 group-hover:opacity-100">
                         <li
@@ -218,7 +226,10 @@ export default function BagPage() {
                             className="border-solid"
                             onClick={(e) => {
                               e.stopPropagation();
-                              onTakeSteam(item?.id);
+                              // onExchangeCoin(item?.id);
+                              setExchangeConfirm(true);
+                              setCheckedList([item?.id]);
+                              setTotalPrice(item.recoveryPrice);
                             }}
                           >
                             <div className="btn btn-sm flex w-full items-center rounded-none justify-center text-sm  font-semibold uppercase transition-colors duration-150 real-hover:text-white  bg-purple hover:bg-purple">
@@ -236,7 +247,10 @@ export default function BagPage() {
                           className="absolute bottom-0 flex w-full overflow-hidden rounded-none transition-transform duration-200 will-change-transform z-[-1] h-[32px] translate-y-[32px] md:h-[32px] md:translate-y-[-1px] group-hover:md:translate-y-[32px]"
                           onClick={(e) => {
                             e.stopPropagation();
-                            onExchangeCoin(item?.id);
+                            setSteamConfirm(true);
+                            setTotalPrice(item.recoveryPrice);
+                            // onTakeSteam(item?.id);
+                            setCheckedList([item?.id]);
                           }}
                         >
                           <div className="btn btn-sm w-full bg-green text-dark text-sm rounded-none hover:bg-green">
@@ -271,8 +285,8 @@ export default function BagPage() {
         </Modal.Header>
         <Modal.Body className="text-sm">
           <div className="flex flex-wrap">
-            <FormattedMessage id="has_select" />
-            <span className="mx-1 text-primary">{checkedList.length}</span>
+            {/* <FormattedMessage id="has_select" />
+            <span className="mx-1 text-primary">{checkedList.length}</span> */}
 
             <FormattedMessage id="total_price" />
             <span className="mx-1 text-primary">{totalPrice}</span>
@@ -289,7 +303,7 @@ export default function BagPage() {
           </Button>
           <Button
             className="btn-primary btn-sm rounded"
-            onClick={onTakeSteam}
+            onClick={() => onTakeSteam()}
             loading={takeLoading}
           >
             <FormattedMessage id="confirm" />
@@ -303,8 +317,6 @@ export default function BagPage() {
         </Modal.Header>
         <Modal.Body className="text-sm">
           <div className="flex flex-wrap">
-            <FormattedMessage id="has_select" />
-            <span className="mx-1 text-primary">{checkedList.length}</span>
             <FormattedMessage id="total_price" />
             <span className="mx-1 text-primary">{totalPrice}</span>
           </div>
@@ -320,7 +332,7 @@ export default function BagPage() {
           </Button>
           <Button
             className="btn-primary btn-sm rounded"
-            onClick={onExchangeCoin}
+            onClick={() => onExchangeCoin()}
           >
             <FormattedMessage id="confirm" />
           </Button>
