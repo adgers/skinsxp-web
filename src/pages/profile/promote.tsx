@@ -108,18 +108,18 @@ export default function PromotePage() {
     }
   };
 
-  const saveInvitationCode = async () => {
-    const code = invRef?.current?.value;
-    if (!code) return;
+  // const saveInvitationCode = async () => {
+  //   const code = promoteRef?.current?.value;
+  //   if (!code) return;
 
-    const ret = await bindInviterUsingPOST({
-      invitationCode: code,
-    });
-    if (ret.status === 0) {
-      toast.success(intl.formatMessage({ id: 'mine_xgcg' }));
-      refresh();
-    }
-  };
+  //   const ret = await bindInviterUsingPOST({
+  //     invitationCode: code,
+  //   });
+  //   if (ret.status === 0) {
+  //     toast.success(intl.formatMessage({ id: 'mine_xgcg' }));
+  //     refresh();
+  //   }
+  // };
 
   return (
     <>
@@ -139,7 +139,9 @@ export default function PromotePage() {
                 onChange={(e) => setPromoteCode(e.target.value)}
                 ref={promoteRef}
               />
-              <div className="btn btn-green rounded-none">ENTER</div>
+              <div className="btn btn-green rounded-none" onClick={()=>{
+                onSavePromote()
+              }}>SAVE</div>
             </div>
             <div className="text-gray mt-4">
               Enter a new affiliate code and click "SAVE", if you want to change
