@@ -129,7 +129,7 @@ export default function Room() {
                 {roomInfo?.data?.state === 1 ? (
                   roomInfo?.data?.joinFlag ? (
                     <button
-                      className="btn btn-secondary btn-sm rounded-xl"
+                      className="btn btn-secondary btn-sm rounded-none text-white"
                       type="button"
                     >
                       <FormattedMessage id="roll_ycy" />

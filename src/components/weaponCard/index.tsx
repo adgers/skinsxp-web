@@ -78,10 +78,9 @@ export default React.memo(function WeaponCard({
         <div className="absolute right-0 top-0 pt-[8px] pr-[10px] text-sm">
           <span
             className={`${
-              data?.state === ItemState.SOLD
-                ? 'text-red/100 font-bold'
-                : 'text-white/60 '
-            }`}
+              data?.state === ItemState.ACTIVE ? 'text-green font-bold' : ''
+            } ${data?.state === ItemState.SOLD ? 'text-red/100 font-bold' : ''} 
+            ${data?.state === ItemState.RETRIEVED ? 'text-white/60 font-bold' : ''}`}
           >
             {data?.stateStr}
           </span>
