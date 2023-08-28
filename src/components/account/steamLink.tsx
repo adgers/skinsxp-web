@@ -1,11 +1,8 @@
-import { modifyTradeUrlUsingPOST } from '@/services/front/gerenzhongxinxiangguan';
-import { UserOutlined } from '@ant-design/icons';
-import { Input, InputRef } from 'antd';
+import { updateTradeUrlUsingPOST } from '@/services/front/gerenzhongxinxiangguan';
+import { FormattedMessage, useIntl } from '@umijs/max';
 import { useRef, useState } from 'react';
-import { Button, Modal } from 'react-daisyui';
+import { Button, Modal,Input } from 'react-daisyui';
 import { toast } from 'react-toastify';
-import CheckCode from './checkcode';
-import { FormattedMessage } from '@umijs/max';
 
 export default function ModifySteamLink({
   open,
@@ -18,49 +15,35 @@ export default function ModifySteamLink({
 }) {
   const [loading, setLoading] = useState<boolean>(false);
   const [smsCode, setSmsCode] = useState<string>();
-  const nameRef = useRef<InputRef>(null);
-  const tradeUrlRef = useRef<InputRef>(null);
+
+  const tradeUrlRef = useRef<HTMLInputElement>(null);
+  const intl = useIntl();
 
   const onSubmit = async () => {
-    const tradeUrl = tradeUrlRef.current?.input?.value;
-
+    const tradeUrl = tradeUrlRef.current?.value;
     if (!tradeUrl) {
-      toast.error('请输入您的Steam交易链接');
       return;
     }
-
-    if (!smsCode) {
-      toast.error('请输入验证码');
+    if (
+      /https:\/\/steamcommunity.com\/tradeoffer\/new\/\?partner=[a-zA-Z0-9_-]{1,20}&token=[a-zA-Z0-9_-]{1,20}$/.test(
+        tradeUrl,
+      ) === false
+    ) {
+      toast.error(intl.formatMessage({ id: 'trade_link_qsrzqdjylj' }));
       return;
     }
-
-    const steamRegex =
-      /https:\/\/steamcommunity.com\/tradeoffer\/new\/\?partner=[a-zA-Z0-9_-]{1,20}&token=[a-zA-Z0-9_-]{1,20}$/;
-    if (!steamRegex.test(tradeUrl)) {
-      toast.error('Steam交易链接格式错误');
-      return;
-    }
-
-    if (loading) {
-      return;
-    }
-
-    setLoading(true);
-    const ret = await modifyTradeUrlUsingPOST({
+    const ret = await updateTradeUrlUsingPOST({
       tradeUrl,
-      smsCode,
     });
-    setLoading(false);
-
     if (ret.status === 0) {
-      toast.success('修改成功');
-      onSuccess();
+      toast.success(intl.formatMessage({ id: 'mine_xgcg' }));
+      onSuccess()
     }
   };
 
   return (
     <Modal open={open} className="max-w-md">
-      <Modal.Header className="flex items-center mb-2">
+      <Modal.Header className="flex items-center mb-4">
         Steam交易链接
       </Modal.Header>
       <Button
@@ -75,23 +58,17 @@ export default function ModifySteamLink({
       <Modal.Body className="flex flex-col gap-4">
         <Input
           placeholder="请输入您的Steam交易链接"
-          prefix={<UserOutlined />}
-          ref={nameRef}
-          allowClear
-        />
-        <CheckCode
-          onChange={(e) => setSmsCode(e.target.value)}
-          id="verify"
-          isSelf
+          ref={tradeUrlRef}
+
         />
       </Modal.Body>
       <Modal.Actions className="flex flex-col mt-4">
         <Button
-          className="btn-primary w-full btn-sm"
+          className="btn-primary w-full"
           onClick={onSubmit}
           loading={loading}
         >
-           <FormattedMessage id="confirm" />
+          <FormattedMessage id="confirm" />
         </Button>
       </Modal.Actions>
     </Modal>

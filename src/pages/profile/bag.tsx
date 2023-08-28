@@ -19,10 +19,21 @@ import { Pagination } from 'antd';
 import { useState } from 'react';
 import { Button, Modal } from 'react-daisyui';
 import { toast } from 'react-toastify';
-
+export enum ItemState {
+  ACTIVE = 0, // 已激活
+  SOLD = 1, // 已售出
+  RETRIEVED = 2, // 已回收
+}
 export default function BagPage() {
   const { getUser } = useModel('user');
-  const [page, setPage] = useState<number>(1);
+  // const [page, setPage] = useState<number>(1);
+  const [searchParams, setSearchParams] = useState<{
+    page: number;
+    stat: number;
+  }>({
+    page: 1,
+    stat: -1,
+  });
   const [orderByPrice, setOrderByPrice] = useState<boolean>(true);
   const [allChecked, setAllChecked] = useState<boolean>(false);
   const [checkedList, setCheckedList] = useState<any[]>([]);
@@ -34,19 +45,18 @@ export default function BagPage() {
 
   const pageSize = 24;
   const { data, refresh, loading } = useRequest(
-    () => getMyVoucherPageUsingGET({ page, pageSize: pageSize, orderByPrice }),
+    () =>
+      getMyVoucherPageUsingGET({
+        ...searchParams,
+        pageSize: pageSize,
+        orderByPrice,
+      }),
     {
-      refreshDeps: [page, orderByPrice],
+      refreshDeps: [searchParams?.page, searchParams?.stat, orderByPrice],
     },
   );
 
   console.log(data, 'data');
-
-  enum ItemState {
-    ACTIVE = 0, // 已激活
-    SOLD = 1, // 已售出
-    RETRIEVED = 2, // 已回收
-  }
 
   const { pageData = [], extData = {}, totalRows = 0 } = data || {};
 
@@ -124,10 +134,19 @@ export default function BagPage() {
           <input
             type="checkbox"
             className="toggle toggle-primary ml-4"
-            checked
+            checked={searchParams.stat === 0}
+            onClick={() => {
+              setSearchParams({
+                ...searchParams,
+                stat:
+                  searchParams.stat === ItemState.ACTIVE
+                    ? -1
+                    : ItemState.ACTIVE,
+              });
+            }}
           />
         </div>
-        <div className="btn ml-12 text-white border border-white rounded-none px-16">
+        <div className="btn ml-12 text-white border border-white rounded-none px-16 btn-green">
           ALL SALE
         </div>
       </div>
@@ -156,15 +175,15 @@ export default function BagPage() {
                   <div
                     className={`transition-transform duration-200 will-change-transform real-group-hover:rounded-b-none ${
                       item.state === ItemState.ACTIVE
-                        ? 'group-hover:md:translate-y-[-25px]'
+                        ? 'group-hover:md:translate-y-[-16px]'
                         : ''
                     } group-hover:overflow-visible`}
                   >
                     <WeaponCard data={item} fromProfile={true} />
                     <div className="absolute left-0 top-0 z-10 mt-5 flex gap-10 justify-between items-center w-full  opacity-0 transition-opacity duration-200 group-hover:opacity-100 sm:p-4">
-                        <div className="text-xs font-bold uppercase leading-none css-rgj8xp text-white ">
-                          {item?.sourceType}
-                        </div>
+                      <div className="text-xs font-bold uppercase leading-none css-rgj8xp text-white ">
+                        {item?.sourceType}
+                      </div>
                       <div className="ml-auto text-right text-xs text-white font-bold uppercase whitespace-pre-wrap flex-1">
                         {item?.createTime}
                       </div>
@@ -196,13 +215,13 @@ export default function BagPage() {
                         </li>
                         {item?.state === ItemState.ACTIVE && (
                           <li
-                            className="border-solid bg-purple"
+                            className="border-solid"
                             onClick={(e) => {
                               e.stopPropagation();
                               onTakeSteam(item?.id);
                             }}
                           >
-                            <div className="btn btn-sm flex w-full items-center justify-center text-sm  font-semibold uppercase transition-colors duration-150 real-hover:text-white">
+                            <div className="btn btn-sm flex w-full items-center rounded-none justify-center text-sm  font-semibold uppercase transition-colors duration-150 real-hover:text-white  bg-purple hover:bg-purple">
                               <svg className="mr-2 h-4 w-4"></svg>
                               <span className=" flex-1 truncate">
                                 SELL for{' '}
@@ -214,13 +233,13 @@ export default function BagPage() {
                       </ul>
                       {item?.state === ItemState.ACTIVE && (
                         <div
-                          className="absolute bottom-0 flex w-full overflow-hidden rounded-b-lg transition-transform duration-200 will-change-transform z-[-1] h-[48px] translate-y-[48px] md:h-[50px] md:translate-y-[-1px] group-hover:md:translate-y-[50px]"
+                          className="absolute bottom-0 flex w-full overflow-hidden rounded-none transition-transform duration-200 will-change-transform z-[-1] h-[32px] translate-y-[32px] md:h-[32px] md:translate-y-[-1px] group-hover:md:translate-y-[32px]"
                           onClick={(e) => {
                             e.stopPropagation();
                             onExchangeCoin(item?.id);
                           }}
                         >
-                          <div className="btn btn-sm w-full bg-green text-dark text-sm rounded-none">
+                          <div className="btn btn-sm w-full bg-green text-dark text-sm rounded-none hover:bg-green">
                             COLLECT
                           </div>
                         </div>
@@ -235,12 +254,12 @@ export default function BagPage() {
       {totalRows > pageSize && (
         <div className="flex justify-center items-center mt-12 md:mt-4">
           <Pagination
-            current={page}
+            current={searchParams.page}
             total={totalRows}
             pageSize={pageSize}
             showSizeChanger={false}
             onChange={(page: number) => {
-              setPage(page);
+              setSearchParams({ ...searchParams, page: page });
             }}
             className="inner_pagination"
           />

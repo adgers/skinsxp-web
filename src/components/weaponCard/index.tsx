@@ -1,6 +1,7 @@
 import { numberFixed, parseName } from '@/utils';
 import './index.less';
 
+import { ItemState } from '@/pages/profile/bag';
 import React, { useState } from 'react';
 import Skeleton from 'react-loading-skeleton';
 
@@ -68,11 +69,18 @@ export default React.memo(function WeaponCard({
         </div>
       </div>
 
-      <div className="absolute left-0 top-0 text-sm text-white pt-[9px] pl-[11px]">
+      <div className="absolute left-0 top-0 text-sm text-white pt-[8px] pl-[10px]">
         <span className="font-num">
           $ {price && numberFixed(Number(price))}
         </span>
       </div>
+      {fromProfile && (
+        <div className="absolute right-0 top-0 pt-[8px] pr-[10px] text-sm">
+          {data?.state === ItemState.SOLD && <span className='text-red font-bold'>SOLD</span>}
+          {data?.state === ItemState.RETRIEVED && <span className='text-gray font-bold'>RETRIEVED</span>}
+
+        </div>
+      )}
       {probability > 0 && ( // 有概率才显示
         <div className="absolute right-0 top-0 flex flex-col items-end text-right z-30 text-white/[0.5] text-sm font-semibold uppercase leading-none pt-[9px] pr-[11px] gap-2">
           <div className="text-white/[0.5] text-xs font-num flex items-center gap-2">

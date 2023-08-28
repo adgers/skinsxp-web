@@ -106,6 +106,10 @@ export default defineConfig({
               ],
             },
             {
+              path: '/profile/affiliate',
+              component: 'profile/promote',
+            },
+            {
               path: '/profile/provably-fair',
               component: 'profile/provablyFair',
               routes: [
