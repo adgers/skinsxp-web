@@ -1,5 +1,5 @@
 import { listHostGiveawayUsingGET } from '@/services/front/ROLLfangxiangguan';
-import { useRequest } from '@umijs/max';
+import { Link, useRequest } from '@umijs/max';
 import GiveawayItem from './giveawayItem';
 
 export default function Giveaways() {
@@ -19,15 +19,19 @@ export default function Giveaways() {
           </span>
           <a
             className="btn btn-sm mt-4 hidden h-7 bg-purple px-2 text-[10px] text-white  md:flex xl:px-3"
-            href="/battle"
+            href="/giveaways"
           >
             <span className="uppercase">Join now</span>
           </a>
         </div>
         <div className="w-full overflow-hidden">
-          <div className="flex w-full snap-x snap-mandatory overflow-x-auto xl:grid xl:snap-none xl:grid-cols-4 opacity-100">
+          <div className="flex w-full snap-x snap-mandatory overflow-x-auto xl:grid xl:snap-none xl:grid-cols-4 opacity-100 gap-1">
             {giveawayList?.map((item, index) => {
-              return <GiveawayItem index={index} item={item} key={index} />;
+              return (
+                <Link to={`/giveaways/${item?.id}`} key={index}>
+                  <GiveawayItem index={index} item={item} key={index} />
+                </Link>
+              );
             })}
           </div>
         </div>

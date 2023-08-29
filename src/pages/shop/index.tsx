@@ -73,6 +73,16 @@ export default () => {
 
   return (
     <div className="w-full max-w-[1400px] m-auto relative min-h-[500px]">
+      <div className="banner w-full h-[380px] mt-8 bg-[url('@/assets/store-banner.png')] bg-no-repeat bg-cover flex justify-center items-center md:justify-start md:pl-[90px]">
+        <div className=' max-w-[540px] flex flex-col items-center'>
+          <h3>WHAT IS WG’s Store?</h3>
+          <div className='text-center'>
+            Bullets are Gaben's store currency. You will receive bullets for
+            opening any case, including battle cases. The possibility of getting
+            bullets is 30%. More expensive cases contain more bullets.
+          </div>
+        </div>
+      </div>
       <div className="flex flex-col-reverse sm:flex-row gap-2 sm:justify-between pt-4 px-3">
         <div className="flex gap-2 sm:gap-4 flex-1">
           <Menu as="div" className="relative w-40">

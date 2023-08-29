@@ -141,7 +141,7 @@ export default function Header() {
     <div className="sticky left-0 top-0 z-[99]">
       <Navbar className="p-3 bg-dark">
         <div className="flex-1">
-          <Link to={'/'} className="logo">
+          <Link to={'/'} className="logo text-2xl sm:text-[38px]">
             WGSKINS
           </Link>
 

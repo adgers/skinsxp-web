@@ -4,6 +4,7 @@ import { pageUsingGET } from '@/services/front/ROLLfangxiangguan';
 import { FormattedMessage, useRequest } from '@umijs/max';
 import { Skeleton } from 'antd';
 import { useMemo, useState } from 'react';
+import { Button } from 'react-daisyui';
 import './index.less';
 
 export default function RollList() {
@@ -60,22 +61,17 @@ export default function RollList() {
           </div>
         </div>
       </div>
-      <div className="flex flex-col items-center">
-        <div className="join my-4 sm:my-6 text-sm">
-          {roomStates.map((item, i) => (
-            <div
-              className={`join-item text-center border border-transparent cursor-pointer rounded-md px-4 py-1 outline-none ${
-                roomState === item.value
-                  ? 'bg-primary text-black'
-                  : 'border-white'
-              }`}
-              key={i}
-              onClick={() => setRoomState(item.value)}
-            >
-              {item.label}
-            </div>
-          ))}
-        </div>
+      <div className="flex w-full items-center justify-start mb-4">
+        {roomStates.map((item, i) => (
+          <Button
+            className={`flex items-center gap-2 whitespace-nowrap p-2 text-sm uppercase bg-transparent duration-200 border-none hover:bg-transparent hover:text-white 
+            text-white ${roomState === item.value ? '' : 'text-opacity-50'}`}
+            key={i}
+            onClick={() => setRoomState(item.value)}
+          >
+            {item.label}
+          </Button>
+        ))}
       </div>
       {!loading && data?.pageData?.length === 0 && <Empty />}
       <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-x-4 gap-y-8">

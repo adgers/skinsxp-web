@@ -9,10 +9,10 @@
 
 body {
   .swiper-pagination-bullet {
-    background: #AB6AFC;
+    background: #ab6afc;
   }
   .swiper-pagination-bullet-active {
-    background: #35F05E;
+    background: #35f05e;
   }
 }
 
@@ -27,6 +27,42 @@ body {
     background-size: contain;
     content: '';
   }
+
+  .giveaways-grade-item {
+    transform: translateX(0px);
+    transition: transform 400ms ease-out 0s;
+    &::before {
+      position: absolute;
+      top: 0;
+      left: 0;
+      display: block;
+      width: 60px;
+      height: 100%;
+      background: hsla(0, 0%, 100%, 0.5);
+      transform: translateX(-7rem) skewX(-15deg);
+      filter: blur(30px);
+      content: '';
+    }
+    &::after {
+      position: absolute;
+      top: 0;
+      left: 0;
+      display: block;
+      width: 30px;
+      height: 100%;
+      background: hsla(0, 0%, 100%, 0.2);
+      transform: translateX(-7rem) skewX(-47deg);
+      filter: blur(5px);
+      content: '';
+    }
+    &:hover {
+      &::before,
+      &::after {
+        transform: translateX(480px) skewX(-47deg);
+        transition: all 0.5s ease-out;
+      }
+    }
+  }
 }
 .giveaways-grade-0 {
   background: var(
@@ -39,7 +75,10 @@ body {
     ),
     #100f12
   );
-  border: 1px solid var(--4, #ffee51);
+  border-top: 3px solid var(--4, #ffee51);
+  .giveaways-icon {
+    background: #ffee51;
+  }
 }
 .giveaways-grade-1 {
   background: var(
@@ -53,7 +92,10 @@ body {
     #100f12
   );
 
-  border: 1px solid var(--3, #ed3838);
+  border-top: 3px solid var(--3, #ed3838);
+  .giveaways-icon {
+    background: #ed3838;
+  }
 }
 .giveaways-grade-2 {
   background: var(
@@ -66,7 +108,10 @@ body {
     ),
     #100f12
   );
-  border: 1px solid #833cae;
+  border-top: 3px solid #833cae;
+  .giveaways-icon {
+    background: #833cae;
+  }
 }
 .giveaways-grade-3 {
   background: var(
@@ -79,5 +124,8 @@ body {
     ),
     #100f12
   );
-  border: 1px solid #4d7d88;
+  border-top: 3px solid #4d7d88;
+  .giveaways-icon {
+    background: #4d7d88;
+  }
 }
