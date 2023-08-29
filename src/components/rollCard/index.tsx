@@ -28,11 +28,11 @@ export default React.memo(function RollCard({
         data?.roomType === 1
           ? {
               background:
-                'radial-gradient(341.21% 100.00% at 50.00% 100.00%, rgba(139, 59, 240, 0.60) 7.32%, rgba(40, 40, 40, 0.00) 100%), #1E1D22',
+                'var(--d-6, radial-gradient(341.21% 100.00% at 50.00% 100.00%, #5A2E94 0%, #282828 81.85%))',
             }
           : {
               background:
-                'radial-gradient(341.21% 100.00% at 50.00% 100.00%, rgba(35, 156, 55, 0.39) 7.32%, rgba(40, 40, 40, 0.00) 100%), #1E1D22',
+                'var(--d-7, radial-gradient(341.21% 100.00% at 50.00% 100.00%, #204A29 0%, #1E1D22 84.25%))',
             }
       }
     >
