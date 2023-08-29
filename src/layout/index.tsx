@@ -1,5 +1,5 @@
-import { headHidden } from '@/utils';
-import { Outlet, useLocation } from '@umijs/max';
+import { headHidden, urlParse } from '@/utils';
+import { Outlet, setLocale, useLocation } from '@umijs/max';
 import { useEffect } from 'react';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
@@ -17,6 +17,14 @@ export default function Layout() {
     window.scrollTo(0, 0);
   }, [pathname]);
 
+  useEffect(() => {
+    const params = urlParse();
+    if (params?.lang) {
+      const lang = params?.lang || 'en-US';
+      setLocale(lang as string);
+    }
+  }, []);
+
   return (
     <div className={`root-bg ${pathCls}`}>
       {!headHidden() && <Header />}
@@ -26,11 +34,7 @@ export default function Layout() {
       {!headHidden() && <BtmNav />}
       {!headHidden() && <Footer />}
       {!headHidden() && <RightNav />}
-      <ToastContainer
-        theme="dark"
-        autoClose={2000}
-        limit={1}
-      />
+      <ToastContainer theme="dark" autoClose={2000} limit={1} />
     </div>
   );
 }

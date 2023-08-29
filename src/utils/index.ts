@@ -146,6 +146,7 @@ export function addImgHost(data: any) {
     'giftImage',
     'weaponImage',
     'winVoucherImg',
+    'sourceImage',
   ];
 
   //递归data, 如果是数组,则遍历数组,如果是对象,则遍历对象的属性，包含arr中的属性，则加上图片前缀
@@ -153,9 +154,9 @@ export function addImgHost(data: any) {
     const imgHost = getImgHost();
     if (!data) return data;
     if (typeof data === 'string') {
-      if (data.indexOf('http') > -1) return data;
-
-      return imgHost + data;
+      if (data.indexOf('http') < 0) {
+        return imgHost + data;
+      }
     }
     if (Array.isArray(data)) {
       for (const item of data) {
@@ -166,8 +167,12 @@ export function addImgHost(data: any) {
     if (typeof data === 'object') {
       for (const key in data) {
         if (arr.includes(key)) {
-          if (data[key].indexOf('http') > -1) return data[key];
-          data[key] = imgHost + data[key];
+          console.log('key', key);
+          console.log(data[key]);
+          console.log('http', data[key].indexOf('http') > -1);
+          if (data[key].indexOf('http') < 0) {
+            data[key] = imgHost + data[key];
+          }
         } else {
           addHost(data[key]);
         }

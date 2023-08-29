@@ -1,3 +1,4 @@
+import { getApiDomain } from '@/utils';
 import {
   AndroidFilled,
   AppleFilled,
@@ -13,10 +14,44 @@ export default function RightNav() {
   const [showAppDownload, setShowAppDownload] = useState(false);
   const responsive = useResponsive();
 
+  const openWin = (
+    url: string,
+    name: string,
+    iWidth: number,
+    iHeight: number,
+  ) => {
+    const iTop = (window.screen.availHeight - 30 - iHeight) / 2;
+    const iLeft = (window.screen.availWidth - 10 - iWidth) / 2;
+
+    const features =
+      'height=' +
+      iHeight +
+      ',innerHeight=' +
+      iHeight +
+      ',width=' +
+      iWidth +
+      ',innerWidth=' +
+      iWidth +
+      ',top=' +
+      iTop +
+      ',left=' +
+      iLeft +
+      ',toolbar=no,menubar=no,scrollbars=auto,resizeable=no,location=no,status=no';
+
+    window.open(url, name, features);
+  };
+
+  const kfLink = `${getApiDomain()}/api/common/redirectQQ`;
+
   return (
     <>
       <div className="fixed right-0 bottom-1/3 translate-y-1/2 z-50">
-        <div className="bg-primary p-2 rounded-tl-md rounded-bl-md cursor-pointer text-center">
+        <div
+          className="bg-primary p-2 rounded-tl-md rounded-bl-md cursor-pointer text-center"
+          onClick={() => {
+            openWin(kfLink, '', 800, 600);
+          }}
+        >
           <MessageOutlined className="text-[#262635] text-[32px]" />
         </div>
         <div className="bg-secondary p-2 rounded-tl-md rounded-bl-md mt-2">
