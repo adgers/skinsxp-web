@@ -258,11 +258,17 @@ export default function BoxPage() {
       <div className="grid grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-2 mt-4">
         {recentBoxs?.map((item, i: number) => {
           return (
-            <div className="card-flip" key={i}>
-              <div className="front">
-                <WeaponCard data={item} key={i} />
+            <div className="card-flip relative group" key={i}>
+              <WeaponCard data={item} key={i} isGiveawayWinList={true} />
+              <div className="absolute w-full h-full top-0 left-0 z-[11] bg-black/70 flex flex-col items-center opacity-0  transition-opacity justify-center group-hover:opacity-100">
+                <div className="w-[66px] h-[66px] rounded-full overflow-hidden mt-2 mb-1">
+                  <img src={item?.headPic} alt="" />
+                </div>
+                <div>{item?.nickname}</div>
+                <div className='text-sm'>{item?.createTime}</div>
               </div>
-              <div className="back">
+
+              {/* <div className="back">
                 <div className="flex flex-col gap-3 items-center justify-center w-full h-fullbg-dark bg-opacity-70 cursor-pointer rounded-md">
                   <div className="avatar w-14 h-14 relative rounded">
                     <img src={item?.headPic} />
@@ -274,7 +280,7 @@ export default function BoxPage() {
                   <div className="text-white text-sm">{item?.nickname}</div>
                   <div className="text-white text-sm">{item?.createTime}</div>
                 </div>
-              </div>
+              </div> */}
             </div>
           );
         })}

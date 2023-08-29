@@ -1373,6 +1373,9 @@ declare namespace API {
     nickname?: string;
     recoveryPrice?: number;
     voucherName?: string;
+    rollCode?: number;
+    verfiyId: string;
+    round?: number;
   };
 
   type recentDropUsingGETParams = {

@@ -224,22 +224,6 @@ export default function Room() {
               <FormattedMessage id="roll_detail_jclb" />
             </span>
           </div>
-          {!roomInfo?.loading && (
-            <div className="flex justify-between sm:justify-center gap-2 my-4">
-              <div>
-                <FormattedMessage id="roll_detail_zjz" />
-                <span className="text-primary ml-1">
-                  {roomInfo?.data?.poolValue}
-                </span>
-              </div>
-              <div>
-                <FormattedMessage id="roll_detail_sl" />
-                <span className="text-primary ml-1">
-                  {roomInfo?.data?.giftCount}
-                </span>
-              </div>
-            </div>
-          )}
           <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 xl:grid-cols-7 gap-2">
             {giftList?.loading
               ? Array.from({ length: 7 }).map((_, i) => (
@@ -313,24 +297,6 @@ export default function Room() {
                       </div>
                       <div>{item.giftVos?.[0]?.winnerInfo?.nickname}</div>
                     </div>
-                    {/* <div
-                      className={`user-grade-${item.giftVos?.[0].grade} flex gap-2 p-1 items-center rounded-tl-md rounded-tr-md`}
-                    >
-                      <div className="avatar">
-                        <div className="w-[30px] rounded relative">
-                          <img src={item.giftVos?.[0]?.winnerInfo?.headPic} />
-                          <img
-                            src={item?.headGround}
-                            className="absolute left-0 top-0 w-full h-full"
-                          />
-                        </div>
-                      </div>
-                      <div className="flex-1">
-                        <span className="truncate text-sm">
-                          {item.giftVos?.[0]?.winnerInfo?.nickname}
-                        </span>
-                      </div>
-                    </div> */}
                     <WeaponCard
                       key={i}
                       data={item.giftVos?.[0]}

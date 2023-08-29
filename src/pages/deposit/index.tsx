@@ -1,4 +1,3 @@
-import { IconFont } from '@/components/icons';
 import {
   makePaymentUsingPOST,
   paymentStateUsingGET,
@@ -11,6 +10,7 @@ import { LeftOutlined } from '@ant-design/icons';
 import { Menu, Transition } from '@headlessui/react';
 import { FormattedMessage, useModel, useRequest } from '@umijs/max';
 import { Fragment, useEffect, useState } from 'react';
+import { Input } from 'react-daisyui';
 import { toast } from 'react-toastify';
 
 export default function Deposit() {
@@ -182,13 +182,11 @@ export default function Deposit() {
                     setQuantity(item);
                   }}
                 >
-                  $ {numberFixed(
-                    (item * Number(rechageInfo?.rechargeDiscount)),
-                  )}
+                  $ {numberFixed(item * Number(rechageInfo?.rechargeDiscount))}
                 </div>
               ))}
             </div>
-            <div className="bg-base-content bg-opacity-10 rounded-lg p-3 md:p-6 flex flex-col gap-6">
+            <div className="rounded-lg py-3 md:py-6 flex flex-col gap-6">
               {/* {couponList && couponList.length > 0 && (
                 <Menu as="div" className="relative">
                   <Menu.Button className="select select-sm md:select-md select-accent border-opacity-50 rounded uppercase w-full font-semibold flex justify-between items-center focus:outline-nonebg-dark">
@@ -242,39 +240,49 @@ export default function Deposit() {
                 </Menu>
               )} */}
 
-              <div className="grid items-center gap-2 md:grid-cols-2">
-                <div className="flex flex-col w-full gap-2">
-                  <div className="uppercase font-semibold text-sm md:text-base">
-                    you amout
-                  </div>
-                  <div className="text-primary inline-flex gap-1">
-                    {selectCurrency?.symbol}
-                    <span> {(selectCurrency?.rate || 0) * quantity}</span>
+              <div className="flex gap-x-8">
+                <div className="flex flex-col w-fit gap-2">
+                  <div className="uppercase  text-xs">you amout</div>
+                  <div className="flex h-[40px] w-[176px] overflow-hidden rounded-lg border border-light text-xs font-bold">
+                    <div className="flex h-full pl-5 pr-1 items-center justify-center bg-dark text-center text-whitew">
+                      {selectCurrency?.symbol}
+                    </div>
+                    <Input
+                      type="number"
+                      className="flex-1 bg-transparent pr-5 pl-0 text-lg h-full w-10 font-bold text-white outline-none border-none focus:outline-none lg:text-xs"
+                      value={(selectCurrency?.rate || 0) * quantity}
+                      onChange={(e) => {
+                        console.log(e.target.value, 'e');
+                        setQuantity(
+                          Number(e.target.value) / (selectCurrency?.rate || 0),
+                        );
+                      }}
+                    />
                   </div>
                 </div>
                 <div className="flex flex-col w-full gap-2">
-                  <div className="uppercase font-semibold text-sm md:text-base">
-                    Actually obtained
-                  </div>
-                  <div className="text-secondary font-num">
-                    <IconFont type="icon-coin" className="mr-1" />
-                    {quantity}+
-                    {numberFixed(
-                      (Number(quantity) *
-                        Number(rechageInfo?.rechargeDiscount)) /
-                        100,
-                    )}
+                  <div className="uppercase text-xs">Actually obtained</div>
+                  <div className="font-num h-[40px] flex items-center">
+                    <span className="text-green"> $ {quantity}</span> +{' '}
+                    <span className="text-purple">
+                      {numberFixed(
+                        (Number(quantity) *
+                          Number(rechageInfo?.rechargeDiscount)) /
+                          100,
+                      )}
+                    </span>
                     {selectCoupon?.rechargeDiscount &&
                       `+${selectCoupon?.rechargeDiscount}`}
                   </div>
                 </div>
               </div>
               <button
-                className="btn btn-primary btn-sm md:btn-md uppercase w-full rounded font-semibold"
+                className="btn btn-green btn-sm md:btn-md uppercase w-full rounded font-semibold"
                 onClick={onPay}
                 type="button"
               >
-                pay {(selectCurrency?.rate || 0) * quantity}
+                pay {selectCurrency?.symbol}{' '}
+                {(selectCurrency?.rate || 0) * quantity}
               </button>
             </div>
           </div>
