@@ -107,7 +107,7 @@ export default React.memo(function WeaponCard({
       {fromProfile && (
         <div className="absolute right-0 top-0 pt-[8px] pr-[10px] text-sm">
           <span
-            className={`${
+            className={`uppercase ${
               data?.state === ItemState.ACTIVE ? 'text-green font-bold' : ''
             } ${data?.state === ItemState.SOLD ? 'text-red/100 font-bold' : ''} 
             ${
@@ -136,8 +136,8 @@ export default React.memo(function WeaponCard({
         )}
       {rollCode > 0 && (
         <div className="absolute right-0 top-0 flex items-center text-right z-30 text-white/[0.5] text-sm font-semibold uppercase leading-none pt-[8px] pr-[10px] gap-2">
-          <div className='flex flex-col'>
-            <div className='text-xs'>Roll</div>
+          <div className="flex flex-col">
+            <div className="text-xs">Roll</div>
             <div className="text-white/[0.5] text-xs font-num flex justify-end gap-2 text-right">
               {rollCode}
             </div>
