@@ -160,7 +160,7 @@ export default function BagPage() {
             setExchangeConfirm(true);
           }}
         >
-          ALL SALE
+          <FormattedMessage id="open_box_sell_all" />
         </div>
       </div>
       {!loading && pageData?.length === 0 && <Empty />}
@@ -218,7 +218,9 @@ export default function BagPage() {
                               type="icon-shield"
                               className="text-green mr-1"
                             />
-                            <span>Check roll</span>
+                            <span>
+                              <FormattedMessage id="battle_fairness_verify" />
+                            </span>
                           </div>
                         </li>
                         {item?.state === ItemState.ACTIVE && (
@@ -254,7 +256,7 @@ export default function BagPage() {
                           }}
                         >
                           <div className="btn btn-sm w-full bg-green text-dark text-sm rounded-none hover:bg-green">
-                            COLLECT
+                            <FormattedMessage id="exchagne" />
                           </div>
                         </div>
                       )}

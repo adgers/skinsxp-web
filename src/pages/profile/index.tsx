@@ -1,6 +1,13 @@
 import ModifySteamLink from '@/components/account/steamLink';
 import { headHidden } from '@/utils';
-import { Link, Outlet, useIntl, useLocation, useModel } from '@umijs/max';
+import {
+  FormattedMessage,
+  Link,
+  Outlet,
+  useIntl,
+  useLocation,
+  useModel,
+} from '@umijs/max';
 import { useMemo, useState } from 'react';
 import './index.less';
 
@@ -13,19 +20,19 @@ export default function User() {
   const tabLinks = useMemo(() => {
     return [
       {
-        title: 'Items',
+        title: <FormattedMessage id="my_package_title" />,
         link: '/profile/bag',
       },
       {
-        title: 'History',
+        title: <FormattedMessage id="recharge_record" />,
         link: '/profile/record',
       },
       {
-        title: 'AFFILIATE SYSTEM',
+        title: <FormattedMessage id="home_item_hzhb" />,
         link: '/profile/affiliate',
       },
       {
-        title: 'Provable Fair',
+        title: <FormattedMessage id="mine_gpyz" />,
         link: '/profile/provably-fair',
       },
     ];
@@ -43,12 +50,12 @@ export default function User() {
                 </div>
                 <div className="flex flex-col gap-1 md:gap-2 flex-1 justify-center ">
                   <div className="text-white text-base md:text-xl flex items-center gap-2">
-                    <span>{userInfo?.nickname || '名字'}</span>
+                    <span>{userInfo?.nickname}</span>
                   </div>
                   <div className="flex justify-between text-xl font-bold items-center">
                     <div className=" lg:w-fit">
                       <div className="text-white/70 text-sm font-normal">
-                        Balance
+                        <FormattedMessage id="balanceAfter" />
                       </div>
                       <div className="text-green  truncate">
                         ${userInfo?.balance}
@@ -59,11 +66,11 @@ export default function User() {
                         Integral
                       </div>
                       <div className=" text-purple truncate">
-                        ${userInfo?.secondaryBalance}
+                        {userInfo?.secondaryBalance}
                       </div>
                     </div>
-                    <div className="btn px-[8px] rounded-none border border-green text-green disp invisible xl:visible ">
-                      Add balance
+                    <div className="btn px-[16px] rounded-none border border-green text-green disp invisible xl:visible ">
+                      <FormattedMessage id="wc_rewards_deposit" />
                     </div>
                   </div>
                 </div>
@@ -73,7 +80,7 @@ export default function User() {
                   className="btn rounded-none border border-light h-8 w-4/5"
                   onClick={() => setSteamLinkModalVisible(true)}
                 >
-                  {userInfo?.tradeUrl? 'Edit Trade URL':'Add Trade URL'}
+                  {userInfo?.tradeUrl ? 'Edit Trade URL' : 'Add Trade URL'}
                 </div>
                 <div className="btn rounded-none border border-green h-8 w-4/5">
                   Steam

@@ -1,4 +1,3 @@
-import depBg from '@/assets/dep-bg.png';
 import { IconFont } from '@/components/icons';
 import {
   makePaymentUsingPOST,
@@ -10,7 +9,7 @@ import {
 import { goback, numberFixed } from '@/utils';
 import { LeftOutlined } from '@ant-design/icons';
 import { Menu, Transition } from '@headlessui/react';
-import { useModel, useRequest,FormattedMessage } from '@umijs/max';
+import { FormattedMessage, useModel, useRequest } from '@umijs/max';
 import { Fragment, useEffect, useState } from 'react';
 import { toast } from 'react-toastify';
 
@@ -100,8 +99,8 @@ export default function Deposit() {
       </div>
       {!loading && rechageInfo && rechargeConfig && (
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-          <img src={depBg} className="w-full h-full hidden lg:block" />
-          <div className="flex flex-col gap-6">
+          {/* <img src={depBg} className="w-full h-full hidden lg:block" /> */}
+          <div className="flex flex-col gap-4">
             <Menu as="div" className="relative">
               <Menu.Button className="select select-sm md:select-md select-accent border-opacity-50 rounded uppercase w-full font-semibold flex justify-between items-center focus:outline-nonebg-dark">
                 <div>Currency</div>
@@ -134,75 +133,63 @@ export default function Deposit() {
                 </Menu.Items>
               </Transition>
             </Menu>
-
-            <Menu as="div" className="relative">
-              <Menu.Button className="select select-sm md:select-md select-accent border-opacity-50 rounded uppercase w-full font-semibold flex justify-between items-center focus:outline-nonebg-dark">
-                <div>Recharge channels</div>
-                <div>
-                  {selectChannel ? selectChannel.channelName : 'please select'}
+            <ul className="grid min-h-0 w-full grid-cols-2 gap-3 md:grid-cols-3">
+              <li className="h-[8rem] min-h-[5rem] md:h-auto">
+                <a
+                  className="trainstion relative flex h-full min-h-0 flex-col rounded-lg border bg-dark bg-opacity-90 bg-clip-padding bg-no-repeat outline-none  duration-300 focus:outline-none border-light focus-visible:light active"
+                  href=""
+                >
+                  <img
+                    src="https://key-drop.com/uploads/payment/methods/Visa_Master_alone.png?v85"
+                    className="h-full min-h-0 w-full max-w-full object-contain text-center leading-[100px]"
+                    alt="visa_mastercard"
+                  />
+                </a>
+              </li>
+            </ul>
+            <div className="grid min-h-0 w-full grid-cols-2 gap-3 md:grid-cols-3">
+              <div></div>
+              {/* {rechargeChannelList?.map((item, index) => (
+                <div
+                  key={index}
+                  className={`h-[8rem] min-h-[5rem] md:h-auto flex items-center cursor-pointer rounded justify-center ${
+                    selectChannel?.id === item.id ? 'border border-green' : ''
+                  }`}
+                  onClick={() => setSelectChannel(item)}
+                >
+                  {item?.channelName}
                 </div>
-              </Menu.Button>
-              <Transition
-                as={Fragment}
-                enter="transition ease-out duration-100"
-                enterFrom="transform opacity-0 scale-95"
-                enterTo="transform opacity-100 scale-100"
-                leave="transition ease-in duration-75"
-                leaveFrom="transform opacity-100 scale-100"
-                leaveTo="transform opacity-0 scale-95"
-              >
-                <Menu.Items className="absolute left-0 mt-2 w-full bg-dark ring-1 ring-accent rounded origin-top-left p-1 z-50">
-                  {rechargeChannelList?.map((item) => (
-                    <Menu.Item key={item.rechargeConfigId}>
-                      {({ active }) => (
-                        <div
-                          className={`${
-                            active ? 'bg-accent bg-opacity-10' : ''
-                          } flex justify-between items-center p-2 text-sm rounded`}
-                          onClick={() => setSelectChannel(item)}
-                        >
-                          {item.channelName}
-                        </div>
-                      )}
-                    </Menu.Item>
-                  ))}
-                </Menu.Items>
-              </Transition>
-            </Menu>
+              ))} */}
+            </div>
+          </div>
+          <div className="flex flex-col gap-6">
             <div className="flex gap-2">
               {/* <div className="vip-level">
                 <div className="vip-level-icon"></div>
                 <div className="vip-level-num">{userInfo?.grade}</div>
               </div> */}
-              <span className="text-secondary font-num ml-1 flex gap-1 items-center uppercase">
-                Bonus {rechageInfo?.rechargeDiscount}%
-              </span>
             </div>
             <div className="grid grid-cols-3 gap-3 md:gap-6">
-              {rechargeAmountAllowList?.map((item,i) => (
+              {rechargeAmountAllowList?.map((item, i) => (
                 <div
-                  className={`rounded md:rounded-lg bg-gradient-to-r from-[#44425E] to-[#131314] ring-1  hover:ring-accent cursor-pointer overflow-hidden ${
-                    item === quantity ? 'ring-accent' : 'ring-transparent'
+                  className={`rounded-none flex items-center py-3 justify-center relative cursor-pointer ${
+                    quantity === item
+                      ? 'bg-green/[0.3] border border-green'
+                      : 'bg-light/20 '
                   }`}
                   key={i}
                   onClick={() => {
                     setQuantity(item);
                   }}
                 >
-                  <div className="font-num text-secondary h-14 md:h-28 flex items-center justify-center md:text-2xl">
-                    <IconFont type="icon-coin" className="mr-1" /> {item}
-                  </div>
-                  <div className="bg-base-100 bg-opacity-50 flex items-center justify-center gap-1 h-6 md:h-12 text-xs md:text-base">
-                    <IconFont type="icon-gift" />+
-                    {numberFixed(
-                      (item * Number(rechageInfo?.rechargeDiscount)) / 100,
-                    )}
-                  </div>
+                  $ {numberFixed(
+                    (item * Number(rechageInfo?.rechargeDiscount)),
+                  )}
                 </div>
               ))}
             </div>
             <div className="bg-base-content bg-opacity-10 rounded-lg p-3 md:p-6 flex flex-col gap-6">
-              {couponList && couponList.length > 0 && (
+              {/* {couponList && couponList.length > 0 && (
                 <Menu as="div" className="relative">
                   <Menu.Button className="select select-sm md:select-md select-accent border-opacity-50 rounded uppercase w-full font-semibold flex justify-between items-center focus:outline-nonebg-dark">
                     <div>coupon</div>
@@ -220,7 +207,7 @@ export default function Deposit() {
                     leaveTo="transform opacity-0 scale-95"
                   >
                     <Menu.Items className="absolute left-0 mt-2 w-full bg-dark ring-1 ring-accent rounded origin-top-left p-1 z-50">
-                      {couponList.map((item,i) => (
+                      {couponList.map((item, i) => (
                         <Menu.Item key={i}>
                           {({ active }) => (
                             <div
@@ -253,7 +240,7 @@ export default function Deposit() {
                     </Menu.Items>
                   </Transition>
                 </Menu>
-              )}
+              )} */}
 
               <div className="grid items-center gap-2 md:grid-cols-2">
                 <div className="flex flex-col w-full gap-2">
@@ -285,7 +272,7 @@ export default function Deposit() {
               <button
                 className="btn btn-primary btn-sm md:btn-md uppercase w-full rounded font-semibold"
                 onClick={onPay}
-                type='button'
+                type="button"
               >
                 pay {(selectCurrency?.rate || 0) * quantity}
               </button>

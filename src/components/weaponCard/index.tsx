@@ -1,15 +1,16 @@
-import { numberFixed, parseName } from '@/utils';
-import './index.less';
-
+import winnerIcon from '@/assets/winner-icon.png';
 import { ItemState } from '@/pages/profile/bag';
+import { numberFixed, parseName } from '@/utils';
 import React, { useState } from 'react';
 import Skeleton from 'react-loading-skeleton';
+import './index.less';
 
 export default React.memo(function WeaponCard({
   loading,
   data,
   mini = false,
   fromProfile = false,
+  isGiveawayWinList = false,
 }: {
   loading?: boolean;
   data?: API.RollRoomGiftVo &
@@ -21,6 +22,7 @@ export default React.memo(function WeaponCard({
     API.RollRoomGiftVo;
   mini?: boolean;
   fromProfile?: boolean;
+  isGiveawayWinList?: boolean;
 }) {
   const [showChance, setShowChance] = useState<boolean>(false);
 
@@ -56,18 +58,43 @@ export default React.memo(function WeaponCard({
       <div className="img-wrapper">
         <img src={img} />
       </div>
-      <div className="item-footer flex flex-col gap-1">
-        {mini ? null : (
-          <div>
-            <span className="truncate text-white/[0.5] text-xs">
-              {name && parseName(name)?.[1]}
-            </span>
+      {!isGiveawayWinList ? (
+        <div className="item-footer flex flex-col gap-1">
+          {mini ? null : (
+            <div>
+              <span className="truncate text-white/[0.5] text-xs">
+                {name && parseName(name)?.[1]}
+              </span>
+            </div>
+          )}
+          <div className=" truncate text-white text-sm">
+            {name && parseName(name)?.[0]}
           </div>
-        )}
-        <div className=" truncate text-white text-sm">
-          {name && parseName(name)?.[0]}
         </div>
-      </div>
+      ) : (
+        <div className="item-footer flex gap-1 items-center">
+          <div className="flex-1 overflow-hidden">
+            <div>
+              <span className="truncate text-white/[0.5] text-xs">
+                {name && parseName(name)?.[1]}
+              </span>
+            </div>
+            <div className=" truncate text-white text-sm">
+              {name && parseName(name)?.[0]}
+            </div>
+          </div>
+          <div className="rounded-full w-[40px] relative">
+            <div className='w-[17px] absolute right-0 top-[-10px]'>
+              <img src={winnerIcon} alt="" />
+            </div>
+            <img
+              src={data?.winnerInfo?.headPic}
+              alt=""
+              className="rounded-full w-full h-full"
+            />
+          </div>
+        </div>
+      )}
 
       <div className="absolute left-0 top-0 text-sm text-white pt-[8px] pl-[10px]">
         <span className="font-num">
@@ -80,7 +107,11 @@ export default React.memo(function WeaponCard({
             className={`${
               data?.state === ItemState.ACTIVE ? 'text-green font-bold' : ''
             } ${data?.state === ItemState.SOLD ? 'text-red/100 font-bold' : ''} 
-            ${data?.state === ItemState.RETRIEVED ? 'text-white/60 font-bold' : ''}`}
+            ${
+              data?.state === ItemState.RETRIEVED
+                ? 'text-white/60 font-bold'
+                : ''
+            }`}
           >
             {data?.stateStr}
           </span>
