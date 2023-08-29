@@ -1,8 +1,10 @@
 import winnerIcon from '@/assets/winner-icon.png';
 import { ItemState } from '@/pages/profile/bag';
 import { numberFixed, parseName } from '@/utils';
+import { history } from '@umijs/max';
 import React, { useState } from 'react';
 import Skeleton from 'react-loading-skeleton';
+import { IconFont } from '../icons';
 import './index.less';
 
 export default React.memo(function WeaponCard({
@@ -48,6 +50,7 @@ export default React.memo(function WeaponCard({
   const img = data?.giftImage || data?.winVoucherImg;
   const grade = data?.grade ?? data?.giftGrade;
   const probability = data?.realProbability || 0;
+  const rollCode = data?.rollCode || 0;
 
   return (
     <div
@@ -84,11 +87,11 @@ export default React.memo(function WeaponCard({
             </div>
           </div>
           <div className="rounded-full w-[40px] relative">
-            <div className='w-[17px] absolute right-0 top-[-10px]'>
+            <div className="w-[17px] absolute right-0 top-[-10px]">
               <img src={winnerIcon} alt="" />
             </div>
             <img
-              src={data?.winnerInfo?.headPic}
+              src={data?.winnerInfo?.headPic || data?.headPic}
               alt=""
               className="rounded-full w-full h-full"
             />
@@ -104,7 +107,7 @@ export default React.memo(function WeaponCard({
       {fromProfile && (
         <div className="absolute right-0 top-0 pt-[8px] pr-[10px] text-sm">
           <span
-            className={`${
+            className={`uppercase ${
               data?.state === ItemState.ACTIVE ? 'text-green font-bold' : ''
             } ${data?.state === ItemState.SOLD ? 'text-red/100 font-bold' : ''} 
             ${
@@ -117,17 +120,35 @@ export default React.memo(function WeaponCard({
           </span>
         </div>
       )}
-      {probability > 0 && ( // 有概率才显示
-        <div className="absolute right-0 top-0 flex flex-col items-end text-right z-30 text-white/[0.5] text-sm font-semibold uppercase leading-none pt-[9px] pr-[11px] gap-2">
-          <div className="text-white/[0.5] text-xs font-num flex items-center gap-2">
-            {numberFixed(probability * 100, 2)}%
-            <div
-              className="flex h-5 w-5 items-center justify-center rounded-full bg-white/[0.10] text-center font-bold transition-colors duration-200 css-1t6ze00"
-              onClick={() => setShowChance(!showChance)}
-            >
-              {showChance ? 'x' : 'i'}
+      {probability > 0 &&
+        rollCode === 0 && ( // 有概率才显示
+          <div className="absolute right-0 top-0 flex flex-col items-end text-right z-30 text-white/[0.5] text-sm font-semibold uppercase leading-none pt-[8px] pr-[10px] gap-2">
+            <div className="text-white/[0.5] text-xs font-num flex items-center gap-2">
+              {numberFixed(probability * 100, 2)}%
+              <div
+                className="flex h-5 w-5 items-center justify-center rounded-full bg-white/[0.10] text-center font-bold transition-colors duration-200 lowercase"
+                onClick={() => setShowChance(!showChance)}
+              >
+                {showChance ? 'x' : 'i'}
+              </div>
             </div>
           </div>
+        )}
+      {rollCode > 0 && (
+        <div className="absolute right-0 top-0 flex items-center text-right z-30 text-white/[0.5] text-sm font-semibold uppercase leading-none pt-[8px] pr-[10px] gap-2">
+          <div className="flex flex-col">
+            <div className="text-xs">Roll</div>
+            <div className="text-white/[0.5] text-xs font-num flex justify-end gap-2 text-right">
+              {rollCode}
+            </div>
+          </div>
+          <IconFont
+            type="icon-shield"
+            className="text-green"
+            onClick={() =>
+              history.push(`/profile/provably-fair/verify/${data?.verifyId}`)
+            }
+          />
         </div>
       )}
       {showChance && (
@@ -136,7 +157,9 @@ export default React.memo(function WeaponCard({
             <div className="uppercase text-white text-center font-semibold text-sm">
               Range Odds
             </div>
-            <div className="text-white/[0.5] text-sm">99950 - 99973</div>
+            <div className="text-white/[0.5] text-sm">
+              {data?.rollCodeLow} - {data?.rollCodeHigh}
+            </div>
           </div>
         </div>
       )}

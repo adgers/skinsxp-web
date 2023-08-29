@@ -31,7 +31,7 @@ export default function BagPage() {
     stat: number;
   }>({
     page: 1,
-    stat: -1,
+    stat: 0,
   });
   const [orderByPrice, setOrderByPrice] = useState<boolean>(true);
   const [allChecked, setAllChecked] = useState<boolean>(false);

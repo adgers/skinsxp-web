@@ -224,22 +224,6 @@ export default function Room() {
               <FormattedMessage id="roll_detail_jclb" />
             </span>
           </div>
-          {!roomInfo?.loading && (
-            <div className="flex justify-between sm:justify-center gap-2 my-4">
-              <div>
-                <FormattedMessage id="roll_detail_zjz" />
-                <span className="text-primary ml-1">
-                  {roomInfo?.data?.poolValue}
-                </span>
-              </div>
-              <div>
-                <FormattedMessage id="roll_detail_sl" />
-                <span className="text-primary ml-1">
-                  {roomInfo?.data?.giftCount}
-                </span>
-              </div>
-            </div>
-          )}
           <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 xl:grid-cols-7 gap-2">
             {giftList?.loading
               ? Array.from({ length: 7 }).map((_, i) => (
@@ -255,7 +239,7 @@ export default function Room() {
               <FormattedMessage id="roll_detail_cyyh" />
             </span>
           </div>
-          <div className="flex flex-wrap gap-4">
+          <div className="flex flex-wrap justify-center  gap-4">
             {Array.from({ length: 6 }).map((item, i) => (
               <Skeleton
                 loading={userList?.loading}
@@ -275,18 +259,9 @@ export default function Room() {
             {Array.isArray(userList?.data) &&
               userList?.data?.map((item) => {
                 return (
-                  <div className="flex flex-col gap-2" key={item.id}>
-                    <div className="avatar flex-col">
-                      <div className="w-[55px] sm:w-20 rounded relative">
-                        <img src={item?.headPic} />
-                        <img
-                          src={item?.headGround}
-                          className="absolute left-0 top-0 w-full h-full"
-                        />
-                      </div>
-                    </div>
-                    <div className="inline-flex items-center justify-center text-xs w-[55px] sm:w-20">
-                      <span className="truncate">{item.nickname}</span>
+                  <div className="avatar" key={item.id}>
+                    <div className="w-[45px] rounded-full relative">
+                      <img src={item?.headPic} />
                     </div>
                   </div>
                 );
@@ -309,28 +284,24 @@ export default function Room() {
 
           <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 xl:grid-cols-7 gap-2">
             {winnerList.data?.map((item, i) => (
-              <div className="flex flex-col" key={i}>
+              <div className="flex flex-col relative group" key={i}>
                 {item.giftVos?.[0] && (
                   <>
-                    <div
-                      className={`user-grade-${item.giftVos?.[0].grade} flex gap-2 p-1 items-center rounded-tl-md rounded-tr-md`}
-                    >
-                      <div className="avatar">
-                        <div className="w-[30px] rounded relative">
-                          <img src={item.giftVos?.[0]?.winnerInfo?.headPic} />
-                          <img
-                            src={item?.headGround}
-                            className="absolute left-0 top-0 w-full h-full"
-                          />
-                        </div>
+                    <div className="absolute w-full h-full top-0 left-0 z-[11] bg-black/70 flex flex-col items-center opacity-0  transition-opacity justify-center group-hover:opacity-100">
+                      <div className="text-green">Winner</div>
+                      <div className="w-[66px] h-[66px] rounded-full overflow-hidden mt-2 mb-1">
+                        <img
+                          src={item.giftVos?.[0]?.winnerInfo?.headPic}
+                          alt=""
+                        />
                       </div>
-                      <div className="flex-1">
-                        <span className="truncate text-sm">
-                          {item.giftVos?.[0]?.winnerInfo?.nickname}
-                        </span>
-                      </div>
+                      <div>{item.giftVos?.[0]?.winnerInfo?.nickname}</div>
                     </div>
-                    <WeaponCard key={i} data={item.giftVos?.[0]} />
+                    <WeaponCard
+                      key={i}
+                      data={item.giftVos?.[0]}
+                      isGiveawayWinList={true}
+                    />
                   </>
                 )}
               </div>
