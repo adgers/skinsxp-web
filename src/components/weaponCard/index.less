@@ -7,7 +7,7 @@
 
   &.weapon-card-grade-0 {
     background: #3e3831;
-    border-bottom: 3px solid var(--4, #ffee51); 
+    border-bottom: 3px solid var(--4, #ffee51);
   }
 
   &.weapon-card-grade-1 {
@@ -165,12 +165,15 @@
   cursor: pointer;
 
   &.weapon-card-grade-0 {
-    background: radial-gradient(
+    background: var(
+      --c-1,
+      radial-gradient(
         110% 100% at 49.87% 100%,
-        rgba(226, 200, 61, 0.58) 0%,
-        rgba(40, 40, 40, 0) 100%
-      ),
-      #1e1d22;
+        #8d7d31 0%,
+        #413c28 46.35%,
+        #1e1d22 100%
+      )
+    );
     border-bottom: 3px solid var(--4, #ffee51);
     &::before {
       background: url('@/assets/iv1.png') no-repeat;
@@ -179,12 +182,15 @@
   }
 
   &.weapon-card-grade-1 {
-    background: radial-gradient(
+    background: var(
+      --c-2,
+      radial-gradient(
         147.37% 100% at 49.87% 100%,
-        rgba(239, 64, 95, 0.48) 0%,
-        rgba(40, 40, 40, 0) 100%
-      ),
-      #1e1d22;
+        #873345 0%,
+        #3f242c 46.72%,
+        #1e1d22 100%
+      )
+    );
     border-bottom: 3px solid var(--3, #ed3838);
     &::before {
       background: url('@/assets/iv2.png') no-repeat;
@@ -193,12 +199,15 @@
   }
 
   &.weapon-card-grade-2 {
-    background: radial-gradient(
+    background: var(
+      --c-3,
+      radial-gradient(
         124.94% 91.38% at 49.87% 100%,
-        rgba(148, 71, 224, 0.48) 0%,
-        rgba(40, 40, 40, 0) 100%
-      ),
-      #1e1d22;
+        #533476 0%,
+        #312540 56.1%,
+        #1e1d22 100%
+      )
+    );
     border-bottom: 3px solid var(--3, #ab6afc);
     &::before {
       background: url('@/assets/iv3.png') no-repeat;
@@ -207,12 +216,15 @@
   }
 
   &.weapon-card-grade-3 {
-    background: radial-gradient(
+    background: var(
+      --c-4,
+      radial-gradient(
         98.6% 106.9% at 49.87% 106.9%,
-        rgba(128, 156, 163, 0.54) 0%,
-        rgba(40, 40, 40, 0) 100%
-      ),
-      #1e1d22;
+        #556167 0%,
+        #2d3135 53.44%,
+        #282828 100%
+      )
+    );
     border-bottom: 3px solid var(--5, #6da1ac);
     &::before {
       background: url('@/assets/iv4.png') no-repeat;
