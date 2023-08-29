@@ -279,10 +279,6 @@ export default function DreamPage() {
                 <div className="flex flex-col gap-3 items-center justify-center w-full h-fullbg-dark bg-opacity-70 cursor-pointer rounded-md">
                   <div className="avatar w-10 h-10 relative">
                     <img src={item?.headPic} className="rounded" />
-                    <img
-                      src={item?.headGround}
-                      className="absolute left-0 top-0 w-full h-full"
-                    />
                   </div>
                   <div className="text-sm">{item?.nickname}</div>
                 </div>

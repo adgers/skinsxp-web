@@ -1,18 +1,20 @@
-.roll-wrap{
+.roll-wrap {
   width: 100%;
   height: 100%;
   position: relative;
   overflow: hidden;
   perspective: 1000px;
 }
-.roll-item-list{
+
+.roll-item-list {
   position: absolute;
   transform-style: preserve-3d;
   will-change: transform;
   width: 100%;
   height: 100%;
 }
-.roll-item{
+
+.roll-item {
   position: absolute;
   left: 0;
   top: 0;
@@ -32,19 +34,56 @@
   flex-shrink: 0;
   backface-visibility: hidden;
 
-  &.lottery-card-0 {
-    background: linear-gradient(0deg, #59491E 0%, #1E1D22 100%);
+  &.lottery-card-bg {
+    &.lottery-card-0 {
+      background: linear-gradient(0deg, #59491E 0%, #1E1D22 100%);
+    }
+
+    &.lottery-card-1 {
+      background: linear-gradient(0deg, #5C2630 0%, #1E1D22 100%);
+    }
+
+    &.lottery-card-2 {
+      background: linear-gradient(0deg, #4A385B 0%, #1E1D22 100%);
+    }
+
+    &.lottery-card-3 {
+      background: linear-gradient(0deg, #4F595B 0%, #1E1D22 100%);
+    }
   }
 
-  &.lottery-card-1 {
-    background: linear-gradient(0deg, #5C2630 0%, #1E1D22 100%);
-  }
 
-  &.lottery-card-2 {
-    background: linear-gradient(0deg, #4A385B 0%, #1E1D22 100%);
-  }
 
-  &.lottery-card-3 {
-    background: linear-gradient(0deg, #4F595B 0%, #1E1D22 100%);
+  &.lottery-card-logo {
+    img{
+      z-index: 2;
+    }
+    .card-logo {
+      width: 80%;
+      height: 50%;
+      position: absolute;
+      left: 10%;
+      top: 25%;
+      background-size: contain;
+      background-repeat: no-repeat;
+      background-position: center;
+      z-index: 1;
+    }
+
+    &.lottery-card-0 .card-logo {
+      background-image: url('@/assets/iv1.png');
+    }
+
+    &.lottery-card-1 .card-logo {
+      background-image: url('@/assets/iv2.png');
+    }
+
+    &.lottery-card-2 .card-logo {
+      background-image: url('@/assets/iv3.png');
+    }
+
+    &.lottery-card-3 .card-logo {
+      background-image: url('@/assets/iv4.png');
+    }
   }
 }

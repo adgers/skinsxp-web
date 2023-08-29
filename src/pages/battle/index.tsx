@@ -70,7 +70,7 @@ export default function BattlePage() {
               const selected = t.key === filter;
               return (
                 <div
-                  className={`cursor-pointer px-4 text-base uppercase leading-none h-full inline-flex gap-1 items-center transition-colors duration-200 hover:text-green border-b ${
+                  className={`cursor-pointer font-semibold px-4 text-base uppercase leading-none h-full inline-flex gap-1 items-center transition-colors duration-200 hover:text-green border-b ${
                     selected
                       ? 'border-green text-green'
                       : 'text-white border-transparent'
@@ -99,7 +99,7 @@ export default function BattlePage() {
           <IconFont type="icon-zhandou" />
           <FormattedMessage id="arena_cjfy" />
         </Link>
-        <div className="flex w-full items-center justify-end mb-4">
+        <div className="flex w-full items-center justify-center sm:justify-end mb-4">
           {modfilters.map((t) => {
             const selected = t.key === modFilter;
             return (
@@ -145,46 +145,43 @@ export default function BattlePage() {
         )}
       </div>
 
-      <div className="w-[330px] flex-shrink-0" ref={rankRef}>
+      <div className="w-[280px] flex-shrink-0" ref={rankRef}>
         <div className="battle-rank-point relative rounded-md">
-          <div className="battle-rank-ring animate-spin-slow"></div>
-          <div className="top-[150px] flex items-center flex-col w-full absolute z-10">
-            <div className="relative w-[96px] h-[96px] rounded">
-              <img src={topOneYesterday?.headPic} />
-              <img
-                src={topOneYesterday?.headGround}
-                className="absolute left-0 top-0 w-full h-full"
-              />
+          <div className="top-[70px] flex items-center flex-col w-full absolute z-10">
+            <div className="relative w-[80px] h-[80px]">
+              <img src={topOneYesterday?.headPic} className='rounded-full'/>
             </div>
             <div className="mt-2">{topOneYesterday?.nickname}</div>
-            <div className="font-num mt-2">{topOneYesterday?.rewardPoint}</div>
+            <div className="font-num mt-2 text-green">{topOneYesterday?.rewardPoint}</div>
+            <div className="bg-black mt-6 uppercase text-xs">
+              <FormattedMessage id="arena_my_reward_point" />：
+              <span className="font-num text-purple">
+                {myReward?.rewardPoint || 0}
+              </span>
+            </div>
           </div>
         </div>
-        <div className="battle-ranks mt-3 sm:mt-5 bg-base-content rounded-md">
-          <div className="custom-tab flex w-full justify-center gap-6 mt-2">
+        <div className="battle-ranks mt-3 sm:mt-5 bg-black">
+          <div className="grid grid-cols-2 w-full  mt-2">
             <div
-              className={`tab-item text-sm ${
-                recordTab === 0 ? 'tab-active text-[#FFD284]' : ''
+              className={`h-9 text-sm  ${
+                recordTab === 0 ? 'btn-green !rounded-none' : 'btn-light '
               }`}
               onClick={() => setRecordTab(0)}
             >
-              <span className="tab-item-c">
-                <FormattedMessage id="today_rank" />
-              </span>
+              <FormattedMessage id="today_rank" />
             </div>
             <div
-              className={`tab-item text-sm ${
-                recordTab === 1 ? 'tab-active text-[#FFD284]' : ''
+              className={`h-9 text-sm  ${
+                recordTab === 1 ? 'btn-green !rounded-none' : 'btn-light '
               }`}
               onClick={() => setRecordTab(1)}
             >
-              <span className="tab-item-c">
-                <FormattedMessage id="yesterday_rank" />
-              </span>
+              <FormattedMessage id="yesterday_rank" />
             </div>
           </div>
 
-          <div className="flex flex-col mt-4">
+          <div className="flex flex-col mt-1">
             <div className="flex h-full flex-col min-h-[400px]">
               {rank?.length === 0 && (
                 <div className="text-center text-opacity-50 text-sm">
@@ -195,42 +192,27 @@ export default function BattlePage() {
                 rank.map((user, i: number) => {
                   return (
                     <div
-                      className={`flex w-full items-center gap-2 text-sm ${
+                      className={`flex w-full items-center gap-3 text-sm ${
                         i < 3 ? `bgm-rank${i + 1} bgm-rank` : 'bgm-rank'
                       }`}
                       key={i}
                     >
-                      <div className="bgm-star">
-                        <span className="transform scale-75 font-num font-semibold">
-                          {i + 1}
-                        </span>
-                      </div>
+                      <span className="font-num font-semibold text-white">
+                        {i + 1}
+                      </span>
                       <div className="relative">
-                        <img src={user.headPic} className="w-8 h-8 rounded" />
                         <img
-                          src={user.headGround}
-                          className="absolute left-0 top-0 w-full h-full"
+                          src={user.headPic}
+                          className="w-8 h-8 rounded-full"
                         />
                       </div>
-
-                      <div className="w-24 truncate" title={user.nickname}>
+                      <div className="w-28 truncate" title={user.nickname}>
                         {user.nickname}
                       </div>
-                      <div className="text-xs">
-                        <span className="text-base-content text-opacity-50 uppercase">
-                          <FormattedMessage id="arena_battle_score" />：
-                        </span>
-                        <span className="font-num">{user.rewardPoint}</span>
-                      </div>
+                      <div className="text-xs text-green font-num "></div>
                     </div>
                   );
                 })}
-            </div>
-            <div className="my-rank">
-              <FormattedMessage id="arena_my_reward_point" />：
-              <span className="font-num align-baseline">
-                {myReward?.rewardPoint || 0}
-              </span>
             </div>
           </div>
         </div>

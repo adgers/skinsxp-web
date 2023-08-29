@@ -11,7 +11,7 @@
       "url": "http://www.apache.org/licenses/LICENSE-2.0"
     }
   },
-  "host": "192.168.12.13:9999",
+  "host": "127.0.0.1:9999",
   "basePath": "/",
   "tags": [
     {
@@ -107,8 +107,8 @@
           "200": {
             "description": "OK",
             "schema": {
-              "$ref": "#/definitions/ResultData«ActivityRewardResultVo»",
-              "originalRef": "ResultData«ActivityRewardResultVo»"
+              "originalRef": "ResultData«ActivityRewardResultVo»",
+              "$ref": "#/definitions/ResultData«ActivityRewardResultVo»"
             }
           },
           "201": {
@@ -141,8 +141,8 @@
           "200": {
             "description": "OK",
             "schema": {
-              "$ref": "#/definitions/ResultData«ActivityInfoVo»",
-              "originalRef": "ResultData«ActivityInfoVo»"
+              "originalRef": "ResultData«ActivityInfoVo»",
+              "$ref": "#/definitions/ResultData«ActivityInfoVo»"
             }
           },
           "401": {
@@ -175,8 +175,8 @@
           "200": {
             "description": "OK",
             "schema": {
-              "$ref": "#/definitions/ResultData«SignInListVo»",
-              "originalRef": "ResultData«SignInListVo»"
+              "originalRef": "ResultData«SignInListVo»",
+              "$ref": "#/definitions/ResultData«SignInListVo»"
             }
           },
           "201": {
@@ -221,8 +221,8 @@
           "200": {
             "description": "OK",
             "schema": {
-              "$ref": "#/definitions/ResultData«SignInInfoVo»",
-              "originalRef": "ResultData«SignInInfoVo»"
+              "originalRef": "ResultData«SignInInfoVo»",
+              "$ref": "#/definitions/ResultData«SignInInfoVo»"
             }
           },
           "401": {
@@ -252,8 +252,8 @@
           "200": {
             "description": "OK",
             "schema": {
-              "$ref": "#/definitions/ResultData«List«MyTaskVo»»",
-              "originalRef": "ResultData«List«MyTaskVo»»"
+              "originalRef": "ResultData«List«MyTaskVo»»",
+              "$ref": "#/definitions/ResultData«List«MyTaskVo»»"
             }
           },
           "401": {
@@ -296,8 +296,8 @@
           "200": {
             "description": "OK",
             "schema": {
-              "$ref": "#/definitions/ResultData«boolean»",
-              "originalRef": "ResultData«boolean»"
+              "originalRef": "ResultData«boolean»",
+              "$ref": "#/definitions/ResultData«boolean»"
             }
           },
           "201": {
@@ -353,8 +353,8 @@
           "200": {
             "description": "OK",
             "schema": {
-              "$ref": "#/definitions/ResultData«boolean»",
-              "originalRef": "ResultData«boolean»"
+              "originalRef": "ResultData«boolean»",
+              "$ref": "#/definitions/ResultData«boolean»"
             }
           },
           "201": {
@@ -467,8 +467,8 @@
           "200": {
             "description": "OK",
             "schema": {
-              "$ref": "#/definitions/ResultData«boolean»",
-              "originalRef": "ResultData«boolean»"
+              "originalRef": "ResultData«boolean»",
+              "$ref": "#/definitions/ResultData«boolean»"
             }
           },
           "201": {
@@ -529,8 +529,8 @@
           "200": {
             "description": "OK",
             "schema": {
-              "$ref": "#/definitions/ResultData«string»",
-              "originalRef": "ResultData«string»"
+              "originalRef": "ResultData«string»",
+              "$ref": "#/definitions/ResultData«string»"
             }
           },
           "201": {
@@ -582,8 +582,8 @@
           "200": {
             "description": "OK",
             "schema": {
-              "$ref": "#/definitions/ResultData«string»",
-              "originalRef": "ResultData«string»"
+              "originalRef": "ResultData«string»",
+              "$ref": "#/definitions/ResultData«string»"
             }
           },
           "201": {
@@ -619,8 +619,8 @@
           "200": {
             "description": "OK",
             "schema": {
-              "$ref": "#/definitions/ResultData«boolean»",
-              "originalRef": "ResultData«boolean»"
+              "originalRef": "ResultData«boolean»",
+              "$ref": "#/definitions/ResultData«boolean»"
             }
           },
           "201": {
@@ -734,8 +734,8 @@
           "200": {
             "description": "OK",
             "schema": {
-              "$ref": "#/definitions/ResultData«AuthLoginVo»",
-              "originalRef": "ResultData«AuthLoginVo»"
+              "originalRef": "ResultData«AuthLoginVo»",
+              "$ref": "#/definitions/ResultData«AuthLoginVo»"
             }
           },
           "201": {
@@ -788,8 +788,8 @@
           "200": {
             "description": "OK",
             "schema": {
-              "$ref": "#/definitions/ResultData«string»",
-              "originalRef": "ResultData«string»"
+              "originalRef": "ResultData«string»",
+              "$ref": "#/definitions/ResultData«string»"
             }
           },
           "201": {
@@ -867,8 +867,8 @@
           "200": {
             "description": "OK",
             "schema": {
-              "$ref": "#/definitions/ResultData«AuthLoginVo»",
-              "originalRef": "ResultData«AuthLoginVo»"
+              "originalRef": "ResultData«AuthLoginVo»",
+              "$ref": "#/definitions/ResultData«AuthLoginVo»"
             }
           },
           "401": {
@@ -924,8 +924,8 @@
           "200": {
             "description": "OK",
             "schema": {
-              "$ref": "#/definitions/ResultData«boolean»",
-              "originalRef": "ResultData«boolean»"
+              "originalRef": "ResultData«boolean»",
+              "$ref": "#/definitions/ResultData«boolean»"
             }
           },
           "201": {
@@ -958,8 +958,8 @@
           "200": {
             "description": "OK",
             "schema": {
-              "$ref": "#/definitions/ResultData«BattleRankPageVo»",
-              "originalRef": "ResultData«BattleRankPageVo»"
+              "originalRef": "ResultData«BattleRankPageVo»",
+              "$ref": "#/definitions/ResultData«BattleRankPageVo»"
             }
           },
           "401": {
@@ -1001,8 +1001,8 @@
           "200": {
             "description": "OK",
             "schema": {
-              "$ref": "#/definitions/ResultData«boolean»",
-              "originalRef": "ResultData«boolean»"
+              "originalRef": "ResultData«boolean»",
+              "$ref": "#/definitions/ResultData«boolean»"
             }
           },
           "201": {
@@ -1080,8 +1080,8 @@
           "200": {
             "description": "OK",
             "schema": {
-              "$ref": "#/definitions/ResultData«string»",
-              "originalRef": "ResultData«string»"
+              "originalRef": "ResultData«string»",
+              "$ref": "#/definitions/ResultData«string»"
             }
           },
           "201": {
@@ -1123,8 +1123,8 @@
           "200": {
             "description": "OK",
             "schema": {
-              "$ref": "#/definitions/ResultData«BattleDetailVo»",
-              "originalRef": "ResultData«BattleDetailVo»"
+              "originalRef": "ResultData«BattleDetailVo»",
+              "$ref": "#/definitions/ResultData«BattleDetailVo»"
             }
           },
           "401": {
@@ -1163,8 +1163,8 @@
           "200": {
             "description": "OK",
             "schema": {
-              "$ref": "#/definitions/ResultData«BattleResultVo»",
-              "originalRef": "ResultData«BattleResultVo»"
+              "originalRef": "ResultData«BattleResultVo»",
+              "$ref": "#/definitions/ResultData«BattleResultVo»"
             }
           },
           "401": {
@@ -1223,8 +1223,8 @@
           "200": {
             "description": "OK",
             "schema": {
-              "$ref": "#/definitions/ResultData«PageInfo«BattleVo»»",
-              "originalRef": "ResultData«PageInfo«BattleVo»»"
+              "originalRef": "ResultData«PageInfo«BattleVo»»",
+              "$ref": "#/definitions/ResultData«PageInfo«BattleVo»»"
             }
           },
           "401": {
@@ -1254,8 +1254,8 @@
           "200": {
             "description": "OK",
             "schema": {
-              "$ref": "#/definitions/ResultData«List«BattleVo»»",
-              "originalRef": "ResultData«List«BattleVo»»"
+              "originalRef": "ResultData«List«BattleVo»»",
+              "$ref": "#/definitions/ResultData«List«BattleVo»»"
             }
           },
           "401": {
@@ -1314,8 +1314,8 @@
           "200": {
             "description": "OK",
             "schema": {
-              "$ref": "#/definitions/ResultData«PageInfo«BattleVo»»",
-              "originalRef": "ResultData«PageInfo«BattleVo»»"
+              "originalRef": "ResultData«PageInfo«BattleVo»»",
+              "$ref": "#/definitions/ResultData«PageInfo«BattleVo»»"
             }
           },
           "401": {
@@ -1384,8 +1384,8 @@
           "200": {
             "description": "OK",
             "schema": {
-              "$ref": "#/definitions/ResultData«PageInfo«BattleVo»»",
-              "originalRef": "ResultData«PageInfo«BattleVo»»"
+              "originalRef": "ResultData«PageInfo«BattleVo»»",
+              "$ref": "#/definitions/ResultData«PageInfo«BattleVo»»"
             }
           },
           "401": {
@@ -1436,8 +1436,8 @@
           "200": {
             "description": "OK",
             "schema": {
-              "$ref": "#/definitions/ResultData«boolean»",
-              "originalRef": "ResultData«boolean»"
+              "originalRef": "ResultData«boolean»",
+              "$ref": "#/definitions/ResultData«boolean»"
             }
           },
           "201": {
@@ -1499,8 +1499,8 @@
           "200": {
             "description": "OK",
             "schema": {
-              "$ref": "#/definitions/ResultData«boolean»",
-              "originalRef": "ResultData«boolean»"
+              "originalRef": "ResultData«boolean»",
+              "$ref": "#/definitions/ResultData«boolean»"
             }
           },
           "201": {
@@ -1533,8 +1533,8 @@
           "200": {
             "description": "OK",
             "schema": {
-              "$ref": "#/definitions/ResultData«CustomerBounsPageVo»",
-              "originalRef": "ResultData«CustomerBounsPageVo»"
+              "originalRef": "ResultData«CustomerBounsPageVo»",
+              "$ref": "#/definitions/ResultData«CustomerBounsPageVo»"
             }
           },
           "401": {
@@ -1577,8 +1577,8 @@
           "200": {
             "description": "OK",
             "schema": {
-              "$ref": "#/definitions/ResultData«boolean»",
-              "originalRef": "ResultData«boolean»"
+              "originalRef": "ResultData«boolean»",
+              "$ref": "#/definitions/ResultData«boolean»"
             }
           },
           "201": {
@@ -1662,8 +1662,8 @@
             "description": "fuxinCallback",
             "required": true,
             "schema": {
-              "$ref": "#/definitions/FuxinCallback",
-              "originalRef": "FuxinCallback"
+              "originalRef": "FuxinCallback",
+              "$ref": "#/definitions/FuxinCallback"
             }
           }
         ],
@@ -1914,8 +1914,8 @@
           "200": {
             "description": "OK",
             "schema": {
-              "$ref": "#/definitions/ResultData«BoxDetailVo»",
-              "originalRef": "ResultData«BoxDetailVo»"
+              "originalRef": "ResultData«BoxDetailVo»",
+              "$ref": "#/definitions/ResultData«BoxDetailVo»"
             }
           },
           "401": {
@@ -1955,8 +1955,8 @@
           "200": {
             "description": "OK",
             "schema": {
-              "$ref": "#/definitions/ResultData«BoxGiftInfoVo»",
-              "originalRef": "ResultData«BoxGiftInfoVo»"
+              "originalRef": "ResultData«BoxGiftInfoVo»",
+              "$ref": "#/definitions/ResultData«BoxGiftInfoVo»"
             }
           },
           "401": {
@@ -2033,8 +2033,8 @@
           "200": {
             "description": "OK",
             "schema": {
-              "$ref": "#/definitions/ResultData«PageInfo«BoxPageVo»»",
-              "originalRef": "ResultData«PageInfo«BoxPageVo»»"
+              "originalRef": "ResultData«PageInfo«BoxPageVo»»",
+              "$ref": "#/definitions/ResultData«PageInfo«BoxPageVo»»"
             }
           },
           "401": {
@@ -2081,8 +2081,8 @@
           "200": {
             "description": "OK",
             "schema": {
-              "$ref": "#/definitions/ResultData«boolean»",
-              "originalRef": "ResultData«boolean»"
+              "originalRef": "ResultData«boolean»",
+              "$ref": "#/definitions/ResultData«boolean»"
             }
           },
           "201": {
@@ -2144,8 +2144,8 @@
           "200": {
             "description": "OK",
             "schema": {
-              "$ref": "#/definitions/ResultData«List«BoxThemeListVo»»",
-              "originalRef": "ResultData«List«BoxThemeListVo»»"
+              "originalRef": "ResultData«List«BoxThemeListVo»»",
+              "$ref": "#/definitions/ResultData«List«BoxThemeListVo»»"
             }
           },
           "401": {
@@ -2203,8 +2203,8 @@
           "200": {
             "description": "OK",
             "schema": {
-              "$ref": "#/definitions/ResultData«OpenBoxResult»",
-              "originalRef": "ResultData«OpenBoxResult»"
+              "originalRef": "ResultData«OpenBoxResult»",
+              "$ref": "#/definitions/ResultData«OpenBoxResult»"
             }
           },
           "401": {
@@ -2261,8 +2261,8 @@
           "200": {
             "description": "OK",
             "schema": {
-              "$ref": "#/definitions/ResultData«List«RecentBoxGiftVo»»",
-              "originalRef": "ResultData«List«RecentBoxGiftVo»»"
+              "originalRef": "ResultData«List«RecentBoxGiftVo»»",
+              "$ref": "#/definitions/ResultData«List«RecentBoxGiftVo»»"
             }
           },
           "401": {
@@ -2303,8 +2303,8 @@
           "200": {
             "description": "OK",
             "schema": {
-              "$ref": "#/definitions/ResultData«RollRoomPageVo»",
-              "originalRef": "ResultData«RollRoomPageVo»"
+              "originalRef": "ResultData«RollRoomPageVo»",
+              "$ref": "#/definitions/ResultData«RollRoomPageVo»"
             }
           },
           "401": {
@@ -2346,8 +2346,8 @@
           "200": {
             "description": "OK",
             "schema": {
-              "$ref": "#/definitions/ResultData«List«RollRoomGiftVo»»",
-              "originalRef": "ResultData«List«RollRoomGiftVo»»"
+              "originalRef": "ResultData«List«RollRoomGiftVo»»",
+              "$ref": "#/definitions/ResultData«List«RollRoomGiftVo»»"
             }
           },
           "401": {
@@ -2378,8 +2378,8 @@
           "200": {
             "description": "OK",
             "schema": {
-              "$ref": "#/definitions/ResultData«List«RollRoomPageVo»»",
-              "originalRef": "ResultData«List«RollRoomPageVo»»"
+              "originalRef": "ResultData«List«RollRoomPageVo»»",
+              "$ref": "#/definitions/ResultData«List«RollRoomPageVo»»"
             }
           },
           "401": {
@@ -2448,8 +2448,8 @@
           "200": {
             "description": "OK",
             "schema": {
-              "$ref": "#/definitions/ResultData«PageInfo«RollRoomPageVo»»",
-              "originalRef": "ResultData«PageInfo«RollRoomPageVo»»"
+              "originalRef": "ResultData«PageInfo«RollRoomPageVo»»",
+              "$ref": "#/definitions/ResultData«PageInfo«RollRoomPageVo»»"
             }
           },
           "401": {
@@ -2500,8 +2500,8 @@
           "200": {
             "description": "OK",
             "schema": {
-              "$ref": "#/definitions/ResultData«boolean»",
-              "originalRef": "ResultData«boolean»"
+              "originalRef": "ResultData«boolean»",
+              "$ref": "#/definitions/ResultData«boolean»"
             }
           },
           "201": {
@@ -2545,8 +2545,8 @@
           "200": {
             "description": "OK",
             "schema": {
-              "$ref": "#/definitions/ResultData«List«RollCustomerVo»»",
-              "originalRef": "ResultData«List«RollCustomerVo»»"
+              "originalRef": "ResultData«List«RollCustomerVo»»",
+              "$ref": "#/definitions/ResultData«List«RollCustomerVo»»"
             }
           },
           "401": {
@@ -2574,9 +2574,9 @@
         ],
         "parameters": [
           {
-            "name": "rollId",
+            "name": "giveawayId",
             "in": "query",
-            "description": "rollId",
+            "description": "giveawayId",
             "required": false,
             "type": "integer",
             "default": 0,
@@ -2587,8 +2587,8 @@
           "200": {
             "description": "OK",
             "schema": {
-              "$ref": "#/definitions/ResultData«List«RollCustomerWithGiftVo»»",
-              "originalRef": "ResultData«List«RollCustomerWithGiftVo»»"
+              "originalRef": "ResultData«List«RollCustomerWithGiftVo»»",
+              "$ref": "#/definitions/ResultData«List«RollCustomerWithGiftVo»»"
             }
           },
           "401": {
@@ -2639,8 +2639,8 @@
           "200": {
             "description": "OK",
             "schema": {
-              "$ref": "#/definitions/ResultData«PageInfo«RandKeyVo»»",
-              "originalRef": "ResultData«PageInfo«RandKeyVo»»"
+              "originalRef": "ResultData«PageInfo«RandKeyVo»»",
+              "$ref": "#/definitions/ResultData«PageInfo«RandKeyVo»»"
             }
           },
           "401": {
@@ -2671,8 +2671,8 @@
           "200": {
             "description": "OK",
             "schema": {
-              "$ref": "#/definitions/ResultData«RandKeyVo»",
-              "originalRef": "ResultData«RandKeyVo»"
+              "originalRef": "ResultData«RandKeyVo»",
+              "$ref": "#/definitions/ResultData«RandKeyVo»"
             }
           },
           "401": {
@@ -2723,8 +2723,8 @@
           "200": {
             "description": "OK",
             "schema": {
-              "$ref": "#/definitions/ResultData«PageInfo«RandKeyVo»»",
-              "originalRef": "ResultData«PageInfo«RandKeyVo»»"
+              "originalRef": "ResultData«PageInfo«RandKeyVo»»",
+              "$ref": "#/definitions/ResultData«PageInfo«RandKeyVo»»"
             }
           },
           "401": {
@@ -2767,8 +2767,8 @@
           "200": {
             "description": "OK",
             "schema": {
-              "$ref": "#/definitions/ResultData«RandKeyVo»",
-              "originalRef": "ResultData«RandKeyVo»"
+              "originalRef": "ResultData«RandKeyVo»",
+              "$ref": "#/definitions/ResultData«RandKeyVo»"
             }
           },
           "201": {
@@ -2819,8 +2819,8 @@
           "200": {
             "description": "OK",
             "schema": {
-              "$ref": "#/definitions/ResultData«RandKeyVo»",
-              "originalRef": "ResultData«RandKeyVo»"
+              "originalRef": "ResultData«RandKeyVo»",
+              "$ref": "#/definitions/ResultData«RandKeyVo»"
             }
           },
           "401": {
@@ -2861,8 +2861,8 @@
           "200": {
             "description": "OK",
             "schema": {
-              "$ref": "#/definitions/ResultData«RandKeyVo»",
-              "originalRef": "ResultData«RandKeyVo»"
+              "originalRef": "ResultData«RandKeyVo»",
+              "$ref": "#/definitions/ResultData«RandKeyVo»"
             }
           },
           "401": {
@@ -2912,8 +2912,8 @@
           "200": {
             "description": "OK",
             "schema": {
-              "$ref": "#/definitions/ResultData«PageInfo«MyBoxLogPageVo»»",
-              "originalRef": "ResultData«PageInfo«MyBoxLogPageVo»»"
+              "originalRef": "ResultData«PageInfo«MyBoxLogPageVo»»",
+              "$ref": "#/definitions/ResultData«PageInfo«MyBoxLogPageVo»»"
             }
           },
           "401": {
@@ -2964,8 +2964,8 @@
           "200": {
             "description": "OK",
             "schema": {
-              "$ref": "#/definitions/ResultData«PageInfo«MyRechargeOrderPageVo»»",
-              "originalRef": "ResultData«PageInfo«MyRechargeOrderPageVo»»"
+              "originalRef": "ResultData«PageInfo«MyRechargeOrderPageVo»»",
+              "$ref": "#/definitions/ResultData«PageInfo«MyRechargeOrderPageVo»»"
             }
           },
           "401": {
@@ -3016,8 +3016,8 @@
           "200": {
             "description": "OK",
             "schema": {
-              "$ref": "#/definitions/ResultData«PageInfo«MyRetrievalPageVo»»",
-              "originalRef": "ResultData«PageInfo«MyRetrievalPageVo»»"
+              "originalRef": "ResultData«PageInfo«MyRetrievalPageVo»»",
+              "$ref": "#/definitions/ResultData«PageInfo«MyRetrievalPageVo»»"
             }
           },
           "401": {
@@ -3067,8 +3067,8 @@
           "200": {
             "description": "OK",
             "schema": {
-              "$ref": "#/definitions/ResultData«PageInfo«MyStockOrderPageVo»»",
-              "originalRef": "ResultData«PageInfo«MyStockOrderPageVo»»"
+              "originalRef": "ResultData«PageInfo«MyStockOrderPageVo»»",
+              "$ref": "#/definitions/ResultData«PageInfo«MyStockOrderPageVo»»"
             }
           },
           "401": {
@@ -3118,8 +3118,8 @@
           "200": {
             "description": "OK",
             "schema": {
-              "$ref": "#/definitions/ResultData«PageInfo«MyUpgradePageVo»»",
-              "originalRef": "ResultData«PageInfo«MyUpgradePageVo»»"
+              "originalRef": "ResultData«PageInfo«MyUpgradePageVo»»",
+              "$ref": "#/definitions/ResultData«PageInfo«MyUpgradePageVo»»"
             }
           },
           "401": {
@@ -3161,8 +3161,8 @@
           "200": {
             "description": "OK",
             "schema": {
-              "$ref": "#/definitions/ResultData«boolean»",
-              "originalRef": "ResultData«boolean»"
+              "originalRef": "ResultData«boolean»",
+              "$ref": "#/definitions/ResultData«boolean»"
             }
           },
           "201": {
@@ -3226,8 +3226,8 @@
           "200": {
             "description": "OK",
             "schema": {
-              "$ref": "#/definitions/ResultData«boolean»",
-              "originalRef": "ResultData«boolean»"
+              "originalRef": "ResultData«boolean»",
+              "$ref": "#/definitions/ResultData«boolean»"
             }
           },
           "201": {
@@ -3287,8 +3287,8 @@
           "200": {
             "description": "OK",
             "schema": {
-              "$ref": "#/definitions/ResultData«boolean»",
-              "originalRef": "ResultData«boolean»"
+              "originalRef": "ResultData«boolean»",
+              "$ref": "#/definitions/ResultData«boolean»"
             }
           },
           "201": {
@@ -3348,8 +3348,8 @@
           "200": {
             "description": "OK",
             "schema": {
-              "$ref": "#/definitions/ResultData«boolean»",
-              "originalRef": "ResultData«boolean»"
+              "originalRef": "ResultData«boolean»",
+              "$ref": "#/definitions/ResultData«boolean»"
             }
           },
           "201": {
@@ -3382,8 +3382,8 @@
           "200": {
             "description": "OK",
             "schema": {
-              "$ref": "#/definitions/ResultData«CustomerDetailVo»",
-              "originalRef": "ResultData«CustomerDetailVo»"
+              "originalRef": "ResultData«CustomerDetailVo»",
+              "$ref": "#/definitions/ResultData«CustomerDetailVo»"
             }
           },
           "401": {
@@ -3431,8 +3431,8 @@
           "200": {
             "description": "OK",
             "schema": {
-              "$ref": "#/definitions/ResultData«boolean»",
-              "originalRef": "ResultData«boolean»"
+              "originalRef": "ResultData«boolean»",
+              "$ref": "#/definitions/ResultData«boolean»"
             }
           },
           "201": {
@@ -3483,8 +3483,8 @@
           "200": {
             "description": "OK",
             "schema": {
-              "$ref": "#/definitions/ResultData«boolean»",
-              "originalRef": "ResultData«boolean»"
+              "originalRef": "ResultData«boolean»",
+              "$ref": "#/definitions/ResultData«boolean»"
             }
           },
           "201": {
@@ -3518,8 +3518,8 @@
           "200": {
             "description": "OK",
             "schema": {
-              "$ref": "#/definitions/ResultData«List«int»»",
-              "originalRef": "ResultData«List«int»»"
+              "originalRef": "ResultData«List«int»»",
+              "$ref": "#/definitions/ResultData«List«int»»"
             }
           },
           "401": {
@@ -3549,8 +3549,8 @@
           "200": {
             "description": "OK",
             "schema": {
-              "$ref": "#/definitions/ResultData«GradeInfoVo»",
-              "originalRef": "ResultData«GradeInfoVo»"
+              "originalRef": "ResultData«GradeInfoVo»",
+              "$ref": "#/definitions/ResultData«GradeInfoVo»"
             }
           },
           "401": {
@@ -3600,8 +3600,8 @@
           "200": {
             "description": "OK",
             "schema": {
-              "$ref": "#/definitions/ResultData«PageInfo«MyBalanceLogVo»»",
-              "originalRef": "ResultData«PageInfo«MyBalanceLogVo»»"
+              "originalRef": "ResultData«PageInfo«MyBalanceLogVo»»",
+              "$ref": "#/definitions/ResultData«PageInfo«MyBalanceLogVo»»"
             }
           },
           "401": {
@@ -3651,8 +3651,8 @@
           "200": {
             "description": "OK",
             "schema": {
-              "$ref": "#/definitions/ResultData«PageInfo«MyCouponPageVo»»",
-              "originalRef": "ResultData«PageInfo«MyCouponPageVo»»"
+              "originalRef": "ResultData«PageInfo«MyCouponPageVo»»",
+              "$ref": "#/definitions/ResultData«PageInfo«MyCouponPageVo»»"
             }
           },
           "401": {
@@ -3693,8 +3693,8 @@
           "200": {
             "description": "OK",
             "schema": {
-              "$ref": "#/definitions/ResultData«List«MyCouponVo»»",
-              "originalRef": "ResultData«List«MyCouponVo»»"
+              "originalRef": "ResultData«List«MyCouponVo»»",
+              "$ref": "#/definitions/ResultData«List«MyCouponVo»»"
             }
           },
           "401": {
@@ -3744,8 +3744,8 @@
           "200": {
             "description": "OK",
             "schema": {
-              "$ref": "#/definitions/ResultData«PageInfo«MyUpgradePageVo»»",
-              "originalRef": "ResultData«PageInfo«MyUpgradePageVo»»"
+              "originalRef": "ResultData«PageInfo«MyUpgradePageVo»»",
+              "$ref": "#/definitions/ResultData«PageInfo«MyUpgradePageVo»»"
             }
           },
           "401": {
@@ -3795,8 +3795,8 @@
           "200": {
             "description": "OK",
             "schema": {
-              "$ref": "#/definitions/ResultData«PageInfo«MyFreeBoxPageVo»»",
-              "originalRef": "ResultData«PageInfo«MyFreeBoxPageVo»»"
+              "originalRef": "ResultData«PageInfo«MyFreeBoxPageVo»»",
+              "$ref": "#/definitions/ResultData«PageInfo«MyFreeBoxPageVo»»"
             }
           },
           "401": {
@@ -3863,8 +3863,8 @@
           "200": {
             "description": "OK",
             "schema": {
-              "$ref": "#/definitions/ResultData«PageInfo«Ornament»»",
-              "originalRef": "ResultData«PageInfo«Ornament»»"
+              "originalRef": "ResultData«PageInfo«Ornament»»",
+              "$ref": "#/definitions/ResultData«PageInfo«Ornament»»"
             }
           },
           "401": {
@@ -3914,8 +3914,8 @@
           "200": {
             "description": "OK",
             "schema": {
-              "$ref": "#/definitions/ResultData«PageInfo«MyRewardPageVo»»",
-              "originalRef": "ResultData«PageInfo«MyRewardPageVo»»"
+              "originalRef": "ResultData«PageInfo«MyRewardPageVo»»",
+              "$ref": "#/definitions/ResultData«PageInfo«MyRewardPageVo»»"
             }
           },
           "401": {
@@ -3983,8 +3983,8 @@
           "200": {
             "description": "OK",
             "schema": {
-              "$ref": "#/definitions/ResultData«ExtPageInfo«Voucher,MyVoucherCountVo»»",
-              "originalRef": "ResultData«ExtPageInfo«Voucher,MyVoucherCountVo»»"
+              "originalRef": "ResultData«ExtPageInfo«MyVoucherVo,MyVoucherCountVo»»",
+              "$ref": "#/definitions/ResultData«ExtPageInfo«MyVoucherVo,MyVoucherCountVo»»"
             }
           },
           "401": {
@@ -4026,8 +4026,8 @@
           "200": {
             "description": "OK",
             "schema": {
-              "$ref": "#/definitions/ResultData«boolean»",
-              "originalRef": "ResultData«boolean»"
+              "originalRef": "ResultData«boolean»",
+              "$ref": "#/definitions/ResultData«boolean»"
             }
           },
           "201": {
@@ -4072,8 +4072,8 @@
           "200": {
             "description": "OK",
             "schema": {
-              "$ref": "#/definitions/ResultData«boolean»",
-              "originalRef": "ResultData«boolean»"
+              "originalRef": "ResultData«boolean»",
+              "$ref": "#/definitions/ResultData«boolean»"
             }
           },
           "201": {
@@ -4125,8 +4125,8 @@
           "200": {
             "description": "OK",
             "schema": {
-              "$ref": "#/definitions/ResultData«boolean»",
-              "originalRef": "ResultData«boolean»"
+              "originalRef": "ResultData«boolean»",
+              "$ref": "#/definitions/ResultData«boolean»"
             }
           },
           "201": {
@@ -4178,8 +4178,8 @@
           "200": {
             "description": "OK",
             "schema": {
-              "$ref": "#/definitions/ResultData«List«OpenBoxResultVo»»",
-              "originalRef": "ResultData«List«OpenBoxResultVo»»"
+              "originalRef": "ResultData«List«OpenBoxResultVo»»",
+              "$ref": "#/definitions/ResultData«List«OpenBoxResultVo»»"
             }
           },
           "401": {
@@ -4227,8 +4227,8 @@
           "200": {
             "description": "OK",
             "schema": {
-              "$ref": "#/definitions/ResultData«List«OrnamentRetrievalResultVo»»",
-              "originalRef": "ResultData«List«OrnamentRetrievalResultVo»»"
+              "originalRef": "ResultData«List«OrnamentRetrievalResultVo»»",
+              "$ref": "#/definitions/ResultData«List«OrnamentRetrievalResultVo»»"
             }
           },
           "201": {
@@ -4286,8 +4286,8 @@
           "200": {
             "description": "OK",
             "schema": {
-              "$ref": "#/definitions/ResultData«string»",
-              "originalRef": "ResultData«string»"
+              "originalRef": "ResultData«string»",
+              "$ref": "#/definitions/ResultData«string»"
             }
           },
           "201": {
@@ -4332,8 +4332,8 @@
           "200": {
             "description": "OK",
             "schema": {
-              "$ref": "#/definitions/ResultData«boolean»",
-              "originalRef": "ResultData«boolean»"
+              "originalRef": "ResultData«boolean»",
+              "$ref": "#/definitions/ResultData«boolean»"
             }
           },
           "201": {
@@ -4369,8 +4369,8 @@
           "200": {
             "description": "OK",
             "schema": {
-              "$ref": "#/definitions/ResultData«string»",
-              "originalRef": "ResultData«string»"
+              "originalRef": "ResultData«string»",
+              "$ref": "#/definitions/ResultData«string»"
             }
           },
           "201": {
@@ -4415,8 +4415,8 @@
           "200": {
             "description": "OK",
             "schema": {
-              "$ref": "#/definitions/ResultData«boolean»",
-              "originalRef": "ResultData«boolean»"
+              "originalRef": "ResultData«boolean»",
+              "$ref": "#/definitions/ResultData«boolean»"
             }
           },
           "201": {
@@ -4467,8 +4467,8 @@
           "200": {
             "description": "OK",
             "schema": {
-              "$ref": "#/definitions/ResultData«List«UseRewardVoucherResultVo»»",
-              "originalRef": "ResultData«List«UseRewardVoucherResultVo»»"
+              "originalRef": "ResultData«List«UseRewardVoucherResultVo»»",
+              "$ref": "#/definitions/ResultData«List«UseRewardVoucherResultVo»»"
             }
           },
           "201": {
@@ -4502,8 +4502,8 @@
           "200": {
             "description": "OK",
             "schema": {
-              "$ref": "#/definitions/ResultData«PromotionInfoVo»",
-              "originalRef": "ResultData«PromotionInfoVo»"
+              "originalRef": "ResultData«PromotionInfoVo»",
+              "$ref": "#/definitions/ResultData«PromotionInfoVo»"
             }
           },
           "401": {
@@ -4545,8 +4545,8 @@
           "200": {
             "description": "OK",
             "schema": {
-              "$ref": "#/definitions/ResultData«boolean»",
-              "originalRef": "ResultData«boolean»"
+              "originalRef": "ResultData«boolean»",
+              "$ref": "#/definitions/ResultData«boolean»"
             }
           },
           "201": {
@@ -4599,8 +4599,8 @@
           "200": {
             "description": "OK",
             "schema": {
-              "$ref": "#/definitions/ResultData«PageInfo«MyPromotionLogPageVo»»",
-              "originalRef": "ResultData«PageInfo«MyPromotionLogPageVo»»"
+              "originalRef": "ResultData«PageInfo«MyPromotionLogPageVo»»",
+              "$ref": "#/definitions/ResultData«PageInfo«MyPromotionLogPageVo»»"
             }
           },
           "401": {
@@ -4640,8 +4640,8 @@
           "200": {
             "description": "OK",
             "schema": {
-              "$ref": "#/definitions/ResultData«AmountInfoVo»",
-              "originalRef": "ResultData«AmountInfoVo»"
+              "originalRef": "ResultData«AmountInfoVo»",
+              "$ref": "#/definitions/ResultData«AmountInfoVo»"
             }
           },
           "401": {
@@ -4681,8 +4681,8 @@
           "200": {
             "description": "OK",
             "schema": {
-              "$ref": "#/definitions/ResultData«AmountInfoVo»",
-              "originalRef": "ResultData«AmountInfoVo»"
+              "originalRef": "ResultData«AmountInfoVo»",
+              "$ref": "#/definitions/ResultData«AmountInfoVo»"
             }
           },
           "401": {
@@ -4712,8 +4712,8 @@
           "200": {
             "description": "OK",
             "schema": {
-              "$ref": "#/definitions/ResultData«List«RechargeCouponRecordVo»»",
-              "originalRef": "ResultData«List«RechargeCouponRecordVo»»"
+              "originalRef": "ResultData«List«RechargeCouponRecordVo»»",
+              "$ref": "#/definitions/ResultData«List«RechargeCouponRecordVo»»"
             }
           },
           "401": {
@@ -4779,8 +4779,8 @@
           "200": {
             "description": "OK",
             "schema": {
-              "$ref": "#/definitions/ResultData«PaymentVo»",
-              "originalRef": "ResultData«PaymentVo»"
+              "originalRef": "ResultData«PaymentVo»",
+              "$ref": "#/definitions/ResultData«PaymentVo»"
             }
           },
           "201": {
@@ -4823,8 +4823,8 @@
           "200": {
             "description": "OK",
             "schema": {
-              "$ref": "#/definitions/ResultData«RechargeOrderVo»",
-              "originalRef": "ResultData«RechargeOrderVo»"
+              "originalRef": "ResultData«RechargeOrderVo»",
+              "$ref": "#/definitions/ResultData«RechargeOrderVo»"
             }
           },
           "401": {
@@ -4854,8 +4854,8 @@
           "200": {
             "description": "OK",
             "schema": {
-              "$ref": "#/definitions/ResultData«RechargeConfigVo»",
-              "originalRef": "ResultData«RechargeConfigVo»"
+              "originalRef": "ResultData«RechargeConfigVo»",
+              "$ref": "#/definitions/ResultData«RechargeConfigVo»"
             }
           },
           "401": {
@@ -4886,8 +4886,8 @@
           "200": {
             "description": "OK",
             "schema": {
-              "$ref": "#/definitions/ResultData«RechargeDiscountInfoVo»",
-              "originalRef": "ResultData«RechargeDiscountInfoVo»"
+              "originalRef": "ResultData«RechargeDiscountInfoVo»",
+              "$ref": "#/definitions/ResultData«RechargeDiscountInfoVo»"
             }
           },
           "401": {
@@ -4936,8 +4936,8 @@
           "200": {
             "description": "OK",
             "schema": {
-              "$ref": "#/definitions/ResultData«boolean»",
-              "originalRef": "ResultData«boolean»"
+              "originalRef": "ResultData«boolean»",
+              "$ref": "#/definitions/ResultData«boolean»"
             }
           },
           "201": {
@@ -4982,8 +4982,8 @@
           "200": {
             "description": "OK",
             "schema": {
-              "$ref": "#/definitions/ResultData«boolean»",
-              "originalRef": "ResultData«boolean»"
+              "originalRef": "ResultData«boolean»",
+              "$ref": "#/definitions/ResultData«boolean»"
             }
           },
           "201": {
@@ -5016,8 +5016,8 @@
           "200": {
             "description": "OK",
             "schema": {
-              "$ref": "#/definitions/ResultData«List«CycleRedPacketVo»»",
-              "originalRef": "ResultData«List«CycleRedPacketVo»»"
+              "originalRef": "ResultData«List«CycleRedPacketVo»»",
+              "$ref": "#/definitions/ResultData«List«CycleRedPacketVo»»"
             }
           },
           "401": {
@@ -5059,8 +5059,8 @@
           "200": {
             "description": "OK",
             "schema": {
-              "$ref": "#/definitions/ResultData«string»",
-              "originalRef": "ResultData«string»"
+              "originalRef": "ResultData«string»",
+              "$ref": "#/definitions/ResultData«string»"
             }
           },
           "201": {
@@ -5106,8 +5106,8 @@
           "200": {
             "description": "OK",
             "schema": {
-              "$ref": "#/definitions/ResultData«string»",
-              "originalRef": "ResultData«string»"
+              "originalRef": "ResultData«string»",
+              "$ref": "#/definitions/ResultData«string»"
             }
           },
           "201": {
@@ -5160,8 +5160,8 @@
           "200": {
             "description": "OK",
             "schema": {
-              "$ref": "#/definitions/ResultData«List«RecentDropVo»»",
-              "originalRef": "ResultData«List«RecentDropVo»»"
+              "originalRef": "ResultData«List«RecentDropVo»»",
+              "$ref": "#/definitions/ResultData«List«RecentDropVo»»"
             }
           },
           "401": {
@@ -5213,12 +5213,43 @@
           "200": {
             "description": "OK",
             "schema": {
-              "$ref": "#/definitions/ResultData«boolean»",
-              "originalRef": "ResultData«boolean»"
+              "originalRef": "ResultData«boolean»",
+              "$ref": "#/definitions/ResultData«boolean»"
             }
           },
           "201": {
             "description": "Created"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        },
+        "x-order": "2147483647"
+      }
+    },
+    "/api/store/filters": {
+      "get": {
+        "tags": [
+          "兑换券商城相关"
+        ],
+        "summary": "获取steam选项tags",
+        "operationId": "getTagsUsingGET",
+        "produces": [
+          "*/*"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "originalRef": "ResultData«List«SteamTagVo»»",
+              "$ref": "#/definitions/ResultData«List«SteamTagVo»»"
+            }
           },
           "401": {
             "description": "Unauthorized"
@@ -5321,8 +5352,8 @@
           "200": {
             "description": "OK",
             "schema": {
-              "$ref": "#/definitions/ResultData«PageInfo«VoucherStockPageVo»»",
-              "originalRef": "ResultData«PageInfo«VoucherStockPageVo»»"
+              "originalRef": "ResultData«PageInfo«VoucherStockPageVo»»",
+              "$ref": "#/definitions/ResultData«PageInfo«VoucherStockPageVo»»"
             }
           },
           "401": {
@@ -5352,8 +5383,8 @@
           "200": {
             "description": "OK",
             "schema": {
-              "$ref": "#/definitions/ResultData«UpgradeConfigVo»",
-              "originalRef": "ResultData«UpgradeConfigVo»"
+              "originalRef": "ResultData«UpgradeConfigVo»",
+              "$ref": "#/definitions/ResultData«UpgradeConfigVo»"
             }
           },
           "401": {
@@ -5403,8 +5434,8 @@
           "200": {
             "description": "OK",
             "schema": {
-              "$ref": "#/definitions/ResultData«ExtPageInfo«Voucher,MyVoucherCountVo»»",
-              "originalRef": "ResultData«ExtPageInfo«Voucher,MyVoucherCountVo»»"
+              "originalRef": "ResultData«ExtPageInfo«Voucher,MyVoucherCountVo»»",
+              "$ref": "#/definitions/ResultData«ExtPageInfo«Voucher,MyVoucherCountVo»»"
             }
           },
           "401": {
@@ -5496,8 +5527,8 @@
           "200": {
             "description": "OK",
             "schema": {
-              "$ref": "#/definitions/ResultData«PageInfo«UpgradeGiftPageVo»»",
-              "originalRef": "ResultData«PageInfo«UpgradeGiftPageVo»»"
+              "originalRef": "ResultData«PageInfo«UpgradeGiftPageVo»»",
+              "$ref": "#/definitions/ResultData«PageInfo«UpgradeGiftPageVo»»"
             }
           },
           "401": {
@@ -5548,8 +5579,8 @@
           "200": {
             "description": "OK",
             "schema": {
-              "$ref": "#/definitions/ResultData«PageInfo«UpgradePageVo»»",
-              "originalRef": "ResultData«PageInfo«UpgradePageVo»»"
+              "originalRef": "ResultData«PageInfo«UpgradePageVo»»",
+              "$ref": "#/definitions/ResultData«PageInfo«UpgradePageVo»»"
             }
           },
           "401": {
@@ -5617,8 +5648,8 @@
           "200": {
             "description": "OK",
             "schema": {
-              "$ref": "#/definitions/ResultData«UpgradeResultVo»",
-              "originalRef": "ResultData«UpgradeResultVo»"
+              "originalRef": "ResultData«UpgradeResultVo»",
+              "$ref": "#/definitions/ResultData«UpgradeResultVo»"
             }
           },
           "201": {
@@ -5695,8 +5726,8 @@
         "activityProgress": {
           "type": "array",
           "items": {
-            "$ref": "#/definitions/ActivityProgressVo",
-            "originalRef": "ActivityProgressVo"
+            "originalRef": "ActivityProgressVo",
+            "$ref": "#/definitions/ActivityProgressVo"
           }
         },
         "currentActivity": {
@@ -5737,8 +5768,8 @@
         "prizes": {
           "type": "array",
           "items": {
-            "$ref": "#/definitions/PrizeVo",
-            "originalRef": "PrizeVo"
+            "originalRef": "PrizeVo",
+            "$ref": "#/definitions/PrizeVo"
           }
         },
         "remark": {
@@ -5961,8 +5992,8 @@
         "userOpenBoxRecord": {
           "type": "array",
           "items": {
-            "$ref": "#/definitions/BattleBoxGainVo",
-            "originalRef": "BattleBoxGainVo"
+            "originalRef": "BattleBoxGainVo",
+            "$ref": "#/definitions/BattleBoxGainVo"
           }
         },
         "winner": {
@@ -5974,6 +6005,9 @@
     "BattleCustomerOpenBoxVo": {
       "type": "object",
       "properties": {
+        "clientSeed": {
+          "type": "string"
+        },
         "customerId": {
           "type": "integer",
           "format": "int64"
@@ -5990,8 +6024,8 @@
         "userOpenBoxRecord": {
           "type": "array",
           "items": {
-            "$ref": "#/definitions/BattleBoxRecordVo",
-            "originalRef": "BattleBoxRecordVo"
+            "originalRef": "BattleBoxRecordVo",
+            "$ref": "#/definitions/BattleBoxRecordVo"
           }
         },
         "winner": {
@@ -6057,25 +6091,25 @@
       "type": "object",
       "properties": {
         "myReward": {
-          "$ref": "#/definitions/BattleRankVo",
-          "originalRef": "BattleRankVo"
+          "originalRef": "BattleRankVo",
+          "$ref": "#/definitions/BattleRankVo"
         },
         "todayRank": {
           "type": "array",
           "items": {
-            "$ref": "#/definitions/BattleRankVo",
-            "originalRef": "BattleRankVo"
+            "originalRef": "BattleRankVo",
+            "$ref": "#/definitions/BattleRankVo"
           }
         },
         "topOneYesterday": {
-          "$ref": "#/definitions/BattleRankVo",
-          "originalRef": "BattleRankVo"
+          "originalRef": "BattleRankVo",
+          "$ref": "#/definitions/BattleRankVo"
         },
         "yesterdayRank": {
           "type": "array",
           "items": {
-            "$ref": "#/definitions/BattleRankVo",
-            "originalRef": "BattleRankVo"
+            "originalRef": "BattleRankVo",
+            "$ref": "#/definitions/BattleRankVo"
           }
         }
       },
@@ -6113,8 +6147,8 @@
         "boxOpenRecords": {
           "type": "array",
           "items": {
-            "$ref": "#/definitions/BattleCustomerOpenBoxVo",
-            "originalRef": "BattleCustomerOpenBoxVo"
+            "originalRef": "BattleCustomerOpenBoxVo",
+            "$ref": "#/definitions/BattleCustomerOpenBoxVo"
           }
         },
         "createDate": {
@@ -6124,13 +6158,13 @@
         "customerGainList": {
           "type": "array",
           "items": {
-            "$ref": "#/definitions/BattleCustomerGainVo",
-            "originalRef": "BattleCustomerGainVo"
+            "originalRef": "BattleCustomerGainVo",
+            "$ref": "#/definitions/BattleCustomerGainVo"
           }
         },
         "info": {
-          "$ref": "#/definitions/BattleVo",
-          "originalRef": "BattleVo"
+          "originalRef": "BattleVo",
+          "$ref": "#/definitions/BattleVo"
         }
       },
       "title": "BattleResultVo"
@@ -6204,8 +6238,8 @@
         "winners": {
           "type": "array",
           "items": {
-            "$ref": "#/definitions/WinnerInfo",
-            "originalRef": "WinnerInfo"
+            "originalRef": "WinnerInfo",
+            "$ref": "#/definitions/WinnerInfo"
           }
         }
       },
@@ -6285,15 +6319,15 @@
         "boxGiftVo": {
           "type": "array",
           "items": {
-            "$ref": "#/definitions/BoxGiftVo",
-            "originalRef": "BoxGiftVo"
+            "originalRef": "BoxGiftVo",
+            "$ref": "#/definitions/BoxGiftVo"
           }
         },
         "gradeGiftProb": {
           "type": "array",
           "items": {
-            "$ref": "#/definitions/GradeGiftProb",
-            "originalRef": "GradeGiftProb"
+            "originalRef": "GradeGiftProb",
+            "$ref": "#/definitions/GradeGiftProb"
           }
         }
       },
@@ -6472,8 +6506,8 @@
         "boxList": {
           "type": "array",
           "items": {
-            "$ref": "#/definitions/BoxPageVo",
-            "originalRef": "BoxPageVo"
+            "originalRef": "BoxPageVo",
+            "$ref": "#/definitions/BoxPageVo"
           }
         },
         "boxType": {
@@ -6554,8 +6588,8 @@
         "customerBounsVos": {
           "type": "array",
           "items": {
-            "$ref": "#/definitions/GradeCustomerVo",
-            "originalRef": "GradeCustomerVo"
+            "originalRef": "GradeCustomerVo",
+            "$ref": "#/definitions/GradeCustomerVo"
           }
         },
         "customerExp": {
@@ -6736,12 +6770,12 @@
       },
       "title": "CycleRedPacketVo"
     },
-    "ExtPageInfo«Voucher,MyVoucherCountVo»": {
+    "ExtPageInfo«MyVoucherVo,MyVoucherCountVo»": {
       "type": "object",
       "properties": {
         "extData": {
-          "$ref": "#/definitions/MyVoucherCountVo",
-          "originalRef": "MyVoucherCountVo"
+          "originalRef": "MyVoucherCountVo",
+          "$ref": "#/definitions/MyVoucherCountVo"
         },
         "page": {
           "type": "integer",
@@ -6750,8 +6784,41 @@
         "pageData": {
           "type": "array",
           "items": {
-            "$ref": "#/definitions/Voucher",
-            "originalRef": "Voucher"
+            "originalRef": "MyVoucherVo",
+            "$ref": "#/definitions/MyVoucherVo"
+          }
+        },
+        "pageSize": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "totalPages": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "totalRows": {
+          "type": "integer",
+          "format": "int32"
+        }
+      },
+      "title": "ExtPageInfo«MyVoucherVo,MyVoucherCountVo»"
+    },
+    "ExtPageInfo«Voucher,MyVoucherCountVo»": {
+      "type": "object",
+      "properties": {
+        "extData": {
+          "originalRef": "MyVoucherCountVo",
+          "$ref": "#/definitions/MyVoucherCountVo"
+        },
+        "page": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "pageData": {
+          "type": "array",
+          "items": {
+            "originalRef": "Voucher",
+            "$ref": "#/definitions/Voucher"
           }
         },
         "pageSize": {
@@ -6805,15 +6872,15 @@
         "cdkInfo": {
           "type": "string"
         },
+        "couponInfo": {
+          "type": "string"
+        },
+        "couponTitle": {
+          "type": "string"
+        },
         "createTime": {
           "type": "string",
           "format": "date-time"
-        },
-        "cuponInfo": {
-          "type": "string"
-        },
-        "cuponTitle": {
-          "type": "string"
         },
         "delFlag": {
           "type": "boolean"
@@ -6879,15 +6946,15 @@
         "cdkInfo": {
           "type": "string"
         },
+        "couponInfo": {
+          "type": "string"
+        },
+        "couponTitle": {
+          "type": "string"
+        },
         "createTime": {
           "type": "string",
           "format": "date-time"
-        },
-        "cuponInfo": {
-          "type": "string"
-        },
-        "cuponTitle": {
-          "type": "string"
         },
         "delFlag": {
           "type": "boolean"
@@ -6907,8 +6974,8 @@
         "gradeBoxes": {
           "type": "array",
           "items": {
-            "$ref": "#/definitions/MyGradeBoxVo",
-            "originalRef": "MyGradeBoxVo"
+            "originalRef": "MyGradeBoxVo",
+            "$ref": "#/definitions/MyGradeBoxVo"
           }
         },
         "headGround": {
@@ -6925,8 +6992,8 @@
         "prizes": {
           "type": "array",
           "items": {
-            "$ref": "#/definitions/PrizeVo",
-            "originalRef": "PrizeVo"
+            "originalRef": "PrizeVo",
+            "$ref": "#/definitions/PrizeVo"
           }
         },
         "rechargeDiscount": {
@@ -7203,8 +7270,8 @@
         "gifts": {
           "type": "array",
           "items": {
-            "$ref": "#/definitions/BoxGiftVo",
-            "originalRef": "BoxGiftVo"
+            "originalRef": "BoxGiftVo",
+            "$ref": "#/definitions/BoxGiftVo"
           }
         },
         "graceTimes": {
@@ -7252,8 +7319,8 @@
         "gifts": {
           "type": "array",
           "items": {
-            "$ref": "#/definitions/BoxGiftVo",
-            "originalRef": "BoxGiftVo"
+            "originalRef": "BoxGiftVo",
+            "$ref": "#/definitions/BoxGiftVo"
           }
         },
         "gradeId": {
@@ -7473,8 +7540,8 @@
         "prizes": {
           "type": "array",
           "items": {
-            "$ref": "#/definitions/PrizeVo",
-            "originalRef": "PrizeVo"
+            "originalRef": "PrizeVo",
+            "$ref": "#/definitions/PrizeVo"
           }
         },
         "remark": {
@@ -7558,8 +7625,8 @@
         "actions": {
           "type": "array",
           "items": {
-            "$ref": "#/definitions/TaskAction",
-            "originalRef": "TaskAction"
+            "originalRef": "TaskAction",
+            "$ref": "#/definitions/TaskAction"
           }
         },
         "activity": {
@@ -7595,8 +7662,8 @@
         "prizeList": {
           "type": "array",
           "items": {
-            "$ref": "#/definitions/PrizeVo",
-            "originalRef": "PrizeVo"
+            "originalRef": "PrizeVo",
+            "$ref": "#/definitions/PrizeVo"
           }
         },
         "quantity": {
@@ -7691,14 +7758,90 @@
       },
       "title": "MyVoucherCountVo"
     },
+    "MyVoucherVo": {
+      "type": "object",
+      "properties": {
+        "createTime": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "customerId": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "delFlag": {
+          "type": "boolean"
+        },
+        "giftImage": {
+          "type": "string"
+        },
+        "giftTemplateId": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "grade": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "id": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "itemId": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "modifyTime": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "recoveryPrice": {
+          "type": "number"
+        },
+        "remark": {
+          "type": "string"
+        },
+        "retrievedState": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "sourceId": {
+          "type": "string"
+        },
+        "sourceType": {
+          "type": "string"
+        },
+        "state": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "stateStr": {
+          "type": "string"
+        },
+        "targetType": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "verifyId": {
+          "type": "string"
+        },
+        "voucherName": {
+          "type": "string"
+        },
+        "zbtAcceptablePrice": {
+          "type": "number"
+        }
+      },
+      "title": "MyVoucherVo"
+    },
     "OpenBoxResult": {
       "type": "object",
       "properties": {
         "results": {
           "type": "array",
           "items": {
-            "$ref": "#/definitions/OpenBoxResultVo",
-            "originalRef": "OpenBoxResultVo"
+            "originalRef": "OpenBoxResultVo",
+            "$ref": "#/definitions/OpenBoxResultVo"
           }
         },
         "show": {
@@ -7910,8 +8053,8 @@
         "pageData": {
           "type": "array",
           "items": {
-            "$ref": "#/definitions/BattleVo",
-            "originalRef": "BattleVo"
+            "originalRef": "BattleVo",
+            "$ref": "#/definitions/BattleVo"
           }
         },
         "pageSize": {
@@ -7939,8 +8082,8 @@
         "pageData": {
           "type": "array",
           "items": {
-            "$ref": "#/definitions/BoxPageVo",
-            "originalRef": "BoxPageVo"
+            "originalRef": "BoxPageVo",
+            "$ref": "#/definitions/BoxPageVo"
           }
         },
         "pageSize": {
@@ -7968,8 +8111,8 @@
         "pageData": {
           "type": "array",
           "items": {
-            "$ref": "#/definitions/MyBalanceLogVo",
-            "originalRef": "MyBalanceLogVo"
+            "originalRef": "MyBalanceLogVo",
+            "$ref": "#/definitions/MyBalanceLogVo"
           }
         },
         "pageSize": {
@@ -7997,8 +8140,8 @@
         "pageData": {
           "type": "array",
           "items": {
-            "$ref": "#/definitions/MyBoxLogPageVo",
-            "originalRef": "MyBoxLogPageVo"
+            "originalRef": "MyBoxLogPageVo",
+            "$ref": "#/definitions/MyBoxLogPageVo"
           }
         },
         "pageSize": {
@@ -8026,8 +8169,8 @@
         "pageData": {
           "type": "array",
           "items": {
-            "$ref": "#/definitions/MyCouponPageVo",
-            "originalRef": "MyCouponPageVo"
+            "originalRef": "MyCouponPageVo",
+            "$ref": "#/definitions/MyCouponPageVo"
           }
         },
         "pageSize": {
@@ -8055,8 +8198,8 @@
         "pageData": {
           "type": "array",
           "items": {
-            "$ref": "#/definitions/MyFreeBoxPageVo",
-            "originalRef": "MyFreeBoxPageVo"
+            "originalRef": "MyFreeBoxPageVo",
+            "$ref": "#/definitions/MyFreeBoxPageVo"
           }
         },
         "pageSize": {
@@ -8084,8 +8227,8 @@
         "pageData": {
           "type": "array",
           "items": {
-            "$ref": "#/definitions/MyPromotionLogPageVo",
-            "originalRef": "MyPromotionLogPageVo"
+            "originalRef": "MyPromotionLogPageVo",
+            "$ref": "#/definitions/MyPromotionLogPageVo"
           }
         },
         "pageSize": {
@@ -8113,8 +8256,8 @@
         "pageData": {
           "type": "array",
           "items": {
-            "$ref": "#/definitions/MyRechargeOrderPageVo",
-            "originalRef": "MyRechargeOrderPageVo"
+            "originalRef": "MyRechargeOrderPageVo",
+            "$ref": "#/definitions/MyRechargeOrderPageVo"
           }
         },
         "pageSize": {
@@ -8142,8 +8285,8 @@
         "pageData": {
           "type": "array",
           "items": {
-            "$ref": "#/definitions/MyRetrievalPageVo",
-            "originalRef": "MyRetrievalPageVo"
+            "originalRef": "MyRetrievalPageVo",
+            "$ref": "#/definitions/MyRetrievalPageVo"
           }
         },
         "pageSize": {
@@ -8171,8 +8314,8 @@
         "pageData": {
           "type": "array",
           "items": {
-            "$ref": "#/definitions/MyRewardPageVo",
-            "originalRef": "MyRewardPageVo"
+            "originalRef": "MyRewardPageVo",
+            "$ref": "#/definitions/MyRewardPageVo"
           }
         },
         "pageSize": {
@@ -8200,8 +8343,8 @@
         "pageData": {
           "type": "array",
           "items": {
-            "$ref": "#/definitions/MyStockOrderPageVo",
-            "originalRef": "MyStockOrderPageVo"
+            "originalRef": "MyStockOrderPageVo",
+            "$ref": "#/definitions/MyStockOrderPageVo"
           }
         },
         "pageSize": {
@@ -8229,8 +8372,8 @@
         "pageData": {
           "type": "array",
           "items": {
-            "$ref": "#/definitions/MyUpgradePageVo",
-            "originalRef": "MyUpgradePageVo"
+            "originalRef": "MyUpgradePageVo",
+            "$ref": "#/definitions/MyUpgradePageVo"
           }
         },
         "pageSize": {
@@ -8258,8 +8401,8 @@
         "pageData": {
           "type": "array",
           "items": {
-            "$ref": "#/definitions/Ornament",
-            "originalRef": "Ornament"
+            "originalRef": "Ornament",
+            "$ref": "#/definitions/Ornament"
           }
         },
         "pageSize": {
@@ -8287,8 +8430,8 @@
         "pageData": {
           "type": "array",
           "items": {
-            "$ref": "#/definitions/RandKeyVo",
-            "originalRef": "RandKeyVo"
+            "originalRef": "RandKeyVo",
+            "$ref": "#/definitions/RandKeyVo"
           }
         },
         "pageSize": {
@@ -8316,8 +8459,8 @@
         "pageData": {
           "type": "array",
           "items": {
-            "$ref": "#/definitions/RollRoomPageVo",
-            "originalRef": "RollRoomPageVo"
+            "originalRef": "RollRoomPageVo",
+            "$ref": "#/definitions/RollRoomPageVo"
           }
         },
         "pageSize": {
@@ -8345,8 +8488,8 @@
         "pageData": {
           "type": "array",
           "items": {
-            "$ref": "#/definitions/UpgradeGiftPageVo",
-            "originalRef": "UpgradeGiftPageVo"
+            "originalRef": "UpgradeGiftPageVo",
+            "$ref": "#/definitions/UpgradeGiftPageVo"
           }
         },
         "pageSize": {
@@ -8374,8 +8517,8 @@
         "pageData": {
           "type": "array",
           "items": {
-            "$ref": "#/definitions/UpgradePageVo",
-            "originalRef": "UpgradePageVo"
+            "originalRef": "UpgradePageVo",
+            "$ref": "#/definitions/UpgradePageVo"
           }
         },
         "pageSize": {
@@ -8403,8 +8546,8 @@
         "pageData": {
           "type": "array",
           "items": {
-            "$ref": "#/definitions/VoucherStockPageVo",
-            "originalRef": "VoucherStockPageVo"
+            "originalRef": "VoucherStockPageVo",
+            "$ref": "#/definitions/VoucherStockPageVo"
           }
         },
         "pageSize": {
@@ -8717,8 +8860,8 @@
         "currencyRateVoList": {
           "type": "array",
           "items": {
-            "$ref": "#/definitions/CurrencyRateVo",
-            "originalRef": "CurrencyRateVo"
+            "originalRef": "CurrencyRateVo",
+            "$ref": "#/definitions/CurrencyRateVo"
           }
         },
         "rechargeAmountAllowList": {
@@ -8731,8 +8874,8 @@
         "rechargeChannelList": {
           "type": "array",
           "items": {
-            "$ref": "#/definitions/RechargeChannelVo",
-            "originalRef": "RechargeChannelVo"
+            "originalRef": "RechargeChannelVo",
+            "$ref": "#/definitions/RechargeChannelVo"
           }
         }
       },
@@ -8900,8 +9043,8 @@
       "type": "object",
       "properties": {
         "data": {
-          "$ref": "#/definitions/ActivityInfoVo",
-          "originalRef": "ActivityInfoVo"
+          "originalRef": "ActivityInfoVo",
+          "$ref": "#/definitions/ActivityInfoVo"
         },
         "msg": {
           "type": "string"
@@ -8917,8 +9060,8 @@
       "type": "object",
       "properties": {
         "data": {
-          "$ref": "#/definitions/ActivityRewardResultVo",
-          "originalRef": "ActivityRewardResultVo"
+          "originalRef": "ActivityRewardResultVo",
+          "$ref": "#/definitions/ActivityRewardResultVo"
         },
         "msg": {
           "type": "string"
@@ -8934,8 +9077,8 @@
       "type": "object",
       "properties": {
         "data": {
-          "$ref": "#/definitions/AmountInfoVo",
-          "originalRef": "AmountInfoVo"
+          "originalRef": "AmountInfoVo",
+          "$ref": "#/definitions/AmountInfoVo"
         },
         "msg": {
           "type": "string"
@@ -8951,8 +9094,8 @@
       "type": "object",
       "properties": {
         "data": {
-          "$ref": "#/definitions/AuthLoginVo",
-          "originalRef": "AuthLoginVo"
+          "originalRef": "AuthLoginVo",
+          "$ref": "#/definitions/AuthLoginVo"
         },
         "msg": {
           "type": "string"
@@ -8968,8 +9111,8 @@
       "type": "object",
       "properties": {
         "data": {
-          "$ref": "#/definitions/BattleDetailVo",
-          "originalRef": "BattleDetailVo"
+          "originalRef": "BattleDetailVo",
+          "$ref": "#/definitions/BattleDetailVo"
         },
         "msg": {
           "type": "string"
@@ -8985,8 +9128,8 @@
       "type": "object",
       "properties": {
         "data": {
-          "$ref": "#/definitions/BattleRankPageVo",
-          "originalRef": "BattleRankPageVo"
+          "originalRef": "BattleRankPageVo",
+          "$ref": "#/definitions/BattleRankPageVo"
         },
         "msg": {
           "type": "string"
@@ -9002,8 +9145,8 @@
       "type": "object",
       "properties": {
         "data": {
-          "$ref": "#/definitions/BattleResultVo",
-          "originalRef": "BattleResultVo"
+          "originalRef": "BattleResultVo",
+          "$ref": "#/definitions/BattleResultVo"
         },
         "msg": {
           "type": "string"
@@ -9019,8 +9162,8 @@
       "type": "object",
       "properties": {
         "data": {
-          "$ref": "#/definitions/BoxDetailVo",
-          "originalRef": "BoxDetailVo"
+          "originalRef": "BoxDetailVo",
+          "$ref": "#/definitions/BoxDetailVo"
         },
         "msg": {
           "type": "string"
@@ -9036,8 +9179,8 @@
       "type": "object",
       "properties": {
         "data": {
-          "$ref": "#/definitions/BoxGiftInfoVo",
-          "originalRef": "BoxGiftInfoVo"
+          "originalRef": "BoxGiftInfoVo",
+          "$ref": "#/definitions/BoxGiftInfoVo"
         },
         "msg": {
           "type": "string"
@@ -9053,8 +9196,8 @@
       "type": "object",
       "properties": {
         "data": {
-          "$ref": "#/definitions/CustomerBounsPageVo",
-          "originalRef": "CustomerBounsPageVo"
+          "originalRef": "CustomerBounsPageVo",
+          "$ref": "#/definitions/CustomerBounsPageVo"
         },
         "msg": {
           "type": "string"
@@ -9070,8 +9213,8 @@
       "type": "object",
       "properties": {
         "data": {
-          "$ref": "#/definitions/CustomerDetailVo",
-          "originalRef": "CustomerDetailVo"
+          "originalRef": "CustomerDetailVo",
+          "$ref": "#/definitions/CustomerDetailVo"
         },
         "msg": {
           "type": "string"
@@ -9083,12 +9226,29 @@
       },
       "title": "ResultData«CustomerDetailVo»"
     },
+    "ResultData«ExtPageInfo«MyVoucherVo,MyVoucherCountVo»»": {
+      "type": "object",
+      "properties": {
+        "data": {
+          "originalRef": "ExtPageInfo«MyVoucherVo,MyVoucherCountVo»",
+          "$ref": "#/definitions/ExtPageInfo«MyVoucherVo,MyVoucherCountVo»"
+        },
+        "msg": {
+          "type": "string"
+        },
+        "status": {
+          "type": "integer",
+          "format": "int32"
+        }
+      },
+      "title": "ResultData«ExtPageInfo«MyVoucherVo,MyVoucherCountVo»»"
+    },
     "ResultData«ExtPageInfo«Voucher,MyVoucherCountVo»»": {
       "type": "object",
       "properties": {
         "data": {
-          "$ref": "#/definitions/ExtPageInfo«Voucher,MyVoucherCountVo»",
-          "originalRef": "ExtPageInfo«Voucher,MyVoucherCountVo»"
+          "originalRef": "ExtPageInfo«Voucher,MyVoucherCountVo»",
+          "$ref": "#/definitions/ExtPageInfo«Voucher,MyVoucherCountVo»"
         },
         "msg": {
           "type": "string"
@@ -9104,8 +9264,8 @@
       "type": "object",
       "properties": {
         "data": {
-          "$ref": "#/definitions/GradeInfoVo",
-          "originalRef": "GradeInfoVo"
+          "originalRef": "GradeInfoVo",
+          "$ref": "#/definitions/GradeInfoVo"
         },
         "msg": {
           "type": "string"
@@ -9123,8 +9283,8 @@
         "data": {
           "type": "array",
           "items": {
-            "$ref": "#/definitions/BattleVo",
-            "originalRef": "BattleVo"
+            "originalRef": "BattleVo",
+            "$ref": "#/definitions/BattleVo"
           }
         },
         "msg": {
@@ -9143,8 +9303,8 @@
         "data": {
           "type": "array",
           "items": {
-            "$ref": "#/definitions/BoxThemeListVo",
-            "originalRef": "BoxThemeListVo"
+            "originalRef": "BoxThemeListVo",
+            "$ref": "#/definitions/BoxThemeListVo"
           }
         },
         "msg": {
@@ -9163,8 +9323,8 @@
         "data": {
           "type": "array",
           "items": {
-            "$ref": "#/definitions/CycleRedPacketVo",
-            "originalRef": "CycleRedPacketVo"
+            "originalRef": "CycleRedPacketVo",
+            "$ref": "#/definitions/CycleRedPacketVo"
           }
         },
         "msg": {
@@ -9183,8 +9343,8 @@
         "data": {
           "type": "array",
           "items": {
-            "$ref": "#/definitions/MyCouponVo",
-            "originalRef": "MyCouponVo"
+            "originalRef": "MyCouponVo",
+            "$ref": "#/definitions/MyCouponVo"
           }
         },
         "msg": {
@@ -9203,8 +9363,8 @@
         "data": {
           "type": "array",
           "items": {
-            "$ref": "#/definitions/MyTaskVo",
-            "originalRef": "MyTaskVo"
+            "originalRef": "MyTaskVo",
+            "$ref": "#/definitions/MyTaskVo"
           }
         },
         "msg": {
@@ -9223,8 +9383,8 @@
         "data": {
           "type": "array",
           "items": {
-            "$ref": "#/definitions/OpenBoxResultVo",
-            "originalRef": "OpenBoxResultVo"
+            "originalRef": "OpenBoxResultVo",
+            "$ref": "#/definitions/OpenBoxResultVo"
           }
         },
         "msg": {
@@ -9243,8 +9403,8 @@
         "data": {
           "type": "array",
           "items": {
-            "$ref": "#/definitions/OrnamentRetrievalResultVo",
-            "originalRef": "OrnamentRetrievalResultVo"
+            "originalRef": "OrnamentRetrievalResultVo",
+            "$ref": "#/definitions/OrnamentRetrievalResultVo"
           }
         },
         "msg": {
@@ -9263,8 +9423,8 @@
         "data": {
           "type": "array",
           "items": {
-            "$ref": "#/definitions/RecentBoxGiftVo",
-            "originalRef": "RecentBoxGiftVo"
+            "originalRef": "RecentBoxGiftVo",
+            "$ref": "#/definitions/RecentBoxGiftVo"
           }
         },
         "msg": {
@@ -9283,8 +9443,8 @@
         "data": {
           "type": "array",
           "items": {
-            "$ref": "#/definitions/RecentDropVo",
-            "originalRef": "RecentDropVo"
+            "originalRef": "RecentDropVo",
+            "$ref": "#/definitions/RecentDropVo"
           }
         },
         "msg": {
@@ -9303,8 +9463,8 @@
         "data": {
           "type": "array",
           "items": {
-            "$ref": "#/definitions/RechargeCouponRecordVo",
-            "originalRef": "RechargeCouponRecordVo"
+            "originalRef": "RechargeCouponRecordVo",
+            "$ref": "#/definitions/RechargeCouponRecordVo"
           }
         },
         "msg": {
@@ -9323,8 +9483,8 @@
         "data": {
           "type": "array",
           "items": {
-            "$ref": "#/definitions/RollCustomerVo",
-            "originalRef": "RollCustomerVo"
+            "originalRef": "RollCustomerVo",
+            "$ref": "#/definitions/RollCustomerVo"
           }
         },
         "msg": {
@@ -9343,8 +9503,8 @@
         "data": {
           "type": "array",
           "items": {
-            "$ref": "#/definitions/RollCustomerWithGiftVo",
-            "originalRef": "RollCustomerWithGiftVo"
+            "originalRef": "RollCustomerWithGiftVo",
+            "$ref": "#/definitions/RollCustomerWithGiftVo"
           }
         },
         "msg": {
@@ -9363,8 +9523,8 @@
         "data": {
           "type": "array",
           "items": {
-            "$ref": "#/definitions/RollRoomGiftVo",
-            "originalRef": "RollRoomGiftVo"
+            "originalRef": "RollRoomGiftVo",
+            "$ref": "#/definitions/RollRoomGiftVo"
           }
         },
         "msg": {
@@ -9383,8 +9543,8 @@
         "data": {
           "type": "array",
           "items": {
-            "$ref": "#/definitions/RollRoomPageVo",
-            "originalRef": "RollRoomPageVo"
+            "originalRef": "RollRoomPageVo",
+            "$ref": "#/definitions/RollRoomPageVo"
           }
         },
         "msg": {
@@ -9397,14 +9557,34 @@
       },
       "title": "ResultData«List«RollRoomPageVo»»"
     },
+    "ResultData«List«SteamTagVo»»": {
+      "type": "object",
+      "properties": {
+        "data": {
+          "type": "array",
+          "items": {
+            "originalRef": "SteamTagVo",
+            "$ref": "#/definitions/SteamTagVo"
+          }
+        },
+        "msg": {
+          "type": "string"
+        },
+        "status": {
+          "type": "integer",
+          "format": "int32"
+        }
+      },
+      "title": "ResultData«List«SteamTagVo»»"
+    },
     "ResultData«List«UseRewardVoucherResultVo»»": {
       "type": "object",
       "properties": {
         "data": {
           "type": "array",
           "items": {
-            "$ref": "#/definitions/UseRewardVoucherResultVo",
-            "originalRef": "UseRewardVoucherResultVo"
+            "originalRef": "UseRewardVoucherResultVo",
+            "$ref": "#/definitions/UseRewardVoucherResultVo"
           }
         },
         "msg": {
@@ -9441,8 +9621,8 @@
       "type": "object",
       "properties": {
         "data": {
-          "$ref": "#/definitions/OpenBoxResult",
-          "originalRef": "OpenBoxResult"
+          "originalRef": "OpenBoxResult",
+          "$ref": "#/definitions/OpenBoxResult"
         },
         "msg": {
           "type": "string"
@@ -9458,8 +9638,8 @@
       "type": "object",
       "properties": {
         "data": {
-          "$ref": "#/definitions/PageInfo«BattleVo»",
-          "originalRef": "PageInfo«BattleVo»"
+          "originalRef": "PageInfo«BattleVo»",
+          "$ref": "#/definitions/PageInfo«BattleVo»"
         },
         "msg": {
           "type": "string"
@@ -9475,8 +9655,8 @@
       "type": "object",
       "properties": {
         "data": {
-          "$ref": "#/definitions/PageInfo«BoxPageVo»",
-          "originalRef": "PageInfo«BoxPageVo»"
+          "originalRef": "PageInfo«BoxPageVo»",
+          "$ref": "#/definitions/PageInfo«BoxPageVo»"
         },
         "msg": {
           "type": "string"
@@ -9492,8 +9672,8 @@
       "type": "object",
       "properties": {
         "data": {
-          "$ref": "#/definitions/PageInfo«MyBalanceLogVo»",
-          "originalRef": "PageInfo«MyBalanceLogVo»"
+          "originalRef": "PageInfo«MyBalanceLogVo»",
+          "$ref": "#/definitions/PageInfo«MyBalanceLogVo»"
         },
         "msg": {
           "type": "string"
@@ -9509,8 +9689,8 @@
       "type": "object",
       "properties": {
         "data": {
-          "$ref": "#/definitions/PageInfo«MyBoxLogPageVo»",
-          "originalRef": "PageInfo«MyBoxLogPageVo»"
+          "originalRef": "PageInfo«MyBoxLogPageVo»",
+          "$ref": "#/definitions/PageInfo«MyBoxLogPageVo»"
         },
         "msg": {
           "type": "string"
@@ -9526,8 +9706,8 @@
       "type": "object",
       "properties": {
         "data": {
-          "$ref": "#/definitions/PageInfo«MyCouponPageVo»",
-          "originalRef": "PageInfo«MyCouponPageVo»"
+          "originalRef": "PageInfo«MyCouponPageVo»",
+          "$ref": "#/definitions/PageInfo«MyCouponPageVo»"
         },
         "msg": {
           "type": "string"
@@ -9543,8 +9723,8 @@
       "type": "object",
       "properties": {
         "data": {
-          "$ref": "#/definitions/PageInfo«MyFreeBoxPageVo»",
-          "originalRef": "PageInfo«MyFreeBoxPageVo»"
+          "originalRef": "PageInfo«MyFreeBoxPageVo»",
+          "$ref": "#/definitions/PageInfo«MyFreeBoxPageVo»"
         },
         "msg": {
           "type": "string"
@@ -9560,8 +9740,8 @@
       "type": "object",
       "properties": {
         "data": {
-          "$ref": "#/definitions/PageInfo«MyPromotionLogPageVo»",
-          "originalRef": "PageInfo«MyPromotionLogPageVo»"
+          "originalRef": "PageInfo«MyPromotionLogPageVo»",
+          "$ref": "#/definitions/PageInfo«MyPromotionLogPageVo»"
         },
         "msg": {
           "type": "string"
@@ -9577,8 +9757,8 @@
       "type": "object",
       "properties": {
         "data": {
-          "$ref": "#/definitions/PageInfo«MyRechargeOrderPageVo»",
-          "originalRef": "PageInfo«MyRechargeOrderPageVo»"
+          "originalRef": "PageInfo«MyRechargeOrderPageVo»",
+          "$ref": "#/definitions/PageInfo«MyRechargeOrderPageVo»"
         },
         "msg": {
           "type": "string"
@@ -9594,8 +9774,8 @@
       "type": "object",
       "properties": {
         "data": {
-          "$ref": "#/definitions/PageInfo«MyRetrievalPageVo»",
-          "originalRef": "PageInfo«MyRetrievalPageVo»"
+          "originalRef": "PageInfo«MyRetrievalPageVo»",
+          "$ref": "#/definitions/PageInfo«MyRetrievalPageVo»"
         },
         "msg": {
           "type": "string"
@@ -9611,8 +9791,8 @@
       "type": "object",
       "properties": {
         "data": {
-          "$ref": "#/definitions/PageInfo«MyRewardPageVo»",
-          "originalRef": "PageInfo«MyRewardPageVo»"
+          "originalRef": "PageInfo«MyRewardPageVo»",
+          "$ref": "#/definitions/PageInfo«MyRewardPageVo»"
         },
         "msg": {
           "type": "string"
@@ -9628,8 +9808,8 @@
       "type": "object",
       "properties": {
         "data": {
-          "$ref": "#/definitions/PageInfo«MyStockOrderPageVo»",
-          "originalRef": "PageInfo«MyStockOrderPageVo»"
+          "originalRef": "PageInfo«MyStockOrderPageVo»",
+          "$ref": "#/definitions/PageInfo«MyStockOrderPageVo»"
         },
         "msg": {
           "type": "string"
@@ -9645,8 +9825,8 @@
       "type": "object",
       "properties": {
         "data": {
-          "$ref": "#/definitions/PageInfo«MyUpgradePageVo»",
-          "originalRef": "PageInfo«MyUpgradePageVo»"
+          "originalRef": "PageInfo«MyUpgradePageVo»",
+          "$ref": "#/definitions/PageInfo«MyUpgradePageVo»"
         },
         "msg": {
           "type": "string"
@@ -9662,8 +9842,8 @@
       "type": "object",
       "properties": {
         "data": {
-          "$ref": "#/definitions/PageInfo«Ornament»",
-          "originalRef": "PageInfo«Ornament»"
+          "originalRef": "PageInfo«Ornament»",
+          "$ref": "#/definitions/PageInfo«Ornament»"
         },
         "msg": {
           "type": "string"
@@ -9679,8 +9859,8 @@
       "type": "object",
       "properties": {
         "data": {
-          "$ref": "#/definitions/PageInfo«RandKeyVo»",
-          "originalRef": "PageInfo«RandKeyVo»"
+          "originalRef": "PageInfo«RandKeyVo»",
+          "$ref": "#/definitions/PageInfo«RandKeyVo»"
         },
         "msg": {
           "type": "string"
@@ -9696,8 +9876,8 @@
       "type": "object",
       "properties": {
         "data": {
-          "$ref": "#/definitions/PageInfo«RollRoomPageVo»",
-          "originalRef": "PageInfo«RollRoomPageVo»"
+          "originalRef": "PageInfo«RollRoomPageVo»",
+          "$ref": "#/definitions/PageInfo«RollRoomPageVo»"
         },
         "msg": {
           "type": "string"
@@ -9713,8 +9893,8 @@
       "type": "object",
       "properties": {
         "data": {
-          "$ref": "#/definitions/PageInfo«UpgradeGiftPageVo»",
-          "originalRef": "PageInfo«UpgradeGiftPageVo»"
+          "originalRef": "PageInfo«UpgradeGiftPageVo»",
+          "$ref": "#/definitions/PageInfo«UpgradeGiftPageVo»"
         },
         "msg": {
           "type": "string"
@@ -9730,8 +9910,8 @@
       "type": "object",
       "properties": {
         "data": {
-          "$ref": "#/definitions/PageInfo«UpgradePageVo»",
-          "originalRef": "PageInfo«UpgradePageVo»"
+          "originalRef": "PageInfo«UpgradePageVo»",
+          "$ref": "#/definitions/PageInfo«UpgradePageVo»"
         },
         "msg": {
           "type": "string"
@@ -9747,8 +9927,8 @@
       "type": "object",
       "properties": {
         "data": {
-          "$ref": "#/definitions/PageInfo«VoucherStockPageVo»",
-          "originalRef": "PageInfo«VoucherStockPageVo»"
+          "originalRef": "PageInfo«VoucherStockPageVo»",
+          "$ref": "#/definitions/PageInfo«VoucherStockPageVo»"
         },
         "msg": {
           "type": "string"
@@ -9764,8 +9944,8 @@
       "type": "object",
       "properties": {
         "data": {
-          "$ref": "#/definitions/PaymentVo",
-          "originalRef": "PaymentVo"
+          "originalRef": "PaymentVo",
+          "$ref": "#/definitions/PaymentVo"
         },
         "msg": {
           "type": "string"
@@ -9781,8 +9961,8 @@
       "type": "object",
       "properties": {
         "data": {
-          "$ref": "#/definitions/PromotionInfoVo",
-          "originalRef": "PromotionInfoVo"
+          "originalRef": "PromotionInfoVo",
+          "$ref": "#/definitions/PromotionInfoVo"
         },
         "msg": {
           "type": "string"
@@ -9798,8 +9978,8 @@
       "type": "object",
       "properties": {
         "data": {
-          "$ref": "#/definitions/RandKeyVo",
-          "originalRef": "RandKeyVo"
+          "originalRef": "RandKeyVo",
+          "$ref": "#/definitions/RandKeyVo"
         },
         "msg": {
           "type": "string"
@@ -9815,8 +9995,8 @@
       "type": "object",
       "properties": {
         "data": {
-          "$ref": "#/definitions/RechargeConfigVo",
-          "originalRef": "RechargeConfigVo"
+          "originalRef": "RechargeConfigVo",
+          "$ref": "#/definitions/RechargeConfigVo"
         },
         "msg": {
           "type": "string"
@@ -9832,8 +10012,8 @@
       "type": "object",
       "properties": {
         "data": {
-          "$ref": "#/definitions/RechargeDiscountInfoVo",
-          "originalRef": "RechargeDiscountInfoVo"
+          "originalRef": "RechargeDiscountInfoVo",
+          "$ref": "#/definitions/RechargeDiscountInfoVo"
         },
         "msg": {
           "type": "string"
@@ -9849,8 +10029,8 @@
       "type": "object",
       "properties": {
         "data": {
-          "$ref": "#/definitions/RechargeOrderVo",
-          "originalRef": "RechargeOrderVo"
+          "originalRef": "RechargeOrderVo",
+          "$ref": "#/definitions/RechargeOrderVo"
         },
         "msg": {
           "type": "string"
@@ -9866,8 +10046,8 @@
       "type": "object",
       "properties": {
         "data": {
-          "$ref": "#/definitions/RollRoomPageVo",
-          "originalRef": "RollRoomPageVo"
+          "originalRef": "RollRoomPageVo",
+          "$ref": "#/definitions/RollRoomPageVo"
         },
         "msg": {
           "type": "string"
@@ -9883,8 +10063,8 @@
       "type": "object",
       "properties": {
         "data": {
-          "$ref": "#/definitions/SignInInfoVo",
-          "originalRef": "SignInInfoVo"
+          "originalRef": "SignInInfoVo",
+          "$ref": "#/definitions/SignInInfoVo"
         },
         "msg": {
           "type": "string"
@@ -9900,8 +10080,8 @@
       "type": "object",
       "properties": {
         "data": {
-          "$ref": "#/definitions/SignInListVo",
-          "originalRef": "SignInListVo"
+          "originalRef": "SignInListVo",
+          "$ref": "#/definitions/SignInListVo"
         },
         "msg": {
           "type": "string"
@@ -9917,8 +10097,8 @@
       "type": "object",
       "properties": {
         "data": {
-          "$ref": "#/definitions/UpgradeConfigVo",
-          "originalRef": "UpgradeConfigVo"
+          "originalRef": "UpgradeConfigVo",
+          "$ref": "#/definitions/UpgradeConfigVo"
         },
         "msg": {
           "type": "string"
@@ -9934,8 +10114,8 @@
       "type": "object",
       "properties": {
         "data": {
-          "$ref": "#/definitions/UpgradeResultVo",
-          "originalRef": "UpgradeResultVo"
+          "originalRef": "UpgradeResultVo",
+          "$ref": "#/definitions/UpgradeResultVo"
         },
         "msg": {
           "type": "string"
@@ -9983,21 +10163,17 @@
       "type": "object",
       "properties": {
         "headGround": {
-          "type": "string",
-          "refType": null
+          "type": "string"
         },
         "headPic": {
-          "type": "string",
-          "refType": null
+          "type": "string"
         },
         "id": {
           "type": "integer",
-          "format": "int64",
-          "refType": null
+          "format": "int64"
         },
         "nickname": {
-          "type": "string",
-          "refType": null
+          "type": "string"
         }
       },
       "title": "RollCustomerVo"
@@ -10008,8 +10184,8 @@
         "giftVos": {
           "type": "array",
           "items": {
-            "$ref": "#/definitions/RollRoomGiftVo",
-            "originalRef": "RollRoomGiftVo"
+            "originalRef": "RollRoomGiftVo",
+            "$ref": "#/definitions/RollRoomGiftVo"
           }
         },
         "headGround": {
@@ -10032,36 +10208,29 @@
       "type": "object",
       "properties": {
         "giftImage": {
-          "type": "string",
-          "refType": null
+          "type": "string"
         },
         "giftName": {
-          "type": "string",
-          "refType": null
+          "type": "string"
         },
         "giftTemplateId": {
           "type": "integer",
-          "format": "int64",
-          "refType": null
+          "format": "int64"
         },
         "grade": {
           "type": "integer",
-          "format": "int32",
-          "refType": null
+          "format": "int32"
         },
         "id": {
           "type": "integer",
-          "format": "int64",
-          "refType": null
+          "format": "int64"
         },
         "recoveryPrice": {
-          "type": "number",
-          "refType": null
+          "type": "number"
         },
         "winnerInfo": {
-          "$ref": "#/definitions/RollCustomerVo",
           "originalRef": "RollCustomerVo",
-          "refType": "RollCustomerVo"
+          "$ref": "#/definitions/RollCustomerVo"
         }
       },
       "title": "RollRoomGiftVo"
@@ -10070,100 +10239,80 @@
       "type": "object",
       "properties": {
         "accumulatedAmount": {
-          "type": "number",
-          "refType": null
+          "type": "number"
         },
         "assignMethod": {
           "type": "integer",
-          "format": "int32",
-          "refType": null
+          "format": "int32"
         },
         "banner": {
-          "type": "string",
-          "refType": null
+          "type": "string"
         },
         "giftCount": {
           "type": "integer",
-          "format": "int32",
-          "refType": null
+          "format": "int32"
         },
         "giftVos": {
           "type": "array",
           "items": {
-            "$ref": "#/definitions/RollRoomGiftVo",
-            "originalRef": "RollRoomGiftVo"
-          },
-          "refType": "RollRoomGiftVo"
+            "originalRef": "RollRoomGiftVo",
+            "$ref": "#/definitions/RollRoomGiftVo"
+          }
         },
         "id": {
           "type": "integer",
-          "format": "int64",
-          "refType": null
+          "format": "int64"
         },
         "joinFlag": {
-          "type": "boolean",
-          "refType": null
+          "type": "boolean"
         },
         "leftTime": {
           "type": "integer",
-          "format": "int64",
-          "refType": null
+          "format": "int64"
         },
         "openTime": {
           "type": "string",
-          "format": "date-time",
-          "refType": null
+          "format": "date-time"
         },
         "openType": {
           "type": "integer",
-          "format": "int32",
-          "refType": null
+          "format": "int32"
         },
         "poolValue": {
-          "type": "number",
-          "refType": null
+          "type": "number"
         },
         "pwdFlag": {
-          "type": "boolean",
-          "refType": null
+          "type": "boolean"
         },
         "rechargeEndTime": {
           "type": "string",
-          "format": "date-time",
-          "refType": null
+          "format": "date-time"
         },
         "rechargeStartTime": {
           "type": "string",
-          "format": "date-time",
-          "refType": null
+          "format": "date-time"
         },
         "remark": {
-          "type": "string",
-          "refType": null
+          "type": "string"
         },
         "roomType": {
           "type": "integer",
-          "format": "int32",
-          "refType": null
+          "format": "int32"
         },
         "state": {
           "type": "integer",
-          "format": "int32",
-          "refType": null
+          "format": "int32"
         },
         "title": {
-          "type": "string",
-          "refType": null
+          "type": "string"
         },
         "userCount": {
           "type": "integer",
-          "format": "int32",
-          "refType": null
+          "format": "int32"
         },
         "weight": {
           "type": "integer",
-          "format": "int32",
-          "refType": null
+          "format": "int32"
         }
       },
       "title": "RollRoomPageVo"
@@ -10174,8 +10323,8 @@
         "signIns": {
           "type": "array",
           "items": {
-            "$ref": "#/definitions/SignInListVo",
-            "originalRef": "SignInListVo"
+            "originalRef": "SignInListVo",
+            "$ref": "#/definitions/SignInListVo"
           }
         },
         "signedInToday": {
@@ -10225,8 +10374,8 @@
         "prizes": {
           "type": "array",
           "items": {
-            "$ref": "#/definitions/PrizeVo",
-            "originalRef": "PrizeVo"
+            "originalRef": "PrizeVo",
+            "$ref": "#/definitions/PrizeVo"
           }
         },
         "quantity": {
@@ -10250,6 +10399,37 @@
         }
       },
       "title": "SignInListVo"
+    },
+    "SteamTagVo": {
+      "type": "object",
+      "properties": {
+        "key": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "tags": {
+          "type": "array",
+          "items": {
+            "originalRef": "Tags",
+            "$ref": "#/definitions/Tags"
+          }
+        }
+      },
+      "title": "SteamTagVo"
+    },
+    "Tags": {
+      "type": "object",
+      "properties": {
+        "key": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        }
+      },
+      "title": "Tags"
     },
     "TaskAction": {
       "type": "object",
@@ -10422,8 +10602,8 @@
         "voucherInfos": {
           "type": "array",
           "items": {
-            "$ref": "#/definitions/BoxGiftListVo",
-            "originalRef": "BoxGiftListVo"
+            "originalRef": "BoxGiftListVo",
+            "$ref": "#/definitions/BoxGiftListVo"
           }
         },
         "winRecoveryPrice": {
@@ -10538,8 +10718,8 @@
         "prizes": {
           "type": "array",
           "items": {
-            "$ref": "#/definitions/PrizeVo",
-            "originalRef": "PrizeVo"
+            "originalRef": "PrizeVo",
+            "$ref": "#/definitions/PrizeVo"
           }
         },
         "remark": {

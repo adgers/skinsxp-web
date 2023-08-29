@@ -1,7 +1,6 @@
-import spinVideo from '@/assets/audio/spin.mp3';
 import { parseName, sleep } from '@/utils';
 import { animated, easings, useSpring } from '@react-spring/web';
-import { useCallback, useEffect, useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import './index.less';
 
 const Lottery = ({
@@ -14,8 +13,9 @@ const Lottery = ({
   wrapHeight = 200,
   start,
   fast = false,
-  voice = true,
   lotteryIndex = 0,
+  showName = false,
+  showLogo = true,
 }: {
   giftList: API.BoxGiftListVo[];
   lotteryWin?: API.BattleBoxGainVo;
@@ -27,16 +27,15 @@ const Lottery = ({
   wrapHeight?: number;
   lotteryIndex?: number;
   fast?: boolean;
-  voice?: boolean;
+  showName?: boolean;
+  showLogo?: boolean;
 }) => {
   const baseNum = 36;
   const winLotteryIndex = 30;
-  const duration = fast ? 100 * winLotteryIndex : 250 * winLotteryIndex;
+  const duration = fast ? 150 * winLotteryIndex : 250 * winLotteryIndex;
   const [list, setList] = useState<API.BoxGiftListVo[]>([]);
 
-  const prevMoveRef = useRef(0);
   const wrapRef = useRef<HTMLDivElement>(null);
-  const audioRef = useRef<HTMLVideoElement>(null);
 
   const [moveSprings, moveApi] = useSpring(() => ({
     from: vertical ? { y: 0 } : { x: 0 },
@@ -65,12 +64,12 @@ const Lottery = ({
   const animateEnd = () => {
     opacityApi.start({
       from: { opacity: 1 },
-      to: { opacity: 0.3 },
+      to: { opacity: 0.2 },
       config: { duration: 500 },
     });
     scaleApi.start({
       from: { scale: 1 },
-      to: { scale: 1.1 },
+      to: { scale: 1.2 },
       config: { duration: 500 },
       onResolve: () => {
         onCompleted(lotteryIndex);
@@ -101,14 +100,6 @@ const Lottery = ({
     setList(newList);
   };
 
-  const playSpinAudio = useCallback(async () => {
-    if (audioRef.current) {
-      await audioRef.current.pause();
-      audioRef.current.currentTime = 0;
-      audioRef.current.play().catch(() => {});
-    }
-  }, []);
-
   const goMoveY = () => {
     const boxHeight = boxSize.height;
     let randomHeight;
@@ -127,17 +118,6 @@ const Lottery = ({
       from: { y: 0 },
       to: { y: -moveY },
       config: { duration: duration, easing: easings.easeOutQuint },
-      onChange: (props) => {
-        const currentMoveY = props.value.y;
-        const distanceDelta = currentMoveY - prevMoveRef.current;
-        const speed = Math.abs(distanceDelta);
-        if (speed > boxHeight) {
-          prevMoveRef.current = currentMoveY;
-          if (voice) {
-            playSpinAudio();
-          }
-        }
-      },
       onResolve: () => {
         animateEnd();
       },
@@ -163,19 +143,6 @@ const Lottery = ({
       from: { x: 0 },
       to: { x: -moveX },
       config: { duration: duration, easing: easings.easeOutQuint },
-      onChange: (props) => {
-        const currentMoveX = props.value.x;
-        const distanceDelta = currentMoveX - prevMoveRef.current;
-        const speed = Math.abs(distanceDelta);
-
-        //当移动距离超过一个box的宽度时，播放音效
-        if (speed > boxWidth) {
-          prevMoveRef.current = currentMoveX;
-          if (voice) {
-            playSpinAudio();
-          }
-        }
-      },
       onResolve: () => {
         animateEnd();
       },
@@ -208,17 +175,6 @@ const Lottery = ({
       }}
       ref={wrapRef}
     >
-      <video
-        src={spinVideo}
-        ref={audioRef}
-        controls={false}
-        playsInline={true}
-        webkit-playsinline="true"
-        x5-playsinline="true"
-        style={{
-          display: 'none',
-        }}
-      />
       <animated.div
         style={{
           ...moveSprings,
@@ -234,7 +190,9 @@ const Lottery = ({
 
           return (
             <div
-              className={`lottery-card lottery-card-${grade}`}
+              className={`lottery-card lottery-card-${grade} ${
+                showLogo ? 'lottery-card-logo' : 'lottery-card-bg'
+              }`}
               key={index}
               style={{
                 width: boxSize.width,
@@ -246,14 +204,25 @@ const Lottery = ({
                   ...(isWin ? scaleSprings : opacitySprings),
                 }}
                 src={item.giftImage}
-                className={`mx-auto object-contain h-full w-4/5`}
+                className={`mx-auto object-contain h-full w-1/2`}
               />
-              <div className="hidden md:block absolute bottom-0 left-0 -mb-1 w-full p-2 font-semibold uppercase leading-tight md:p-3 css-185mzwb">
-                <div className="truncate text-xs md:text-sm text-center">
-                  <div className="text-white text-opacity-50">{name[1]}</div>
-                  <div className="text-white">{name[0]}</div>
+              {showLogo && (
+                <animated.div
+                  style={{
+                    ...(isWin ? {} : opacitySprings),
+                  }}
+                  className={`card-logo`}
+                />
+              )}
+
+              {showName && (
+                <div className="hidden md:block absolute bottom-0 left-0 -mb-1 w-full p-2 font-semibold uppercase leading-tight md:p-3">
+                  <div className="truncate text-xs md:text-sm text-center">
+                    <div className="text-white text-opacity-50">{name[1]}</div>
+                    <div className="text-white">{name[0]}</div>
+                  </div>
                 </div>
-              </div>
+              )}
             </div>
           );
         })}

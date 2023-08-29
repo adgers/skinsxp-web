@@ -71,10 +71,6 @@ export default React.memo(function TopCard({ data, loading }: TopCardProps) {
             <div className="item-footer">
               <div className="avatar relative rounded">
                 <img src={data?.headPic} />
-                <img
-                  src={data?.headGround}
-                  className="absolute left-0 top-0 w-full h-full"
-                />
               </div>
               <div className="text-white text-xs mt-2">{data?.nickname}</div>
             </div>
@@ -83,10 +79,6 @@ export default React.memo(function TopCard({ data, loading }: TopCardProps) {
           <div className="item-footer items-center flex flex-col gap-1 justify-center">
             <div className="avatar relative rounded">
               <img src={data?.headPic} />
-              <img
-                src={data?.headGround}
-                className="absolute left-0 top-0 w-full h-full"
-              />
             </div>
             <div className="text-white text-xs mt-2">{data?.nickname}</div>
           </div>

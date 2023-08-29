@@ -509,7 +509,7 @@ export default function RoomDetail() {
       </div>
 
       {data && (
-        <div className="px-3 sm:px-0 flex flex-col gap-3 mt-4">
+        <div className="flex flex-col gap-3 mt-4">
           <div
             className={`bg-black rounded sm:rounded-md py-5 flex px-5 sm:px-8 items-center gap-2 battle-mode-${mode}`}
           >
@@ -645,7 +645,7 @@ export default function RoomDetail() {
             return (
               <div className="flex flex-col" key={i}>
                 <div
-                  className={`battle-seat-bg h-[300px] px-2 md:h-[180] seat-${
+                  className={`battle-seat-bg  h-[300px] px-2 seat-${
                     i + 1
                   } ${isLast ? 'seat-last' : ''}`}
                 >
@@ -678,8 +678,8 @@ export default function RoomDetail() {
                       onCompleted={onLortteryCompleted}
                       boxSize={
                         responsive.md
-                          ? { width: '100%', height: 200 }
-                          : { width: '100%', height: 100 }
+                          ? { width: '100%', height: 112 }
+                          : { width: '100%', height: 56 }
                       }
                       start={lotteryStart}
                       wrapHeight={responsive.md ? 300 : 180}

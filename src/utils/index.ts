@@ -14,9 +14,7 @@ export function getApiDomain() {
     location.href.indexOf('localhost') > -1 ||
     location.href.indexOf('127.0.0.1') > -1
   ) {
-    return 'http://192.168.12.178:9999'
-    return 'http://192.168.12.13:9999'
-    // return 'http://127.0.0.1:9999';
+    return 'http://127.0.0.1:9999';
     // return '//api-test.xgskins.com';
 
     // return 'http://192.168.13.65:9999';
@@ -167,9 +165,6 @@ export function addImgHost(data: any) {
     if (typeof data === 'object') {
       for (const key in data) {
         if (arr.includes(key)) {
-          console.log('key', key);
-          console.log(data[key]);
-          console.log('http', data[key].indexOf('http') > -1);
           if (data[key].indexOf('http') < 0) {
             data[key] = imgHost + data[key];
           }

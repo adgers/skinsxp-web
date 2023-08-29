@@ -1,7 +1,6 @@
 import Empty from '@/components/empty';
 import WeaponCard from '@/components/weaponCard';
-import { EXTERIOR, WEAPON_TYPE } from '@/constants';
-import { getVoucherStockPageUsingGET } from '@/services/front/duihuanquanshangchengxiangguan';
+import { getTagsUsingGET, getVoucherStockPageUsingGET } from '@/services/front/duihuanquanshangchengxiangguan';
 import { Menu, Transition } from '@headlessui/react';
 import { FormattedMessage, useIntl, useModel, useRequest } from '@umijs/max';
 import { Pagination } from 'antd';
@@ -21,6 +20,8 @@ export default () => {
   const [item, setItem] = useState<any>({});
   const pageSize = 36;
   const intl = useIntl();
+
+  const { data: selectFilters } = useRequest(() => getTagsUsingGET());
 
   const { data, loading } = useRequest(
     async () => {
@@ -84,8 +85,8 @@ export default () => {
         </div>
       </div>
       <div className="flex flex-col-reverse sm:flex-row gap-2 sm:justify-between pt-4 px-3">
-        <div className="flex gap-2 sm:gap-4 flex-1">
-          <Menu as="div" className="relative w-40">
+        <div className="flex gap-2 sm:gap-4 flex-1 flex-wrap">
+          <Menu as="div" className="relative">
             <Menu.Button className="whitespace-nowrap select select-sm select-accent border-opacity-50 rounded uppercase w-full font-semibold flex justify-between items-center focus:outline-none">
               <FormattedMessage id="mall_sort_mrpx" />
             </Menu.Button>
@@ -127,73 +128,73 @@ export default () => {
             </Transition>
           </Menu>
 
-          <Menu as="div" className="relative w-40">
-            <Menu.Button className="select select-sm select-accent border-opacity-50 rounded uppercase w-full font-semibold flex justify-between items-center focus:outline-none">
-              <div>外观</div>
-            </Menu.Button>
-            <Transition
-              as={Fragment}
-              enter="transition ease-out duration-100"
-              enterFrom="transform opacity-0 scale-95"
-              enterTo="transform opacity-100 scale-100"
-              leave="transition ease-in duration-75"
-              leaveFrom="transform opacity-100 scale-100"
-              leaveTo="transform opacity-0 scale-95"
-            >
-              <Menu.Items className="absolute left-0 mt-2 w-full bg-dark ring-1 ring-accent rounded origin-top-left p-2 z-50">
-                {EXTERIOR.map((item, i) => (
-                  <Menu.Item key={i}>
-                    {({ active }) => (
-                      <div
-                        className={`${
-                          active || item.key === exterior
-                            ? 'bg-accent bg-opacity-10'
-                            : ''
-                        } flex justify-between items-center p-2 text-sm rounded cursor-pointer`}
-                        onClick={() => onExteriorChange(item.key)}
-                      >
-                        {item.name}
-                      </div>
-                    )}
-                  </Menu.Item>
-                ))}
-              </Menu.Items>
-            </Transition>
-          </Menu>
+          {selectFilters &&
+            selectFilters.map((filter, i) => {
+              if (filter.key && !['Exterior', 'Type'].includes(filter.key)) {
+                return null;
+              }
 
-          <Menu as="div" className="relative w-40">
-            <Menu.Button className="select select-sm select-accent border-opacity-50 rounded uppercase w-full font-semibold flex justify-between items-center focus:outline-none">
-              <div>武器类型</div>
-            </Menu.Button>
-            <Transition
-              as={Fragment}
-              enter="transition ease-out duration-100"
-              enterFrom="transform opacity-0 scale-95"
-              enterTo="transform opacity-100 scale-100"
-              leave="transition ease-in duration-75"
-              leaveFrom="transform opacity-100 scale-100"
-              leaveTo="transform opacity-0 scale-95"
-            >
-              <Menu.Items className="absolute left-0 mt-2 w-full bg-dark ring-1 ring-accent rounded origin-top-left p-2 z-50 max-h-80 overflow-y-auto">
-                {WEAPON_TYPE.map((item, i) => (
-                  <Menu.Item key={i}>
-                    {({ active }) => (
-                      <div
-                        className={`${
-                          active || item.key === weaponType
-                            ? 'bg-accent bg-opacity-10'
-                            : ''
-                        } flex justify-between items-center p-2 text-sm rounded cursor-pointer`}
-                        onClick={() => onWeaponTypeChange(item.key)}
-                      >
-                        {item.name}
-                      </div>
-                    )}
-                  </Menu.Item>
-                ))}
-              </Menu.Items>
-            </Transition>
-          </Menu>
+              return (
+                <Menu as="div" className="relative w-40" key={i}>
+                  <Menu.Button className="select select-sm select-accent border-opacity-50 rounded uppercase w-full font-semibold flex justify-between items-center focus:outline-none">
+                    <div>{filter.name}</div>
+                  </Menu.Button>
+                  <Transition
+                    as={Fragment}
+                    enter="transition ease-out duration-100"
+                    enterFrom="transform opacity-0 scale-95"
+                    enterTo="transform opacity-100 scale-100"
+                    leave="transition ease-in duration-75"
+                    leaveFrom="transform opacity-100 scale-100"
+                    leaveTo="transform opacity-0 scale-95"
+                  >
+                    <Menu.Items className="absolute left-0 mt-2 w-full bg-neutral ring-1 ring-accent rounded origin-top-left p-2 z-50 max-h-80 overflow-y-auto">
+                      <Menu.Item key={i}>
+                        {({ active }) => (
+                          <div
+                            className={`${
+                              active ? 'bg-accent bg-opacity-10' : ''
+                            } flex justify-between items-center p-2 text-sm rounded cursor-pointer`}
+                            onClick={() => {
+                              if (filter.key === 'Exterior') {
+                                onExteriorChange( '');
+                              }
+                              if (filter.key === 'Type') {
+                                onWeaponTypeChange('');
+                              }
+                            }}
+                          >
+                            <FormattedMessage id="mall_all"/>
+                          </div>
+                        )}
+                      </Menu.Item>
+                      {filter.tags &&
+                        filter.tags.map((item, i) => (
+                          <Menu.Item key={i}>
+                            {({ active }) => (
+                              <div
+                                className={`${
+                                  active ? 'bg-accent bg-opacity-10' : ''
+                                } flex justify-between items-center p-2 text-sm rounded cursor-pointer`}
+                                onClick={() => {
+                                  if (filter.key === 'Exterior') {
+                                    onExteriorChange(item?.key || '');
+                                  }
+                                  if (filter.key === 'Type') {
+                                    onWeaponTypeChange(item?.key || '');
+                                  }
+                                }}
+                              >
+                                {item.name}
+                              </div>
+                            )}
+                          </Menu.Item>
+                        ))}
+                    </Menu.Items>
+                  </Transition>
+                </Menu>
+              );
+            })}
         </div>
         <div className="w-full sm:w-auto flex gap-2 flex-col-reverse sm:flex-row">
           <div className="join">

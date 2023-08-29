@@ -124,28 +124,27 @@ export default function Result({
                 <img src={item.giftImage} className="z-10" />
               </div>
               <div className="-mt-4">
-                <div className="text-sm flex gap-1 font-num">
-                  <IconFont type="icon-daimond" />
-                  {item.recoveryPrice}
+                <div className="text-sm flex gap-1 font-num text-green">
+                  $ {item.recoveryPrice}
                 </div>
-                <div className="text-xs text-base-content text-opacity-50 truncate">
+                <div className="text-xs truncate">
                   {item.giftName}
                 </div>
               </div>
             </div>
           ))}
         </div>
-        <div className="flex gap-2 w-full justify-center mt-4">
+        <div className="flex gap-2 w-full justify-center mt-6">
           <button
             onClick={onClose}
-            className="btn-secondary-fill !btn-sm"
+            className="btn-purple !btn-sm"
             type="button"
           >
             <FormattedMessage id="open_box_receive" />
           </button>
 
           <Button
-            className="btn-primary-fill !btn-sm"
+            className="btn-green !btn-sm"
             onClick={onSale}
             loading={saleLoading}
           >

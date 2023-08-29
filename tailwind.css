@@ -2,14 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-/* .btn-secondary-fill{
-  @apply rounded btn bg-secondary text-secondary bg-opacity-20 border-secondary hover:bg-secondary hover:bg-opacity-30 hover:text-secondary hover:border-secondary 
-}
-
-.btn-primary-fill{
-  @apply rounded btn bg-primary text-primary bg-opacity-20 border-primary hover:bg-primary hover:bg-opacity-30 hover:text-primary hover:border-primary 
-} */
-
 
 .btn-green {
   @apply btn border border-green bg-[#18331F] rounded gap-1 hover:border-green hover:bg-[#18331F] hover:bg-opacity-50 flex items-center justify-center

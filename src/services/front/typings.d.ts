@@ -98,6 +98,7 @@ declare namespace API {
   };
 
   type BattleCustomerOpenBoxVo = {
+    clientSeed?: string;
     customerId?: number;
     headPic?: string;
     nickname?: string;
@@ -443,6 +444,15 @@ declare namespace API {
     stockId: number;
   };
 
+  type ExtPageInfoMyVoucherVoMyVoucherCountVo_ = {
+    extData?: MyVoucherCountVo;
+    page?: number;
+    pageData?: MyVoucherVo[];
+    pageSize?: number;
+    totalPages?: number;
+    totalRows?: number;
+  };
+
   type ExtPageInfoVoucherMyVoucherCountVo_ = {
     extData?: MyVoucherCountVo;
     page?: number;
@@ -651,9 +661,9 @@ declare namespace API {
 
   type GradeCustomerVo = {
     cdkInfo?: string;
+    couponInfo?: string;
+    couponTitle?: string;
     createTime?: string;
-    cuponInfo?: string;
-    cuponTitle?: string;
     delFlag?: boolean;
     expMax?: number;
     expMin?: number;
@@ -675,9 +685,9 @@ declare namespace API {
 
   type GradeInfoVo = {
     cdkInfo?: string;
+    couponInfo?: string;
+    couponTitle?: string;
     createTime?: string;
-    cuponInfo?: string;
-    cuponTitle?: string;
     delFlag?: boolean;
     expMax?: number;
     expMin?: number;
@@ -1025,6 +1035,29 @@ declare namespace API {
     page?: number;
     /** pageSize */
     pageSize?: number;
+  };
+
+  type MyVoucherVo = {
+    createTime?: string;
+    customerId?: number;
+    delFlag?: boolean;
+    giftImage?: string;
+    giftTemplateId?: number;
+    grade?: number;
+    id?: number;
+    itemId?: number;
+    modifyTime?: string;
+    recoveryPrice?: number;
+    remark?: string;
+    retrievedState?: number;
+    sourceId?: string;
+    sourceType?: string;
+    state?: number;
+    stateStr?: string;
+    targetType?: number;
+    verifyId?: string;
+    voucherName?: string;
+    zbtAcceptablePrice?: number;
   };
 
   type OpenBoxResult = {
@@ -1544,6 +1577,12 @@ declare namespace API {
     status?: number;
   };
 
+  type ResultDataExtPageInfoMyVoucherVoMyVoucherCountVo_ = {
+    data?: ExtPageInfoMyVoucherVoMyVoucherCountVo_;
+    msg?: string;
+    status?: number;
+  };
+
   type ResultDataExtPageInfoVoucherMyVoucherCountVo_ = {
     data?: ExtPageInfoVoucherMyVoucherCountVo_;
     msg?: string;
@@ -1642,6 +1681,12 @@ declare namespace API {
 
   type ResultDataListRollRoomPageVo_ = {
     data?: RollRoomPageVo[];
+    msg?: string;
+    status?: number;
+  };
+
+  type ResultDataListSteamTagVo_ = {
+    data?: SteamTagVo[];
     msg?: string;
     status?: number;
   };
@@ -1958,6 +2003,17 @@ declare namespace API {
     query: string;
   };
 
+  type SteamTagVo = {
+    key?: string;
+    name?: string;
+    tags?: Tags[];
+  };
+
+  type Tags = {
+    key?: string;
+    name?: string;
+  };
+
   type TaskAction = {
     condition?: string;
     current?: string;
@@ -2177,7 +2233,7 @@ declare namespace API {
   };
 
   type winnerListUsingGETParams = {
-    /** rollId */
-    rollId?: number;
+    /** giveawayId */
+    giveawayId?: number;
   };
 }

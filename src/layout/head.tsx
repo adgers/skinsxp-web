@@ -220,19 +220,15 @@ export default function Header() {
                   />
                 </span>
               </div>
-              <Link className="btn-primary-fill !btn-sm !px-1" to="/deposit">
-                <IconFont type="icon-qianbao" className="text-xl" />
-                <PlusOutlined className="text-xs" />
+              <Link className="btn-green !btn-sm !px-1" to="/deposit">
+                <IconFont type="icon-qianbao" className="text-xl text-green" />
+                <PlusOutlined className="text-xs text-green" />
               </Link>
 
               <Menu as="div" className="relative h-8">
                 <Menu.Button as="div" className="avatar">
                   <div className="w-8 rounded-sm cursor-pointer relative">
                     <img src={userInfo.headPic} />
-                    <img
-                      src={userInfo.headGround}
-                      className="absolute left-0 top-0 w-full h-full"
-                    />
                   </div>
                 </Menu.Button>
                 <Transition
@@ -260,10 +256,6 @@ export default function Header() {
                         <img
                           src={userInfo?.headPic}
                           className="h-12 w-12 rounded object-cover"
-                        />
-                        <img
-                          src={userInfo?.headGround}
-                          className="absolute left-0 top-0 w-full h-full"
                         />
                       </div>
                       <div className="w-full">

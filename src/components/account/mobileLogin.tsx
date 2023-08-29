@@ -59,7 +59,7 @@ export default function MobileLogin() {
   return (
     <Modal open={smsLoginShow} className="max-w-md">
       <Modal.Header className="flex flex-col items-center mb-2">
-        <div>欢迎来到 MUSKINS</div>
+        <div>欢迎</div>
         <div className="modal-sub-title">
           <div className="text-base">短信登录</div>
         </div>

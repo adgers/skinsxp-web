@@ -17,6 +17,14 @@ export async function exchangeVoucherStockUsingPOST(
   });
 }
 
+/** 获取steam选项tags GET /api/store/filters */
+export async function getTagsUsingGET(options?: { [key: string]: any }) {
+  return request<API.ResultDataListSteamTagVo_>('/api/store/filters', {
+    method: 'GET',
+    ...(options || {}),
+  });
+}
+
 /** 商城商品分页 GET /api/store/getItemPage */
 export async function getVoucherStockPageUsingGET(
   // 叠加生成的Param类型 (非body参数swagger默认没有生成对象)

@@ -114,16 +114,16 @@ export default function BoxPage() {
 
   return (
     <div className="max-w-[1400px] w-full m-auto mt-4 px-3">
-      <div className="flex grid-cols-3 items-center sm:grid h-[60px] sm:h-[120px] px-4 box-open-title">
+      <div className="flex flex-row items-center h-[60px] sm:h-[120px] box-open-title">
         <button
-          className="btn btn-sm text-white w-20 gap-1"
+          className="btn btn-sm text-white gap-1"
           onClick={goback}
           type="button"
         >
           <LeftOutlined />
           <FormattedMessage id="common_back" />
         </button>
-        <h2 className="mx-auto px-6 text-center text-white md:text-xl font-semibold uppercase truncate">
+        <h2 className="mx-auto px-6 text-center text-white md:text-xl font-semibold uppercase truncate flex-1 w-full">
           {boxDetails?.boxName}
         </h2>
         <div className="flex justify-center space-x-1 sm:justify-end sm:space-x-2">
@@ -150,7 +150,7 @@ export default function BoxPage() {
           </div>
         </div>
       </div>
-      <div className="rounded ring-1 ring-light mt-4 py-[15px] p-3 relative h-[174px] md:h-[324px]">
+      <div className="rounded ring-1 ring-light mt-4 py-[15px] p-3 relative h-[174px] md:h-[324px] lottery-bg">
         {openCount === 1 && !lotteryStart && (
           <div className="absolute inset-0 z-30 bg-dark bg-opacity-60 sm:rounded-2xl">
             <div className="absolute left-1/2 grid aspect-[1/1.5] h-full -translate-x-1/2 transform grid-cols-1 grid-rows-1">
@@ -160,15 +160,13 @@ export default function BoxPage() {
                   className="h-full w-full rounded-lg object-cover"
                 />
               </div>
-              <div className="z-10 mx-auto mb-4 mt-auto max-w-full rounded-lg bg-black bg-opacity-50 p-2 text-center text-sm font-semibold uppercase leading-none text-white">
-                {boxDetails?.boxName}
-              </div>
             </div>
           </div>
         )}
 
         {openCount > 1 && (
           <div className="w-full h-full relative z-10">
+            <div className="grid-cols-5 hidden"></div>
             <div
               className={`grid grid-cols-${openCount} gap-2 md:gap-3 w-full h-full`}
             >
@@ -178,18 +176,17 @@ export default function BoxPage() {
                 <Lottery
                   giftList={giftList}
                   lotteryWin={results?.[index] || {}}
-                  randomPosition={true}
+                  randomPosition={false}
                   vertical
                   onCompleted={onLortteryCompleted}
                   boxSize={
                     responsive.md
-                      ? { width: '100%', height: 200 }
-                      : { width: '100%', height: 100 }
+                      ? { width: '100%', height: 112 }
+                      : { width: '100%', height: 56 }
                   }
                   start={lotteryStart}
                   wrapHeight={responsive.md ? 300 : 150}
                   fast={fast}
-                  voice={voice}
                   lotteryIndex={index}
                   key={index}
                 />
@@ -206,7 +203,9 @@ export default function BoxPage() {
               giftList={giftList}
               lotteryWin={results?.[0] || {}}
               onCompleted={onLortteryCompleted}
-              randomPosition={true}
+              randomPosition={false}
+              showLogo={false}
+              showName={true}
               boxSize={
                 responsive.md
                   ? { width: 250, height: 300 }
@@ -216,7 +215,6 @@ export default function BoxPage() {
               wrapHeight={responsive.md ? 300 : 150}
               lotteryIndex={0}
               fast={fast}
-              voice={voice}
             />
           </div>
         )}
@@ -255,7 +253,7 @@ export default function BoxPage() {
           <FormattedMessage id="open_box_lastdrop" />
         </span>
       </div>
-      <div className="grid grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-2 mt-4">
+      <div className="grid grid-cols-3 md:grid-cols-4 xl:grid-cols-6 gap-2 mt-4">
         {recentBoxs?.map((item, i: number) => {
           return (
             <div className="card-flip" key={i}>
@@ -266,10 +264,6 @@ export default function BoxPage() {
                 <div className="flex flex-col gap-3 items-center justify-center w-full h-fullbg-dark bg-opacity-70 cursor-pointer rounded-md">
                   <div className="avatar w-14 h-14 relative rounded">
                     <img src={item?.headPic} />
-                    <img
-                      src={item?.headGround}
-                      className="absolute left-0 top-0 w-full h-full"
-                    />
                   </div>
                   <div className="text-white text-sm">{item?.nickname}</div>
                   <div className="text-white text-sm">{item?.createTime}</div>

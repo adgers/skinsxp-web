@@ -7,92 +7,99 @@
   if (_root && _root.innerHTML === '') {
     _root.innerHTML = `
       <style>
-        html,
-        body,
-        #root {
-          height: 100%;
-          margin: 0;
-          padding: 0;
-          background: rgb(20, 20, 21);
+      body
+      {
+        margin:0;
+        padding:0;
+        background:#252228;
+      }
+      .wg-ring
+      {
+        position:absolute;
+        top:50%;
+        left:50%;
+        transform:translate(-50%,-50%);
+        width:150px;
+        height:150px;
+        background:transparent;
+        border:3px solid #3c3c3c;
+        border-radius:50%;
+        text-align:center;
+        line-height:150px;
+        font-family:sans-serif;
+        font-size:20px;
+        color:#35F05E;
+        letter-spacing:4px;
+        text-transform:uppercase;
+        text-shadow:0 0 10px #35F05E;
+        box-shadow:0 0 20px rgba(0,0,0,.5);
+      }
+      .wg-ring:before
+      {
+        content:'';
+        position:absolute;
+        top:-3px;
+        left:-3px;
+        width:100%;
+        height:100%;
+        border:3px solid transparent;
+        border-top:3px solid #35F05E;
+        border-right:3px solid #35F05E;
+        border-radius:50%;
+        animation:animateC 2s linear infinite;
+      }
+      span
+      {
+        display:block;
+        position:absolute;
+        top:calc(50% - 2px);
+        left:50%;
+        width:50%;
+        height:4px;
+        background:transparent;
+        transform-origin:left;
+        animation:animate 2s linear infinite;
+      }
+      span:before
+      {
+        content:'';
+        position:absolute;
+        width:16px;
+        height:16px;
+        border-radius:50%;
+        background:#35F05E;
+        top:-6px;
+        right:-8px;
+        box-shadow:0 0 20px #35F05E;
+      }
+      @keyframes animateC
+      {
+        0%
+        {
+          transform:rotate(0deg);
         }
-        #root {
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          text-align: center;
+        100%
+        {
+          transform:rotate(360deg);
         }
-        h2 {
-          color: #ccc;
-          margin: 0;
-          font: 14px verdana;
-          text-transform: uppercase;
-          letter-spacing: .1em;
+      }
+      @keyframes animate
+      {
+        0%
+        {
+          transform:rotate(45deg);
         }
-        
-        .loading span {
-          display: inline-block;
-          vertical-align: middle;
-          width: .6em;
-          height: .6em;
-          margin: .19em;
-          background: #007DB6;
-          border-radius: .6em;
-          animation: loading 1s infinite alternate;
+        100%
+        {
+          transform:rotate(405deg);
         }
-        
-        /*
-         * Dots Colors
-         * Smarter targeting vs nth-of-type?
-         */
-        .loading span:nth-of-type(2) {
-          background: #008FB2;
-          animation-delay: 0.2s;
-        }
-        .loading span:nth-of-type(3) {
-          background: #009B9E;
-          animation-delay: 0.4s;
-        }
-        .loading span:nth-of-type(4) {
-          background: #00A77D;
-          animation-delay: 0.6s;
-        }
-        .loading span:nth-of-type(5) {
-          background: #00B247;
-          animation-delay: 0.8s;
-        }
-        .loading span:nth-of-type(6) {
-          background: #5AB027;
-          animation-delay: 1.0s;
-        }
-        .loading span:nth-of-type(7) {
-          background: #A0B61E;
-          animation-delay: 1.2s;
-        }
-        
-        /*
-         * Animation keyframes
-         * Use transition opacity instead of keyframes?
-         */
-        @keyframes loading {
-          0% {
-            opacity: 0;
-          }
-          100% {
-            opacity: 1;
-          }
-        }
+      }
+      
       </style>
 
-      <div class="loading">
-        <h2>WGSKINS</h2>
+      <div class="wg-ring">Loading
         <span></span>
-        <span></span>
-        <span></span>
-        <span></span>
-        <span></span>
-        <span></span>
-        <span></span>
-      </div>
+      </div>    
     `;
   }
 })();

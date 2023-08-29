@@ -256,7 +256,7 @@ export async function getMyVoucherPageUsingGET(
   params: API.getMyVoucherPageUsingGETParams,
   options?: { [key: string]: any },
 ) {
-  return request<API.ResultDataExtPageInfoVoucherMyVoucherCountVo_>(
+  return request<API.ResultDataExtPageInfoMyVoucherVoMyVoucherCountVo_>(
     '/api/personalCenter/getMyVoucherPage',
     {
       method: 'GET',
