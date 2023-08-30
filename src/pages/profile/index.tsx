@@ -49,17 +49,17 @@ export default function User() {
         {!headHidden() && (
           <>
             <div className="p-3 sm:p-6 user-info bg-dark user-info-bg flex flex-col lg:flex-row">
-              <div className="flex gap-3 sm:gap-4 items-center pr-16 user-info-left relative py-2 w-full">
-                <div className="w-16 h-16 md:w-[120px] md:h-[120px]  overflow-hidden group relative rounded-full border-1 border-solid border-light">
+              <div className="flex gap-3 sm:gap-4 items-center lg:pr-16 user-info-left relative py-2 w-full">
+                <div className="w-16 h-16 md:w-[120px] md:h-[120px]  overflow-hidden group relative rounded-full border-1 border-solid border-light flex-shrink-0">
                   <img src={userInfo?.headPic} className="w-full h-full" />
                 </div>
-                <div className="flex flex-col gap-1 md:gap-2 flex-1 justify-center ">
+                <div className="flex flex-col gap-1 md:gap-2 flex-1 justify-center overflow-hidden">
                   <div className="text-white text-base md:text-xl flex items-center gap-2">
                     <span>{userInfo?.nickname}</span>
                   </div>
-                  <div className="flex justify-between text-xl font-bold items-center">
+                  <div className="flex justify-between text-xl font-bold items-center gap-2 w-full">
                     <div className=" lg:w-fit">
-                      <div className="text-white/70 text-sm font-normal">
+                      <div className="text-white/70 text-sm font-normal mb-1">
                         <FormattedMessage id="balanceAfter" />
                       </div>
                       <div className="text-green  truncate">
@@ -67,15 +67,17 @@ export default function User() {
                       </div>
                     </div>
                     <div className=" lg:w-fit">
-                      <div className="text-white/70 text-sm font-normal">
+                      <div className="text-white/70 text-sm font-normal mb-1">
                         Integral
                       </div>
                       <div className=" text-purple truncate">
+                        <IconFont type="icon-coin" className="text-purple mr-1" />
+
                         {userInfo?.secondaryBalance}
                       </div>
                     </div>
                     <div className="btn px-[16px] rounded border border-green text-green disp invisible xl:visible ">
-                      <IconFont type="icon-funds" className='text-xl'/>
+                      <IconFont type="icon-funds" className="text-xl" />
                       <FormattedMessage id="wc_rewards_deposit" />
                     </div>
                   </div>

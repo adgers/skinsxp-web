@@ -1,3 +1,4 @@
+import { IconFont } from '@/components/icons';
 import WeaponCard from '@/components/weaponCard';
 import {
   detailUsingGET,
@@ -159,6 +160,7 @@ export default function Room() {
                 )}
                 {roomInfo?.data?.state === 1 ? (
                   <div className="font-mono flex justify-center items-center gap-1">
+                    <IconFont type="icon-history" className='mr-1' />
                     {days > 0 && (
                       <>
                         <div className="flex items-center text-sm">
