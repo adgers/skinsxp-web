@@ -101,7 +101,7 @@ export default function Deposit() {
           {/* <img src={depBg} className="w-full h-full hidden lg:block" /> */}
           <div className="flex flex-col gap-4">
             <Menu as="div" className="relative">
-              <Menu.Button className="select select-sm md:select-md select-accent border-opacity-50 rounded uppercase w-full font-semibold flex justify-between items-center focus:outline-nonebg-dark">
+              <Menu.Button className="select select-sm md:select-md select-accent border-opacity-50 rounded uppercase w-full font-semibold flex justify-between items-center focus:outline-none bg-black">
                 <div>Currency</div>
                 <div>{selectCurrency?.currencyFrom || 'please select'}</div>
               </Menu.Button>

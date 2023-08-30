@@ -15,6 +15,7 @@ import { useEffect, useRef, useState } from 'react';
 import { Countdown, Input } from 'react-daisyui';
 import { toast } from 'react-toastify';
 import './index.less';
+import Empty from '@/components/empty';
 
 export default function Room() {
   const giveawayId = Number(useParams()?.id);
@@ -189,7 +190,7 @@ export default function Room() {
                     </div>
                   </div>
                 ) : (
-                  <div className='text-sm'>{roomInfo?.data?.openTime}</div>
+                  <div className="text-sm">{roomInfo?.data?.openTime}</div>
                 )}
               </div>
             )}
@@ -268,7 +269,7 @@ export default function Room() {
               })}
             {userList?.data?.length === 0 && (
               <div className="text-center text-base-content text-opacity-50 w-full">
-                <FormattedMessage id="roll_user_empty" />
+                <Empty />
               </div>
             )}
           </div>

@@ -276,7 +276,7 @@ export default function DreamPage() {
                 <WeaponCard data={item} />
               </div>
               <div className="back">
-                <div className="flex flex-col gap-3 items-center justify-center w-full h-fullbg-dark bg-opacity-70 cursor-pointer rounded-md">
+                <div className="flex flex-col gap-3 items-center justify-center w-full h-full bg-dark bg-opacity-70 cursor-pointer rounded-md">
                   <div className="avatar w-10 h-10 relative">
                     <img src={item?.headPic} className="rounded" />
                   </div>

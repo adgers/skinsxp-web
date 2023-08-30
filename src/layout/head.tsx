@@ -146,7 +146,7 @@ export default function Header() {
           </Link>
 
           {/* <Menu as="div" className="relative ml-4">
-            <Menu.Button className="select select-xs select-accent flex items-center border-opacity-50 rounded uppercase font-semibold focus:outline-nonebg-dark">
+            <Menu.Button className="select select-xs select-accent flex items-center border-opacity-50 rounded uppercase font-semibold focus:outline-none bg-dark">
               {langs.filter((item) => item.value === locale)[0].title}
             </Menu.Button>
             <Transition
