@@ -127,7 +127,7 @@ export default function Header() {
   const customLinks = [
     {
       title: <FormattedMessage id="mine_bzzx" />,
-      link: '/profile/docs',
+      link: '/docs',
       icon: 'icon-support',
     },
     {
@@ -145,7 +145,7 @@ export default function Header() {
             WGSKINS
           </Link>
 
-          <Menu as="div" className="relative ml-4">
+          {/* <Menu as="div" className="relative ml-4">
             <Menu.Button className="select select-xs select-accent flex items-center border-opacity-50 rounded uppercase font-semibold focus:outline-nonebg-dark">
               {langs.filter((item) => item.value === locale)[0].title}
             </Menu.Button>
@@ -176,7 +176,7 @@ export default function Header() {
                 ))}
               </Menu.Items>
             </Transition>
-          </Menu>
+          </Menu> */}
 
           <div className="hidden lg:flex ml-4">
             {[...headLinks, ...headExt].map((item, i) => {

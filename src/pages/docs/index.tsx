@@ -1,4 +1,4 @@
-import { Link, Outlet, useLocation ,useIntl} from '@umijs/max';
+import { Link, Outlet, useIntl, useLocation } from '@umijs/max';
 import { useMemo } from 'react';
 
 export default function ProvablyFair() {
@@ -8,24 +8,28 @@ export default function ProvablyFair() {
     return [
       {
         title: intl.formatMessage({ id: 'doc_help' }),
-        link: '/profile/docs/help',
+        link: '/docs/help',
       },
       {
         title: intl.formatMessage({ id: 'doc_support' }),
-        link: '/profile/docs/support',
+        link: '/docs/support',
       },
     ];
   }, []);
 
   return (
     <div className="w-full">
-      <div className="custom-tab max-w-[700px] m-auto flex justify-evenly">
+      <div className="custom-tab flex mt-4 text-white justify-center border-b border-[#45444B] w-full h-[68px] relative">
         {tabLinks.map((item, index) => {
           const isActive = location.pathname.startsWith(item.link);
 
           return (
             <div
-              className={`tab-item ${isActive ? 'tab-active' : ''}`}
+              className={`tab-item uppercase font-semibold px-4 flex items-center h-full ${
+                isActive
+                  ? 'text-green border-b-[1px] border-green'
+                  : 'text-white '
+              }`}
               key={index}
             >
               <Link to={item.link} className="tab-item-c text-sm md:text-base">

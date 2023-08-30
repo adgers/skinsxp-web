@@ -2,7 +2,7 @@ import Empty from '@/components/empty';
 import RollCard from '@/components/rollCard';
 import { pageUsingGET } from '@/services/front/ROLLfangxiangguan';
 import { FormattedMessage, useRequest } from '@umijs/max';
-import { Skeleton } from 'antd';
+import { Pagination, Skeleton } from 'antd';
 import { useMemo, useState } from 'react';
 import { Button } from 'react-daisyui';
 import './index.less';
@@ -11,7 +11,7 @@ export default function RollList() {
   const [roomState, setRoomState] = useState(1);
   const [roomType, setRoomType] = useState(1);
 
-  const pageSize = 9;
+  const pageSize = 10;
   const [page, setPage] = useState(1);
   const { data, loading } = useRequest(
     () => pageUsingGET({ state: roomState, page, pageSize, type: roomType }),
@@ -76,7 +76,7 @@ export default function RollList() {
       {!loading && data?.pageData?.length === 0 && <Empty />}
       <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-x-4 gap-y-8">
         {loading
-          ? Array.from({ length: 1 }).map((item, i) => (
+          ? Array.from({ length: 5 }).map((item, i) => (
               <Skeleton
                 loading={loading}
                 active
@@ -84,7 +84,7 @@ export default function RollList() {
                 key={i}
                 title={{
                   style: {
-                    height: '220px',
+                    height: '320px',
                   },
                 }}
                 className="rounded-xl overflow-hidden"
@@ -96,7 +96,7 @@ export default function RollList() {
               // </Link>
             ))}
       </div>
-      {/* {!loading && !!data?.totalRows && data?.totalRows > pageSize && (
+      {!loading && !!data?.totalRows && data?.totalRows > pageSize && (
         <div className="flex justify-center items-center mt-4">
           <Pagination
             current={page}
@@ -108,7 +108,7 @@ export default function RollList() {
             }}
           />
         </div>
-      )} */}
+      )}
     </div>
   );
 }
