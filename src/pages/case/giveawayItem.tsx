@@ -32,7 +32,7 @@ export default function GiveawayItem(props: GiveawayItemProps) {
               {item?.title}
             </p>
           </div>
-          <div className="ml-auto flex items-center rounded-l-md py-1.5 pl-1.5 pr-2 text-xs font-bold tabular-nums text-white bg-white/[.15]">
+          <div className="ml-auto flex items-center rounded-none py-1.5 pl-3 pr-2 text-xs font-bold tabular-nums text-white bg-white/[.15]">
             {item?.userCount}
           </div>
         </div>

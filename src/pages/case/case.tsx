@@ -47,10 +47,32 @@ export default function Case() {
                 <div className="flex w-1/6 items-end sm:w-1/3"></div>
               </div>
               <div className="relative flex h-full">
-                <div className="flex w-full snap-x snap-mandatory overflow-x-auto xl:grid xl:snap-none xl:grid-cols-4 opacity-100">
+                <div className="flex w-full snap-x snap-mandatory overflow-x-auto xl:grid xl:snap-none xl:grid-cols-4 opacity-100 gap-2">
                   {t?.boxList?.map((item, index) => {
                     return <BattleItem data={item} key={index} index={index} />;
                   })}
+                </div>
+                <div className="p-8 bg-[#040305]/50 w-8 md:w-64 flex flex-col items-center justify-center md:justify-between">
+                  <div
+                    className="hidden btn btn-purple w-full items-center  md:flex bettle-btn"
+                    onClick={() => {
+                      history.push('/battle/create');
+                    }}
+                  >
+                    CREATE BETTLE
+                  </div>
+                  <span className="hidden md:block">or</span>
+                  <div
+                    className="hidden btn btn-green w-full md:flex bettle-btn"
+                    onClick={() => {
+                      history.push('/battle');
+                    }}
+                  >
+                    JOIN THE BETTLE
+                  </div>
+                  <div className="inline-block -rotate-90 transform text-white text-center md:hidden">
+                    BETTLE
+                  </div>
                 </div>
               </div>
             </div>

@@ -162,10 +162,25 @@ body {
 .battle-item {
   &.battle-item-grade-0 {
     background: radial-gradient(
+        170.24% 144.17% at 4.88% 130.83%,
+        rgba(21, 201, 114, 0.6) 0%,
+        rgba(43, 153, 26, 0) 100%
+      ),
+      #1e1d22;
+  }
+  &.battle-item-grade-1 {
+    background: radial-gradient(
         196.74% 133.5% at 49.87% 100%,
         rgba(255, 27, 68, 0.6) 0%,
         rgba(40, 40, 40, 0) 100%
       ),
       #1e1d22;
+  }
+}
+
+@media (max-width: 767px) {
+  .bettle-btn,
+  .bettle-or {
+    display: none;
   }
 }

@@ -235,8 +235,11 @@ export default function BagPage() {
                             }}
                           >
                             <div className="btn btn-sm flex w-full items-center rounded-none justify-center text-sm  font-semibold uppercase transition-colors duration-150 real-hover:text-white  bg-purple hover:bg-purple">
-                              <svg className="mr-2 h-4 w-4"></svg>
-                              <span className=" flex-1 truncate">
+                              <IconFont
+                                type="icon-steam"
+                                className="text-white mr-1"
+                              />
+                              <span className="truncate">
                                 SELL for{' '}
                                 <span className="text-gold">$ {price}</span>
                               </span>
@@ -256,6 +259,7 @@ export default function BagPage() {
                           }}
                         >
                           <div className="btn btn-sm w-full bg-green text-dark text-sm rounded-none hover:bg-green">
+                            <IconFont type='icon-collect' className=''/>
                             <FormattedMessage id="exchagne" />
                           </div>
                         </div>
