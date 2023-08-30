@@ -14,10 +14,10 @@ export function getApiDomain() {
     location.href.indexOf('localhost') > -1 ||
     location.href.indexOf('127.0.0.1') > -1
   ) {
-    return 'http://127.0.0.1:9999';
+    // return 'http://127.0.0.1:9999';
     // return '//api-test.xgskins.com';
 
-    // return 'http://192.168.13.65:9999';
+    return 'http://192.168.13.65:9999';
   } else if (location.href.indexOf('test.xgskins.com') > -1) {
     return '//47.245.87.208:9999';
   } else {

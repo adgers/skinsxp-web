@@ -10,7 +10,6 @@ import { LeftOutlined } from '@ant-design/icons';
 import { Menu, Transition } from '@headlessui/react';
 import { FormattedMessage, useModel, useRequest } from '@umijs/max';
 import { Fragment, useEffect, useState } from 'react';
-import { Input } from 'react-daisyui';
 import { toast } from 'react-toastify';
 
 export default function Deposit() {
@@ -162,7 +161,7 @@ export default function Deposit() {
               ))} */}
             </div>
           </div>
-          <div className="flex flex-col gap-6">
+          <div className="flex flex-col">
             <div className="flex gap-2">
               {/* <div className="vip-level">
                 <div className="vip-level-icon"></div>
@@ -243,26 +242,13 @@ export default function Deposit() {
               <div className="flex gap-x-8">
                 <div className="flex flex-col w-fit gap-2">
                   <div className="uppercase  text-xs">you amout</div>
-                  <div className="flex h-[40px] w-[176px] overflow-hidden rounded-lg border border-light text-xs font-bold">
-                    <div className="flex h-full pl-5 pr-1 items-center justify-center bg-dark text-center text-whitew">
-                      {selectCurrency?.symbol}
-                    </div>
-                    <Input
-                      type="number"
-                      className="flex-1 bg-transparent pr-5 pl-0 text-lg h-full w-10 font-bold text-white outline-none border-none focus:outline-none lg:text-xs"
-                      value={(selectCurrency?.rate || 0) * quantity}
-                      onChange={(e) => {
-                        console.log(e.target.value, 'e');
-                        setQuantity(
-                          Number(e.target.value) / (selectCurrency?.rate || 0),
-                        );
-                      }}
-                    />
+                  <div className="flex h-[40px] w-[176px] overflow-hidden pl-4 rounded-none border border-light text-xs font-bold items-center">
+                    $ <div>{quantity}</div>
                   </div>
                 </div>
                 <div className="flex flex-col w-full gap-2">
                   <div className="uppercase text-xs">Actually obtained</div>
-                  <div className="font-num h-[40px] flex items-center">
+                  <div className="font-num h-[40px] flex items-center gap-2">
                     <span className="text-green"> $ {quantity}</span> +{' '}
                     <span className="text-purple">
                       {numberFixed(
@@ -281,7 +267,7 @@ export default function Deposit() {
                 onClick={onPay}
                 type="button"
               >
-                pay {selectCurrency?.symbol}{' '}
+                pay ${' '}
                 {(selectCurrency?.rate || 0) * quantity}
               </button>
             </div>
