@@ -54,12 +54,12 @@ export default function Case() {
                 </div>
                 <div className="p-8 bg-[#040305]/50 w-8 md:w-64 flex flex-col items-center justify-center md:justify-between">
                   <div
-                    className="hidden btn btn-purple w-full items-center  md:flex bettle-btn"
+                    className="hidden btn btn-purple w-full items-center md:flex bettle-btn uppercase"
                     onClick={() => {
                       history.push('/battle/create');
                     }}
                   >
-                    CREATE BETTLE
+                    CREATE BATTLE
                   </div>
                   <span className="hidden md:block">or</span>
                   <div
@@ -68,10 +68,10 @@ export default function Case() {
                       history.push('/battle');
                     }}
                   >
-                    JOIN THE BETTLE
+                    JOIN BATTLE
                   </div>
                   <div className="inline-block -rotate-90 transform text-white text-center md:hidden">
-                    BETTLE
+                    BATTLE
                   </div>
                 </div>
               </div>
@@ -102,7 +102,7 @@ export default function Case() {
               {t.boxList?.map((v, idx) => (
                 <div
                   key={idx}
-                  className="w-full h-full bg-no-repeat bg-cover relative"
+                  className="w-full h-full relative cursor-pointer"
                   onClick={() => {
                     history.push(`/case/${v?.id}`);
                   }}

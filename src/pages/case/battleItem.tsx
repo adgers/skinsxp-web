@@ -16,7 +16,7 @@ export default function BattleItem(props: BattleItemProps) {
 
   return (
     <div
-      className={`relative z-10 flex items-start flex-col h-[226px]  min-w-[90%] snap-start overflow-hidden sm:min-w-[50%] md:min-w-[33.333333%] xl:min-w-[20%] justify-between battle-item battle-item-grade-${data?.mode}`}
+      className={`relative cursor-pointer z-10 flex items-start flex-col h-[226px]  min-w-[90%] snap-start overflow-hidden sm:min-w-[50%] md:min-w-[33.333333%] xl:min-w-[20%] justify-between battle-item battle-item-grade-${data?.mode}`}
          onClick={()=>{
             history.push(`/battle/${data?.battleCode}`)
          }}
@@ -68,7 +68,7 @@ export default function BattleItem(props: BattleItemProps) {
             </div>
           </SwiperSlide>
         ))}
-        {data?.boxList?.length > 1 && (
+        {data?.boxList && data?.boxList?.length > 1 && (
           <div className="absolute w-full h-8 flex items-center justify-between px-8 z-20">
             <div
               onClick={() => {

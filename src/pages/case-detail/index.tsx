@@ -128,8 +128,8 @@ export default function BoxPage() {
         </h2>
         <div className="flex justify-center space-x-1 sm:justify-end sm:space-x-2">
           <div
-            className={`cursor-pointer border border-white text-white px-1 rounded ${
-              !voice && 'border-opacity-20 text-opacity-50'
+            className={`cursor-pointer  text-white px-1 rounded ${
+              !voice && 'text-opacity-50'
             }`}
             onClick={toggleVoice}
           >
@@ -141,8 +141,8 @@ export default function BoxPage() {
           </div>
 
           <div
-            className={`cursor-pointer border border-white text-white px-1 rounded ${
-              !fast && 'border-opacity-20 text-opacity-50'
+            className={`cursor-pointer  text-white px-1 rounded ${
+              !fast && 'text-opacity-50'
             }`}
             onClick={toggleFast}
           >

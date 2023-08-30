@@ -374,7 +374,7 @@ export default function Header() {
                 onClick={() => (window.location.href = getSteamLoginUrl())}
                 style={{
                   background:
-                    'linear-gradient(270deg, #0BFF59 0.04%, #B4FC3B 99.77%)',
+                    'linear-gradient(270deg, #0BFF59 0%, #B4FC3B 100%)',
                 }}
               >
                 <IconFont type="icon-steam" className="text-xl" />

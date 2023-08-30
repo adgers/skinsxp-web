@@ -16,7 +16,7 @@ export default function GiveawayItem(props: GiveawayItemProps) {
   const { days, hours, minutes, seconds } = formattedRes;
   return (
     <div
-      className={`relative grid h-36 min-w-[90%] snap-start overflow-hidden sm:min-w-[50%] md:min-w-[33.333333%] xl:min-w-[20%] giveaways-grade giveaways-grade-${index}`}
+      className={`relative cursor-pointer grid h-36 min-w-[90%] snap-start overflow-hidden sm:min-w-[50%] md:min-w-[33.333333%] xl:min-w-[20%] giveaways-grade giveaways-grade-${index}`}
       key={`giveaways-${index}`}
       onClick={() => history.push(`/giveaways/${item?.id}`)}
     >
