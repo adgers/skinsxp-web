@@ -34,12 +34,11 @@ export function getSocketDomain() {
 export function getImgHost() {
   if (
     location.href.indexOf('localhost') > -1 ||
-    location.href.indexOf('127.0.0.1') > -1 ||
-    location.href.indexOf('test.xgskins.com') > -1
+    location.href.indexOf('127.0.0.1') > -1
   ) {
     return 'https://muskins-test.oss-cn-hangzhou.aliyuncs.com/root/image/';
   }
-  return 'https://img.wgskins.com/root/image/';
+  return '//img.wgskins.com/root/image/';
 }
 
 export async function logout() {
