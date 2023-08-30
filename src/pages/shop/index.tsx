@@ -1,6 +1,9 @@
 import Empty from '@/components/empty';
 import WeaponCard from '@/components/weaponCard';
-import { getTagsUsingGET, getVoucherStockPageUsingGET } from '@/services/front/duihuanquanshangchengxiangguan';
+import {
+  getTagsUsingGET,
+  getVoucherStockPageUsingGET,
+} from '@/services/front/duihuanquanshangchengxiangguan';
 import { Menu, Transition } from '@headlessui/react';
 import { FormattedMessage, useIntl, useModel, useRequest } from '@umijs/max';
 import { Pagination } from 'antd';
@@ -75,9 +78,9 @@ export default () => {
   return (
     <div className="w-full max-w-[1400px] m-auto relative min-h-[500px]">
       <div className="banner w-full h-[380px] mt-8 bg-[url('@/assets/store-banner.png')] bg-no-repeat bg-cover flex justify-center items-center md:justify-start md:pl-[90px]">
-        <div className=' max-w-[540px] flex flex-col items-center'>
+        <div className=" max-w-[540px] flex flex-col items-center">
           <h3>WHAT IS WG’s Store?</h3>
-          <div className='text-center'>
+          <div className="text-center">
             Bullets are Gaben's store currency. You will receive bullets for
             opening any case, including battle cases. The possibility of getting
             bullets is 30%. More expensive cases contain more bullets.
@@ -157,14 +160,14 @@ export default () => {
                             } flex justify-between items-center p-2 text-sm rounded cursor-pointer`}
                             onClick={() => {
                               if (filter.key === 'Exterior') {
-                                onExteriorChange( '');
+                                onExteriorChange('');
                               }
                               if (filter.key === 'Type') {
                                 onWeaponTypeChange('');
                               }
                             }}
                           >
-                            <FormattedMessage id="mall_all"/>
+                            <FormattedMessage id="mall_all" />
                           </div>
                         )}
                       </Menu.Item>
@@ -221,16 +224,24 @@ export default () => {
       <div className="grid grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-2 sm:gap-4 p-2 sm:p-6 min-h-[200px]">
         {data?.pageData?.map((item, i: number) => {
           return (
-            <div className="group relative" key={i}>
-              <WeaponCard data={item} />
-              <div className="absolute w-full h-full left-0 top-0 justify-center items-center bg-base-100 bg-opacity-50 hidden group-hover:flex rounded-md">
+            <div
+              className="group relative cursor-pointer overflow-y-visible"
+              key={i}
+            >
+              <div
+                className={`transition-transform duration-200 will-change-transform real-group-hover:rounded-b-none group-hover:md:translate-y-[-16px] group-hover:overflow-visible`}
+                key={i}
+              >
+                <WeaponCard data={item} />
                 <div
-                  className="btn btn-xs btn-primary rounded btn-outline"
+                  className="absolute bottom-0 flex w-full overflow-hidden rounded-none transition-transform duration-200 will-change-transform z-[-1] h-[32px] translate-y-[32px] md:h-[32px] md:translate-y-[-1px] group-hover:md:translate-y-[32px]"
                   onClick={() => {
                     showExchangeModal(item);
                   }}
                 >
-                  <FormattedMessage id="exchagne" />
+                  <div className="btn btn-sm w-full bg-green text-dark text-sm rounded-none hover:bg-green">
+                    <FormattedMessage id="exchagne" />
+                  </div>
                 </div>
               </div>
             </div>

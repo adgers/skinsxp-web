@@ -48,9 +48,7 @@ export default React.memo(function TopCard({ data, loading }: TopCardProps) {
   const name = parseName(data?.giftName || '');
 
   return (
-    <div
-      className={`weapon-card-top card-flip weapon-card-grade-${data?.grade}`}
-    >
+    <div className={`weapon-card-top weapon-card-grade-${data?.grade}`}>
       <div className="front">
         <div className="img-wrapper">
           <img src={data?.giftImage} />
@@ -58,11 +56,17 @@ export default React.memo(function TopCard({ data, loading }: TopCardProps) {
             {getTopIcon()}
           </div>
         </div>
-        <div className="item-footer">
+        <div className="item-footer flex flex-row gap-1">
           <div className="item-title">{name}</div>
+          <div className="w-[24px] h-[24px] rounded-full flex-shrink-0 relative">
+            <div className="w-[12px] absolute right-[0] top-[-6px]">
+              <img src={require('@/assets/winner-icon.png')} />
+            </div>
+            <img src={data?.headPic} className="w-full h-full rounded-full" alt="" />
+          </div>
         </div>
       </div>
-      <div className="back">
+      {/* <div className="back">
         {data?.sourceType === 21 ? (
           <>
             <div className="box-img-wrapper">
@@ -83,7 +87,7 @@ export default React.memo(function TopCard({ data, loading }: TopCardProps) {
             <div className="text-white text-xs mt-2">{data?.nickname}</div>
           </div>
         )}
-      </div>
+      </div> */}
     </div>
   );
 });
