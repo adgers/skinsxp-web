@@ -4,6 +4,7 @@ import { useCountDown } from 'ahooks';
 import React from 'react';
 import { Avatar, Countdown } from 'react-daisyui';
 import './index.less';
+import { IconFont } from '../icons';
 
 export default React.memo(function RollCard({
   data,
@@ -50,7 +51,7 @@ export default React.memo(function RollCard({
             )}
             <span className="uppercase text-sm font-normal">{data?.title}</span>
           </div>
-          <div className="text-sm text-white pr-3">{data?.userCount}</div>
+          <div className="text-sm text-white pr-3"><IconFont type='icon-online' className='text-green mr-1 text-sm'/> {data?.userCount}</div>
         </div>
 
         <div className="roll-card-top-img">
@@ -94,6 +95,8 @@ export default React.memo(function RollCard({
           ) : (
             data?.openTime && (
               <div className="font-mono flex justify-center items-center gap-1">
+                <IconFont type="icon-history" className='text-[18px] mr-1'/>
+
                 {days > 0 && (
                   <>
                     <div className="flex items-center text-sm">

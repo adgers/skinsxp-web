@@ -1,4 +1,5 @@
 import Empty from '@/components/empty';
+import { IconFont } from '@/components/icons';
 import WeaponCard from '@/components/weaponCard';
 import {
   getTagsUsingGET,
@@ -240,6 +241,8 @@ export default () => {
                   }}
                 >
                   <div className="btn btn-sm w-full bg-green text-dark text-sm rounded-none hover:bg-green">
+                    <IconFont type="icon-collect" className="" />
+
                     <FormattedMessage id="exchagne" />
                   </div>
                 </div>

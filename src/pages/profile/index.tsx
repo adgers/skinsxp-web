@@ -59,23 +59,25 @@ export default function User() {
                   </div>
                   <div className="flex justify-between text-xl font-bold items-center">
                     <div className=" lg:w-fit">
-                      <div className="text-white/70 text-sm font-normal">
+                      <div className="text-white/70 text-sm font-normal mb-1">
                         <FormattedMessage id="balanceAfter" />
                       </div>
                       <div className="text-green  truncate">
                         ${userInfo?.balance}
                       </div>
                     </div>
-                    <div className=" lg:w-fit">
-                      <div className="text-white/70 text-sm font-normal">
+                    <div className="lg:w-fit">
+                      <div className="text-white/70 text-sm font-normal mb-1">
                         Integral
                       </div>
                       <div className=" text-purple truncate">
+                        <IconFont type="icon-coin" className="text-purple mr-1" />
+
                         {userInfo?.secondaryBalance}
                       </div>
                     </div>
                     <div className="btn px-[16px] rounded border border-green text-green disp invisible xl:visible ">
-                      <IconFont type="icon-funds" className='text-xl'/>
+                      <IconFont type="icon-funds" className="text-xl" />
                       <FormattedMessage id="wc_rewards_deposit" />
                     </div>
                   </div>

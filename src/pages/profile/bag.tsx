@@ -160,6 +160,7 @@ export default function BagPage() {
             setExchangeConfirm(true);
           }}
         >
+          <IconFont type="icon-a-allsale" className='text-xl' />
           <FormattedMessage id="open_box_sell_all" />
         </div>
       </div>
@@ -259,7 +260,7 @@ export default function BagPage() {
                           }}
                         >
                           <div className="btn btn-sm w-full bg-green text-dark text-sm rounded-none hover:bg-green">
-                            <IconFont type='icon-collect' className=''/>
+                            <IconFont type="icon-collect" className="" />
                             <FormattedMessage id="exchagne" />
                           </div>
                         </div>
