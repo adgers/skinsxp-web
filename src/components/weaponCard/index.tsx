@@ -148,7 +148,7 @@ export default React.memo(function WeaponCard({
         </div>
       )}
       {showChance && (
-        <div className="z-20 absolute left-0 top-0 flex items-center justify-center h-full w-full rounded bg-[rgb(17,17,20)] bg-opacity-70 transition duration-300 sm:rounded-lg backdrop-blur-1">
+        <div className="z-20 absolute left-0 top-0 flex items-center justify-center h-full w-full bg-black bg-opacity-70 transition duration-300 backdrop-blur-1">
           <div className="flex flex-col items-center gap-1">
             <div className="uppercase text-white text-center font-semibold text-sm">
               Range Odds

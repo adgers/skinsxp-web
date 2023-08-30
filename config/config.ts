@@ -14,6 +14,8 @@ export default defineConfig({
   },
   locale: {
     default: 'en-US',
+    antd: true,
+    baseNavigator: false,
     baseSeparator: '-',
   },
   metas: [

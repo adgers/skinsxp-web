@@ -67,11 +67,11 @@ export default function Header() {
       value: 'pt-BR',
       flag: brFlag,
     },
-    {
-      title: 'CN',
-      value: 'zh-CN',
-      flag: cnFlag,
-    },
+    // {
+    //   title: 'CN',
+    //   value: 'zh-CN',
+    //   flag: cnFlag,
+    // },
   ];
 
   const headLinks = [
@@ -454,7 +454,6 @@ export default function Header() {
         </div>
       </Navbar>
       <OpenHistory />
-
       {!hidePlacard() && <Placard />}
       {smsLoginShow && <MobileLogin />}
       {loginShow && <Login />}

@@ -3,7 +3,7 @@ import { Outlet, setLocale, useLocation } from '@umijs/max';
 import { useEffect } from 'react';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import BtmNav from './btm-nav';
+// import BtmNav from './btm-nav';
 import Footer from './foot';
 import Header from './head';
 

@@ -7,21 +7,21 @@ export default function Foot() {
         <span className="footer-title">Services</span>
         <Link
           className="link link-hover whitespace-nowrap"
-          to="/docs/support/52"
+          to="/docs/help/52"
           target="_blank"
         >
           <FormattedMessage id="terms_of_service" />
         </Link>
         <Link
           className="link link-hover whitespace-nowrap"
-          to="/docs/support/53"
+          to="/docs/help/51"
           target="_blank"
         >
           <FormattedMessage id="privacy_policy" />
         </Link>
         <Link
           className="link link-hover whitespace-nowrap"
-          to="/docs"
+          to="/docs/help"
           target="_blank"
         >
           <FormattedMessage id="doc_help" />
@@ -32,15 +32,14 @@ export default function Foot() {
         <span className="footer-title">Company</span>
         <Link
           className="link link-hover whitespace-nowrap"
-          to="/docs/support/55"
+          to="/docs/help/50"
           target="_blank"
         >
           <FormattedMessage id="about_us" />
         </Link>
         <Link
           className="link link-hover whitespace-nowrap"
-          to="/      link: '/profile',
-          /provably-fair"
+          to="/profile/provably-fair"
           target="_blank"
         >
           <FormattedMessage id="provably_fair_title" />

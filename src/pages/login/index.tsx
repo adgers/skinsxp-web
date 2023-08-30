@@ -15,8 +15,12 @@ export default function LoginPage() {
         <FormattedMessage id="not_login_subtitle" />
       </p>
       <Button
-        className="mt-5 btn btn-primary w-52"
+        className="mt-5 w-52 btn  text-black gap-1 rounded uppercase"
         onClick={() => (location.href = getSteamLoginUrl())}
+        style={{
+          background:
+            'linear-gradient(270deg, #0BFF59 0%, #B4FC3B 100%)',
+        }}
       >
         <IconFont type="icon-steam" className="text-xl" />
         <FormattedMessage id="register_ljdl" />

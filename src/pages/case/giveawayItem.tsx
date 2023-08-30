@@ -60,7 +60,7 @@ export default function GiveawayItem(props: GiveawayItemProps) {
                 {item?.giftVos?.[0]?.giftName?.split('|')?.[1]?.trim()}
               </span>
             </div>
-            <div className="mb-2 mt-auto flex items-center justify-center p-2 w-full xl:w-min bg-black/[0.25]">
+            <div className="mb-2 mt-auto flex items-center justify-center p-2 w-full bg-black/[0.25]">
               {days > 0 && (
                 <>
                   <div className="flex w-6 flex-shrink-0 flex-col items-center justify-center text-center">
