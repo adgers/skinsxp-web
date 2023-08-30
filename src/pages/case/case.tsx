@@ -13,7 +13,6 @@ export default function Case() {
     }),
   );
   const { data: battleList } = useRequest(() => getHostListUsingGET());
-  console.log(battleList, 'battleList');
   useEffect(() => {
     if (boxList?.length && battleList?.length) {
       let newBoxList = JSON.parse(JSON.stringify(boxList));
@@ -22,7 +21,6 @@ export default function Case() {
       setRealBoxList(newBoxList);
     }
   }, [boxList, battleList]);
-  console.log('realBoxList', realBoxList);
   return (
     <>
       {realBoxList?.map((t, i) => {

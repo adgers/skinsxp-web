@@ -22,12 +22,12 @@ export default function BtmNav() {
     {
       title: <FormattedMessage id="main_tab_account" />,
       link: '/profile',
-      icon: 'icon-zhanghu',
+      icon: 'icon-online',
     },
   ];
 
   return (
-    <div className="btm-nav md:hidden z-50">
+    <div className="btm-nav bg-base-300  md:hidden z-50">
       {navs.map((t, i) => {
         const isActive = location.pathname.startsWith(t.link);
 

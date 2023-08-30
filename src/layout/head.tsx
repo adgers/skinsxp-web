@@ -4,7 +4,7 @@ import MobileLogin from '@/components/account/mobileLogin';
 import Register from '@/components/account/register';
 import Benefit from '@/pages/benefit';
 import { getSteamLoginUrl, logout, numberFixed } from '@/utils';
-import { PlusOutlined } from '@ant-design/icons';
+import { MenuOutlined, PlusOutlined } from '@ant-design/icons';
 import { Menu, Transition } from '@headlessui/react';
 import {
   FormattedMessage,
@@ -137,9 +137,120 @@ export default function Header() {
     },
   ];
 
+  const menus = (
+    <>
+      <Menu.Items className="outline-none">
+        {menuLinks.map((link, i) => (
+          <Menu.Item key={i}>
+            {({ active }) => (
+              <Link
+                className={`${
+                  active ? 'bg-accent bg-opacity-30 text-green' : ''
+                } flex items-center py-2 rounded cursor-pointer`}
+                to={link.link}
+              >
+                {link.icon && (
+                  <IconFont
+                    type={link.icon}
+                    className="mx-5 md:mx-3 text-base"
+                  />
+                )}
+                <span className="text-sm capitalize">{link.title}</span>
+              </Link>
+            )}
+          </Menu.Item>
+        ))}
+      </Menu.Items>
+      <div className="my-2 mx-5 md:mx-3 text-xs uppercase">Games</div>
+      <Menu.Items className="outline-none">
+        {headLinks.map((link, i) => (
+          <Menu.Item key={i}>
+            {({ active }) => (
+              <Link
+                className={`${
+                  active ? 'bg-accent bg-opacity-30 text-green' : ''
+                } flex items-center py-2 rounded cursor-pointer`}
+                to={link.link}
+              >
+                {link.icon && (
+                  <IconFont
+                    type={link.icon}
+                    className="mx-5 md:mx-3 text-base"
+                  />
+                )}
+                <span className="text-sm capitalize">{link.title}</span>
+              </Link>
+            )}
+          </Menu.Item>
+        ))}
+      </Menu.Items>
+      <div className="my-2 mx-5 md:mx-3 text-xs uppercase">
+        Customer service
+      </div>
+      <Menu.Items className="outline-none">
+        {customLinks.map((link, i) => (
+          <Menu.Item key={i}>
+            {({ active }) => (
+              <Link
+                className={`${
+                  active ? 'bg-accent bg-opacity-30 text-green' : ''
+                } flex items-center py-2 rounded cursor-pointer`}
+                to={link.link}
+              >
+                {link.icon && (
+                  <IconFont
+                    type={link.icon}
+                    className="mx-5 md:mx-3 text-base"
+                  />
+                )}
+                <span className="text-sm capitalize">{link.title}</span>
+              </Link>
+            )}
+          </Menu.Item>
+        ))}
+        {/* <Menu.Item>
+          {({ active }) => (
+            <div
+              className={`${
+                active ? 'bg-accent bg-opacity-30 text-green' : ''
+              } flex items-center py-2 rounded cursor-pointer`}
+              onClick={showBenefit}
+            >
+              <IconFont
+                type="icon-promocode"
+                className="mx-5 md:mx-3 text-xl md:text-base"
+              />
+              <span className="text-base capitalize md:text-sm">
+                <FormattedMessage id="mine_fllq" />
+              </span>
+            </div>
+          )}
+        </Menu.Item> */}
+        <Menu.Item>
+          {({ active }) => (
+            <div
+              className={`${
+                active ? 'bg-accent bg-opacity-30 text-green' : ''
+              } flex items-center py-2 rounded cursor-pointer`}
+              onClick={logout}
+            >
+              <IconFont
+                type={'icon-logout'}
+                className="mx-5 md:mx-3 text-base"
+              />
+              <span className="capitalize text-sm">
+                <FormattedMessage id="mine_tcdl" />
+              </span>
+            </div>
+          )}
+        </Menu.Item>
+      </Menu.Items>
+    </>
+  );
+
   return (
     <div className="sticky left-0 top-0 z-[99]">
-      <Navbar className="p-3 bg-dark">
+      <Navbar className="p-3 bg-black">
         <div className="flex-1">
           <Link to={'/'} className="logo text-2xl sm:text-[38px]">
             WGSKINS
@@ -199,17 +310,18 @@ export default function Header() {
         <div className="flex-none flex gap-3">
           {userInfo ? (
             <>
-              <div className="flex flex-col text-xs font-num ">
-                <span className='text-green'>
-                  $<CountUp
+              <div className="flex flex-col sm:flex-row gap-0 sm:gap-2 text-xs font-num ">
+                <div className="text-green">
+                  <span className="mr-1">$</span>
+                  <CountUp
                     end={numberFixed(userInfo?.balance || 0)}
                     duration={1}
                     decimals={2}
                     separator=""
                     className="font-num"
                   />
-                </span>
-                <span className='text-purple'>
+                </div>
+                <span className="text-purple">
                   <IconFont type="icon-coin" className="mr-1" />
                   <CountUp
                     end={numberFixed(userInfo?.secondaryBalance || 0)}
@@ -227,7 +339,7 @@ export default function Header() {
 
               <Menu as="div" className="relative h-8">
                 <Menu.Button as="div" className="avatar">
-                  <div className="w-8 rounded-sm cursor-pointer relative">
+                  <div className="w-8 rounded-full cursor-pointer relative">
                     <img src={userInfo.headPic} />
                   </div>
                 </Menu.Button>
@@ -263,103 +375,18 @@ export default function Header() {
                           {userInfo?.nickname}
                         </div>
                         <div className="flex mt-2 text-xs font-num gap-2">
-                          <span className='text-green'>
-                            ${numberFixed(userInfo?.balance || 0)}
-                          </span>
-                          <span className='text-purple'>
+                          <div className="text-green">
+                            <span className="mr-1">$</span>
+                            {numberFixed(userInfo?.balance || 0)}
+                          </div>
+                          <span className="text-purple">
                             <IconFont type="icon-coin" className="mr-1" />
                             {numberFixed(userInfo?.secondaryBalance || 0)}
                           </span>
                         </div>
                       </div>
                     </div>
-                    <div className="bg-neutral">
-                      <Menu.Items className="outline-none">
-                        {menuLinks.map((link, i) => (
-                          <Menu.Item key={i}>
-                            {({ active }) => (
-                              <Link
-                                className={`${
-                                  active ? 'bg-accent text-green bg-opacity-30' : ''
-                                } flex items-center py-2 rounded cursor-pointer`}
-                                to={link.link}
-                              >
-                                {link.icon && (
-                                  <IconFont
-                                    type={link.icon}
-                                    className="mx-5 md:mx-3 text-xl md:text-base"
-                                  />
-                                )}
-                                <span className="text-base capitalize md:text-sm">
-                                  {link.title}
-                                </span>
-                              </Link>
-                            )}
-                          </Menu.Item>
-                        ))}
-                      </Menu.Items>
-
-                      <Menu.Items className="outline-none">
-                        {customLinks.map((link, i) => (
-                          <Menu.Item key={i}>
-                            {({ active }) => (
-                              <Link
-                                className={`${
-                                  active ? 'bg-accent bg-opacity-30 text-green' : ''
-                                } flex items-center py-2 rounded cursor-pointer`}
-                                to={link.link}
-                              >
-                                {link.icon && (
-                                  <IconFont
-                                    type={link.icon}
-                                    className="mx-5 md:mx-3 text-xl md:text-base"
-                                  />
-                                )}
-                                <span className="text-base capitalize md:text-sm">
-                                  {link.title}
-                                </span>
-                              </Link>
-                            )}
-                          </Menu.Item>
-                        ))}
-                        <Menu.Item>
-                          {({ active }) => (
-                            <div
-                              className={`${
-                                active ? 'bg-accent bg-opacity-30 text-green' : ''
-                              } flex items-center py-2 rounded cursor-pointer`}
-                              onClick={showBenefit}
-                            >
-                              <IconFont
-                                type="icon-promocode"
-                                className="mx-5 md:mx-3 text-xl md:text-base"
-                              />
-                              <span className="text-base capitalize md:text-sm">
-                                <FormattedMessage id="mine_fllq" />
-                              </span>
-                            </div>
-                          )}
-                        </Menu.Item>
-                        <Menu.Item>
-                          {({ active }) => (
-                            <div
-                              className={`${
-                                active ? 'bg-accent bg-opacity-30 text-green' : ''
-                              } flex items-center py-2 rounded cursor-pointer`}
-                              onClick={logout}
-                            >
-                              <IconFont
-                                type={'icon-logout'}
-                                className="mx-5 md:mx-3 text-xl md:text-base"
-                              />
-                              <span className="text-base capitalize md:text-sm">
-                                <FormattedMessage id="mine_tcdl" />
-                              </span>
-                            </div>
-                          )}
-                        </Menu.Item>
-                      </Menu.Items>
-                    </div>
+                    <div className="bg-neutral">{menus}</div>
                   </div>
                 </Transition>
               </Menu>
@@ -367,7 +394,7 @@ export default function Header() {
           ) : (
             <>
               <Button className="btn btn-sm uppercase" onClick={showLogin}>
-                pwd login
+                login
               </Button>
               <Button
                 className="btn btn-sm text-black gap-1 rounded uppercase"
@@ -380,7 +407,7 @@ export default function Header() {
                 <IconFont type="icon-steam" className="text-xl" />
                 <FormattedMessage id="register_ljdl" />
               </Button>
-              {/* <Menu as="div" className="relative  md:hidden">
+              <Menu as="div" className="relative  md:hidden">
                 <Menu.Button as="div">
                   <MenuOutlined />
                 </Menu.Button>
@@ -404,116 +431,24 @@ export default function Header() {
                         ✕
                       </Button>
                     </div>
-                    <div className="bg-neutral">
-                      <Menu.Items className="outline-none">
-                        {menuLinks.map((link, i) => (
-                          <Menu.Item key={i}>
-                            {({ active }) => (
-                              <Link
-                                className={`${
-                                  active ? 'bg-accent bg-opacity-30 text-green' : ''
-                                } flex items-center py-2 rounded cursor-pointer`}
-                                to={link.link}
-                              >
-                                {link.icon && (
-                                  <IconFont
-                                    type={link.icon}
-                                    className="mx-5 md:mx-3 text-xl md:text-base"
-                                  />
-                                )}
-                                <span className="text-base capitalize md:text-sm">
-                                  {link.title}
-                                </span>
-                              </Link>
-                            )}
-                          </Menu.Item>
-                        ))}
-                      </Menu.Items>
-                      <div className="my-2 mx-5 md:mx-3 text-xs uppercase md:hidden">
-                        Games
-                      </div>
-                      <Menu.Items className="outline-none md:hidden">
-                        {headLinks.map((link, i) => (
-                          <Menu.Item key={i}>
-                            {({ active }) => (
-                              <Link
-                                className={`${
-                                  active ? 'bg-accent bg-opacity-30 text-green' : ''
-                                } flex items-center py-2 rounded cursor-pointer`}
-                                to={link.link}
-                              >
-                                {link.icon && (
-                                  <IconFont
-                                    type={link.icon}
-                                    className="mx-5 md:mx-3 text-xl md:text-base"
-                                  />
-                                )}
-                                <span className="text-base capitalize md:text-sm">
-                                  {link.title}
-                                </span>
-                              </Link>
-                            )}
-                          </Menu.Item>
-                        ))}
-                      </Menu.Items>
-                      <div className="my-2 mx-5 md:mx-3 text-xs uppercase">
-                        Customer service
-                      </div>
-                      <Menu.Items className="outline-none">
-                        {customLinks.map((link, i) => (
-                          <Menu.Item key={i}>
-                            {({ active }) => (
-                              <Link
-                                className={`${
-                                  active ? 'bg-accent bg-opacity-30 text-green' : ''
-                                } flex items-center py-2 rounded cursor-pointer`}
-                                to={link.link}
-                              >
-                                {link.icon && (
-                                  <IconFont
-                                    type={link.icon}
-                                    className="mx-5 md:mx-3 text-xl md:text-base"
-                                  />
-                                )}
-                                <span className="text-base capitalize md:text-sm">
-                                  {link.title}
-                                </span>
-                              </Link>
-                            )}
-                          </Menu.Item>
-                        ))}
-                        <Menu.Item>
-                          {({ active }) => (
-                            <div
-                              className={`${
-                                active ? 'bg-accent bg-opacity-30 text-green' : ''
-                              } flex items-center py-2 rounded cursor-pointer`}
-                              onClick={showBenefit}
-                            >
-                              <IconFont
-                                type="icon-promocode"
-                                className="mx-5 md:mx-3 text-xl md:text-base"
-                              />
-                              <span className="text-base capitalize md:text-sm">
-                                <FormattedMessage id="mine_fllq" />
-                              </span>
-                            </div>
-                          )}
-                        </Menu.Item>
-                      </Menu.Items>
-                    </div>
+                    <div className="bg-neutral">{menus}</div>
                     <Button
-                      className="btn btn-sm md:hidden btn-primary rounded uppercase mx-3 mt-4"
+                      // className="btn btn-sm md:hidden btn-primary rounded uppercase "
+                      className="btn btn-sm text-black gap-1 rounded uppercase mx-3 mt-4"
                       onClick={() =>
                         (window.location.href = getSteamLoginUrl())
                       }
+                      style={{
+                        background:
+                          'linear-gradient(270deg, #0BFF59 0%, #B4FC3B 100%)',
+                      }}
                     >
                       <IconFont type="icon-steam" className="text-xl" />
-                      Log in
+                      <FormattedMessage id="register_ljdl" />
                     </Button>
                   </div>
                 </Transition>
-              </Menu> */}
+              </Menu>
             </>
           )}
         </div>

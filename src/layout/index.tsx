@@ -30,7 +30,7 @@ export default function Layout() {
       <div className="max-w-8xl w-full min-h-[calc(100vh-64px)] m-auto">
         <Outlet />
       </div>
-      {!headHidden() && <BtmNav />}
+      {/* {!headHidden() && <BtmNav />} */}
       {!headHidden() && <Footer />}
       <ToastContainer theme="dark" autoClose={2000} limit={1} />
     </div>

@@ -1,7 +1,7 @@
 import { updateTradeUrlUsingPOST } from '@/services/front/gerenzhongxinxiangguan';
 import { FormattedMessage, useIntl } from '@umijs/max';
 import { useRef, useState } from 'react';
-import { Button, Modal,Input } from 'react-daisyui';
+import { Button, Input, Modal } from 'react-daisyui';
 import { toast } from 'react-toastify';
 
 export default function ModifySteamLink({
@@ -14,7 +14,6 @@ export default function ModifySteamLink({
   onClose: () => void;
 }) {
   const [loading, setLoading] = useState<boolean>(false);
-  const [smsCode, setSmsCode] = useState<string>();
 
   const tradeUrlRef = useRef<HTMLInputElement>(null);
   const intl = useIntl();
@@ -32,19 +31,21 @@ export default function ModifySteamLink({
       toast.error(intl.formatMessage({ id: 'trade_link_qsrzqdjylj' }));
       return;
     }
+    setLoading(true);
     const ret = await updateTradeUrlUsingPOST({
       tradeUrl,
     });
+    setLoading(false);
     if (ret.status === 0) {
       toast.success(intl.formatMessage({ id: 'mine_xgcg' }));
-      onSuccess()
+      onSuccess();
     }
   };
 
   return (
     <Modal open={open} className="max-w-md">
-      <Modal.Header className="flex items-center mb-4">
-        Steam交易链接
+      <Modal.Header className="flex items-center mb-4 uppercase">
+        Steam trade URl
       </Modal.Header>
       <Button
         size="xs"
@@ -57,14 +58,21 @@ export default function ModifySteamLink({
       </Button>
       <Modal.Body className="flex flex-col gap-4">
         <Input
-          placeholder="请输入您的Steam交易链接"
+          placeholder="Please enter your Steam trade URL"
           ref={tradeUrlRef}
-
         />
+        <a
+          href="https://steamcommunity.com/id/me/tradeoffers/privacy#trade_offer_access_url"
+          target="_blank"
+          rel="noreferrer"
+          className="text-xs link link-white uppercase"
+        >
+          <FormattedMessage id="trade_link_hqjylj" />
+        </a>
       </Modal.Body>
       <Modal.Actions className="flex flex-col mt-4">
         <Button
-          className="btn-primary w-full"
+          className="btn-green w-full"
           onClick={onSubmit}
           loading={loading}
         >

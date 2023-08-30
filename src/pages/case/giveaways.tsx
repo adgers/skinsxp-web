@@ -4,7 +4,6 @@ import GiveawayItem from './giveawayItem';
 
 export default function Giveaways() {
   const { data: giveawayList } = useRequest(() => listHostGiveawayUsingGET());
-  console.log('giveawayList', giveawayList);
 
   return (
     <div className="w-full relative mx-auto max-w-screen-xxl overflow-hidden md:px-5">

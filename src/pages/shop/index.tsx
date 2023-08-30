@@ -2,6 +2,7 @@ import Empty from '@/components/empty';
 import { IconFont } from '@/components/icons';
 import WeaponCard from '@/components/weaponCard';
 import {
+  exchangeVoucherStockUsingPOST,
   getTagsUsingGET,
   getVoucherStockPageUsingGET,
 } from '@/services/front/duihuanquanshangchengxiangguan';
@@ -9,7 +10,7 @@ import { Menu, Transition } from '@headlessui/react';
 import { FormattedMessage, useIntl, useModel, useRequest } from '@umijs/max';
 import { Pagination } from 'antd';
 import { Fragment, useRef, useState } from 'react';
-import Exchange from './exchange';
+import { toast } from 'react-toastify';
 
 export default () => {
   const { getUser } = useModel('user');
@@ -20,10 +21,9 @@ export default () => {
 
   const keywordRef = useRef<HTMLInputElement>(null);
   const [current, setCurrent] = useState(1);
-  const [show, setShow] = useState(false);
-  const [item, setItem] = useState<any>({});
   const pageSize = 36;
   const intl = useIntl();
+  const [exChangeLoading, setExChangeLoading] = useState(false);
 
   const { data: selectFilters } = useRequest(() => getTagsUsingGET());
 
@@ -62,18 +62,19 @@ export default () => {
     setWeaponType(value);
   };
 
-  const showExchangeModal = (item: any) => {
-    setItem(item);
-    setShow(true);
-  };
-
-  const hideExchangeModal = () => {
-    setShow(false);
-  };
-
-  const onExchangeSuccess = () => {
-    getUser();
-    setShow(false);
+  const onExchange = async (item: any) => {
+    if (exChangeLoading) {
+      return false;
+    }
+    setExChangeLoading(true);
+    const ret = await exchangeVoucherStockUsingPOST({
+      stockId: item.id,
+    });
+    setExChangeLoading(false);
+    if (ret.status === 0) {
+      toast.success(intl.formatMessage({ id: 'exchange_success' }));
+      getUser();
+    }
   };
 
   return (
@@ -237,12 +238,14 @@ export default () => {
                 <div
                   className="absolute bottom-0 flex w-full overflow-hidden rounded-none transition-transform duration-200 will-change-transform z-[-1] h-[32px] translate-y-[32px] md:h-[32px] md:translate-y-[-1px] group-hover:md:translate-y-[32px]"
                   onClick={() => {
-                    showExchangeModal(item);
+                    onExchange(item);
                   }}
                 >
                   <div className="btn btn-sm w-full bg-green text-dark text-sm rounded-none hover:bg-green">
-                    <IconFont type="icon-collect" className="" />
-
+                    <IconFont
+                      type="icon-collect"
+                      className={exChangeLoading ? 'animate-spin' : ''}
+                    />
                     <FormattedMessage id="exchagne" />
                   </div>
                 </div>
@@ -251,12 +254,6 @@ export default () => {
           );
         })}
       </div>
-      <Exchange
-        show={show}
-        item={item}
-        onClose={hideExchangeModal}
-        onSuccess={onExchangeSuccess}
-      />
       {!!data?.totalRows && data?.totalRows > pageSize && (
         <div className="flex justify-center items-center">
           <Pagination

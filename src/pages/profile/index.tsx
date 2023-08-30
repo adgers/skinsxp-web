@@ -83,7 +83,7 @@ export default function User() {
                   </div>
                 </div>
               </div>
-              <div className="flex flex-col items-start justify-center gap-6 text-white pl-16 w-full">
+              <div className="flex flex-col items-center sm:items-start justify-center gap-3 sm:gap-6 text-white sm:pl-16 w-full">
                 <div
                   className="btn rounded-none border border-light h-8 w-4/5"
                   onClick={() => setSteamLinkModalVisible(true)}

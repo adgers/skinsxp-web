@@ -1,4 +1,3 @@
-import { bindInviterUsingPOST } from '@/services/front/gerenzhongxinxiangguan';
 import {
   getPromotionInfoUsingGET,
   modifyInvitationCodeUsingPOST,
@@ -66,7 +65,6 @@ export default function PromotePage() {
       const ret = await myPromotionLogPageUsingGET({
         ...searchParams,
       });
-      console.log('ret', ret);
       if (ret.data) {
         setDataSource(ret.data?.pageData || []);
         setTotal(ret.data.totalRows || 0);
@@ -77,7 +75,6 @@ export default function PromotePage() {
     },
   );
 
-  console.log('dataSource', dataSource);
   useEffect(() => {
     if (data?.invitationCode) {
       setPromoteCode(data?.invitationCode);
@@ -139,9 +136,14 @@ export default function PromotePage() {
                 onChange={(e) => setPromoteCode(e.target.value)}
                 ref={promoteRef}
               />
-              <div className="btn btn-green rounded-none" onClick={()=>{
-                onSavePromote()
-              }}>SAVE</div>
+              <div
+                className="btn btn-green rounded-none"
+                onClick={() => {
+                  onSavePromote();
+                }}
+              >
+                SAVE
+              </div>
             </div>
             <div className="text-gray mt-4">
               Enter a new affiliate code and click "SAVE", if you want to change

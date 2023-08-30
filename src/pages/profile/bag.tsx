@@ -55,9 +55,8 @@ export default function BagPage() {
     },
   );
 
-  console.log(data, 'data');
 
-  const { pageData = [], extData = {}, totalRows = 0 } = data || {};
+  const { pageData = [], totalRows = 0 } = data || {};
 
   // const onItemClick = (item: any) => {
   //   if (checkedList.includes(item.id)) {
@@ -146,7 +145,7 @@ export default function BagPage() {
           />
         </div>
         <div
-          className="btn ml-12 text-white border border-white rounded-none px-16 btn-green"
+          className="btn-green !btn-sm !sm:btn-base !px-8 "
           onClick={() => {
             setCheckedList(pageData?.map((item: any) => item.id));
             setTotalPrice(
@@ -165,7 +164,7 @@ export default function BagPage() {
         </div>
       </div>
       {!loading && pageData?.length === 0 && <Empty />}
-      <div className="grid grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-2 gap-y-[60px]  sm:gap-x-4 md:gap-y-[40px]">
+      <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-2 gap-y-[60px] sm:gap-x-4 md:gap-y-[40px]">
         {loading
           ? Array.from({ length: pageSize }).map((_, i) => (
               <WeaponCard loading key={i} />
@@ -194,7 +193,7 @@ export default function BagPage() {
                     } group-hover:overflow-visible`}
                   >
                     <WeaponCard data={item} fromProfile={true} />
-                    <div className="absolute left-0 top-0 z-10 mt-5 flex gap-10 justify-between items-center w-full  opacity-0 transition-opacity duration-200 group-hover:opacity-100 sm:p-4">
+                    <div className="absolute left-0 top-0 z-10 mt-5 flex gap-10 justify-between items-center w-full  opacity-0 transition-opacity duration-200 group-hover:opacity-100 px-1 sm:p-4">
                       <div className="text-xs font-bold uppercase leading-none css-rgj8xp text-white ">
                         {item?.sourceType}
                       </div>
@@ -208,7 +207,6 @@ export default function BagPage() {
                           className="border-solid bg-black"
                           onClick={(e) => {
                             e.stopPropagation();
-
                             history.push(
                               `/profile/provably-fair/verify/${item?.verifyId}`,
                             );
@@ -217,9 +215,9 @@ export default function BagPage() {
                           <div className="btn btn-sm flex w-full items-center justify-center text-sm font-semibold uppercase transition-colors duration-150 real-hover:text-white">
                             <IconFont
                               type="icon-shield"
-                              className="text-green mr-1"
+                              className="text-green"
                             />
-                            <span>
+                            <span className='text-xs'>
                               <FormattedMessage id="battle_fairness_verify" />
                             </span>
                           </div>
@@ -237,12 +235,12 @@ export default function BagPage() {
                           >
                             <div className="btn btn-sm flex w-full items-center rounded-none justify-center text-sm  font-semibold uppercase transition-colors duration-150 real-hover:text-white  bg-purple hover:bg-purple">
                               <IconFont
-                                type="icon-steam"
-                                className="text-white mr-1"
+                                type="icon-collect"
+                                className="text-white"
                               />
-                              <span className="truncate">
+                              <span className="truncate text-xs">
                                 SELL for{' '}
-                                <span className="text-gold">${price}</span>
+                                <span className="text-white">${price}</span>
                               </span>
                             </div>
                           </li>
@@ -260,7 +258,7 @@ export default function BagPage() {
                           }}
                         >
                           <div className="btn btn-sm w-full bg-green text-dark text-sm rounded-none hover:bg-green">
-                            <IconFont type="icon-collect" className="" />
+                            <IconFont type="icon-steam" className="" />
                             <FormattedMessage id="exchagne" />
                           </div>
                         </div>
