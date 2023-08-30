@@ -22,7 +22,7 @@ import OpenHistory from './open-history';
 import Placard from './placard';
 
 import brFlag from '@/assets/flags/br.svg';
-import cnFlag from '@/assets/flags/cn.svg';
+// import cnFlag from '@/assets/flags/cn.svg';
 import enFlag from '@/assets/flags/en.svg';
 import { IconFont } from '@/components/icons';
 import CountUp from 'react-countup';
@@ -36,7 +36,7 @@ export default function Header() {
     loginShow,
     findPwdShow,
     benefitShow,
-    showBenefit,
+    // showBenefit,
   } = useModel('user');
   const location = useLocation();
   const locale = getLocale();
