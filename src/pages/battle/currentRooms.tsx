@@ -87,7 +87,7 @@ export default function CurrentRooms({
         ))}
       </div>
       {rooms &&
-        currentBattles?.totalRows &&
+        !!currentBattles?.totalRows &&
         rooms?.length < currentBattles?.totalRows && (
           <div className="flex items-center mt-4">
             <Button className="btn btn-sm" loading={loading} onClick={loadMore}>

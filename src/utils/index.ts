@@ -14,7 +14,7 @@ export function getApiDomain() {
     location.href.indexOf('localhost') > -1 ||
     location.href.indexOf('127.0.0.1') > -1
   ) {
-    return 'http://127.0.0.1:9999';
+    return 'https://api.wgskins.com';
   } else {
     return '//api.wgskins.com';
   }
@@ -36,7 +36,7 @@ export function getImgHost() {
     location.href.indexOf('localhost') > -1 ||
     location.href.indexOf('127.0.0.1') > -1
   ) {
-    return 'https://muskins-test.oss-cn-hangzhou.aliyuncs.com/root/image/';
+    return 'https://img.wgskins.com/root/image/';
   }
   return '//img.wgskins.com/root/image/';
 }
