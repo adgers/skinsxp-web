@@ -181,7 +181,7 @@ export default function Deposit() {
                     setQuantity(item);
                   }}
                 >
-                  $ {numberFixed(item * Number(rechageInfo?.rechargeDiscount))}
+                  ${numberFixed(item * Number(rechageInfo?.rechargeDiscount))}
                 </div>
               ))}
             </div>
@@ -243,13 +243,13 @@ export default function Deposit() {
                 <div className="flex flex-col w-fit gap-2">
                   <div className="uppercase  text-xs">you amout</div>
                   <div className="flex h-[40px] w-[176px] overflow-hidden pl-4 rounded-none border border-light text-xs font-bold items-center">
-                    $ <div>{quantity}</div>
+                    $<div>{quantity}</div>
                   </div>
                 </div>
                 <div className="flex flex-col w-full gap-2">
                   <div className="uppercase text-xs">Actually obtained</div>
                   <div className="font-num h-[40px] flex items-center gap-2">
-                    <span className="text-green"> $ {quantity}</span> +{' '}
+                    <span className="text-green"> ${quantity}</span> +{' '}
                     <span className="text-purple">
                       {numberFixed(
                         (Number(quantity) *

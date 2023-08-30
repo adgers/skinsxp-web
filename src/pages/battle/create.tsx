@@ -358,7 +358,7 @@ export default function Create() {
                 Total price of cases
               </p>
               <span className="text-base font-semibold leading-none text-green">
-                $ {totalPrice}
+                ${totalPrice}
               </span>
             </div>
             <Button
@@ -366,7 +366,7 @@ export default function Create() {
               loading={loading}
               onClick={onCreate}
             >
-              <IconFont type="icon-zhandou" />
+              <IconFont type="icon-battle" className='text-lg'/>
               Create case battle
             </Button>
           </div>

@@ -1,26 +1,54 @@
-import { FormattedMessage } from '@umijs/max';
+import { FormattedMessage, Link } from '@umijs/max';
 
 export default function Foot() {
   return (
-    <footer className="footer footer-center p-8 text-white text-sm rounded gap-4">
-      <div className="flex justify-center gap-x-4 gap-y-2 uppercase flex-wrap">
-        <a className="link link-hover whitespace-nowrap">
-          <FormattedMessage id="terms_of_service" />
-        </a>
-        <a className="link link-hover whitespace-nowrap">
-          <FormattedMessage id="privacy_policy" />
-        </a>
-        <a className="link link-hover whitespace-nowrap">
-          <FormattedMessage id="doc_help" />
-        </a>
-        <a className="link link-hover whitespace-nowrap">
-          <FormattedMessage id="provably_fair_title" />
-        </a>
-        <a className="link link-hover whitespace-nowrap">
-          <FormattedMessage id="about_us" />
-        </a>
-      </div>
+    <footer className="footer p-10 bg-base-300 text-base-content">
       <div>
+        <span className="footer-title">Services</span>
+        <Link
+          className="link link-hover whitespace-nowrap"
+          to="/docs/support/52"
+          target="_blank"
+        >
+          <FormattedMessage id="terms_of_service" />
+        </Link>
+        <Link
+          className="link link-hover whitespace-nowrap"
+          to="/docs/support/53"
+          target="_blank"
+        >
+          <FormattedMessage id="privacy_policy" />
+        </Link>
+        <Link
+          className="link link-hover whitespace-nowrap"
+          to="/docs"
+          target="_blank"
+        >
+          <FormattedMessage id="doc_help" />
+        </Link>
+      </div>
+
+      <div>
+        <span className="footer-title">Company</span>
+        <Link
+          className="link link-hover whitespace-nowrap"
+          to="/docs/support/55"
+          target="_blank"
+        >
+          <FormattedMessage id="about_us" />
+        </Link>
+        <Link
+          className="link link-hover whitespace-nowrap"
+          to="/      link: '/profile',
+          /provably-fair"
+          target="_blank"
+        >
+          <FormattedMessage id="provably_fair_title" />
+        </Link>
+      </div>
+
+      <div>
+        <span className="footer-title">Social</span>
         <div className="grid grid-flow-col gap-4">
           <a>
             <svg
@@ -56,9 +84,6 @@ export default function Foot() {
             </svg>
           </a>
         </div>
-      </div>
-      <div>
-        <p>Copyright © 2023 - All right reserved by wgskins.com</p>
       </div>
     </footer>
   );

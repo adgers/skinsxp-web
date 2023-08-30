@@ -73,7 +73,7 @@ export default React.memo(function RollCard({
         <div>
           Total:{' '}
           <span className="text-green font-bold">
-            $ {data?.accumulatedAmount}
+            ${data?.accumulatedAmount}
           </span>
         </div>
       </div>

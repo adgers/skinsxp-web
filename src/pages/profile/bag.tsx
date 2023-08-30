@@ -241,7 +241,7 @@ export default function BagPage() {
                               />
                               <span className="truncate">
                                 SELL for{' '}
-                                <span className="text-gold">$ {price}</span>
+                                <span className="text-gold">${price}</span>
                               </span>
                             </div>
                           </li>

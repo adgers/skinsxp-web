@@ -15,14 +15,8 @@ export function getApiDomain() {
     location.href.indexOf('127.0.0.1') > -1
   ) {
     return 'http://127.0.0.1:9999';
-    // return '//api-test.xgskins.com';
-    // return 'http://192.168.12.178:9999'
-
-    return 'http://192.168.13.65:9999';
-  } else if (location.href.indexOf('test.xgskins.com') > -1) {
-    return '//47.245.87.208:9999';
   } else {
-    return '//47.245.87.208:9999';
+    return '//api.wgskins.com';
   }
 }
 
@@ -31,12 +25,9 @@ export function getSocketDomain() {
     location.href.indexOf('localhost') > -1 ||
     location.href.indexOf('127.0.0.1') > -1
   ) {
-    return 'http://192.168.12.13:9999'
-    // return 'ws://api-test.xgskins.com/ws';
-  } else if (location.href.indexOf('test.xgskins.com') > -1) {
-    return 'ws://47.245.87.208:9999/ws';
+    return 'http://127.0.0.1:9999';
   } else {
-    return 'ws://47.245.87.208:9999/ws';
+    return 'wss://api.wgskins.com/ws';
   }
 }
 
@@ -46,13 +37,9 @@ export function getImgHost() {
     location.href.indexOf('127.0.0.1') > -1 ||
     location.href.indexOf('test.xgskins.com') > -1
   ) {
-  //   return 'http://wgskins-file.oss-ap-southeast-1.aliyuncs.com/root/image/';
-  // }
-  // return 'https://wgskins-file.oss-ap-southeast-1.aliyuncs.com/root/image/';
-
-  return 'http://muskins-test.oss-cn-hangzhou.aliyuncs.com/root/image/';
-}
-return 'https://muskins-test.oss-cn-hangzhou.aliyuncs.com/root/image/';
+    return 'https://muskins-test.oss-cn-hangzhou.aliyuncs.com/root/image/';
+  }
+  return 'https://img.wgskins.com/root/image/';
 }
 
 export async function logout() {

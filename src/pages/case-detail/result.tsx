@@ -71,9 +71,10 @@ export default function Result({
     const ret = await exchangeQuantityUsingPOST({ ids: ids.join(',') });
     setSaleLoading(false);
     if (ret.status === 0) {
-      // if (voice) {
-      //   audio.play();
-      // }
+      if (voice) {
+        const audio = new Audio(require(('@/assets/audio/exchange.mp3')));
+        audio.play();
+      }
       toast.success(
         intl.formatMessage({
           id: 'sell_success',
@@ -125,7 +126,7 @@ export default function Result({
               </div>
               <div className="-mt-4">
                 <div className="text-sm flex gap-1 font-num text-green">
-                  $ {item.recoveryPrice}
+                  ${item.recoveryPrice}
                 </div>
                 <div className="text-xs truncate">
                   {item.giftName}
@@ -149,7 +150,7 @@ export default function Result({
             loading={saleLoading}
           >
             <FormattedMessage id="open_box_sell_all" />
-            <IconFont type="icon-daimond" />
+            <IconFont type="icon-coin" />
             <CountUp
               end={totalPrice}
               duration={0.3}

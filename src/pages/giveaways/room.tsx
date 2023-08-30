@@ -200,7 +200,7 @@ export default function Room() {
         <div>
           <div className="text-lg">Total Prizes Sum</div>
           <div className="text-xl text-green font-bold">
-            $ {roomInfo?.data?.accumulatedAmount}
+            ${roomInfo?.data?.accumulatedAmount}
           </div>
         </div>
         <div>

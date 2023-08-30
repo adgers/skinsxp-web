@@ -1,4 +1,3 @@
-import fightImg from '@/assets/fighting.png';
 import number1 from '@/assets/num1.png';
 import number2 from '@/assets/num2.png';
 import number3 from '@/assets/num3.png';
@@ -12,7 +11,7 @@ const Countdown = ({ onFinish }: { onFinish: () => void }) => {
       setCountdown((prevCountdown) => prevCountdown - 1);
     }, 1000);
 
-    if (countdown === 0) {
+    if (countdown === 1) {
       clearInterval(interval);
       onFinish();
     }
@@ -38,13 +37,6 @@ const Countdown = ({ onFinish }: { onFinish: () => void }) => {
         <img
           src={number1}
           className="animate__animated animate__zoomIn w-[108px] h-[108px] sm:w-[160px] sm:h-[160px]"
-        />
-      )}
-
-      {countdown === 0 && (
-        <img
-          src={fightImg}
-          className="animate__animated animate__rotateIn w-[270px] h-[40px] sm:w-[405px] sm:h-[60px]"
         />
       )}
     </div>

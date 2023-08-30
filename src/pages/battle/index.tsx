@@ -11,17 +11,17 @@ export default function BattlePage() {
     {
       name: <FormattedMessage id="arena_gftj" />,
       key: 'in',
-      icon: <IconFont type="icon-zhandou" />,
+      // icon: <IconFont type="icon-battle" />,
     },
     {
       name: <FormattedMessage id="arena_dzls" />,
       key: 'end',
-      icon: <IconFont type="icon-zhandou" />,
+      // icon: <IconFont type="icon-battle" />,
     },
     {
       name: <FormattedMessage id="arena_wcyd" />,
       key: 'my',
-      icon: <IconFont type="icon-zhandou" />,
+      // icon: <IconFont type="icon-battle" />,
     },
   ];
 
@@ -80,7 +80,6 @@ export default function BattlePage() {
                     setFilter(t.key);
                   }}
                 >
-                  {t.icon}
                   {t.name}
                 </div>
               );
@@ -89,15 +88,15 @@ export default function BattlePage() {
 
           <div className="hidden sm:block absolute right-0 bottom-5">
             <Link className="btn-purple" to={`/battle/create`}>
-              <IconFont type="icon-zhandou" />
-              <FormattedMessage id="arena_cjfy" />
+              <IconFont type="icon-battle" className='text-lg'/>
+              Create case battle
             </Link>
           </div>
         </div>
 
         <Link className="sm:hidden btn-purple mb-4" to={`/battle/create`}>
-          <IconFont type="icon-zhandou" />
-          <FormattedMessage id="arena_cjfy" />
+          <IconFont type="icon-battle" className='text-lg'/>
+          Create case battle
         </Link>
         <div className="flex w-full items-center justify-center sm:justify-end mb-4">
           {modfilters.map((t) => {
@@ -149,10 +148,12 @@ export default function BattlePage() {
         <div className="battle-rank-point relative rounded-md">
           <div className="top-[70px] flex items-center flex-col w-full absolute z-10">
             <div className="relative w-[80px] h-[80px]">
-              <img src={topOneYesterday?.headPic} className='rounded-full'/>
+              <img src={topOneYesterday?.headPic} className="rounded-full" />
             </div>
             <div className="mt-2">{topOneYesterday?.nickname}</div>
-            <div className="font-num mt-2 text-green">{topOneYesterday?.rewardPoint}</div>
+            <div className="font-num mt-2 text-green">
+              {topOneYesterday?.rewardPoint}
+            </div>
             <div className="bg-black mt-6 uppercase text-xs">
               <FormattedMessage id="arena_my_reward_point" />：
               <span className="font-num text-purple">

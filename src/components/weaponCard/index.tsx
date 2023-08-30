@@ -100,7 +100,7 @@ export default React.memo(function WeaponCard({
 
       <div className="absolute left-0 top-0 text-sm text-white pt-[8px] pl-[10px]">
         <span className="font-num">
-          $ {price && numberFixed(Number(price))}
+          ${price && numberFixed(Number(price))}
         </span>
       </div>
       {fromProfile && (
@@ -135,19 +135,16 @@ export default React.memo(function WeaponCard({
         )}
       {rollCode > 0 && (
         <div className="absolute right-0 top-0 flex items-center text-right z-30 text-white/[0.5] text-sm font-semibold uppercase leading-none pt-[8px] pr-[10px] gap-2">
-          <div className="flex flex-col">
-            <div className="text-xs">Roll</div>
-            <div className="text-white/[0.5] text-xs font-num flex justify-end gap-2 text-right">
-              {rollCode}
-            </div>
-          </div>
-          <IconFont
-            type="icon-shield"
-            className="text-green"
+          <div
+            className="flex flex-row gap-1 cursor-pointer"
             onClick={() =>
               history.push(`/profile/provably-fair/verify/${data?.verifyId}`)
             }
-          />
+          >
+            <div className="text-xs">Roll</div>
+            <div className="text-white/[0.5] text-xs font-num">{rollCode}</div>
+            <IconFont type="icon-shield" className="text-green" />
+          </div>
         </div>
       )}
       {showChance && (

@@ -174,6 +174,11 @@ export default defineConfig({
   headScripts: [
     // 解决首次加载时白屏的问题
     { src: '/scripts/loading.js', async: true },
+    { src: 'https://client.crisp.chat/l.js', defer: true, async: true },
+    {
+      content: `window.$crisp = [];
+    window.CRISP_WEBSITE_ID = '341c8e90-8633-4cb8-a31b-37b6a95ddb05';`,
+    },
   ],
   presets: ['umi-presets-pro'],
   openAPI: [

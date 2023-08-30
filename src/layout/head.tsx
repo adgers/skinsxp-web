@@ -75,25 +75,25 @@ export default function Header() {
   ];
 
   const headLinks = [
-    // {
-    //   title: <FormattedMessage id="main_tab_dream" />,
-    //   link: '/dream',
-    //   icon: 'icon-zhuimeng',
-    // },
+    {
+      title: <FormattedMessage id="main_tab_home" />,
+      link: '/case',
+      icon: 'icon-cases',
+    },
     {
       title: <FormattedMessage id="main_tab_arena" />,
       link: '/battle',
-      icon: 'icon-zhandou',
+      icon: 'icon-battle',
     },
     {
       title: <FormattedMessage id="home_spsc" />,
       link: '/shop',
-      icon: 'icon-mall',
+      icon: 'icon-store',
     },
     {
       title: <FormattedMessage id="roll_room_title" />,
       link: '/giveaways',
-      icon: 'icon-roll',
+      icon: 'icon-giveaway',
     },
   ];
 
@@ -101,7 +101,7 @@ export default function Header() {
     {
       title: <FormattedMessage id="home_item_hzhb" />,
       link: '/profile/promote',
-      icon: 'icon-tuiguang',
+      icon: 'icon-partner',
     },
   ];
 
@@ -109,18 +109,18 @@ export default function Header() {
     {
       title: <FormattedMessage id="mine_spbb" />,
       link: '/profile/bag',
-      icon: 'icon-beibao1',
+      icon: 'icon-cases',
     },
     {
       title: <FormattedMessage id="mine_jlzx" />,
       link: '/profile/record',
-      icon: 'icon-jilu',
+      icon: 'icon-history',
     },
     ...headExt,
     {
       title: <FormattedMessage id="mine_zhsz" />,
-      link: '/user',
-      icon: 'icon-bianji1',
+      link: '/profile',
+      icon: 'icon-setting',
     },
   ];
 
@@ -128,7 +128,7 @@ export default function Header() {
     {
       title: <FormattedMessage id="mine_bzzx" />,
       link: '/profile/docs',
-      icon: 'icon-help',
+      icon: 'icon-support',
     },
     {
       title: <FormattedMessage id="mine_gpyz" />,
@@ -164,7 +164,7 @@ export default function Header() {
                     {({ active }) => (
                       <div
                         className={`${
-                          active ? 'bg-accent bg-opacity-10' : ''
+                          active ? 'bg-accent bg-opacity-30 text-green' : ''
                         } flex justify-between items-center px-2 py-1 text-xs rounded cursor-pointer`}
                         onClick={() => changeConfirmLocale(item.value)}
                       >
@@ -201,7 +201,7 @@ export default function Header() {
             <>
               <div className="flex flex-col text-xs font-num ">
                 <span className='text-green'>
-                  $ <CountUp
+                  $<CountUp
                     end={numberFixed(userInfo?.balance || 0)}
                     duration={1}
                     decimals={2}
@@ -210,7 +210,7 @@ export default function Header() {
                   />
                 </span>
                 <span className='text-purple'>
-                  <IconFont type="icon-daimond" className="mr-1" />
+                  <IconFont type="icon-coin" className="mr-1" />
                   <CountUp
                     end={numberFixed(userInfo?.secondaryBalance || 0)}
                     duration={1}
@@ -221,7 +221,7 @@ export default function Header() {
                 </span>
               </div>
               <Link className="btn-green !btn-sm !px-1" to="/deposit">
-                <IconFont type="icon-qianbao" className="text-xl text-green" />
+                <IconFont type="icon-funds" className="text-xl text-green" />
                 <PlusOutlined className="text-xs text-green" />
               </Link>
 
@@ -263,15 +263,11 @@ export default function Header() {
                           {userInfo?.nickname}
                         </div>
                         <div className="flex mt-2 text-xs font-num gap-2">
-                          <span>
-                            <IconFont
-                              type="icon-coin"
-                              className="mr-1 text-primary"
-                            />
-                            {numberFixed(userInfo?.balance || 0)}
+                          <span className='text-green'>
+                            ${numberFixed(userInfo?.balance || 0)}
                           </span>
-                          <span>
-                            <IconFont type="icon-daimond" className="mr-1" />
+                          <span className='text-purple'>
+                            <IconFont type="icon-coin" className="mr-1" />
                             {numberFixed(userInfo?.secondaryBalance || 0)}
                           </span>
                         </div>
@@ -284,7 +280,7 @@ export default function Header() {
                             {({ active }) => (
                               <Link
                                 className={`${
-                                  active ? 'bg-accent bg-opacity-10' : ''
+                                  active ? 'bg-accent text-green bg-opacity-30' : ''
                                 } flex items-center py-2 rounded cursor-pointer`}
                                 to={link.link}
                               >
@@ -309,7 +305,7 @@ export default function Header() {
                             {({ active }) => (
                               <Link
                                 className={`${
-                                  active ? 'bg-accent bg-opacity-10' : ''
+                                  active ? 'bg-accent bg-opacity-30 text-green' : ''
                                 } flex items-center py-2 rounded cursor-pointer`}
                                 to={link.link}
                               >
@@ -330,12 +326,12 @@ export default function Header() {
                           {({ active }) => (
                             <div
                               className={`${
-                                active ? 'bg-accent bg-opacity-10' : ''
+                                active ? 'bg-accent bg-opacity-30 text-green' : ''
                               } flex items-center py-2 rounded cursor-pointer`}
                               onClick={showBenefit}
                             >
                               <IconFont
-                                type="icon-hongbao"
+                                type="icon-promocode"
                                 className="mx-5 md:mx-3 text-xl md:text-base"
                               />
                               <span className="text-base capitalize md:text-sm">
@@ -348,12 +344,12 @@ export default function Header() {
                           {({ active }) => (
                             <div
                               className={`${
-                                active ? 'bg-accent bg-opacity-10' : ''
+                                active ? 'bg-accent bg-opacity-30 text-green' : ''
                               } flex items-center py-2 rounded cursor-pointer`}
                               onClick={logout}
                             >
                               <IconFont
-                                type={'icon-tuichu'}
+                                type={'icon-logout'}
                                 className="mx-5 md:mx-3 text-xl md:text-base"
                               />
                               <span className="text-base capitalize md:text-sm">
@@ -381,7 +377,7 @@ export default function Header() {
                     'linear-gradient(270deg, #0BFF59 0.04%, #B4FC3B 99.77%)',
                 }}
               >
-                <IconFont type="icon-steam1" className="text-xl" />
+                <IconFont type="icon-steam" className="text-xl" />
                 <FormattedMessage id="register_ljdl" />
               </Button>
               {/* <Menu as="div" className="relative  md:hidden">
@@ -415,7 +411,7 @@ export default function Header() {
                             {({ active }) => (
                               <Link
                                 className={`${
-                                  active ? 'bg-accent bg-opacity-10' : ''
+                                  active ? 'bg-accent bg-opacity-30 text-green' : ''
                                 } flex items-center py-2 rounded cursor-pointer`}
                                 to={link.link}
                               >
@@ -442,7 +438,7 @@ export default function Header() {
                             {({ active }) => (
                               <Link
                                 className={`${
-                                  active ? 'bg-accent bg-opacity-10' : ''
+                                  active ? 'bg-accent bg-opacity-30 text-green' : ''
                                 } flex items-center py-2 rounded cursor-pointer`}
                                 to={link.link}
                               >
@@ -469,7 +465,7 @@ export default function Header() {
                             {({ active }) => (
                               <Link
                                 className={`${
-                                  active ? 'bg-accent bg-opacity-10' : ''
+                                  active ? 'bg-accent bg-opacity-30 text-green' : ''
                                 } flex items-center py-2 rounded cursor-pointer`}
                                 to={link.link}
                               >
@@ -490,12 +486,12 @@ export default function Header() {
                           {({ active }) => (
                             <div
                               className={`${
-                                active ? 'bg-accent bg-opacity-10' : ''
+                                active ? 'bg-accent bg-opacity-30 text-green' : ''
                               } flex items-center py-2 rounded cursor-pointer`}
                               onClick={showBenefit}
                             >
                               <IconFont
-                                type="icon-hongbao"
+                                type="icon-promocode"
                                 className="mx-5 md:mx-3 text-xl md:text-base"
                               />
                               <span className="text-base capitalize md:text-sm">
@@ -512,7 +508,7 @@ export default function Header() {
                         (window.location.href = getSteamLoginUrl())
                       }
                     >
-                      <IconFont type="icon-steam1" className="text-xl" />
+                      <IconFont type="icon-steam" className="text-xl" />
                       Log in
                     </Button>
                   </div>

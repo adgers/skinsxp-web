@@ -3,14 +3,13 @@ import {
   resetUsingPOST,
 } from '@/services/front/miyaozhongzixiangguan';
 import { EditFilled } from '@ant-design/icons';
-import { useRequest } from '@umijs/max';
+import { FormattedMessage, useRequest } from '@umijs/max';
 import { useToggle } from 'ahooks';
 import { useRef, useState } from 'react';
 import { Button, Input, Modal } from 'react-daisyui';
 import { toast } from 'react-toastify';
 import ClientSeedHistory from './clientSeedHistory';
 import ServerSeedHistory from './serverSeedHistory';
-import { FormattedMessage } from '@umijs/max';
 
 export default function ProvablyConfig() {
   const [currentKey, setCurrentKey] = useState<API.RandKeyVo>();
@@ -69,7 +68,7 @@ export default function ProvablyConfig() {
           <div className="mt-3 flex space-x-3 md:ml-auto md:mt-0">
             <button
               onClick={toggleEditSeed}
-              type='button'
+              type="button"
               className="flex gap-1 h-10 items-center justify-center rounded-none border border-solid border-neutral-500 px-4 text-sm font-bold uppercase leading-none transition-colors duration-150 hover:bg-neutral-700 "
             >
               <EditFilled />
@@ -77,7 +76,7 @@ export default function ProvablyConfig() {
             </button>
             <button
               onClick={toggleClientSeedHistory}
-              type='button'
+              type="button"
               className="flex h-10 items-center justify-center rounded-none border border-solid border-neutral-500 px-4 text-sm font-bold uppercase leading-none transition-colors duration-150 hover:bg-neutral-700"
             >
               Client Seed History
@@ -93,10 +92,17 @@ export default function ProvablyConfig() {
           <span className="mx-3 break-all font-mono text-sm">
             {currentKey?.secretHash}
           </span>
-          <div className="mt-3 md:ml-auto md:mt-0">
+          <div className="mt-3 flex space-x-3 md:ml-auto md:mt-0 items-center">
+            <button
+              className="btn-green !btn-sm !rounded-none"
+              onClick={showServerSeed}
+              type="button"
+            >
+              show server seed
+            </button>
             <button
               onClick={toggleServerSeedHistory}
-              type='button'
+              type="button"
               className="flex h-10 items-center justify-center rounded-none border border-solid border-neutral-500 px-4 text-sm font-bold uppercase leading-none transition-colors duration-150 hover:bg-neutral-700"
             >
               Server Seed History
@@ -134,15 +140,6 @@ export default function ProvablyConfig() {
           </span>
         </div>
       </div>
-      <div className="flex justify-center">
-        <button
-          className="btn-green"
-          onClick={showServerSeed}
-          type='button'
-        >
-          show server seed
-        </button>
-      </div>
       <Modal open={editSeedVisible} className="max-w-md">
         <Modal.Header className="uppercase font-semibold leading-tight">
           ENTER NEW CLIENT SEED
@@ -165,7 +162,7 @@ export default function ProvablyConfig() {
             onClick={onResetClientSeed}
             loading={showLoading}
           >
-             <FormattedMessage id="confirm" />
+            <FormattedMessage id="confirm" />
           </Button>
         </Modal.Actions>
       </Modal>

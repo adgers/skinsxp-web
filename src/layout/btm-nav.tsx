@@ -6,27 +6,22 @@ export default function BtmNav() {
   const navs = [
     {
       title: <FormattedMessage id="main_tab_home" />,
-      link: '/home',
-      icon: 'icon-home',
-    },
-    {
-      title: <FormattedMessage id="main_tab_dream" />,
-      link: '/dream',
-      icon: 'icon-zhuimeng',
+      link: '/case',
+      icon: 'icon-cases',
     },
     {
       title: <FormattedMessage id="main_tab_arena" />,
       link: '/battle',
-      icon: 'icon-zhandou',
+      icon: 'icon-battle',
     },
     {
-      title: <FormattedMessage id="home_spsc" />,
-      link: '/mall',
-      icon: 'icon-mall',
+      title: <FormattedMessage id="roll_room_title" />,
+      link: '/giveaways',
+      icon: 'icon-giveaway',
     },
     {
       title: <FormattedMessage id="main_tab_account" />,
-      link: '/user',
+      link: '/profile',
       icon: 'icon-zhanghu',
     },
   ];

@@ -1,3 +1,4 @@
+import winnerIcon from '@/assets/winner-icon.png';
 import Countdown from '@/components/countdown';
 import { IconFont } from '@/components/icons';
 import Lottery from '@/components/lottery';
@@ -14,7 +15,6 @@ import {
   CheckCircleFilled,
   LeftOutlined,
   LoadingOutlined,
-  LogoutOutlined,
 } from '@ant-design/icons';
 import {
   FormattedMessage,
@@ -35,6 +35,9 @@ import { toast } from 'react-toastify';
 import { CSSTransition, TransitionGroup } from 'react-transition-group';
 import Verify from './verify';
 
+const audio = new Audio(require('@/assets/audio/battle.mp3'));
+
+import BoxDetail from './boxDetail';
 import './index.less';
 
 const countTotalPrice = (record: any) => {
@@ -87,7 +90,7 @@ const WartingCard = ({
               onClick={onJoinBot}
             >
               {joinLoading && <LoadingOutlined />}
-              <IconFont type="icon-zhandou" className="text-white text-sm" />
+              <IconFont type="icon-battle" className="text-white text-sm" />
               <FormattedMessage id="battle_room_join_bot" />
             </div>
           ) : (
@@ -98,7 +101,7 @@ const WartingCard = ({
               onClick={onJoin}
             >
               {joinBotLoading && <LoadingOutlined />}
-              <IconFont type="icon-zhandou" className="text-white text-sm" />
+              <IconFont type="icon-battle" className="text-white text-sm" />
               <FormattedMessage id="battle_room_join" />
               {modeName}
             </div>
@@ -373,12 +376,20 @@ export default function RoomDetail() {
     setOpenResult(resultArr);
   };
 
+  const playAudio = () => {
+    audio.currentTime = 0;
+    audio.play();
+  };
+
   const onCountDownFinish = async () => {
     await sleep(1500);
     setCountDownShow(false);
     await sleep(500);
     goTo(1);
     setLotteryStart(true);
+    if (voice) {
+      playAudio();
+    }
   };
 
   const onLortteryCompleted = async () => {
@@ -496,12 +507,12 @@ export default function RoomDetail() {
               }`}
               to={`/battle/create/${battleCode}`}
             >
-              <IconFont type="icon-zhandou" />
-              Create the same battle $ {data?.totalPrice}
+              <IconFont type="icon-battle" />
+              Create the same battle ${data?.totalPrice}
             </Link>
 
             <Link className="btn-purple " to={`/battle/create`}>
-              <IconFont type="icon-zhandou" />
+              <IconFont type="icon-battle" />
               <FormattedMessage id="arena_cjfy" />
             </Link>
           </div>
@@ -588,7 +599,8 @@ export default function RoomDetail() {
               </>
             )}
             {isOwner && customerList && customerList?.length < 2 && (
-              <LogoutOutlined
+              <IconFont
+                type="icon-tuichu"
                 onClick={() => setCancelConfirmShow(true)}
                 className="text-white"
               />
@@ -601,9 +613,9 @@ export default function RoomDetail() {
               onClick={toggleVoice}
             >
               {voice ? (
-                <IconFont type="icon-shengyin" />
+                <IconFont type="icon-a-voiceon" />
               ) : (
-                <IconFont type="icon-shengyinguanbi" />
+                <IconFont type="icon-a-voiceoff" />
               )}
             </div>
           </div>
@@ -645,9 +657,9 @@ export default function RoomDetail() {
             return (
               <div className="flex flex-col" key={i}>
                 <div
-                  className={`battle-seat-bg  h-[300px] px-2 seat-${
-                    i + 1
-                  } ${isLast ? 'seat-last' : ''}`}
+                  className={`battle-seat-bg  h-[300px] px-2 seat-${i + 1} ${
+                    isLast ? 'seat-last' : ''
+                  }`}
                 >
                   {state === 0 && (
                     <WartingCard
@@ -701,6 +713,11 @@ export default function RoomDetail() {
                             src={user?.headPic}
                             className="w-8 h-8 md:w-10 md:h-10 rounded-full"
                           />
+                          {isWin && (
+                            <div className="w-[17px] absolute right-0 top-[-10px]">
+                              <img src={winnerIcon} alt="" />
+                            </div>
+                          )}
                         </div>
 
                         <span className="truncate text-xs sm:text-sm text-white font-semibold">
@@ -730,6 +747,17 @@ export default function RoomDetail() {
             );
           })}
         </div>
+      )}
+
+      {boxDetailShow && (
+        <BoxDetail
+          caseName={boxDetail.boxName}
+          boxDetail={boxDetail}
+          show={boxDetailShow}
+          onClose={() => {
+            setBoxDetailShow(false);
+          }}
+        />
       )}
 
       {data && (

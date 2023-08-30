@@ -1,4 +1,3 @@
-import verifyIcon from '@/assets/verify-icon.png';
 import {
   FormattedMessage,
   Link,
@@ -7,6 +6,8 @@ import {
   useLocation,
 } from '@umijs/max';
 import { useMemo } from 'react';
+import { IconFont } from '@/components/icons';
+
 
 export default function ProvablyFair() {
   const location = useLocation();
@@ -28,7 +29,7 @@ export default function ProvablyFair() {
     <div className="w-full">
       <div className="bg-black rounded p-5 text-white">
         <div className="text-xl font-bold uppercase flex gap-2 items-center">
-          <img src={verifyIcon} className="w-10 h-10" />
+          <IconFont type="icon-shield" className="text-green text-2xl" />
           <FormattedMessage id="provably_fair_title" />
         </div>
         <div className="mt-5 space-y-5">
@@ -45,8 +46,10 @@ export default function ProvablyFair() {
 
           return (
             <div
-              className={`tab-item px-4 flex items-center h-full ${
-                isActive ? 'text-green border-b-[1px] border-green' : 'text-white '
+              className={`tab-item uppercase font-semibold px-4 flex items-center h-full ${
+                isActive
+                  ? 'text-green border-b-[1px] border-green'
+                  : 'text-white '
               }`}
               key={index}
             >
