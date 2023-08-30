@@ -117,7 +117,7 @@ const ResultCard = ({ result }: { result: API.BattleCustomerGainVo }) => {
     <div className="flex flex-col animate__animated animate__zoomIn items-center">
       {result?.winner ? (
         <>
-          <div className="font-num text-green text-[22px] sm:text-[42px]">
+          <div className="font-num text-green text-sm sm:text-[42px]">
             WINNER
           </div>
           <div className="flex gap-1 items-center font-num text-green text-xs sm:text-base">
@@ -132,9 +132,7 @@ const ResultCard = ({ result }: { result: API.BattleCustomerGainVo }) => {
         </>
       ) : (
         <>
-          <div className="font-num text-light text-[22px] sm:text-[42px]">
-            LOSE
-          </div>
+          <div className="font-num text-light text-sm sm:text-[42px]">LOSE</div>
           <div className="flex gap-1 items-center font-num text-xs sm:text-base">
             $
             <CountUp
@@ -185,7 +183,7 @@ const ResultBoxs = ({
           }}
           timeout={500}
         >
-          <WeaponCard data={item} mini={mini} />
+          <WeaponCard data={item} mini={mini} showRoll={false} />
         </CSSTransition>
       ))}
     </TransitionGroup>
@@ -215,6 +213,9 @@ export default function RoomDetail() {
   const [myRoom, setMyRoom] = useState(false);
   const responsive = useResponsive();
   const { battleState } = useModel('socket');
+
+  const winAudio = new Audio(require('@/assets/audio/win.wav'));
+  const failAudio = new Audio(require('@/assets/audio/fail.wav'));
 
   const intl = useIntl();
   const battleMode = [
@@ -406,12 +407,12 @@ export default function RoomDetail() {
         );
 
         if (myRecord) {
-          // isWin = myRecord.winner;
+          isWin = !!myRecord.winner;
         }
         if (isWin) {
-          // winAudio.current.play();
+          winAudio.play();
         } else {
-          // loseAudio.current.play();
+          failAudio.play();
         }
         getUser();
       }
@@ -420,6 +421,9 @@ export default function RoomDetail() {
       goTo(index + 1);
       await sleep(1000);
       setLotteryStart(true);
+      if (voice) {
+        playAudio();
+      }
     }
   };
 
@@ -489,7 +493,7 @@ export default function RoomDetail() {
   };
 
   return (
-    <div className="max-w-[1400px] w-full m-auto mt-4 battle-detail p-3 sm:p-0">
+    <div className="max-w-[1400px] w-full m-auto mt-4 battle-detail px-1 sm:px-0">
       {countDownShow && <Countdown onFinish={onCountDownFinish} />}
 
       <div className="my-5 flex w-full flex-col justify-between border-b border-light lg:mb-0 lg:mt-8 lg:flex-row">
@@ -657,9 +661,9 @@ export default function RoomDetail() {
             return (
               <div className="flex flex-col" key={i}>
                 <div
-                  className={`battle-seat-bg  h-[300px] px-2 seat-${i + 1} ${
-                    isLast ? 'seat-last' : ''
-                  }`}
+                  className={`battle-seat-bg  h-[180px] sm:h-[300px] px-2 seat-${
+                    i + 1
+                  } ${isLast ? 'seat-last' : ''}`}
                 >
                   {state === 0 && (
                     <WartingCard

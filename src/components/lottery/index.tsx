@@ -152,7 +152,7 @@ const Lottery = ({
   useEffect(() => {
     resetStyle();
     initList();
-  }, [giftList]);
+  }, [giftList, lotteryWin]);
 
   useEffect(() => {
     if (!start || !lotteryWin) return;

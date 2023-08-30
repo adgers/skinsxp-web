@@ -11,6 +11,7 @@ export default React.memo(function WeaponCard({
   loading,
   data,
   mini = false,
+  showRoll = true,
   fromProfile = false,
   isGiveawayWinList = false,
 }: {
@@ -23,6 +24,7 @@ export default React.memo(function WeaponCard({
     API.UpgradePageVo &
     API.RollRoomGiftVo;
   mini?: boolean;
+  showRoll?: boolean;
   fromProfile?: boolean;
   isGiveawayWinList?: boolean;
 }) {
@@ -99,9 +101,7 @@ export default React.memo(function WeaponCard({
       )}
 
       <div className="absolute left-0 top-0 text-sm text-white pt-[8px] pl-[10px]">
-        <span className="font-num">
-          ${price && numberFixed(Number(price))}
-        </span>
+        <span className="font-num">${price && numberFixed(Number(price))}</span>
       </div>
       {fromProfile && (
         <div className="absolute right-0 top-0 pt-[8px] pr-[10px] text-sm">
@@ -133,7 +133,7 @@ export default React.memo(function WeaponCard({
             </div>
           </div>
         )}
-      {rollCode > 0 && (
+      {rollCode > 0 && showRoll && (
         <div className="absolute right-0 top-0 flex items-center text-right z-30 text-white/[0.5] text-sm font-semibold uppercase leading-none pt-[8px] pr-[10px] gap-2">
           <div
             className="flex flex-row gap-1 cursor-pointer"
