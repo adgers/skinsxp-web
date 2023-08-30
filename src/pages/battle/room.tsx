@@ -1,3 +1,4 @@
+import winnerIcon from '@/assets/winner-icon.png';
 import Countdown from '@/components/countdown';
 import { IconFont } from '@/components/icons';
 import Lottery from '@/components/lottery';
@@ -497,7 +498,7 @@ export default function RoomDetail() {
               to={`/battle/create/${battleCode}`}
             >
               <IconFont type="icon-zhandou" />
-              Create the same battle $ {data?.totalPrice}
+              Create the same battle ${data?.totalPrice}
             </Link>
 
             <Link className="btn-purple " to={`/battle/create`}>
@@ -645,9 +646,9 @@ export default function RoomDetail() {
             return (
               <div className="flex flex-col" key={i}>
                 <div
-                  className={`battle-seat-bg  h-[300px] px-2 seat-${
-                    i + 1
-                  } ${isLast ? 'seat-last' : ''}`}
+                  className={`battle-seat-bg  h-[300px] px-2 seat-${i + 1} ${
+                    isLast ? 'seat-last' : ''
+                  }`}
                 >
                   {state === 0 && (
                     <WartingCard
@@ -701,6 +702,11 @@ export default function RoomDetail() {
                             src={user?.headPic}
                             className="w-8 h-8 md:w-10 md:h-10 rounded-full"
                           />
+                          {isWin && (
+                            <div className="w-[17px] absolute right-0 top-[-10px]">
+                              <img src={winnerIcon} alt="" />
+                            </div>
+                          )}
                         </div>
 
                         <span className="truncate text-xs sm:text-sm text-white font-semibold">

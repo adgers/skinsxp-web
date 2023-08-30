@@ -201,7 +201,7 @@ export default function Header() {
             <>
               <div className="flex flex-col text-xs font-num ">
                 <span className='text-green'>
-                  $ <CountUp
+                  $<CountUp
                     end={numberFixed(userInfo?.balance || 0)}
                     duration={1}
                     decimals={2}

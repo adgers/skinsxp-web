@@ -34,7 +34,7 @@ export default function Case() {
             {t.boxList?.map((v, idx) => (
               <div
                 key={idx}
-                className="w-full h-full bg-no-repeat bg-cover relative"
+                className="w-full h-full bg-no-repeat bg-cover relative cursor-pointer"
                 onClick={() => {
                   history.push(`/case/${v?.id}`);
                 }}

@@ -85,9 +85,9 @@ export default () => {
         </div>
       </div>
       <div className="flex flex-col-reverse sm:flex-row gap-2 sm:justify-between pt-4 px-3">
-        <div className="flex gap-2 sm:gap-4 flex-1 flex-wrap">
+        <div className="grid grid-cols-3 gap-1 sm:gap-2">
           <Menu as="div" className="relative">
-            <Menu.Button className="whitespace-nowrap select select-sm select-accent border-opacity-50 rounded uppercase w-full font-semibold flex justify-between items-center focus:outline-none">
+            <Menu.Button className="whitespace-nowrap select select-sm select-accent border-opacity-50 rounded uppercase w-full font-semibold flex justify-between items-center focus:outline-none text-xs">
               <FormattedMessage id="mall_sort_mrpx" />
             </Menu.Button>
             <Transition
@@ -135,8 +135,8 @@ export default () => {
               }
 
               return (
-                <Menu as="div" className="relative w-40" key={i}>
-                  <Menu.Button className="select select-sm select-accent border-opacity-50 rounded uppercase w-full font-semibold flex justify-between items-center focus:outline-none">
+                <Menu as="div" className="relative" key={i}>
+                  <Menu.Button className="select select-sm select-accent border-opacity-50 rounded uppercase w-full font-semibold flex justify-between items-center focus:outline-none text-xs">
                     <div>{filter.name}</div>
                   </Menu.Button>
                   <Transition

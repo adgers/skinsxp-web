@@ -54,7 +54,7 @@ export default function RightNav() {
         >
           <MessageOutlined className="text-[#262635] text-[32px]" />
         </div>
-        <div className="bg-secondary p-2 rounded-tl-md rounded-bl-md mt-2">
+        {/* <div className="bg-secondary p-2 rounded-tl-md rounded-bl-md mt-2">
           <div
             className="flex flex-col gap-1 items-center cursor-pointer"
             onClick={() => setShowAppDownload(true)}
@@ -62,7 +62,7 @@ export default function RightNav() {
             <MobileOutlined className="text-[#262635] text-[32px]" />
             <div className="text-[#262635] font-semibold uppercase">App</div>
           </div>
-        </div>
+        </div> */}
       </div>
       <Modal
         open={showAppDownload}

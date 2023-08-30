@@ -238,7 +238,7 @@ export default function BagPage() {
                               <svg className="mr-2 h-4 w-4"></svg>
                               <span className=" flex-1 truncate">
                                 SELL for{' '}
-                                <span className="text-gold">$ {price}</span>
+                                <span className="text-gold">${price}</span>
                               </span>
                             </div>
                           </li>
