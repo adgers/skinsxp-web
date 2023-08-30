@@ -145,7 +145,7 @@ export default defineConfig({
           routes: [
             {
               path: '/docs',
-              redirect: 'docs/help',
+              redirect: '/docs/help',
             },
             {
               path: '/docs/help',

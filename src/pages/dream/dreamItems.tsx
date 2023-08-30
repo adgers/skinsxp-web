@@ -192,31 +192,13 @@ export default function DreamItems({
             </Menu>
           </div>
           <div className="w-full sm:w-auto flex gap-2 flex-col-reverse sm:flex-row">
-            {/* <div className="join">
-            <input
-              type="text"
-              placeholder="最低价"
-              className="join-item input w-20 input-bordered input-smbg-dark"
-            />
-            <div className="join-item flex items-center">
-              <div className=" bg-white w-[10px] h-[1px] mx-2"></div>
-            </div>
-            <input
-              type="text"
-              placeholder="最高价"
-              className="join-item input w-20 input-bordered input-smbg-dark"
-            />
-            <button className="join-item btn btn-primary btn-sm rounded">
-              搜索
-            </button>
-          </div> */}
             <div className="join">
               <input
                 type="text"
                 placeholder={intl.formatMessage({
                   id: 'mall_qsrspmc',
                 })}
-                className="join-item input input-bordered w-full min-w-[250px] input-smbg-dark focus:outline-none"
+                className="join-item input input-bordered w-full min-w-[250px] input-sm bg-dark focus:outline-none"
                 ref={keywordRef}
               />
 
