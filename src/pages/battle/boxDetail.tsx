@@ -1,7 +1,7 @@
 import WeaponCard from '@/components/weaponCard';
 import { boxGiftListUsingGET } from '@/services/front/kaixiangxiangguan';
 import { getBoxColor, numberFixed } from '@/utils';
-import { useRequest } from '@umijs/max';
+import { useEffect, useState } from 'react';
 import { Button, Modal } from 'react-daisyui';
 
 export default function BoxDetail({
@@ -9,22 +9,32 @@ export default function BoxDetail({
   caseName,
   show,
   onClose,
+  boxDetail,
 }: {
-  caseId: number;
+  caseId?: number;
   show: boolean;
   caseName: string;
+  boxDetail?: API.BoxGiftInfoVo;
   onClose: () => void;
 }) {
-  const { data: boxInfo } = useRequest(
-    () => {
-      if (show) {
-        return boxGiftListUsingGET({ caseId });
-      }
-    },
-    {
-      refreshDeps: [caseId, show],
-    },
-  );
+  const [boxInfo, setBoxInfo] = useState<API.BoxGiftInfoVo>();
+
+  useEffect(() => {
+    if (!show) {
+      return;
+    }
+
+    if (boxDetail) {
+      setBoxInfo(boxDetail);
+    } else {
+      if (!caseId) return;
+      boxGiftListUsingGET({ caseId }).then((ret) => {
+        if (ret.status === 0) {
+          setBoxInfo(ret.data);
+        }
+      });
+    }
+  }, [caseId, show, boxDetail]);
 
   return (
     <Modal open={show} className="max-w-6xl">

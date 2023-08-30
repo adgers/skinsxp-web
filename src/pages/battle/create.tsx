@@ -366,7 +366,7 @@ export default function Create() {
               loading={loading}
               onClick={onCreate}
             >
-              <IconFont type="icon-zhandou" />
+              <IconFont type="icon-battle" className='text-lg'/>
               Create case battle
             </Button>
           </div>

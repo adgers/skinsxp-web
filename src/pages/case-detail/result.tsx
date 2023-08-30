@@ -150,7 +150,7 @@ export default function Result({
             loading={saleLoading}
           >
             <FormattedMessage id="open_box_sell_all" />
-            <IconFont type="icon-daimond" />
+            <IconFont type="icon-coin" />
             <CountUp
               end={totalPrice}
               duration={0.3}

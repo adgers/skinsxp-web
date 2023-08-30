@@ -39,7 +39,8 @@ export default function Foot() {
         </Link>
         <Link
           className="link link-hover whitespace-nowrap"
-          to="/user/provably-fair"
+          to="/      link: '/profile',
+          /provably-fair"
           target="_blank"
         >
           <FormattedMessage id="provably_fair_title" />

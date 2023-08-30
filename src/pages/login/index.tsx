@@ -18,7 +18,7 @@ export default function LoginPage() {
         className="mt-5 btn btn-primary w-52"
         onClick={() => (location.href = getSteamLoginUrl())}
       >
-        <IconFont type="icon-steam1" className="text-xl" />
+        <IconFont type="icon-steam" className="text-xl" />
         <FormattedMessage id="register_ljdl" />
       </Button>
     </div>

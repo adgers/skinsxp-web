@@ -1,4 +1,5 @@
 import ModifySteamLink from '@/components/account/steamLink';
+import { IconFont } from '@/components/icons';
 import { headHidden } from '@/utils';
 import {
   FormattedMessage,
@@ -22,18 +23,22 @@ export default function User() {
       {
         title: <FormattedMessage id="my_package_title" />,
         link: '/profile/bag',
+        icon: 'icon-cases',
       },
       {
         title: <FormattedMessage id="recharge_record" />,
         link: '/profile/record',
+        icon: 'icon-history',
       },
       {
         title: <FormattedMessage id="home_item_hzhb" />,
         link: '/profile/affiliate',
+        icon: 'icon-partner',
       },
       {
         title: <FormattedMessage id="mine_gpyz" />,
         link: '/profile/provably-fair',
+        icon: 'icon-shield',
       },
     ];
   }, []);
@@ -69,7 +74,8 @@ export default function User() {
                         {userInfo?.secondaryBalance}
                       </div>
                     </div>
-                    <div className="btn px-[16px] rounded-none border border-green text-green disp invisible xl:visible ">
+                    <div className="btn px-[16px] rounded border border-green text-green disp invisible xl:visible ">
+                      <IconFont type="icon-funds" className='text-xl'/>
                       <FormattedMessage id="wc_rewards_deposit" />
                     </div>
                   </div>
@@ -80,14 +86,16 @@ export default function User() {
                   className="btn rounded-none border border-light h-8 w-4/5"
                   onClick={() => setSteamLinkModalVisible(true)}
                 >
+                  <IconFont type="icon-link" />
                   {userInfo?.tradeUrl ? 'Edit Trade URL' : 'Add Trade URL'}
                 </div>
                 <div className="btn rounded-none border border-green h-8 w-4/5">
+                  <IconFont type="icon-steam" />
                   Steam
                 </div>
               </div>
             </div>
-            <div className="custom-tab w-full h-[68px] flex gap-[100px] overflow-y-hidden overflow-x-auto md:justify-start items-center border-b border-[#45444B] my-2 md:my-4 hide-scrollbar">
+            <div className="w-full h-[68px] flex gap-10 overflow-y-hidden overflow-x-auto md:justify-start items-center border-b border-[#45444B] my-2 md:my-4 hide-scrollbar">
               {tabLinks.map((item, index) => {
                 const isActive = location.pathname.startsWith(item.link);
                 return (
@@ -96,13 +104,14 @@ export default function User() {
                       isActive
                         ? 'text-green border-b-[1px] border-green'
                         : 'text-white '
-                    } tab-item flex-shrink-0 h-full flex items-center `}
+                    } flex-shrink-0 h-full flex items-center uppercase font-semibold`}
                     key={index}
                   >
                     <Link
                       to={item.link}
-                      className="tab-item-c text-sm md:text-base flex gap-1 hover:text-green"
+                      className="text-sm md:text-base flex gap-2 hover:text-green px-2"
                     >
+                      <IconFont type={item.icon} className="text-lg" />
                       {item.title}
                     </Link>
                   </div>

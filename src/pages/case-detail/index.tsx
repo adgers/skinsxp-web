@@ -134,9 +134,9 @@ export default function BoxPage() {
             onClick={toggleVoice}
           >
             {voice ? (
-              <IconFont type="icon-shengyin" />
+              <IconFont type="icon-a-voiceon" />
             ) : (
-              <IconFont type="icon-shengyinguanbi" />
+              <IconFont type="icon-a-voiceoff" />
             )}
           </div>
 
