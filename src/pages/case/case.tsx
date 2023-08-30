@@ -48,7 +48,7 @@ export default function Case() {
             <div className="flex w-1/6 items-end sm:w-1/3"></div>
           </div>
 
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-x-4 gap-y-16">
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4">
             {t.boxList?.map((v, idx) => (
               <div
                 key={idx}
