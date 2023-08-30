@@ -54,9 +54,8 @@ export default React.memo(function WeaponCard({
 
   return (
     <div
-      className={`weapon-card relative weapon-card-grade-${grade} ${
-        data?.state === 0 ? 'group-hover:border-none' : ''
-      }`}
+      className={`weapon-card relative weapon-card-grade-${grade} group-hover:border-none
+      `}
     >
       <div className="img-wrapper">
         <img src={img} />

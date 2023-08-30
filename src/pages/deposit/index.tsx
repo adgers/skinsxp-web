@@ -267,7 +267,7 @@ export default function Deposit() {
                 onClick={onPay}
                 type="button"
               >
-                pay ${' '}
+                <FormattedMessage id={'pay_amount'} /> ${' '}
                 {(selectCurrency?.rate || 0) * quantity}
               </button>
             </div>

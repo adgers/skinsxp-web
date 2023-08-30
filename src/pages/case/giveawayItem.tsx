@@ -1,4 +1,6 @@
 import kingSvg from '@/assets/king.svg';
+import { history } from '@umijs/max';
+
 import { useCountDown } from 'ahooks';
 import { Countdown } from 'react-daisyui';
 
@@ -16,11 +18,14 @@ export default function GiveawayItem(props: GiveawayItemProps) {
     <div
       className={`relative grid h-36 min-w-[90%] snap-start overflow-hidden sm:min-w-[50%] md:min-w-[33.333333%] xl:min-w-[20%] giveaways-grade giveaways-grade-${index}`}
       key={`giveaways-${index}`}
+      onClick={() => history.push(`/giveaways/${item?.id}`)}
     >
       <div className="relative col-start-1 row-start-1 grid overflow-hidden pl-2.5 pt-2.5 giveaways-grade-item ">
         <div className="flex h-6">
           <div className="flex items-center">
-            <div className={`h-4 w-4 border-r-[50%] rounded-full flex justify-center items-center giveaways-icon`}>
+            <div
+              className={`h-4 w-4 border-r-[50%] rounded-full flex justify-center items-center giveaways-icon`}
+            >
               <img src={kingSvg} alt="" className="w-[8px] h-[8px]" />
             </div>
             <p className="ml-2 text-xs font-bold text-white text-opacity-70">
@@ -46,7 +51,7 @@ export default function GiveawayItem(props: GiveawayItemProps) {
               ${item?.accumulatedAmount}
             </span>
           </div>
-          <a className="flex w-[55%] flex-col pr-2.5 justify-start" href="/">
+          <a className="flex w-[55%] flex-col pr-2.5 justify-start">
             <div className="flex flex-col">
               <span className="truncate text-xs font-bold text-white text-opacity-70">
                 {item?.giftVos?.[0]?.giftName?.split('|')?.[0]?.trim()}

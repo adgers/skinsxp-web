@@ -184,8 +184,8 @@ const Lottery = ({
         }`}
       >
         {list.map((item: any, index: number) => {
-          const isWin = item.id === lotteryWin?.id;
-          const grade = item.grade ?? item.giftGrade;
+          const isWin = item?.id === lotteryWin?.id;
+          const grade = item?.grade ?? item?.giftGrade;
           const name = parseName(item.giftName);
 
           return (
