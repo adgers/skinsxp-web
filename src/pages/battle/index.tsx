@@ -154,7 +154,7 @@ export default function BattlePage() {
             <div className="font-num mt-2 text-green">
               {topOneYesterday?.rewardPoint}
             </div>
-            <div className="bg-black mt-6 uppercase text-xs flex justify-between w-full items-center px-2">
+            <div className="bg-black h-9 mt-6 uppercase text-xs flex justify-between w-full items-center px-2">
               <div>
                 <IconFont type="icon-ranking" className="text-purple mr-2" />
                 <FormattedMessage id="arena_my_reward_point" />
