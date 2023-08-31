@@ -245,7 +245,7 @@ export default function DreamPage() {
         <button
           type="button"
           onClick={open}
-          className="flex items-center justify-center h-8 sm:h-12 px-4 uppercase border border-secondary text-secondary rounded font-num font-semibold bg-secondary bg-opacity-20"
+          className="flex items-center justify-center min-w-[300px] h-8 sm:h-12 px-4 uppercase border border-secondary text-secondary rounded font-num font-semibold bg-secondary bg-opacity-20"
         >
           <div className="open-btn-arr animate-pulse" />
           <div className="flex gap-2 px-1 flex-1 justify-center">

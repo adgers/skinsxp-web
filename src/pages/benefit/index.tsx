@@ -11,7 +11,6 @@ export default function Benefit() {
   const [tab, setTab] = useState(0);
 
   const intl = useIntl();
-
   const cdKeyCodeRef = useRef<HTMLInputElement>(null);
   const promoCodeRef = useRef<HTMLInputElement>(null);
 
@@ -56,7 +55,6 @@ export default function Benefit() {
     });
     if (ret.status === 0) {
       toast.success(intl.formatMessage({ id: 'mine_xgcg' }));
-      // refresh();
       getUser();
     }
   };
@@ -78,43 +76,44 @@ export default function Benefit() {
       <Modal.Header className="mb-2 text-center text-lg">
         <div className="custom-tab flex w-full justify-center gap-6 h-14 items-center rounded-t-xl">
           <div
-            className={`w-full h-full cursor-pointer flex items-center justify-center ${
+            className={`w-full h-full cursor-pointer flex items-center justify-center rounded ${
               tab === 0 ? 'bg-purple/[0.3] text-white' : 'bg-[#23232D] hover:'
             }`}
             onClick={() => setTab(0)}
           >
-            <span className="tab-item-c uppercase">
+            <span className="tab-item-c uppercase font-semibold">
+              {/* <FormattedMessage id="wc_rewards_title" /> */}
               promote Code
             </span>
           </div>
           <div
-            className={`w-full h-full tab-item flex items-center justify-center cursor-pointer ${
+            className={`w-full h-full tab-item flex items-center justify-center cursor-pointer rounded ${
               tab === 1 ? 'bg-purple/[0.3] text-white' : 'bg-[#23232D]'
             }`}
             onClick={() => setTab(1)}
           >
-            <span className="tab-item-c uppercase">
+            <span className="tab-item-c uppercase font-semibold">
               <FormattedMessage id="wc_cdkey_title" />
             </span>
           </div>
         </div>
       </Modal.Header>
-      <Modal.Body className="w-full flex flex-col items-center mt-10">
+      <Modal.Body className="w-full flex flex-col items-center mt-5">
         {tab === 0 && (
           <>
-            <div className="flex h-fit w-full items-center gap-4 px-2 py-8 sm:py-0  bg-[url('@/assets/promo-bg.png')] bg-no-repeat bg-cover sm:pl-28 sm:pr-8 text-md whitespace-pre-wrap font-bold">
+            <div className="flex h-fit w-full items-center gap-4 px-2 py-8 sm:py-0  bg-[url('@/assets/promo-bg.png')] bg-no-repeat bg-cover sm:pl-28 sm:pr-8 text-md whitespace-pre-wrap font-semibold">
               <div className="h-fit w-full grow sm:-mr-20 sm:-ml-16">
-                {/* <FormattedMessage id="wc_cdkey_explain" /> */}
-               {"What is Promo Code? \n Enter the promo code and Activate Bonus."}
+                <p>What is Promo Code?</p>
+                <p>Enter the promo code and Activate Bonus.</p>
               </div>
               <div className="w-48 relative z-10  hidden aspect-square sm:block">
                 <img src={require('@/assets/promo-img.png')} alt="" />
               </div>
             </div>
-            <div className="w-full mt-8 flex bg-black p-4 rounded-xl">
+            <div className="w-full mt-5 flex">
               <input
                 type="text"
-                className=" w-full bg-dark rounded-l-xl pl-4 focus:outline-none"
+                className=" w-full bg-black rounded-l-xl pl-4 focus:outline-none"
                 ref={promoCodeRef}
                 defaultValue={userInfo?.inviterPromotionCode}
                 placeholder={intl.formatMessage({ id: 'register_qsryqm' })}
@@ -133,18 +132,19 @@ export default function Benefit() {
         )}
         {tab === 1 && (
           <>
-            <div className="flex h-fit w-full items-center gap-4 px-2 py-8 sm:py-0  bg-[url('@/assets/promo-bg.png')] bg-no-repeat bg-cover sm:pl-28 sm:pr-8 text-md whitespace-pre-wrap font-bold">
+            <div className="flex h-fit w-full items-center gap-4 px-2 py-8 sm:py-0  bg-[url('@/assets/promo-bg.png')] bg-no-repeat bg-cover sm:pl-28 sm:pr-8 text-md whitespace-pre-wrap font-semibold">
               <div className="h-fit w-full grow sm:-mr-20 sm:-ml-16">
-                <FormattedMessage id="wc_cdkey_explain" />
+                <p>What is CDkey? </p>
+                <p>Enter the CDkey and Activate the bouns.</p>
               </div>
               <div className="w-48 relative z-10  hidden aspect-square sm:block">
                 <img src={require('@/assets/promo-img.png')} alt="" />
               </div>
             </div>
-            <div className="w-full mt-8 flex bg-black p-4 rounded-xl">
+            <div className="w-full mt-5 flex rounded-xl">
               <input
                 type="text"
-                className=" w-full bg-dark rounded-l-xl pl-4 focus:outline-none"
+                className=" w-full bg-black rounded-l-xl pl-4 focus:outline-none"
                 maxLength={12}
                 ref={cdKeyCodeRef}
                 placeholder="Enter the CDKey"

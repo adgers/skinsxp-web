@@ -33,7 +33,7 @@ export default function User() {
       },
       {
         title: <FormattedMessage id="home_item_hzhb" />,
-        link: '/profile/affiliate',
+        link: '/profile/partner',
         icon: 'icon-partner',
       },
       {
