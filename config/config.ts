@@ -110,12 +110,8 @@ export default defineConfig({
               ],
             },
             {
-              path: '/profile/affiliate',
-              component: 'profile/promote',
-            },
-            {
-              path: '/profile/promote',
-              component: 'profile/promote',
+              path: '/profile/partner',
+              component: 'profile/partner',
             },
           ],
         },

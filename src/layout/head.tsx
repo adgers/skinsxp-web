@@ -38,6 +38,7 @@ export default function Header() {
     benefitShow,
     showBenefit,
   } = useModel('user');
+
   const location = useLocation();
   const locale = getLocale();
 
@@ -100,7 +101,7 @@ export default function Header() {
   const headExt = [
     {
       title: <FormattedMessage id="home_item_hzhb" />,
-      link: '/profile/promote',
+      link: '/profile/partner',
       icon: 'icon-partner',
     },
   ];
@@ -274,12 +275,13 @@ export default function Header() {
           <div className="hidden lg:flex ml-4">
             {[...headLinks, ...headExt].map((item, i) => {
               const isActive = location.pathname.startsWith(item.link);
+
               return (
                 <Link
                   key={i}
                   to={item.link}
-                  className={`px-3 py-2 uppercase transition-colors font-semibold duration-200 text-white hover:text-green text-sm rounded-md ${
-                    isActive ? 'text-green' : ''
+                  className={`px-3 py-2 uppercase transition-colors font-semibold duration-200  hover:text-green text-sm rounded-md ${
+                    isActive ? 'text-green' : 'text-white'
                   }`}
                 >
                   {item.icon && <IconFont type={item.icon} className="mr-1" />}

@@ -172,7 +172,7 @@ export default function ProvablyVerify() {
             </div>
 
             <div
-              className="link text-sm mt-2 text-purple text-right"
+              className="link text-sm mt-2 text-white text-right"
               onClick={() => {
                 window.open(
                   'https://codesandbox.io/embed/cranky-sun-ls9nmx?fontsize=14&hidenavigation=1&theme=dark',
