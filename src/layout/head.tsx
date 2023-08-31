@@ -226,24 +226,6 @@ export default function Header() {
             </div>
           )}
         </Menu.Item>
-        <Menu.Item>
-          {({ active }) => (
-            <div
-              className={`${
-                active ? 'bg-accent bg-opacity-30 text-green' : ''
-              } flex items-center py-2 rounded cursor-pointer`}
-              onClick={logout}
-            >
-              <IconFont
-                type={'icon-logout'}
-                className="mx-5 md:mx-3 text-base"
-              />
-              <span className="capitalize text-sm">
-                <FormattedMessage id="mine_tcdl" />
-              </span>
-            </div>
-          )}
-        </Menu.Item>
       </Menu.Items>
     </>
   );
@@ -386,7 +368,27 @@ export default function Header() {
                         </div>
                       </div>
                     </div>
-                    <div className="bg-neutral">{menus}</div>
+                    <div className="bg-neutral">
+                      {menus}
+                      <Menu.Item>
+                        {({ active }) => (
+                          <div
+                            className={`${
+                              active ? 'bg-accent bg-opacity-30 text-green' : ''
+                            } flex items-center py-2 rounded cursor-pointer`}
+                            onClick={logout}
+                          >
+                            <IconFont
+                              type={'icon-logout'}
+                              className="mx-5 md:mx-3 text-base"
+                            />
+                            <span className="capitalize text-sm">
+                              <FormattedMessage id="mine_tcdl" />
+                            </span>
+                          </div>
+                        )}
+                      </Menu.Item>
+                    </div>
                   </div>
                 </Transition>
               </Menu>
