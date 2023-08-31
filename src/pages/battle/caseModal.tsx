@@ -81,7 +81,7 @@ export default function CaseModal({
         select cases
       </Modal.Header>
       <Modal.Body>
-        <div className="max-h-[580px] md:max-h-[600px] overflow-y-scroll sm:overflow-y-auto w-full hide-scrollbar p-2">
+        <div className="max-h-[500px] overflow-y-scroll sm:overflow-y-auto w-full hide-scrollbar p-2">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
             {battleBoxs?.map((t) => {
               //判断是否在boxList中，并统计数量
