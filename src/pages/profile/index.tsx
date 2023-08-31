@@ -7,6 +7,7 @@ import {
   Outlet,
   useIntl,
   useLocation,
+  history,
   useModel,
 } from '@umijs/max';
 import { useMemo, useState } from 'react';
@@ -76,7 +77,7 @@ export default function User() {
                         {userInfo?.secondaryBalance}
                       </div>
                     </div>
-                    <div className="btn px-[16px] rounded border border-green text-green disp invisible xl:visible ">
+                    <div className="btn px-[16px] rounded border border-green text-green disp invisible xl:visible " onClick={()=>history.push('/deposit')}>
                       <IconFont type="icon-funds" className="text-xl" />
                       <FormattedMessage id="wc_rewards_deposit" />
                     </div>

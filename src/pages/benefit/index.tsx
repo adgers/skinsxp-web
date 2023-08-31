@@ -7,6 +7,7 @@ import { useEffect, useRef, useState } from 'react';
 import { Button, Modal } from 'react-daisyui';
 import { toast } from 'react-toastify';
 import './index.less';
+import { bindInviterUsingPOST } from '@/services/front/gerenzhongxinxiangguan';
 
 export default function Benefit() {
   const { benefitShow, hideBenefit, getUser } = useModel('user');
@@ -14,28 +15,33 @@ export default function Benefit() {
 
   const intl = useIntl();
 
-  const { data: redBagList } = useRequest(
-    () => {
-      if (tab === 1) {
-        return listCycleRedPacketUsingGET({
-          type: 2,
-        });
-      }
-    },
-    {
-      refreshDeps: [tab],
-    },
-  );
+  // const { data: redBagList } = useRequest(
+  //   () => {
+  //     if (tab === 1) {
+  //       return listCycleRedPacketUsingGET({
+  //         type: 2,
+  //       });
+  //     }
+  //   },
+  //   {
+  //     refreshDeps: [tab],
+  //   },
+  // );
 
-  const codeRef = useRef<HTMLInputElement>(null);
+  const cdKeyCodeRef = useRef<HTMLInputElement>(null);
+  const promoCodeRef = useRef<HTMLInputElement>(null);
+
   useEffect(() => {
     if (benefitShow && tab === 0) {
-      codeRef.current?.focus();
+      promoCodeRef.current?.focus();
+    }
+    if (benefitShow && tab === 1) {
+      cdKeyCodeRef.current?.focus();
     }
   }, [benefitShow, tab]);
 
   const onGetBenefit = async () => {
-    const val = codeRef?.current?.value;
+    const val = cdKeyCodeRef?.current?.value;
     if (!val) {
       return;
     }
@@ -49,6 +55,19 @@ export default function Benefit() {
         }),
       );
       getUser();
+    }
+  };
+
+  const onBindPromoCode = async () => {
+    const code = promoteRef?.current?.value;
+    if (!code) return;
+
+    const ret = await bindInviterUsingPOST({
+      invitationCode: code,
+    });
+    if (ret.status === 0) {
+      toast.success(intl.formatMessage({ id: 'mine_xgcg' }));
+      refresh();
     }
   };
 
@@ -106,13 +125,15 @@ export default function Benefit() {
                 type="text"
                 className=" w-full bg-dark rounded-l-xl pl-4 focus:outline-none"
                 maxLength={12}
-                ref={codeRef}
+                ref={promoCodeRef}
                 placeholder="Enter the Promo Code"
               />
 
               <div
                 className="btn btn-purple uppercase px-10"
-                onClick={onGetBenefit}
+                onClick={()=>{
+                  onBindPromoCode()
+                }}
               >
                 APPLY
               </div>
@@ -134,7 +155,7 @@ export default function Benefit() {
                 type="text"
                 className=" w-full bg-dark rounded-l-xl pl-4 focus:outline-none"
                 maxLength={12}
-                ref={codeRef}
+                ref={cdKeyCodeRef}
                 placeholder="Enter the CDKey"
               />
 
