@@ -8,7 +8,7 @@ import {
   recentBoxGiftUsingGET,
   v2OpenBoxUsingGET,
 } from '@/services/front/kaixiangxiangguan';
-import useStateRef, { getBoxColor, goback, numberFixed, sleep } from '@/utils';
+import { getBoxColor, goback, numberFixed, sleep, useStateRef } from '@/utils';
 import { LeftOutlined, LoadingOutlined } from '@ant-design/icons';
 import { FormattedMessage, useModel, useParams, useRequest } from '@umijs/max';
 import { useResponsive } from 'ahooks';

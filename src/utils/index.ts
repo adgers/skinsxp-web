@@ -217,7 +217,7 @@ export function getSteamLoginUrl() {
  * @param state
  * @returns
  */
-export default function useStateRef(state: any) {
+export  function useStateRef(state: any) {
   const stateRef = useRef<any>()
   useEffect(() => {
     stateRef.current = state

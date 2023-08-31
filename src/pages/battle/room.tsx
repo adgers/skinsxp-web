@@ -341,6 +341,10 @@ export default function RoomDetail() {
     setJoinBotLoading(false);
     if (ret.status === 0) {
       toast.success(<FormattedMessage id="roll_detail_jrcg" />);
+      if (voice) {
+        const audio = new Audio(require('@/assets/audio/ready.wav'));
+        audio.play();
+      }
     }
   };
 
