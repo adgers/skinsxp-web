@@ -15,8 +15,10 @@ export function getApiDomain() {
     location.href.indexOf('127.0.0.1') > -1
   ) {
     return 'http://127.0.0.1:9999';
-  } else {
+  } else if(location.href.indexOf('wgksins.com') > -1) {
     return '//api.wgskins.com';
+  } else {
+    return '//192.168.12.178:9999';
   }
 }
 
@@ -36,11 +38,11 @@ export function getImgHost() {
     location.href.indexOf('localhost') > -1 ||
     location.href.indexOf('127.0.0.1') > -1
   ) {
-    return 'https://muskins-test.oss-cn-hangzhou.aliyuncs.com/root/image/';
-
-    return 'https://img.wgskins.com/root/image/';
+    return 'http://muskins-test.oss-cn-hangzhou.aliyuncs.com/root/image/';
+  } else if(location.href.indexOf('wgksins.com') > -1) {
+    return '//img.wgskins.com/root/image/';
   }
-  return '//img.wgskins.com/root/image/';
+  return 'http://muskins-test.oss-cn-hangzhou.aliyuncs.com/root/image/';
 }
 
 export async function logout() {

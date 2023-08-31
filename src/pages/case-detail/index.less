@@ -77,33 +77,37 @@
     font-weight: 400;
   }
 
-  .weapon-bg {
+  .grade-bg{
     background-size: contain;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    left: 0;
+    top: -30px;
+  }
+
+  .grade-0-bg {
+    background-image: url('@/assets/grade0-bg.png');
+  }
+
+  .grade-1-bg {
+    background-image: url('@/assets/grade1-bg.png');
+  }
+  .grade-2-bg {
+    background-image: url('@/assets/grade2-bg.png');
+  }
+
+  .grade-3-bg {
+    background-image: url('@/assets/grade3-bg.png');
+  }
+
+
+  .weapon-bg {
+    background-size: cover;
     background-repeat: no-repeat;
-    position: relative;
 
     &.grade-0 {
       background-image: url('@/assets/grade0.png');
-    }
-
-    .grade-0-bg {
-      background-image: url('@/assets/grade0-bg.png');
-      background-size: contain;
-      width: 100%;
-      height: 100%;
-      position: absolute;
-      left: 0;
-      top: 0;
-    }
-
-    .grade-1-bg {
-      background-image: url('@/assets/grade1-bg.png');
-      background-size: contain;
-      width: 100%;
-      height: 100%;
-      position: absolute;
-      left: 0;
-      top: 0;
     }
 
     &.grade-1 {

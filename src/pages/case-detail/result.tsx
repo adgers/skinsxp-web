@@ -1,9 +1,8 @@
-import winVideo from '@/assets/audio/win.mp3';
 import { IconFont } from '@/components/icons';
 import { exchangeQuantityUsingPOST } from '@/services/front/kaixiangxiangguan';
 import { numberFixed } from '@/utils';
 import { FormattedMessage, useIntl, useModel } from '@umijs/max';
-import { useCallback, useEffect, useRef, useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import CountUp from 'react-countup';
 import { Button, Modal } from 'react-daisyui';
 import { toast } from 'react-toastify';
@@ -22,11 +21,24 @@ export default function Result({
   const [saleLoading, setSaleLoading] = useState(false);
   const { voice } = useModel('sys');
   const intl = useIntl();
-  const audioRef = useRef<HTMLVideoElement>(null);
+
+  const audio = useMemo(
+    () => new Audio(require('@/assets/audio/item.wav')),
+    [],
+  );
 
   const [openResults, setOpenResults] = useState<
     API.OpenBoxResultVo[] & API.UpgradeResultVo
   >([]);
+
+  const countTotalPrice = (
+    results: API.OpenBoxResultVo[] & API.UpgradeResultVo,
+  ) => {
+    const total = results?.reduce((total: number, item: any) => {
+      return Number(total) + Number(item.recoveryPrice);
+    }, 0);
+    setTotalPrice(numberFixed(total, 2));
+  };
 
   const putResults = async () => {
     //间隔500ms将results中的数据放入openResults中
@@ -34,26 +46,22 @@ export default function Result({
       const item = results[i];
       await new Promise((resolve) => {
         setTimeout(() => {
-          setOpenResults((prev) => [...prev, item]);
+          setOpenResults((prev) => {
+            const ret = [...prev, item];
+            countTotalPrice(ret);
+            return ret;
+          });
+
+          audio.currentTime = 0;
+          audio.play();
           resolve(null);
-        }, 500);
+        }, 1000);
       });
     }
   };
 
-  const playWinAudio = useCallback(async () => {
-    if (audioRef.current) {
-      await audioRef.current.pause();
-      audioRef.current.currentTime = 0;
-      audioRef.current.play().catch(() => {});
-    }
-  }, []);
-
   useEffect(() => {
     if (show) {
-      if (voice) {
-        playWinAudio();
-      }
       setOpenResults([]);
       putResults().then(() => {
         const total = results?.reduce((total: number, item: any) => {
@@ -65,6 +73,9 @@ export default function Result({
   }, [show]);
 
   const onSale = async () => {
+    if (results.length !== openResults.length) {
+      return;
+    }
     if (saleLoading) return;
     setSaleLoading(true);
     const ids = results?.map((item: any) => item.voucherId);
@@ -72,7 +83,7 @@ export default function Result({
     setSaleLoading(false);
     if (ret.status === 0) {
       if (voice) {
-        const audio = new Audio(require(('@/assets/audio/exchange.mp3')));
+        const audio = new Audio(require('@/assets/audio/exchange.mp3'));
         audio.play();
       }
       toast.success(
@@ -101,41 +112,33 @@ export default function Result({
         <div className="result-title">Congratulations</div>
       </Modal.Header>
       <Modal.Body>
-        <video
-          src={winVideo}
-          ref={audioRef}
-          controls={false}
-          playsInline={true}
-          webkit-playsinline="true"
-          x5-playsinline="true"
-          style={{
-            display: 'none',
-          }}
-        />
-        <div className="flex flex-wrap items-center gap-2 justify-center min-h-[200px]">
+        <div className="flex flex-wrap items-center gap-x-2 gap-y-4 justify-center min-h-[200px]">
           {openResults?.map((item, i: number) => (
             <div
-              className="flex flex-col gap-1 w-[135px] sm:w-[180px] animate__animated animate__zoomIn"
+              className="flex flex-col gap-1 w-[130px] sm:w-[180px] animate__animated animate__flipInX relative items-center justify-center"
               key={i}
             >
               <div
-                className={`w-[135px] sm:w-[180px] h-[135px] sm:h-[180px] flex items-center justify-center weapon-bg grade-${item.grade}`}
-              >
-                <div className={`grade-${item.grade}-bg animate-spin-slow`} />
-                <img src={item.giftImage} className="z-10" />
-              </div>
-              <div className="-mt-4">
+                className={`absolute left-[15px] top-0 w-[100px] sm:w-[150px] h-[111px] sm:h-[166px] weapon-bg grade-${item.grade}`}
+              ></div>
+              <div
+                className={`grade-bg grade-${item.grade}-bg ${
+                  item.grade === 0 || item.grade === 1
+                    ? 'animate-spin-slow'
+                    : ''
+                }`}
+              />
+              <img src={item.giftImage} className="z-10 w-full h-[98px] sm:h-[135px]" />
+              <div className="w-full flex flex-col px-[15px] z-20 gap-2">
                 <div className="text-sm flex gap-1 font-num text-green">
                   ${item.recoveryPrice}
                 </div>
-                <div className="text-xs truncate">
-                  {item.giftName}
-                </div>
+                <div className="text-xs truncate">{item.giftName}</div>
               </div>
             </div>
           ))}
         </div>
-        <div className="flex gap-2 w-full justify-center mt-6">
+        <div className="grid grid-cols-2 gap-2 sm:gap-4 w-full sm:px-5 mt-6">
           <button
             onClick={onClose}
             className="btn-purple !btn-sm"

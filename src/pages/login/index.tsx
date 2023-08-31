@@ -7,7 +7,7 @@ import loginBg from '@/assets/login-bg.png';
 export default function LoginPage() {
   return (
     <div className="z-10 flex flex-col justify-center items-center mt-20">
-     <img src={loginBg} alt="" className="w-1/3 sm:w-1/4" />
+     <img src={loginBg} alt="" className="w-1/3 sm:w-1/3" />
       <h2 className="mt-5 text-[1.6vw] leading-none text-green font-bold">
         <FormattedMessage id="not_login_title" />
       </h2>
