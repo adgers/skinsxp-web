@@ -13,25 +13,25 @@ export default function Login() {
 
   const idRef = useRef<InputRef>(null);
   const pwdRef = useRef<InputRef>(null);
-  const checkRef = useRef<HTMLInputElement>(null);
+  // const checkRef = useRef<HTMLInputElement>(null);
 
   const onPwdLogin = async () => {
     const id = idRef.current?.input?.value;
     const password = pwdRef.current?.input?.value;
-    const checked = checkRef.current?.checked;
+    // const checked = checkRef.current?.checked;
 
     if (!id) {
-      toast.error('请输入手机号');
+      toast.error('please input username');
       return;
     }
     if (!password) {
-      toast.error('请输入密码');
+      toast.error('please input password');
       return;
     }
-    if (!checked) {
-      toast.error('请阅读并同意协议');
-      return;
-    }
+    // if (!checked) {
+    //   toast.error('请阅读并同意协议');
+    //   return;
+    // }
 
     if (loading) {
       return;
@@ -42,7 +42,7 @@ export default function Login() {
     setLoading(false);
 
     if (ret?.data) {
-      toast.success('登录成功');
+      toast.success('Success');
       localStorage.setItem('token', ret?.data);
       hideLogin();
       location.reload();
@@ -52,10 +52,10 @@ export default function Login() {
   return (
     <Modal open={loginShow} className="max-w-md">
       <Modal.Header className="flex flex-col items-center mb-2">
-        <div>欢迎</div>
-        <div className="modal-sub-title">
-          <div className="text-base">密码登录</div>
-        </div>
+        <div>Login</div>
+        {/* <div className="modal-sub-title">
+          <div className="text-base">Login with password</div>
+        </div> */}
       </Modal.Header>
       <Button
         size="xs"
@@ -68,7 +68,7 @@ export default function Login() {
       </Button>
       <Modal.Body className="flex flex-col gap-4">
         <Input
-          placeholder="请输入手机号"
+          placeholder="Please input username"
           prefix={<UserOutlined />}
           maxLength={11}
           ref={idRef}
@@ -78,7 +78,7 @@ export default function Login() {
         />
 
         <Input.Password
-          placeholder="请输入密码"
+          placeholder="Please input password"
           ref={pwdRef}
           prefix={<LockOutlined />}
           allowClear
@@ -86,7 +86,7 @@ export default function Login() {
           size='large'
         />
 
-        <div className="flex justify-between">
+        {/* <div className="flex justify-between">
           <div className="flex text-sm">
             还没有账号？
             <span
@@ -108,7 +108,7 @@ export default function Login() {
           <div className="text-sm">
             我已满18周岁并接受《用户协议》和《隐私政策》
           </div>
-        </div>
+        </div> */}
       </Modal.Body>
       <Modal.Actions className="flex flex-col mt-4">
         <Button
@@ -116,17 +116,17 @@ export default function Login() {
           onClick={onPwdLogin}
           loading={loading}
         >
-          登录
+          Login
         </Button>
       </Modal.Actions>
-      <div className="flex justify-center mt-3">
+      {/* <div className="flex justify-center mt-3">
         <span
           className="text-sm hover:text-primary cursor-pointer"
           onClick={showSmsLogin}
         >
           验证码登录
         </span>
-      </div>
+      </div> */}
     </Modal>
   );
 }
