@@ -52,8 +52,10 @@ export default function Result({
             return ret;
           });
 
-          audio.currentTime = 0;
-          audio.play();
+          if (voice) {
+            audio.currentTime = 0;
+            audio.play();
+          }
           resolve(null);
         }, 1000);
       });

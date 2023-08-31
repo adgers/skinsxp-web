@@ -8,7 +8,7 @@ import {
   recentBoxGiftUsingGET,
   v2OpenBoxUsingGET,
 } from '@/services/front/kaixiangxiangguan';
-import { getBoxColor, goback, numberFixed, sleep } from '@/utils';
+import useStateRef, { getBoxColor, goback, numberFixed, sleep } from '@/utils';
 import { LeftOutlined, LoadingOutlined } from '@ant-design/icons';
 import { FormattedMessage, useModel, useParams, useRequest } from '@umijs/max';
 import { useResponsive } from 'ahooks';
@@ -59,6 +59,7 @@ export default function BoxPage() {
 
   const [hasOpen, setHasOpen] = useState(false);
   const [lotteryStart, setLotteryStart] = useState(false);
+  const lotteryStartRef = useStateRef(lotteryStart);
   const [giftList, setGiftList] = useState<API.BoxGiftVo[]>([]);
   const { voice, toggleVoice, fast, toggleFast } = useModel('sys');
 
@@ -67,6 +68,7 @@ export default function BoxPage() {
       await sleep(500);
       setResultShow(true);
       setLotteryStart(false);
+      lotteryStartRef.current = false;
     }
   };
 
@@ -100,7 +102,7 @@ export default function BoxPage() {
   };
 
   const openBox = async () => {
-    if (openLoading || lotteryStart) return;
+    if (openLoading || lotteryStartRef.current) return;
     setOpenLoading(true);
     const ret = await v2OpenBoxUsingGET({
       caseId: Number(caseId),
@@ -113,6 +115,8 @@ export default function BoxPage() {
     setHasOpen(true);
     getUser();
     setResults(ret?.data?.results);
+    lotteryStartRef.current = true;
+
     await sleep(500);
     setLotteryStart(true);
 
