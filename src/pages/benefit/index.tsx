@@ -117,6 +117,7 @@ export default function Benefit() {
                 type="text"
                 className=" w-full bg-dark rounded-l-xl pl-4 focus:outline-none"
                 ref={promoCodeRef}
+                defaultValue={userInfo?.inviterPromotionCode}
                 placeholder={intl.formatMessage({ id: 'register_qsryqm' })}
               />
 

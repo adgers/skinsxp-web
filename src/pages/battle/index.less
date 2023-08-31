@@ -1,83 +1,95 @@
 .battle-rank-point {
-  background: radial-gradient(52.71% 53.03% at 50.00% 40.45%, #D79A58 0%, #131314 100%);
-  height: 275px;
   display: flex;
   justify-content: center;
+  height: 275px;
+  background: radial-gradient(
+    52.71% 53.03% at 50% 40.45%,
+    #d79a58 0%,
+    #131314 100%
+  );
   background: url('@/assets/battle-rank-bg.png') no-repeat;
-  background-size: contain;
   background-position: center;
+  background-size: contain;
 }
 
 .battle-ranks {
+  position: relative;
   display: flex;
   flex-direction: column;
-  position: relative;
 
   .my-rank {
     width: 100%;
-    text-align: center;
     height: 56px;
     line-height: 56px;
+    text-align: center;
   }
 
   .tab-item.tab-active .tab-item-c::after {
-    background: #FFD284 !important;
-    box-shadow: 0px 2px 7.5px 0px #9C8152 !important;
+    background: #ffd284 !important;
+    box-shadow: 0px 2px 7.5px 0px #9c8152 !important;
   }
-
 }
 
 .bgm-rank {
-  border-bottom: 1px solid #2E2E2E;
   height: 52px;
   padding: 0 8px;
+  border-bottom: 1px solid #2e2e2e;
 }
 
 .bgm-rank1 {
-  background: linear-gradient(90deg, rgba(132, 112, 41, 0.95) 0%, rgba(77, 73, 32, 0.00) 100%), rgba(22, 22, 22, 0.75);
+  .rank-num {
+    background: url('@/assets/battle-rank1.png') no-repeat;
+    background-size: cover;
+  }
 }
 
 .bgm-rank2 {
-  background: linear-gradient(90deg, rgba(150, 21, 44, 0.54) 0%, rgba(125, 25, 31, 0.00) 100%), rgba(22, 22, 22, 0.75);
+  .rank-num {
+    background: url('@/assets/battle-rank2.png') no-repeat;
+    background-size: cover;
+  }
 }
 
 .bgm-rank3 {
-  background: linear-gradient(90deg, rgba(93, 21, 150, 0.60) 0%, rgba(81, 25, 125, 0.00) 100%), rgba(22, 22, 22, 0.75);
+  .rank-num {
+    background: url('@/assets/battle-rank3.png') no-repeat;
+    background-size: cover;
+  }
 }
 
 .battle-seat-bg {
-  background-color: #161616;
+  position: relative;
   display: flex;
   align-items: center;
   justify-content: center;
-  position: relative;
+  background-color: #161616;
   background-image: url('@/assets/lottery-bg.png');
-  background-size: contain;
   background-repeat: no-repeat;
   background-position: center;
+  background-size: contain;
 }
 
 .battle-user {
-  background: #322D36;
   display: flex;
+  background: #322d36;
   backdrop-filter: blur(2px);
 }
 
 .battle-user-win {
-  background: linear-gradient(180deg, #1C1C22 23.44%, #605A2C 100%);
+  background: linear-gradient(180deg, #1c1c22 23.44%, #605a2c 100%);
 }
 
 .seat-1 {
   &::before {
-    background: url('@/assets/box-sago.png') no-repeat;
-    background-size: contain;
-    content: "";
     position: absolute;
+    top: 50%;
+    left: 0;
     width: 28px;
     height: 37px;
-    left: 0;
-    top: 50%;
+    background: url('@/assets/box-sago.png') no-repeat;
+    background-size: contain;
     transform: translateY(-50%);
+    content: '';
   }
 }
 
@@ -99,25 +111,25 @@
 
 .seat-last {
   &::after {
-    background: url('@/assets/box-sago.png') no-repeat;
-    background-size: contain;
-    content: "";
     position: absolute;
+    top: 50%;
+    right: 0;
     width: 28px;
     height: 37px;
-    right: 0;
-    top: 50%;
+    background: url('@/assets/box-sago.png') no-repeat;
+    background-size: contain;
     transform: rotateY(180deg) translateY(-50%);
+    content: '';
   }
 }
 
 @media (max-width: 599px) {
   .seat-1 {
     &::before {
+      top: 50%;
+      left: -6px;
       width: 14px;
       height: 44px;
-      left: -6px;
-      top: 50%;
       transform: translateY(-50%);
     }
   }
@@ -126,68 +138,81 @@
   .seat-3,
   .seat-4 {
     &::before {
+      position: absolute;
+      top: 50%;
+      left: -14px;
       width: 21px;
       height: 21px;
-      position: absolute;
-      left: -14px;
-      top: 50%;
       transform: translateY(-50%);
     }
   }
 
   .seat-last {
     &::after {
+      top: 50%;
+      right: -6px;
       width: 14px;
       height: 44px;
-      right: -6px;
-      top: 50%;
       transform: rotateY(180deg) translateY(-50%);
     }
   }
 }
 
-
-
 .win-user-bg {
-  background: linear-gradient(90deg, rgba(39, 104, 53, 0.70) 0%, rgba(32, 77, 42, 0.20) 100%), rgba(22, 22, 22, 0.75);
+  background: linear-gradient(
+      90deg,
+      rgba(39, 104, 53, 0.7) 0%,
+      rgba(32, 77, 42, 0.2) 100%
+    ),
+    rgba(22, 22, 22, 0.75);
 }
 
 .animate-item-enter {
-  animation-duration: 800ms;
   animation-name: zoomIn;
+  animation-duration: 800ms;
 }
 
 .animate-item-enter-active {
-  animation-duration: 800ms;
   animation-name: zoomIn;
+  animation-duration: 800ms;
 }
 
 .animate-item-enter-done {
-  animation-duration: 800ms;
   animation-name: zoomIn;
+  animation-duration: 800ms;
 }
 
 .animate-item-exit {
-  animation-duration: 800ms;
   animation-name: bounceOut;
+  animation-duration: 800ms;
 }
 
 .animate-item-exit-active {
-  animation-duration: 800ms;
   animation-name: bounceOut;
+  animation-duration: 800ms;
 }
 
 .animate-item-exit-done {
-  animation-duration: 800ms;
   animation-name: bounceOut;
+  animation-duration: 800ms;
 }
 
 .battle-detail {
   .battle-mode-0 {
-    background: linear-gradient(90deg, rgba(39, 104, 53, 0.60) 0%, rgba(32, 77, 42, 0.00) 100%), rgba(22, 22, 22, 0.75);
+    background: linear-gradient(
+        90deg,
+        rgba(39, 104, 53, 0.6) 0%,
+        rgba(32, 77, 42, 0) 100%
+      ),
+      rgba(22, 22, 22, 0.75);
   }
 
   .battle-mode-1 {
-    background: linear-gradient(90deg, rgba(150, 21, 44, 0.60) 0%, rgba(125, 25, 31, 0.00) 100%), rgba(22, 22, 22, 0.75);
+    background: linear-gradient(
+        90deg,
+        rgba(150, 21, 44, 0.6) 0%,
+        rgba(125, 25, 31, 0) 100%
+      ),
+      rgba(22, 22, 22, 0.75);
   }
 }

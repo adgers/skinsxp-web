@@ -88,14 +88,14 @@ export default function BattlePage() {
 
           <div className="hidden sm:block absolute right-0 bottom-5">
             <Link className="btn-purple" to={`/battle/create`}>
-              <IconFont type="icon-battle" className='text-lg'/>
+              <IconFont type="icon-battle" className="text-lg" />
               Create case battle
             </Link>
           </div>
         </div>
 
         <Link className="sm:hidden btn-purple mb-4" to={`/battle/create`}>
-          <IconFont type="icon-battle" className='text-lg'/>
+          <IconFont type="icon-battle" className="text-lg" />
           Create case battle
         </Link>
         <div className="flex w-full items-center justify-center sm:justify-end mb-4">
@@ -154,8 +154,11 @@ export default function BattlePage() {
             <div className="font-num mt-2 text-green">
               {topOneYesterday?.rewardPoint}
             </div>
-            <div className="bg-black mt-6 uppercase text-xs">
-              <FormattedMessage id="arena_my_reward_point" />：
+            <div className="bg-black mt-6 uppercase text-xs flex justify-between w-full items-center px-2">
+              <div>
+                <IconFont type="icon-ranking" className="text-purple mr-2" />
+                <FormattedMessage id="arena_my_reward_point" />
+              </div>
               <span className="font-num text-purple">
                 {myReward?.rewardPoint || 0}
               </span>
@@ -198,9 +201,9 @@ export default function BattlePage() {
                       }`}
                       key={i}
                     >
-                      <span className="font-num font-semibold text-white">
+                      <div className="font-num font-semibold text-white rank-num w-8 h-8 flex items-center justify-center ">
                         {i + 1}
-                      </span>
+                      </div>
                       <div className="relative">
                         <img
                           src={user.headPic}
