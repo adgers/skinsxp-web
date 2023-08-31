@@ -209,3 +209,10 @@ export function getSteamLoginUrl() {
     encodeURIComponent(callbackUrl)
   );
 }
+
+export function isSafari() {
+  return (
+    navigator.userAgent.indexOf('Safari') > -1 &&
+    navigator.userAgent.indexOf('Chrome') === -1
+  );
+}

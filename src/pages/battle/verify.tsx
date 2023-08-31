@@ -34,17 +34,17 @@ export default function Verify({
             <div className="flex w-full gap-2 items-center px-3 py-3">
               <img src={record?.headPic} className="w-8 h-8 rounded" />
               <div className="flex flex-col text-xs">
-                <span>{record.nickname} </span>
                 <div>
-                  {record.winner ? (
-                    <span className="text-green">
-                      <FormattedMessage id="success" />
-                    </span>
-                  ) : (
-                    <span className="text-red">
-                      <FormattedMessage id="failed" />
-                    </span>
+                  {record.nickname}{' '}
+                  {record.winner && (
+                    <span className="text-green uppercase">Winner</span>
                   )}
+                </div>
+                <div className="flex text-xs gap-2">
+                  <span>Client seed</span>
+                  <div className="text-white text-opacity-50">
+                    {record?.clientSeed}
+                  </div>
                 </div>
               </div>
             </div>
@@ -57,10 +57,12 @@ export default function Verify({
                   <div className="mb-2 mt-1 text-center text-xs font-bold uppercase">
                     ROUND {urecord.round}
                   </div>
-                  <WeaponCard key={i} data={urecord} />
+                  <WeaponCard key={i} data={urecord} showRoll={false}/>
                   <div className="mt-2 flex gap-1 text-xs font-bold uppercase">
                     <span>Roll ID {urecord.rollCode}</span>
-                    <Link to={`/profile/provably-fair/verify/${urecord.verifyId}`}>
+                    <Link
+                      to={`/provably-fair/verify/${urecord.verifyId}`}
+                    >
                       <IconFont type="icon-shield" className="text-green" />
                     </Link>
                   </div>

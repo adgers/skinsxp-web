@@ -1,4 +1,4 @@
-import { parseName, sleep } from '@/utils';
+import { isSafari, parseName, sleep } from '@/utils';
 import { animated, easings, useSpring } from '@react-spring/web';
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import './index.less';
@@ -77,7 +77,7 @@ const Lottery = ({
     });
     scaleApi.start({
       from: { scale: 1 },
-      to: { scale: 1.2 },
+      to: { scale: 1.3 },
       config: { duration: 500 },
       onResolve: () => {
         onCompleted(lotteryIndex);
@@ -109,6 +109,8 @@ const Lottery = ({
   };
 
   const playSpinAudio = useCallback(async () => {
+    if (isSafari()) return;
+
     await audio.pause();
     audio.currentTime = 0;
     await audio.play();
@@ -126,12 +128,12 @@ const Lottery = ({
 
     const gapHeight = 8;
     const moveY =
-      winLotteryIndex * (boxHeight + gapHeight) - wrapHeight / 2 + randomHeight;
+      winLotteryIndex * (boxHeight + gapHeight) - wrapHeight / 2 + randomHeight - 8;
 
     moveApi.start({
       from: { y: 0 },
       to: { y: -moveY },
-      config: { duration: duration, easing: easings.easeOutQuint },
+      config: { duration: duration, easing: easings.easeInOutCubic },
       onChange: (props) => {
         const currentMoveY = props.value.y;
         const distanceDelta = currentMoveY - prevMoveRef.current;
@@ -153,7 +155,8 @@ const Lottery = ({
     const boxWidth = boxSize.width;
     let randomWidth;
     if (randomPosition) {
-      randomWidth = Math.random() * (boxWidth - 30) + 30;
+      //随机位置在箱子宽度10到箱子宽度-10之间
+      randomWidth = Math.random() * (boxWidth - 10) + 10;
     } else {
       //选中物品的正中间位置
       randomWidth = boxWidth / 2;
@@ -162,12 +165,12 @@ const Lottery = ({
     const gapWidth = 8;
     const wrapWidth = wrapRef.current?.offsetWidth || 0;
     const moveX =
-      winLotteryIndex * (boxWidth + gapWidth) - wrapWidth / 2 + randomWidth;
+      winLotteryIndex * (boxWidth + gapWidth) - wrapWidth / 2 + randomWidth - 8;
 
     moveApi.start({
       from: { x: 0 },
       to: { x: -moveX },
-      config: { duration: duration, easing: easings.easeOutQuint },
+      config: { duration: duration, easing: easings.easeInOutCubic },
       onChange: (props) => {
         const currentMoveX = props.value.x;
         const distanceDelta = currentMoveX - prevMoveRef.current;
@@ -230,7 +233,7 @@ const Lottery = ({
           const name = parseName(item.giftName);
 
           return (
-            <div
+            <animated.div
               className={`lottery-card lottery-card-${grade} ${
                 showLogo ? 'lottery-card-logo' : 'lottery-card-bg'
               }`}
@@ -238,6 +241,7 @@ const Lottery = ({
               style={{
                 width: boxSize.width,
                 height: boxSize.height,
+                ...(isWin ? {} : opacitySprings),
               }}
             >
               <animated.img
@@ -255,7 +259,6 @@ const Lottery = ({
                   className={`card-logo`}
                 />
               )}
-
               {showName && (
                 <div className="hidden md:block absolute bottom-0 left-0 -mb-1 w-full p-2 font-semibold uppercase leading-tight md:p-3">
                   <div className="truncate text-xs md:text-sm text-center">
@@ -264,7 +267,7 @@ const Lottery = ({
                   </div>
                 </div>
               )}
-            </div>
+            </animated.div>
           );
         })}
       </animated.div>

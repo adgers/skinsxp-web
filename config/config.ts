@@ -114,30 +114,30 @@ export default defineConfig({
               component: 'profile/promote',
             },
             {
-              path: '/profile/provably-fair',
-              component: 'profile/provablyFair',
-              routes: [
-                {
-                  path: '/profile/provably-fair',
-                  redirect: '/profile/provably-fair/config',
-                },
-                {
-                  path: '/profile/provably-fair/config',
-                  component: 'profile/provablyFair/config',
-                },
-                {
-                  path: '/profile/provably-fair/verify',
-                  component: 'profile/provablyFair/verify',
-                },
-                {
-                  path: '/profile/provably-fair/verify/:id',
-                  component: 'profile/provablyFair/verify',
-                },
-              ],
-            },
-            {
               path: '/profile/promote',
               component: 'profile/promote',
+            },
+          ],
+        },
+        {
+          path: '/provably-fair',
+          component: 'provablyFair',
+          routes: [
+            {
+              path: '/provably-fair',
+              redirect: '/provably-fair/config',
+            },
+            {
+              path: '/provably-fair/config',
+              component: 'provablyFair/config',
+            },
+            {
+              path: '/provably-fair/verify',
+              component: 'provablyFair/verify',
+            },
+            {
+              path: '/provably-fair/verify/:id',
+              component: 'provablyFair/verify',
             },
           ],
         },
