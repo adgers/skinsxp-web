@@ -287,6 +287,17 @@ export default function Header() {
                 </Link>
               );
             })}
+            <div
+              className="px-3 py-2 uppercase transition-colors font-semibold duration-200 text-white hover:text-green text-sm rounded-md cursor-pointer"
+              onClick={() => showBenefit()}
+            >
+              <IconFont
+                type="icon-promocode"
+                className="mx-5 md:mx-3 text-xl md:text-base"
+              />
+
+              <FormattedMessage id="mine_fllq" />
+            </div>
           </div>
         </div>
         <div className="flex-none flex gap-3">

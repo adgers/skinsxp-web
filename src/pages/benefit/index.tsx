@@ -84,7 +84,6 @@ export default function Benefit() {
             onClick={() => setTab(0)}
           >
             <span className="tab-item-c uppercase">
-              {/* <FormattedMessage id="wc_rewards_title" /> */}
               promote Code
             </span>
           </div>
