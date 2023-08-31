@@ -8,7 +8,7 @@ import {
   recentBoxGiftUsingGET,
   v2OpenBoxUsingGET,
 } from '@/services/front/kaixiangxiangguan';
-import useStateRef, { getBoxColor, goback, numberFixed, sleep } from '@/utils';
+import { getBoxColor, goback, numberFixed, sleep, useStateRef } from '@/utils';
 import { LeftOutlined, LoadingOutlined } from '@ant-design/icons';
 import { FormattedMessage, useModel, useParams, useRequest } from '@umijs/max';
 import { useResponsive } from 'ahooks';
@@ -57,17 +57,15 @@ export default function BoxPage() {
   const [results, setResults] = useState<API.OpenBoxResultVo[]>();
   const [openLoading, setOpenLoading] = useState(false);
 
+  const [hasOpen, setHasOpen] = useState(false);
   const [lotteryStart, setLotteryStart] = useState(false);
   const lotteryStartRef = useStateRef(lotteryStart);
   const [giftList, setGiftList] = useState<API.BoxGiftVo[]>([]);
-
   const { voice, toggleVoice, fast, toggleFast } = useModel('sys');
-  const fastAudio = new Audio(require('@/assets/audio/roll.mp3'));
-  const audio = new Audio(require('@/assets/audio/roll-long.mp3'));
 
   const onLortteryCompleted = async (index: number) => {
     if (index === openCount - 1) {
-      sleep(300);
+      await sleep(500);
       setResultShow(true);
       setLotteryStart(false);
       lotteryStartRef.current = false;
@@ -77,7 +75,7 @@ export default function BoxPage() {
   const resetGiftList = async () => {
     const list = [...giftList];
     setGiftList([]);
-    sleep(300);
+    await sleep(300);
     setGiftList(list);
   };
 
@@ -114,6 +112,7 @@ export default function BoxPage() {
     if (ret.status !== 0) {
       return;
     }
+    setHasOpen(true);
     getUser();
     setResults(ret?.data?.results);
     lotteryStartRef.current = true;
@@ -171,10 +170,10 @@ export default function BoxPage() {
         </div>
       </div>
       <div className="rounded ring-1 ring-light mt-4 p-0 sm:p-3 relative h-[174px] md:h-[324px] lottery-bg">
-        {openCount === 1 && !lotteryStart && (
+        {openCount === 1 && !hasOpen && (
           <div className="absolute inset-0 z-30 bg-dark bg-opacity-60 sm:rounded-2xl">
             <div className="absolute left-1/2 grid aspect-[1/1.5] h-full -translate-x-1/2 transform grid-cols-1 grid-rows-1">
-              <div className="absolute right-0 top-0 h-full w-full py-2">
+              <div className="absolute right-0 top-0 h-full w-full">
                 <img
                   src={boxDetails?.boxImage}
                   className="h-full w-full rounded-lg object-cover"
@@ -224,7 +223,7 @@ export default function BoxPage() {
               giftList={giftList}
               lotteryWin={results?.[0] || {}}
               onCompleted={onLortteryCompleted}
-              randomPosition={false}
+              randomPosition={true}
               showLogo={false}
               showName={true}
               boxSize={

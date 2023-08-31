@@ -132,7 +132,7 @@ export default function Header() {
     },
     {
       title: <FormattedMessage id="mine_gpyz" />,
-      link: '/profile/provably-fair',
+      link: '/provably-fair',
       icon: 'icon-shield',
     },
   ];

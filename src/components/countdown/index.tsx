@@ -3,21 +3,36 @@ import number2 from '@/assets/num2.png';
 import number3 from '@/assets/num3.png';
 import { useEffect, useState } from 'react';
 
-const Countdown = ({ onFinish }: { onFinish: () => void }) => {
-  const [countdown, setCountdown] = useState(4);
+import countdownAudio from '@/assets/audio/count.mp3';
+
+const Countdown = ({
+  onFinish,
+  voice,
+}: {
+  onFinish: () => void;
+  voice: boolean;
+}) => {
+  const [countdown, setCountdown] = useState(3);
 
   useEffect(() => {
     const interval = setInterval(() => {
       setCountdown((prevCountdown) => prevCountdown - 1);
     }, 1000);
 
-    if (countdown === 1) {
+    if (countdown === 0) {
       clearInterval(interval);
       onFinish();
     }
 
     return () => clearInterval(interval);
   }, [countdown]);
+
+  useEffect(() => {
+    if (voice) {
+      const audio = new Audio(countdownAudio);
+      audio.play();
+    }
+  }, []);
 
   return (
     <div className="fixed top-0 left-0 w-full h-full flex items-center justify-center z-[999] bg-black bg-opacity-30">

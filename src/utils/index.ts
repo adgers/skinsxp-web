@@ -221,12 +221,19 @@ export function getSteamLoginUrl() {
  * @param state
  * @returns
  */
-export default function useStateRef(state: any) {
+export  function useStateRef(state: any) {
   const stateRef = useRef<any>()
   useEffect(() => {
     stateRef.current = state
   }, [state])
-  
+
   return stateRef
 }
 
+
+export function isSafari() {
+  return (
+    navigator.userAgent.indexOf('Safari') > -1 &&
+    navigator.userAgent.indexOf('Chrome') === -1
+  );
+}

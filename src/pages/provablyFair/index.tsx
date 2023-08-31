@@ -1,3 +1,6 @@
+import { IconFont } from '@/components/icons';
+import { goback } from '@/utils';
+import { LeftOutlined } from '@ant-design/icons';
 import {
   FormattedMessage,
   Link,
@@ -6,8 +9,6 @@ import {
   useLocation,
 } from '@umijs/max';
 import { useMemo } from 'react';
-import { IconFont } from '@/components/icons';
-
 
 export default function ProvablyFair() {
   const location = useLocation();
@@ -16,29 +17,33 @@ export default function ProvablyFair() {
     return [
       {
         title: <FormattedMessage id="provably_fair_config" />,
-        link: '/profile/provably-fair/config',
+        link: '/provably-fair/config',
       },
       {
         title: <FormattedMessage id="provably_fair_verify" />,
-        link: '/profile/provably-fair/verify',
+        link: '/provably-fair/verify',
       },
     ];
   }, []);
 
   return (
-    <div className="w-full">
-      <div className="bg-black rounded p-5 text-white">
-        <div className="text-xl font-bold uppercase flex gap-2 items-center">
-          <IconFont type="icon-shield" className="text-green text-2xl" />
+    <div className="w-full max-w-[1400px] m-auto">
+      <div className="my-5 flex w-full flex-col justify-between border-b border-light lg:mb-0 lg:mt-8 lg:flex-row">
+        <div className="-mb-px items-center border-b border-green pb-6 pr-6 font-semibold uppercase text-white flex gap-3">
+          <div className="-my-2 text-white cursor-pointer" onClick={goback}>
+            <LeftOutlined />
+          </div>
           <FormattedMessage id="provably_fair_title" />
+          <IconFont type="icon-shield" className="text-green text-2xl" />
         </div>
-        <div className="mt-5 space-y-5">
-          <div
-            dangerouslySetInnerHTML={{
-              __html: intl.formatMessage({ id: 'provably_fair_content' }),
-            }}
-          ></div>
-        </div>
+      </div>
+      <div className="bg-black rounded p-5 text-white mt-8">
+        <div
+          dangerouslySetInnerHTML={{
+            __html: intl.formatMessage({ id: 'provably_fair_content' }),
+          }}
+          className="prose-base prose-slate"
+        ></div>
       </div>
       <div className="custom-tab flex mt-4 text-white justify-center border-b border-[#45444B] w-full h-[68px]">
         {tabLinks.map((item, index) => {

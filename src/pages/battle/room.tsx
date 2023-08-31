@@ -79,16 +79,16 @@ const WartingCard = ({
             <CheckCircleFilled className="text-green text-[32px]" />
             <div className="animate-circleChange absolute w-8 h-8 rounded-full left-0 top-0 border-2 border-green"></div>
           </div>
-          <span className="font-num text-white uppercase">Ready to battle</span>
+          <span className="font-num text-white uppercase text-xs sm:text-base whitespace-wrap text-center">Ready to battle</span>
         </div>
       ) : (
         <div className="flex flex-col gap-4 items-center">
-          <div className="w-full font-num uppercase h-full flex items-center justify-center text-center animate-pulse text-white">
+          <div className="w-full font-num uppercase h-full flex items-center justify-center text-center animate-pulse text-white text-xs sm:text-base">
             ARE YOU READY TO PLAY
           </div>
           {isOwner ? (
             <div
-              className="px-4 py-2 text-sm btn-green uppercase font-semibold "
+              className="btn-green !text-xs sm:!text-sm uppercase font-semibold "
               onClick={onJoinBot}
             >
               {joinLoading && <LoadingOutlined />}
@@ -97,15 +97,15 @@ const WartingCard = ({
             </div>
           ) : (
             <div
-              className={`px-4 py-2 text-sm cursor-pointer uppercase font-semibold ${
+              className={`px-4 py-2 text-xs sm:text-sm cursor-pointer uppercase font-semibold ${
                 mode === 0 ? 'btn-green' : 'btn-red'
               }`}
               onClick={onJoin}
             >
               {joinBotLoading && <LoadingOutlined />}
               <IconFont type="icon-battle" className="text-white text-sm" />
-              <FormattedMessage id="battle_room_join" />
-              {modeName}
+              <FormattedMessage id="battle_room_join" /> 
+              <span className='hidden sm:block'>{modeName}</span>
             </div>
           )}
         </div>
@@ -323,6 +323,10 @@ export default function RoomDetail() {
     setJoinLoading(false);
     if (ret.status === 0) {
       toast.success(<FormattedMessage id="roll_detail_jrcg" />);
+      if (voice) {
+        const audio = new Audio(require('@/assets/audio/ready.wav'));
+        audio.play();
+      }
       getUser();
     }
   };
@@ -337,6 +341,10 @@ export default function RoomDetail() {
     setJoinBotLoading(false);
     if (ret.status === 0) {
       toast.success(<FormattedMessage id="roll_detail_jrcg" />);
+      if (voice) {
+        const audio = new Audio(require('@/assets/audio/ready.wav'));
+        audio.play();
+      }
     }
   };
 
@@ -495,7 +503,9 @@ export default function RoomDetail() {
 
   return (
     <div className="max-w-[1400px] w-full m-auto mt-4 battle-detail px-1 sm:px-0">
-      {countDownShow && <Countdown onFinish={onCountDownFinish} />}
+      {countDownShow && (
+        <Countdown onFinish={onCountDownFinish} voice={voice} />
+      )}
 
       <div className="my-5 flex w-full flex-col justify-between border-b border-light lg:mb-0 lg:mt-8 lg:flex-row">
         <div className="-mb-px items-center border-b border-green pb-6 pr-6 font-semibold uppercase text-white flex">
@@ -583,7 +593,7 @@ export default function RoomDetail() {
             </div>
           </div>
           <div className="flex gap-3 items-center justify-end ">
-            {roomResult && data.state === 2 && (
+            {roomResult && isEnd && (
               <>
                 <Verify
                   show={verifyShow}
@@ -600,7 +610,7 @@ export default function RoomDetail() {
                   </span>
                 </div>
                 <div
-                  className="cursor-pointer flex gap-1 uppercase font-semibold"
+                  className="cursor-pointer flex gap-2 uppercase font-semibold"
                   onClick={goHistory}
                 >
                   <IconFont type="icon-luxiang" />
@@ -613,7 +623,7 @@ export default function RoomDetail() {
                 className="cursor-pointer flex gap-1 uppercase font-semibold"
                 onClick={() => setCancelConfirmShow(true)}
               >
-                <IconFont type="icon-exit"/>
+                <IconFont type="icon-exit" />
                 <span className="text-xs hidden sm:block">Cancel battle</span>
               </div>
             )}

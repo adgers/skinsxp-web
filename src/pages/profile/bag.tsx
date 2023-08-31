@@ -208,7 +208,7 @@ export default function BagPage() {
                           onClick={(e) => {
                             e.stopPropagation();
                             history.push(
-                              `/profile/provably-fair/verify/${item?.verifyId}`,
+                              `/provably-fair/verify/${item?.verifyId}`,
                             );
                           }}
                         >

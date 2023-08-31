@@ -143,30 +143,32 @@ export default function Result({
             </div>
           ))}
         </div>
-        <div className="grid grid-cols-2 gap-2 sm:gap-4 w-full sm:px-5 mt-6">
-          <button
-            onClick={onClose}
-            className="btn-purple !btn-sm"
-            type="button"
-          >
-            <FormattedMessage id="open_box_receive" />
-          </button>
+        {results.length === openResults.length && (
+          <div className="grid grid-cols-2 gap-2 sm:gap-4 w-full sm:px-5 mt-6">
+            <button
+              onClick={onClose}
+              className="btn-purple !btn-sm"
+              type="button"
+            >
+              <FormattedMessage id="open_box_receive" />
+            </button>
 
-          <Button
-            className="btn-green !btn-sm"
-            onClick={onSale}
-            loading={saleLoading}
-          >
-            <FormattedMessage id="open_box_sell_all" />
-            <IconFont type="icon-coin" />
-            <CountUp
-              end={totalPrice}
-              duration={0.3}
-              decimals={2}
-              separator=""
-            />
-          </Button>
-        </div>
+            <Button
+              className="btn-green !btn-sm"
+              onClick={onSale}
+              loading={saleLoading}
+            >
+              <FormattedMessage id="open_box_sell_all" />
+              <IconFont type="icon-coin" />
+              <CountUp
+                end={totalPrice}
+                duration={0.3}
+                decimals={2}
+                separator=""
+              />
+            </Button>
+          </div>
+        )}
       </Modal.Body>
     </Modal>
   );
