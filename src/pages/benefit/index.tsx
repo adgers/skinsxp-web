@@ -7,7 +7,6 @@ import { useEffect, useRef, useState } from 'react';
 import { Button, Modal } from 'react-daisyui';
 import { toast } from 'react-toastify';
 import './index.less';
-import RedBag from './rebBag';
 
 export default function Benefit() {
   const { benefitShow, hideBenefit, getUser } = useModel('user');
@@ -56,7 +55,7 @@ export default function Benefit() {
   return (
     <Modal
       open={benefitShow}
-      className="w-full max-w-2xl max-h-full overflow-hidden rounded-md"
+      className="w-full max-w-2xl max-h-full overflow-hidden rounded-md border-none"
     >
       <Button
         size="xs"
@@ -68,54 +67,85 @@ export default function Benefit() {
         ✕
       </Button>
       <Modal.Header className="mb-2 text-center text-lg">
-        <div className="custom-tab flex w-full justify-center gap-6">
+        <div className="custom-tab flex w-full justify-center gap-6 h-14 items-center rounded-t-xl">
           <div
-            className={`tab-item ${tab === 0 ? 'tab-active' : ''}`}
+            className={`w-full h-full cursor-pointer flex items-center justify-center ${
+              tab === 0 ? 'bg-purple/[0.3] text-white' : 'bg-[#23232D] hover:'
+            }`}
             onClick={() => setTab(0)}
-          >
-            <span className="tab-item-c uppercase">
-              <FormattedMessage id="wc_cdkey_title" />
-            </span>
-          </div>
-          <div
-            className={`tab-item ${tab === 1 ? 'tab-active' : ''}`}
-            onClick={() => setTab(1)}
           >
             <span className="tab-item-c uppercase">
               <FormattedMessage id="wc_rewards_title" />
             </span>
           </div>
+          <div
+            className={`w-full h-full tab-item flex items-center justify-center cursor-pointer ${
+              tab === 1 ? 'bg-purple/[0.3] text-white' : 'bg-[#23232D]'
+            }`}
+            onClick={() => setTab(1)}
+          >
+            <span className="tab-item-c uppercase">
+              <FormattedMessage id="wc_cdkey_title" />
+            </span>
+          </div>
         </div>
       </Modal.Header>
-      <Modal.Body className="w-full flex flex-col items-center mt-5">
+      <Modal.Body className="w-full flex flex-col items-center mt-10">
         {tab === 0 && (
           <>
-            <div className="text-sm">
-              <FormattedMessage id="wc_cdkey_explain" />
-            </div>
-            <div className="benefit-bg">
-              <div className="benefit-info flex flex-col gap-1">
-                <div className="benefit-title uppercase">
-                  <FormattedMessage id="wc_cdkey_title" />
-                </div>
-                <input
-                  type="text"
-                  className="benefit-input"
-                  maxLength={12}
-                  ref={codeRef}
-                />
+            <div className="flex h-fit w-full items-center gap-4 px-2 py-8 sm:py-0  bg-[url('@/assets/promo-bg.png')] bg-no-repeat bg-cover sm:pl-28 sm:pr-8 text-md whitespace-pre-wrap font-bold">
+              <div className="h-fit w-full grow sm:-mr-20 sm:-ml-16">
+                <FormattedMessage id="wc_cdkey_explain" />
               </div>
-              <div className="benefit-btn uppercase" onClick={onGetBenefit}>
-                <FormattedMessage id="wc_cdkey_open"/>
+              <div className="w-48 relative z-10  hidden aspect-square sm:block">
+                <img src={require('@/assets/promo-img.png')} alt="" />
+              </div>
+            </div>
+            <div className="w-full mt-8 flex bg-black p-4 rounded-xl">
+              <input
+                type="text"
+                className=" w-full bg-dark rounded-l-xl pl-4 focus:outline-none"
+                maxLength={12}
+                ref={codeRef}
+                placeholder="Enter the Promo Code"
+              />
+
+              <div
+                className="btn btn-purple uppercase px-10"
+                onClick={onGetBenefit}
+              >
+                APPLY
               </div>
             </div>
           </>
         )}
         {tab === 1 && (
-          <div className="flex flex-col items-center gap-4 w-full">
-            {redBagList &&
-              redBagList?.map((item, i) => <RedBag data={item} key={i} />)}
-          </div>
+          <>
+            <div className="flex h-fit w-full items-center gap-4 px-2 py-8 sm:py-0  bg-[url('@/assets/promo-bg.png')] bg-no-repeat bg-cover sm:pl-28 sm:pr-8 text-md whitespace-pre-wrap font-bold">
+              <div className="h-fit w-full grow sm:-mr-20 sm:-ml-16">
+                <FormattedMessage id="wc_cdkey_explain" />
+              </div>
+              <div className="w-48 relative z-10  hidden aspect-square sm:block">
+                <img src={require('@/assets/promo-img.png')} alt="" />
+              </div>
+            </div>
+            <div className="w-full mt-8 flex bg-black p-4 rounded-xl">
+              <input
+                type="text"
+                className=" w-full bg-dark rounded-l-xl pl-4 focus:outline-none"
+                maxLength={12}
+                ref={codeRef}
+                placeholder="Enter the CDKey"
+              />
+
+              <div
+                className="btn btn-purple uppercase px-10"
+                onClick={onGetBenefit}
+              >
+                APPLY
+              </div>
+            </div>
+          </>
         )}
       </Modal.Body>
     </Modal>

@@ -36,6 +36,8 @@ export function getImgHost() {
     location.href.indexOf('localhost') > -1 ||
     location.href.indexOf('127.0.0.1') > -1
   ) {
+    return 'https://muskins-test.oss-cn-hangzhou.aliyuncs.com/root/image/';
+
     return 'https://img.wgskins.com/root/image/';
   }
   return '//img.wgskins.com/root/image/';
