@@ -228,8 +228,8 @@ export default function BoxPage() {
               showName={true}
               boxSize={
                 responsive.md
-                  ? { width: 250, height: 300 }
-                  : { width: 120, height: 184 }
+                  ? { width: 264, height: 300 }
+                  : { width: 108, height: 184 }
               }
               start={lotteryStart}
               wrapHeight={responsive.md ? 300 : 184}
