@@ -1,6 +1,6 @@
 import { parseName, sleep } from '@/utils';
 import { animated, easings, useSpring } from '@react-spring/web';
-import { useEffect, useRef, useState } from 'react';
+import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import './index.less';
 
 const Lottery = ({
@@ -15,6 +15,7 @@ const Lottery = ({
   fast = false,
   lotteryIndex = 0,
   showName = false,
+  voice = false,
   showLogo = true,
 }: {
   giftList: API.BoxGiftListVo[];
@@ -28,12 +29,19 @@ const Lottery = ({
   lotteryIndex?: number;
   fast?: boolean;
   showName?: boolean;
+  voice?: boolean;
   showLogo?: boolean;
 }) => {
   const baseNum = 36;
   const winLotteryIndex = 30;
   const duration = fast ? 150 * winLotteryIndex : 250 * winLotteryIndex;
   const [list, setList] = useState<API.BoxGiftListVo[]>([]);
+  const prevMoveRef = useRef(0);
+
+  const audio = useMemo(
+    () => new Audio(require('@/assets/audio/tick.mp3')),
+    [],
+  );
 
   const wrapRef = useRef<HTMLDivElement>(null);
 
@@ -100,6 +108,12 @@ const Lottery = ({
     setList(newList);
   };
 
+  const playSpinAudio = useCallback(async () => {
+    await audio.pause();
+    audio.currentTime = 0;
+    await audio.play();
+  }, []);
+
   const goMoveY = () => {
     const boxHeight = boxSize.height;
     let randomHeight;
@@ -118,6 +132,17 @@ const Lottery = ({
       from: { y: 0 },
       to: { y: -moveY },
       config: { duration: duration, easing: easings.easeOutQuint },
+      onChange: (props) => {
+        const currentMoveY = props.value.y;
+        const distanceDelta = currentMoveY - prevMoveRef.current;
+        const speed = Math.abs(distanceDelta);
+        if (speed > boxHeight) {
+          prevMoveRef.current = currentMoveY;
+          if (lotteryIndex === 0 && voice) {
+            playSpinAudio();
+          }
+        }
+      },
       onResolve: () => {
         animateEnd();
       },
@@ -143,6 +168,18 @@ const Lottery = ({
       from: { x: 0 },
       to: { x: -moveX },
       config: { duration: duration, easing: easings.easeOutQuint },
+      onChange: (props) => {
+        const currentMoveX = props.value.x;
+        const distanceDelta = currentMoveX - prevMoveRef.current;
+        const speed = Math.abs(distanceDelta);
+        //当移动距离超过一个box的宽度时，播放音效
+        if (speed > boxWidth) {
+          prevMoveRef.current = currentMoveX;
+          if (lotteryIndex === 0 && voice) {
+            playSpinAudio();
+          }
+        }
+      },
       onResolve: () => {
         animateEnd();
       },
@@ -150,9 +187,13 @@ const Lottery = ({
   };
 
   useEffect(() => {
-    resetStyle();
     initList();
-  }, [giftList, lotteryWin]);
+    resetStyle();
+  }, [giftList]);
+
+  useEffect(() => {
+    resetStyle();
+  }, [lotteryWin]);
 
   useEffect(() => {
     if (!start || !lotteryWin) return;

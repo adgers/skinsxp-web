@@ -37,7 +37,7 @@ export default function RollList() {
   return (
     <div className="max-w-[1400px] m-auto px-3">
       <div className="flex flex-col w-full overflow-hidden">
-        <div className="my-4 flex w-full justify-center sm:justify-start border-b border-light relative h-[68px]">
+        <div className="my-4 flex w-full justify-center sm:justify-start border-b border-light relative h-[68px] font-semibold">
           <div className="flex items-center">
             {roomTypes.map((t) => {
               const selected = t.value === roomType;

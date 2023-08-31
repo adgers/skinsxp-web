@@ -18,6 +18,7 @@ import { Button } from 'react-daisyui';
 import { toast } from 'react-toastify';
 import BoxDetail from './boxDetail';
 import CaseModal from './caseModal';
+import { numberFixed } from '@/utils';
 
 interface IBattleBox {
   boxName: string;
@@ -62,7 +63,7 @@ export default function Create() {
     boxs.forEach((t) => {
       price += t?.openPrice || 0;
     });
-    setTotalPrice(price);
+    setTotalPrice(numberFixed(price, 2));
   };
 
   const onCreate = async () => {

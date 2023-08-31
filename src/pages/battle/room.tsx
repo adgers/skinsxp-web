@@ -13,6 +13,7 @@ import {
 import { numberFixed, sleep } from '@/utils';
 import {
   CheckCircleFilled,
+  CopyOutlined,
   LeftOutlined,
   LoadingOutlined,
 } from '@ant-design/icons';
@@ -37,6 +38,7 @@ import Verify from './verify';
 
 const audio = new Audio(require('@/assets/audio/battle.mp3'));
 
+import CopyToClipboard from 'react-copy-to-clipboard';
 import BoxDetail from './boxDetail';
 import './index.less';
 
@@ -114,7 +116,7 @@ const WartingCard = ({
 
 const ResultCard = ({ result }: { result: API.BattleCustomerGainVo }) => {
   return (
-    <div className="flex flex-col animate__animated animate__zoomIn items-center">
+    <div className="flex flex-col animate__animated animate__zoomIn items-center gap-2">
       {result?.winner ? (
         <>
           <div className="font-num text-green text-sm sm:text-[42px]">
@@ -347,7 +349,6 @@ export default function RoomDetail() {
     setCancelLoading(false);
     setCancelConfirmShow(false);
     if (ret.status === 0) {
-      toast.success('解散成功');
       getUser();
       history.replace('/battle');
     }
@@ -526,7 +527,7 @@ export default function RoomDetail() {
       {data && (
         <div className="flex flex-col gap-3 mt-4">
           <div
-            className={`bg-black rounded sm:rounded-md py-5 flex px-5 sm:px-8 items-center gap-2 battle-mode-${mode}`}
+            className={`bg-black py-5 flex px-5 sm:px-8 items-center gap-2 battle-mode-${mode}`}
           >
             <div className="flex gap-4 items-center">
               <div
@@ -590,28 +591,35 @@ export default function RoomDetail() {
                   data={roomResult}
                 />
                 <div
-                  className="cursor-pointer"
+                  className="cursor-pointer flex gap-1 uppercase font-semibold"
                   onClick={() => setVerifyShow(true)}
                 >
                   <IconFont type="icon-shield" className="text-green" />
+                  <span className="text-xs hidden sm:block">
+                    <FormattedMessage id="mine_gpyz" />
+                  </span>
                 </div>
-                <IconFont
-                  type="icon-luxiang"
+                <div
+                  className="cursor-pointer flex gap-1 uppercase font-semibold"
                   onClick={goHistory}
-                  className="text-white"
-                />
+                >
+                  <IconFont type="icon-luxiang" />
+                  <span className="text-xs hidden sm:block">replay</span>
+                </div>
               </>
             )}
             {isOwner && customerList && customerList?.length < 2 && (
-              <IconFont
-                type="icon-tuichu"
+              <div
+                className="cursor-pointer flex gap-1 uppercase font-semibold"
                 onClick={() => setCancelConfirmShow(true)}
-                className="text-white"
-              />
+              >
+                <IconFont type="icon-exit"/>
+                <span className="text-xs hidden sm:block">Cancel battle</span>
+              </div>
             )}
 
             <div
-              className={`cursor-pointer text-white ${
+              className={`cursor-pointer flex gap-1 uppercase font-semibold text-white ${
                 !voice && 'text-opacity-50'
               }`}
               onClick={toggleVoice}
@@ -621,7 +629,20 @@ export default function RoomDetail() {
               ) : (
                 <IconFont type="icon-a-voiceoff" />
               )}
+              <span className="text-xs hidden sm:block">SOUND</span>
             </div>
+
+            <CopyToClipboard
+              text={`${window.location.href}`}
+              onCopy={() => {
+                toast.success(intl.formatMessage({ id: 'copy_success' }));
+              }}
+            >
+              <div className="flex gap-1 cursor-pointer font-semibold">
+                <CopyOutlined />
+                <span className="text-xs">{location.href}</span>
+              </div>
+            </CopyToClipboard>
           </div>
         </div>
       )}

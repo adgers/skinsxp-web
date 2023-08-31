@@ -61,6 +61,8 @@ export default function BoxPage() {
   const [giftList, setGiftList] = useState<API.BoxGiftVo[]>([]);
 
   const { voice, toggleVoice, fast, toggleFast } = useModel('sys');
+  const fastAudio = new Audio(require('@/assets/audio/roll.mp3'));
+  const audio = new Audio(require('@/assets/audio/roll-long.mp3'));
 
   const onLortteryCompleted = async (index: number) => {
     if (index === openCount - 1) {
@@ -89,6 +91,17 @@ export default function BoxPage() {
     resetGiftList();
   };
 
+  const playAudio = () => {
+    // if (fast) {
+    //   fastAudio.currentTime = 0;
+    //   fastAudio.play();
+    // } else {
+    //   audio.currentTime = 0;
+    //   audio.play();
+    // }
+  };
+
+
   const openBox = async () => {
     if (openLoading || lotteryStart) return;
     setOpenLoading(true);
@@ -104,6 +117,10 @@ export default function BoxPage() {
     setResults(ret?.data?.results);
     await sleep(500);
     setLotteryStart(true);
+
+    if (voice) {
+      playAudio();
+    }
   };
 
   useEffect(() => {
@@ -150,7 +167,7 @@ export default function BoxPage() {
           </div>
         </div>
       </div>
-      <div className="rounded ring-1 ring-light mt-4 py-[15px] p-3 relative h-[174px] md:h-[324px] lottery-bg">
+      <div className="rounded ring-1 ring-light mt-4 p-0 sm:p-3 relative h-[174px] md:h-[324px] lottery-bg">
         {openCount === 1 && !lotteryStart && (
           <div className="absolute inset-0 z-30 bg-dark bg-opacity-60 sm:rounded-2xl">
             <div className="absolute left-1/2 grid aspect-[1/1.5] h-full -translate-x-1/2 transform grid-cols-1 grid-rows-1">
@@ -185,10 +202,11 @@ export default function BoxPage() {
                       : { width: '100%', height: 56 }
                   }
                   start={lotteryStart}
-                  wrapHeight={responsive.md ? 300 : 150}
+                  wrapHeight={responsive.md ? 300 : 174}
                   fast={fast}
                   lotteryIndex={index}
                   key={index}
+                  voice={voice}
                 />
               ))}
             </div>
@@ -209,12 +227,13 @@ export default function BoxPage() {
               boxSize={
                 responsive.md
                   ? { width: 250, height: 300 }
-                  : { width: 125, height: 150 }
+                  : { width: 125, height: 170 }
               }
               start={lotteryStart}
-              wrapHeight={responsive.md ? 300 : 150}
+              wrapHeight={responsive.md ? 300 : 170}
               lotteryIndex={0}
               fast={fast}
+              voice={voice}
             />
           </div>
         )}
@@ -230,7 +249,7 @@ export default function BoxPage() {
           <button
             type="button"
             onClick={openBox}
-            className="btn-green sm:px-12 h-10 sm:h-[60px] uppercase font-num font-semibold sm:min-w-[310px]"
+            className="btn-green sm:px-12 !h-10 sm:!h-[60px] !min-h-fit uppercase font-num font-semibold sm:min-w-[310px]"
           >
             <div className="flex gap-2 px-1 flex-1 justify-center">
               {openLoading && <LoadingOutlined />}
