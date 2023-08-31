@@ -10,7 +10,7 @@ export default function Banner() {
   const { data } = useRequest(() => getBannerListUsingGET({ topN: 10 }));
 
   return (
-    <div className='my-6'>
+    <div className='my-4 sm:my-6'>
       {data && data?.length > 0 && (
         <Swiper
           centeredSlides={true}

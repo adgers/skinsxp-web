@@ -293,10 +293,7 @@ export default function Header() {
               className="px-3 py-2 uppercase transition-colors font-semibold duration-200 text-white hover:text-green text-sm rounded-md cursor-pointer"
               onClick={() => showBenefit()}
             >
-              <IconFont
-                type="icon-promocode"
-                className="mx-5 md:mx-3 text-xl md:text-base"
-              />
+              <IconFont type="icon-promocode" className="mr-1" />
 
               <FormattedMessage id="mine_fllq" />
             </div>
@@ -307,7 +304,7 @@ export default function Header() {
             <>
               <div className="flex flex-col sm:flex-row gap-0 sm:gap-2 text-xs font-num ">
                 <div className="text-green">
-                  <span className="mr-1">$</span>
+                  $
                   <CountUp
                     end={numberFixed(userInfo?.balance || 0)}
                     duration={1}
@@ -388,16 +385,17 @@ export default function Header() {
                           <div
                             className={`${
                               active ? 'bg-accent bg-opacity-30 text-green' : ''
-                            } flex items-center py-2 rounded cursor-pointer`}
-                            onClick={logout}
+                            } flex items-center py-2 rounded cursor-pointer w-full`}
                           >
-                            <IconFont
-                              type={'icon-logout'}
-                              className="mx-5 md:mx-3 text-base"
-                            />
-                            <span className="capitalize text-sm">
-                              <FormattedMessage id="mine_tcdl" />
-                            </span>
+                            <div className="w-full"  onClick={logout}>
+                              <IconFont
+                                type={'icon-logout'}
+                                className="mx-5 md:mx-3 text-base"
+                              />
+                              <span className="capitalize text-sm">
+                                <FormattedMessage id="mine_tcdl" />
+                              </span>
+                            </div>
                           </div>
                         )}
                       </Menu.Item>

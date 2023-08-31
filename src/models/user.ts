@@ -80,11 +80,8 @@ export default () => {
   };
 
   useEffect(() => {
-    if (!userInfo && isLogin()) {
+    if (isLogin()) {
       getUser();
-    }
-    if (!isLogin() && urlParse()?.invite) {
-      setRegisterShow(true);
     }
   }, []);
 

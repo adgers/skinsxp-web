@@ -166,10 +166,10 @@ export default function BattlePage() {
           </div>
         </div>
         <div className="battle-ranks mt-3 sm:mt-5 bg-black">
-          <div className="grid grid-cols-2 w-full  mt-2">
+          <div className="grid grid-cols-2 w-full">
             <div
               className={`h-9 text-sm  ${
-                recordTab === 0 ? 'btn-green !rounded-none' : 'btn-light '
+                recordTab === 0 ? 'btn-green !rounded-none' : 'btn-light !rounded-none'
               }`}
               onClick={() => setRecordTab(0)}
             >
@@ -177,7 +177,7 @@ export default function BattlePage() {
             </div>
             <div
               className={`h-9 text-sm  ${
-                recordTab === 1 ? 'btn-green !rounded-none' : 'btn-light '
+                recordTab === 1 ? 'btn-green !rounded-none' : 'btn-light !rounded-none'
               }`}
               onClick={() => setRecordTab(1)}
             >
@@ -188,8 +188,8 @@ export default function BattlePage() {
           <div className="flex flex-col mt-1">
             <div className="flex h-full flex-col min-h-[400px]">
               {rank?.length === 0 && (
-                <div className="text-center text-opacity-50 text-sm">
-                  No data
+                <div className="text-center text-opacity-50 text-sm mt-4 uppercase">
+                   <FormattedMessage id="empty_page_main_txt" />
                 </div>
               )}
               {rank?.length > 0 &&

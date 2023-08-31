@@ -34,7 +34,7 @@ const Lottery = ({
 }) => {
   const baseNum = 36;
   const winLotteryIndex = 30;
-  const duration = fast ? 150 * winLotteryIndex : 250 * winLotteryIndex;
+  const duration = fast ? 150 * winLotteryIndex : 260 * winLotteryIndex;
   const [list, setList] = useState<API.BoxGiftListVo[]>([]);
   const prevMoveRef = useRef(0);
 
@@ -128,7 +128,7 @@ const Lottery = ({
 
     const gapHeight = 8;
     const moveY =
-      winLotteryIndex * (boxHeight + gapHeight) - wrapHeight / 2 + randomHeight - 8;
+      winLotteryIndex * (boxHeight + gapHeight) - wrapHeight / 2 + randomHeight;
 
     moveApi.start({
       from: { y: 0 },
@@ -138,7 +138,7 @@ const Lottery = ({
         const currentMoveY = props.value.y;
         const distanceDelta = currentMoveY - prevMoveRef.current;
         const speed = Math.abs(distanceDelta);
-        if (speed > boxHeight) {
+        if (speed > boxHeight - 1) {
           prevMoveRef.current = currentMoveY;
           if (lotteryIndex === 0 && voice) {
             playSpinAudio();
@@ -176,7 +176,7 @@ const Lottery = ({
         const distanceDelta = currentMoveX - prevMoveRef.current;
         const speed = Math.abs(distanceDelta);
         //当移动距离超过一个box的宽度时，播放音效
-        if (speed > boxWidth) {
+        if (speed > boxWidth - 1) {
           prevMoveRef.current = currentMoveX;
           if (lotteryIndex === 0 && voice) {
             playSpinAudio();
@@ -249,7 +249,7 @@ const Lottery = ({
                   ...(isWin ? scaleSprings : opacitySprings),
                 }}
                 src={item.giftImage}
-                className={`mx-auto object-contain h-full w-1/2`}
+                className={`mx-auto object-contain h-full w-2/3`}
               />
               {showLogo && (
                 <animated.div
@@ -260,7 +260,7 @@ const Lottery = ({
                 />
               )}
               {showName && (
-                <div className="hidden md:block absolute bottom-0 left-0 -mb-1 w-full p-2 font-semibold uppercase leading-tight md:p-3">
+                <div className="absolute bottom-0 left-0 -mb-1 w-full p-2 font-semibold uppercase leading-tight md:p-3">
                   <div className="truncate text-xs md:text-sm text-center">
                     <div className="text-white text-opacity-50">{name[1]}</div>
                     <div className="text-white">{name[0]}</div>
