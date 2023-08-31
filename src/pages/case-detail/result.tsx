@@ -52,8 +52,10 @@ export default function Result({
             return ret;
           });
 
-          audio.currentTime = 0;
-          audio.play();
+          if (voice) {
+            audio.currentTime = 0;
+            audio.play();
+          }
           resolve(null);
         }, 1000);
       });
@@ -128,7 +130,10 @@ export default function Result({
                     : ''
                 }`}
               />
-              <img src={item.giftImage} className="z-10 w-full h-[98px] sm:h-[135px]" />
+              <img
+                src={item.giftImage}
+                className="z-10 w-full h-[98px] sm:h-[135px]"
+              />
               <div className="w-full flex flex-col px-[15px] z-20 gap-2">
                 <div className="text-sm flex gap-1 font-num text-green">
                   ${item.recoveryPrice}

@@ -8,7 +8,7 @@ import {
   recentBoxGiftUsingGET,
   v2OpenBoxUsingGET,
 } from '@/services/front/kaixiangxiangguan';
-import { getBoxColor, goback, numberFixed, sleep } from '@/utils';
+import useStateRef, { getBoxColor, goback, numberFixed, sleep } from '@/utils';
 import { LeftOutlined, LoadingOutlined } from '@ant-design/icons';
 import { FormattedMessage, useModel, useParams, useRequest } from '@umijs/max';
 import { useResponsive } from 'ahooks';
@@ -58,6 +58,7 @@ export default function BoxPage() {
   const [openLoading, setOpenLoading] = useState(false);
 
   const [lotteryStart, setLotteryStart] = useState(false);
+  const lotteryStartRef = useStateRef(lotteryStart);
   const [giftList, setGiftList] = useState<API.BoxGiftVo[]>([]);
 
   const { voice, toggleVoice, fast, toggleFast } = useModel('sys');
@@ -69,6 +70,7 @@ export default function BoxPage() {
       sleep(300);
       setResultShow(true);
       setLotteryStart(false);
+      lotteryStartRef.current = false;
     }
   };
 
@@ -101,7 +103,6 @@ export default function BoxPage() {
     // }
   };
 
-
   const openBox = async () => {
     if (openLoading || lotteryStart) return;
     setOpenLoading(true);
@@ -115,6 +116,8 @@ export default function BoxPage() {
     }
     getUser();
     setResults(ret?.data?.results);
+    lotteryStartRef.current = true;
+
     await sleep(500);
     setLotteryStart(true);
 
@@ -281,8 +284,8 @@ export default function BoxPage() {
                 <div className="w-[66px] h-[66px] rounded-full overflow-hidden">
                   <img src={item?.headPic} alt="" />
                 </div>
-                <div className='text-sm'>{item?.nickname}</div>
-                <div className='text-sm'>{item?.createTime}</div>
+                <div className="text-sm">{item?.nickname}</div>
+                <div className="text-sm">{item?.createTime}</div>
               </div>
             </div>
           );

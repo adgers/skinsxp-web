@@ -3,6 +3,7 @@ import { logoutUsingPOST } from '@/services/front/qiantaishouquanxiangguan';
 import Big from 'big.js';
 import { EventEmitter } from 'events';
 //@ts-ignore
+import { useRef, useEffect } from 'react'
 import { BOX_GRADES } from '@/constants';
 import { history } from '@umijs/max';
 import qs from 'qs';
@@ -209,3 +210,19 @@ export function getSteamLoginUrl() {
     encodeURIComponent(callbackUrl)
   );
 }
+
+/**
+ * react中异步回调中的state,是创建的那次渲染中看到的,不是最新的state
+ * 这个hook使用useRef保存那个state,确保获取最新的state
+ * @param state
+ * @returns
+ */
+export default function useStateRef(state: any) {
+  const stateRef = useRef<any>()
+  useEffect(() => {
+    stateRef.current = state
+  }, [state])
+  
+  return stateRef
+}
+
