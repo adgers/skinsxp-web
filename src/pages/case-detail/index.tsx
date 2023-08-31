@@ -104,7 +104,7 @@ export default function BoxPage() {
   };
 
   const openBox = async () => {
-    if (openLoading || lotteryStart) return;
+    if (openLoading || lotteryStartRef.current) return;
     setOpenLoading(true);
     const ret = await v2OpenBoxUsingGET({
       caseId: Number(caseId),
