@@ -1,8 +1,8 @@
 import { parseName } from '@/utils';
 import { LeftOutlined, PlusOutlined, RightOutlined } from '@ant-design/icons';
+import { history } from '@umijs/max';
 import { useState } from 'react';
 import { Swiper, SwiperClass, SwiperSlide } from 'swiper/react';
-import {history} from '@umijs/max'
 
 interface BattleItemProps {
   index: number;
@@ -17,9 +17,9 @@ export default function BattleItem(props: BattleItemProps) {
   return (
     <div
       className={`relative cursor-pointer z-10 flex items-start flex-col h-[226px]  min-w-[90%] snap-start overflow-hidden sm:min-w-[50%] md:min-w-[33.333333%] xl:min-w-[20%] justify-between battle-item battle-item-grade-${data?.mode}`}
-         onClick={()=>{
-            history.push(`/battle/${data?.battleCode}`)
-         }}
+      onClick={() => {
+        history.push(`/battle/${data?.battleCode}`);
+      }}
     >
       <div className="flex items-center  mt-2.5 ml-4 gap-2 uppercase text-xs">
         <div
@@ -71,10 +71,12 @@ export default function BattleItem(props: BattleItemProps) {
         {data?.boxList && data?.boxList?.length > 1 && (
           <div className="absolute w-full h-8 flex items-center justify-between px-8 z-20">
             <div
-              onClick={() => {
+              onClick={(e) => {
                 if (currentIdx === 0) {
                   return;
                 }
+                e.stopPropagation();
+
                 swiperIns?.slidePrev();
                 setCurrentIdx(currentIdx - 1);
               }}
@@ -87,10 +89,11 @@ export default function BattleItem(props: BattleItemProps) {
               <LeftOutlined />
             </div>
             <div
-              onClick={() => {
+              onClick={(e) => {
                 if (currentIdx === data?.boxList?.length - 1) {
                   return;
                 }
+                e.stopPropagation();
                 swiperIns?.slideNext();
                 setCurrentIdx(currentIdx + 1);
               }}

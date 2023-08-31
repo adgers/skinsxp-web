@@ -61,7 +61,7 @@ export default function Room() {
       giveawayId,
     });
     if (ret.status === 0) {
-      toast.success('参与成功');
+      toast.success('Success !');
       roomInfo.refresh();
       userList.refresh();
     }

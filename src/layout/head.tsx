@@ -36,7 +36,7 @@ export default function Header() {
     loginShow,
     findPwdShow,
     benefitShow,
-    // showBenefit,
+    showBenefit,
   } = useModel('user');
   const location = useLocation();
   const locale = getLocale();
@@ -208,7 +208,7 @@ export default function Header() {
             )}
           </Menu.Item>
         ))}
-        {/* <Menu.Item>
+        <Menu.Item>
           {({ active }) => (
             <div
               className={`${
@@ -225,7 +225,7 @@ export default function Header() {
               </span>
             </div>
           )}
-        </Menu.Item> */}
+        </Menu.Item>
         <Menu.Item>
           {({ active }) => (
             <div

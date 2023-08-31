@@ -56,7 +56,7 @@ export default React.memo(function TopCard({ data, loading }: TopCardProps) {
             {getTopIcon()}
           </div>
         </div>
-        <div className="item-footer flex flex-row gap-1">
+        <div className="item-footer flex flex-row gap-1 justify-between">
           <div className="item-title">{name}</div>
           <div className="w-[24px] h-[24px] rounded-full flex-shrink-0 relative">
             <div className="w-[12px] absolute right-[0] top-[-6px]">

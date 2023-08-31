@@ -81,11 +81,14 @@ export default () => {
     <div className="w-full max-w-[1400px] m-auto relative min-h-[500px]">
       <div className="banner w-full h-[380px] mt-8 bg-[url('@/assets/store-banner.png')] bg-no-repeat bg-cover flex justify-center items-center md:justify-start md:pl-[90px]">
         <div className=" max-w-[540px] flex flex-col items-center">
-          <h3>WHAT IS WG’s Store?</h3>
-          <div className="text-center">
-            Bullets are Gaben's store currency. You will receive bullets for
-            opening any case, including battle cases. The possibility of getting
-            bullets is 30%. More expensive cases contain more bullets.
+          <div className='text-xl font-semibold'>WHAT IS WG’s Store?</div>
+          <div className="text-center mt-2">
+            The value of diamonds and gold coins is exactly the same. Diamonds
+            are obtained by selling accessories. During the game, you consume
+            gold coins first, and automatically consume diamonds when the gold
+            coins are insufficient. In addition, you can use diamonds to
+            purchase accessories in the WG Jewelry Store, come and pick your
+            favorite accessories!
           </div>
         </div>
       </div>

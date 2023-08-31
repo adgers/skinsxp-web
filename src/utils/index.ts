@@ -12,7 +12,7 @@ const globalEventEmitter = new EventEmitter();
 export function getApiDomain() {
   if (
     location.href.indexOf('localhost') > -1 ||
-    location.href.indexOf('127.0.0.1') > -1 
+    location.href.indexOf('127.0.0.1') > -1
   ) {
     return 'http://127.0.0.1:9999';
   } else if(location.href.indexOf('wgksins.com') > -1) {
