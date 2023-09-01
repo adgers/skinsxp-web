@@ -96,12 +96,23 @@ export function isWeixin() {
   return /MicroMessenger/i.test(navigator.userAgent);
 }
 
-export function parseName(name: string) {
-  const result = name.split(' (');
-  const weaponName = result[0]?.split('|');
-  const nameArr = [weaponName?.[0]];
-  if (result[1]) {
-    const [first, second] = result[1]
+export function parseName(name) {
+  const result = name.split('|');
+  const weaponName = result[0]; // 饰品名字
+  const pifuName = result?.splice(1)?.join('|');
+  const nameArr = [weaponName];
+  console.log(pifuName, 'pifuName');
+  // 反转饰品的皮肤 查看是否有磨损
+  const reverseName = pifuName?.split('')?.reverse()?.join('');
+
+  if (!!reverseName?.split(')')?.[0]?.trim()) {
+    // 没有磨损
+    nameArr.push(...['', pifuName]);
+  } else {
+    console.log('有磨损');
+    //   有磨损度
+    const pifuNameArr = pifuName.split(' (');
+    const [first, second] = pifuNameArr?.[1]
       ?.replace(/[()]/g, '')
       ?.split(' ')
       ?.join('-')
@@ -110,9 +121,8 @@ export function parseName(name: string) {
     const rS = second?.split('')?.[0];
     let realDura = rS ? rF + rS : rF;
     nameArr.push(realDura?.toUpperCase() || '');
-    nameArr.push(weaponName?.[1]);
-  } else {
-    nameArr.push(...['', weaponName?.[1]]);
+
+    nameArr.push(pifuNameArr?.[0]);
   }
   return nameArr;
 }
