@@ -7,9 +7,8 @@ import {
   partakeUsingPOST,
   winnerListUsingGET,
 } from '@/services/front/ROLLfangxiangguan';
-import { goback } from '@/utils';
 import { LeftOutlined } from '@ant-design/icons';
-import { FormattedMessage, useIntl, useParams, useRequest } from '@umijs/max';
+import { FormattedMessage, useIntl, useParams, useRequest ,history} from '@umijs/max';
 import { useCountDown } from 'ahooks';
 import { Skeleton } from 'antd';
 import { useEffect, useRef, useState } from 'react';
@@ -78,7 +77,7 @@ export default function Room() {
   return (
     <div className="max-w-[1400px] m-auto px-3">
       <div className="my-4">
-        <div className="btn btn-sm btn-neutral" onClick={goback}>
+        <div className="btn btn-sm btn-neutral" onClick={()=>history.push('/giveaways')}>
           <LeftOutlined />
           <FormattedMessage id="common_back" />
         </div>
@@ -108,7 +107,7 @@ export default function Room() {
                   <div className="text-center sm:text-left text-white">
                     {roomInfo?.data?.title}
                   </div>
-                  <div className="  text-green text-xl">
+                  <div className="  text-green text-sm mb-4 md:text-xl md:mb-0">
                     {roomInfo?.data?.remark}
                   </div>
                 </div>
@@ -201,8 +200,8 @@ export default function Room() {
       </div>
       <div className="flex gap-10 py-4 border-b border-light">
         <div>
-          <div className="text-lg">Total Prizes Sum</div>
-          <div className="text-xl text-green font-bold">
+          <div className="">Total Prizes Sum</div>
+          <div className="text-lg text-green font-bold">
             ${roomInfo?.data?.accumulatedAmount}
           </div>
         </div>

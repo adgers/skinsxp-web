@@ -45,11 +45,11 @@ export default React.memo(function RollCard({
       ></div>
       <div className="roll-card-top">
         <div className="flex justify-between items-center mt-2 sm:mt-4">
-          <div className="pl-3 flex gap-2 items-center">
+          <div className="flex-1 overflow-hidden pl-3 flex gap-2 items-center">
             {data?.banner && (
               <Avatar src={data?.banner} size={25} shape="square" />
             )}
-            <span className="uppercase text-sm font-normal">{data?.title}</span>
+            <span className="uppercase text-sm font-normal truncate">{data?.title}</span>
           </div>
           <div className="text-sm text-white pr-3">
             <IconFont type="icon-online" className="text-green mr-1 text-sm" />{' '}

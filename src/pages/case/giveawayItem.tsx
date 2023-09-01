@@ -20,7 +20,7 @@ export default function GiveawayItem(props: GiveawayItemProps) {
       key={`giveaways-${index}`}
       onClick={() => history.push(`/giveaways/${item?.id}`)}
     >
-      <div className="relative col-start-1 row-start-1 grid overflow-hidden pl-2.5 pt-2.5 giveaways-grade-item ">
+      <div className="relative col-start-1 row-start-1 grid overflow-hidden pl-2.5 pt-2.5 giveaways-grade-item w-full">
         <div className="flex h-6">
           <div className="flex items-center">
             <div
@@ -36,7 +36,7 @@ export default function GiveawayItem(props: GiveawayItemProps) {
             {item?.userCount}
           </div>
         </div>
-        <div className="relative flex min-h-0 flex-shrink">
+        <div className="relative flex min-h-0 flex-shrink w-full overflow-hidden">
           <div className="flex w-[45%] flex-col">
             <div className="flex min-h-0 flex-shrink">
               <div className="grid-stack -mx-2 grid h-full max-h-[74px] min-h-0 w-4/5 ml-[16px]">
