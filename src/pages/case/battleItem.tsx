@@ -119,7 +119,7 @@ export default function BattleItem(props: BattleItemProps) {
           <span className="text-[8px] font-semibold uppercase text-white/60">
             battle Cost
           </span>
-          <span className="text-white text-sm">${data?.totalPrice}</span>
+          <span className="text-white text-xs font-num">${data?.totalPrice}</span>
         </div>
         <div className="flex gap-2">
           {data?.customerList?.map((item, index) => {

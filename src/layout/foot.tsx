@@ -1,6 +1,11 @@
 import { FormattedMessage, Link } from '@umijs/max';
+import { useModel } from '@umijs/max';
 
 export default function Foot() {
+  const {
+    showLogin,
+  } = useModel('user');
+
   return (
     <footer className="footer p-10 bg-base-300 text-base-content mt-10">
       <div>
@@ -44,6 +49,7 @@ export default function Foot() {
         >
           <FormattedMessage id="provably_fair_title" />
         </Link>
+        <span onClick={showLogin} className='cursor-pointer'>login</span>
       </div>
 
       <div>

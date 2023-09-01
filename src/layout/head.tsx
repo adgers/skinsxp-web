@@ -29,7 +29,6 @@ import CountUp from 'react-countup';
 
 export default function Header() {
   const {
-    showLogin,
     userInfo,
     smsLoginShow,
     registerShow,
@@ -409,9 +408,6 @@ export default function Header() {
             </>
           ) : (
             <>
-              <Button className="btn btn-sm uppercase" onClick={showLogin}>
-                login
-              </Button>
               <Button
                 className="btn btn-sm text-black gap-1 rounded uppercase"
                 onClick={() => (window.location.href = getSteamLoginUrl())}
