@@ -95,7 +95,7 @@ export default () => {
       <div className="flex flex-col-reverse sm:flex-row gap-2 sm:justify-between pt-4 px-3">
         <div className="grid grid-cols-3 gap-1 sm:gap-2">
           <Menu as="div" className="relative">
-            <Menu.Button className="whitespace-nowrap select select-sm select-accent border-opacity-50 rounded uppercase w-full font-semibold flex justify-between items-center focus:outline-none text-xs">
+            <Menu.Button className="whitespace-nowrap select select-sm select-accent border-opacity-50 rounded uppercase w-full font-semibold flex justify-between items-center focus:outline-none text-xs truncate">
               <FormattedMessage id="mall_sort_mrpx" />
             </Menu.Button>
             <Transition
@@ -226,7 +226,7 @@ export default () => {
         </div>
       </div>
       {!loading && data?.pageData?.length === 0 && <Empty />}
-      <div className="grid grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-2 sm:gap-4 p-2 sm:p-6 min-h-[200px]">
+      <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-2 sm:gap-4 p-3 min-h-[200px]">
         {data?.pageData?.map((item, i: number) => {
           return (
             <div

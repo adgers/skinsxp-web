@@ -92,7 +92,7 @@ export default function ProvablyVerify() {
                 {!currentKey.isPublic && (
                   <div className="mt-3 md:ml-auto md:mt-0">
                     <button
-                      className="flex h-10 items-center rounded-none justify-center rounded border border-solid border-light px-8 text-sm font-bold uppercase leading-none transition-colors duration-150 hover:bg-neutral"
+                      className="flex h-10 items-center rounded-none justify-center border border-solid border-light px-8 text-sm font-bold uppercase leading-none transition-colors duration-150 hover:bg-neutral"
                       onClick={onShowServerSeed}
                       type='button'
                     >

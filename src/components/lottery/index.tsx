@@ -34,7 +34,7 @@ const Lottery = ({
 }) => {
   const baseNum = 36;
   const winLotteryIndex = 30;
-  const duration = fast ? 150 * winLotteryIndex : 260 * winLotteryIndex;
+  const duration = fast ? 150 * winLotteryIndex : 250 * winLotteryIndex;
   const [list, setList] = useState<API.BoxGiftListVo[]>([]);
   const prevMoveRef = useRef(0);
 
