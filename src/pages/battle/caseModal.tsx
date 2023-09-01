@@ -67,7 +67,7 @@ export default function CaseModal({
   }, [show]);
 
   return (
-    <Modal open={show} className="w-full max-w-6xl max-h-full overflow-hidden">
+    <Modal open={show} className="w-full max-w-6xl max-h-full overflow-hidden px-3 sm:px-5">
       <Button
         size="xs"
         shape="circle"
@@ -90,7 +90,7 @@ export default function CaseModal({
 
               return (
                 <div
-                  className={`w-full h-full relative overflow-hidden cursor-pointer rounded-lg ring-1 ${
+                  className={`w-full h-full relative overflow-hidden cursor-pointer ring-1 ${
                     isSelect ? 'ring-green' : 'ring-transparent'
                   }`}
                   key={t.id}

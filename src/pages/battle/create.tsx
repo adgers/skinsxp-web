@@ -4,6 +4,7 @@ import {
   getBattleDetailUsingGET,
 } from '@/services/front/duizhanxiangguan';
 import { boxPageUsingGET } from '@/services/front/kaixiangxiangguan';
+import { numberFixed } from '@/utils';
 import { LeftOutlined, PlusOutlined } from '@ant-design/icons';
 import {
   Link,
@@ -18,7 +19,6 @@ import { Button } from 'react-daisyui';
 import { toast } from 'react-toastify';
 import BoxDetail from './boxDetail';
 import CaseModal from './caseModal';
-import { numberFixed } from '@/utils';
 
 interface IBattleBox {
   boxName: string;
@@ -202,7 +202,7 @@ export default function Create() {
       </div>
 
       <div
-        className={`bg-black rounded sm:rounded-md py-5 flex px-5 sm:px-8 items-center gap-2`}
+        className={`bg-black py-5 flex px-5 sm:px-8 items-center gap-2`}
       >
         <div className="flex gap-4 items-center">
           <div
@@ -222,9 +222,12 @@ export default function Create() {
                   onClick={() => {
                     showBoxDetail(item.id as number, item.boxName as string);
                   }}
-                  className={`w-16 h-16 flex-shrink-0 sm:w-24 sm:h-24 flex justify-center items-center cursor-pointer`}
+                  className={`w-[64px] md:w-[84px] relative flex-shrink-0 flex justify-center items-center cursor-pointer`}
                 >
                   <img src={item.boxImage} className="w-full h-full" />
+                  <p className="absolute left-0 bottom-0 w-full p-1 text-center font-semibold text-white truncate bg-black bg-opacity-70 text-[8px]">
+                    {item.boxName}
+                  </p>
                 </div>
               );
             })}
@@ -235,7 +238,7 @@ export default function Create() {
       <div className="my-5 grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 flex-wrap gap-4">
         {boxListArr.map((item, i) => {
           return (
-            <div className="relative h-80 w-full bg-black rounded-md" key={i}>
+            <div className="relative h-80 w-full bg-black " key={i}>
               <div className="flex flex-col h-64 w-full items-end justify-center rounded-lg pb-1 text-xs uppercase relative">
                 <img
                   src={item.boxImage}
@@ -263,7 +266,7 @@ export default function Create() {
                 </button>
                 <input
                   type="text"
-                  className="input mx-1.5 h-auto w-full rounded-md border-0 bg-transparent text-center font-bold text-white outline-none focus:outline-none"
+                  className="input mx-1.5 h-auto w-full rounded border-0 bg-transparent text-center font-bold text-white outline-none focus:outline-none"
                   value={item.count}
                 />
                 <button
@@ -281,7 +284,7 @@ export default function Create() {
         })}
 
         <div
-          className="group flex h-80 cursor-pointer flex-col items-center justify-center rounded-lg bg-black"
+          className="group flex h-80 cursor-pointer flex-col items-center justify-center bg-black"
           onClick={() => setCaseModalShow(true)}
         >
           <div className="flex w-10 h-10 rounded-full items-center justify-center bg-light hover:bg-opacity-70">
@@ -367,7 +370,7 @@ export default function Create() {
               loading={loading}
               onClick={onCreate}
             >
-              <IconFont type="icon-battle" className='text-lg'/>
+              <IconFont type="icon-battle" className="text-lg" />
               Create case battle
             </Button>
           </div>

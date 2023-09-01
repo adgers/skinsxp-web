@@ -2,7 +2,6 @@ import { steamSignUpUsingGET } from '@/services/front/qiantaishouquanxiangguan';
 import { LoadingOutlined } from '@ant-design/icons';
 import { history, useModel } from '@umijs/max';
 import { useEffect } from 'react';
-import { toast } from 'react-toastify';
 
 export default function LoginCallback() {
   const { getUser } = useModel('user');
@@ -16,7 +15,6 @@ export default function LoginCallback() {
       }
 
       getUser();
-      toast.success('登录成功');
       const urlParams = new URL(window.location.href).searchParams;
       history.push(urlParams.get('redirect') || '/');
     } else {

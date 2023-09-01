@@ -79,7 +79,9 @@ const WartingCard = ({
             <CheckCircleFilled className="text-green text-[32px]" />
             <div className="animate-circleChange absolute w-8 h-8 rounded-full left-0 top-0 border-2 border-green"></div>
           </div>
-          <span className="font-num text-white uppercase text-xs sm:text-base whitespace-wrap text-center">Ready to battle</span>
+          <span className="font-num text-white uppercase text-xs sm:text-base whitespace-wrap text-center">
+            Ready to battle
+          </span>
         </div>
       ) : (
         <div className="flex flex-col gap-4 items-center">
@@ -104,8 +106,8 @@ const WartingCard = ({
             >
               {joinBotLoading && <LoadingOutlined />}
               <IconFont type="icon-battle" className="text-white text-sm" />
-              <FormattedMessage id="battle_room_join" /> 
-              <span className='hidden sm:block'>{modeName}</span>
+              <FormattedMessage id="battle_room_join" />
+              <span className="hidden sm:block">{modeName}</span>
             </div>
           )}
         </div>
@@ -116,10 +118,10 @@ const WartingCard = ({
 
 const ResultCard = ({ result }: { result: API.BattleCustomerGainVo }) => {
   return (
-    <div className="flex flex-col animate__animated animate__zoomIn items-center gap-2">
+    <div className="flex flex-col animate__animated animate__zoomIn items-center gap-1">
       {result?.winner ? (
         <>
-          <div className="font-num text-green text-sm sm:text-[42px]">
+          <div className="font-num text-green text-sm sm:text-[42px] sm:leading-[42px]">
             WINNER
           </div>
           <div className="flex gap-1 items-center font-num text-green text-xs sm:text-base">
@@ -134,7 +136,7 @@ const ResultCard = ({ result }: { result: API.BattleCustomerGainVo }) => {
         </>
       ) : (
         <>
-          <div className="font-num text-light text-sm sm:text-[42px]">LOSE</div>
+          <div className="font-num text-light text-sm sm:text-[42px] sm:leading-[42px]">LOSE</div>
           <div className="flex gap-1 items-center font-num text-xs sm:text-base">
             $
             <CountUp
@@ -557,8 +559,8 @@ export default function RoomDetail() {
                 )}
               </div>
               <div className="text-xs font-semibold">
-                <div className="text-white uppercase">BATTLE ROUNDS</div>
-                <div className="font-num">
+                <div className="text-white uppercase hidden sm:block">BATTLE ROUNDS</div>
+                <div className="font-num text-sm sm:text-xs">
                   {index}/{boxList?.length}
                 </div>
               </div>
@@ -570,7 +572,7 @@ export default function RoomDetail() {
                   return (
                     <div
                       key={i}
-                      className={`w-16 h-16 flex-shrink-0 sm:w-24 sm:h-24 flex justify-center items-center cursor-pointer transform will-change-transform transition duration-300 ${
+                      className={`w-[64px] md:w-[84px] flex-shrink-0 relative flex justify-center items-center cursor-pointer transform will-change-transform transition duration-300 ${
                         isActive && !isEnd
                           ? 'scale-[1.2]'
                           : isEnd
@@ -586,6 +588,9 @@ export default function RoomDetail() {
                       }
                     >
                       <img src={item.boxImage} className="w-full h-full" />
+                      <p className="absolute left-0 bottom-0 w-full p-1 text-center font-semibold text-white truncate bg-black bg-opacity-70 text-[8px]">
+                        {item.boxName}
+                      </p>
                     </div>
                   );
                 })}
@@ -692,7 +697,7 @@ export default function RoomDetail() {
             return (
               <div className="flex flex-col" key={i}>
                 <div
-                  className={`battle-seat-bg  h-[180px] sm:h-[300px] px-2 seat-${
+                  className={`battle-seat-bg  h-[200px] sm:h-[300px] px-2 seat-${
                     i + 1
                   } ${isLast ? 'seat-last' : ''}`}
                 >
@@ -729,7 +734,7 @@ export default function RoomDetail() {
                           : { width: '100%', height: 56 }
                       }
                       start={lotteryStart}
-                      wrapHeight={responsive.md ? 300 : 180}
+                      wrapHeight={responsive.md ? 300 : 200}
                       fast
                       voice={voice}
                     />

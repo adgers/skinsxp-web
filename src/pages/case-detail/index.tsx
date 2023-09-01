@@ -169,14 +169,14 @@ export default function BoxPage() {
           </div>
         </div>
       </div>
-      <div className="rounded ring-1 ring-light mt-4 p-0 sm:p-3 relative h-[174px] md:h-[324px] lottery-bg">
+      <div className="rounded ring-1 ring-light mt-4 p-3 relative h-[204px] md:h-[324px] lottery-bg">
         {openCount === 1 && !hasOpen && (
-          <div className="absolute inset-0 z-30 bg-dark bg-opacity-60 sm:rounded-2xl">
-            <div className="absolute left-1/2 grid aspect-[1/1.5] h-full -translate-x-1/2 transform grid-cols-1 grid-rows-1">
-              <div className="absolute right-0 top-0 h-full w-full">
+          <div className="absolute inset-0 z-30 bg-dark bg-opacity-60">
+            <div className="absolute left-1/2 h-full -translate-x-1/2 transform w-[200px] sm:w-[300px]">
+              <div className="absolute right-0 top-0 h-full w-full sm:py-3">
                 <img
                   src={boxDetails?.boxImage}
-                  className="h-full w-full rounded-lg object-cover"
+                  className="h-full w-full object-cover"
                 />
               </div>
             </div>
@@ -204,7 +204,7 @@ export default function BoxPage() {
                       : { width: '100%', height: 56 }
                   }
                   start={lotteryStart}
-                  wrapHeight={responsive.md ? 300 : 174}
+                  wrapHeight={responsive.md ? 300 : 184}
                   fast={fast}
                   lotteryIndex={index}
                   key={index}
@@ -228,11 +228,11 @@ export default function BoxPage() {
               showName={true}
               boxSize={
                 responsive.md
-                  ? { width: 250, height: 300 }
-                  : { width: 125, height: 170 }
+                  ? { width: 264, height: 300 }
+                  : { width: 108, height: 184 }
               }
               start={lotteryStart}
-              wrapHeight={responsive.md ? 300 : 170}
+              wrapHeight={responsive.md ? 300 : 184}
               lotteryIndex={0}
               fast={fast}
               voice={voice}
@@ -274,7 +274,7 @@ export default function BoxPage() {
           <FormattedMessage id="open_box_lastdrop" />
         </span>
       </div>
-      <div className="grid grid-cols-3 md:grid-cols-4 xl:grid-cols-6 gap-2 mt-4">
+      <div className="grid grid-cols-2 md:grid-cols-4 xl:grid-cols-6 gap-2 mt-4">
         {recentBoxs?.map((item, i: number) => {
           return (
             <div className="card-flip relative group" key={i}>
@@ -315,7 +315,7 @@ export default function BoxPage() {
             })}
           </div>
         )}
-        <div className="grid grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-2">
+        <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-2">
           {boxInfoTickets?.boxGiftVo?.map((item, i: number) => {
             return <WeaponCard data={item} key={i} />;
           })}

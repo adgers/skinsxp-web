@@ -82,7 +82,7 @@ const RoomCard = memo(
 
     return (
       <div
-        className={`relative flex flex-col md:flex md:flex-row gap-4 bg-black bg-opacity-75 animate__animated animate__zoomInUp rounded p-4 battle-mode-${mode} battle-state-${state}`}
+        className={`relative flex flex-col md:flex md:flex-row gap-4 bg-black bg-opacity-75 animate__animated animate__zoomInUp p-4 battle-mode-${mode} battle-state-${state}`}
       >
         <div className="flex w-full overflow-hidden">
           <div className="w-16 md:w-24 flex items-center justify-center">

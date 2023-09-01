@@ -90,14 +90,16 @@ export default function Deposit() {
 
   return (
     <div className="max-w-[1400px] m-auto px-3 md:px-6">
-      <div className="my-4">
-        <div className="btn btn-sm btn-neutral" onClick={goback}>
-          <LeftOutlined />
-          <FormattedMessage id="common_back" />
+      <div className="my-5 flex w-full flex-col justify-between border-b border-light lg:mb-0 lg:mt-8 lg:flex-row">
+        <div className="-mb-px items-center border-b border-green pb-6 pr-6 font-semibold uppercase text-white flex gap-3">
+          <div className="-my-2 text-white cursor-pointer" onClick={goback}>
+            <LeftOutlined />
+          </div>
+           Deposit
         </div>
       </div>
       {!loading && rechageInfo && rechargeConfig && (
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mt-5">
           {/* <img src={depBg} className="w-full h-full hidden lg:block" /> */}
           <div className="flex flex-col gap-4">
             <Menu as="div" className="relative">
