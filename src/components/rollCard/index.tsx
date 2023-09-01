@@ -3,8 +3,8 @@ import { FormattedMessage, history } from '@umijs/max';
 import { useCountDown } from 'ahooks';
 import React from 'react';
 import { Avatar, Countdown } from 'react-daisyui';
-import './index.less';
 import { IconFont } from '../icons';
+import './index.less';
 
 export default React.memo(function RollCard({
   data,
@@ -24,7 +24,7 @@ export default React.memo(function RollCard({
 
   return (
     <div
-      className={`roll-card cursor-pointer ${isEnd ? 'end' : ''}`}
+      className={`roll-card cursor-pointer pb-[90px] ${isEnd ? 'end' : ''}`}
       style={
         data?.roomType === 1
           ? {
@@ -51,7 +51,10 @@ export default React.memo(function RollCard({
             )}
             <span className="uppercase text-sm font-normal">{data?.title}</span>
           </div>
-          <div className="text-sm text-white pr-3"><IconFont type='icon-online' className='text-green mr-1 text-sm'/> {data?.userCount}</div>
+          <div className="text-sm text-white pr-3">
+            <IconFont type="icon-online" className="text-green mr-1 text-sm" />{' '}
+            {data?.userCount}
+          </div>
         </div>
 
         <div className="roll-card-top-img">
@@ -59,8 +62,8 @@ export default React.memo(function RollCard({
         </div>
       </div>
       <div className="mx-5 pb-2 border-b border-light mt-[28px]">
-        <div>
-          <span className="truncate text-white/[0.5] text-xs">
+        <div className="h-[24px]">
+          <span className="truncate text-white/[0.5] text-xs min-h-[15px]">
             {name && parseName(name)?.[1]}
           </span>
         </div>
@@ -78,57 +81,59 @@ export default React.memo(function RollCard({
           </span>
         </div>
       </div>
-      <div
-        className={` mx-5 rounded-none ${
-          data?.roomType === 1 ? 'btn-purple' : 'btn-green'
-        }`}
-        onClick={() => {
-          history.push(`/giveaways/${data?.id}`);
-        }}
-      >
-        View Requirements
-      </div>
-      <div className="roll-card-bottom">
-        <div className="flex-1 justify-center text-center">
-          {isEnd ? (
-            <FormattedMessage id="roll_yjs" />
-          ) : (
-            data?.openTime && (
-              <div className="font-mono flex justify-center items-center gap-1">
-                <IconFont type="icon-history" className='text-[18px] mr-1'/>
+      <div className='w-full absolute bottom-0 left-0'>
+        <div
+          className={`mx-2  sm:mx-5 rounded-none ${
+            data?.roomType === 1 ? 'btn-purple' : 'btn-green'
+          }`}
+          onClick={() => {
+            history.push(`/giveaways/${data?.id}`);
+          }}
+        >
+          View Requirements
+        </div>
+        <div className="roll-card-bottom">
+          <div className="flex-1 justify-center text-center">
+            {isEnd ? (
+              <FormattedMessage id="roll_yjs" />
+            ) : (
+              data?.openTime && (
+                <div className="font-mono flex justify-center items-center gap-1">
+                  <IconFont type="icon-history" className="text-[18px] mr-1" />
 
-                {days > 0 && (
-                  <>
-                    <div className="flex items-center text-sm">
-                      <Countdown value={days} />
-                      <span className="text-sm">d</span>
-                    </div>
-                    <div className="mx-0.5 text-center text-sm font-normal text-white">
-                      :
-                    </div>
-                  </>
-                )}
-                <div className="flex items-center text-sm font">
-                  <Countdown value={hours} />
-                  <span className="text-sm">h</span>
+                  {days > 0 && (
+                    <>
+                      <div className="flex items-center text-xs">
+                        <Countdown value={days} />
+                        <span className="text-xs">d</span>
+                      </div>
+                      <div className="mx-0.5 text-center text-sm font-normal text-white">
+                        :
+                      </div>
+                    </>
+                  )}
+                  <div className="flex items-center text-xs font">
+                    <Countdown value={hours} />
+                    <span className="text-xs">h</span>
+                  </div>
+                  <div className="mx-0.5 text-center text-xs font-normal text-white">
+                    :
+                  </div>
+                  <div className="flex items-center text-xs">
+                    <Countdown value={minutes} />
+                    <span className="text-xs">m</span>
+                  </div>
+                  <div className="mx-0.5 text-center text-xs font-normal text-white">
+                    :
+                  </div>
+                  <div className="flex items-center text-xs">
+                    <Countdown value={seconds} />
+                    <span className="text-xs">s</span>
+                  </div>
                 </div>
-                <div className="mx-0.5 text-center text-xs font-normal text-white">
-                  :
-                </div>
-                <div className="flex items-center text-sm">
-                  <Countdown value={minutes} />
-                  <span className="text-sm">m</span>
-                </div>
-                <div className="mx-0.5 text-center text-xs font-normal text-white">
-                  :
-                </div>
-                <div className="flex items-center text-sm">
-                  <Countdown value={seconds} />
-                  <span className="text-sm">s</span>
-                </div>
-              </div>
-            )
-          )}
+              )
+            )}
+          </div>
         </div>
       </div>
     </div>
