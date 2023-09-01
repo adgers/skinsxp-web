@@ -24,7 +24,7 @@ export default React.memo(function RollCard({
 
   return (
     <div
-      className={`roll-card cursor-pointer pb-[90px] ${isEnd ? 'end' : ''}`}
+      className={`roll-card cursor-pointer ${isEnd ? 'end' : ''}`}
       style={
         data?.roomType === 1
           ? {
