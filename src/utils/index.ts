@@ -100,11 +100,11 @@ export function parseName(name: string) {
   const result = name.split(' (');
   const nameArr = [result[0]];
   if (result[1]) {
-    const [first, second] = result[1].replace(/[()]/g, '')?.split(' ')?.join("-").split("-");
+    const [first, second] = result[1]?.replace(/[()]/g, '')?.split(' ')?.join("-")?.split("-");
     const rF = first?.split('')?.[0];
     const rS = second?.split('')?.[0];
     let realDura = rS ? rF + rS : rF;
-    nameArr.push(realDura.toUpperCase());
+    nameArr.push(realDura?.toUpperCase());
   }
   return nameArr;
 }
