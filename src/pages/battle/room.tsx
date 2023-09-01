@@ -574,10 +574,10 @@ export default function RoomDetail() {
                       key={i}
                       className={`w-[64px] md:w-[84px] flex-shrink-0 relative flex justify-center items-center cursor-pointer transform will-change-transform transition duration-300 ${
                         isActive && !isEnd
-                          ? 'scale-[1.2]'
+                          ? ''
                           : isEnd
                           ? 'opacity-100'
-                          : 'opacity-50'
+                          : 'opacity-30'
                       }`}
                       onClick={() =>
                         onShowBoxDetail(
@@ -718,8 +718,8 @@ export default function RoomDetail() {
                       modeName={modeName}
                     />
                   )}
-                  {isEnd && userLastResult && (
-                    <ResultCard result={userLastResult} />
+                  {isEnd && userOpenRecord && (
+                    <ResultCard result={userOpenRecord} />
                   )}
                   {lotteryShow && lotteryWin && (
                     <Lottery

@@ -88,11 +88,11 @@ export default function Result({
         const audio = new Audio(require('@/assets/audio/exchange.mp3'));
         audio.play();
       }
-      toast.success(
-        intl.formatMessage({
-          id: 'sell_success',
-        }),
-      );
+      // toast.success(
+      //   intl.formatMessage({
+      //     id: 'sell_success',
+      //   }),
+      // );
       onClose();
     }
   };

@@ -58,7 +58,7 @@ export default function ClientSeedHistory({
           </dl>
         ))}
 
-        {data?.totalRows && data?.totalRows > pageSize  && (
+        {!!data?.totalRows && data?.totalRows > pageSize  && (
           <div className="flex justify-center items-center mt-2">
             <Pagination
               current={page}

@@ -113,7 +113,7 @@ export default function Header() {
       icon: 'icon-cases',
     },
     {
-      title: <FormattedMessage id="mine_jlzx" />,
+      title: <FormattedMessage id="recharge_record" />,
       link: '/profile/record',
       icon: 'icon-history',
     },
@@ -231,6 +231,8 @@ export default function Header() {
     </>
   );
 
+  const currentLoale = langs.filter((item) => item.value === locale)[0];
+
   return (
     <div className="sticky left-0 top-0 z-[99]">
       <Navbar className="p-3 bg-black">
@@ -239,10 +241,11 @@ export default function Header() {
             WGSKINS
           </Link>
 
-          <Menu as="div" className="relative ml-4">
-            <Menu.Button className="select select-xs select-accent flex items-center border-opacity-50 rounded uppercase font-semibold focus:outline-none bg-dark">
-              {langs.filter((item) => item.value === locale)[0].title}
+          <Menu as="div" className="relative ml-2">
+            <Menu.Button className="select select-xs flex items-center border-0 bg-black focus:outline-none">
+              <img src={currentLoale.flag} className="w-5 h-5" />
             </Menu.Button>
+
             <Transition
               as={Fragment}
               enter="transition ease-out duration-100"
@@ -272,7 +275,7 @@ export default function Header() {
             </Transition>
           </Menu>
 
-          <div className="hidden lg:flex ml-4">
+          <div className="hidden lg:flex ml-2">
             {[...headLinks, ...headExt].map((item, i) => {
               const isActive = location.pathname.startsWith(item.link);
 
@@ -387,7 +390,7 @@ export default function Header() {
                               active ? 'bg-accent bg-opacity-30 text-green' : ''
                             } flex items-center py-2 rounded cursor-pointer w-full`}
                           >
-                            <div className="w-full"  onClick={logout}>
+                            <div className="w-full" onClick={logout}>
                               <IconFont
                                 type={'icon-logout'}
                                 className="mx-5 md:mx-3 text-base"

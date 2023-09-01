@@ -14,6 +14,7 @@ import ServerSeedHistory from './serverSeedHistory';
 export default function ProvablyConfig() {
   const [currentKey, setCurrentKey] = useState<API.RandKeyVo>();
   const [showLoading, setShowLoading] = useState(false);
+  const [resetLoading, setResetLoading] = useState(false);
 
   const { refresh } = useRequest(async () => {
     const ret = await currentKeyUsingGET();
@@ -35,9 +36,11 @@ export default function ProvablyConfig() {
       toast.error('Please input client seed');
       return;
     }
+    setResetLoading(true);
     const ret = await resetUsingPOST({
       clientSeed: seed,
     });
+    setResetLoading(false);
     if (ret.status === 0) {
       toast.success('Reset client seed successfully');
       toggleEditSeed();
@@ -56,12 +59,12 @@ export default function ProvablyConfig() {
   };
 
   return (
-    <div className="flex flex-col space-y-4 mt-4 text-white">
+    <div className="flex flex-col space-y-4 mt-4 text-white max-w-4xl">
       <div className="flex flex-col lg:h-14 lg:flex-row">
-        <div className="z-10 -mb-px flex h-full w-full items-center justify-center rounded-none bg-neutral py-2 text-center font-bold uppercase lg:py-1 lg:mb-0 lg:max-w-xs ">
+        <div className="z-10 -mb-px flex h-full w-full items-center justify-center rounded-none bg-neutral py-2 text-center font-bold uppercase lg:py-1 lg:mb-0 lg:max-w-[250px]">
           Client Seed
         </div>
-        <div className="flex h-full flex-1 flex-col items-center rounded-b-lg border border-solid border-neutral-700 p-3 text-center md:flex-row lg:-ml-6  lg:pl-9">
+        <div className="flex h-full flex-1 flex-col items-center  border border-solid border-neutral-700  p-3 text-center md:flex-row lg:-ml-6  lg:pl-9">
           <span className="mx-3 break-all font-mono text-sm">
             {currentKey?.clientSeed}
           </span>
@@ -85,21 +88,14 @@ export default function ProvablyConfig() {
         </div>
       </div>
       <div className="flex flex-col lg:h-14 lg:flex-row">
-        <div className="z-10 -mb-px flex h-full w-full items-center justify-center rounded-none bg-neutral py-2 text-center font-bold uppercase lg:py-1 lg:mb-0 lg:max-w-xs ">
+        <div className="z-10 -mb-px flex h-full w-full items-center justify-center rounded-none bg-neutral py-2 text-center font-bold uppercase lg:py-1 lg:mb-0 lg:max-w-[250px] ">
           Server Seed
         </div>
-        <div className="flex h-full flex-1 flex-col items-center rounded-b-lg border border-solid border-neutral-700 p-3 text-center md:flex-row lg:-ml-6  lg:pl-9">
+        <div className="flex h-full flex-1 flex-col items-center  border border-solid border-neutral-700  p-3 text-center md:flex-row lg:-ml-6  lg:pl-9">
           <span className="mx-3 break-all font-mono text-sm">
             {currentKey?.secretHash}
           </span>
           <div className="mt-3 flex space-x-3 md:ml-auto md:mt-0 items-center">
-            <button
-              className="btn-green !btn-sm !rounded-none"
-              onClick={showServerSeed}
-              type="button"
-            >
-              show server seed
-            </button>
             <button
               onClick={toggleServerSeedHistory}
               type="button"
@@ -111,34 +107,49 @@ export default function ProvablyConfig() {
         </div>
       </div>
       <div className="flex flex-col lg:h-14 lg:flex-row">
-        <div className="z-10 -mb-px flex h-full w-full items-center justify-center rounded-none bg-neutral py-2 text-center font-bold uppercase lg:py-1 lg:mb-0 lg:max-w-xs ">
+        <div className="z-10 -mb-px flex h-full w-full items-center justify-center rounded-none bg-neutral py-2 text-center font-bold uppercase lg:py-1 lg:mb-0 lg:max-w-[250px] ">
           SECRET SALT
         </div>
-        <div className="flex h-full flex-1 flex-col items-center rounded-b-lg border border-solid border-neutral-700 p-3 text-center md:flex-row lg:-ml-6  lg:pl-9">
+        <div className="flex h-full flex-1 flex-col items-center  border border-solid border-neutral-700  p-3 text-center md:flex-row lg:-ml-6  lg:pl-9">
           <span className="mx-3 break-all font-mono text-sm">
             {currentKey?.secretSalt}
           </span>
         </div>
       </div>
       <div className="flex flex-col lg:h-14 lg:flex-row">
-        <div className="z-10 -mb-px flex h-full w-full items-center justify-center rounded-none bg-neutral py-2 text-center font-bold uppercase lg:py-1 lg:mb-0 lg:max-w-xs ">
+        <div className="z-10 -mb-px flex h-full w-full items-center justify-center rounded-none bg-neutral py-2 text-center font-bold uppercase lg:py-1 lg:mb-0 lg:max-w-[250px] ">
           PUBLIC HASH
         </div>
-        <div className="flex h-full flex-1 flex-col items-center rounded-b-lg border border-solid border-neutral-700 p-3 text-center md:flex-row lg:-ml-6  lg:pl-9">
+        <div className="flex h-full flex-1 flex-col items-center  border border-solid border-neutral-700  p-3 text-center md:flex-row lg:-ml-6  lg:pl-9">
           <span className="mx-3 break-all font-mono text-sm">
             {currentKey?.publicHash}
           </span>
         </div>
       </div>
       <div className="flex flex-col lg:h-14 lg:flex-row">
-        <div className="z-10 -mb-px flex h-full w-full items-center justify-center rounded-none bg-neutral py-2 text-center font-bold uppercase lg:py-1 lg:mb-0 lg:max-w-xs ">
+        <div className="z-10 -mb-px flex h-full w-full items-center justify-center rounded-none bg-neutral py-2 text-center font-bold uppercase lg:py-1 lg:mb-0 lg:max-w-[250px] ">
           ROUND
         </div>
-        <div className="flex h-full flex-1 flex-col items-center rounded-b-lg border border-solid border-neutral-700 p-3 text-center md:flex-row lg:-ml-6  lg:pl-9">
+        <div className="flex h-full flex-1 flex-col items-center  border border-solid border-neutral-700  p-3 text-center md:flex-row lg:-ml-6  lg:pl-9">
           <span className="mx-3 break-all font-mono text-sm">
             {currentKey?.round}
           </span>
         </div>
+      </div>
+
+      <div className="flex justify-end gap-2 p-3">
+        <div className="text-white text-opacity-50 text-sm max-w-[300px]">
+          To see the hidden data from the table you need to reveal the server
+          seed
+        </div>
+        <Button
+          className="btn-green !btn-md !rounded-none"
+          onClick={showServerSeed}
+          type="button"
+          loading={showLoading}
+        >
+          show server seed
+        </Button>
       </div>
       <Modal open={editSeedVisible} className="max-w-md">
         <Modal.Header className="uppercase font-semibold leading-tight">
@@ -160,7 +171,7 @@ export default function ProvablyConfig() {
           <Button
             className="btn-green w-full rounded"
             onClick={onResetClientSeed}
-            loading={showLoading}
+            loading={resetLoading}
           >
             <FormattedMessage id="confirm" />
           </Button>

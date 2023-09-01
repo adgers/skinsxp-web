@@ -40,7 +40,7 @@ export default function Case() {
                     ' var(--j-1, linear-gradient(0deg, rgba(54, 122, 46, 0.68) 0%, rgba(0, 0, 0, 0.00) 98.14%))',
                 }}
               >
-                <div className="flex  items-center leading-[28px]">
+                <div className="flex items-center text-sm sm:text-base  leading-[28px]">
                   {t.themeName}
                 </div>
               </h2>
@@ -97,7 +97,7 @@ export default function Case() {
                     'var(--j-1, linear-gradient(0deg, rgba(54, 122, 46, 0.68) 0%, rgba(0, 0, 0, 0.00) 98.14%))',
                 }}
               >
-                <div className="flex h-7 items-center sm:h-8">Top battles</div>
+                <div className="flex h-7 items-center sm:h-8 text-sm sm:text-base">Top battles</div>
               </h2>
             </div>
             <div className="flex w-1/6 items-end sm:w-1/3"></div>

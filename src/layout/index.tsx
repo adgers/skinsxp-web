@@ -27,7 +27,7 @@ export default function Layout() {
   return (
     <div className={`root-bg ${pathCls}`}>
       {!headHidden() && <Header />}
-      <div className="max-w-8xl w-full min-h-[calc(100vh-64px)] m-auto">
+      <div className="max-w-8xl w-full min-h-[calc(100vh-64px)] m-auto relative">
         <Outlet />
       </div>
       {/* {!headHidden() && <BtmNav />} */}

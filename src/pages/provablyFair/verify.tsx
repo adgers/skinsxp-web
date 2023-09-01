@@ -4,6 +4,7 @@ import {
 } from '@/services/front/miyaozhongzixiangguan';
 import { useParams } from '@umijs/max';
 import { useEffect, useRef, useState } from 'react';
+import { Button } from 'react-daisyui';
 import { toast } from 'react-toastify';
 
 export default function ProvablyVerify() {
@@ -11,6 +12,7 @@ export default function ProvablyVerify() {
 
   const inputRef = useRef<HTMLInputElement>(null);
   const [currentKey, setCurrentKey] = useState<API.RandKeyVo>();
+  const [loading, setLoading] = useState(false);
   const onVerify = async () => {
     const verifyId = inputRef.current?.value;
     if (!verifyId) {
@@ -18,7 +20,9 @@ export default function ProvablyVerify() {
       return;
     }
 
+    setLoading(true);
     const ret = await verifyUsingGET1({ verifyId: Number(verifyId) });
+    setLoading(false);
     if (ret.status === 0) {
       setCurrentKey(ret.data);
     }
@@ -46,7 +50,7 @@ export default function ProvablyVerify() {
 
   return (
     <div className="my-4">
-      <div className="flex justify-center pb-5 join">
+      <div className="flex justify-center pb-5 join max-w-4xl">
         <label className="join-item flex w-full max-w-sm cursor-text items-center rounded-none border border-solid border-neutral-500 pl-5 text-sm">
           <input
             type="text"
@@ -55,33 +59,33 @@ export default function ProvablyVerify() {
             ref={inputRef}
           />
         </label>
-        <button
+        <Button
           className="join-item btn btn-primary btn-outline uppercase rounded-none border border-green text-white"
           onClick={onVerify}
-          type='button'
+          loading={loading}
         >
           Verification
-        </button>
+        </Button>
       </div>
       {currentKey && (
         <div className="gap-4 space-y-4 lg:grid lg:grid-cols-12 lg:space-y-0 text-white">
           <div className="flex flex-col space-y-4 lg:col-span-8">
             <div className="flex flex-col lg:h-14 lg:flex-row">
-              <div className="z-10 -mb-px  flex h-full w-full items-center justify-center rounded-none bg-neutral py-2 text-center font-bold uppercase lg:py-1 lg:mb-0 lg:max-w-xs ">
+              <div className="z-10 -mb-px  flex h-full w-full items-center justify-center rounded-none bg-neutral py-2 text-center font-bold uppercase lg:py-1 lg:mb-0 lg:max-w-[250px] ">
                 Client Seed
               </div>
-              <div className="flex h-full flex-1 flex-col items-center rounded-b-lg border border-solid border-neutral-700 p-3 text-center md:flex-row lg:-ml-6  lg:pl-9">
+              <div className="flex h-full flex-1 flex-col items-center border border-solid border-neutral-700 p-3 text-center md:flex-row lg:-ml-6  lg:pl-9">
                 <span className="mx-3 break-all font-mono text-sm">
                   {currentKey.clientSeed}
                 </span>
               </div>
             </div>
             <div className="flex flex-col lg:h-14 lg:flex-row">
-              <div className="z-10 -mb-px flex h-full w-full items-center justify-center rounded-t bg-neutral py-2 text-center font-bold uppercase lg:py-1 lg:mb-0 lg:max-w-xs ">
+              <div className="z-10 -mb-px flex h-full w-full items-center justify-center rounded-t bg-neutral py-2 text-center font-bold uppercase lg:py-1 lg:mb-0 lg:max-w-[250px] ">
                 Server Seed
               </div>
 
-              <div className="flex h-full flex-1 flex-col items-center rounded-b-lg border border-solid border-neutral-700 p-3 text-center md:flex-row lg:-ml-6  lg:pl-9">
+              <div className="flex h-full flex-1 flex-col items-center border border-solid border-neutral-700 p-3 text-center md:flex-row lg:-ml-6  lg:pl-9">
                 <span className="mx-3 break-all font-mono text-sm">
                   {currentKey.secretHash}
                 </span>
@@ -99,50 +103,50 @@ export default function ProvablyVerify() {
               </div>
             </div>
             <div className="flex flex-col lg:h-14 lg:flex-row">
-              <div className="z-10 -mb-px flex h-full w-full items-center justify-center rounded-t bg-neutral py-2 text-center font-bold uppercase lg:py-1 lg:mb-0 lg:max-w-xs ">
+              <div className="z-10 -mb-px flex h-full w-full items-center justify-center rounded-t bg-neutral py-2 text-center font-bold uppercase lg:py-1 lg:mb-0 lg:max-w-[250px] ">
                 SECRET SALT
               </div>
-              <div className="flex h-full flex-1 flex-col items-center rounded-b-lg border border-solid border-neutral-700 p-3 text-center md:flex-row lg:-ml-6  lg:pl-9">
+              <div className="flex h-full flex-1 flex-col items-center border border-solid border-neutral-700 p-3 text-center md:flex-row lg:-ml-6  lg:pl-9">
                 <span className="mx-3 break-all font-mono text-sm">
                   {currentKey.secretSalt}
                 </span>
               </div>
             </div>
             <div className="flex flex-col lg:h-14 lg:flex-row">
-              <div className="z-10 -mb-px flex h-full w-full items-center justify-center rounded-t bg-neutral py-2 text-center font-bold uppercase lg:py-1 lg:mb-0 lg:max-w-xs ">
+              <div className="z-10 -mb-px flex h-full w-full items-center justify-center rounded-t bg-neutral py-2 text-center font-bold uppercase lg:py-1 lg:mb-0 lg:max-w-[250px] ">
                 PUBLIC HASH
               </div>
-              <div className="flex h-full flex-1 flex-col items-center rounded-b-lg border border-solid border-neutral-700 p-3 text-center md:flex-row lg:-ml-6  lg:pl-9">
+              <div className="flex h-full flex-1 flex-col items-center border border-solid border-neutral-700 p-3 text-center md:flex-row lg:-ml-6  lg:pl-9">
                 <span className="mx-3 break-all font-mono text-sm">
                   {currentKey.publicHash}
                 </span>
               </div>
             </div>
             <div className="flex flex-col lg:h-14 lg:flex-row">
-              <div className="z-10 -mb-px flex h-full w-full items-center justify-center rounded-t bg-neutral py-2 text-center font-bold uppercase lg:py-1 lg:mb-0 lg:max-w-xs ">
+              <div className="z-10 -mb-px flex h-full w-full items-center justify-center rounded-t bg-neutral py-2 text-center font-bold uppercase lg:py-1 lg:mb-0 lg:max-w-[250px] ">
                 ROUND
               </div>
-              <div className="flex h-full flex-1 flex-col items-center rounded-b-lg border border-solid border-neutral-700 p-3 text-center md:flex-row lg:-ml-6  lg:pl-9">
+              <div className="flex h-full flex-1 flex-col items-center border border-solid border-neutral-700 p-3 text-center md:flex-row lg:-ml-6  lg:pl-9">
                 <span className="mx-3 break-all font-mono text-sm">
                   {currentKey.round}
                 </span>
               </div>
             </div>
             <div className="flex flex-col lg:h-14 lg:flex-row">
-              <div className="z-10 -mb-px flex h-full w-full items-center justify-center rounded-t bg-neutral py-2 text-center font-bold uppercase lg:py-1 lg:mb-0 lg:max-w-xs ">
+              <div className="z-10 -mb-px flex h-full w-full items-center justify-center rounded-t bg-neutral py-2 text-center font-bold uppercase lg:py-1 lg:mb-0 lg:max-w-[250px] ">
                 ROLLED AT
               </div>
-              <div className="flex h-full flex-1 flex-col items-center rounded-b-lg border border-solid border-neutral-700 p-3 text-center md:flex-row lg:-ml-6  lg:pl-9">
+              <div className="flex h-full flex-1 flex-col items-center border border-solid border-neutral-700 p-3 text-center md:flex-row lg:-ml-6  lg:pl-9">
                 <span className="mx-3 break-all font-mono text-sm">
                   {currentKey.createTime}
                 </span>
               </div>
             </div>
             <div className="flex flex-col lg:h-14 lg:flex-row">
-              <div className="z-10 -mb-px flex h-full w-full items-center justify-center rounded-t bg-neutral py-2 text-center font-bold uppercase lg:py-1 lg:mb-0 lg:max-w-xs ">
+              <div className="z-10 -mb-px flex h-full w-full items-center justify-center rounded-t bg-neutral py-2 text-center font-bold uppercase lg:py-1 lg:mb-0 lg:max-w-[250px] ">
                 ROLL
               </div>
-              <div className="flex h-full flex-1 flex-col items-center rounded-b-lg border border-solid border-neutral-700 p-3 text-center md:flex-row lg:-ml-6  lg:pl-9">
+              <div className="flex h-full flex-1 flex-col items-center border border-solid border-neutral-700 p-3 text-center md:flex-row lg:-ml-6  lg:pl-9">
                 <span className="mx-3 break-all font-mono text-sm">
                   {currentKey.rollCode}
                 </span>

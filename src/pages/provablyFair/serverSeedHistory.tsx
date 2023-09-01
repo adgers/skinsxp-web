@@ -78,7 +78,7 @@ export default function ServerSeedHistory({
           );
         })}
 
-        {data?.totalRows && data?.totalRows > pageSize && (
+        {!!data?.totalRows && data?.totalRows > pageSize && (
           <div className="flex justify-center items-center mt-2">
             <Pagination
               current={page}

@@ -133,15 +133,14 @@ export default function BoxPage() {
 
   return (
     <div className="max-w-[1400px] w-full m-auto mt-4 px-3">
-      <div className="flex flex-row items-center h-[60px] sm:h-[120px] box-open-title">
-        <button
-          className="btn btn-sm text-white gap-1"
+      <div className="flex flex-row items-center h-[50px] sm:h-[100px] box-open-title">
+        <div
+          className="font-semibold uppercase text-white flex gap-1 ml-5 cursor-pointer"
           onClick={goback}
-          type="button"
         >
           <LeftOutlined />
           <FormattedMessage id="common_back" />
-        </button>
+        </div>
         <h2 className="mx-auto px-6 text-center text-white md:text-xl font-semibold uppercase truncate flex-1 w-full">
           {boxDetails?.boxName}
         </h2>
@@ -169,7 +168,7 @@ export default function BoxPage() {
           </div>
         </div>
       </div>
-      <div className="rounded ring-1 ring-light mt-4 p-3 relative h-[204px] md:h-[324px] lottery-bg">
+      <div className="rounded ring-1 ring-light mt-4 py-3 px-1 relative h-[204px] md:h-[324px] lottery-bg">
         {openCount === 1 && !hasOpen && (
           <div className="absolute inset-0 z-30 bg-dark bg-opacity-60">
             <div className="absolute left-1/2 h-full -translate-x-1/2 transform w-[200px] sm:w-[300px]">
@@ -228,8 +227,8 @@ export default function BoxPage() {
               showName={true}
               boxSize={
                 responsive.md
-                  ? { width: 264, height: 300 }
-                  : { width: 108, height: 184 }
+                  ? { width: 268, height: 300 }
+                  : { width: 114, height: 184 }
               }
               start={lotteryStart}
               wrapHeight={responsive.md ? 300 : 184}

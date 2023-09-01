@@ -9,6 +9,7 @@ import {
   useLocation,
 } from '@umijs/max';
 import { useMemo } from 'react';
+import './index.less';
 
 export default function ProvablyFair() {
   const location = useLocation();
@@ -27,9 +28,9 @@ export default function ProvablyFair() {
   }, []);
 
   return (
-    <div className="w-full max-w-[1400px] m-auto">
-      <div className="my-5 flex w-full flex-col justify-between border-b border-light lg:mb-0 lg:mt-8 lg:flex-row">
-        <div className="-mb-px items-center border-b border-green pb-6 pr-6 font-semibold uppercase text-white flex gap-3">
+    <div className="w-full max-w-[1400px] m-auto verify-bg">
+      <div className="my-5 flex w-full flex-col justify-between border-b-0 sm:border-b border-light lg:mb-0 lg:mt-8 lg:flex-row">
+        <div className="-mb-px items-center border-b-0 sm:border-b border-green sm:pb-6 pr-6 font-semibold uppercase text-white flex gap-3">
           <div className="-my-2 text-white cursor-pointer" onClick={goback}>
             <LeftOutlined />
           </div>
@@ -37,7 +38,7 @@ export default function ProvablyFair() {
           <IconFont type="icon-shield" className="text-green text-2xl" />
         </div>
       </div>
-      <div className="bg-black rounded p-5 text-white mt-8">
+      <div className="bg-black p-5 text-white sm:mt-8 max-w-4xl">
         <div
           dangerouslySetInnerHTML={{
             __html: intl.formatMessage({ id: 'provably_fair_content' }),
@@ -45,7 +46,7 @@ export default function ProvablyFair() {
           className="prose-base prose-slate"
         ></div>
       </div>
-      <div className="custom-tab flex mt-4 text-white justify-center border-b border-[#45444B] w-full h-[68px]">
+      <div className="custom-tab flex mt-4 text-white justify-center border-b border-[#45444B] w-full h-[68px]  max-w-4xl">
         {tabLinks.map((item, index) => {
           const isActive = location.pathname.startsWith(item.link);
 
@@ -65,7 +66,7 @@ export default function ProvablyFair() {
           );
         })}
       </div>
-      <div className="w-full">
+      <div className="w-full px-2 sm:px-0">
         <Outlet />
       </div>
     </div>
