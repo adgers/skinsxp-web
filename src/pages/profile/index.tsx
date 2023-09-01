@@ -63,7 +63,7 @@ export default function User() {
                       <div className="text-white/70 text-sm font-normal mb-1">
                         <FormattedMessage id="balanceAfter" />
                       </div>
-                      <div className="text-green  truncate">
+                      <div className="text-green  truncate font-num">
                         ${userInfo?.balance}
                       </div>
                     </div>
@@ -71,7 +71,7 @@ export default function User() {
                       <div className="text-white/70 text-sm font-normal mb-1">
                         Integral
                       </div>
-                      <div className=" text-purple truncate">
+                      <div className=" text-purple truncate font-num">
                         <IconFont type="icon-coin" className="text-purple mr-1" />
 
                         {userInfo?.secondaryBalance}

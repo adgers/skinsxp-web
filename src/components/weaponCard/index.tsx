@@ -100,11 +100,9 @@ export default React.memo(function WeaponCard({
         </div>
       )}
 
-      <div className="absolute left-0 top-0 text-sm text-white pt-[8px] pl-[10px]">
+      <div className="absolute left-0 top-0 text-sm text-white pt-[8px] px-[10px] w-full flex justify-between items-center">
         <span className="font-num">${price && numberFixed(Number(price))}</span>
-      </div>
-      {fromProfile && (
-        <div className="absolute right-0 top-0 pt-[8px] pr-[10px] text-sm">
+        {fromProfile && (
           <span
             className={`uppercase ${
               data?.state === ItemState.ACTIVE ? 'text-green font-bold' : ''
@@ -117,12 +115,10 @@ export default React.memo(function WeaponCard({
           >
             {data?.stateStr}
           </span>
-        </div>
-      )}
-      {probability > 0 &&
-        rollCode === 0 && ( // 有概率才显示
-          <div className="absolute right-0 top-0 flex flex-col items-end text-right z-30 text-white/[0.5] text-sm font-semibold uppercase leading-none pt-[8px] pr-[10px] gap-2">
-            <div className="text-white/[0.5] text-xs font-num flex items-center gap-2">
+        )}
+        {probability > 0 &&
+          rollCode === 0 && ( // 有概率才显示
+            <div className="text-white/[0.5] text-xs font-num flex items-center gap-2 z-30">
               {numberFixed(probability * 100, 2)}%
               <div
                 className="flex h-5 w-5 items-center justify-center rounded-full bg-white/[0.10] text-center font-bold transition-colors duration-200 lowercase"
@@ -131,22 +127,21 @@ export default React.memo(function WeaponCard({
                 {showChance ? 'x' : 'i'}
               </div>
             </div>
-          </div>
-        )}
-      {rollCode > 0 && showRoll && (
-        <div className="absolute right-0 top-0 flex items-center text-right z-30 text-white/[0.5] text-sm font-semibold uppercase leading-none pt-[8px] pr-[10px] gap-2">
+          )}
+        {rollCode > 0 && showRoll && (
           <div
-            className="flex flex-row gap-1 cursor-pointer"
+            className="flex flex-row gap-1 cursor-pointer z-30"
             onClick={() =>
-              history.push(`/profile/provably-fair/verify/${data?.verifyId}`)
+              history.push(`/provably-fair/verify/${data?.verifyId}`)
             }
           >
             <div className="text-xs">Roll</div>
             <div className="text-white/[0.5] text-xs font-num">{rollCode}</div>
             <IconFont type="icon-shield" className="text-green" />
           </div>
-        </div>
-      )}
+        )}
+      </div>
+
       {showChance && (
         <div className="z-20 absolute left-0 top-0 flex items-center justify-center h-full w-full bg-black bg-opacity-70 transition duration-300 backdrop-blur-1">
           <div className="flex flex-col items-center gap-1">
