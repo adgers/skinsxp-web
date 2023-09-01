@@ -3,10 +3,10 @@ import { logoutUsingPOST } from '@/services/front/qiantaishouquanxiangguan';
 import Big from 'big.js';
 import { EventEmitter } from 'events';
 //@ts-ignore
-import { useRef, useEffect } from 'react'
 import { BOX_GRADES } from '@/constants';
 import { history } from '@umijs/max';
 import qs from 'qs';
+import { useEffect, useRef } from 'react';
 
 const globalEventEmitter = new EventEmitter();
 
@@ -17,7 +17,6 @@ export function getApiDomain() {
   ) {
     // return 'http://127.0.0.1:9999';
     return 'https://api.wgskins.com';
-
   } else if (location.href.indexOf('wgskins.com') > -1) {
     return '//api.wgskins.com';
   } else {
@@ -101,9 +100,11 @@ export function parseName(name: string) {
   const result = name.split(' (');
   const nameArr = [result[0]];
   if (result[1]) {
-    const [first, second] = result[1].replace(/[()]/g, '').split(' ');
-    nameArr.push(first);
-    nameArr.push(second);
+    const [first, second] = result[1].replace(/[()]/g, '')?.split(' ')?.join("-").split("-");
+    const rF = first?.split('')?.[0];
+    const rS = second?.split('')?.[0];
+    let realDura = rS ? rF + rS : rF;
+    nameArr.push(realDura.toUpperCase());
   }
   return nameArr;
 }
@@ -222,15 +223,14 @@ export function getSteamLoginUrl() {
  * @param state
  * @returns
  */
-export  function useStateRef(state: any) {
-  const stateRef = useRef<any>()
+export function useStateRef(state: any) {
+  const stateRef = useRef<any>();
   useEffect(() => {
-    stateRef.current = state
-  }, [state])
+    stateRef.current = state;
+  }, [state]);
 
-  return stateRef
+  return stateRef;
 }
-
 
 export function isSafari() {
   return (
