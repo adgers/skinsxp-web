@@ -1,4 +1,3 @@
-import { parseName } from '@/utils';
 import { LeftOutlined, PlusOutlined, RightOutlined } from '@ant-design/icons';
 import { history } from '@umijs/max';
 import { useState } from 'react';
@@ -56,7 +55,7 @@ export default function BattleItem(props: BattleItemProps) {
               </div>
               <div className="flex justify-between overflow-hidden gap-4 w-full items-center">
                 <div className="flex-1 truncate overflow-hidden text-xs">
-                  {parseName(item?.boxName)?.[0]}
+                  {item?.boxName}
                 </div>
                 <div className="text-xs text-white/50">
                   <span className="text-white text-sm font-bold">

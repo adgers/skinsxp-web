@@ -16,7 +16,7 @@ export default function Case() {
   );
   const { data: battleList } = useRequest(() => getHostListUsingGET());
   useEffect(() => {
-    if(boxList.length === 0) return;
+    if (boxList.length === 0) return;
 
     if (boxList.length > 1) {
       setHotBoxList(boxList.slice(0, 1));
@@ -28,56 +28,54 @@ export default function Case() {
 
   const renderBox = (t: API.BoxThemeListVo, index: number) => {
     return (
-      <>
-        <div className="px-4" key={index}>
-          <div className="relative mb-10 flex border-b border-light">
-            <div className="flex w-1/6 items-end sm:w-1/3"></div>
-            <div className="flex w-4/6 items-center sm:w-1/3">
-              <h2
-                className="row-start-1 row-end-1 -mb-px ml-auto mr-auto mt-10 border-b-[3px] border-green px-7 pb-[20px] pt-[5px] text-center text-base font-semibold uppercase text-white sm:text-lg lg:col-start-2 lg:col-end-2"
-                style={{
-                  background:
-                    ' var(--j-1, linear-gradient(0deg, rgba(54, 122, 46, 0.68) 0%, rgba(0, 0, 0, 0.00) 98.14%))',
-                }}
-              >
-                <div className="flex items-center text-sm sm:text-base  leading-[28px]">
-                  {t.themeName}
-                </div>
-              </h2>
-            </div>
-            <div className="flex w-1/6 items-end sm:w-1/3"></div>
+      <div className="px-4" key={index}>
+        <div className="relative mb-10 flex border-b border-light">
+          <div className="flex w-1/6 items-end sm:w-1/3"></div>
+          <div className="flex w-4/6 items-center sm:w-1/3">
+            <h2
+              className="row-start-1 row-end-1 -mb-px ml-auto mr-auto mt-10 border-b-[3px] border-green px-7 pb-[20px] pt-[5px] text-center text-base font-semibold uppercase text-white sm:text-lg lg:col-start-2 lg:col-end-2"
+              style={{
+                background:
+                  ' var(--j-1, linear-gradient(0deg, rgba(54, 122, 46, 0.68) 0%, rgba(0, 0, 0, 0.00) 98.14%))',
+              }}
+            >
+              <div className="flex items-center text-sm sm:text-base sm:leading-[28px]">
+                {t.themeName}
+              </div>
+            </h2>
           </div>
+          <div className="flex w-1/6 items-end sm:w-1/3"></div>
+        </div>
 
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4">
-            {t.boxList?.map((v, idx) => (
-              <div
-                key={idx}
-                className="w-full h-full relative cursor-pointer"
-                onClick={() => {
-                  history.push(`/case/${v?.id}`);
-                }}
-              >
-                <img
-                  src={v?.boxImage}
-                  alt=""
-                  className="w-full h-full object-contain"
-                />
-                <div className="w-full h-full absolute top-0 left-0">
-                  {/* <div className="absolute top-[1.5] left-[1.75] text-green">New !</div> */}
-                  <div className="absolute top-[20px] right-0 bg-white/[0.2] text-white px-2 py-1 font-num text-sm">
-                    ${v?.openPrice}
-                  </div>
-                  <div className="absolute bottom-0 left-0 w-full bg-black bg-opacity-50 backdrop-blur-sm py-3 px-2">
-                    <div className="w-full text-white truncate text-center">
-                      {v?.boxName}
-                    </div>
+        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4">
+          {t.boxList?.map((v, idx) => (
+            <div
+              key={idx}
+              className="w-full h-full relative cursor-pointer"
+              onClick={() => {
+                history.push(`/case/${v?.id}`);
+              }}
+            >
+              <img
+                src={v?.boxImage}
+                alt=""
+                className="w-full h-full object-contain"
+              />
+              <div className="w-full h-full absolute top-0 left-0">
+                {/* <div className="absolute top-[1.5] left-[1.75] text-green">New !</div> */}
+                <div className="absolute top-[20px] right-0 bg-white/[0.2] text-white px-2 py-1 font-num text-sm">
+                  ${v?.openPrice}
+                </div>
+                <div className="absolute bottom-0 left-0 w-full bg-black bg-opacity-50 backdrop-blur-sm py-3 px-2">
+                  <div className="w-full text-white truncate text-center">
+                    {v?.boxName}
                   </div>
                 </div>
               </div>
-            ))}
-          </div>
+            </div>
+          ))}
         </div>
-      </>
+      </div>
     );
   };
 
@@ -97,7 +95,9 @@ export default function Case() {
                     'var(--j-1, linear-gradient(0deg, rgba(54, 122, 46, 0.68) 0%, rgba(0, 0, 0, 0.00) 98.14%))',
                 }}
               >
-                <div className="flex h-7 items-center sm:h-8 text-sm sm:text-base">Top battles</div>
+                <div className="flex h-7 items-center sm:h-8 text-sm sm:text-base">
+                  Top battles
+                </div>
               </h2>
             </div>
             <div className="flex w-1/6 items-end sm:w-1/3"></div>

@@ -56,14 +56,10 @@ export default React.memo(function TopCard({ data, loading }: TopCardProps) {
         </div>
         <div className="item-footer flex flex-row gap-1 justify-between">
           <div className="item-title">
-            <div>
-              <div>
-                <span className="truncate text-white/[0.5] text-xs">
-                  {data?.giftName && parseName(data?.giftName || '')?.[0]}
-                </span>
-              </div>
+            <div className="truncate text-white/[0.5] text-xs">
+              {data?.giftName && parseName(data?.giftName || '')?.[0]}
             </div>
-            <div className=" truncate text-white text-sm">
+            <div className=" truncate text-white text-xs">
               {data?.giftName && parseName(data?.giftName)?.[1] && (
                 <span className="text-white/50">
                   ({parseName(data?.giftName)?.[1]})

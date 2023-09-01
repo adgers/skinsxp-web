@@ -85,6 +85,32 @@ const Lottery = ({
     });
   };
 
+  const animateEndX = (startPos?: number, centerPos?: number) => {
+    opacityApi.start({
+      from: { opacity: 1 },
+      to: { opacity: 0.2 },
+      config: { duration: 500 },
+    });
+
+    if (startPos && centerPos) {
+      moveApi.start({
+        from: { x: -startPos },
+        to: { x: -centerPos },
+        config: { duration: 2000 },
+        onResolve: () => {
+          scaleApi.start({
+            from: { scale: 1 },
+            to: { scale: 1.3 },
+            config: { duration: 500 },
+            onResolve: () => {
+              onCompleted(lotteryIndex);
+            },
+          });
+        },
+      });
+    }
+  };
+
   const initList = () => {
     if (giftList.length === 0) return;
     let list = [...giftList];
@@ -133,7 +159,7 @@ const Lottery = ({
     moveApi.start({
       from: { y: 0 },
       to: { y: -moveY },
-      config: { duration: duration, easing: easings.easeInOutCubic },
+      config: { duration: duration, easing: easings.easeOutCubic },
       onChange: (props) => {
         const currentMoveY = props.value.y;
         const distanceDelta = currentMoveY - prevMoveRef.current;
@@ -167,10 +193,16 @@ const Lottery = ({
     const moveX =
       winLotteryIndex * (boxWidth + gapWidth) - wrapWidth / 2 + randomWidth - 8;
 
+    const centerPos =
+      winLotteryIndex * (boxWidth + gapWidth) -
+      wrapWidth / 2 +
+      boxWidth / 2 -
+      8;
+
     moveApi.start({
       from: { x: 0 },
       to: { x: -moveX },
-      config: { duration: duration, easing: easings.easeInOutCubic },
+      config: { duration: duration, easing: easings.easeOutCubic },
       onChange: (props) => {
         const currentMoveX = props.value.x;
         const distanceDelta = currentMoveX - prevMoveRef.current;
@@ -184,7 +216,7 @@ const Lottery = ({
         }
       },
       onResolve: () => {
-        animateEnd();
+        animateEndX(moveX, centerPos);
       },
     });
   };

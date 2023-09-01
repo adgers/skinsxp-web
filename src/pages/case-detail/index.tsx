@@ -135,7 +135,7 @@ export default function BoxPage() {
     <div className="max-w-[1400px] w-full m-auto mt-4 px-3">
       <div className="flex flex-row items-center h-[50px] sm:h-[100px] box-open-title">
         <div
-          className="font-semibold uppercase text-white flex gap-1 ml-5 cursor-pointer"
+          className="font-semibold uppercase text-white flex gap-1 ml-2 cursor-pointer"
           onClick={goback}
         >
           <LeftOutlined />
@@ -144,7 +144,7 @@ export default function BoxPage() {
         <h2 className="mx-auto px-6 text-center text-white md:text-xl font-semibold uppercase truncate flex-1 w-full">
           {boxDetails?.boxName}
         </h2>
-        <div className="flex justify-center space-x-1 sm:justify-end sm:space-x-2">
+        <div className="flex justify-center space-x-1 sm:justify-end sm:space-x-2 mr-2">
           <div
             className={`cursor-pointer  text-white px-1 rounded ${
               !voice && 'text-opacity-50'
@@ -268,27 +268,31 @@ export default function BoxPage() {
         </div>
       </div>
 
-      <div className="box-title mt-10">
-        <span className="text-center  text-white sm:text-2xl uppercase font-semibold">
-          <FormattedMessage id="open_box_lastdrop" />
-        </span>
-      </div>
-      <div className="grid grid-cols-2 md:grid-cols-4 xl:grid-cols-6 gap-2 mt-4">
-        {recentBoxs?.map((item, i: number) => {
-          return (
-            <div className="card-flip relative group" key={i}>
-              <WeaponCard data={item} key={i} isGiveawayWinList={true} />
-              <div className="absolute w-full h-full top-0 left-0 z-[11] bg-black/70 flex flex-col items-center opacity-0  transition-opacity justify-center group-hover:opacity-100 gap-1">
-                <div className="w-[66px] h-[66px] rounded-full overflow-hidden">
-                  <img src={item?.headPic} alt="" />
+      {recentBoxs && recentBoxs?.length > 0 && (
+        <>
+          <div className="box-title mt-10">
+            <span className="text-center  text-white sm:text-2xl uppercase font-semibold">
+              <FormattedMessage id="open_box_lastdrop" />
+            </span>
+          </div>
+          <div className="grid grid-cols-2 md:grid-cols-4 xl:grid-cols-6 gap-2 mt-4">
+            {recentBoxs?.map((item, i: number) => {
+              return (
+                <div className="card-flip relative group" key={i}>
+                  <WeaponCard data={item} key={i} isGiveawayWinList={true} />
+                  <div className="absolute w-full h-full top-0 left-0 z-[11] bg-black/70 flex flex-col items-center opacity-0  transition-opacity justify-center group-hover:opacity-100 gap-1">
+                    <div className="w-[66px] h-[66px] rounded-full overflow-hidden">
+                      <img src={item?.headPic} alt="" />
+                    </div>
+                    <div className="text-sm">{item?.nickname}</div>
+                    <div className="text-sm">{item?.createTime}</div>
+                  </div>
                 </div>
-                <div className="text-sm">{item?.nickname}</div>
-                <div className="text-sm">{item?.createTime}</div>
-              </div>
-            </div>
-          );
-        })}
-      </div>
+              );
+            })}
+          </div>
+        </>
+      )}
 
       <div className="box-title mt-10">
         <span className="text-center text-white sm:text-2xl uppercase font-semibold">

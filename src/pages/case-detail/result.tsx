@@ -144,17 +144,17 @@ export default function Result({
           ))}
         </div>
         {results.length === openResults.length && (
-          <div className="grid grid-cols-2 gap-2 sm:gap-4 w-full sm:px-5 mt-6">
+          <div className="flex flex-col sm:grid sm:grid-cols-2 gap-2 sm:gap-4 w-full sm:px-5 mt-6">
             <button
               onClick={onClose}
-              className="btn-purple !btn-sm"
+              className="btn-purple"
               type="button"
             >
               <FormattedMessage id="open_box_receive" />
             </button>
 
             <Button
-              className="btn-green !btn-sm"
+              className="btn-green"
               onClick={onSale}
               loading={saleLoading}
             >
