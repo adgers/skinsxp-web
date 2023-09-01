@@ -45,8 +45,6 @@ export default React.memo(function TopCard({ data, loading }: TopCardProps) {
     return topIcon;
   };
 
-  const name = parseName(data?.giftName || '');
-
   return (
     <div className={`weapon-card-top weapon-card-grade-${data?.grade}`}>
       <div className="front">
@@ -57,12 +55,32 @@ export default React.memo(function TopCard({ data, loading }: TopCardProps) {
           </div>
         </div>
         <div className="item-footer flex flex-row gap-1 justify-between">
-          <div className="item-title">{name}</div>
+          <div className="item-title">
+            <div>
+              <div>
+                <span className="truncate text-white/[0.5] text-xs">
+                  {data?.giftName && parseName(data?.giftName || '')?.[0]}
+                </span>
+              </div>
+            </div>
+            <div className=" truncate text-white text-sm">
+              {data?.giftName && parseName(data?.giftName)?.[1] && (
+                <span className="text-white/50">
+                  ({parseName(data?.giftName)?.[1]})
+                </span>
+              )}
+              {data?.giftName && parseName(data?.giftName)?.[2]}
+            </div>
+          </div>
           <div className="w-[24px] h-[24px] rounded-full flex-shrink-0 relative">
             <div className="w-[12px] absolute right-[0] top-[-6px]">
               <img src={require('@/assets/winner-icon.png')} />
             </div>
-            <img src={data?.headPic} className="w-full h-full rounded-full" alt="" />
+            <img
+              src={data?.headPic}
+              className="w-full h-full rounded-full"
+              alt=""
+            />
           </div>
         </div>
       </div>

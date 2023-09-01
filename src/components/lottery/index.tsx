@@ -262,8 +262,13 @@ const Lottery = ({
               {showName && (
                 <div className="absolute bottom-0 left-0 -mb-1 w-full p-2 font-semibold uppercase leading-tight md:p-3">
                   <div className="truncate text-xs md:text-sm text-center">
-                    <div className="text-white text-opacity-50">{name[1]}</div>
-                    <div className="text-white">{name[0]}</div>
+                    <div className="text-white text-opacity-50">{name[0]}</div>
+                    <div className="text-white">
+                      {name[1] && (
+                        <span className="text-white/50">({name[1]})</span>
+                      )}
+                      {name[2]}
+                    </div>
                   </div>
                 </div>
               )}

@@ -98,13 +98,21 @@ export function isWeixin() {
 
 export function parseName(name: string) {
   const result = name.split(' (');
-  const nameArr = [result[0]];
+  const weaponName = result[0]?.split('|');
+  const nameArr = [weaponName?.[0]];
   if (result[1]) {
-    const [first, second] = result[1]?.replace(/[()]/g, '')?.split(' ')?.join("-")?.split("-");
+    const [first, second] = result[1]
+      ?.replace(/[()]/g, '')
+      ?.split(' ')
+      ?.join('-')
+      ?.split('-');
     const rF = first?.split('')?.[0];
     const rS = second?.split('')?.[0];
     let realDura = rS ? rF + rS : rF;
-    nameArr.push(realDura?.toUpperCase());
+    nameArr.push(realDura?.toUpperCase() || '');
+    nameArr.push(weaponName?.[1]);
+  } else {
+    nameArr.push(...['', weaponName?.[1]]);
   }
   return nameArr;
 }

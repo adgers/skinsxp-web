@@ -49,7 +49,9 @@ export default React.memo(function RollCard({
             {data?.banner && (
               <Avatar src={data?.banner} size={25} shape="square" />
             )}
-            <span className="uppercase text-sm font-normal truncate">{data?.title}</span>
+            <span className="uppercase text-sm font-normal truncate">
+              {data?.title}
+            </span>
           </div>
           <div className="text-sm text-white pr-3">
             <IconFont type="icon-online" className="text-green mr-1 text-sm" />{' '}
@@ -64,12 +66,17 @@ export default React.memo(function RollCard({
       <div className="mx-5 pb-2 border-b border-light mt-[28px]">
         <div className="h-[24px]">
           <span className="truncate text-white/[0.5] text-xs min-h-[15px]">
-            {name && parseName(name)?.[1]}
+            {name && parseName(name)?.[0]}
           </span>
         </div>
 
         <div className=" truncate text-white text-sm">
-          {name && parseName(name)?.[0]}
+          {name && parseName(name)?.[1] && (
+            <span className="text-white/50">
+              ({name && parseName(name)?.[1]})
+            </span>
+          )}
+          {name && parseName(name)?.[2]}
         </div>
       </div>
       <div className="mx-5 my-2 flex justify-between items-center text-sm">
@@ -81,7 +88,7 @@ export default React.memo(function RollCard({
           </span>
         </div>
       </div>
-      <div className='w-full absolute bottom-0 left-0'>
+      <div className="w-full absolute bottom-0 left-0">
         <div
           className={`mx-2  sm:mx-5 rounded-none ${
             data?.roomType === 1 ? 'btn-purple' : 'btn-green'

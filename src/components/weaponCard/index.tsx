@@ -63,28 +63,36 @@ export default React.memo(function WeaponCard({
         <img src={img} />
       </div>
       {!isGiveawayWinList ? (
-        <div className="item-footer flex flex-col gap-1">
+        <div className="item-footer flex flex-col gap-[0.5]">
           {mini ? null : (
             <div>
               <span className="truncate text-white/[0.5] text-xs">
-                {name && parseName(name)?.[1]}
+                {name && parseName(name)?.[0]}
               </span>
             </div>
           )}
           <div className=" truncate text-white text-sm">
-            {name && parseName(name)?.[0]}
+            {name && parseName(name)?.[1] && (
+              <span className="text-white/50">({parseName(name)?.[1]})</span>
+            )}
+            {name && parseName(name)?.[2]}
           </div>
         </div>
       ) : (
         <div className="item-footer flex gap-1 items-center">
           <div className="flex-1 overflow-hidden">
             <div>
-              <span className="truncate text-white/[0.5] text-xs">
-                {name && parseName(name)?.[1]}
-              </span>
+              <div>
+                <span className="truncate text-white/[0.5] text-xs">
+                  {name && parseName(name)?.[0]}
+                </span>
+              </div>
             </div>
             <div className=" truncate text-white text-sm">
-              {name && parseName(name)?.[0]}
+              {name && parseName(name)?.[1] && (
+                <span className="text-white/50">({parseName(name)?.[1]})</span>
+              )}
+              {name && parseName(name)?.[2]}
             </div>
           </div>
           <div className="rounded-full w-[40px] relative">
@@ -102,11 +110,11 @@ export default React.memo(function WeaponCard({
 
       <div className="absolute left-0 top-0 text-sm text-white pt-[8px] px-[10px] w-full flex justify-between items-center">
         <span className="font-num">${price && numberFixed(Number(price))}</span>
-        {fromProfile && (
+        {fromProfile && data?.state !== ItemState.ACTIVE && (
           <span
             className={`uppercase ${
-              data?.state === ItemState.ACTIVE ? 'text-green font-bold' : ''
-            } ${data?.state === ItemState.SOLD ? 'text-red/100 font-bold' : ''} 
+              data?.state === ItemState.SOLD ? 'text-red/100 font-bold' : ''
+            } 
             ${
               data?.state === ItemState.RETRIEVED
                 ? 'text-white/60 font-bold'
