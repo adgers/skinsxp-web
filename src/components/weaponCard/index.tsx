@@ -88,7 +88,7 @@ export default React.memo(function WeaponCard({
                 </span>
               </div>
             </div>
-            <div className=" truncate text-white text-sm">
+            <div className="truncate text-white text-sm">
               {name && parseName(name)?.[1] && (
                 <span className="text-white/50">({parseName(name)?.[1]})</span>
               )}

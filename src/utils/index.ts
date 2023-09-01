@@ -96,35 +96,40 @@ export function isWeixin() {
   return /MicroMessenger/i.test(navigator.userAgent);
 }
 
-export function parseName(name:string) {
-  const result = name.split('|');
-  const weaponName = result[0]; // 饰品名字
-  const pifuName = result?.splice(1)?.join('|');
-  const nameArr = [weaponName];
-  // console.log(pifuName, 'pifuName');
-  // 反转饰品的皮肤 查看是否有磨损
-  const reverseName = pifuName?.split('')?.reverse()?.join('');
+export function parseName(name: string) {
+  try {
+    const result = name.split('|');
+    const weaponName = result[0]; // 饰品名字
+    const pifuName = result?.splice(1)?.join('|');
+    const nameArr = [weaponName];
+    // console.log(pifuName, 'pifuName');
+    // 反转饰品的皮肤 查看是否有磨损
+    const reverseName = pifuName?.split('')?.reverse()?.join('');
 
-  if (!!reverseName?.split(')')?.[0]?.trim()) {
-    // 没有磨损
-    nameArr.push(...['', pifuName]);
-  } else {
-    // console.log('有磨损');
-    //   有磨损度
-    const pifuNameArr = pifuName.split(' (');
-    const [first, second] = pifuNameArr?.[1]
-      ?.replace(/[()]/g, '')
-      ?.split(' ')
-      ?.join('-')
-      ?.split('-');
-    const rF = first?.split('')?.[0];
-    const rS = second?.split('')?.[0];
-    let realDura = rS ? rF + rS : rF;
-    nameArr.push(realDura?.toUpperCase() || '');
+    if (!!reverseName?.split(')')?.[0]?.trim()) {
+      // 没有磨损
+      nameArr.push(...['', pifuName]);
+    } else {
+      // console.log('有磨损');
+      //   有磨损度
+      const pifuNameArr = pifuName.split(' (');
+      const [first, second] = pifuNameArr?.[1]
+        ?.replace(/[()]/g, '')
+        ?.split(' ')
+        ?.join('-')
+        ?.split('-');
+      const rF = first?.split('')?.[0];
+      const rS = second?.split('')?.[0];
+      let realDura = rS ? rF + rS : rF;
+      nameArr.push(realDura?.toUpperCase() || '');
 
-    nameArr.push(pifuNameArr?.[0]);
+      nameArr.push(pifuNameArr?.[0]);
+    }
+    return nameArr;
+  } catch (error) {
+    // console.log('error', name);
+    return ['', '', name];
   }
-  return nameArr;
 }
 
 export function triggerLoginExpired() {
