@@ -331,10 +331,16 @@ export default function Header() {
                 <PlusOutlined className="text-xs text-green" />
               </Link>
 
-              <Menu as="div" className="relative h-8">
-                <Menu.Button as="div" className="avatar">
-                  <div className="w-8 rounded-full cursor-pointer relative">
-                    <img src={userInfo.headPic} />
+              <Menu
+                as="div"
+                className="relative flex justify-center items-center"
+              >
+                <Menu.Button as="div">
+                  <div className="w-8 h-8 cursor-pointer relative hidden sm:block">
+                    <img src={userInfo.headPic} className="rounded-full" />
+                  </div>
+                  <div className="py-1 px-2 bg-dark sm:hidden">
+                    <MenuOutlined />
                   </div>
                 </Menu.Button>
                 <Transition
@@ -361,7 +367,7 @@ export default function Header() {
                       <div className="flex-shrink-0 relative mr-4 ">
                         <img
                           src={userInfo?.headPic}
-                          className="h-12 w-12 rounded object-cover"
+                          className="h-12 w-12 rounded-full object-cover"
                         />
                       </div>
                       <div className="w-full">
@@ -419,8 +425,8 @@ export default function Header() {
                 <IconFont type="icon-steam" className="text-xl" />
                 <FormattedMessage id="register_ljdl" />
               </Button>
-              <Menu as="div" className="relative  md:hidden">
-                <Menu.Button as="div">
+              <Menu as="div" className="relative md:hidden">
+                <Menu.Button as="div" className="py-1 px-2 bg-dark">
                   <MenuOutlined />
                 </Menu.Button>
                 <Transition
@@ -445,7 +451,6 @@ export default function Header() {
                     </div>
                     <div className="bg-neutral">{menus}</div>
                     <Button
-                      // className="btn btn-sm md:hidden btn-primary rounded uppercase "
                       className="btn btn-sm text-black gap-1 rounded uppercase mx-3 mt-4"
                       onClick={() =>
                         (window.location.href = getSteamLoginUrl())

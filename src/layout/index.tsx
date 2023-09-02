@@ -1,5 +1,5 @@
 import { headHidden, urlParse } from '@/utils';
-import { Outlet, setLocale, useLocation } from '@umijs/max';
+import { Outlet, history, setLocale, useLocation } from '@umijs/max';
 import { useEffect } from 'react';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
@@ -11,11 +11,6 @@ export default function Layout() {
   const { pathname } = useLocation();
   const pathCls = pathname.split('/')[1];
 
-  //路由变化时，滚动条回到顶部
-  useEffect(() => {
-    window.scrollTo(0, 0);
-  }, [pathname]);
-
   useEffect(() => {
     const params = urlParse();
     if (params?.lang) {
@@ -23,6 +18,12 @@ export default function Layout() {
       setLocale(lang as string);
     }
   }, []);
+
+  useEffect(() => {
+    if (history.action !== 'POP') {
+      window.scrollTo(0, 0);
+    }
+  }, [history, pathname]);
 
   return (
     <div className={`root-bg ${pathCls}`}>

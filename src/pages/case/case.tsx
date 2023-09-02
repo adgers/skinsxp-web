@@ -8,13 +8,19 @@ export default function Case() {
   const [hotBoxList, setHotBoxList] = useState<API.BoxThemeListVo[]>([]);
   const [otherBoxList, setOtherBoxList] = useState<API.BoxThemeListVo[]>([]);
 
-  const { data: boxList = [] } = useRequest(() =>
-    getBoxListUsingGET({
-      boxType: 1,
-      moduleId: 5,
-    }),
+  const { data: boxList = [] } = useRequest(
+    () =>
+      getBoxListUsingGET({
+        boxType: 1,
+        moduleId: 5,
+      }),
+    {
+      cacheKey: 'boxList',
+    },
   );
-  const { data: battleList } = useRequest(() => getHostListUsingGET());
+  const { data: battleList } = useRequest(() => getHostListUsingGET(), {
+    cacheKey: 'battleList',
+  });
   useEffect(() => {
     if (boxList.length === 0) return;
 

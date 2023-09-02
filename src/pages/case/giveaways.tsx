@@ -3,7 +3,9 @@ import { FormattedMessage, useRequest } from '@umijs/max';
 import GiveawayItem from './giveawayItem';
 
 export default function Giveaways() {
-  const { data: giveawayList } = useRequest(() => listHostGiveawayUsingGET());
+  const { data: giveawayList } = useRequest(() => listHostGiveawayUsingGET(), {
+    cacheKey: 'giveawayList',
+  });
 
   return (
     <div className="w-full relative mx-auto max-w-screen-xxl overflow-hidden md:px-5">

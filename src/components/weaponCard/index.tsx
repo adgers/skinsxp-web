@@ -143,7 +143,7 @@ export default React.memo(function WeaponCard({
               history.push(`/provably-fair/verify/${data?.verifyId}`)
             }
           >
-            <div className="text-xs uppercase font-semibold">Roll</div>
+            <div className="text-xs uppercase font-semibold text-white/[0.5]">Roll</div>
             <div className="text-white/[0.5] text-xs font-num">{rollCode}</div>
             <IconFont type="icon-shield" className="text-green" />
           </div>

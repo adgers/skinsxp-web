@@ -5,7 +5,7 @@
   background: radial-gradient(
     52.71% 53.03% at 50% 40.45%,
     #d79a58 0%,
-    #131314 100%
+    #161616 100%
   );
   background: url('@/assets/battle-rank-bg.png') no-repeat;
   background-position: center;
@@ -93,22 +93,6 @@
   }
 }
 
-// .seat-2,
-// .seat-3,
-// .seat-4 {
-//   &::before {
-//     background: url('@/assets/vs.png') no-repeat;
-//     background-size: contain;
-//     content: "";
-//     width: 42px;
-//     height: 42px;
-//     position: absolute;
-//     left: -27px;
-//     top: 50%;
-//     transform: translateY(-50%);
-//   }
-// }
-
 .seat-last {
   &::after {
     position: absolute;
@@ -126,34 +110,15 @@
 @media (max-width: 599px) {
   .seat-1 {
     &::before {
-      top: 50%;
-      left: -6px;
       width: 14px;
       height: 44px;
-      transform: translateY(-50%);
-    }
-  }
-
-  .seat-2,
-  .seat-3,
-  .seat-4 {
-    &::before {
-      position: absolute;
-      top: 50%;
-      left: -14px;
-      width: 21px;
-      height: 21px;
-      transform: translateY(-50%);
     }
   }
 
   .seat-last {
     &::after {
-      top: 50%;
-      right: -6px;
       width: 14px;
       height: 44px;
-      transform: rotateY(180deg) translateY(-50%);
     }
   }
 }

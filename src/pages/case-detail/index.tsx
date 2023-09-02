@@ -169,10 +169,10 @@ export default function BoxPage() {
         </div>
       </div>
       <div className="rounded ring-1 ring-light mt-4 py-3 px-1 relative h-[204px] md:h-[324px] lottery-bg">
-        {openCount === 1 && !hasOpen && (
+        {openCount === 1 && !hasOpen && boxDetails?.boxImage &&(
           <div className="absolute inset-0 z-30 bg-dark bg-opacity-60">
             <div className="absolute left-1/2 h-full -translate-x-1/2 transform w-[200px] sm:w-[300px]">
-              <div className="absolute right-0 top-0 h-full w-full sm:py-3">
+              <div className="absolute right-0 top-0 h-full w-full">
                 <img
                   src={boxDetails?.boxImage}
                   className="h-full w-full object-cover"
@@ -280,7 +280,7 @@ export default function BoxPage() {
               return (
                 <div className="card-flip relative group" key={i}>
                   <WeaponCard data={item} key={i} isGiveawayWinList={true} />
-                  <div className="absolute w-full h-full top-0 left-0 z-[11] bg-black/70 flex flex-col items-center opacity-0  transition-opacity justify-center group-hover:opacity-100 gap-1">
+                  <div className="absolute w-full h-full top-0 left-0 z-[11] bg-black/80 flex flex-col items-center opacity-0  transition-opacity justify-center group-hover:opacity-100 gap-1">
                     <div className="w-[66px] h-[66px] rounded-full overflow-hidden">
                       <img src={item?.headPic} alt="" />
                     </div>

@@ -182,7 +182,7 @@ const Lottery = ({
     let randomWidth;
     if (randomPosition) {
       //随机位置在箱子宽度10到箱子宽度-10之间
-      randomWidth = Math.random() * (boxWidth - 10) + 10;
+      randomWidth = Math.random() * (boxWidth - 5) + 5;
     } else {
       //选中物品的正中间位置
       randomWidth = boxWidth / 2;

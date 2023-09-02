@@ -66,6 +66,16 @@
   z-index: 40;
 }
 
+@media (max-width: 599px) {
+  .arrow-bottom,
+  .arrow-left,
+  .arrow-right,
+  .arrow-top {
+    width: 25px;
+    height: 18px;
+  }
+}
+
 .result-modal {
   .result-title {
     background: linear-gradient(270deg, #0BFF59 0%, #B4FC3B 100%);
@@ -77,7 +87,7 @@
     font-weight: 400;
   }
 
-  .grade-bg{
+  .grade-bg {
     background-size: contain;
     width: 100%;
     height: 100%;
@@ -93,6 +103,7 @@
   .grade-1-bg {
     background-image: url('@/assets/grade1-bg.png');
   }
+
   .grade-2-bg {
     background-image: url('@/assets/grade2-bg.png');
   }

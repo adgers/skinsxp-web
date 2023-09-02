@@ -1,3 +1,4 @@
+import Empty from '@/components/empty';
 import { IconFont } from '@/components/icons';
 import WeaponCard from '@/components/weaponCard';
 import {
@@ -7,15 +8,15 @@ import {
   partakeUsingPOST,
   winnerListUsingGET,
 } from '@/services/front/ROLLfangxiangguan';
+import { goback } from '@/utils';
 import { LeftOutlined } from '@ant-design/icons';
-import { FormattedMessage, useIntl, useParams, useRequest ,history} from '@umijs/max';
+import { FormattedMessage, useIntl, useParams, useRequest } from '@umijs/max';
 import { useCountDown } from 'ahooks';
 import { Skeleton } from 'antd';
 import { useEffect, useRef, useState } from 'react';
 import { Countdown, Input } from 'react-daisyui';
 import { toast } from 'react-toastify';
 import './index.less';
-import Empty from '@/components/empty';
 
 export default function Room() {
   const giveawayId = Number(useParams()?.id);
@@ -77,7 +78,10 @@ export default function Room() {
   return (
     <div className="max-w-[1400px] m-auto px-3">
       <div className="my-4">
-        <div className="btn btn-sm btn-neutral" onClick={()=>history.push('/giveaways')}>
+        <div
+          className="font-semibold uppercase text-white flex gap-1 ml-2 cursor-pointer"
+          onClick={goback}
+        >
           <LeftOutlined />
           <FormattedMessage id="common_back" />
         </div>
@@ -97,17 +101,17 @@ export default function Room() {
             <div className="flex flex-col sm:flex-row items-center sm:items-start flex-1 gap-2 sm:gap-5">
               {roomInfo?.data?.banner && (
                 <div className="avatar relative">
-                  <div className="w-[122px] rounded">
+                  <div className="w-[120px] rounded-full">
                     <img src={roomInfo?.data?.banner} />
                   </div>
                 </div>
               )}
               <div className="flex flex-col justify-center w-full h-full">
                 <div className="flex flex-col gap-2">
-                  <div className="text-center sm:text-left text-white">
+                  <div className="text-center sm:text-left md:text-xl text-green ">
                     {roomInfo?.data?.title}
                   </div>
-                  <div className="  text-green text-sm mb-4 md:text-xl md:mb-0">
+                  <div className="text-sm mb-4 md:mb-0">
                     {roomInfo?.data?.remark}
                   </div>
                 </div>
@@ -159,7 +163,7 @@ export default function Room() {
                 )}
                 {roomInfo?.data?.state === 1 ? (
                   <div className="font-mono flex justify-center items-center gap-1">
-                    <IconFont type="icon-history" className='mr-1' />
+                    <IconFont type="icon-history" className="mr-1" />
                     {days > 0 && (
                       <>
                         <div className="flex items-center text-sm">
@@ -200,20 +204,20 @@ export default function Room() {
       </div>
       <div className="flex gap-10 py-4 border-b border-light">
         <div>
-          <div className="">Total Prizes Sum</div>
-          <div className="text-lg text-green font-bold">
+          <div className="text-lg">Total Prizes Sum</div>
+          <div className="sm:text-lg text-green font-num">
             ${roomInfo?.data?.accumulatedAmount}
           </div>
         </div>
         <div>
-          <div className="text-lg">participants</div>
-          <div className="text-xl text-green font-bold">
+          <div className="text-lg">Participants</div>
+          <div className="sm:text-lg text-green font-num">
             {roomInfo?.data?.userCount}
           </div>
         </div>
         <div>
           <div className="text-lg">Prizes</div>
-          <div className="text-xl text-green font-bold">
+          <div className="sm:text-lg text-green font-num">
             {roomInfo?.data?.giftCount}
           </div>
         </div>

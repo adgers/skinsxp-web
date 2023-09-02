@@ -17,6 +17,7 @@ export default function RollList() {
     () => pageUsingGET({ state: roomState, page, pageSize, type: roomType }),
     {
       refreshDeps: [page, roomState, roomType],
+      cacheKey: 'rollList',
     },
   );
   const roomTypes = useMemo(() => {
@@ -87,7 +88,7 @@ export default function RollList() {
                     height: '320px',
                   },
                 }}
-                className="rounded-xl overflow-hidden"
+                className="rounded-none overflow-hidden"
               ></Skeleton>
             ))
           : data?.pageData?.map((item, i) => (

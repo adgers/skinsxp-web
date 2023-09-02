@@ -38,6 +38,7 @@ import Verify from './verify';
 
 const audio = new Audio(require('@/assets/audio/battle.mp3'));
 
+import { Spin } from 'antd';
 import CopyToClipboard from 'react-copy-to-clipboard';
 import BoxDetail from './boxDetail';
 import './index.less';
@@ -136,7 +137,9 @@ const ResultCard = ({ result }: { result: API.BattleCustomerGainVo }) => {
         </>
       ) : (
         <>
-          <div className="font-num text-light text-sm sm:text-[42px] sm:leading-[42px]">LOSE</div>
+          <div className="font-num text-light text-sm sm:text-[42px] sm:leading-[42px]">
+            LOSE
+          </div>
           <div className="flex gap-1 items-center font-num text-xs sm:text-base">
             $
             <CountUp
@@ -286,7 +289,7 @@ export default function RoomDetail() {
     setBoxDetailShow(true);
   };
 
-  const { data, refresh } = useRequest(
+  const { data, refresh, loading } = useRequest(
     () => battleCode && getBattleDetailUsingGET({ battleCode }),
     {
       refreshDeps: [battleCode],
@@ -535,8 +538,11 @@ export default function RoomDetail() {
           </div>
         </div>
       </div>
-
-      {data && (
+      <Spin
+        spinning={loading}
+        className="min-h-[300px]"
+        indicator={<LoadingOutlined style={{ fontSize: 48, color: 'green' }} />}
+      >
         <div className="flex flex-col gap-3 mt-4">
           <div
             className={`bg-black py-5 flex px-5 sm:px-8 items-center gap-2 battle-mode-${mode}`}
@@ -559,7 +565,9 @@ export default function RoomDetail() {
                 )}
               </div>
               <div className="text-xs font-semibold">
-                <div className="text-white uppercase hidden sm:block">BATTLE ROUNDS</div>
+                <div className="text-white uppercase hidden sm:block">
+                  BATTLE ROUNDS
+                </div>
                 <div className="font-num text-sm sm:text-xs">
                   {index}/{boxList?.length}
                 </div>
@@ -597,7 +605,7 @@ export default function RoomDetail() {
               </div>
             </div>
           </div>
-          <div className="flex gap-3 items-center justify-end ">
+          <div className="flex gap-3 items-center sm:justify-end flex-wrap">
             {roomResult && isEnd && (
               <>
                 <Verify
@@ -610,7 +618,7 @@ export default function RoomDetail() {
                   onClick={() => setVerifyShow(true)}
                 >
                   <IconFont type="icon-shield" className="text-green" />
-                  <span className="text-xs hidden sm:block">
+                  <span className="text-xs text-green">
                     <FormattedMessage id="mine_gpyz" />
                   </span>
                 </div>
@@ -619,7 +627,7 @@ export default function RoomDetail() {
                   onClick={goHistory}
                 >
                   <IconFont type="icon-luxiang" />
-                  <span className="text-xs hidden sm:block">replay</span>
+                  <span className="text-xs text-white/70">replay</span>
                 </div>
               </>
             )}
@@ -629,7 +637,7 @@ export default function RoomDetail() {
                 onClick={() => setCancelConfirmShow(true)}
               >
                 <IconFont type="icon-exit" />
-                <span className="text-xs hidden sm:block">Cancel battle</span>
+                <span className="text-xs text-white/70">Cancel battle</span>
               </div>
             )}
 
@@ -644,7 +652,7 @@ export default function RoomDetail() {
               ) : (
                 <IconFont type="icon-a-voiceoff" />
               )}
-              <span className="text-xs hidden sm:block">SOUND</span>
+              <span className="text-xs text-white/70">SOUND</span>
             </div>
 
             <CopyToClipboard
@@ -655,13 +663,11 @@ export default function RoomDetail() {
             >
               <div className="flex gap-1 cursor-pointer font-semibold">
                 <CopyOutlined />
-                <span className="text-xs">{location.href}</span>
+                <span className="text-xs text-white/70">{location.href}</span>
               </div>
             </CopyToClipboard>
           </div>
         </div>
-      )}
-      {data && (
         <div
           className={`grid grid-cols-${countCustomer} gap-2 sm:gap-3 w-full mt-4`}
         >
@@ -779,7 +785,7 @@ export default function RoomDetail() {
                 <div className="battle-result">
                   <ResultBoxs
                     boxs={userOpeningReuslt?.userOpenBoxRecord || []}
-                    cols={data.countCustomer || 2}
+                    cols={data?.countCustomer || 2}
                     mini={!responsive.md}
                   />
                 </div>
@@ -787,50 +793,46 @@ export default function RoomDetail() {
             );
           })}
         </div>
-      )}
 
-      {boxDetailShow && (
-        <BoxDetail
-          caseName={boxDetail.boxName}
-          boxDetail={boxDetail}
-          show={boxDetailShow}
-          onClose={() => {
-            setBoxDetailShow(false);
-          }}
-        />
-      )}
+        {boxDetailShow && (
+          <BoxDetail
+            caseName={boxDetail.boxName}
+            boxDetail={boxDetail}
+            show={boxDetailShow}
+            onClose={() => {
+              setBoxDetailShow(false);
+            }}
+          />
+        )}
 
-      {data && (
-        <>
-          <Modal open={cancelConfrimShow} className="confirm-modal-bg max-w-sm">
-            <Modal.Header className="text-base mb-2">
-              <FormattedMessage id="battle_room_cancel_title" />
-            </Modal.Header>
-            <Modal.Body className="text-sm">
-              <FormattedMessage id="battle_room_cancel_content" />
-            </Modal.Body>
-            <Modal.Actions>
-              <Button
-                className="btn-sm btn-outline rounded"
-                onClick={() => {
-                  setCancelConfirmShow(false);
-                }}
-              >
-                <FormattedMessage id="cancel" />
-              </Button>
-              <Button
-                className="btn-primary btn-sm rounded"
-                onClick={() => {
-                  cancelRoom();
-                }}
-                loading={cancelLoading}
-              >
-                <FormattedMessage id="confirm" />
-              </Button>
-            </Modal.Actions>
-          </Modal>
-        </>
-      )}
+        <Modal open={cancelConfrimShow} className="confirm-modal-bg max-w-sm">
+          <Modal.Header className="text-base mb-2">
+            <FormattedMessage id="battle_room_cancel_title" />
+          </Modal.Header>
+          <Modal.Body className="text-sm">
+            <FormattedMessage id="battle_room_cancel_content" />
+          </Modal.Body>
+          <Modal.Actions>
+            <Button
+              className="btn-sm btn-outline rounded"
+              onClick={() => {
+                setCancelConfirmShow(false);
+              }}
+            >
+              <FormattedMessage id="cancel" />
+            </Button>
+            <Button
+              className="btn-primary btn-sm rounded"
+              onClick={() => {
+                cancelRoom();
+              }}
+              loading={cancelLoading}
+            >
+              <FormattedMessage id="confirm" />
+            </Button>
+          </Modal.Actions>
+        </Modal>
+      </Spin>
     </div>
   );
 }
