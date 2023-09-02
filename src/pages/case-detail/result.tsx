@@ -1,11 +1,10 @@
 import { IconFont } from '@/components/icons';
 import { exchangeQuantityUsingPOST } from '@/services/front/kaixiangxiangguan';
-import { numberFixed } from '@/utils';
+import { isSafari, numberFixed } from '@/utils';
 import { FormattedMessage, useIntl, useModel } from '@umijs/max';
 import { useEffect, useMemo, useState } from 'react';
 import CountUp from 'react-countup';
 import { Button, Modal } from 'react-daisyui';
-import { toast } from 'react-toastify';
 import './index.less';
 
 export default function Result({
@@ -52,7 +51,7 @@ export default function Result({
             return ret;
           });
 
-          if (voice) {
+          if (voice && !isSafari()) {
             audio.currentTime = 0;
             audio.play();
           }
@@ -88,11 +87,6 @@ export default function Result({
         const audio = new Audio(require('@/assets/audio/exchange.mp3'));
         audio.play();
       }
-      // toast.success(
-      //   intl.formatMessage({
-      //     id: 'sell_success',
-      //   }),
-      // );
       onClose();
     }
   };
@@ -145,11 +139,7 @@ export default function Result({
         </div>
         {results.length === openResults.length && (
           <div className="flex flex-col sm:grid sm:grid-cols-2 gap-2 sm:gap-4 w-full sm:px-5 mt-6">
-            <button
-              onClick={onClose}
-              className="btn-purple"
-              type="button"
-            >
+            <button onClick={onClose} className="btn-purple" type="button">
               <FormattedMessage id="open_box_receive" />
             </button>
 
