@@ -218,9 +218,9 @@ export default function Header() {
             >
               <IconFont
                 type="icon-promocode"
-                className="mx-5 md:mx-3 text-xl md:text-base"
+                className="mx-5 md:mx-3 text-base"
               />
-              <span className="text-base capitalize md:text-sm">
+              <span className="text-sm capitalize">
                 <FormattedMessage id="mine_fllq" />
               </span>
             </div>
@@ -293,7 +293,7 @@ export default function Header() {
             })}
             <div
               className="px-3 py-2 uppercase transition-colors font-semibold duration-200 text-white hover:text-green text-sm rounded-md cursor-pointer"
-              onClick={() => showBenefit()}
+              onClick={showBenefit}
             >
               <IconFont type="icon-promocode" className="mr-1" />
 
@@ -449,7 +449,7 @@ export default function Header() {
                         ✕
                       </Button>
                     </div>
-                    <div className="bg-neutral">{menus}</div>
+                    <div className="bg-neutral py-2">{menus}</div>
                     <Button
                       className="btn btn-sm text-black gap-1 rounded uppercase mx-3 mt-4"
                       onClick={() =>

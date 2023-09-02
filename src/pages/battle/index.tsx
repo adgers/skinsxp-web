@@ -62,7 +62,7 @@ export default function BattlePage() {
   }, [battleRank, recordTab]);
 
   return (
-    <div className="flex mt-2 sm:mt-4 gap-2 sm:gap-5 flex-col lg:flex-row w-full p-3">
+    <div className="flex sm:mt-4 gap-2 sm:gap-5 flex-col lg:flex-row w-full px-3">
       <div className="flex flex-col w-full overflow-hidden">
         <div className="my-4 flex w-full justify-center sm:justify-start border-b border-light relative h-[68px]">
           <div className="flex items-center">
@@ -94,11 +94,11 @@ export default function BattlePage() {
           </div>
         </div>
 
-        <Link className="sm:hidden btn-purple mb-4" to={`/battle/create`}>
+        <Link className="sm:hidden btn-purple mb-2" to={`/battle/create`}>
           <IconFont type="icon-battle" className="text-lg" />
           Create case battle
         </Link>
-        <div className="flex w-full items-center justify-center sm:justify-end mb-4">
+        <div className="flex w-full items-center justify-center sm:justify-end mb-2 sm:mb-4">
           {modfilters.map((t) => {
             const selected = t.key === modFilter;
             return (

@@ -540,7 +540,6 @@ export default function RoomDetail() {
       </div>
       <Spin
         spinning={loading}
-        className="min-h-[300px]"
         indicator={<LoadingOutlined style={{ fontSize: 48, color: 'green' }} />}
       >
         <div className="flex flex-col gap-3 mt-4">

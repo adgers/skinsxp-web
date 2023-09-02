@@ -51,10 +51,9 @@ export default function EndRooms({
   return (
     <Spin
       spinning={loading}
-      className="min-h-[300px]"
       indicator={<LoadingOutlined style={{ fontSize: 48, color: 'green' }} />}
     >
-      <div className="flex-1 items-center flex flex-col w-full relative">
+      <div className="flex-1 items-center flex flex-col w-full relative min-h-[300px]" >
         {rooms?.length === 0 && <Empty />}
         <div className="w-full flex flex-col gap-2">
           {rooms?.map((t) => (

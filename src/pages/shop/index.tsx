@@ -230,10 +230,9 @@ export default () => {
 
       <Spin
         spinning={loading}
-        className="min-h-[300px]"
         indicator={<LoadingOutlined style={{ fontSize: 48, color: 'green' }} />}
       >
-        <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-2 sm:gap-4 p-3 min-h-[200px]">
+        <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-2 sm:gap-4 p-3 min-h-[300px]">
           {data?.pageData?.map((item, i: number) => {
             return (
               <div

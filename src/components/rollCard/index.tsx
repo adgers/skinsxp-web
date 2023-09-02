@@ -106,8 +106,7 @@ export default React.memo(function RollCard({
             ) : (
               data?.openTime && (
                 <div className="font-mono flex justify-center items-center gap-1">
-                  <IconFont type="icon-history" className="text-[18px] mr-1" />
-
+                  <IconFont type="icon-history" className="text-sm" />
                   {days > 0 && (
                     <>
                       <div className="flex items-center text-xs">
