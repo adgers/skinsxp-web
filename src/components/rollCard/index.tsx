@@ -54,7 +54,7 @@ export default React.memo(function RollCard({
             </span>
           </div>
           <div className="text-sm text-white pr-3">
-            <IconFont type="icon-online" className="text-green mr-1 text-sm" />{' '}
+            <IconFont type="icon-online" className="text-green mr-1 text-sm" />
             {data?.userCount}
           </div>
         </div>

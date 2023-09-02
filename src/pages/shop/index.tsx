@@ -6,9 +6,10 @@ import {
   getTagsUsingGET,
   getVoucherStockPageUsingGET,
 } from '@/services/front/duihuanquanshangchengxiangguan';
+import { LoadingOutlined } from '@ant-design/icons';
 import { Menu, Transition } from '@headlessui/react';
 import { FormattedMessage, useIntl, useModel, useRequest } from '@umijs/max';
-import { Pagination } from 'antd';
+import { Pagination, Spin } from 'antd';
 import { Fragment, useRef, useState } from 'react';
 import { toast } from 'react-toastify';
 
@@ -226,50 +227,57 @@ export default () => {
         </div>
       </div>
       {!loading && data?.pageData?.length === 0 && <Empty />}
-      <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-2 sm:gap-4 p-3 min-h-[200px]">
-        {data?.pageData?.map((item, i: number) => {
-          return (
-            <div
-              className="group relative cursor-pointer overflow-y-visible"
-              key={i}
-            >
+
+      <Spin
+        spinning={loading}
+        className="min-h-[300px]"
+        indicator={<LoadingOutlined style={{ fontSize: 48, color: 'green' }} />}
+      >
+        <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-2 sm:gap-4 p-3 min-h-[200px]">
+          {data?.pageData?.map((item, i: number) => {
+            return (
               <div
-                className={`transition-transform duration-200 will-change-transform real-group-hover:rounded-b-none group-hover:md:translate-y-[-16px] group-hover:overflow-visible`}
+                className="group relative cursor-pointer overflow-y-visible"
                 key={i}
               >
-                <WeaponCard data={item} />
                 <div
-                  className="absolute bottom-0 flex w-full overflow-hidden rounded-none transition-transform duration-200 will-change-transform z-[-1] h-[32px] translate-y-[32px] md:h-[32px] md:translate-y-[-1px] group-hover:md:translate-y-[32px]"
-                  onClick={() => {
-                    onExchange(item);
-                  }}
+                  className={`transition-transform duration-200 will-change-transform real-group-hover:rounded-b-none group-hover:md:translate-y-[-16px] group-hover:overflow-visible`}
+                  key={i}
                 >
-                  <div className="btn btn-sm w-full bg-green text-dark text-sm rounded-none hover:bg-green">
-                    <IconFont
-                      type="icon-collect"
-                      className={exChangeLoading ? 'animate-spin' : ''}
-                    />
-                    <FormattedMessage id="exchagne" />
+                  <WeaponCard data={item} />
+                  <div
+                    className="absolute bottom-0 flex w-full overflow-hidden rounded-none transition-transform duration-200 will-change-transform z-[-1] h-[32px] translate-y-[32px] md:h-[32px] md:translate-y-[-1px] group-hover:md:translate-y-[32px]"
+                    onClick={() => {
+                      onExchange(item);
+                    }}
+                  >
+                    <div className="btn btn-sm w-full bg-green text-dark text-sm rounded-none hover:bg-green">
+                      <IconFont
+                        type="icon-collect"
+                        className={exChangeLoading ? 'animate-spin' : ''}
+                      />
+                      <FormattedMessage id="exchagne" />
+                    </div>
                   </div>
                 </div>
               </div>
-            </div>
-          );
-        })}
-      </div>
-      {!!data?.totalRows && data?.totalRows > pageSize && (
-        <div className="flex justify-center items-center">
-          <Pagination
-            current={current}
-            total={data?.totalRows}
-            pageSize={pageSize}
-            showSizeChanger={false}
-            onChange={(page: number) => {
-              setCurrent(page);
-            }}
-          />
+            );
+          })}
         </div>
-      )}
+        {!!data?.totalRows && data?.totalRows > pageSize && (
+          <div className="flex justify-center items-center">
+            <Pagination
+              current={current}
+              total={data?.totalRows}
+              pageSize={pageSize}
+              showSizeChanger={false}
+              onChange={(page: number) => {
+                setCurrent(page);
+              }}
+            />
+          </div>
+        )}
+      </Spin>
     </div>
   );
 };

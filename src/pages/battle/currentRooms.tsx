@@ -1,7 +1,9 @@
 import Empty from '@/components/empty';
 import RoomCard from '@/components/roomCard';
 import { getCurrentPageUsingGET } from '@/services/front/duizhanxiangguan';
+import { LoadingOutlined } from '@ant-design/icons';
 import { FormattedMessage, history, useModel, useRequest } from '@umijs/max';
+import { Spin } from 'antd';
 import { useEffect, useState } from 'react';
 import { Button } from 'react-daisyui';
 
@@ -73,28 +75,38 @@ export default function CurrentRooms({
   }, [battleState, show]);
 
   return (
-    <div className="items-center flex flex-col w-full relative">
-      {rooms?.length === 0 && <Empty />}
-      <div className="w-full flex flex-col gap-2">
-        {rooms?.map((t) => (
-          <RoomCard
-            key={t.battleCode}
-            data={t}
-            onSelect={() => {
-              history.push(`/battle/${t.battleCode}`);
-            }}
-          />
-        ))}
+    <Spin
+      spinning={loading}
+      className="min-h-[300px]"
+      indicator={<LoadingOutlined style={{ fontSize: 48, color: 'green' }} />}
+    >
+      <div className="items-center flex flex-col w-full relative">
+        {rooms?.length === 0 && <Empty />}
+        <div className="w-full flex flex-col gap-2">
+          {rooms?.map((t) => (
+            <RoomCard
+              key={t.battleCode}
+              data={t}
+              onSelect={() => {
+                history.push(`/battle/${t.battleCode}`);
+              }}
+            />
+          ))}
+        </div>
+        {rooms &&
+          !!currentBattles?.totalRows &&
+          rooms?.length < currentBattles?.totalRows && (
+            <div className="flex items-center mt-4">
+              <Button
+                className="btn btn-sm"
+                loading={loading}
+                onClick={loadMore}
+              >
+                <FormattedMessage id="my_package_ckgd" />
+              </Button>
+            </div>
+          )}
       </div>
-      {rooms &&
-        !!currentBattles?.totalRows &&
-        rooms?.length < currentBattles?.totalRows && (
-          <div className="flex items-center mt-4">
-            <Button className="btn btn-sm" loading={loading} onClick={loadMore}>
-              <FormattedMessage id="my_package_ckgd" />
-            </Button>
-          </div>
-        )}
-    </div>
+    </Spin>
   );
 }

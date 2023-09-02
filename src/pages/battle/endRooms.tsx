@@ -1,8 +1,9 @@
 import Empty from '@/components/empty';
 import RoomCard from '@/components/roomCard';
 import { getPageUsingGET } from '@/services/front/duizhanxiangguan';
+import { LoadingOutlined } from '@ant-design/icons';
 import { history, useModel, useRequest } from '@umijs/max';
-import { Pagination } from 'antd';
+import { Pagination, Spin } from 'antd';
 import { useEffect, useState } from 'react';
 
 export default function EndRooms({
@@ -19,7 +20,11 @@ export default function EndRooms({
   const [page, setPage] = useState(1);
   const [total, setTotal] = useState(0);
 
-  const { data: endBattles, refresh } = useRequest(
+  const {
+    data: endBattles,
+    refresh,
+    loading,
+  } = useRequest(
     () => show && getPageUsingGET({ pageSize, page, state: 2, mode }),
     {
       refreshDeps: [show, page, mode],
@@ -44,32 +49,38 @@ export default function EndRooms({
   }, [endBattles, battleState, show]);
 
   return (
-    <div className="flex-1 items-center flex flex-col w-full relative">
-      {rooms?.length === 0 && <Empty />}
-      <div className="w-full flex flex-col gap-2">
-        {rooms?.map((t) => (
-          <RoomCard
-            key={t.battleCode}
-            data={t}
-            onSelect={() => {
-              history.push(`/battle/${t.battleCode}`);
-            }}
-          />
-        ))}
-      </div>
-      {total > pageSize && (
-        <div className="flex justify-center items-center mt-8">
-          <Pagination
-            current={page}
-            total={total}
-            pageSize={12}
-            showSizeChanger={false}
-            onChange={(page: number) => {
-              setPage(page);
-            }}
-          />
+    <Spin
+      spinning={loading}
+      className="min-h-[300px]"
+      indicator={<LoadingOutlined style={{ fontSize: 48, color: 'green' }} />}
+    >
+      <div className="flex-1 items-center flex flex-col w-full relative">
+        {rooms?.length === 0 && <Empty />}
+        <div className="w-full flex flex-col gap-2">
+          {rooms?.map((t) => (
+            <RoomCard
+              key={t.battleCode}
+              data={t}
+              onSelect={() => {
+                history.push(`/battle/${t.battleCode}`);
+              }}
+            />
+          ))}
         </div>
-      )}
-    </div>
+        {total > pageSize && (
+          <div className="flex justify-center items-center mt-8">
+            <Pagination
+              current={page}
+              total={total}
+              pageSize={12}
+              showSizeChanger={false}
+              onChange={(page: number) => {
+                setPage(page);
+              }}
+            />
+          </div>
+        )}
+      </div>
+    </Spin>
   );
 }

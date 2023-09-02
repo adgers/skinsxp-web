@@ -200,10 +200,7 @@ export default function Create() {
           Create Battle
         </div>
       </div>
-
-      <div
-        className={`bg-black py-5 flex px-5 sm:px-8 items-center gap-2`}
-      >
+      <div className={`bg-black py-5 flex px-5 sm:px-8 items-center gap-2`}>
         <div className="flex gap-4 items-center">
           <div
             className={`w-[60px] h-[60px] flex items-center justify-center rounded-full relative ring ring-green`}

@@ -1,4 +1,5 @@
 import kingSvg from '@/assets/king.svg';
+import { IconFont } from '@/components/icons';
 import { history } from '@umijs/max';
 
 import { useCountDown } from 'ahooks';
@@ -32,7 +33,8 @@ export default function GiveawayItem(props: GiveawayItemProps) {
               {item?.title}
             </p>
           </div>
-          <div className="ml-auto flex items-center rounded-none py-1.5 pl-3 pr-2 text-xs font-bold tabular-nums text-white bg-white/[.15]">
+          <div className="ml-auto flex items-center rounded-none py-1.5 pl-1.5 pr-2 text-xs font-bold tabular-nums text-white bg-white/[.15]">
+            <IconFont type="icon-online" className="mr-1 text-[10px]" />
             {item?.userCount}
           </div>
         </div>
@@ -60,7 +62,7 @@ export default function GiveawayItem(props: GiveawayItemProps) {
                 {item?.giftVos?.[0]?.giftName?.split('|')?.[1]?.trim()}
               </span>
             </div>
-            <div className="mb-2 mt-auto flex items-center justify-center p-2 w-full bg-black/[0.25]">
+            <div className="mb-2 mt-auto flex items-center justify-center p-1.5 w-full bg-black/[0.25]">
               {days > 0 && (
                 <>
                   <div className="flex w-6 flex-shrink-0 flex-col items-center justify-center text-center">
