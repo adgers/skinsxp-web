@@ -296,5 +296,19 @@
   "privacy_policy": "Privacy Policy",
   "about_us": "About Us",
   "mall_search": "Search",
-  "mall_all": "All"
+  "mall_all": "All",
+  "room_top_battle": "Top Battles",
+  "room_create_battle": "Create Battle",
+  "text_normal_or": "or",
+  "room_join_battle": "Join Battle",
+  "text_normal_new": "NEW",
+  "text_time_days": "days",
+  "text_time_hour": "hr",
+  "text_time_min": "min",
+  "text_time_sec": "sec",
+  "room_battle_round": "round",
+  "room_battle_cost": "Round Cost",
+  "room_giveaways_cyrs": "particaipantes",
+  "room_giveaways_prizes": "prizes",
+  "room_giveaways_winner": "WInner"
 }
