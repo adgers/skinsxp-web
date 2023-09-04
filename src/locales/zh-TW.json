@@ -351,5 +351,9 @@
   "show_hidden_ways": "查看錶中的隱藏數據，您需要顯示服務器種子",
   "enter_client_seed": "輸入新的用戶金鑰",
   "login_need_tip": "我們需要確保您可以使用WGSkins，請確認：",
-  "best_drop": "最好的掉落"
+  "best_drop": "最好的掉落",
+  "battle_room_watch": "assista a batalha",
+  "profile_integral": "Integrante",
+  "trade_url_edit": "Editar URL comercial",
+  "trade_url_add": "Adicionar URL comercial"
 }
