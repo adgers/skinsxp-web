@@ -1,7 +1,6 @@
-import { useIntl } from '@umijs/max';
+import { useIntl, FormattedMessage } from '@umijs/max';
 import { memo, useEffect, useState } from 'react';
 import './index.less';
-
 import { PlusOutlined } from '@ant-design/icons';
 import { IconFont } from '../icons';
 
@@ -170,7 +169,7 @@ const RoomCard = memo(
           {(state === 1 || state === 2) && (
             <div className="btn-light w-full uppercase">
               <IconFont type="icon-eye" className="text-lg" />
-              watch the battle
+              <FormattedMessage id="battle_room_watch" />
             </div>
           )}
         </div>

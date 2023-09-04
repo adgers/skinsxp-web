@@ -2,7 +2,7 @@ import {
   resetUsingPOST,
   verifyUsingGET1,
 } from '@/services/front/miyaozhongzixiangguan';
-import { useParams } from '@umijs/max';
+import { FormattedMessage, useParams } from '@umijs/max';
 import { useEffect, useRef, useState } from 'react';
 import { Button } from 'react-daisyui';
 import { toast } from 'react-toastify';
@@ -72,7 +72,7 @@ export default function ProvablyVerify() {
           <div className="flex flex-col space-y-4 lg:col-span-8">
             <div className="flex flex-col lg:h-14 lg:flex-row">
               <div className="z-10 -mb-px  flex h-full w-full items-center justify-center rounded-none bg-neutral py-2 text-center font-bold uppercase lg:py-1 lg:mb-0 lg:max-w-[250px] ">
-                Client Seed
+                <FormattedMessage id="battle_user_seed" />
               </div>
               <div className="flex h-full flex-1 flex-col items-center border border-solid border-neutral-700 p-3 text-center md:flex-row lg:-ml-6  lg:pl-9">
                 <span className="mx-3 break-all font-mono text-sm">
@@ -82,7 +82,7 @@ export default function ProvablyVerify() {
             </div>
             <div className="flex flex-col lg:h-14 lg:flex-row">
               <div className="z-10 -mb-px flex h-full w-full items-center justify-center rounded-t bg-neutral py-2 text-center font-bold uppercase lg:py-1 lg:mb-0 lg:max-w-[250px] ">
-                Server Seed
+                <FormattedMessage id="server_seed" />
               </div>
 
               <div className="flex h-full flex-1 flex-col items-center border border-solid border-neutral-700 p-3 text-center md:flex-row lg:-ml-6  lg:pl-9">
@@ -94,9 +94,9 @@ export default function ProvablyVerify() {
                     <button
                       className="flex h-10 items-center rounded-none justify-center border border-solid border-light px-8 text-sm font-bold uppercase leading-none transition-colors duration-150 hover:bg-neutral"
                       onClick={onShowServerSeed}
-                      type='button'
+                      type="button"
                     >
-                      show server seed
+                      <FormattedMessage id="server_seed_show" />
                     </button>
                   </div>
                 )}
@@ -104,7 +104,7 @@ export default function ProvablyVerify() {
             </div>
             <div className="flex flex-col lg:h-14 lg:flex-row">
               <div className="z-10 -mb-px flex h-full w-full items-center justify-center rounded-t bg-neutral py-2 text-center font-bold uppercase lg:py-1 lg:mb-0 lg:max-w-[250px] ">
-                SECRET SALT
+                <FormattedMessage id="secret_salt" />
               </div>
               <div className="flex h-full flex-1 flex-col items-center border border-solid border-neutral-700 p-3 text-center md:flex-row lg:-ml-6  lg:pl-9">
                 <span className="mx-3 break-all font-mono text-sm">
@@ -114,7 +114,7 @@ export default function ProvablyVerify() {
             </div>
             <div className="flex flex-col lg:h-14 lg:flex-row">
               <div className="z-10 -mb-px flex h-full w-full items-center justify-center rounded-t bg-neutral py-2 text-center font-bold uppercase lg:py-1 lg:mb-0 lg:max-w-[250px] ">
-                PUBLIC HASH
+                <FormattedMessage id="publish_hash" />
               </div>
               <div className="flex h-full flex-1 flex-col items-center border border-solid border-neutral-700 p-3 text-center md:flex-row lg:-ml-6  lg:pl-9">
                 <span className="mx-3 break-all font-mono text-sm">
@@ -124,7 +124,7 @@ export default function ProvablyVerify() {
             </div>
             <div className="flex flex-col lg:h-14 lg:flex-row">
               <div className="z-10 -mb-px flex h-full w-full items-center justify-center rounded-t bg-neutral py-2 text-center font-bold uppercase lg:py-1 lg:mb-0 lg:max-w-[250px] ">
-                ROUND
+                <FormattedMessage id="round_label" />
               </div>
               <div className="flex h-full flex-1 flex-col items-center border border-solid border-neutral-700 p-3 text-center md:flex-row lg:-ml-6  lg:pl-9">
                 <span className="mx-3 break-all font-mono text-sm">
@@ -134,7 +134,7 @@ export default function ProvablyVerify() {
             </div>
             <div className="flex flex-col lg:h-14 lg:flex-row">
               <div className="z-10 -mb-px flex h-full w-full items-center justify-center rounded-t bg-neutral py-2 text-center font-bold uppercase lg:py-1 lg:mb-0 lg:max-w-[250px] ">
-                ROLLED AT
+                <FormattedMessage id="rolled_at" />
               </div>
               <div className="flex h-full flex-1 flex-col items-center border border-solid border-neutral-700 p-3 text-center md:flex-row lg:-ml-6  lg:pl-9">
                 <span className="mx-3 break-all font-mono text-sm">
@@ -144,7 +144,7 @@ export default function ProvablyVerify() {
             </div>
             <div className="flex flex-col lg:h-14 lg:flex-row">
               <div className="z-10 -mb-px flex h-full w-full items-center justify-center rounded-t bg-neutral py-2 text-center font-bold uppercase lg:py-1 lg:mb-0 lg:max-w-[250px] ">
-                ROLL
+                <FormattedMessage id="rollcode" />
               </div>
               <div className="flex h-full flex-1 flex-col items-center border border-solid border-neutral-700 p-3 text-center md:flex-row lg:-ml-6  lg:pl-9">
                 <span className="mx-3 break-all font-mono text-sm">
@@ -183,7 +183,7 @@ export default function ProvablyVerify() {
                 );
               }}
             >
-              Verify roll generation
+              <FormattedMessage id="verify_roll_sc" />
             </div>
           </div>
         </div>

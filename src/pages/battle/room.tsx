@@ -517,7 +517,7 @@ export default function RoomDetail() {
           <Link className="-my-2 -ml-3 px-3 py-2 text-white" to="/battle">
             <LeftOutlined />
           </Link>
-          Battle
+          <FormattedMessage id="battle_room_battle" />
         </div>
         <div className="relative">
           <div className="flex flex-col md:flex-row gap-4 md:pb-3">
@@ -528,7 +528,7 @@ export default function RoomDetail() {
               to={`/battle/create/${battleCode}`}
             >
               <IconFont type="icon-battle" />
-              Create the same battle ${data?.totalPrice}
+              <FormattedMessage id="battle_create_same" /> ${data?.totalPrice}
             </Link>
 
             <Link className="btn-purple " to={`/battle/create`}>
@@ -565,7 +565,7 @@ export default function RoomDetail() {
               </div>
               <div className="text-xs font-semibold">
                 <div className="text-white uppercase hidden sm:block">
-                  BATTLE ROUNDS
+                  <FormattedMessage id="battle_battle_rounds" />
                 </div>
                 <div className="font-num text-sm sm:text-xs">
                   {index}/{boxList?.length}
@@ -626,7 +626,9 @@ export default function RoomDetail() {
                   onClick={goHistory}
                 >
                   <IconFont type="icon-luxiang" />
-                  <span className="text-xs text-white/70">replay</span>
+                  <span className="text-xs text-white/70">
+                    <FormattedMessage id="battle_replay" />
+                  </span>
                 </div>
               </>
             )}
@@ -636,7 +638,9 @@ export default function RoomDetail() {
                 onClick={() => setCancelConfirmShow(true)}
               >
                 <IconFont type="icon-exit" />
-                <span className="text-xs text-white/70">Cancel battle</span>
+                <span className="text-xs text-white/70">
+                  <FormattedMessage id="battle_cancel" />
+                </span>
               </div>
             )}
 
@@ -651,7 +655,9 @@ export default function RoomDetail() {
               ) : (
                 <IconFont type="icon-a-voiceoff" />
               )}
-              <span className="text-xs text-white/70">SOUND</span>
+              <span className="text-xs text-white/70">
+                <FormattedMessage id="text_normal_sound" />
+              </span>
             </div>
 
             <CopyToClipboard

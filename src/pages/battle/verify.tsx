@@ -37,11 +37,15 @@ export default function Verify({
                 <div>
                   {record.nickname}{' '}
                   {record.winner && (
-                    <span className="text-green uppercase">Winner</span>
+                    <span className="text-green uppercase">
+                      <FormattedMessage id="room_giveaways_winner" />
+                    </span>
                   )}
                 </div>
                 <div className="flex text-xs gap-2">
-                  <span>Client seed</span>
+                  <span>
+                    <FormattedMessage id="battle_user_seed" />
+                  </span>
                   <div className="text-white text-opacity-50">
                     {record?.clientSeed}
                   </div>
@@ -55,14 +59,15 @@ export default function Verify({
                   key={i}
                 >
                   <div className="mb-2 mt-1 text-center text-xs font-bold uppercase">
-                    ROUND {urecord.round}
+                    <FormattedMessage id="ROUND" /> {urecord.round}
                   </div>
-                  <WeaponCard key={i} data={urecord} showRoll={false}/>
+                  <WeaponCard key={i} data={urecord} showRoll={false} />
                   <div className="mt-2 flex gap-1 text-xs font-bold uppercase">
-                    <span>Roll ID {urecord.rollCode}</span>
-                    <Link
-                      to={`/provably-fair/verify/${urecord.verifyId}`}
-                    >
+                    <span>
+                      <FormattedMessage id="battle_roll_id" />{' '}
+                      {urecord.rollCode}
+                    </span>
+                    <Link to={`/provably-fair/verify/${urecord.verifyId}`}>
                       <IconFont type="icon-shield" className="text-green" />
                     </Link>
                   </div>

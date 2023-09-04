@@ -97,7 +97,7 @@ export default React.memo(function RollCard({
             history.push(`/giveaways/${data?.id}`);
           }}
         >
-          View Requirements
+          <FormattedMessage id="giveaways_ckxq"/>
         </div>
         <div className="roll-card-bottom">
           <div className="flex-1 justify-center text-center">

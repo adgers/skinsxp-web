@@ -82,8 +82,7 @@ export default function Benefit() {
             onClick={() => setTab(0)}
           >
             <span className="uppercase font-semibold">
-              {/* <FormattedMessage id="wc_rewards_title" /> */}
-              promote Code
+              <FormattedMessage id="benefit_promote_code" />
             </span>
           </div>
           <div
@@ -103,8 +102,20 @@ export default function Benefit() {
           <>
             <div className="flex h-fit w-full items-center gap-4 px-2 py-2 sm:py-0  bg-[url('@/assets/promo-bg.png')] bg-no-repeat bg-cover sm:pl-28 sm:pr-8 text-sm sm:text-md whitespace-pre-wrap font-semibold">
               <div className="h-fit w-full grow sm:-mr-20 sm:-ml-16">
-                <p>What is Promo Code?</p>
-                <p>Enter the promo code and Activate Bonus.</p>
+                <p className="text-[16px] mb-2">
+                  {
+                    intl
+                      .formatMessage({ id: 'benefit_promo_explain' })
+                      .split('\n')[0]
+                  }
+                </p>
+                <p>
+                  {
+                    intl
+                      .formatMessage({ id: 'benefit_promo_explain' })
+                      .split('\n')[1]
+                  }
+                </p>
               </div>
               <div className="w-48 relative z-10  aspect-square sm:block">
                 <img src={require('@/assets/promo-img.png')} alt="" />
@@ -125,7 +136,7 @@ export default function Benefit() {
                   onBindPromoCode();
                 }}
               >
-                APPLY
+                <FormattedMessage id="text_btn_apply" />
               </div>
             </div>
           </>
@@ -134,8 +145,20 @@ export default function Benefit() {
           <>
             <div className="flex h-fit w-full items-center gap-4 px-2 py-2 sm:py-0  bg-[url('@/assets/promo-bg.png')] bg-no-repeat bg-cover sm:pl-28 sm:pr-8 text-sm sm:text-md whitespace-pre-wrap font-semibold">
               <div className="h-fit w-full grow sm:-mr-20 sm:-ml-16">
-                <p>What is CDkey? </p>
-                <p>Enter the CDkey and Activate the bouns.</p>
+                <p className="text-[16px] mb-2">
+                  {
+                    intl
+                      .formatMessage({ id: 'wc_cdkey_explain' })
+                      .split('\n')[0]
+                  }
+                </p>
+                <p>
+                  {
+                    intl
+                      .formatMessage({ id: 'wc_cdkey_explain' })
+                      .split('\n')[1]
+                  }
+                </p>
               </div>
               <div className="w-48 relative z-10  aspect-square sm:block">
                 <img src={require('@/assets/promo-img.png')} alt="" />
@@ -154,7 +177,7 @@ export default function Benefit() {
                 className="btn btn-purple uppercase px-10"
                 onClick={onGetBenefit}
               >
-                APPLY
+                <FormattedMessage id="text_btn_apply" />
               </div>
             </div>
           </>

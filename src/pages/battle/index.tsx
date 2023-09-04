@@ -89,14 +89,14 @@ export default function BattlePage() {
           <div className="hidden sm:block absolute right-0 bottom-5">
             <Link className="btn-purple" to={`/battle/create`}>
               <IconFont type="icon-battle" className="text-lg" />
-              Create case battle
+              <FormattedMessage id="create_case_battle" />
             </Link>
           </div>
         </div>
 
         <Link className="sm:hidden btn-purple mb-2" to={`/battle/create`}>
           <IconFont type="icon-battle" className="text-lg" />
-          Create case battle
+          <FormattedMessage id="create_case_battle" />
         </Link>
         <div className="flex w-full items-center justify-center sm:justify-end mb-2 sm:mb-4">
           {modfilters.map((t) => {
@@ -119,19 +119,23 @@ export default function BattlePage() {
 
         <div className="h-14 hidden lg:flex gap-2 items-center bg-black text-center mb-2 p-4">
           <div className="w-24 text-xs font-semibold uppercase text-white text-opacity-50">
-            Rounds
+            {/* Rounds */}
+            <FormattedMessage id="battle_title_rounds" />
           </div>
           <div className="text-xs font-semibold uppercase text-white text-opacity-50 flex-1">
-            Cases
+            {/* Cases */}
+            <FormattedMessage id="battle_box" />
           </div>
           <div className="w-28 text-xs font-semibold uppercase text-white text-opacity-50">
-            Value
+            <FormattedMessage id="battle_title_value" />
           </div>
           <div className="w-48 text-xs font-semibold uppercase text-white text-opacity-50">
-            Players
+            {/* Players */}
+            <FormattedMessage id="battle_box" />
           </div>
           <div className="w-72 text-xs font-semibold uppercase text-white text-opacity-50">
-            Status
+            {/* Status */}
+            <FormattedMessage id="pay_state" />
           </div>
         </div>
 
@@ -169,7 +173,9 @@ export default function BattlePage() {
           <div className="grid grid-cols-2 w-full">
             <div
               className={`h-9 text-sm  ${
-                recordTab === 0 ? 'btn-green !rounded-none' : 'btn-light !rounded-none'
+                recordTab === 0
+                  ? 'btn-green !rounded-none'
+                  : 'btn-light !rounded-none'
               }`}
               onClick={() => setRecordTab(0)}
             >
@@ -177,7 +183,9 @@ export default function BattlePage() {
             </div>
             <div
               className={`h-9 text-sm  ${
-                recordTab === 1 ? 'btn-green !rounded-none' : 'btn-light !rounded-none'
+                recordTab === 1
+                  ? 'btn-green !rounded-none'
+                  : 'btn-light !rounded-none'
               }`}
               onClick={() => setRecordTab(1)}
             >
@@ -189,7 +197,7 @@ export default function BattlePage() {
             <div className="flex h-full flex-col min-h-[400px]">
               {rank?.length === 0 && (
                 <div className="text-center text-opacity-50 text-sm mt-4 uppercase">
-                   <FormattedMessage id="empty_page_main_txt" />
+                  <FormattedMessage id="empty_page_main_txt" />
                 </div>
               )}
               {rank?.length > 0 &&

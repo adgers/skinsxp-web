@@ -1,5 +1,5 @@
 import { clientSeedHistoryUsingGET } from '@/services/front/miyaozhongzixiangguan';
-import { useRequest } from '@umijs/max';
+import { FormattedMessage, useRequest } from '@umijs/max';
 import { Pagination } from 'antd';
 import { useState } from 'react';
 import { Button, Modal } from 'react-daisyui';
@@ -28,7 +28,7 @@ export default function ClientSeedHistory({
   return (
     <Modal open={open} className="max-w-lg">
       <Modal.Header className="uppercase font-semibold leading-tight">
-        Client Seed History
+        <FormattedMessage id="client_seed_history" />
       </Modal.Header>
       <Button
         size="xs"
@@ -46,11 +46,11 @@ export default function ClientSeedHistory({
             key={item.id}
           >
             <dt className="whitespace-nowrap bg-black p-3 font-bold ">
-              CLIENT SEED
+              <FormattedMessage id="battle_user_seed" />
             </dt>
             <dd className="bg-base-100 bg-opacity-30 p-3">{item.clientSeed}</dd>
             <dt className="whitespace-nowrap bg-black p-3 font-bold ">
-              DATE
+              <FormattedMessage id="create_time" />
             </dt>
             <dd className="bg-base-100 bg-opacity-30 p-3 ">
               {item.createTime}
@@ -58,7 +58,7 @@ export default function ClientSeedHistory({
           </dl>
         ))}
 
-        {!!data?.totalRows && data?.totalRows > pageSize  && (
+        {!!data?.totalRows && data?.totalRows > pageSize && (
           <div className="flex justify-center items-center mt-2">
             <Pagination
               current={page}
