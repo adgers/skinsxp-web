@@ -3,6 +3,7 @@ import { getBoxListUsingGET } from '@/services/front/kaixiangxiangguan';
 import { FormattedMessage, history, useRequest } from '@umijs/max';
 import { useEffect, useState } from 'react';
 import BattleItem from './battleItem';
+import './index.less'
 
 export default function Case() {
   const [hotBoxList, setHotBoxList] = useState<API.BoxThemeListVo[]>([]);
@@ -57,7 +58,7 @@ export default function Case() {
           {t.boxList?.map((v, idx) => (
             <div
               key={idx}
-              className="w-full h-full relative cursor-pointer"
+              className="w-full h-full relative cursor-pointer case-wrap aspect-[1/1.4]"
               onClick={() => {
                 history.push(`/case/${v?.id}`);
               }}
