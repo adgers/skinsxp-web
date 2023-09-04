@@ -1,5 +1,5 @@
 import { LeftOutlined, PlusOutlined, RightOutlined } from '@ant-design/icons';
-import { history } from '@umijs/max';
+import { FormattedMessage, history } from '@umijs/max';
 import { useState } from 'react';
 import { Swiper, SwiperClass, SwiperSlide } from 'swiper/react';
 
@@ -26,9 +26,11 @@ export default function BattleItem(props: BattleItemProps) {
             data?.round === 0 ? 'border-green ' : 'border-red'
           }`}
         >
-          {data?.countCustomer}
+          {data?.boxList?.length}
         </div>
-        <span className="font-semibold uppercase"> Round</span>
+        <span className="font-semibold uppercase">
+          <FormattedMessage id="room_battle_round" />
+        </span>
       </div>
 
       <Swiper
@@ -116,9 +118,11 @@ export default function BattleItem(props: BattleItemProps) {
       >
         <div className="relative z-10 flex flex-col">
           <span className="text-[8px] font-semibold uppercase text-white/60">
-            battle Cost
+            <FormattedMessage id="room_battle_cost" />
           </span>
-          <span className="text-white text-xs font-num">${data?.totalPrice}</span>
+          <span className="text-white text-xs font-num">
+            ${data?.totalPrice}
+          </span>
         </div>
         <div className="flex gap-2">
           {data?.customerList?.map((item, index) => {

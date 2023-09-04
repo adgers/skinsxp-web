@@ -1,10 +1,5 @@
 import { customerDetailUsingGET } from '@/services/front/gerenzhongxinxiangguan';
-import {
-  getLocalSettings,
-  isLogin,
-  saveLocalSettings,
-  urlParse,
-} from '@/utils';
+import { getLocalSettings, isLogin, saveLocalSettings } from '@/utils';
 import { useEffect, useState } from 'react';
 
 export default () => {
@@ -13,6 +8,7 @@ export default () => {
   const [registerShow, setRegisterShow] = useState<boolean>(false);
   const [findPwdShow, setFindPwdShow] = useState<boolean>(false);
   const [benefitShow, setBenefitShow] = useState<boolean>(false);
+  const [steamLoginShow, setSteamLoginShow] = useState<boolean>(false);
   const [userInfo, setUserInfo] = useState<API.CustomerDetailVo>();
   const localAgreePing = getLocalSettings('agreePing');
 
@@ -66,10 +62,17 @@ export default () => {
 
   const showBenefit = () => {
     setBenefitShow(true);
-  }
+  };
 
   const hideBenefit = () => {
     setBenefitShow(false);
+  };
+
+  const showSteamLogin=()=>{
+    setSteamLoginShow(true)
+  }
+  const hideSteamLogin=()=>{
+    setSteamLoginShow(false)
   }
 
   const getUser = async () => {
@@ -101,6 +104,9 @@ export default () => {
     benefitShow,
     showBenefit,
     hideBenefit,
+    steamLoginShow,
+    showSteamLogin,
+    hideSteamLogin,
     userInfo,
     getUser,
     agreePing,

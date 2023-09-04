@@ -80,12 +80,12 @@ export default React.memo(function RollCard({
         </div>
       </div>
       <div className="mx-5 my-2 flex justify-between items-center text-sm">
-        <div>Prizes: {data?.giftCount}</div>
         <div>
-          Total:{' '}
-          <span className="text-green font-bold">
-            ${data?.accumulatedAmount}
-          </span>
+          <FormattedMessage id="room_giveaways_prizes" />: {data?.giftCount}
+        </div>
+        <div>
+          <FormattedMessage id="battle_room_total" />:{' '}
+          <span className="text-green font-bold">${data?.poolValue}</span>
         </div>
       </div>
       <div className="w-full absolute bottom-0 left-0">

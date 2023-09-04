@@ -1,7 +1,7 @@
 import kingSvg from '@/assets/king.svg';
 import { IconFont } from '@/components/icons';
-import { history } from '@umijs/max';
-
+import { parseName } from '@/utils';
+import { FormattedMessage, history } from '@umijs/max';
 import { useCountDown } from 'ahooks';
 import { Countdown } from 'react-daisyui';
 
@@ -15,6 +15,7 @@ export default function GiveawayItem(props: GiveawayItemProps) {
     leftTime: Number(item?.leftTime) || 0,
   });
   const { days, hours, minutes, seconds } = formattedRes;
+  const name = item?.giftVos?.[0]?.giftName;
   return (
     <div
       className={`relative cursor-pointer grid h-36 min-w-[90%] snap-start overflow-hidden sm:min-w-[50%] md:min-w-[33.333333%] xl:min-w-[20%] giveaways-grade giveaways-grade-${index}`}
@@ -50,16 +51,22 @@ export default function GiveawayItem(props: GiveawayItemProps) {
               </div>
             </div>
             <span className="mb-2 mt-auto truncate text-xs font-semibold text-white">
-              ${item?.accumulatedAmount}
+              ${item?.poolValue}
             </span>
           </div>
           <a className="flex w-[55%] flex-col pr-2.5 justify-start">
             <div className="flex flex-col">
               <span className="truncate text-xs font-bold text-white text-opacity-70">
-                {item?.giftVos?.[0]?.giftName?.split('|')?.[0]?.trim()}
+                {name && parseName(name)?.[0]}
               </span>
               <span className="truncate text-xs font-bold leading-none text-white">
-                {item?.giftVos?.[0]?.giftName?.split('|')?.[1]?.trim()}
+                {/* {item?.giftVos?.[0]?.giftName?.split('|')?.[1]?.trim()} */}
+                {name && parseName(name)?.[1] && (
+                  <span className="text-white/50">
+                    ({parseName(name)?.[1]})
+                  </span>
+                )}
+                {name && parseName(name)?.[2]}
               </span>
             </div>
             <div className="mb-2 mt-auto flex items-center justify-center p-1.5 w-full bg-black/[0.25]">
@@ -71,7 +78,7 @@ export default function GiveawayItem(props: GiveawayItemProps) {
                       className="days-value text-xs font-bold tabular-nums leading-none text-white"
                     />
                     <span className="transform scale-75 font-medium leading-none text-white text-opacity-70">
-                      days
+                      <FormattedMessage id="text_time_days" />
                     </span>
                   </div>
                   <div className="mx-0.5 text-center text-xs font-semibold  text-white">
@@ -85,7 +92,7 @@ export default function GiveawayItem(props: GiveawayItemProps) {
                   className="days-value text-xs font-bold tabular-nums leading-none text-white"
                 />
                 <span className="transform scale-75  font-medium leading-none text-white text-opacity-70">
-                  hr.
+                  <FormattedMessage id="text_time_hour" />
                 </span>
               </div>
               <div className="mx-0.5 text-center text-xs font-semibold text-white">
@@ -98,7 +105,7 @@ export default function GiveawayItem(props: GiveawayItemProps) {
                   className="days-value text-xs font-bold tabular-nums leading-none text-white"
                 />
                 <span className="transform scale-75 font-medium leading-none text-white text-opacity-70">
-                  min.
+                  <FormattedMessage id="text_time_min" />
                 </span>
               </div>
               <div className="mx-0.5 text-center text-xs font-semibold text-white">
@@ -110,7 +117,7 @@ export default function GiveawayItem(props: GiveawayItemProps) {
                   className="days-value text-xs font-bold tabular-nums leading-none text-white"
                 />
                 <span className="transform scale-75 font-medium leading-none text-white text-opacity-70">
-                  sec.
+                  <FormattedMessage id="text_time_sec" />
                 </span>
               </div>
             </div>

@@ -3,7 +3,7 @@ import Login from '@/components/account/login';
 import MobileLogin from '@/components/account/mobileLogin';
 import Register from '@/components/account/register';
 import Benefit from '@/pages/benefit';
-import { getSteamLoginUrl, logout, numberFixed } from '@/utils';
+import { logout, numberFixed } from '@/utils';
 import { MenuOutlined, PlusOutlined } from '@ant-design/icons';
 import { Menu, Transition } from '@headlessui/react';
 import {
@@ -25,6 +25,7 @@ import brFlag from '@/assets/flags/br.svg';
 // import cnFlag from '@/assets/flags/cn.svg';
 import enFlag from '@/assets/flags/en.svg';
 import { IconFont } from '@/components/icons';
+import LoginConfirm from '@/pages/login/loginConfirm';
 import CountUp from 'react-countup';
 
 export default function Header() {
@@ -36,6 +37,8 @@ export default function Header() {
     findPwdShow,
     benefitShow,
     showBenefit,
+    steamLoginShow,
+    showSteamLogin,
   } = useModel('user');
 
   const location = useLocation();
@@ -416,7 +419,7 @@ export default function Header() {
             <>
               <Button
                 className="btn btn-sm text-black gap-1 rounded uppercase"
-                onClick={() => (window.location.href = getSteamLoginUrl())}
+                onClick={() => showSteamLogin()}
                 style={{
                   background:
                     'linear-gradient(270deg, #0BFF59 0%, #B4FC3B 100%)',
@@ -452,9 +455,7 @@ export default function Header() {
                     <div className="bg-neutral py-2">{menus}</div>
                     <Button
                       className="btn btn-sm text-black gap-1 rounded uppercase mx-3 mt-4"
-                      onClick={() =>
-                        (window.location.href = getSteamLoginUrl())
-                      }
+                      onClick={() => showSteamLogin()}
                       style={{
                         background:
                           'linear-gradient(270deg, #0BFF59 0%, #B4FC3B 100%)',
@@ -477,6 +478,7 @@ export default function Header() {
       {registerShow && <Register />}
       {findPwdShow && <FindPwd />}
       {benefitShow && <Benefit />}
+      {steamLoginShow && <LoginConfirm />}
     </div>
   );
 }

@@ -1,6 +1,6 @@
 import { getHostListUsingGET } from '@/services/front/duizhanxiangguan';
 import { getBoxListUsingGET } from '@/services/front/kaixiangxiangguan';
-import { history, useRequest } from '@umijs/max';
+import { FormattedMessage, history, useRequest } from '@umijs/max';
 import { useEffect, useState } from 'react';
 import BattleItem from './battleItem';
 
@@ -102,7 +102,7 @@ export default function Case() {
                 }}
               >
                 <div className="flex h-7 items-center sm:h-8 text-sm sm:text-base">
-                  Top battles
+                  <FormattedMessage id="room_top_battle" />
                 </div>
               </h2>
             </div>
@@ -121,19 +121,22 @@ export default function Case() {
                   history.push('/battle/create');
                 }}
               >
-                CREATE BATTLE
+                {/* CREATE BATTLE */}
+                <FormattedMessage id="room_create_battle" />
               </div>
-              <span className="hidden md:block">or</span>
+              <span className="hidden md:block">
+                <FormattedMessage id="text_normal_or" />
+              </span>
               <div
                 className="hidden btn btn-green w-full md:flex bettle-btn"
                 onClick={() => {
                   history.push('/battle');
                 }}
               >
-                JOIN BATTLE
+                <FormattedMessage id="room_join_battle" />
               </div>
               <div className="inline-block -rotate-90 transform text-white text-center md:hidden">
-                BATTLE
+                <FormattedMessage id="battle_room_battle" />
               </div>
             </div>
           </div>

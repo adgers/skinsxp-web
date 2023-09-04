@@ -11,7 +11,9 @@ export default function Giveaways() {
     <div className="w-full relative mx-auto max-w-screen-xxl overflow-hidden md:px-5">
       <div className="relative flex h-full">
         <div className="flex h-36 w-8 flex-shrink-0 flex-col items-center justify-center bg-navy-700/60 text-center text-xs font-semibold leading-tight md:w-32 md:rounded-tl-xl xl:text-sm">
-          <span className="hidden uppercase text-[#FFDDA6] md:block">NEW</span>
+          <span className="hidden uppercase text-[#FFDDA6] md:block">
+            <FormattedMessage id="text_normal_new" />
+          </span>
           <span className="hidden uppercase text-white md:inline-block">
             <FormattedMessage id="roll_room_title" />
           </span>

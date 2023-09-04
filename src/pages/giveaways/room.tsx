@@ -204,19 +204,25 @@ export default function Room() {
       </div>
       <div className="flex gap-10 py-4 border-b border-light">
         <div>
-          <div className="text-lg">Total Prizes Sum</div>
+          <div className="text-lg">
+            <FormattedMessage id={'roll_detail_zjz'} />
+          </div>
           <div className="sm:text-lg text-green font-num">
-            ${roomInfo?.data?.accumulatedAmount}
+            ${roomInfo?.data?.poolValue}
           </div>
         </div>
         <div>
-          <div className="text-lg">Participants</div>
+          <div className="text-lg">
+            <FormattedMessage id="room_giveaways_cyrs" />
+          </div>
           <div className="sm:text-lg text-green font-num">
             {roomInfo?.data?.userCount}
           </div>
         </div>
         <div>
-          <div className="text-lg">Prizes</div>
+          <div className="text-lg">
+            <FormattedMessage id="room_giveaways_prizes" />
+          </div>
           <div className="sm:text-lg text-green font-num">
             {roomInfo?.data?.giftCount}
           </div>
@@ -294,7 +300,9 @@ export default function Room() {
                 {item.giftVos?.[0] && (
                   <>
                     <div className="absolute w-full h-full top-0 left-0 z-[11] bg-black/70 flex flex-col items-center opacity-0  transition-opacity justify-center group-hover:opacity-100">
-                      <div className="text-green">Winner</div>
+                      <div className="text-green">
+                        <FormattedMessage id="room_giveaways_winner" />
+                      </div>
                       <div className="w-[66px] h-[66px] rounded-full overflow-hidden mt-2 mb-1">
                         <img
                           src={item.giftVos?.[0]?.winnerInfo?.headPic}
