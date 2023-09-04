@@ -568,7 +568,9 @@ export default function RoomDetail() {
                   <FormattedMessage id="battle_battle_rounds" />
                 </div>
                 <div className="font-num text-sm sm:text-xs">
-                  {index}/{boxList?.length}
+                  {boxList &&
+                    boxList?.length > 0 &&
+                    `${index}/${boxList?.length}`}
                 </div>
               </div>
             </div>

@@ -1,6 +1,6 @@
 import { IconFont } from '@/components/icons';
 import { exchangeQuantityUsingPOST } from '@/services/front/kaixiangxiangguan';
-import { isSafari, numberFixed } from '@/utils';
+import { isSafari, numberFixed, parseName } from '@/utils';
 import { FormattedMessage, useIntl, useModel } from '@umijs/max';
 import { useEffect, useMemo, useState } from 'react';
 import CountUp from 'react-countup';
@@ -134,7 +134,17 @@ export default function Result({
                 <div className="text-sm flex gap-1 font-num text-green">
                   ${item.recoveryPrice}
                 </div>
-                <div className="text-xs truncate">{item.giftName}</div>
+                <div className="text-xs flex flex-col">
+                  <div className='text-white/50'>{item.giftName && parseName(item.giftName)?.[0]}</div>
+                  <div className='truncate'>
+                    {item.giftName && parseName(item.giftName)?.[1] && (
+                      <span className="text-white/50">
+                        ({item.giftName && parseName(item.giftName)?.[1]})
+                      </span>
+                    )}
+                    {item.giftName && parseName(item.giftName)?.[2]}
+                  </div>
+                </div>
               </div>
             </div>
           ))}

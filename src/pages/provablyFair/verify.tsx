@@ -89,7 +89,7 @@ export default function ProvablyVerify() {
                 <span className="mx-3 break-all font-mono text-sm">
                   {currentKey.secretHash}
                 </span>
-                {!currentKey.isPublic && (
+                {/* {!currentKey.isPublic && (
                   <div className="mt-3 md:ml-auto md:mt-0">
                     <button
                       className="flex h-10 items-center rounded-none justify-center border border-solid border-light px-8 text-sm font-bold uppercase leading-none transition-colors duration-150 hover:bg-neutral"
@@ -99,7 +99,7 @@ export default function ProvablyVerify() {
                       <FormattedMessage id="server_seed_show" />
                     </button>
                   </div>
-                )}
+                )} */}
               </div>
             </div>
             <div className="flex flex-col lg:h-14 lg:flex-row">

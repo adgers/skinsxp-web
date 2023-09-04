@@ -23,7 +23,7 @@ export default function LoginConfirm() {
   return (
     <Modal
       open={steamLoginShow}
-      className="w-full max-w-2xl max-h-full overflow-hidden rounded-md border-none"
+      className="w-full max-w-2xl max-h-full overflow-hidden rounded-md"
     >
       <Button
         size="xs"
@@ -34,9 +34,9 @@ export default function LoginConfirm() {
       >
         ✕
       </Button>
-      <Modal.Header>
+      <Modal.Header className='mb-4 w-full flex items-center justify-center '>
         <div
-          className="w-full flex items-center justify-center text-[32px] font-bold"
+          className="text-[32px] font-bold"
           style={{
             background: 'linear-gradient(87deg, #4CFE7E 0%, #90FE4C 100%)',
             WebkitBackgroundClip: 'text',
@@ -55,7 +55,8 @@ export default function LoginConfirm() {
           <div className="flex items-center">
             <Checkbox
               checked={agreeForm?.form_1_agree}
-              className="mr-4"
+              className="mr-2"
+              size='sm'
               onClick={() => {
                 setAgreeForm({
                   ...agreeForm,
@@ -63,21 +64,22 @@ export default function LoginConfirm() {
                 });
               }}
             />
-            <span className="text-white/50">
+            <span className="text-white/50 text-sm">
               I agree to the{' '}
               <a href="/docs/help/52" target="_blank" className="underline">
                 Terms of Service
-              </a>{' '}
+              </a>
               &nbsp; and &nbsp;
               <a href="/docs/help/51" target="_blank" className="underline">
                 Privacy Policy
               </a>
             </span>
           </div>
-          <div className="flex items-center">
+          <div className="flex items-center text-sm">
             <Checkbox
               checked={agreeForm?.form_2_agree}
-              className="mr-4"
+              className="mr-2"
+              size='sm'
               onClick={() => {
                 setAgreeForm({
                   ...agreeForm,
