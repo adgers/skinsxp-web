@@ -84,12 +84,7 @@ export default () => {
         <div className=" max-w-[540px] flex flex-col items-center">
           <div className="text-xl font-semibold">WHAT IS WG’s Store?</div>
           <div className="text-center mt-2">
-            The value of points and gold coins are exactly the same. Points are
-            obtained by selling accessories. During the game, you consume gold
-            coins first. When the gold coins are insufficient, points are
-            automatically consumed. In addition, you can use points to purchase
-            accessories in the WG Accessories Mall. Come and choose the
-            accessories you like.
+            <FormattedMessage id="store_banner_content" />
           </div>
         </div>
       </div>
