@@ -62,7 +62,7 @@ export default function ProvablyConfig() {
     <div className="flex flex-col space-y-4 mt-4 text-white max-w-4xl">
       <div className="flex flex-col lg:h-14 lg:flex-row">
         <div className="z-10 -mb-px flex h-full w-full items-center justify-center rounded-none bg-neutral py-2 text-center font-bold uppercase lg:py-1 lg:mb-0 lg:max-w-[250px]">
-          Client Seed
+          <FormattedMessage id="battle_user_seed" />
         </div>
         <div className="flex h-full flex-1 flex-col items-center  border border-solid border-neutral-700  p-3 text-center md:flex-row lg:-ml-6  lg:pl-9">
           <span className="mx-3 break-all font-mono text-sm">
@@ -75,21 +75,21 @@ export default function ProvablyConfig() {
               className="flex gap-1 h-10 items-center justify-center rounded-none border border-solid border-neutral-500 px-4 text-sm font-bold uppercase leading-none transition-colors duration-150 hover:bg-neutral-700 "
             >
               <EditFilled />
-              Edit Client Seed
+              <FormattedMessage id="battle_edit_usr_seed" />
             </button>
             <button
               onClick={toggleClientSeedHistory}
               type="button"
               className="flex h-10 items-center justify-center rounded-none border border-solid border-neutral-500 px-4 text-sm font-bold uppercase leading-none transition-colors duration-150 hover:bg-neutral-700"
             >
-              Client Seed History
+              <FormattedMessage id="client_seed_history" />
             </button>
           </div>
         </div>
       </div>
       <div className="flex flex-col lg:h-14 lg:flex-row">
         <div className="z-10 -mb-px flex h-full w-full items-center justify-center rounded-none bg-neutral py-2 text-center font-bold uppercase lg:py-1 lg:mb-0 lg:max-w-[250px] ">
-          Server Seed
+          <FormattedMessage id="server_seed" />
         </div>
         <div className="flex h-full flex-1 flex-col items-center  border border-solid border-neutral-700  p-3 text-center md:flex-row lg:-ml-6  lg:pl-9">
           <span className="mx-3 break-all font-mono text-sm">
@@ -101,14 +101,14 @@ export default function ProvablyConfig() {
               type="button"
               className="flex h-10 items-center justify-center rounded-none border border-solid border-neutral-500 px-4 text-sm font-bold uppercase leading-none transition-colors duration-150 hover:bg-neutral-700"
             >
-              Server Seed History
+              <FormattedMessage id="provably_server_history" />
             </button>
           </div>
         </div>
       </div>
       <div className="flex flex-col lg:h-14 lg:flex-row">
         <div className="z-10 -mb-px flex h-full w-full items-center justify-center rounded-none bg-neutral py-2 text-center font-bold uppercase lg:py-1 lg:mb-0 lg:max-w-[250px] ">
-          SECRET SALT
+          <FormattedMessage id="secret_salt" />
         </div>
         <div className="flex h-full flex-1 flex-col items-center  border border-solid border-neutral-700  p-3 text-center md:flex-row lg:-ml-6  lg:pl-9">
           <span className="mx-3 break-all font-mono text-sm">
@@ -118,7 +118,7 @@ export default function ProvablyConfig() {
       </div>
       <div className="flex flex-col lg:h-14 lg:flex-row">
         <div className="z-10 -mb-px flex h-full w-full items-center justify-center rounded-none bg-neutral py-2 text-center font-bold uppercase lg:py-1 lg:mb-0 lg:max-w-[250px] ">
-          PUBLIC HASH
+          <FormattedMessage id="publish_hash" />
         </div>
         <div className="flex h-full flex-1 flex-col items-center  border border-solid border-neutral-700  p-3 text-center md:flex-row lg:-ml-6  lg:pl-9">
           <span className="mx-3 break-all font-mono text-sm">
@@ -128,7 +128,7 @@ export default function ProvablyConfig() {
       </div>
       <div className="flex flex-col lg:h-14 lg:flex-row">
         <div className="z-10 -mb-px flex h-full w-full items-center justify-center rounded-none bg-neutral py-2 text-center font-bold uppercase lg:py-1 lg:mb-0 lg:max-w-[250px] ">
-          ROUND
+          <FormattedMessage id="round_label" />
         </div>
         <div className="flex h-full flex-1 flex-col items-center  border border-solid border-neutral-700  p-3 text-center md:flex-row lg:-ml-6  lg:pl-9">
           <span className="mx-3 break-all font-mono text-sm">
@@ -139,8 +139,7 @@ export default function ProvablyConfig() {
 
       <div className="flex justify-end gap-2 p-3">
         <div className="text-white text-opacity-50 text-sm max-w-[300px]">
-          To see the hidden data from the table you need to reveal the server
-          seed
+          <FormattedMessage id="show_hidden_ways" />
         </div>
         <Button
           className="btn-green !btn-md !rounded-none"
@@ -148,12 +147,12 @@ export default function ProvablyConfig() {
           type="button"
           loading={showLoading}
         >
-          show server seed
+          <FormattedMessage id="server_seed_show" />
         </Button>
       </div>
       <Modal open={editSeedVisible} className="max-w-md">
         <Modal.Header className="uppercase font-semibold leading-tight">
-          ENTER NEW CLIENT SEED
+          <FormattedMessage id="enter_client_seed" />
         </Modal.Header>
         <Button
           size="xs"

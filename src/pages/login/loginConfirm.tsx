@@ -1,6 +1,6 @@
 import { IconFont } from '@/components/icons';
 import { getSteamLoginUrl } from '@/utils';
-import { useModel } from '@umijs/max';
+import { FormattedMessage, useModel } from '@umijs/max';
 import { useEffect, useState } from 'react';
 import { Button, Checkbox, Modal } from 'react-daisyui';
 import { toast } from 'react-toastify';
@@ -49,8 +49,7 @@ export default function LoginConfirm() {
       </Modal.Header>
       <Modal.Body className="flex flex-col items-center px-8 py-4">
         <div className="mb-8 text-xl font-semibold text-center">
-          We need to make sure it is okay for you to use WGSkins, please confirm
-          that:
+          <FormattedMessage id="login_need_tip" />
         </div>
         <div className="flex flex-col gap-1 w-full">
           <div className="flex items-center">
@@ -104,7 +103,7 @@ export default function LoginConfirm() {
           }}
         >
           <IconFont type="icon-steam" className="mr-2" />
-          Sign In
+          <FormattedMessage id="sign_in" />
         </div>
       </Modal.Body>
     </Modal>

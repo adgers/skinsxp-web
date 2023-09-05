@@ -45,7 +45,7 @@ export default function ModifySteamLink({
   return (
     <Modal open={open} className="max-w-md">
       <Modal.Header className="flex items-center mb-4 uppercase">
-        Steam trade URl
+        <FormattedMessage id="trade_link_title" />
       </Modal.Header>
       <Button
         size="xs"
@@ -58,7 +58,7 @@ export default function ModifySteamLink({
       </Button>
       <Modal.Body className="flex flex-col gap-4">
         <Input
-          placeholder="Please enter your Steam trade URL"
+          placeholder={intl.formatMessage({ id: 'trade_link_qsrndjylj' })}
           ref={tradeUrlRef}
         />
         <a

@@ -55,7 +55,6 @@ export default function BagPage() {
     },
   );
 
-
   const { pageData = [], totalRows = 0 } = data || {};
 
   // const onItemClick = (item: any) => {
@@ -128,7 +127,7 @@ export default function BagPage() {
     <div className="w-full">
       <div className="flex gap-2 sm:gap-4 px-3 pb-4 items-center justify-end text-sm">
         <div className="text-white/[0.5] items-center flex ">
-          AVALIABLE FOR SALE
+          <FormattedMessage id="bag_avaliable_sale" />
           <input
             type="checkbox"
             className="toggle toggle-primary ml-4"
@@ -159,7 +158,7 @@ export default function BagPage() {
             setExchangeConfirm(true);
           }}
         >
-          <IconFont type="icon-a-allsale" className='text-xl' />
+          <IconFont type="icon-a-allsale" className="text-xl" />
           <FormattedMessage id="open_box_sell_all" />
         </div>
       </div>
@@ -217,7 +216,7 @@ export default function BagPage() {
                               type="icon-shield"
                               className="text-green"
                             />
-                            <span className='text-xs'>
+                            <span className="text-xs">
                               <FormattedMessage id="battle_fairness_verify" />
                             </span>
                           </div>
@@ -239,7 +238,7 @@ export default function BagPage() {
                                 className="text-white"
                               />
                               <span className="truncate text-xs">
-                                SELL for{' '}
+                                <FormattedMessage id="bag_item_sell" />{' '}
                                 <span className="text-white">${price}</span>
                               </span>
                             </div>

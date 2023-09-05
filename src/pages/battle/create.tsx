@@ -7,6 +7,7 @@ import { boxPageUsingGET } from '@/services/front/kaixiangxiangguan';
 import { numberFixed } from '@/utils';
 import { LeftOutlined, PlusOutlined } from '@ant-design/icons';
 import {
+  FormattedMessage,
   Link,
   history,
   useIntl,
@@ -197,7 +198,7 @@ export default function Create() {
           <Link className="-my-2 -ml-3 px-3 py-2 text-white" to="/battle">
             <LeftOutlined />
           </Link>
-          Create Battle
+          <FormattedMessage id="room_create_battle" />
         </div>
       </div>
       <div className={`bg-black py-5 flex px-5 sm:px-8 items-center gap-2`}>
@@ -288,7 +289,7 @@ export default function Create() {
             <PlusOutlined className="font-bold text-lg text-white" />
           </div>
           <p className="mt-5 text-center text-sm font-semibold uppercase text-white">
-            Add case
+            <FormattedMessage id="room_xzmh" />
           </p>
         </div>
       </div>
@@ -297,11 +298,11 @@ export default function Create() {
         <div className="flex flex-col">
           <div className="flex items-center gap-2">
             <p className="text-xs font-bold uppercase text-white">
-              Number of players
+              <FormattedMessage id="battle_player_nums" />
             </p>
           </div>
           <p className="mt-1 text-xs font-medium text-white text-opacity-50">
-            Cashback is increased for 3-4 player battles!
+            <FormattedMessage id="battle_cashback" />
           </p>
           <div className="mt-4 grid grid-cols-2 gap-2.5 sm:flex">
             {Array.from({ length: 3 }, (v, i) => i + 2).map((t: any, i) => (
@@ -315,7 +316,7 @@ export default function Create() {
                 }}
                 type="button"
               >
-                {t} Players
+                {t} <FormattedMessage id="room_player_num" />
               </button>
             ))}
           </div>
@@ -323,11 +324,11 @@ export default function Create() {
         <div className="flex flex-col">
           <div className="flex items-center gap-2">
             <p className="text-xs font-bold uppercase text-white">
-              Case Battle Mode
+              <FormattedMessage id="room_mode" />
             </p>
           </div>
           <p className="mt-1 text-xs font-medium text-white text-opacity-50">
-            Select your Case Battle mode
+            <FormattedMessage id="battle_mode_select" />
           </p>
           <div className="mt-4 grid grid-cols-2 gap-2.5 sm:flex">
             {modeList.map((mod) => (
@@ -353,10 +354,10 @@ export default function Create() {
           <div className="flex w-full sm:flex-row flex-col justify-center sm:justify-start gap-4 sm:gap-8">
             <div className="flex flex-row sm:flex-col gap-2 sm:gap-1 justify-center text-center sm:text-left">
               <p className="text-xs font-bold uppercase text-white">
-                Total cost
+                <FormattedMessage id="battle_total_cost" />
               </p>
               <p className="text-xs font-medium text-white text-opacity-50">
-                Total price of cases
+                <FormattedMessage id="battle_total_price" />
               </p>
               <span className="text-base font-semibold leading-none text-green">
                 ${totalPrice}
@@ -368,7 +369,7 @@ export default function Create() {
               onClick={onCreate}
             >
               <IconFont type="icon-battle" className="text-lg" />
-              Create case battle
+              <FormattedMessage id="create_case_battle" />
             </Button>
           </div>
         </div>

@@ -1,7 +1,7 @@
 import winnerIcon from '@/assets/winner-icon.png';
 import { ItemState } from '@/pages/profile/bag';
 import { numberFixed, parseName } from '@/utils';
-import { history } from '@umijs/max';
+import { FormattedMessage, history } from '@umijs/max';
 import React, { useState } from 'react';
 import Skeleton from 'react-loading-skeleton';
 import { IconFont } from '../icons';
@@ -143,7 +143,9 @@ export default React.memo(function WeaponCard({
               history.push(`/provably-fair/verify/${data?.verifyId}`)
             }
           >
-            <div className="text-xs uppercase font-semibold text-white/[0.5]">Roll</div>
+            <div className="text-xs uppercase font-semibold text-white/[0.5]">
+              <FormattedMessage id="rollcode" />
+            </div>
             <div className="text-white/[0.5] text-xs font-num">{rollCode}</div>
             <IconFont type="icon-shield" className="text-green" />
           </div>
@@ -154,7 +156,7 @@ export default React.memo(function WeaponCard({
         <div className="z-20 absolute left-0 top-0 flex items-center justify-center h-full w-full bg-black bg-opacity-70 transition duration-300 backdrop-blur-1">
           <div className="flex flex-col items-center gap-1">
             <div className="uppercase text-white text-center font-semibold text-sm">
-              Range Odds
+              <FormattedMessage id="rollcode_range" />
             </div>
             <div className="text-white/[0.5] text-sm">
               {data?.rollCodeLow} - {data?.rollCodeHigh}

@@ -105,7 +105,9 @@ export default function Result({
         ✕
       </Button>
       <Modal.Header className="text-center">
-        <div className="result-title">Congratulations</div>
+        <div className="result-title">
+          <FormattedMessage id="open_box_congratulations" />
+        </div>
       </Modal.Header>
       <Modal.Body>
         <div className="flex flex-wrap items-center gap-x-2 gap-y-4 justify-center min-h-[200px]">

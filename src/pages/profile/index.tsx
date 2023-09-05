@@ -5,9 +5,9 @@ import {
   FormattedMessage,
   Link,
   Outlet,
+  history,
   useIntl,
   useLocation,
-  history,
   useModel,
 } from '@umijs/max';
 import { useMemo, useState } from 'react';
@@ -69,15 +69,21 @@ export default function User() {
                     </div>
                     <div className=" lg:w-fit">
                       <div className="text-white/70 text-sm font-normal mb-1">
-                        Integral
+                        <FormattedMessage id="profile_integral" />
                       </div>
                       <div className=" text-purple truncate font-num">
-                        <IconFont type="icon-coin" className="text-purple mr-1" />
+                        <IconFont
+                          type="icon-coin"
+                          className="text-purple mr-1"
+                        />
 
                         {userInfo?.secondaryBalance}
                       </div>
                     </div>
-                    <div className="btn px-[16px] rounded border border-green text-green disp invisible xl:visible " onClick={()=>history.push('/deposit')}>
+                    <div
+                      className="btn px-[16px] rounded border border-green text-green disp invisible xl:visible "
+                      onClick={() => history.push('/deposit')}
+                    >
                       <IconFont type="icon-funds" className="text-xl" />
                       <FormattedMessage id="wc_rewards_deposit" />
                     </div>
@@ -90,7 +96,7 @@ export default function User() {
                   onClick={() => setSteamLinkModalVisible(true)}
                 >
                   <IconFont type="icon-link" />
-                  {userInfo?.tradeUrl ? 'Edit Trade URL' : 'Add Trade URL'}
+                  {userInfo?.tradeUrl ? <FormattedMessage id="trade_url_edit"/> :<FormattedMessage id="trade_url_add"/> }
                 </div>
                 <div className="btn rounded-none border border-green h-8 w-4/5">
                   <IconFont type="icon-steam" />

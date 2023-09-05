@@ -1,5 +1,5 @@
 import { keyHistoryUsingGET } from '@/services/front/miyaozhongzixiangguan';
-import { useRequest } from '@umijs/max';
+import { FormattedMessage, useRequest } from '@umijs/max';
 import { Pagination } from 'antd';
 import { useState } from 'react';
 import { Button, Modal } from 'react-daisyui';
@@ -28,7 +28,7 @@ export default function ServerSeedHistory({
   return (
     <Modal open={open} className="max-w-lg">
       <Modal.Header className="uppercase font-semibold leading-tight">
-      Server Seed History
+        <FormattedMessage id="provably_server_history" />
       </Modal.Header>
       <Button
         size="xs"
@@ -47,29 +47,29 @@ export default function ServerSeedHistory({
               key={item.id}
             >
               <dt className="whitespace-nowrap bg-black p-3 font-bold">
-                SERVER SEED
+                <FormattedMessage id="server_seed" />
               </dt>
               <dd className="bg-base-100 bg-opacity-30 p-3">
                 {item.secretHash}
               </dd>
               <dt className="whitespace-nowrap bg-black p-3 font-bold ">
-                SECRET SALT
+                <FormattedMessage id="secret_salt" />
               </dt>
               <dd className="bg-base-100 bg-opacity-30 p-3">
                 {item.secretSalt}
               </dd>
               <dt className="whitespace-nowrap bg-black p-3 font-bold ">
-                PUBLIC HASH
+                <FormattedMessage id="publish_hash" />
               </dt>
               <dd className="bg-base-100 bg-opacity-30 p-3">
                 {item.publicHash}
               </dd>
               <dt className="whitespace-nowrap bg-black p-3 font-bold ">
-                ROUND
+                <FormattedMessage id="round_label" />
               </dt>
               <dd className="bg-base-100 bg-opacity-30 p-3">{item.round}</dd>
               <dt className="whitespace-nowrap bg-black p-3 font-bold ">
-                DATE
+                <FormattedMessage id="create_time" />
               </dt>
               <dd className="bg-base-100 bg-opacity-30 p-3">
                 {item.createTime}

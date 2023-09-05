@@ -67,7 +67,10 @@ export default function CaseModal({
   }, [show]);
 
   return (
-    <Modal open={show} className="w-full max-w-6xl max-h-full overflow-hidden px-3 sm:px-5">
+    <Modal
+      open={show}
+      className="w-full max-w-6xl max-h-full overflow-hidden px-3 sm:px-5"
+    >
       <Button
         size="xs"
         shape="circle"
@@ -78,7 +81,7 @@ export default function CaseModal({
         ✕
       </Button>
       <Modal.Header className="mb-4 text-center text-lg font-semibold uppercase text-white">
-        select cases
+        <FormattedMessage id="battle_select_cases" />
       </Modal.Header>
       <Modal.Body>
         <div className="max-h-[500px] overflow-y-scroll sm:overflow-y-auto w-full hide-scrollbar p-2">
