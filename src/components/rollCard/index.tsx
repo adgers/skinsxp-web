@@ -90,7 +90,7 @@ export default React.memo(function RollCard({
       </div>
       <div className="w-full absolute bottom-0 left-0">
         <div
-          className={`mx-2  sm:mx-5 rounded-none ${
+          className={`mx-2  sm:mx-5 ${
             data?.roomType === 1 ? 'btn-purple' : 'btn-green'
           }`}
           onClick={() => {

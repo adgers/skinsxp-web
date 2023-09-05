@@ -1,3 +1,4 @@
+import { IconFont } from '@/components/icons';
 import {
   getPromotionInfoUsingGET,
   modifyInvitationCodeUsingPOST,
@@ -129,7 +130,7 @@ export default function PromotePage() {
             <div className="flex gap-4">
               <Input
                 value={promoteCode}
-                className="w-full max-w-xl rounded-none border-light"
+                className="w-full max-w-xl rounded border-light"
                 placeholder={intl.formatMessage({
                   id: 'promoteCode_placeholder',
                 })}
@@ -142,10 +143,11 @@ export default function PromotePage() {
                   onSavePromote();
                 }}
               >
-                SAVE
+                <FormattedMessage id="confirm" />
               </div>
             </div>
             <div className="text-gray mt-4">
+              <IconFont type="icon-attention" className='mr-2'/>
               Enter a new affiliate code and click "SAVE", if you want to change
               the current one
             </div>

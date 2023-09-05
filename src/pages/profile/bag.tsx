@@ -19,6 +19,7 @@ import { useState } from 'react';
 import { Button, Modal } from 'react-daisyui';
 import { toast } from 'react-toastify';
 export enum ItemState {
+  ALL = -1, // 全部
   ACTIVE = 0, // 已激活
   SOLD = 1, // 已售出
   RETRIEVED = 2, // 已回收
@@ -137,7 +138,7 @@ export default function BagPage() {
                 ...searchParams,
                 stat:
                   searchParams.stat === ItemState.ACTIVE
-                    ? -1
+                    ? ItemState.ALL
                     : ItemState.ACTIVE,
               });
             }}

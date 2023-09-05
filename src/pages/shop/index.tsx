@@ -82,7 +82,9 @@ export default () => {
     <div className="w-full max-w-[1400px] m-auto relative min-h-[500px]">
       <div className="banner w-full h-[380px] mt-8 bg-[url('@/assets/store-banner.png')] bg-no-repeat bg-cover flex justify-center items-center md:justify-start md:pl-[90px]">
         <div className=" max-w-[540px] flex flex-col items-center">
-          <div className="text-xl font-semibold">WHAT IS WG’s Store?</div>
+          <div className="text-xl font-semibold">
+            <FormattedMessage id="wg_store_what" />
+          </div>
           <div className="text-center mt-2">
             <FormattedMessage id="store_banner_content" />
           </div>
@@ -227,7 +229,7 @@ export default () => {
         spinning={loading}
         indicator={<LoadingOutlined style={{ fontSize: 48, color: 'green' }} />}
       >
-        <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-2 sm:gap-4 p-3 min-h-[300px]">
+        <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-2 gap-y-8 md:gap-4 p-3 min-h-[300px]">
           {data?.pageData?.map((item, i: number) => {
             return (
               <div
@@ -238,14 +240,14 @@ export default () => {
                   className={`transition-transform duration-200 will-change-transform real-group-hover:rounded-b-none group-hover:md:translate-y-[-16px] group-hover:overflow-visible`}
                   key={i}
                 >
-                  <WeaponCard data={item} />
+                  <WeaponCard data={item} isShopList={true} />
                   <div
-                    className="absolute bottom-0 flex w-full overflow-hidden rounded-none transition-transform duration-200 will-change-transform z-[-1] h-[32px] translate-y-[32px] md:h-[32px] md:translate-y-[-1px] group-hover:md:translate-y-[32px]"
+                    className="absolute bottom-0 left-0 flex w-full overflow-hidden rounded-none transition-transform duration-200 will-change-transform z-[-1] h-[32px] translate-y-[32px] md:h-[32px] md:translate-y-[-1px] group-hover:md:translate-y-[32px]"
                     onClick={() => {
                       onExchange(item);
                     }}
                   >
-                    <div className="btn btn-sm w-full bg-green text-dark text-sm rounded-none hover:bg-green">
+                    <div className="btn btn-sm w-full rounded-b  md-w-[calc(100%-2px)]  bg-green border-none text-dark text-sm rounded-none  hover:bg-green group-hover:w-full">
                       <IconFont
                         type="icon-collect"
                         className={exChangeLoading ? 'animate-spin' : ''}

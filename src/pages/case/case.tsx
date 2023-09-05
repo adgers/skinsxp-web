@@ -58,7 +58,7 @@ export default function Case() {
           {t.boxList?.map((v, idx) => (
             <div
               key={idx}
-              className="w-full h-full relative cursor-pointer case-wrap aspect-[1/1.4]"
+              className="w-full h-full relative cursor-pointer case-wrap aspect-[1/1.4] rounded-md overflow-hidden"
               onClick={() => {
                 history.push(`/case/${v?.id}`);
               }}
@@ -66,7 +66,7 @@ export default function Case() {
               <img
                 src={v?.boxImage}
                 alt=""
-                className="w-full h-full object-contain"
+                className="w-full h-full object-contain rounded-md"
               />
               <div className="w-full h-full absolute top-0 left-0">
                 {/* <div className="absolute top-[1.5] left-[1.75] text-green">New !</div> */}

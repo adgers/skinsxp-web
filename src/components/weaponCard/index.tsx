@@ -14,6 +14,7 @@ export default React.memo(function WeaponCard({
   showRoll = true,
   fromProfile = false,
   isGiveawayWinList = false,
+  isShopList = false,
 }: {
   loading?: boolean;
   data?: API.RollRoomGiftVo &
@@ -27,6 +28,7 @@ export default React.memo(function WeaponCard({
   showRoll?: boolean;
   fromProfile?: boolean;
   isGiveawayWinList?: boolean;
+  isShopList?: boolean;
 }) {
   const [showChance, setShowChance] = useState<boolean>(false);
 
@@ -56,7 +58,7 @@ export default React.memo(function WeaponCard({
 
   return (
     <div
-      className={`weapon-card relative weapon-card-grade-${grade} group-hover:border-none
+      className={`weapon-card relative rounded weapon-card-grade-${grade} group-hover:border-none
       `}
     >
       <div className="img-wrapper">
@@ -109,7 +111,10 @@ export default React.memo(function WeaponCard({
       )}
 
       <div className="absolute left-0 top-0 text-sm text-white pt-[8px] px-[10px] w-full flex justify-between items-center">
-        <span className="font-num">${price && numberFixed(Number(price))}</span>
+        <span className="font-num">
+          {isShopList ? <IconFont type="icon-coin" className='mr-1 text-purple' /> : '$'}
+          {price && numberFixed(Number(price))}
+        </span>
         {fromProfile && data?.state !== ItemState.ACTIVE && (
           <span
             className={`uppercase ${

@@ -38,7 +38,7 @@ export default function ProvablyFair() {
           <IconFont type="icon-shield" className="text-green text-2xl" />
         </div>
       </div>
-      <div className="bg-black p-5 text-white sm:mt-8 max-w-4xl">
+      <div className="bg-black p-5 text-white sm:mt-8 max-w-4xl rounded-lg">
         <div
           dangerouslySetInnerHTML={{
             __html: intl.formatMessage({ id: 'provably_fair_content' }),

@@ -9,9 +9,13 @@ import { goback, numberFixed } from '@/utils';
 import { LeftOutlined } from '@ant-design/icons';
 import { Menu, Transition } from '@headlessui/react';
 import { FormattedMessage, useModel, useRequest } from '@umijs/max';
+import { configResponsive, useResponsive } from 'ahooks';
 import { Fragment, useEffect, useState } from 'react';
 import { toast } from 'react-toastify';
 
+configResponsive({
+  large: 1024,
+});
 export default function Deposit() {
   const { getUser } = useModel('user');
   const { data: rechargeConfig, loading } = useRequest(() =>
@@ -31,6 +35,10 @@ export default function Deposit() {
     rechargeConfig || {};
 
   const [payOrderId, setPayOrderId] = useState<string>();
+
+  const responsive = useResponsive();
+  console.log(responsive, 'responsive');
+  const showTab = !responsive?.large;
 
   const onPay = async () => {
     if (!selectChannel) {
@@ -95,9 +103,18 @@ export default function Deposit() {
           <div className="-my-2 text-white cursor-pointer" onClick={goback}>
             <LeftOutlined />
           </div>
-           Deposit
+          Deposit
         </div>
       </div>
+      <nav className="relative mb-8 grid grid-cols-2 border-b border-navy-500 font-light lg:hidden">
+        <div className="absolute bottom-0 left-0 h-0.5 w-1/2 transform bg-gold transition-transform duration-300 translate-x-full"></div>
+        <a className="flex h-13 items-center justify-center" href="#payment">
+          Choose method
+        </a>
+        <div className="flex h-13 items-center justify-center font-bold text-gold">
+          Payment
+        </div>
+      </nav>
       {!loading && rechageInfo && rechargeConfig && (
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mt-5">
           {/* <img src={depBg} className="w-full h-full hidden lg:block" /> */}

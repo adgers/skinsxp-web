@@ -92,13 +92,13 @@ export default function User() {
               </div>
               <div className="flex flex-col items-center sm:items-start justify-center gap-3 sm:gap-6 text-white sm:pl-16 w-full">
                 <div
-                  className="btn rounded-none border border-light h-8 w-4/5"
+                  className="btn rounded border border-light h-8 w-4/5"
                   onClick={() => setSteamLinkModalVisible(true)}
                 >
                   <IconFont type="icon-link" />
                   {userInfo?.tradeUrl ? <FormattedMessage id="trade_url_edit"/> :<FormattedMessage id="trade_url_add"/> }
                 </div>
-                <div className="btn rounded-none border border-green h-8 w-4/5">
+                <div className="btn rounded border border-green h-8 w-4/5">
                   <IconFont type="icon-steam" />
                   Steam
                 </div>
