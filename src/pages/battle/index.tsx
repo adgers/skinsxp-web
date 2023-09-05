@@ -117,7 +117,7 @@ export default function BattlePage() {
           })}
         </div>
 
-        <div className="h-14 hidden lg:flex gap-2 items-center bg-black text-center mb-2 p-4">
+        <div className="h-14 hidden lg:flex gap-2 items-center bg-black text-center mb-2 p-4 rounded">
           <div className="w-24 text-xs font-semibold uppercase text-white text-opacity-50">
             Rounds
           </div>

@@ -46,7 +46,7 @@ export default function ProvablyFair() {
           className="prose-base prose-slate"
         ></div>
       </div>
-      <div className="custom-tab flex mt-4 text-white justify-center border-b border-[#45444B] w-full h-[68px]  max-w-4xl">
+      <div className="custom-tab flex mt-4 justify-center sm:justify-start text-white border-b border-[#45444B] w-full h-[68px]  max-w-4xl">
         {tabLinks.map((item, index) => {
           const isActive = location.pathname.startsWith(item.link);
 

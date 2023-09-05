@@ -82,7 +82,7 @@ const RoomCard = memo(
 
     return (
       <div
-        className={`relative flex flex-col md:flex md:flex-row gap-4 bg-black bg-opacity-75 animate__animated animate__zoomIn p-4 battle-mode-${mode} battle-state-${state}`}
+        className={`relative flex flex-col md:flex md:flex-row gap-4 rounded bg-black bg-opacity-75 animate__animated animate__zoomIn p-4 battle-mode-${mode} battle-state-${state}`}
       >
         <div className="flex w-full overflow-hidden">
           <div className="w-16 md:w-24 flex items-center justify-center">
@@ -104,7 +104,7 @@ const RoomCard = memo(
           <div className="flex-1 overflow-x-auto hide-scrollbar flex flex-nowrap gap-x-2">
             {boxListArr.map((item, index) => (
               <div
-                className="relative flex h-full w-[64px] md:w-[84px] flex-shrink-0 flex-col items-center overflow-hidden"
+                className="relative flex h-full w-[64px] md:w-[84px] flex-shrink-0 flex-col items-center overflow-hidden rounded-sm"
                 key={index}
               >
                 <img
