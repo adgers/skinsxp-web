@@ -25,14 +25,14 @@ export default function ProvablyFair() {
 
           return (
             <div
-              className={`tab-item uppercase font-semibold px-4 flex items-center h-full ${
+              className={`uppercase font-semibold px-4 flex items-center h-full ${
                 isActive
                   ? 'text-green border-b-[1px] border-green'
                   : 'text-white '
               }`}
               key={index}
             >
-              <Link to={item.link} className="tab-item-c text-sm md:text-base">
+              <Link to={item.link} className="text-sm md:text-base">
                 {item.title}
               </Link>
             </div>

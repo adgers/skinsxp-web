@@ -50,7 +50,7 @@ export default function ProvablyVerify() {
 
   return (
     <div className="my-4">
-      <div className="flex justify-center pb-5 join max-w-4xl">
+      <div className="flex pb-5 join max-w-4xl">
         <label className="join-item flex w-full max-w-sm cursor-text items-center rounded-none border border-solid border-neutral-500 pl-5 text-sm">
           <input
             type="text"

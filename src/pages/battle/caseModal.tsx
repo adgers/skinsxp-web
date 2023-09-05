@@ -93,7 +93,7 @@ export default function CaseModal({
 
               return (
                 <div
-                  className={`w-full h-full relative overflow-hidden cursor-pointer ring-1 ${
+                  className={`w-full h-full rounded relative overflow-hidden cursor-pointer ring-1 ${
                     isSelect ? 'ring-green' : 'ring-transparent'
                   }`}
                   key={t.id}

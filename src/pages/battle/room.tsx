@@ -544,7 +544,7 @@ export default function RoomDetail() {
       >
         <div className="flex flex-col gap-3 mt-4">
           <div
-            className={`bg-black py-5 flex px-5 sm:px-8 items-center gap-2 battle-mode-${mode}`}
+            className={`bg-black py-5 flex px-5 sm:px-8 items-center gap-2 rounded battle-mode-${mode}`}
           >
             <div className="flex gap-4 items-center">
               <div
@@ -581,7 +581,7 @@ export default function RoomDetail() {
                   return (
                     <div
                       key={i}
-                      className={`w-[64px] md:w-[84px] flex-shrink-0 relative flex justify-center items-center cursor-pointer transform will-change-transform transition duration-300 ${
+                      className={`w-[64px] md:w-[84px] rounded-sm overflow-hidden flex-shrink-0 relative flex justify-center items-center cursor-pointer transform will-change-transform transition duration-300 ${
                         isActive && !isEnd
                           ? ''
                           : isEnd
@@ -710,7 +710,7 @@ export default function RoomDetail() {
             return (
               <div className="flex flex-col" key={i}>
                 <div
-                  className={`battle-seat-bg  h-[200px] sm:h-[300px] px-2 seat-${
+                  className={`battle-seat-bg rounded-t h-[200px] sm:h-[300px] px-2 seat-${
                     i + 1
                   } ${isLast ? 'seat-last' : ''}`}
                 >
@@ -754,7 +754,7 @@ export default function RoomDetail() {
                   )}
                 </div>
                 <div
-                  className={`battle-user gap-1 sm:justify-between items-center flex-col md:flex-row text-sm p-3 md:p-4 min-h-[104px] md:min-h-[72px] ${
+                  className={`battle-user rounded-b gap-1 sm:justify-between items-center flex-col md:flex-row text-sm p-3 md:p-4 min-h-[104px] md:min-h-[72px] ${
                     isWin && 'win-user-bg'
                   }`}
                 >

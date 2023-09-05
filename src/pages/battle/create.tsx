@@ -220,7 +220,7 @@ export default function Create() {
                   onClick={() => {
                     showBoxDetail(item.id as number, item.boxName as string);
                   }}
-                  className={`w-[64px] md:w-[84px] relative flex-shrink-0 flex justify-center items-center cursor-pointer`}
+                  className={`w-[64px] md:w-[84px] relative flex-shrink-0 flex justify-center items-center cursor-pointer rounded-sm overflow-hidden`}
                 >
                   <img src={item.boxImage} className="w-full h-full" />
                   <p className="absolute left-0 bottom-0 w-full p-1 text-center font-semibold text-white truncate bg-black bg-opacity-70 text-[8px]">
@@ -236,7 +236,7 @@ export default function Create() {
       <div className="my-5 grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 flex-wrap gap-4">
         {boxListArr.map((item, i) => {
           return (
-            <div className="relative h-80 w-full bg-black " key={i}>
+            <div className="relative h-80 w-full bg-black rounded overflow-hidden" key={i}>
               <div className="flex flex-col h-64 w-full items-end justify-center rounded-lg pb-1 text-xs uppercase relative">
                 <img
                   src={item.boxImage}
@@ -282,7 +282,7 @@ export default function Create() {
         })}
 
         <div
-          className="group flex h-80 cursor-pointer flex-col items-center justify-center bg-black"
+          className="group flex h-80 rounded cursor-pointer flex-col items-center justify-center bg-black"
           onClick={() => setCaseModalShow(true)}
         >
           <div className="flex w-10 h-10 rounded-full items-center justify-center bg-light hover:bg-opacity-70">
