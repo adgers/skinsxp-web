@@ -29,9 +29,7 @@ export function getSocketDomain() {
     location.href.indexOf('localhost') > -1 ||
     location.href.indexOf('127.0.0.1') > -1
   ) {
-    // return 'wss://api.wgskins.com/ws';
-
-    return 'http://127.0.0.1:9999';
+    return 'wss://api.wgskins.com/ws';
   } else {
     return 'wss://api.wgskins.com/ws';
   }

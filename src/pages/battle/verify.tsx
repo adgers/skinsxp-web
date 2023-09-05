@@ -59,7 +59,7 @@ export default function Verify({
                   key={i}
                 >
                   <div className="mb-2 mt-1 text-center text-xs font-bold uppercase">
-                    <FormattedMessage id="ROUND" /> {urecord.round}
+                     ROUND {urecord.round}
                   </div>
                   <WeaponCard key={i} data={urecord} showRoll={false} />
                   <div className="mt-2 flex gap-1 text-xs font-bold uppercase">

@@ -40,6 +40,7 @@ const audio = new Audio(require('@/assets/audio/battle.mp3'));
 
 import { Spin } from 'antd';
 import CopyToClipboard from 'react-copy-to-clipboard';
+import Result from './result';
 import BoxDetail from './boxDetail';
 import './index.less';
 
@@ -215,6 +216,10 @@ export default function RoomDetail() {
   const [joinLoading, setJoinLoading] = useState(false);
   const [joinBotLoading, setJoinBotLoading] = useState(false);
   const [cancelLoading, setCancelLoading] = useState(false);
+  const [resultModalVisible, setResultModalVisible] = useState(false);
+  const [resultModalData, setResultModalData] = useState<API.BattleBoxGainVo[]>(
+    [],
+  );
   const { getUser, userInfo } = useModel('user');
   const { voice, toggleVoice } = useModel('sys');
   const [myRoom, setMyRoom] = useState(false);
@@ -414,7 +419,7 @@ export default function RoomDetail() {
       await sleep(2500);
       setLotteryShow(false);
       setIsEnd(true);
-      if (voice && myRoom) {
+      if (myRoom) {
         let isWin = false;
         const myRecord = roomResult?.customerGainList?.find(
           (t) => t.customerId === userInfo?.id,
@@ -422,11 +427,18 @@ export default function RoomDetail() {
 
         if (myRecord) {
           isWin = !!myRecord.winner;
+          setResultModalData(myRecord?.userOpenBoxRecord || []);
         }
         if (isWin) {
-          winAudio.play();
+          if (voice) {
+            winAudio.play();
+          }
+          await sleep(2500);
+          setResultModalVisible(true);
         } else {
-          failAudio.play();
+          if (voice) {
+            failAudio.play();
+          }
         }
         getUser();
       }
@@ -510,6 +522,13 @@ export default function RoomDetail() {
     <div className="max-w-[1400px] w-full m-auto mt-4 battle-detail px-1 sm:px-0">
       {countDownShow && (
         <Countdown onFinish={onCountDownFinish} voice={voice} />
+      )}
+      {resultModalVisible && (
+        <Result
+          show={resultModalVisible}
+          results={resultModalData}
+          onClose={() => setResultModalVisible(false)}
+        />
       )}
 
       <div className="my-5 flex w-full flex-col justify-between border-b border-light lg:mb-0 lg:mt-8 lg:flex-row">

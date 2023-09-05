@@ -65,34 +65,26 @@ export default React.memo(function WeaponCard({
         <img src={img} />
       </div>
       {!isGiveawayWinList ? (
-        <div className="item-footer flex flex-col gap-[0.5]">
-          {mini ? null : (
-            <div>
-              <span className="truncate text-white/[0.5] text-xs">
-                {name && parseName(name)?.[0]}
-              </span>
-            </div>
-          )}
-          <div className=" truncate text-white text-sm">
+        <div className="item-footer flex flex-col gap-[2px]">
+          <div className="truncate text-white/[0.5] text-xs">
+            {name && parseName(name)?.[0]}
+          </div>
+          <div className="truncate text-white text-xs sm:text-sm">
             {name && parseName(name)?.[1] && (
-              <span className="text-white/50">({parseName(name)?.[1]})</span>
+              <span className="text-white/50 text-xs">({parseName(name)?.[1]})</span>
             )}
             {name && parseName(name)?.[2]}
           </div>
         </div>
       ) : (
-        <div className="item-footer flex gap-1 items-center">
+        <div className="item-footer flex gap-[2px] items-center">
           <div className="flex-1 overflow-hidden">
-            <div>
-              <div>
-                <span className="truncate text-white/[0.5] text-xs">
-                  {name && parseName(name)?.[0]}
-                </span>
-              </div>
+            <div className="truncate text-white/[0.5] text-xs sm:text-sm">
+              {name && parseName(name)?.[0]}
             </div>
-            <div className="truncate text-white text-sm">
+            <div className="truncate text-white text-xs sm:text-sm">
               {name && parseName(name)?.[1] && (
-                <span className="text-white/50">({parseName(name)?.[1]})</span>
+                <span className="text-white/50 text-xs">({parseName(name)?.[1]})</span>
               )}
               {name && parseName(name)?.[2]}
             </div>
@@ -110,9 +102,13 @@ export default React.memo(function WeaponCard({
         </div>
       )}
 
-      <div className="absolute left-0 top-0 text-sm text-white pt-[8px] px-[10px] w-full flex justify-between items-center">
+      <div className="absolute left-0 top-0 text-xs sm:text-sm text-white p-[5px] sm:pt-[8px] sm:px-[10px] w-full flex justify-between items-center">
         <span className="font-num">
-          {isShopList ? <IconFont type="icon-coin" className='mr-1 text-purple' /> : '$'}
+          {isShopList ? (
+            <IconFont type="icon-coin" className="mr-1 text-purple" />
+          ) : (
+            '$'
+          )}
           {price && numberFixed(Number(price))}
         </span>
         {fromProfile && data?.state !== ItemState.ACTIVE && (
