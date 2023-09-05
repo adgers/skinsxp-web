@@ -356,5 +356,10 @@
   "profile_integral": "积分",
   "trade_url_edit": "修改交易链接",
   "trade_url_add": "添加交易链接",
-  "wg_store_what": "什么是WG商店？"
+  "wg_store_what": "什么是WG商店？",
+  "deposit_choose_method": "选择方式",
+  "deposit_pay": "支付",
+  "deposit_currency": "币种",
+  "deposit_actually_recevied": "实际收到",
+  "deposit_success": "充值成功"
 }

@@ -356,5 +356,10 @@
   "profile_integral": "Integrante",
   "trade_url_edit": "Editar URL comercial",
   "trade_url_add": "Adicionar URL comercial",
-  "wg_store_what": "O QUE É a Loja WG?"
+  "wg_store_what": "O QUE É a Loja WG?",
+  "deposit_choose_method": "Escolha método",
+  "deposit_pay": "Pagamento",
+  "deposit_currency": "Moeda",
+  "deposit_actually_recevied": "Na verdade recebido",
+  "deposit_success": "Recarga bem-sucedida"
 }

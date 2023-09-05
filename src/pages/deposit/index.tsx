@@ -2,15 +2,14 @@ import {
   makePaymentUsingPOST,
   paymentStateUsingGET,
   rechargeConfigUsingGET,
-  rechargeCouponListUsingGET,
   rechargeDiscountInfoUsingGET,
 } from '@/services/front/chongzhixiangguan';
 import { goback, numberFixed } from '@/utils';
 import { LeftOutlined } from '@ant-design/icons';
 import { Menu, Transition } from '@headlessui/react';
-import { FormattedMessage, useModel, useRequest } from '@umijs/max';
+import { FormattedMessage, useIntl, useModel, useRequest } from '@umijs/max';
 import { configResponsive, useResponsive } from 'ahooks';
-import { Fragment, useEffect, useState } from 'react';
+import { Fragment, useEffect, useMemo, useState } from 'react';
 import { toast } from 'react-toastify';
 
 configResponsive({
@@ -24,12 +23,11 @@ export default function Deposit() {
   const { data: rechageInfo } = useRequest(() =>
     rechargeDiscountInfoUsingGET(),
   );
-  const [selectCoupon, setSelectCoupon] =
-    useState<API.RechargeCouponRecordVo>();
+  const [currentTab, setCurrentTab] = useState<number>(2); // 1 | 2
   const [selectCurrency, setSelectCurrency] = useState<API.CurrencyRateVo>();
   const [selectChannel, setSelectChannel] = useState<API.RechargeChannelVo>();
 
-  const { data: couponList } = useRequest(() => rechargeCouponListUsingGET());
+  // const { data: couponList } = useRequest(() => rechargeCouponListUsingGET());
   const [quantity, setQuantity] = useState(0);
   const { currencyRateVoList, rechargeAmountAllowList, rechargeChannelList } =
     rechargeConfig || {};
@@ -37,8 +35,11 @@ export default function Deposit() {
   const [payOrderId, setPayOrderId] = useState<string>();
 
   const responsive = useResponsive();
-  console.log(responsive, 'responsive');
+  const intl = useIntl();
+
   const showTab = !responsive?.large;
+
+  console.log('selectChannel', selectChannel);
 
   const onPay = async () => {
     if (!selectChannel) {
@@ -46,7 +47,7 @@ export default function Deposit() {
       return;
     }
     const ret = await makePaymentUsingPOST({
-      couponId: selectCoupon?.id,
+      // couponId: selectCoupon?.id,
       currencyCode: selectCurrency?.currencyFrom || '',
       quantity,
       rechargeChannelId: selectChannel?.id || 0,
@@ -61,12 +62,153 @@ export default function Deposit() {
     }
   };
 
+  const renderChannel = useMemo(() => {
+    if (!loading && rechageInfo && rechargeConfig)
+      return (
+        <div className="flex flex-col gap-4">
+          <Menu as="div" className="relative">
+            <Menu.Button className="select select-sm md:select-md select-accent border-opacity-50 rounded uppercase w-full font-semibold flex justify-between items-center focus:outline-none bg-black">
+              <div>
+                <FormattedMessage id="deposit_currency" />
+              </div>
+              <div>{selectCurrency?.currencyFrom || 'please select'}</div>
+            </Menu.Button>
+            <Transition
+              as={Fragment}
+              enter="transition ease-out duration-100"
+              enterFrom="transform opacity-0 scale-95"
+              enterTo="transform opacity-100 scale-100"
+              leave="transition ease-in duration-75"
+              leaveFrom="transform opacity-100 scale-100"
+              leaveTo="transform opacity-0 scale-95"
+            >
+              <Menu.Items className="absolute left-0 mt-2 w-full bg-dark ring-1 ring-accent rounded origin-top-left p-1 z-50">
+                {currencyRateVoList?.map((item) => (
+                  <Menu.Item key={item.id}>
+                    {({ active }) => (
+                      <div
+                        className={`${
+                          active ? 'bg-accent bg-opacity-10' : ''
+                        } flex justify-between items-center p-2 text-sm rounded`}
+                        onClick={() => setSelectCurrency(item)}
+                      >
+                        {item.currencyFrom}
+                      </div>
+                    )}
+                  </Menu.Item>
+                ))}
+              </Menu.Items>
+            </Transition>
+          </Menu>
+          <ul className="grid min-h-0 w-full grid-cols-2 gap-3 md:grid-cols-3">
+            {rechargeChannelList?.map((item, index) => (
+              <li className="h-[8rem] min-h-[5rem] md:h-auto" key={index}>
+                <div
+                  className={`trainstion relative cursor-pointer flex items-center justify-center h-full min-h-0 flex-col rounded-lg border bg-dark bg-opacity-90 bg-clip-padding bg-no-repeat outline-none  duration-300 focus:outline-none focus-visible:light ${
+                    item?.id === selectChannel?.id
+                      ? 'border-green'
+                      : 'border-light'
+                  }`}
+                  onClick={() => {
+                    setSelectChannel(item);
+                    if (showTab) {
+                      setCurrentTab(2);
+                    }
+                  }}
+                >
+                  {item?.channelName}
+                  {/* <img
+                    src="https://key-drop.com/uploads/payment/methods/Visa_Master_alone.png?v85"
+                    className="h-full min-h-0 w-full max-w-full object-contain text-center leading-[100px]"
+                    alt="visa_mastercard"
+                  /> */}
+                </div>
+              </li>
+            ))}
+          </ul>
+        </div>
+      );
+  }, [selectCurrency, selectChannel, currencyRateVoList, loading]);
+
+  const renderQuantity = useMemo(() => {
+    if (!loading && rechageInfo && rechargeConfig)
+      return (
+        <div className="flex flex-col">
+          <div className="grid grid-cols-3 gap-3 md:gap-6">
+            {rechargeAmountAllowList?.map((item, i) => (
+              <div
+                className={`rounded-none flex items-center py-3 justify-center relative cursor-pointer ${
+                  quantity === item
+                    ? 'bg-green/[0.3] border border-green'
+                    : 'bg-light/20 '
+                }`}
+                key={i}
+                onClick={() => {
+                  setQuantity(item);
+                }}
+              >
+                ${numberFixed(item)}
+              </div>
+            ))}
+          </div>
+          <div className="rounded-lg py-3 md:py-6 flex flex-col gap-6">
+            <div className="flex gap-x-8">
+              <div className="flex flex-col w-fit gap-2">
+                <div className="uppercase  text-xs">
+                  <FormattedMessage id="quantity" />
+                </div>
+                <div className="flex h-[40px] w-[176px] overflow-hidden pl-4 rounded-none border border-light text-xs font-bold items-center">
+                  $<div>{quantity}</div>
+                </div>
+              </div>
+              <div className="flex flex-col w-full gap-2">
+                <div className="uppercase text-xs">
+                  <FormattedMessage id="deposit_actually_recevied" />
+                </div>
+                <div className="font-num h-[40px] flex items-center gap-2">
+                  <span className="text-green"> ${quantity}</span>
+                  {/* <span className="text-purple">
+                    {numberFixed(
+                      (Number(quantity) *
+                        Number(rechageInfo?.rechargeDiscount)) /
+                        100,
+                    )}
+                  </span> */}
+                </div>
+              </div>
+            </div>
+            <button
+              className="btn btn-green btn-sm md:btn-md uppercase w-full rounded font-semibold"
+              onClick={onPay}
+              type="button"
+            >
+              <FormattedMessage id={'pay_amount'} /> $ {quantity}
+            </button>
+          </div>
+        </div>
+      );
+  }, [
+    rechargeAmountAllowList,
+    quantity,
+    selectCurrency,
+    loading,
+    rechageInfo,
+    selectChannel,
+  ]);
+
   useEffect(() => {
     if (rechargeAmountAllowList && rechargeAmountAllowList.length > 0) {
       setQuantity(rechargeAmountAllowList[0]);
     }
     if (currencyRateVoList && currencyRateVoList.length > 0) {
       setSelectCurrency(currencyRateVoList[0]);
+    }
+    if (
+      rechargeChannelList &&
+      rechargeChannelList?.length > 0 &&
+      !selectChannel
+    ) {
+      setSelectChannel(rechargeChannelList[0]);
     }
   }, [rechargeConfig]);
 
@@ -75,7 +217,7 @@ export default function Deposit() {
   const checkPayStatus = async (id: string) => {
     const ret = await paymentStateUsingGET({ orderId: id });
     if (ret.status === 0) {
-      toast.success('充值成功');
+      toast.success(intl?.formatMessage({ id: 'deposit_success' }));
       getUser();
       if (interval) {
         clearInterval(interval);
@@ -103,194 +245,40 @@ export default function Deposit() {
           <div className="-my-2 text-white cursor-pointer" onClick={goback}>
             <LeftOutlined />
           </div>
-          Deposit
+          <FormattedMessage id="Deposit" />
         </div>
       </div>
-      <nav className="relative mb-8 grid grid-cols-2 border-b border-navy-500 font-light lg:hidden">
+      <div className="relative mb-8 grid grid-cols-2 border-b border-light font-light lg:hidden">
         <div className="absolute bottom-0 left-0 h-0.5 w-1/2 transform bg-gold transition-transform duration-300 translate-x-full"></div>
-        <a className="flex h-13 items-center justify-center" href="#payment">
-          Choose method
-        </a>
-        <div className="flex h-13 items-center justify-center font-bold text-gold">
-          Payment
+        <div
+          className={`flex h-12 items-center justify-center cursor-pointer ${
+            currentTab === 1 ? 'text-green font-bold border-b border-green' : ''
+          } `}
+          onClick={() => {
+            if (currentTab !== 1) {
+              setCurrentTab(1);
+              setSelectChannel();
+            }
+          }}
+        >
+          <FormattedMessage id="deposit_choose_method" />
         </div>
-      </nav>
-      {!loading && rechageInfo && rechargeConfig && (
+        <div
+          className={`flex h-12 items-center justify-center cursor-pointer  ${
+            currentTab === 2 ? 'text-green font-bold border-b border-green' : ''
+          }`}
+        >
+          <FormattedMessage id="deposit_pay" />
+        </div>
+      </div>
+      {!showTab ? (
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mt-5">
-          {/* <img src={depBg} className="w-full h-full hidden lg:block" /> */}
-          <div className="flex flex-col gap-4">
-            <Menu as="div" className="relative">
-              <Menu.Button className="select select-sm md:select-md select-accent border-opacity-50 rounded uppercase w-full font-semibold flex justify-between items-center focus:outline-none bg-black">
-                <div>Currency</div>
-                <div>{selectCurrency?.currencyFrom || 'please select'}</div>
-              </Menu.Button>
-              <Transition
-                as={Fragment}
-                enter="transition ease-out duration-100"
-                enterFrom="transform opacity-0 scale-95"
-                enterTo="transform opacity-100 scale-100"
-                leave="transition ease-in duration-75"
-                leaveFrom="transform opacity-100 scale-100"
-                leaveTo="transform opacity-0 scale-95"
-              >
-                <Menu.Items className="absolute left-0 mt-2 w-full bg-dark ring-1 ring-accent rounded origin-top-left p-1 z-50">
-                  {currencyRateVoList?.map((item) => (
-                    <Menu.Item key={item.id}>
-                      {({ active }) => (
-                        <div
-                          className={`${
-                            active ? 'bg-accent bg-opacity-10' : ''
-                          } flex justify-between items-center p-2 text-sm rounded`}
-                          onClick={() => setSelectCurrency(item)}
-                        >
-                          {item.currencyFrom}
-                        </div>
-                      )}
-                    </Menu.Item>
-                  ))}
-                </Menu.Items>
-              </Transition>
-            </Menu>
-            <ul className="grid min-h-0 w-full grid-cols-2 gap-3 md:grid-cols-3">
-              <li className="h-[8rem] min-h-[5rem] md:h-auto">
-                <a
-                  className="trainstion relative flex h-full min-h-0 flex-col rounded-lg border bg-dark bg-opacity-90 bg-clip-padding bg-no-repeat outline-none  duration-300 focus:outline-none border-light focus-visible:light active"
-                  href=""
-                >
-                  <img
-                    src="https://key-drop.com/uploads/payment/methods/Visa_Master_alone.png?v85"
-                    className="h-full min-h-0 w-full max-w-full object-contain text-center leading-[100px]"
-                    alt="visa_mastercard"
-                  />
-                </a>
-              </li>
-            </ul>
-            <div className="grid min-h-0 w-full grid-cols-2 gap-3 md:grid-cols-3">
-              <div></div>
-              {/* {rechargeChannelList?.map((item, index) => (
-                <div
-                  key={index}
-                  className={`h-[8rem] min-h-[5rem] md:h-auto flex items-center cursor-pointer rounded justify-center ${
-                    selectChannel?.id === item.id ? 'border border-green' : ''
-                  }`}
-                  onClick={() => setSelectChannel(item)}
-                >
-                  {item?.channelName}
-                </div>
-              ))} */}
-            </div>
-          </div>
-          <div className="flex flex-col">
-            <div className="flex gap-2">
-              {/* <div className="vip-level">
-                <div className="vip-level-icon"></div>
-                <div className="vip-level-num">{userInfo?.grade}</div>
-              </div> */}
-            </div>
-            <div className="grid grid-cols-3 gap-3 md:gap-6">
-              {rechargeAmountAllowList?.map((item, i) => (
-                <div
-                  className={`rounded-none flex items-center py-3 justify-center relative cursor-pointer ${
-                    quantity === item
-                      ? 'bg-green/[0.3] border border-green'
-                      : 'bg-light/20 '
-                  }`}
-                  key={i}
-                  onClick={() => {
-                    setQuantity(item);
-                  }}
-                >
-                  ${numberFixed(item * Number(rechageInfo?.rechargeDiscount))}
-                </div>
-              ))}
-            </div>
-            <div className="rounded-lg py-3 md:py-6 flex flex-col gap-6">
-              {/* {couponList && couponList.length > 0 && (
-                <Menu as="div" className="relative">
-                  <Menu.Button className="select select-sm md:select-md select-accent border-opacity-50 rounded uppercase w-full font-semibold flex justify-between items-center focus:outline-nonebg-dark">
-                    <div>coupon</div>
-                    <div>
-                      {selectCoupon ? selectCoupon.couponName : 'please Select'}
-                    </div>
-                  </Menu.Button>
-                  <Transition
-                    as={Fragment}
-                    enter="transition ease-out duration-100"
-                    enterFrom="transform opacity-0 scale-95"
-                    enterTo="transform opacity-100 scale-100"
-                    leave="transition ease-in duration-75"
-                    leaveFrom="transform opacity-100 scale-100"
-                    leaveTo="transform opacity-0 scale-95"
-                  >
-                    <Menu.Items className="absolute left-0 mt-2 w-full bg-dark ring-1 ring-accent rounded origin-top-left p-1 z-50">
-                      {couponList.map((item, i) => (
-                        <Menu.Item key={i}>
-                          {({ active }) => (
-                            <div
-                              className={`${
-                                active ? 'bg-accent bg-opacity-10' : ''
-                              } flex justify-between items-center p-2 text-sm rounded cursor-pointer`}
-                              onClick={() => {
-                                setSelectCoupon(item);
-                              }}
-                            >
-                              {item.couponName}
-                            </div>
-                          )}
-                        </Menu.Item>
-                      ))}
-                      <Menu.Item>
-                        {({ active }) => (
-                          <div
-                            className={`${
-                              active ? 'bg-accent bg-opacity-10' : ''
-                            } flex justify-between items-center p-2 text-sm rounded cursor-pointer`}
-                            onClick={() => {
-                              setSelectCoupon({});
-                            }}
-                          >
-                            do not use coupon
-                          </div>
-                        )}
-                      </Menu.Item>
-                    </Menu.Items>
-                  </Transition>
-                </Menu>
-              )} */}
-
-              <div className="flex gap-x-8">
-                <div className="flex flex-col w-fit gap-2">
-                  <div className="uppercase  text-xs">you amout</div>
-                  <div className="flex h-[40px] w-[176px] overflow-hidden pl-4 rounded-none border border-light text-xs font-bold items-center">
-                    $<div>{quantity}</div>
-                  </div>
-                </div>
-                <div className="flex flex-col w-full gap-2">
-                  <div className="uppercase text-xs">Actually obtained</div>
-                  <div className="font-num h-[40px] flex items-center gap-2">
-                    <span className="text-green"> ${quantity}</span> +{' '}
-                    <span className="text-purple">
-                      {numberFixed(
-                        (Number(quantity) *
-                          Number(rechageInfo?.rechargeDiscount)) /
-                          100,
-                      )}
-                    </span>
-                    {selectCoupon?.rechargeDiscount &&
-                      `+${selectCoupon?.rechargeDiscount}`}
-                  </div>
-                </div>
-              </div>
-              <button
-                className="btn btn-green btn-sm md:btn-md uppercase w-full rounded font-semibold"
-                onClick={onPay}
-                type="button"
-              >
-                <FormattedMessage id={'pay_amount'} /> ${' '}
-                {(selectCurrency?.rate || 0) * quantity}
-              </button>
-            </div>
-          </div>
+          {renderChannel}
+          {renderQuantity}
+        </div>
+      ) : (
+        <div>
+          {currentTab === 1 ? <>{renderChannel}</> : <>{renderQuantity}</>}
         </div>
       )}
     </div>

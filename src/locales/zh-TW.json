@@ -352,9 +352,14 @@
   "enter_client_seed": "輸入新的用戶金鑰",
   "login_need_tip": "我們需要確保您可以使用WGSkins，請確認：",
   "best_drop": "最好的掉落",
-  "battle_room_watch": "assista a batalha",
-  "profile_integral": "Integrante",
-  "trade_url_edit": "Editar URL comercial",
-  "trade_url_add": "Adicionar URL comercial",
-  "wg_store_what": "什麼是WG商店？"
+  "battle_room_watch": "觀戰",
+  "profile_integral": "積分",
+  "trade_url_edit": "修改交易連結",
+  "trade_url_add": "添加交易連結",
+  "wg_store_what": "什麼是WG商店？",
+  "deposit_choose_method": "選擇管道",
+  "deposit_pay": "支付",
+  "deposit_currency": "幣種",
+  "deposit_actually_recevied": "實際收到",
+  "deposit_success": "充值成功"
 }

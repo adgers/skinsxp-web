@@ -146,11 +146,6 @@ export default function PromotePage() {
                 <FormattedMessage id="confirm" />
               </div>
             </div>
-            <div className="text-gray mt-4">
-              <IconFont type="icon-attention" className='mr-2'/>
-              Enter a new affiliate code and click "SAVE", if you want to change
-              the current one
-            </div>
           </div>
           <div className="flex justify-start items-center w-full lg:justify-center lg:w-1/2">
             <FormattedMessage id="promoteCode_myurl" />:{' '}

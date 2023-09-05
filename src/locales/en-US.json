@@ -356,5 +356,10 @@
   "profile_integral": "Integral",
   "trade_url_edit": "Edit Trade URL",
   "trade_url_add": "Add Trade URL",
-  "wg_store_what": "WHAT IS WG’s Store?"
+  "wg_store_what": "WHAT IS WG’s Store?",
+  "deposit_choose_method": "Choose method",
+  "deposit_pay": "Payment",
+  "deposit_currency": "Currency",
+  "deposit_actually_recevied": "Actually Recevied",
+  "deposit_success": "Recharge successful"
 }
