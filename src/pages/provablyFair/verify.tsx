@@ -2,7 +2,7 @@ import {
   resetUsingPOST,
   verifyUsingGET1,
 } from '@/services/front/miyaozhongzixiangguan';
-import { FormattedMessage, useParams } from '@umijs/max';
+import { FormattedMessage, useIntl, useParams } from '@umijs/max';
 import { useEffect, useRef, useState } from 'react';
 import { Button } from 'react-daisyui';
 import { toast } from 'react-toastify';
@@ -13,6 +13,7 @@ export default function ProvablyVerify() {
   const inputRef = useRef<HTMLInputElement>(null);
   const [currentKey, setCurrentKey] = useState<API.RandKeyVo>();
   const [loading, setLoading] = useState(false);
+  const intl = useIntl();
   const onVerify = async () => {
     const verifyId = inputRef.current?.value;
     if (!verifyId) {
@@ -55,7 +56,7 @@ export default function ProvablyVerify() {
           <input
             type="text"
             className="flex-1 border-none bg-transparent text-sm text-white focus:outline-none"
-            placeholder="ENTER VERIFY ID"
+            placeholder={intl.formatMessage({ id: 'enter_verify_id' })}
             ref={inputRef}
           />
         </label>
@@ -64,7 +65,7 @@ export default function ProvablyVerify() {
           onClick={onVerify}
           loading={loading}
         >
-          Verification
+          <FormattedMessage id="provably_fair_verify" />
         </Button>
       </div>
       {currentKey && (

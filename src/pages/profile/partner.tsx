@@ -1,4 +1,3 @@
-import { IconFont } from '@/components/icons';
 import {
   getPromotionInfoUsingGET,
   modifyInvitationCodeUsingPOST,
@@ -197,19 +196,19 @@ export default function PromotePage() {
       </div>
 
       <div className="grid grid-cols-3 md:grid-cols-6 mt-4 border border-light border-collapse text-gray">
-        <div className="text-center px-3 py-4 flex flex-col gap-2 rounded-none border-r  border-light ">
+        <div className="text-center px-3 py-4 flex flex-col gap-2 rounded-none border-r border-b md:border-b-0  border-light ">
           <div>
             <FormattedMessage id="promoteCode_level" />
           </div>
           <div className="text-white font-num">{data?.promotionGrade}</div>
         </div>
-        <div className="text-center px-3 py-4 flex flex-col gap-2 rounded-none border-r  border-light ">
+        <div className="text-center px-3 py-4 flex flex-col gap-2 rounded-none border-r border-b md:border-b-0  border-light ">
           <div>
             <FormattedMessage id="promoteCode_rebate" />
           </div>
           <div className="text-white font-num">{data?.rebateRate}%</div>
         </div>
-        <div className="text-center px-3 py-4 flex flex-col gap-2 rounded-none border-r  border-light ">
+        <div className="text-center px-3 py-4 flex flex-col gap-2 rounded-none border-b md:border-b-0 md:border-r  border-light ">
           <div>
             <FormattedMessage id="promoteCode_nextlevel" />
           </div>

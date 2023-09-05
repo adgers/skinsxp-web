@@ -137,7 +137,7 @@ export default function Deposit() {
           <div className="grid grid-cols-3 gap-3 md:gap-6">
             {rechargeAmountAllowList?.map((item, i) => (
               <div
-                className={`rounded-none flex items-center py-3 justify-center relative cursor-pointer ${
+                className={`rounded flex items-center py-3 justify-center relative cursor-pointer ${
                   quantity === item
                     ? 'bg-green/[0.3] border border-green'
                     : 'bg-light/20 '
@@ -157,7 +157,7 @@ export default function Deposit() {
                 <div className="uppercase  text-xs">
                   <FormattedMessage id="quantity" />
                 </div>
-                <div className="flex h-[40px] w-[176px] overflow-hidden pl-4 rounded-none border border-light text-xs font-bold items-center">
+                <div className="flex h-[40px] w-[176px] overflow-hidden pl-4 rounded border border-light text-xs font-bold items-center">
                   $<div>{quantity}</div>
                 </div>
               </div>

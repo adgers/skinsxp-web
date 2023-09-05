@@ -212,12 +212,12 @@ export default function BagPage() {
                             );
                           }}
                         >
-                          <div className="btn btn-sm flex w-full items-center justify-center text-sm font-semibold uppercase transition-colors duration-150 real-hover:text-white">
+                          <div className="btn btn-sm flex w-full items-center justify-center text-sm font-semibold uppercase transition-colors duration-150 real-hover:text-white flex-nowrap">
                             <IconFont
                               type="icon-shield"
                               className="text-green"
                             />
-                            <span className="text-xs">
+                            <span className="text-xs flex-1 truncate">
                               <FormattedMessage id="battle_fairness_verify" />
                             </span>
                           </div>

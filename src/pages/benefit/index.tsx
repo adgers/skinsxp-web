@@ -170,7 +170,7 @@ export default function Benefit() {
                 className=" w-full bg-black rounded pl-4 focus:outline-none"
                 maxLength={12}
                 ref={cdKeyCodeRef}
-                placeholder="Enter the CDKey"
+                placeholder={intl.formatMessage({ id: 'wc_cdkey_placeholder' })}
               />
 
               <div
