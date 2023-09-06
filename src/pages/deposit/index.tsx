@@ -6,7 +6,7 @@ import {
   rechargeDiscountInfoUsingGET,
 } from '@/services/front/chongzhixiangguan';
 import { bindInviterUsingPOST } from '@/services/front/gerenzhongxinxiangguan';
-import { goback, numberFixed } from '@/utils';
+import { getImgHost, goback, numberFixed } from '@/utils';
 import { LeftOutlined, LoadingOutlined } from '@ant-design/icons';
 import { Menu, Transition } from '@headlessui/react';
 import { FormattedMessage, useIntl, useModel, useRequest } from '@umijs/max';
@@ -51,8 +51,6 @@ export default function Deposit() {
 
   const showTab = !responsive?.large;
 
-  console.log(showTab, 'showTab');
-
   const onBindPromoCode = async () => {
     const code = promoCodeRef?.current?.value;
     if (!code) return;
@@ -77,7 +75,7 @@ export default function Deposit() {
 
   const onPay = async () => {
     if (!selectChannel) {
-      toast.error('请选择支付方式');
+      toast.error(intl.formatMessage({ id: 'recharge_unselect_channcel' }));
       return;
     }
     const ret = await makePaymentUsingPOST({
@@ -142,7 +140,7 @@ export default function Deposit() {
                 return (
                   <li className="h-[8rem] min-h-[5rem] md:h-auto" key={index}>
                     <div
-                      className={`trainstion relative cursor-pointer flex items-center justify-center h-full min-h-0 flex-col rounded-lg border bg-dark bg-opacity-90 bg-clip-padding bg-no-repeat outline-none  duration-300 focus:outline-none focus-visible:light ${
+                      className={`trainstion relative cursor-pointer flex items-center justify-center h-full min-h-0 flex-col rounded-lg border bg-black bg-opacity-90 bg-clip-padding bg-no-repeat outline-none  duration-300 focus:outline-none focus-visible:light ${
                         item?.id === selectChannel?.id
                           ? 'border-green'
                           : 'border-light'
@@ -154,12 +152,11 @@ export default function Deposit() {
                         }
                       }}
                     >
-                      {item?.channelName}
-                      {/* <img
-                  src="https://key-drop.com/uploads/payment/methods/Visa_Master_alone.png?v85"
-                  className="h-full min-h-0 w-full max-w-full object-contain text-center leading-[100px]"
-                  alt="visa_mastercard"
-                /> */}
+                      <img
+                        src={`${getImgHost()}${item?.logo}.png`}
+                        className="h-full min-h-0 w-full max-w-full object-contain text-center leading-[100px]"
+                        alt="visa_mastercard"
+                      />
                     </div>
                   </li>
                 );
@@ -388,7 +385,7 @@ export default function Deposit() {
           <div className="-my-2 text-white cursor-pointer" onClick={goback}>
             <LeftOutlined />
           </div>
-          <FormattedMessage id="Deposit" />
+          <FormattedMessage id="wc_rewards_deposit" />
         </div>
       </div>
       <div className="relative mb-8 grid grid-cols-2 border-b border-light font-light lg:hidden">
