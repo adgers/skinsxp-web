@@ -102,7 +102,6 @@ export function parseName(name: string) {
     const weaponName = result[0]; // 饰品名字
     const pifuName = result?.splice(1)?.join('|');
     const nameArr = [weaponName];
-    // console.log(pifuName, 'pifuName');
     // 反转饰品的皮肤 查看是否有磨损
     const reverseName = pifuName?.split('')?.reverse()?.join('');
 
@@ -110,7 +109,6 @@ export function parseName(name: string) {
       // 没有磨损
       nameArr.push(...['', pifuName]);
     } else {
-      // console.log('有磨损');
       //   有磨损度
       const pifuNameArr = pifuName.split(' (');
       const [first, second] = pifuNameArr?.[1]
@@ -127,7 +125,6 @@ export function parseName(name: string) {
     }
     return nameArr;
   } catch (error) {
-    // console.log('error', name);
     return ['', '', name];
   }
 }

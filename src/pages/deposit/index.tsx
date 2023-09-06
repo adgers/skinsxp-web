@@ -39,8 +39,6 @@ export default function Deposit() {
 
   const showTab = !responsive?.large;
 
-  console.log('selectChannel', selectChannel);
-
   const onPay = async () => {
     if (!selectChannel) {
       toast.error('请选择支付方式');
