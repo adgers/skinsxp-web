@@ -1,5 +1,5 @@
 import WeaponCard from '@/components/weaponCard';
-import { EXTERIOR, WEAPON_TYPE } from '@/constants';
+// import { EXTERIOR, WEAPON_TYPE } from '@/constants';
 import { pageUsingGET1 } from '@/services/front/shengjixiangguan';
 import { Menu, Transition } from '@headlessui/react';
 import { FormattedMessage, useIntl, useRequest } from '@umijs/max';
@@ -137,7 +137,7 @@ export default function DreamItems({
                 leaveTo="transform opacity-0 scale-95"
               >
                 <Menu.Items className="absolute left-0 mt-2 w-full bg-dark ring-1 ring-accent rounded origin-top-left p-2 z-50">
-                  {EXTERIOR.map((item, i) => (
+                  {/* {EXTERIOR.map((item, i) => (
                     <Menu.Item key={i}>
                       {({ active }) => (
                         <div
@@ -152,7 +152,7 @@ export default function DreamItems({
                         </div>
                       )}
                     </Menu.Item>
-                  ))}
+                  ))} */}
                 </Menu.Items>
               </Transition>
             </Menu>
@@ -171,7 +171,7 @@ export default function DreamItems({
                 leaveTo="transform opacity-0 scale-95"
               >
                 <Menu.Items className="absolute left-0 mt-2 w-full bg-dark ring-1 ring-accent rounded origin-top-left p-2 z-50 max-h-80 overflow-y-auto">
-                  {WEAPON_TYPE.map((item, i) => (
+                  {/* {WEAPON_TYPE.map((item, i) => (
                     <Menu.Item key={i}>
                       {({ active }) => (
                         <div
@@ -186,7 +186,7 @@ export default function DreamItems({
                         </div>
                       )}
                     </Menu.Item>
-                  ))}
+                  ))} */}
                 </Menu.Items>
               </Transition>
             </Menu>

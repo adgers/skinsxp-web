@@ -1447,6 +1447,7 @@ declare namespace API {
     remark?: string;
     state?: number;
     ua?: string;
+    currencyCodeList?: string[]
   };
 
   type RechargeConfigVo = {

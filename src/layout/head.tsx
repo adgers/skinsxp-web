@@ -22,7 +22,7 @@ import OpenHistory from './open-history';
 import Placard from './placard';
 
 import brFlag from '@/assets/flags/br.svg';
-// import cnFlag from '@/assets/flags/cn.svg';
+import cnFlag from '@/assets/flags/cn.svg';
 import enFlag from '@/assets/flags/en.svg';
 import { IconFont } from '@/components/icons';
 import LoginConfirm from '@/pages/login/loginConfirm';
@@ -70,11 +70,11 @@ export default function Header() {
       value: 'pt-BR',
       flag: brFlag,
     },
-    // {
-    //   title: 'CN',
-    //   value: 'zh-CN',
-    //   flag: cnFlag,
-    // },
+    {
+      title: 'CN',
+      value: 'zh-TW',
+      flag: cnFlag,
+    },
   ];
 
   const headLinks = [

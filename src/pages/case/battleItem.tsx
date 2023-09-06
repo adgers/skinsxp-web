@@ -46,7 +46,7 @@ export default function BattleItem(props: BattleItemProps) {
               <div className="h-full w-full flex-1 overflow-hidden bg-[] bg-no-repeat bg-opacity-[0.3]  bg-center relative">
                 <img
                   src={item?.boxImage}
-                  className=" h-full  m-auto z-[11]"
+                  className=" h-full  m-auto z-[11] rounded"
                   alt=""
                 />
                 <img

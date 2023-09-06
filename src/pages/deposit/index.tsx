@@ -1,22 +1,30 @@
+import { IconFont } from '@/components/icons';
 import {
   makePaymentUsingPOST,
   paymentStateUsingGET,
   rechargeConfigUsingGET,
   rechargeDiscountInfoUsingGET,
 } from '@/services/front/chongzhixiangguan';
+import { bindInviterUsingPOST } from '@/services/front/gerenzhongxinxiangguan';
 import { goback, numberFixed } from '@/utils';
-import { LeftOutlined } from '@ant-design/icons';
+import { LeftOutlined, LoadingOutlined } from '@ant-design/icons';
 import { Menu, Transition } from '@headlessui/react';
 import { FormattedMessage, useIntl, useModel, useRequest } from '@umijs/max';
 import { configResponsive, useResponsive } from 'ahooks';
-import { Fragment, useEffect, useMemo, useState } from 'react';
+import { remove } from 'lodash';
+import { Fragment, useEffect, useMemo, useRef, useState } from 'react';
 import { toast } from 'react-toastify';
 
 configResponsive({
   large: 1024,
 });
+enum PromoCodeState {
+  USING = 1, // 正在使用
+  EDIT = 2, // 正在编辑
+  VERIFY = 3, // 正在校验
+}
 export default function Deposit() {
-  const { getUser } = useModel('user');
+  const { getUser, userInfo } = useModel('user');
   const { data: rechargeConfig, loading } = useRequest(() =>
     rechargeConfigUsingGET(),
   );
@@ -26,8 +34,11 @@ export default function Deposit() {
   const [currentTab, setCurrentTab] = useState<number>(2); // 1 | 2
   const [selectCurrency, setSelectCurrency] = useState<API.CurrencyRateVo>();
   const [selectChannel, setSelectChannel] = useState<API.RechargeChannelVo>();
+  const [promoCodeState, setPromoCodeState] = useState<number>(
+    PromoCodeState.EDIT,
+  );
+  const [inputCode, setInputCode] = useState('');
 
-  // const { data: couponList } = useRequest(() => rechargeCouponListUsingGET());
   const [quantity, setQuantity] = useState(0);
   const { currencyRateVoList, rechargeAmountAllowList, rechargeChannelList } =
     rechargeConfig || {};
@@ -36,8 +47,33 @@ export default function Deposit() {
 
   const responsive = useResponsive();
   const intl = useIntl();
+  const promoCodeRef = useRef<HTMLInputElement>(null);
 
   const showTab = !responsive?.large;
+
+  console.log(showTab, 'showTab');
+
+  const onBindPromoCode = async () => {
+    const code = promoCodeRef?.current?.value;
+    if (!code) return;
+
+    if (/^[0-9a-zA-Z]{6,15}$/g.test(code) === false) {
+      toast.error(intl.formatMessage({ id: 'promoteCode_error' }));
+      return;
+    }
+
+    setPromoCodeState(PromoCodeState.VERIFY);
+    const ret = await bindInviterUsingPOST({
+      invitationCode: code,
+    });
+    if (ret.status === 0) {
+      toast.success(intl.formatMessage({ id: 'mine_xgcg' }));
+      getUser();
+    }
+    if (ret.status === 1) {
+      setPromoCodeState(PromoCodeState.EDIT);
+    }
+  };
 
   const onPay = async () => {
     if (!selectChannel) {
@@ -61,7 +97,7 @@ export default function Deposit() {
   };
 
   const renderChannel = useMemo(() => {
-    if (!loading && rechageInfo && rechargeConfig)
+    if (!loading && rechargeConfig)
       return (
         <div className="flex flex-col gap-4">
           <Menu as="div" className="relative">
@@ -99,39 +135,125 @@ export default function Deposit() {
             </Transition>
           </Menu>
           <ul className="grid min-h-0 w-full grid-cols-2 gap-3 md:grid-cols-3">
-            {rechargeChannelList?.map((item, index) => (
-              <li className="h-[8rem] min-h-[5rem] md:h-auto" key={index}>
-                <div
-                  className={`trainstion relative cursor-pointer flex items-center justify-center h-full min-h-0 flex-col rounded-lg border bg-dark bg-opacity-90 bg-clip-padding bg-no-repeat outline-none  duration-300 focus:outline-none focus-visible:light ${
-                    item?.id === selectChannel?.id
-                      ? 'border-green'
-                      : 'border-light'
-                  }`}
-                  onClick={() => {
-                    setSelectChannel(item);
-                    if (showTab) {
-                      setCurrentTab(2);
-                    }
-                  }}
-                >
-                  {item?.channelName}
-                  {/* <img
-                    src="https://key-drop.com/uploads/payment/methods/Visa_Master_alone.png?v85"
-                    className="h-full min-h-0 w-full max-w-full object-contain text-center leading-[100px]"
-                    alt="visa_mastercard"
-                  /> */}
-                </div>
-              </li>
-            ))}
+            {rechargeChannelList?.map((item, index) => {
+              if (
+                item?.currencyCodeList?.includes(selectCurrency?.currencyFrom)
+              )
+                return (
+                  <li className="h-[8rem] min-h-[5rem] md:h-auto" key={index}>
+                    <div
+                      className={`trainstion relative cursor-pointer flex items-center justify-center h-full min-h-0 flex-col rounded-lg border bg-dark bg-opacity-90 bg-clip-padding bg-no-repeat outline-none  duration-300 focus:outline-none focus-visible:light ${
+                        item?.id === selectChannel?.id
+                          ? 'border-green'
+                          : 'border-light'
+                      }`}
+                      onClick={() => {
+                        setSelectChannel(item);
+                        if (showTab) {
+                          setCurrentTab(2);
+                        }
+                      }}
+                    >
+                      {item?.channelName}
+                      {/* <img
+                  src="https://key-drop.com/uploads/payment/methods/Visa_Master_alone.png?v85"
+                  className="h-full min-h-0 w-full max-w-full object-contain text-center leading-[100px]"
+                  alt="visa_mastercard"
+                /> */}
+                    </div>
+                  </li>
+                );
+            })}
           </ul>
         </div>
       );
-  }, [selectCurrency, selectChannel, currencyRateVoList, loading]);
+  }, [
+    selectCurrency,
+    selectChannel,
+    currencyRateVoList,
+    loading,
+    rechargeConfig,
+  ]);
 
   const renderQuantity = useMemo(() => {
     if (!loading && rechageInfo && rechargeConfig)
       return (
         <div className="flex flex-col">
+          <div className="flex h-fit w-full items-center gap-4 px-2 py-2 sm:py-0  bg-[url('@/assets/promo-bg.png')] bg-no-repeat bg-cover sm:pl-28 sm:pr-8 text-sm sm:text-md whitespace-pre-wrap font-semibold">
+            <div className="h-fit w-full grow sm:-mr-20 sm:-ml-16">
+              <p className="text-[16px] mb-2">
+                {
+                  intl
+                    .formatMessage({ id: 'benefit_promo_explain' })
+                    .split('\\n')[0]
+                }
+              </p>
+              <p>
+                {intl
+                  .formatMessage({ id: 'benefit_promo_explain' })
+                  .split('\\n')[1]
+                  ?.trim()}
+              </p>
+            </div>
+            <div className="w-48 relative z-10  aspect-square sm:block">
+              <img src={require('@/assets/promo-img.png')} alt="" />
+            </div>
+          </div>
+          <div className="w-full mt-5 flex justify-between gap-4 mb-4 items-center">
+            {promoCodeState === PromoCodeState.EDIT ? (
+              <input
+                type="text"
+                className="h-full w-full bg-black rounded  pl-4 border border-light focus:outline-none"
+                ref={promoCodeRef}
+                onChange={(e) => setInputCode(e?.target?.value)}
+                defaultValue={inputCode}
+                placeholder={intl.formatMessage({ id: 'register_qsryqm' })}
+              />
+            ) : promoCodeState === PromoCodeState.USING ? (
+              <div className="flex-1 flex h-full rounded-lg items-center pl-8 bg-light/20 text-sm">
+                <div className="text-white/50 mr-2">YOUR CURRENT CODE:</div>
+                <div className="text-green text-md font-semibold">
+                  {userInfo?.inviterPromotionCode}
+                </div>
+              </div>
+            ) : (
+              <div className="flex-1 flex h-full rounded-lg items-center pl-8 bg-light/20 text-sm">
+                <LoadingOutlined className="mr-2" />
+                <div className="text-white/50 mr-2">{inputCode}</div>
+              </div>
+            )}
+
+            <div
+              className="btn btn-green uppercase px-10"
+              onClick={() => {
+                switch (promoCodeState) {
+                  case PromoCodeState.USING:
+                    setPromoCodeState(PromoCodeState.EDIT);
+                    break;
+                  case PromoCodeState.EDIT:
+                    if (inputCode) {
+                      onBindPromoCode();
+                    } else {
+                      if (userInfo?.inviterPromotionCode) {
+                        setPromoCodeState(PromoCodeState.USING);
+                        setInputCode('');
+                      }
+                    }
+                    break;
+                  case PromoCodeState.VERIFY:
+                    break;
+                }
+              }}
+            >
+              {promoCodeState === PromoCodeState.USING ? (
+                <FormattedMessage id="edit" />
+              ) : !!inputCode?.trim() ? (
+                <FormattedMessage id="text_btn_apply" />
+              ) : (
+                <FormattedMessage id="cancel" />
+              )}
+            </div>
+          </div>
           <div className="grid grid-cols-3 gap-3 md:gap-6">
             {rechargeAmountAllowList?.map((item, i) => (
               <div
@@ -156,7 +278,10 @@ export default function Deposit() {
                   <FormattedMessage id="quantity" />
                 </div>
                 <div className="flex h-[40px] w-[176px] overflow-hidden pl-4 rounded border border-light text-xs font-bold items-center">
-                  $<div>{quantity}</div>
+                  {selectCurrency?.symbol}
+                  <div>
+                    {numberFixed((selectCurrency?.rate || 0) * quantity, 2)}
+                  </div>
                 </div>
               </div>
               <div className="flex flex-col w-full gap-2">
@@ -164,14 +289,19 @@ export default function Deposit() {
                   <FormattedMessage id="deposit_actually_recevied" />
                 </div>
                 <div className="font-num h-[40px] flex items-center gap-2">
-                  <span className="text-green"> ${quantity}</span>
-                  {/* <span className="text-purple">
+                  <span className="text-green">
+                    {selectCurrency?.symbol}
+                    {numberFixed((selectCurrency?.rate || 0) * quantity, 2)}
+                  </span>
+                  &nbsp;+&nbsp;
+                  <span className="text-purple">
+                    <IconFont type="icon-coin" className="mr-1" />
                     {numberFixed(
                       (Number(quantity) *
                         Number(rechageInfo?.rechargeDiscount)) /
                         100,
                     )}
-                  </span> */}
+                  </span>
                 </div>
               </div>
             </div>
@@ -180,7 +310,8 @@ export default function Deposit() {
               onClick={onPay}
               type="button"
             >
-              <FormattedMessage id={'pay_amount'} /> $ {quantity}
+              <FormattedMessage id={'pay_amount'} /> {selectCurrency?.symbol}
+              {numberFixed((selectCurrency?.rate || 0) * quantity, 2)}
             </button>
           </div>
         </div>
@@ -192,6 +323,8 @@ export default function Deposit() {
     loading,
     rechageInfo,
     selectChannel,
+    promoCodeState,
+    inputCode,
   ]);
 
   useEffect(() => {
@@ -200,13 +333,6 @@ export default function Deposit() {
     }
     if (currencyRateVoList && currencyRateVoList.length > 0) {
       setSelectCurrency(currencyRateVoList[0]);
-    }
-    if (
-      rechargeChannelList &&
-      rechargeChannelList?.length > 0 &&
-      !selectChannel
-    ) {
-      setSelectChannel(rechargeChannelList[0]);
     }
   }, [rechargeConfig]);
 
@@ -235,6 +361,25 @@ export default function Deposit() {
       }
     };
   }, [payOrderId]);
+
+  useEffect(() => {
+    if (!!userInfo?.inviterPromotionCode) {
+      setPromoCodeState(PromoCodeState.USING);
+      setInputCode('');
+    }
+  }, [userInfo?.inviterPromotionCode]);
+
+  useEffect(() => {
+    if (rechargeChannelList?.length && currencyRateVoList?.length) {
+      let curChannelList = JSON.parse(JSON.stringify(rechargeChannelList));
+      remove(
+        curChannelList,
+        (item) =>
+          !item?.currencyCodeList?.includes(selectCurrency?.currencyFrom),
+      );
+      setSelectChannel(curChannelList?.[0] || null);
+    }
+  }, [selectCurrency, rechargeChannelList, currencyRateVoList]);
 
   return (
     <div className="max-w-[1400px] m-auto px-3 md:px-6">

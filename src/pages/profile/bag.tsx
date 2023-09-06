@@ -212,7 +212,7 @@ export default function BagPage() {
                             );
                           }}
                         >
-                          <div className="btn btn-sm flex w-full items-center justify-center text-sm font-semibold uppercase transition-colors duration-150 real-hover:text-white flex-nowrap">
+                          <div className="btn btn-sm flex w-fit max-w-full m-auto items-center justify-center text-sm font-semibold uppercase transition-colors duration-150 real-hover:text-white flex-nowrap">
                             <IconFont
                               type="icon-shield"
                               className="text-green"

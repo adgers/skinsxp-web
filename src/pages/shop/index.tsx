@@ -82,10 +82,10 @@ export default () => {
     <div className="w-full max-w-[1400px] m-auto relative min-h-[500px]">
       <div className="banner w-full h-[380px] mt-8 bg-[url('@/assets/store-banner.png')] bg-no-repeat bg-cover flex justify-center items-center md:justify-start md:pl-[90px]">
         <div className=" max-w-[540px] flex flex-col items-center">
-          <div className="text-xl font-semibold">
+          <div className="text-lg md:text-xl font-semibold">
             <FormattedMessage id="wg_store_what" />
           </div>
-          <div className="text-center mt-2">
+          <div className="text-center mt-2 px-2 text-xs md:text-base">
             <FormattedMessage id="store_banner_content" />
           </div>
         </div>

@@ -106,14 +106,14 @@ export default function Benefit() {
                   {
                     intl
                       .formatMessage({ id: 'benefit_promo_explain' })
-                      .split('\n')[0]
+                      .split('\\n')[0]
                   }
                 </p>
                 <p>
                   {
                     intl
                       .formatMessage({ id: 'benefit_promo_explain' })
-                      .split('\n')[1]
+                      .split('\\n')[1]?.trim()
                   }
                 </p>
               </div>

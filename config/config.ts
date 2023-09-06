@@ -163,6 +163,7 @@ export default defineConfig({
             },
           ],
         },
+        // { path: '/dream', component: 'dream' },
         { path: '/*', component: '@/pages/404' },
       ],
     },
