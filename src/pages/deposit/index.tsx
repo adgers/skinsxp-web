@@ -208,9 +208,18 @@ export default function Deposit() {
               />
             ) : promoCodeState === PromoCodeState.USING ? (
               <div className="flex-1 flex h-full rounded-lg items-center pl-8 bg-light/20 text-sm">
-                <div className="text-white/50 mr-2">YOUR CURRENT CODE:</div>
+                <div className="text-white/50 mr-2">
+                  <FormattedMessage id="promoteCode_mine" />:
+                </div>
                 <div className="text-green text-md font-semibold">
                   {userInfo?.inviterPromotionCode}
+                  {Number(rechageInfo?.rechargeDiscount) > 0 && (
+                    <span className="ml-2">
+                      + &nbsp;{Number(rechageInfo?.rechargeDiscount)}
+                      %&nbsp;
+                      <FormattedMessage id="vip_discount" />
+                    </span>
+                  )}
                 </div>
               </div>
             ) : (
