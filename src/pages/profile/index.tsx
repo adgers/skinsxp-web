@@ -98,10 +98,6 @@ export default function User() {
                   <IconFont type="icon-link" />
                   {userInfo?.tradeUrl ? <FormattedMessage id="trade_url_edit"/> :<FormattedMessage id="trade_url_add"/> }
                 </div>
-                <div className="btn rounded border border-green h-8 w-4/5">
-                  <IconFont type="icon-steam" />
-                  Steam
-                </div>
               </div>
             </div>
             <div className="w-full h-[68px] flex gap-10 overflow-y-hidden overflow-x-auto md:justify-start items-center border-b border-[#45444B] my-2 md:my-4 hide-scrollbar">

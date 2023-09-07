@@ -70,7 +70,7 @@ export default function BattleItem(props: BattleItemProps) {
           </SwiperSlide>
         ))}
         {data?.boxList && data?.boxList?.length > 1 && (
-          <div className="absolute w-full h-8 flex items-center justify-between px-8 z-20">
+          <div className="absolute top-0 left-0 w-full h-full flex items-center justify-between px-8 z-20">
             <div
               onClick={(e) => {
                 if (currentIdx === 0) {

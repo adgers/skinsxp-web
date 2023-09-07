@@ -136,8 +136,8 @@ export default function Case() {
               >
                 <FormattedMessage id="room_join_battle" />
               </div>
-              <div className="inline-block -rotate-90 transform text-white text-center md:hidden">
-                <FormattedMessage id="battle_room_battle" />
+              <div className="inline-block -rotate-90 transform text-white text-center md:hidden whitespace-nowrap">
+                <FormattedMessage id="room_top_battle" />
               </div>
             </div>
           </div>

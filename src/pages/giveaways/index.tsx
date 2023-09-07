@@ -44,7 +44,7 @@ export default function RollList() {
               const selected = t.value === roomType;
               return (
                 <div
-                  className={`cursor-pointer px-4 text-base uppercase leading-none h-full inline-flex gap-1 items-center transition-colors duration-200 hover:text-green border-b ${
+                  className={`cursor-pointer px-4 text-base uppercase leading-none h-full inline-flex gap-1 items-center text-center transition-colors duration-200 hover:text-green border-b ${
                     selected
                       ? 'border-green text-green'
                       : 'text-white border-transparent'

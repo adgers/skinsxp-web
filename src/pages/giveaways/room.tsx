@@ -111,7 +111,7 @@ export default function Room() {
                   <div className="text-center sm:text-left md:text-xl text-green ">
                     {roomInfo?.data?.title}
                   </div>
-                  <div className="text-sm mb-4 md:mb-0">
+                  <div className="text-center sm:text-left text-sm mb-4 md:mb-0">
                     {roomInfo?.data?.remark}
                   </div>
                 </div>
@@ -205,7 +205,7 @@ export default function Room() {
       <div className="flex gap-10 py-4 border-b border-light">
         <div>
           <div className="text-lg">
-            <FormattedMessage id={'roll_detail_zjz'} />
+            <FormattedMessage id={'total_price'} />
           </div>
           <div className="sm:text-lg text-green font-num">
             ${roomInfo?.data?.poolValue}

@@ -71,7 +71,7 @@ export default function Header() {
       flag: brFlag,
     },
     {
-      title: 'CN',
+      title: 'HK',
       value: 'zh-TW',
       flag: cnFlag,
     },

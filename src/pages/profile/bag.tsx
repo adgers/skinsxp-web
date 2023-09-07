@@ -224,7 +224,7 @@ export default function BagPage() {
                         </li>
                         {item?.state === ItemState.ACTIVE && (
                           <li
-                            className="border-solid"
+                            className="border-solid  bg-purple hover:bg-purple"
                             onClick={(e) => {
                               e.stopPropagation();
                               // onExchangeCoin(item?.id);
@@ -233,12 +233,12 @@ export default function BagPage() {
                               setTotalPrice(item.recoveryPrice);
                             }}
                           >
-                            <div className="btn btn-sm flex w-full items-center rounded-none justify-center text-sm  font-semibold uppercase transition-colors duration-150 real-hover:text-white  bg-purple hover:bg-purple">
+                            <div className="btn btn-sm flex  w-fit max-w-full m-auto border-none  items-center rounded-none justify-center text-sm  font-semibold uppercase transition-colors duration-150 real-hover:text-white  bg-purple hover:bg-purple">
                               <IconFont
                                 type="icon-collect"
                                 className="text-white"
                               />
-                              <span className="truncate text-xs">
+                              <span className="text-xs flex-1 truncate">
                                 <FormattedMessage id="bag_item_sell" />{' '}
                                 <span className="text-white">${price}</span>
                               </span>
@@ -248,18 +248,17 @@ export default function BagPage() {
                       </ul>
                       {item?.state === ItemState.ACTIVE && (
                         <div
-                          className="absolute bottom-0 flex w-full overflow-hidden rounded-none transition-transform duration-200 will-change-transform z-[-1] h-[32px] translate-y-[32px] md:h-[32px] md:translate-y-[-1px] group-hover:md:translate-y-[32px]"
+                          className="absolute bottom-0 bg-green flex justify-center w-full overflow-hidden rounded-none transition-transform duration-200 will-change-transform z-[-1] h-[32px] translate-y-[32px] md:h-[32px] md:translate-y-[-1px] group-hover:md:translate-y-[32px]"
                           onClick={(e) => {
                             e.stopPropagation();
                             setSteamConfirm(true);
                             setTotalPrice(item.recoveryPrice);
-                            // onTakeSteam(item?.id);
                             setCheckedList([item?.id]);
                           }}
                         >
-                          <div className="btn btn-sm w-full bg-green text-dark text-sm rounded-none hover:bg-green">
+                          <div className="btn btn-sm w-fit max-w-full border-none bg-green text-dark text-sm rounded-none hover:bg-green">
                             <IconFont type="icon-steam" className="" />
-                            <FormattedMessage id="exchagne" />
+                            <span className='flex-1 truncate'><FormattedMessage id="exchagne" /></span>
                           </div>
                         </div>
                       )}
