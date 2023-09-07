@@ -337,7 +337,7 @@
   "battle_total_cost": "total cost",
   "battle_total_price": "Total price of cases",
   "battle_select_cases": "select cases",
-  "bag_avaliable_sale": "AVALIABLE FOR SALE",
+  "bag_avaliable_sale": "ACTIVE",
   "bag_item_sell": "Sell for",
   "server_seed": "Server Seed",
   "server_seed_show": "show server seed",
@@ -366,5 +366,7 @@
   "history": "history",
   "login_confirm_adult": "I am 18 years of age or older",
   "login_agree": "I agree to the",
-  "login_to_kx": "Login to Open Case"
+  "login_to_kx": "Login to Open Case",
+  "bag_all": "ALL",
+  "text_sell": "SELL"
 }

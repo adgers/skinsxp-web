@@ -337,7 +337,7 @@
   "battle_total_cost": "custo total",
   "battle_total_price": "Preço total das caixas",
   "battle_select_cases": "selecione casos",
-  "bag_avaliable_sale": "DISPONÍVEL PARA VENDA",
+  "bag_avaliable_sale": "ATIVO",
   "bag_item_sell": "vender para",
   "server_seed": "Semente do Servidor",
   "server_seed_show": "mostrar semente do servidor",
@@ -366,5 +366,7 @@
   "history": "história",
   "login_confirm_adult": "Tenho 18 anos ou mais",
   "login_agree": "Eu concordo com os",
-  "login_to_kx": "faça login para abrir o caso"
+  "login_to_kx": "faça login para abrir o caso",
+  "bag_all": "TODOS",
+  "text_sell": "vender"
 }

@@ -21,9 +21,7 @@ export default function Result({
   const { voice } = useModel('sys');
   const [openResults, setOpenResults] = useState<API.BattleBoxGainVo[]>([]);
 
-  const countTotalPrice = (
-    results: API.BattleBoxGainVo[],
-  ) => {
+  const countTotalPrice = (results: API.BattleBoxGainVo[]) => {
     const total = results?.reduce((total: number, item: any) => {
       return Number(total) + Number(item.giftPrice);
     }, 0);
@@ -107,7 +105,9 @@ export default function Result({
                   className={`absolute left-[15px] top-0 w-[100px] sm:w-[150px] h-[111px] sm:h-[166px] weapon-bg grade-${item.giftGrade}`}
                 ></div>
                 <div
-                  className={`grade-bg w-[110px] h-[110px] sm:w-[135px] sm:h-[135px] grade-${item.giftGrade}-bg ${
+                  className={`grade-bg w-[110px] h-[110px] sm:w-[135px] sm:h-[135px] grade-${
+                    item.giftGrade
+                  }-bg ${
                     item.giftGrade === 0 || item.giftGrade === 1
                       ? 'animate-spin-slow'
                       : ''
@@ -126,7 +126,7 @@ export default function Result({
                       className="btn rounded-sm btn-green !btn-xs uppercase"
                       onClick={() => onSale(item.voucherId as number)}
                     >
-                      sell
+                      <FormattedMessage id="text_sell" />
                     </Button>
                   </div>
 

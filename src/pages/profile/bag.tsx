@@ -128,10 +128,18 @@ export default function BagPage() {
     <div className="w-full">
       <div className="flex gap-2 sm:gap-4 px-3 pb-4 items-center justify-end text-sm">
         <div className="text-white/[0.5] items-center flex ">
-          <FormattedMessage id="bag_avaliable_sale" />
+          <span
+            className={`${
+              searchParams?.stat === ItemState.ALL
+                ? 'text-white font-semibold'
+                : ''
+            }`}
+          >
+            <FormattedMessage id="bag_all" />
+          </span>
           <input
             type="checkbox"
-            className="toggle toggle-primary ml-4"
+            className="toggle toggle-primary mx-4"
             checked={searchParams.stat === 0}
             onClick={() => {
               setSearchParams({
@@ -143,6 +151,15 @@ export default function BagPage() {
               });
             }}
           />
+          <span
+            className={`${
+              searchParams?.stat === ItemState.ACTIVE
+                ? 'text-white font-semibold'
+                : ''
+            }`}
+          >
+            <FormattedMessage id="bag_avaliable_sale" />
+          </span>
         </div>
         <div
           className="btn-green !btn-sm !sm:btn-base !px-8 "
@@ -203,25 +220,27 @@ export default function BagPage() {
                     </div>
                     <>
                       <ul className="absolute bottom-0 left-0 z-[10] w-full  divide- whitespace-nowrap  text-white/50 text-xl font-bold leading-none transition-opacity duration-200 opacity-0 group-hover:opacity-100">
-                        <li
-                          className="border-solid bg-black"
-                          onClick={(e) => {
-                            e.stopPropagation();
-                            history.push(
-                              `/provably-fair/verify/${item?.verifyId}`,
-                            );
-                          }}
-                        >
-                          <div className="btn btn-sm flex w-fit max-w-full m-auto items-center justify-center text-sm font-semibold uppercase transition-colors duration-150 real-hover:text-white flex-nowrap">
-                            <IconFont
-                              type="icon-shield"
-                              className="text-green"
-                            />
-                            <span className="text-xs flex-1 truncate">
-                              <FormattedMessage id="battle_fairness_verify" />
-                            </span>
-                          </div>
-                        </li>
+                        {item?.verifyId && (
+                          <li
+                            className="border-solid bg-black"
+                            onClick={(e) => {
+                              e.stopPropagation();
+                              history.push(
+                                `/provably-fair/verify/${item?.verifyId}`,
+                              );
+                            }}
+                          >
+                            <div className="btn btn-sm flex w-fit max-w-full m-auto items-center justify-center text-sm font-semibold uppercase transition-colors duration-150 real-hover:text-white flex-nowrap">
+                              <IconFont
+                                type="icon-shield"
+                                className="text-green"
+                              />
+                              <span className="text-xs flex-1 truncate">
+                                <FormattedMessage id="battle_fairness_verify" />
+                              </span>
+                            </div>
+                          </li>
+                        )}
                         {item?.state === ItemState.ACTIVE && (
                           <li
                             className="border-solid  bg-purple hover:bg-purple"
@@ -258,7 +277,9 @@ export default function BagPage() {
                         >
                           <div className="btn btn-sm w-fit max-w-full border-none bg-green text-dark text-sm rounded-none hover:bg-green">
                             <IconFont type="icon-steam" className="" />
-                            <span className='flex-1 truncate'><FormattedMessage id="exchagne" /></span>
+                            <span className="flex-1 truncate">
+                              <FormattedMessage id="exchagne" />
+                            </span>
                           </div>
                         </div>
                       )}

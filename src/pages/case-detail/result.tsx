@@ -159,7 +159,7 @@ export default function Result({
                     className="btn rounded-sm btn-green !btn-xs uppercase"
                     onClick={() => onSale(item.voucherId as number)}
                   >
-                    sell
+                    <FormattedMessage id="text_sell" />
                   </Button>
                 </div>
 
