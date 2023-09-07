@@ -365,5 +365,6 @@
   "enter_verify_id": "输入校验ID",
   "history": "历史",
   "login_confirm_adult": "我已年满18岁",
-  "login_agree": "我同意"
+  "login_agree": "我同意",
+  "login_to_kx": "登录后开箱"
 }

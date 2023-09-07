@@ -1,13 +1,16 @@
 import { getHostListUsingGET } from '@/services/front/duizhanxiangguan';
 import { getBoxListUsingGET } from '@/services/front/kaixiangxiangguan';
-import { FormattedMessage, history, useRequest } from '@umijs/max';
+import { isLogin } from '@/utils';
+import { FormattedMessage, history, useIntl, useRequest } from '@umijs/max';
 import { useEffect, useState } from 'react';
+import { toast } from 'react-toastify';
 import BattleItem from './battleItem';
-import './index.less'
+import './index.less';
 
 export default function Case() {
   const [hotBoxList, setHotBoxList] = useState<API.BoxThemeListVo[]>([]);
   const [otherBoxList, setOtherBoxList] = useState<API.BoxThemeListVo[]>([]);
+  const intl = useIntl();
 
   const { data: boxList = [] } = useRequest(
     () =>
@@ -119,7 +122,11 @@ export default function Case() {
               <div
                 className="hidden btn btn-purple w-full items-center md:flex bettle-btn uppercase"
                 onClick={() => {
-                  history.push('/battle/create');
+                  if (isLogin()) {
+                    history.push('/battle/create');
+                  } else {
+                    toast.error(intl?.formatMessage({ id: 'not_login_title' }));
+                  }
                 }}
               >
                 {/* CREATE BATTLE */}

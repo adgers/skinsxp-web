@@ -10,7 +10,7 @@ import {
   joinBattleUsingPOST,
   joinBotUsingPOST,
 } from '@/services/front/duizhanxiangguan';
-import { numberFixed, sleep } from '@/utils';
+import { isLogin, numberFixed, sleep } from '@/utils';
 import {
   CheckCircleFilled,
   CopyOutlined,
@@ -542,24 +542,26 @@ export default function RoomDetail() {
           </Link>
           <FormattedMessage id="battle_room_battle" />
         </div>
-        <div className="relative">
-          <div className="flex flex-col md:flex-row gap-4 md:pb-3">
-            <Link
-              className={`uppercase font-semibold ${
-                mode === 0 ? 'btn-green' : 'btn-red'
-              }`}
-              to={`/battle/create/${battleCode}`}
-            >
-              <IconFont type="icon-battle" />
-              <FormattedMessage id="battle_create_same" /> ${data?.totalPrice}
-            </Link>
+        {isLogin() && (
+          <div className="relative">
+            <div className="flex flex-col md:flex-row gap-4 md:pb-3">
+              <Link
+                className={`uppercase font-semibold ${
+                  mode === 0 ? 'btn-green' : 'btn-red'
+                }`}
+                to={`/battle/create/${battleCode}`}
+              >
+                <IconFont type="icon-battle" />
+                <FormattedMessage id="battle_create_same" /> ${data?.totalPrice}
+              </Link>
 
-            <Link className="btn-purple " to={`/battle/create`}>
-              <IconFont type="icon-battle" />
-              <FormattedMessage id="arena_cjfy" />
-            </Link>
+              <Link className="btn-purple " to={`/battle/create`}>
+                <IconFont type="icon-battle" />
+                <FormattedMessage id="arena_cjfy" />
+              </Link>
+            </div>
           </div>
-        </div>
+        )}
       </div>
       <Spin
         spinning={loading}

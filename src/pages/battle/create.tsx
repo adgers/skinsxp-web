@@ -4,7 +4,7 @@ import {
   getBattleDetailUsingGET,
 } from '@/services/front/duizhanxiangguan';
 import { boxPageUsingGET } from '@/services/front/kaixiangxiangguan';
-import { numberFixed } from '@/utils';
+import { isLogin, numberFixed } from '@/utils';
 import { LeftOutlined, PlusOutlined } from '@ant-design/icons';
 import {
   FormattedMessage,
@@ -201,7 +201,9 @@ export default function Create() {
           <FormattedMessage id="room_create_battle" />
         </div>
       </div>
-      <div className={`bg-black py-5 flex px-5 sm:px-8 items-center gap-2 rounded`}>
+      <div
+        className={`bg-black py-5 flex px-5 sm:px-8 items-center gap-2 rounded`}
+      >
         <div className="flex gap-4 items-center">
           <div
             className={`w-[60px] h-[60px] flex items-center justify-center rounded-full relative ring ring-green`}
@@ -236,7 +238,10 @@ export default function Create() {
       <div className="my-5 grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 flex-wrap gap-4">
         {boxListArr.map((item, i) => {
           return (
-            <div className="relative h-80 w-full bg-black rounded overflow-hidden" key={i}>
+            <div
+              className="relative h-80 w-full bg-black rounded overflow-hidden"
+              key={i}
+            >
               <div className="flex flex-col h-64 w-full items-end justify-center rounded-lg pb-1 text-xs uppercase relative">
                 <img
                   src={item.boxImage}
@@ -363,14 +368,16 @@ export default function Create() {
                 ${totalPrice}
               </span>
             </div>
-            <Button
-              className="btn-purple uppercase font-semibold"
-              loading={loading}
-              onClick={onCreate}
-            >
-              <IconFont type="icon-battle" className="text-lg" />
-              <FormattedMessage id="create_case_battle" />
-            </Button>
+            {isLogin() && (
+              <Button
+                className="btn-purple uppercase font-semibold"
+                loading={loading}
+                onClick={onCreate}
+              >
+                <IconFont type="icon-battle" className="text-lg" />
+                <FormattedMessage id="create_case_battle" />
+              </Button>
+            )}
           </div>
         </div>
       </div>

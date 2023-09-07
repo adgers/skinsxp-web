@@ -1,4 +1,5 @@
 import { IconFont } from '@/components/icons';
+import { isLogin } from '@/utils';
 import { FormattedMessage, Link, useModel } from '@umijs/max';
 import { useEffect, useRef, useState } from 'react';
 import CurrentRooms from './currentRooms';
@@ -86,18 +87,22 @@ export default function BattlePage() {
             })}
           </div>
 
-          <div className="hidden sm:block absolute right-0 bottom-5">
-            <Link className="btn-purple" to={`/battle/create`}>
-              <IconFont type="icon-battle" className="text-lg" />
-              <FormattedMessage id="create_case_battle" />
-            </Link>
-          </div>
+          {isLogin() && (
+            <div className="hidden sm:block absolute right-0 bottom-5">
+              <Link className="btn-purple" to={`/battle/create`}>
+                <IconFont type="icon-battle" className="text-lg" />
+                <FormattedMessage id="create_case_battle" />
+              </Link>
+            </div>
+          )}
         </div>
 
-        <Link className="sm:hidden btn-purple mb-2" to={`/battle/create`}>
-          <IconFont type="icon-battle" className="text-lg" />
-          <FormattedMessage id="create_case_battle" />
-        </Link>
+        {isLogin() && (
+          <Link className="sm:hidden btn-purple mb-2" to={`/battle/create`}>
+            <IconFont type="icon-battle" className="text-lg" />
+            <FormattedMessage id="create_case_battle" />
+          </Link>
+        )}
         <div className="flex w-full items-center justify-center sm:justify-end mb-2 sm:mb-4">
           {modfilters.map((t) => {
             const selected = t.key === modFilter;

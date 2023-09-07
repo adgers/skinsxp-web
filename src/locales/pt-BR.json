@@ -365,5 +365,6 @@
   "enter_verify_id": "DIGITE VERIFICAR ID",
   "history": "história",
   "login_confirm_adult": "Tenho 18 anos ou mais",
-  "login_agree": "Eu concordo com os"
+  "login_agree": "Eu concordo com os",
+  "login_to_kx": "faça login para abrir o caso"
 }

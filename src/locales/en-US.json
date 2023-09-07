@@ -365,5 +365,6 @@
   "enter_verify_id": "ENTER VERIFY ID",
   "history": "history",
   "login_confirm_adult": "I am 18 years of age or older",
-  "login_agree": "I agree to the"
+  "login_agree": "I agree to the",
+  "login_to_kx": "Login to Open Case"
 }

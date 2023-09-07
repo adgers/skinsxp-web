@@ -8,7 +8,7 @@ import {
   recentBoxGiftUsingGET,
   v2OpenBoxUsingGET,
 } from '@/services/front/kaixiangxiangguan';
-import { getBoxColor, goback, numberFixed, sleep, useStateRef } from '@/utils';
+import { getBoxColor, goback, isLogin, numberFixed, sleep, useStateRef } from '@/utils';
 import { LeftOutlined, LoadingOutlined } from '@ant-design/icons';
 import { FormattedMessage, useModel, useParams, useRequest } from '@umijs/max';
 import { useResponsive } from 'ahooks';
@@ -18,7 +18,7 @@ import './index.less';
 import Result from './result';
 
 export default function BoxPage() {
-  const { getUser } = useModel('user');
+  const { getUser, showSteamLogin } = useModel('user');
   const caseId = useParams<{ id: string }>()?.id;
   const responsive = useResponsive();
 
@@ -169,7 +169,7 @@ export default function BoxPage() {
         </div>
       </div>
       <div className="rounded ring-1 ring-light mt-4 py-3 px-1 relative h-[204px] md:h-[324px] lottery-bg">
-        {openCount === 1 && !hasOpen && boxDetails?.boxImage &&(
+        {openCount === 1 && !hasOpen && boxDetails?.boxImage && (
           <div className="absolute inset-0 z-30 bg-dark bg-opacity-60">
             <div className="absolute left-1/2 h-full -translate-x-1/2 transform w-[200px] sm:w-[300px]">
               <div className="absolute right-0 top-0 h-full w-full">
@@ -249,21 +249,31 @@ export default function BoxPage() {
           />
           <button
             type="button"
-            onClick={openBox}
+            onClick={() => {
+              if (isLogin()) {
+                openBox();
+              } else {
+                showSteamLogin();
+              }
+            }}
             className="btn-green sm:px-12 !h-10 sm:!h-[60px] !min-h-fit !rounded-none uppercase font-num font-semibold sm:min-w-[310px]"
           >
-            <div className="flex gap-2 px-1 flex-1 justify-center">
-              {openLoading && <LoadingOutlined />}
-              $
-              <CountUp
-                end={numberFixed((boxDetails?.openPrice || 0) * openCount)}
-                duration={0.3}
-                decimals={2}
-                separator=""
-                className="font-num"
-              />
-              <FormattedMessage id="open_box_open" />
-            </div>
+            {isLogin() ? (
+              <div className="flex gap-2 px-1 flex-1 justify-center">
+                {openLoading && <LoadingOutlined />}
+                $
+                <CountUp
+                  end={numberFixed((boxDetails?.openPrice || 0) * openCount)}
+                  duration={0.3}
+                  decimals={2}
+                  separator=""
+                  className="font-num"
+                />
+                <FormattedMessage id="open_box_open" />
+              </div>
+            ) : (
+              <div><FormattedMessage id="login_to_kx"/></div>
+            )}
           </button>
         </div>
       </div>

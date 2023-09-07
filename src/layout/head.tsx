@@ -119,12 +119,7 @@ export default function Header() {
       link: '/profile/record',
       icon: 'icon-history',
     },
-    ...headExt,
-    {
-      title: <FormattedMessage id="mine_zhsz" />,
-      link: '/profile',
-      icon: 'icon-setting',
-    },
+    ...headExt
   ];
 
   const customLinks = [

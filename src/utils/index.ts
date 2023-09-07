@@ -216,12 +216,10 @@ export function currencyFormat(
 }
 
 export function getSteamLoginUrl() {
-  const redirectUrl = urlParse().redirect;
+  const redirectUrl = urlParse().redirect || location.pathname;
   const params = urlParse();
 
-  let callbackUrl = redirectUrl
-    ? `${window.location.origin}/login/callback?redirect=${redirectUrl}`
-    : `${window.location.origin}/login/callback`;
+  let callbackUrl =`${window.location.origin}/login/callback?redirect=${redirectUrl}`;
 
   if (params.promoteCode) {
     callbackUrl += callbackUrl.indexOf('?') > -1 ? '&' : '?';

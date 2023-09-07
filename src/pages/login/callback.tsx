@@ -27,8 +27,8 @@ export default function LoginCallback() {
 
   return (
     <div className="w-full min-h-[500px] flex justify-center items-center">
-      <div className="uppercase text-secondary font-semibold flex gap-2">
-        <LoadingOutlined /> Log in...
+      <div className="uppercase text-green font-semibold flex gap-2">
+        <LoadingOutlined />
       </div>
     </div>
   );

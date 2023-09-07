@@ -56,7 +56,8 @@ export default function LoginConfirm() {
             <Checkbox
               checked={agreeForm?.form_1_agree}
               className="mr-2"
-              size="sm"
+              size="xs"
+              color='primary'
               onClick={() => {
                 setAgreeForm({
                   ...agreeForm,
@@ -64,7 +65,7 @@ export default function LoginConfirm() {
                 });
               }}
             />
-            <span className="text-white/50 text-sm">
+            <span className="text-white/80 text-sm">
               <FormattedMessage id="login_agree" />{' '}
               <a href="/docs/help/52" target="_blank" className="underline">
                 <FormattedMessage id="terms_of_service" />
@@ -79,7 +80,8 @@ export default function LoginConfirm() {
             <Checkbox
               checked={agreeForm?.form_2_agree}
               className="mr-2"
-              size="sm"
+              size="xs"
+              color='primary'
               onClick={() => {
                 setAgreeForm({
                   ...agreeForm,
@@ -87,7 +89,7 @@ export default function LoginConfirm() {
                 });
               }}
             />
-            <span className="text-white/50">
+            <span className="text-white/80">
               <FormattedMessage id="login_confirm_adult" />
             </span>
           </div>
