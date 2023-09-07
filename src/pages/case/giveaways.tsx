@@ -17,7 +17,7 @@ export default function Giveaways() {
           <span className="hidden uppercase text-white md:inline-block">
             <FormattedMessage id="roll_room_title" />
           </span>
-          <span className="inline-block -rotate-90 transform text-white md:hidden">
+          <span className="inline-block -rotate-90 transform text-white md:hidden whitespace-nowrap">
             <FormattedMessage id="roll_room_title" />
           </span>
           <a

@@ -1,7 +1,7 @@
 {
   "login": "登录",
   "home_spsc": "饰品商城",
-  "roll_room_title": "ROLL房",
+  "roll_room_title": "福利赠送",
   "roll_room_gftj": "官方推荐",
   "roll_room_zbfl": "主播福利",
   "roll_room_wcyd": "我参与的",
@@ -73,7 +73,7 @@
   "not_login_title": "您尚未登录",
   "not_login_subtitle": "请登录后访问该页面",
   "home_item_spsc": "饰品商城",
-  "home_item_roll": "Roll房",
+  "home_item_roll": "福利赠送",
   "home_item_flzx": "福利中心",
   "home_item_hydj": "会员等级",
   "home_item_hzhb": "合作伙伴",
@@ -286,7 +286,7 @@
   "vip_level": "等级",
   "vip_total": "总计",
   "vip_money": "金额",
-  "vip_roll": "roll房",
+  "vip_roll": "福利赠送",
   "vip_discount": "充值返利",
   "vip_coupon": "充值赠送券",
   "vip_cdkey": "CDkey",
@@ -361,5 +361,9 @@
   "deposit_pay": "支付",
   "deposit_currency": "币种",
   "deposit_actually_recevied": "实际收到",
-  "deposit_success": "充值成功"
+  "deposit_success": "充值成功",
+  "enter_verify_id": "输入校验ID",
+  "history": "历史",
+  "login_confirm_adult": "我已年满18岁",
+  "login_agree": "我同意"
 }

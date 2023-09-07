@@ -163,7 +163,7 @@
   "item_txz": "Passaporte",
   "item_lw": "Presente",
   "title_arena_rank": "Classificação",
-  "main_tab_home": "Início",
+  "main_tab_home": "Caixa",
   "main_tab_dream": "Sonho",
   "main_tab_arena": "Batalhas",
   "main_tab_info": "Informações",
@@ -304,7 +304,7 @@
   "store_banner_content": "O valor dos pontos e das moedas de ouro são exatamente os mesmos. Os pontos são obtidos com a venda de acessórios. Durante o jogo, você consome moedas de ouro primeiro. Quando as moedas de ouro são insuficientes, os pontos são consumidos automaticamente. Além disso, você pode utilizar pontos para adquirir acessórios no WG Acessórios Mall. Venha escolher os acessórios que você gosta.",
   "wc_promote_explain": "O que é código promocional? \\n Insira o código promocional e ative o bônus.",
   "room_top_battle": "Principais batalhas",
-  "room_create_battle": "Criar Batalha",
+  "room_create_battle": "Criar Batalha Caso",
   "text_normal_or": "ou",
   "room_join_battle": "Junte-se",
   "text_normal_new": "NOVO",
@@ -361,5 +361,9 @@
   "deposit_pay": "Pagamento",
   "deposit_currency": "Moeda",
   "deposit_actually_recevied": "Na verdade recebido",
-  "deposit_success": "Recarga bem-sucedida"
+  "deposit_success": "Recarga bem-sucedida",
+  "enter_verify_id": "DIGITE VERIFICAR ID",
+  "history": "história",
+  "login_confirm_adult": "Tenho 18 anos ou mais",
+  "login_agree": "Eu concordo com os"
 }

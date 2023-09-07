@@ -1,7 +1,7 @@
 {
   "login": "登錄",
   "home_spsc": "飾品賣場",
-  "roll_room_title": "ROLL房",
+  "roll_room_title": "福利贈送",
   "roll_room_gftj": "官方推薦",
   "roll_room_zbfl": "主播福利",
   "roll_room_wcyd": "我參與的",
@@ -73,7 +73,7 @@
   "not_login_title": "您尚未登錄",
   "not_login_subtitle": "請登錄後訪問該頁面",
   "home_item_spsc": "飾品賣場",
-  "home_item_roll": "Roll房",
+  "home_item_roll": "福利贈送",
   "home_item_flzx": "福利中心",
   "home_item_hydj": "會員等級",
   "home_item_hzhb": "合作夥伴",
@@ -282,11 +282,11 @@
   "provably_fair_title": "公平驗證",
   "provably_fair_config": "配置",
   "provably_fair_verify": "驗證",
-  "provably_fair_content": "<div><p>\n公平驗證採用的是一種純隨機算灋，可以保證我們每一位用戶的每一次ROLL點都是完全隨機的，也就是可以保證每個用戶都有相同的獲勝概率。 整個算灋是不可逆不可篡改的，囙此您可以相信任意一局遊戲結果。\nclick.\n</p>\n<p>\n公平驗證的結果取決於三個變數：服務器種子、用戶種子和回合數。 驗證的結果是在每次遊戲開始前使用服務器種子和用戶種子計算出來的，囙此用戶可以在遊戲後立即看到驗證結果。\n</p>\n<p>\n在每局遊戲前，您將獲得服務器種子的加密雜湊值。 您可以驗證初始和最終的雜湊值是相同的，以此來將證明網站不會干擾結果。 為了更好使用公平驗證的功能，您可以複製JSON中的數據去協力廠商網站進行驗證，將JSON中的數據粘貼到輸入框中，網址如下：\n<a\nhref=“ https://codesandbox.io/embed/cranky-sun-ls9nmx?fontsize=14&hidenavigation=1&theme=dark “\ntarget=“_blank”\nrel=“noopener noreferrer”\nclassName=“underline text-secondary”\n>\n公平驗證\n</a>\n。 然後按一下“Verify”按鈕驗證您的結果。\n</p></div>",
+  "provably_fair_content": "<div><p>\n公平驗證採用的是一種純隨機算灋，可以保證我們每一位用戶的每一次ROLL點都是完全隨機的，也就是可以保證每個用戶都有相同的獲勝概率。 整個算灋是不可逆不可篡改的，囙此您可以相信任意一局遊戲結果。\n</p>\n<p>\n公平驗證的結果取決於三個變數：服務器種子、用戶種子和回合數。 驗證的結果是在每次遊戲開始前使用服務器種子和用戶種子計算出來的，囙此用戶可以在遊戲後立即看到驗證結果。\n</p>\n<p>\n在每局遊戲前，您將獲得服務器種子的加密雜湊值。 您可以驗證初始和最終的雜湊值是相同的，以此來將證明網站不會干擾結果。 為了更好使用公平驗證的功能，您可以複製JSON中的數據去協力廠商網站進行驗證，將JSON中的數據粘貼到輸入框中，網址如下：\n<a\nhref=“ https://codesandbox.io/embed/cranky-sun-ls9nmx?fontsize=14&hidenavigation=1&theme=dark “\ntarget=“_blank”\nrel=“noopener noreferrer”\nclassName=“underline text-secondary”\n>\n公平驗證\n</a>\n。 然後按一下“Verify”按鈕驗證您的結果。\n</p></div>",
   "vip_level": "等級",
   "vip_total": "總計",
   "vip_money": "金額",
-  "vip_roll": "roll房",
+  "vip_roll": "福利贈送",
   "vip_discount": "充值返利",
   "vip_coupon": "充值贈送券",
   "vip_cdkey": "CDkey",
@@ -361,5 +361,9 @@
   "deposit_pay": "支付",
   "deposit_currency": "幣種",
   "deposit_actually_recevied": "實際收到",
-  "deposit_success": "充值成功"
+  "deposit_success": "充值成功",
+  "enter_verify_id": "輸入校驗ID",
+  "history": "歷史",
+  "login_confirm_adult": "我已年滿 18 歲",
+  "login_agree": "我同意"
 }

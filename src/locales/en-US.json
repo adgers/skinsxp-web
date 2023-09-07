@@ -163,7 +163,7 @@
   "item_txz": "Passport",
   "item_lw": "Gift",
   "title_arena_rank": "Rank",
-  "main_tab_home": "Home",
+  "main_tab_home": "Case",
   "main_tab_dream": "Dream",
   "main_tab_arena": "Battles",
   "main_tab_info": "Info",
@@ -304,7 +304,7 @@
   "store_banner_content": "The value of points and gold coins are exactly the same. Points are obtained by selling accessories. During the game, you consume gold coins first. When the gold coins are insufficient, points are automatically consumed. In addition, you can use points to purchase accessories in the WG Accessories Mall. Come and choose the accessories you like.",
   "wc_promote_explain": "What is Promo Code? \\n Enter the promo code and Activate Bonus.",
   "room_top_battle": "Top Battles",
-  "room_create_battle": "Create Battle",
+  "room_create_battle": "Create Case Battle",
   "text_normal_or": "or",
   "room_join_battle": "Join Battle",
   "text_normal_new": "NEW",
@@ -361,5 +361,9 @@
   "deposit_pay": "Payment",
   "deposit_currency": "Currency",
   "deposit_actually_recevied": "Actually Recevied",
-  "deposit_success": "Recharge successful"
+  "deposit_success": "Recharge successful",
+  "enter_verify_id": "ENTER VERIFY ID",
+  "history": "history",
+  "login_confirm_adult": "I am 18 years of age or older",
+  "login_agree": "I agree to the"
 }
