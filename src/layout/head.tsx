@@ -234,8 +234,8 @@ export default function Header() {
     <div className="sticky left-0 top-0 z-[99]">
       <Navbar className="p-3 bg-black">
         <div className="flex-1">
-          <Link to={'/'} className="logo text-2xl sm:text-[38px]">
-            WGSKINS
+          <Link to={'/'} className="logo mb-1 ml-3 w-[90px] flex-shrink-0 sm:w-[164px] md:ml-5">
+            <img src={require('@/assets/wg-logo.png')}/>
           </Link>
 
           <Menu as="div" className="relative ml-2">

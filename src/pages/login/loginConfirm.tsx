@@ -35,16 +35,8 @@ export default function LoginConfirm() {
         ✕
       </Button>
       <Modal.Header className="mb-4 w-full flex items-center justify-center ">
-        <div
-          className="text-[32px] font-bold"
-          style={{
-            background: 'linear-gradient(87deg, #4CFE7E 0%, #90FE4C 100%)',
-            WebkitBackgroundClip: 'text',
-            WebkitTextFillColor: 'transparent',
-            textTransform: 'uppercase',
-          }}
-        >
-          WGSkins
+        <div className="w-[164px]">
+          <img src={require('@/assets/wg-logo.png')} />
         </div>
       </Modal.Header>
       <Modal.Body className="flex flex-col items-center px-8 py-4">
@@ -57,7 +49,7 @@ export default function LoginConfirm() {
               checked={agreeForm?.form_1_agree}
               className="mr-2"
               size="xs"
-              color='primary'
+              color="primary"
               onClick={() => {
                 setAgreeForm({
                   ...agreeForm,
@@ -81,7 +73,7 @@ export default function LoginConfirm() {
               checked={agreeForm?.form_2_agree}
               className="mr-2"
               size="xs"
-              color='primary'
+              color="primary"
               onClick={() => {
                 setAgreeForm({
                   ...agreeForm,
