@@ -34,7 +34,7 @@ export default function GiveawayItem(props: GiveawayItemProps) {
               {item?.title}
             </p>
           </div>
-          <div className="ml-auto flex items-center rounded-none py-1.5 pl-1.5 pr-2 text-xs font-bold tabular-nums text-white bg-white/[.15]">
+          <div className="ml-auto flex items-center rounded-none py-1.5 pl-1.5 pr-2 text-xs font-bold tabular-nums text-white bg-white/[.15] rounded-l">
             <IconFont type="icon-online" className="mr-1 text-[10px]" />
             {item?.userCount}
           </div>
@@ -69,7 +69,7 @@ export default function GiveawayItem(props: GiveawayItemProps) {
                 {name && parseName(name)?.[2]}
               </span>
             </div>
-            <div className="mb-2 mt-auto flex items-center justify-center p-1.5 w-full bg-black/[0.25]">
+            <div className="mb-2 mt-auto flex items-center justify-center p-1.5 w-full bg-black/[0.25] rounded">
               {days > 0 && (
                 <>
                   <div className="flex w-6 flex-shrink-0 flex-col items-center justify-center text-center">
