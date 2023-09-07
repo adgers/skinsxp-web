@@ -81,7 +81,7 @@ export default function Header() {
     {
       title: <FormattedMessage id="main_tab_home" />,
       link: '/case',
-      icon: 'icon-cases',
+      icon: 'icon-cases1',
     },
     {
       title: <FormattedMessage id="main_tab_arena" />,
