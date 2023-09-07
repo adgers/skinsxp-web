@@ -361,5 +361,7 @@
   "deposit_pay": "Payment",
   "deposit_currency": "Currency",
   "deposit_actually_recevied": "Actually Recevied",
-  "deposit_success": "Recharge successful"
+  "deposit_success": "Recharge successful",
+  "enter_verify_id": "ENTER VERIFY ID",
+  "history": "history"
 }
