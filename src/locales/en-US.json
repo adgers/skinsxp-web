@@ -363,5 +363,7 @@
   "deposit_actually_recevied": "Actually Recevied",
   "deposit_success": "Recharge successful",
   "enter_verify_id": "ENTER VERIFY ID",
-  "history": "history"
+  "history": "history",
+  "login_confirm_adult": "I am 18 years of age or older",
+  "login_agree": "I agree to the"
 }

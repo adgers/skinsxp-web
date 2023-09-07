@@ -34,7 +34,7 @@ export default function LoginConfirm() {
       >
         ✕
       </Button>
-      <Modal.Header className='mb-4 w-full flex items-center justify-center '>
+      <Modal.Header className="mb-4 w-full flex items-center justify-center ">
         <div
           className="text-[32px] font-bold"
           style={{
@@ -56,7 +56,7 @@ export default function LoginConfirm() {
             <Checkbox
               checked={agreeForm?.form_1_agree}
               className="mr-2"
-              size='sm'
+              size="sm"
               onClick={() => {
                 setAgreeForm({
                   ...agreeForm,
@@ -65,13 +65,13 @@ export default function LoginConfirm() {
               }}
             />
             <span className="text-white/50 text-sm">
-              I agree to the{' '}
+              <FormattedMessage id="login_agree" />{' '}
               <a href="/docs/help/52" target="_blank" className="underline">
-                Terms of Service
+                <FormattedMessage id="terms_of_service" />
               </a>
-              &nbsp; and &nbsp;
+              &nbsp; <FormattedMessage id="register_he" /> &nbsp;
               <a href="/docs/help/51" target="_blank" className="underline">
-                Privacy Policy
+                <FormattedMessage id="privacy_policy" />
               </a>
             </span>
           </div>
@@ -79,7 +79,7 @@ export default function LoginConfirm() {
             <Checkbox
               checked={agreeForm?.form_2_agree}
               className="mr-2"
-              size='sm'
+              size="sm"
               onClick={() => {
                 setAgreeForm({
                   ...agreeForm,
@@ -87,7 +87,9 @@ export default function LoginConfirm() {
                 });
               }}
             />
-            <span className="text-white/50">I am 18 years of age or older</span>
+            <span className="text-white/50">
+              <FormattedMessage id="login_confirm_adult" />
+            </span>
           </div>
         </div>
         <div

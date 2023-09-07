@@ -361,5 +361,9 @@
   "deposit_pay": "Pagamento",
   "deposit_currency": "Moeda",
   "deposit_actually_recevied": "Na verdade recebido",
-  "deposit_success": "Recarga bem-sucedida"
+  "deposit_success": "Recarga bem-sucedida",
+  "enter_verify_id": "DIGITE VERIFICAR ID",
+  "history": "história",
+  "login_confirm_adult": "Tenho 18 anos ou mais",
+  "login_agree": "Eu concordo com os"
 }

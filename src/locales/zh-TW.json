@@ -363,5 +363,7 @@
   "deposit_actually_recevied": "實際收到",
   "deposit_success": "充值成功",
   "enter_verify_id": "輸入校驗ID",
-  "history": "歷史"
+  "history": "歷史",
+  "login_confirm_adult": "我已年滿 18 歲",
+  "login_agree": "我同意"
 }
