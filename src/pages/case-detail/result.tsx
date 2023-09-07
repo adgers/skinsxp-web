@@ -19,6 +19,8 @@ export default function Result({
   const [totalPrice, setTotalPrice] = useState(0);
   const [saleLoading, setSaleLoading] = useState(false);
   const { voice } = useModel('sys');
+  const [showEnded, setShowEnded] = useState(false);
+
   const intl = useIntl();
 
   const audio = useMemo(
@@ -45,11 +47,7 @@ export default function Result({
       const item = results[i];
       await new Promise((resolve) => {
         setTimeout(() => {
-          setOpenResults((prev) => {
-            const ret = [...prev, item];
-            countTotalPrice(ret);
-            return ret;
-          });
+          setOpenResults((prev) => [...prev, item]);
 
           if (voice && !isSafari()) {
             audio.currentTime = 0;
@@ -65,18 +63,12 @@ export default function Result({
     if (show) {
       setOpenResults([]);
       putResults().then(() => {
-        const total = results?.reduce((total: number, item: any) => {
-          return Number(total) + Number(item.recoveryPrice);
-        }, 0);
-        setTotalPrice(numberFixed(total, 2));
+        setShowEnded(true);
       });
     }
   }, [show]);
 
   const onSaleAll = async () => {
-    if (results.length !== openResults.length) {
-      return;
-    }
     if (saleLoading) return;
     setSaleLoading(true);
     const ids = openResults?.map((item: any) => item.voucherId);
@@ -112,6 +104,10 @@ export default function Result({
     }
   };
 
+  useEffect(() => {
+    countTotalPrice(openResults);
+  }, [openResults]);
+
   return (
     <Modal
       open={show}
@@ -142,7 +138,9 @@ export default function Result({
                 className={`absolute left-[15px] top-0 w-[110px] sm:w-[150px] h-[135px] sm:h-[166px] weapon-bg grade-${item.grade}`}
               ></div>
               <div
-                className={`grade-bg w-[110px] h-[110px] sm:w-[135px] sm:h-[135px] grade-${item.grade}-bg ${
+                className={`grade-bg w-[110px] h-[110px] sm:w-[135px] sm:h-[135px] grade-${
+                  item.grade
+                }-bg ${
                   item.grade === 0 || item.grade === 1
                     ? 'animate-spin-slow'
                     : ''
@@ -182,7 +180,7 @@ export default function Result({
             </div>
           ))}
         </div>
-        {results.length === openResults.length && (
+        {showEnded && (
           <div className="flex justify-center mt-6 gap-4">
             <button onClick={onClose} className="btn-purple" type="button">
               <FormattedMessage id="open_box_receive" />

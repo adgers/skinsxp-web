@@ -21,12 +21,17 @@ export default function Result({
   const { voice } = useModel('sys');
   const [openResults, setOpenResults] = useState<API.BattleBoxGainVo[]>([]);
 
+  const countTotalPrice = (
+    results: API.BattleBoxGainVo[],
+  ) => {
+    const total = results?.reduce((total: number, item: any) => {
+      return Number(total) + Number(item.giftPrice);
+    }, 0);
+    setTotalPrice(numberFixed(total, 2));
+  };
+
   useEffect(() => {
     if (show) {
-      const total = results?.reduce((total: number, item: any) => {
-        return Number(total) + Number(item.recoveryPrice || item.giftPrice);
-      }, 0);
-      setTotalPrice(numberFixed(total, 2));
       setOpenResults(results);
     }
   }, [show]);
@@ -66,6 +71,10 @@ export default function Result({
       }
     }
   };
+
+  useEffect(() => {
+    countTotalPrice(openResults);
+  }, [openResults]);
 
   return (
     <Modal

@@ -28,7 +28,7 @@ export default function Banner() {
             <SwiperSlide key={i}>
               <img
                 src={t.image}
-                className="w-full h-[180px] object-cover md:object-contain"
+                className="w-full h-[150px] sm:h-[330px] object-cover md:object-contain"
               />
             </SwiperSlide>
           ))}

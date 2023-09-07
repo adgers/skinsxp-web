@@ -22,7 +22,7 @@ export default defineConfig({
     {
       name: 'viewport',
       content:
-        'viewport-fit=cover, width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, profile-scalable=no',
+        'viewport-fit=cover, width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1',
     },
   ],
   routes: [
