@@ -48,7 +48,7 @@
         border-radius:50%;
         animation:animateC 2s linear infinite;
       }
-      span
+      .wg-ring span
       {
         display:block;
         position:absolute;
@@ -60,7 +60,7 @@
         transform-origin:left;
         animation:animate 2s linear infinite;
       }
-      span:before
+      .wg-ring span:before
       {
         content:'';
         position:absolute;

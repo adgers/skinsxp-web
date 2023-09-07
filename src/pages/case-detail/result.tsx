@@ -73,13 +73,13 @@ export default function Result({
     }
   }, [show]);
 
-  const onSale = async () => {
+  const onSaleAll = async () => {
     if (results.length !== openResults.length) {
       return;
     }
     if (saleLoading) return;
     setSaleLoading(true);
-    const ids = results?.map((item: any) => item.voucherId);
+    const ids = openResults?.map((item: any) => item.voucherId);
     const ret = await exchangeQuantityUsingPOST({ ids: ids.join(',') });
     setSaleLoading(false);
     if (ret.status === 0) {
@@ -90,6 +90,28 @@ export default function Result({
       onClose();
     }
   };
+
+  const onSale = async (id: number) => {
+    if (saleLoading) return;
+    setSaleLoading(true);
+
+    const ret = await exchangeQuantityUsingPOST({ ids: id });
+    setSaleLoading(false);
+    if (ret.status === 0) {
+      if (voice) {
+        const audio = new Audio(require('@/assets/audio/exchange.mp3'));
+        audio.play();
+      }
+      const lResults = [...openResults];
+      const ret = lResults.filter((result) => result.voucherId !== id);
+      if (ret.length === 0) {
+        onClose();
+      } else {
+        setOpenResults(ret);
+      }
+    }
+  };
+
   return (
     <Modal
       open={show}
@@ -113,14 +135,14 @@ export default function Result({
         <div className="flex flex-wrap items-center gap-x-2 gap-y-4 justify-center min-h-[200px]">
           {openResults?.map((item, i: number) => (
             <div
-              className="flex flex-col gap-1 w-[130px] sm:w-[180px] animate__animated animate__flipInX relative items-center justify-center"
+              className="flex flex-col gap-1 w-[140px] sm:w-[180px] animate__animated animate__flipInX relative items-center justify-center"
               key={i}
             >
               <div
-                className={`absolute left-[15px] top-0 w-[100px] sm:w-[150px] h-[111px] sm:h-[166px] weapon-bg grade-${item.grade}`}
+                className={`absolute left-[15px] top-0 w-[110px] sm:w-[150px] h-[135px] sm:h-[166px] weapon-bg grade-${item.grade}`}
               ></div>
               <div
-                className={`grade-bg grade-${item.grade}-bg ${
+                className={`grade-bg w-[110px] h-[110px] sm:w-[135px] sm:h-[135px] grade-${item.grade}-bg ${
                   item.grade === 0 || item.grade === 1
                     ? 'animate-spin-slow'
                     : ''
@@ -131,12 +153,23 @@ export default function Result({
                 className="z-10 w-full h-[98px] sm:h-[135px]"
               />
               <div className="w-full flex flex-col px-[15px] z-20 gap-2">
-                <div className="text-sm flex gap-1 font-num text-green">
-                  ${item.recoveryPrice}
+                <div className="flex justify-between">
+                  <div className="text-sm flex gap-1 font-num text-green">
+                    ${item.recoveryPrice}
+                  </div>
+                  <Button
+                    className="btn rounded-sm btn-green !btn-xs uppercase"
+                    onClick={() => onSale(item.voucherId as number)}
+                  >
+                    sell
+                  </Button>
                 </div>
+
                 <div className="text-xs flex flex-col">
-                  <div className='text-white/50'>{item.giftName && parseName(item.giftName)?.[0]}</div>
-                  <div className='truncate'>
+                  <div className="text-white/50">
+                    {item.giftName && parseName(item.giftName)?.[0]}
+                  </div>
+                  <div className="truncate">
                     {item.giftName && parseName(item.giftName)?.[1] && (
                       <span className="text-white/50">
                         ({item.giftName && parseName(item.giftName)?.[1]})
@@ -150,14 +183,14 @@ export default function Result({
           ))}
         </div>
         {results.length === openResults.length && (
-          <div className="flex flex-col sm:grid sm:grid-cols-2 gap-2 sm:gap-4 w-full sm:px-5 mt-6">
+          <div className="flex justify-center mt-6 gap-4">
             <button onClick={onClose} className="btn-purple" type="button">
               <FormattedMessage id="open_box_receive" />
             </button>
 
             <Button
-              className="btn-green"
-              onClick={onSale}
+              className="btn-green sm:w-full max-w-xs"
+              onClick={onSaleAll}
               loading={saleLoading}
             >
               <FormattedMessage id="open_box_sell_all" />

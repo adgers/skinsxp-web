@@ -40,9 +40,9 @@ const audio = new Audio(require('@/assets/audio/battle.mp3'));
 
 import { Spin } from 'antd';
 import CopyToClipboard from 'react-copy-to-clipboard';
-import Result from './result';
 import BoxDetail from './boxDetail';
 import './index.less';
+import Result from './result';
 
 const countTotalPrice = (record: any) => {
   if (!record) return numberFixed(0, 2);
@@ -223,6 +223,7 @@ export default function RoomDetail() {
   const { getUser, userInfo } = useModel('user');
   const { voice, toggleVoice } = useModel('sys');
   const [myRoom, setMyRoom] = useState(false);
+  const [replay, setReplay] = useState(false);
   const responsive = useResponsive();
   const { battleState } = useModel('socket');
 
@@ -434,7 +435,9 @@ export default function RoomDetail() {
             winAudio.play();
           }
           await sleep(2500);
-          setResultModalVisible(true);
+          if (!replay) {
+            setResultModalVisible(true);
+          }
         } else {
           if (voice) {
             failAudio.play();
@@ -513,6 +516,7 @@ export default function RoomDetail() {
   const goHistory = () => {
     setOpenResult([]);
     setIsEnd(false);
+    setReplay(true);
 
     setCountDownShow(true);
     setLotteryShow(true);
@@ -565,7 +569,7 @@ export default function RoomDetail() {
           <div
             className={`bg-black py-5 flex px-5 sm:px-8 items-center gap-2 rounded battle-mode-${mode}`}
           >
-            <div className="flex gap-4 items-center">
+            <div className="flex gap-2 sm:gap-4 items-center">
               <div
                 className={`w-[60px] h-[60px] flex items-center justify-center rounded-full relative ring ${
                   mode === 1 ? 'ring-red' : 'ring-green'
