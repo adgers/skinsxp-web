@@ -63,7 +63,7 @@ export default function BattlePage() {
   }, [battleRank, recordTab]);
 
   return (
-    <div className="flex sm:mt-4 gap-2 sm:gap-5 flex-col lg:flex-row w-full px-3">
+    <div className="flex sm:mt-4 gap-2 sm:gap-5 flex-col items-center lg:flex-row lg:items-start w-full px-3">
       <div className="flex flex-col w-full overflow-hidden">
         <div className="my-4 flex w-full justify-center sm:justify-start border-b border-light relative h-[68px]">
           <div className="flex items-center">
@@ -153,7 +153,7 @@ export default function BattlePage() {
         )}
       </div>
 
-      <div className="w-[280px] flex-shrink-0" ref={rankRef}>
+      <div className="w-[280px] flex-shrink-0 m-0-auto" ref={rankRef}>
         <div className="battle-rank-point relative rounded-md">
           <div className="top-[70px] flex items-center flex-col w-full absolute z-10">
             <div className="relative w-[80px] h-[80px]">
