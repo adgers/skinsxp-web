@@ -80,7 +80,7 @@ export default () => {
 
   return (
     <div className="w-full max-w-[1400px] m-auto relative min-h-[500px]">
-      <div className="banner w-full h-[380px] mt-8 bg-[url('@/assets/store-banner.png')] bg-no-repeat bg-cover flex justify-center items-center md:justify-start md:pl-[90px]">
+      <div className="banner w-full py-[44px] md:py-[88px] mt-3 md:mt-8 bg-[url('@/assets/store-banner.png')] bg-no-repeat bg-cover flex justify-center items-center md:justify-start md:pl-[90px]">
         <div className=" max-w-[540px] flex flex-col items-center">
           <div className="text-lg md:text-xl font-semibold">
             <FormattedMessage id="wg_store_what" />
