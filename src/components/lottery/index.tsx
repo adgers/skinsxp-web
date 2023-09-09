@@ -1,4 +1,4 @@
-import { isSafari, parseName, sleep } from '@/utils';
+import { parseName, sleep } from '@/utils';
 import { animated, easings, useSpring } from '@react-spring/web';
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import './index.less';
@@ -17,6 +17,7 @@ const Lottery = ({
   showName = false,
   voice = false,
   showLogo = true,
+  itemAudioOpen = false,
 }: {
   giftList: API.BoxGiftListVo[];
   lotteryWin?: API.BattleBoxGainVo;
@@ -31,10 +32,11 @@ const Lottery = ({
   showName?: boolean;
   voice?: boolean;
   showLogo?: boolean;
+  itemAudioOpen?: boolean;
 }) => {
   const baseNum = 36;
   const winLotteryIndex = 30;
-  const duration = fast ? 150 * winLotteryIndex : 250 * winLotteryIndex;
+  const duration = fast ? 150 * winLotteryIndex : 300 * winLotteryIndex;
   const [list, setList] = useState<API.BoxGiftListVo[]>([]);
   const prevMoveRef = useRef(0);
 
@@ -42,6 +44,30 @@ const Lottery = ({
     () => new Audio(require('@/assets/audio/tick.mp3')),
     [],
   );
+
+  const itemAudio = useMemo(
+    () => new Audio(require('@/assets/audio/item.wav')),
+    [],
+  );
+
+  const playSpinAudio = useCallback(async () => {
+    if (!voice) {
+      return;
+    }
+
+    await audio.pause();
+    audio.currentTime = 0;
+    await audio.play();
+  }, []);
+
+  const playItemAudio = useCallback(async () => {
+    if (!voice || !itemAudioOpen) {
+      return;
+    }
+    await itemAudio.pause();
+    itemAudio.currentTime = 0;
+    await itemAudio.play();
+  }, []);
 
   const wrapRef = useRef<HTMLDivElement>(null);
 
@@ -70,6 +96,7 @@ const Lottery = ({
   };
 
   const animateEnd = () => {
+    playItemAudio();
     opacityApi.start({
       from: { opacity: 1 },
       to: { opacity: 0.2 },
@@ -98,6 +125,7 @@ const Lottery = ({
         to: { x: -centerPos },
         config: { duration: 2000 },
         onResolve: () => {
+          playItemAudio();
           scaleApi.start({
             from: { scale: 1 },
             to: { scale: 1.3 },
@@ -133,14 +161,6 @@ const Lottery = ({
     newList[winLotteryIndex] = lotteryWin;
     setList(newList);
   };
-
-  const playSpinAudio = useCallback(async () => {
-    if (isSafari()) return;
-
-    await audio.pause();
-    audio.currentTime = 0;
-    await audio.play();
-  }, []);
 
   const goMoveY = () => {
     const boxHeight = boxSize.height;

@@ -90,7 +90,7 @@ export default function Header() {
     },
     {
       title: <FormattedMessage id="home_spsc" />,
-      link: '/shop',
+      link: '/store',
       icon: 'icon-store',
     },
     {

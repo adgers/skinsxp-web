@@ -33,7 +33,7 @@ export default function PromotePage() {
 
   const affliateColumns: ColumnsType<API.MyRechargeOrderPageVo> = [
     {
-      title: <FormattedMessage id="nickName" />,
+      title: <FormattedMessage id="promote_user" />,
       dataIndex: 'nickName',
       key: 'nickName',
     },
@@ -54,7 +54,7 @@ export default function PromotePage() {
       key: 'rebateAmount',
     },
     {
-      title: <FormattedMessage id="createTime" />,
+      title: <FormattedMessage id="create_time" />,
       dataIndex: 'createTime',
       key: 'createTime',
     },
@@ -121,7 +121,7 @@ export default function PromotePage() {
   return (
     <>
       <div className="py-4 md:py-6 d flex flex-col gap-4">
-        <div className="flex items-start flex-col lg:flex-row lg:items-center gap-4">
+        <div className="flex items-start flex-col lg:flex-row lg:items-center gap-4 sm:gap-8">
           <div className="w-full lg:w-1/2">
             <h3 className="font-sembold text-base mb-4">
               <FormattedMessage id="promoteCode_mine" />
@@ -146,99 +146,79 @@ export default function PromotePage() {
               </div>
             </div>
           </div>
-          <div className="flex justify-start items-center w-full lg:justify-center lg:w-1/2">
-            <FormattedMessage id="promoteCode_myurl" />:{' '}
-            <span className="text-green text-sm">{`${window.location.origin}?promoteCode=${promoteCode}`}</span>
-            <CopyToClipboard
-              text={`${window.location.origin}?promoteCode=${promoteCode}`}
-              onCopy={() => {
-                toast.success(intl.formatMessage({ id: 'copy_success' }));
-              }}
-            >
-              <Button
-                size="xs"
-                shape="circle"
-                className="text-gray rounded-none bg-transparent border-none hover:bg-transparent"
+          <div className="flex flex-col">
+            <div className="mb-4">
+              <FormattedMessage id="promoteCode_myurl" />
+            </div>
+            <div className='h-12'>
+              <span className="text-green text-sm">{`${window.location.origin}?promoteCode=${promoteCode}`}</span>
+              <CopyToClipboard
+                text={`${window.location.origin}?promoteCode=${promoteCode}`}
+                onCopy={() => {
+                  toast.success(intl.formatMessage({ id: 'copy_success' }));
+                }}
               >
-                <CopyOutlined />
-              </Button>
-            </CopyToClipboard>
+                <Button
+                  size="xs"
+                  shape="circle"
+                  className="text-gray rounded-none bg-transparent border-none hover:bg-transparent"
+                >
+                  <CopyOutlined />
+                </Button>
+              </CopyToClipboard>
+            </div>
           </div>
         </div>
-
-        {/* <div>
-          <h3 className="font-sembold text-base mb-4 uppercase">
-            <FormattedMessage id="promoteCode_upuser" />
-          </h3>
-          <div className="flex gap-2">
-            {data && (
-              <Input
-                value={upInvitationCode}
-                disabled={data?.upInvitationCode !== ''}
-                className="w-full max-w-xl"
-                onChange={(e) => setUpInvitationCode(e.target.value)}
-                ref={invRef}
-              />
-            )}
-
-            {data?.upInvitationCode === '' && (
-              <button
-                className="btn btn-outline btn-secondary"
-                onClick={saveInvitationCode}
-                type="button"
-              >
-                <EditFilled />
-                <FormattedMessage id="confirm" />
-              </button>
-            )}
-          </div>
-        </div> */}
       </div>
 
-      <div className="grid grid-cols-3 md:grid-cols-6 mt-4 border border-light border-collapse text-gray">
-        <div className="text-center px-3 py-4 flex flex-col gap-2 rounded-none border-r border-b md:border-b-0  border-light ">
-          <div>
+      <div className="grid grid-cols-3 md:grid-cols-6 border border-light border-collapse text-gray border-opacity-50">
+        <div className="text-center px-3 py-4 flex flex-col gap-2 rounded-none border-r border-b md:border-b-0 border-light border-opacity-50">
+          <div className="text-sm">
             <FormattedMessage id="promoteCode_level" />
           </div>
-          <div className="text-white font-num">{data?.promotionGrade}</div>
+          <div className="text-white font-num text-lg">
+            {data?.promotionGrade}
+          </div>
         </div>
-        <div className="text-center px-3 py-4 flex flex-col gap-2 rounded-none border-r border-b md:border-b-0  border-light ">
-          <div>
+        <div className="text-center px-3 py-4 flex flex-col gap-2 rounded-none border-r border-b md:border-b-0  border-light border-opacity-50">
+          <div className="text-sm">
             <FormattedMessage id="promoteCode_rebate" />
           </div>
-          <div className="text-white font-num">{data?.rebateRate}%</div>
+          <div className="text-white font-num text-lg">
+            {(data?.rebateRate || 0) * 100}%
+          </div>
         </div>
-        <div className="text-center px-3 py-4 flex flex-col gap-2 rounded-none border-b md:border-b-0 md:border-r  border-light ">
-          <div>
+        <div className="text-center px-3 py-4 flex flex-col gap-2 rounded-none border-b md:border-b-0 md:border-r  border-light border-opacity-50">
+          <div className="text-sm">
             <FormattedMessage id="promoteCode_nextlevel" />
           </div>
-          <div className="text-white font-num">
+          <div className="text-white font-num text-lg">
             {(data?.nextPromotionGrade || 0) -
               (data?.accumulatedRechargeAmount || 0)}
           </div>
         </div>
-        <div className="text-center px-3 py-4 flex flex-col gap-2 rounded-none border-r  border-light ">
-          <div>
+        <div className="text-center px-3 py-4 flex flex-col gap-2 rounded-none border-r  border-light border-opacity-50">
+          <div className="text-sm">
             <FormattedMessage id="promoteCode_user_num" />
           </div>
-          <div className="text-white font-num">
+          <div className="text-white font-num text-lg">
             {data?.accumulatedRegisterCount}
           </div>
         </div>
-        <div className="text-center px-3 py-4 flex flex-col gap-2 rounded-none border-r  border-light ">
-          <div>
+        <div className="text-center px-3 py-4 flex flex-col gap-2 rounded-none border-r  border-light border-opacity-50">
+          <div className="text-sm">
             <FormattedMessage id="promoteCode_recharge" />
           </div>
-          <div className="text-white font-num">
-            {data?.accumulatedRechargeAmount}
+          <div className="text-green font-num text-lg">
+            ${data?.accumulatedRechargeAmount}
           </div>
         </div>
         <div className="text-center px-3 py-4 flex flex-col gap-2 rounded-none ">
-          <div>
+          <div className="text-sm">
             <FormattedMessage id="promoteCode_rebate_num" />
           </div>
-          <div className="text-white font-num">
-            {data?.accumulatedRebateAmount}
+          <div className="text-green font-num text-lg">
+            ${data?.accumulatedRebateAmount}
           </div>
         </div>
       </div>

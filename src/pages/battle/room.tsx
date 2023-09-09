@@ -229,6 +229,7 @@ export default function RoomDetail() {
 
   const winAudio = new Audio(require('@/assets/audio/win.wav'));
   const failAudio = new Audio(require('@/assets/audio/fail.wav'));
+  const itemAudio = new Audio(require('@/assets/audio/battle-item.mp3'));
 
   const intl = useIntl();
   const battleMode = [
@@ -333,7 +334,7 @@ export default function RoomDetail() {
     });
     setJoinLoading(false);
     if (ret.status === 0) {
-      toast.success(<FormattedMessage id="roll_detail_jrcg" />);
+      // toast.success(<FormattedMessage id="roll_detail_jrcg" />);
       if (voice) {
         const audio = new Audio(require('@/assets/audio/ready.wav'));
         audio.play();
@@ -346,12 +347,11 @@ export default function RoomDetail() {
     if (joinBotLoading) {
       return;
     }
-
     setJoinBotLoading(true);
     const ret = await joinBotUsingPOST({ battleCode: battleCode || '', pos });
     setJoinBotLoading(false);
     if (ret.status === 0) {
-      toast.success(<FormattedMessage id="roll_detail_jrcg" />);
+      // toast.success(<FormattedMessage id="roll_detail_jrcg" />);
       if (voice) {
         const audio = new Audio(require('@/assets/audio/ready.wav'));
         audio.play();
@@ -415,6 +415,7 @@ export default function RoomDetail() {
 
   const onLortteryCompleted = async () => {
     initOpenResult(index);
+    // itemAudio.play();
     setLotteryStart(false);
     if (data?.boxList && index === data?.boxList?.length) {
       await sleep(2500);
@@ -446,7 +447,7 @@ export default function RoomDetail() {
         getUser();
       }
     } else {
-      await sleep(1500);
+      await sleep(500);
       goTo(index + 1);
       await sleep(1000);
       setLotteryStart(true);

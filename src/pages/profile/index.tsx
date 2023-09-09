@@ -41,6 +41,11 @@ export default function User() {
         link: '/provably-fair',
         icon: 'icon-shield',
       },
+      {
+        title: <FormattedMessage id="mine_bzzx" />,
+        link: '/docs',
+        icon: 'icon-support',
+      },
     ];
   }, []);
 
@@ -95,7 +100,7 @@ export default function User() {
                   className="btn rounded border border-light h-8 w-4/5"
                   onClick={() => setSteamLinkModalVisible(true)}
                 >
-                  <IconFont type="icon-link" />
+                  <IconFont type="icon-steam" />
                   {userInfo?.tradeUrl ? <FormattedMessage id="trade_url_edit"/> :<FormattedMessage id="trade_url_add"/> }
                 </div>
               </div>

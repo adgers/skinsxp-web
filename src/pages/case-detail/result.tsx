@@ -61,10 +61,10 @@ export default function Result({
 
   useEffect(() => {
     if (show) {
-      setOpenResults([]);
-      putResults().then(() => {
-        setShowEnded(true);
-      });
+      setOpenResults(results);
+      // putResults().then(() => {
+      //   setShowEnded(true);
+      // });
     }
   }, [show]);
 
@@ -131,7 +131,7 @@ export default function Result({
         <div className="flex flex-wrap items-center gap-x-2 gap-y-4 justify-center min-h-[200px]">
           {openResults?.map((item, i: number) => (
             <div
-              className="flex flex-col gap-1 w-[140px] sm:w-[180px] animate__animated animate__flipInX relative items-center justify-center"
+              className="flex flex-col gap-1 w-[140px] sm:w-[180px] animate__animated animate__fadeIn relative items-center justify-center"
               key={i}
             >
               <div
@@ -180,28 +180,26 @@ export default function Result({
             </div>
           ))}
         </div>
-        {showEnded && (
-          <div className="flex justify-center mt-6 gap-4">
-            <button onClick={onClose} className="btn-purple" type="button">
-              <FormattedMessage id="open_box_receive" />
-            </button>
+        <div className="flex justify-center mt-6 gap-4">
+          <button onClick={onClose} className="btn-purple" type="button">
+            <FormattedMessage id="open_box_receive" />
+          </button>
 
-            <Button
-              className="btn-green sm:w-full max-w-xs"
-              onClick={onSaleAll}
-              loading={saleLoading}
-            >
-              <FormattedMessage id="open_box_sell_all" />
-              <IconFont type="icon-coin" />
-              <CountUp
-                end={totalPrice}
-                duration={0.3}
-                decimals={2}
-                separator=""
-              />
-            </Button>
-          </div>
-        )}
+          <Button
+            className="btn-green sm:w-full max-w-xs"
+            onClick={onSaleAll}
+            loading={saleLoading}
+          >
+            <FormattedMessage id="open_box_sell_all" />
+            <IconFont type="icon-coin" />
+            <CountUp
+              end={totalPrice}
+              duration={0.3}
+              decimals={2}
+              separator=""
+            />
+          </Button>
+        </div>
       </Modal.Body>
     </Modal>
   );

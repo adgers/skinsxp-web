@@ -26,7 +26,7 @@ export default function Foot() {
           to="/docs/help"
           target="_blank"
         >
-          <FormattedMessage id="doc_help" />
+          <FormattedMessage id="mine_bzzx" />
         </Link>
       </div>
 
