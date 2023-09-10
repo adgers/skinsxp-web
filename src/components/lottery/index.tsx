@@ -18,7 +18,7 @@ const Lottery = ({
   showName = false,
   voice = false,
   showLogo = true,
-  itemAudioOpen = false,
+  itemAudioOpen = true,
 }: {
   giftList: API.BoxGiftListVo[];
   lotteryWin?: API.BattleBoxGainVo;
@@ -287,7 +287,7 @@ const Lottery = ({
         {list.map((item: any, index: number) => {
           const isWin = item?.id === lotteryWin?.id;
           const grade = item?.grade ?? item?.giftGrade;
-          const name = parseName(item.giftName);
+          const name = parseName(item?.giftName);
 
           return (
             <animated.div

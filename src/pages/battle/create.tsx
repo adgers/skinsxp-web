@@ -124,8 +124,8 @@ export default function Create() {
   };
 
   const increaseBox = (box: API.BoxPageVo) => {
-    if (boxLists.length > 9) {
-      toast.error('You can only select up to 10 cases', {
+    if (boxLists.length > 19) {
+      toast.error('You can only select up to 20 cases', {
         toastId: 'case_limit',
       });
       return;
@@ -271,6 +271,7 @@ export default function Create() {
                   type="text"
                   className="input mx-1.5 h-auto w-full rounded border-0 bg-transparent text-center font-bold text-white outline-none focus:outline-none"
                   value={item.count}
+                  readOnly
                 />
                 <button
                   className="btn btn-sm bg-light font-bold text-white rounded-none"

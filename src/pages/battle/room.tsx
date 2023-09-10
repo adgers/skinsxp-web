@@ -87,9 +87,6 @@ const WartingCard = ({
         </div>
       ) : (
         <div className="flex flex-col gap-4 items-center">
-          <div className="w-full font-num uppercase h-full flex items-center justify-center text-center animate-pulse text-white text-xs sm:text-base">
-            ARE YOU READY TO PLAY
-          </div>
           {isOwner ? (
             <div
               className="btn-green !text-xs sm:!text-sm uppercase font-semibold "
@@ -100,17 +97,22 @@ const WartingCard = ({
               <FormattedMessage id="battle_room_join_bot" />
             </div>
           ) : (
-            <div
-              className={`px-4 py-2 text-xs sm:text-sm cursor-pointer uppercase font-semibold ${
-                mode === 0 ? 'btn-green' : 'btn-red'
-              }`}
-              onClick={onJoin}
-            >
-              {joinBotLoading && <LoadingOutlined />}
-              <IconFont type="icon-battle" className="text-white text-sm" />
-              <FormattedMessage id="battle_room_join" />
-              <span className="hidden sm:block">{modeName}</span>
-            </div>
+            <>
+              <div className="w-full font-num uppercase h-full flex items-center justify-center text-center animate-pulse text-white text-xs sm:text-base">
+                ARE YOU READY TO PLAY
+              </div>
+              <div
+                className={`px-4 py-2 text-xs sm:text-sm cursor-pointer uppercase font-semibold ${
+                  mode === 0 ? 'btn-green' : 'btn-red'
+                }`}
+                onClick={onJoin}
+              >
+                {joinBotLoading && <LoadingOutlined />}
+                <IconFont type="icon-battle" className="text-white text-sm" />
+                <FormattedMessage id="battle_room_join" />
+                <span className="hidden sm:block">{modeName}</span>
+              </div>
+            </>
           )}
         </div>
       )}
@@ -230,7 +232,8 @@ export default function RoomDetail() {
   const battleAudio = useMemo(
     () =>
       new Howl({
-        src: [require('@/assets/audio/battle.mp3')],
+        src: [require('@/assets/audio/battle-bgm.mp3')],
+        loop: true,
       }),
     [],
   );
@@ -242,7 +245,6 @@ export default function RoomDetail() {
       }),
     [],
   );
-
 
   const failAudio = useMemo(
     () =>
@@ -259,7 +261,6 @@ export default function RoomDetail() {
       }),
     [],
   );
-
 
   const intl = useIntl();
   const battleMode = [
@@ -447,6 +448,9 @@ export default function RoomDetail() {
       await sleep(2500);
       setLotteryShow(false);
       setIsEnd(true);
+      if (voice) {
+        battleAudio.stop();
+      }
       if (myRoom) {
         let isWin = false;
         const myRecord = roomResult?.customerGainList?.find(
@@ -473,13 +477,10 @@ export default function RoomDetail() {
         getUser();
       }
     } else {
-      await sleep(500);
+      await sleep(1000);
       goTo(index + 1);
       await sleep(1000);
       setLotteryStart(true);
-      if (voice) {
-        playAudio();
-      }
     }
   };
 
@@ -528,6 +529,15 @@ export default function RoomDetail() {
       }
     }
   }, [isEnd]);
+
+  //页面离开时停止播放音乐
+  useEffect(() => {
+    return () => {
+      if (voice) {
+        battleAudio.stop();
+      }
+    };
+  }, []);
 
   const {
     countCustomer = 2,

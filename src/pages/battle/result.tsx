@@ -103,7 +103,7 @@ export default function Result({
       <Modal.Body>
         <div className="flex items-center w-full">
           <div className="flex flex-nowrap items-center gap-x-2 overflow-x-auto hide-scrollbar snap-x snap-mandatory mx-auto">
-            {results?.map((item, i: number) => (
+            {openResults?.map((item, i: number) => (
               <div
                 className="flex flex-col gap-1 w-[130px] sm:w-[180px] relative items-center justify-center flex-shrink-0"
                 key={i}
