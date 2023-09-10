@@ -2,8 +2,7 @@ import number1 from '@/assets/num1.png';
 import number2 from '@/assets/num2.png';
 import number3 from '@/assets/num3.png';
 import { useEffect, useState } from 'react';
-
-import countdownAudio from '@/assets/audio/count.mp3';
+import { Howl } from 'howler';
 
 const Countdown = ({
   onFinish,
@@ -29,7 +28,10 @@ const Countdown = ({
 
   useEffect(() => {
     if (voice) {
-      const audio = new Audio(countdownAudio);
+      const audio = new Howl({
+        src: [require('@/assets/audio/count.mp3')],
+      })
+
       audio.play();
     }
   }, []);

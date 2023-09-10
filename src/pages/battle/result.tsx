@@ -2,7 +2,8 @@ import { IconFont } from '@/components/icons';
 import { exchangeQuantityUsingPOST } from '@/services/front/kaixiangxiangguan';
 import { numberFixed, parseName } from '@/utils';
 import { FormattedMessage, useModel } from '@umijs/max';
-import { useEffect, useState } from 'react';
+import { Howl } from 'howler';
+import { useEffect, useMemo, useState } from 'react';
 import CountUp from 'react-countup';
 import { Button, Modal } from 'react-daisyui';
 import './index.less';
@@ -20,6 +21,14 @@ export default function Result({
   const [saleLoading, setSaleLoading] = useState(false);
   const { voice } = useModel('sys');
   const [openResults, setOpenResults] = useState<API.BattleBoxGainVo[]>([]);
+
+  const audio = useMemo(
+    () =>
+      new Howl({
+        src: [require('@/assets/audio/exchange.mp3')],
+      }),
+    [],
+  );
 
   const countTotalPrice = (results: API.BattleBoxGainVo[]) => {
     const total = results?.reduce((total: number, item: any) => {
@@ -42,7 +51,6 @@ export default function Result({
     setSaleLoading(false);
     if (ret.status === 0) {
       if (voice) {
-        const audio = new Audio(require('@/assets/audio/exchange.mp3'));
         audio.play();
       }
       onClose();
@@ -57,7 +65,6 @@ export default function Result({
     setSaleLoading(false);
     if (ret.status === 0) {
       if (voice) {
-        const audio = new Audio(require('@/assets/audio/exchange.mp3'));
         audio.play();
       }
       const lResults = [...openResults];

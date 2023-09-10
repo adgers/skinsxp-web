@@ -99,16 +99,6 @@ export default function BoxPage() {
     resetGiftList();
   };
 
-  const playAudio = () => {
-    // if (fast) {
-    //   fastAudio.currentTime = 0;
-    //   fastAudio.play();
-    // } else {
-    //   audio.currentTime = 0;
-    //   audio.play();
-    // }
-  };
-
   const openBox = async () => {
     if (openLoading || lotteryStartRef.current) return;
     setOpenLoading(true);
@@ -127,10 +117,6 @@ export default function BoxPage() {
 
     await sleep(500);
     setLotteryStart(true);
-
-    if (voice) {
-      playAudio();
-    }
   };
 
   useEffect(() => {
@@ -187,7 +173,7 @@ export default function BoxPage() {
                 <div className="absolute right-0 top-0 h-full w-full">
                   <img
                     src={boxDetails?.boxImage}
-                    className="h-full w-full object-cover"
+                    className="h-full w-full object-cover rounded"
                   />
                 </div>
               </div>

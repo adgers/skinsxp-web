@@ -1,7 +1,8 @@
 import { IconFont } from '@/components/icons';
 import { exchangeQuantityUsingPOST } from '@/services/front/kaixiangxiangguan';
-import { isSafari, numberFixed, parseName } from '@/utils';
-import { FormattedMessage, useIntl, useModel } from '@umijs/max';
+import { numberFixed, parseName } from '@/utils';
+import { FormattedMessage, useModel } from '@umijs/max';
+import { Howl } from 'howler';
 import { useEffect, useMemo, useState } from 'react';
 import CountUp from 'react-countup';
 import { Button, Modal } from 'react-daisyui';
@@ -19,12 +20,12 @@ export default function Result({
   const [totalPrice, setTotalPrice] = useState(0);
   const [saleLoading, setSaleLoading] = useState(false);
   const { voice } = useModel('sys');
-  const [showEnded, setShowEnded] = useState(false);
-
-  const intl = useIntl();
 
   const audio = useMemo(
-    () => new Audio(require('@/assets/audio/item.wav')),
+    () =>
+      new Howl({
+        src: [require('@/assets/audio/exchange.mp3')],
+      }),
     [],
   );
 
@@ -41,30 +42,9 @@ export default function Result({
     setTotalPrice(numberFixed(total, 2));
   };
 
-  const putResults = async () => {
-    //间隔500ms将results中的数据放入openResults中
-    for (let i = 0; i < results.length; i++) {
-      const item = results[i];
-      await new Promise((resolve) => {
-        setTimeout(() => {
-          setOpenResults((prev) => [...prev, item]);
-
-          if (voice && !isSafari()) {
-            audio.currentTime = 0;
-            audio.play();
-          }
-          resolve(null);
-        }, 1000);
-      });
-    }
-  };
-
   useEffect(() => {
     if (show) {
       setOpenResults(results);
-      // putResults().then(() => {
-      //   setShowEnded(true);
-      // });
     }
   }, [show]);
 
@@ -76,7 +56,6 @@ export default function Result({
     setSaleLoading(false);
     if (ret.status === 0) {
       if (voice) {
-        const audio = new Audio(require('@/assets/audio/exchange.mp3'));
         audio.play();
       }
       onClose();
@@ -91,7 +70,6 @@ export default function Result({
     setSaleLoading(false);
     if (ret.status === 0) {
       if (voice) {
-        const audio = new Audio(require('@/assets/audio/exchange.mp3'));
         audio.play();
       }
       const lResults = [...openResults];

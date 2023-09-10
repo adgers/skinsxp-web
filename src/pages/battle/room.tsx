@@ -29,14 +29,14 @@ import {
 import { useResponsive } from 'ahooks';
 import 'animate.css';
 import cloneDeep from 'lodash/cloneDeep';
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useMemo, useRef, useState } from 'react';
 import CountUp from 'react-countup';
 import { Button, Modal } from 'react-daisyui';
 import { toast } from 'react-toastify';
 import { CSSTransition, TransitionGroup } from 'react-transition-group';
 import Verify from './verify';
 
-const audio = new Audio(require('@/assets/audio/battle.mp3'));
+import { Howl } from 'howler';
 
 import { Spin } from 'antd';
 import CopyToClipboard from 'react-copy-to-clipboard';
@@ -227,9 +227,39 @@ export default function RoomDetail() {
   const responsive = useResponsive();
   const { battleState } = useModel('socket');
 
-  const winAudio = new Audio(require('@/assets/audio/win.wav'));
-  const failAudio = new Audio(require('@/assets/audio/fail.wav'));
-  const itemAudio = new Audio(require('@/assets/audio/battle-item.mp3'));
+  const battleAudio = useMemo(
+    () =>
+      new Howl({
+        src: [require('@/assets/audio/battle.mp3')],
+      }),
+    [],
+  );
+
+  const winAudio = useMemo(
+    () =>
+      new Howl({
+        src: [require('@/assets/audio/win.wav')],
+      }),
+    [],
+  );
+
+
+  const failAudio = useMemo(
+    () =>
+      new Howl({
+        src: [require('@/assets/audio/fail.wav')],
+      }),
+    [],
+  );
+
+  const readyAudio = useMemo(
+    () =>
+      new Howl({
+        src: [require('@/assets/audio/ready.wav')],
+      }),
+    [],
+  );
+
 
   const intl = useIntl();
   const battleMode = [
@@ -336,8 +366,7 @@ export default function RoomDetail() {
     if (ret.status === 0) {
       // toast.success(<FormattedMessage id="roll_detail_jrcg" />);
       if (voice) {
-        const audio = new Audio(require('@/assets/audio/ready.wav'));
-        audio.play();
+        readyAudio.play();
       }
       getUser();
     }
@@ -351,10 +380,8 @@ export default function RoomDetail() {
     const ret = await joinBotUsingPOST({ battleCode: battleCode || '', pos });
     setJoinBotLoading(false);
     if (ret.status === 0) {
-      // toast.success(<FormattedMessage id="roll_detail_jrcg" />);
       if (voice) {
-        const audio = new Audio(require('@/assets/audio/ready.wav'));
-        audio.play();
+        readyAudio.play();
       }
     }
   };
@@ -398,8 +425,7 @@ export default function RoomDetail() {
   };
 
   const playAudio = () => {
-    audio.currentTime = 0;
-    audio.play();
+    battleAudio.play();
   };
 
   const onCountDownFinish = async () => {

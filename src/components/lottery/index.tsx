@@ -1,5 +1,6 @@
 import { parseName, sleep } from '@/utils';
 import { animated, easings, useSpring } from '@react-spring/web';
+import { Howl } from 'howler';
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import './index.less';
 
@@ -41,12 +42,20 @@ const Lottery = ({
   const prevMoveRef = useRef(0);
 
   const audio = useMemo(
-    () => new Audio(require('@/assets/audio/tick.mp3')),
+    // () => new Audio(require('@/assets/audio/tick.mp3')),
+    () =>
+      new Howl({
+        src: [require('@/assets/audio/tick.mp3')],
+      }),
     [],
   );
 
   const itemAudio = useMemo(
-    () => new Audio(require('@/assets/audio/item.wav')),
+    // () => new Audio(require('@/assets/audio/item.wav')),
+    () =>
+      new Howl({
+        src: [require('@/assets/audio/item.wav')],
+      }),
     [],
   );
 
@@ -55,18 +64,14 @@ const Lottery = ({
       return;
     }
 
-    await audio.pause();
-    audio.currentTime = 0;
-    await audio.play();
+    audio.play();
   }, []);
 
   const playItemAudio = useCallback(async () => {
     if (!voice || !itemAudioOpen) {
       return;
     }
-    await itemAudio.pause();
-    itemAudio.currentTime = 0;
-    await itemAudio.play();
+    itemAudio.play();
   }, []);
 
   const wrapRef = useRef<HTMLDivElement>(null);
@@ -186,7 +191,7 @@ const Lottery = ({
         const speed = Math.abs(distanceDelta);
         if (speed > boxHeight - 1) {
           prevMoveRef.current = currentMoveY;
-          if (lotteryIndex === 0 && voice) {
+          if (lotteryIndex === 0) {
             playSpinAudio();
           }
         }
@@ -230,7 +235,7 @@ const Lottery = ({
         //当移动距离超过一个box的宽度时，播放音效
         if (speed > boxWidth - 1) {
           prevMoveRef.current = currentMoveX;
-          if (lotteryIndex === 0 && voice) {
+          if (lotteryIndex === 0) {
             playSpinAudio();
           }
         }
@@ -312,10 +317,10 @@ const Lottery = ({
                 />
               )}
               {showName && (
-                <div className="absolute bottom-0 left-0 -mb-1 w-full p-2 font-semibold uppercase leading-tight md:p-3">
-                  <div className="truncate text-xs md:text-sm text-center">
+                <div className="absolute bottom-0 left-0 -mb-1 w-full px-1 py-2 sm:px-2 font-semibold uppercase leading-tight md:p-3">
+                  <div className="text-xs md:text-sm text-center">
                     <div className="text-white text-opacity-50">{name[0]}</div>
-                    <div className="text-white">
+                    <div className="text-white truncate">
                       {name[1] && (
                         <span className="text-white/50">({name[1]})</span>
                       )}

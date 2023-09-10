@@ -1,10 +1,5 @@
 import { getApiDomain } from '@/utils';
-import {
-  AndroidFilled,
-  AppleFilled,
-  MessageOutlined,
-  MobileOutlined,
-} from '@ant-design/icons';
+import { AndroidFilled, AppleFilled, MessageOutlined } from '@ant-design/icons';
 import { useResponsive } from 'ahooks';
 import { QRCode } from 'antd';
 import { useState } from 'react';

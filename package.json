@@ -21,6 +21,7 @@
     "animate.css": "^4.1.1",
     "antd": "^5.7.1",
     "events": "^3.3.0",
+    "howler": "^2.2.3",
     "lodash": "^4.17.21",
     "lottie-react": "^2.4.0",
     "qs": "^6.11.2",
@@ -38,6 +39,7 @@
   "devDependencies": {
     "@tailwindcss/nesting": "^0.0.0-insiders.565cd3e",
     "@tailwindcss/typography": "^0.5.9",
+    "@types/howler": "^2.2.8",
     "@types/lodash": "^4.14.196",
     "@types/qs": "^6.9.7",
     "@types/react": "^18.0.33",
