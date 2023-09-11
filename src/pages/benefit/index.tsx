@@ -7,8 +7,8 @@ import { toast } from 'react-toastify';
 import './index.less';
 
 export default function Benefit() {
-  const { benefitShow, hideBenefit, getUser, userInfo } = useModel('user');
-  const [tab, setTab] = useState(0);
+  const { benefitShow, hideBenefit, getUser } = useModel('user');
+  const [tab, setTab] = useState(1);
 
   const intl = useIntl();
   const cdKeyCodeRef = useRef<HTMLInputElement>(null);
@@ -75,7 +75,7 @@ export default function Benefit() {
       </Button>
       <Modal.Header className="mt-2 mb-2 text-center text-sm sm:text-lg">
         <div className="flex w-full justify-center gap-6 h-14 items-center rounded-t-xl">
-          <div
+          {/* <div
             className={`w-full h-full cursor-pointer flex items-center justify-center rounded ${
               tab === 0 ? 'bg-purple/[0.3] text-white' : 'bg-[#23232D] hover:'
             }`}
@@ -84,11 +84,9 @@ export default function Benefit() {
             <span className="uppercase font-semibold">
               <FormattedMessage id="benefit_promote_code" />
             </span>
-          </div>
+          </div> */}
           <div
-            className={`w-full h-full tab-item flex items-center justify-center cursor-pointer rounded ${
-              tab === 1 ? 'bg-purple/[0.3] text-white' : 'bg-[#23232D]'
-            }`}
+            className={`w-full h-full tab-item flex items-center justify-center rounded`}
             onClick={() => setTab(1)}
           >
             <span className="uppercase font-semibold">
@@ -98,7 +96,7 @@ export default function Benefit() {
         </div>
       </Modal.Header>
       <Modal.Body className="w-full flex flex-col items-center mt-5">
-        {tab === 0 && (
+        {/* {tab === 0 && (
           <>
             <div className="flex h-fit w-full items-center gap-4 px-2 py-2 sm:py-0  bg-[url('@/assets/promo-bg.png')] bg-no-repeat bg-cover sm:pl-28 sm:pr-8 text-sm sm:text-md whitespace-pre-wrap font-semibold">
               <div className="h-fit w-full grow sm:-mr-20 sm:-ml-16">
@@ -140,48 +138,43 @@ export default function Benefit() {
               </div>
             </div>
           </>
-        )}
-        {tab === 1 && (
-          <>
-            <div className="flex h-fit w-full items-center gap-4 px-2 py-2 sm:py-0  bg-[url('@/assets/promo-bg.png')] bg-no-repeat bg-cover sm:pl-28 sm:pr-8 text-sm sm:text-md whitespace-pre-wrap font-semibold">
-              <div className="h-fit w-full grow sm:-mr-20 sm:-ml-16">
-                <p className="text-[16px] mb-2">
-                  {
-                    intl
-                      .formatMessage({ id: 'wc_cdkey_explain' })
-                      .split('\\n')[0]
-                  }
-                </p>
-                <p>
-                  {
-                    intl
-                      .formatMessage({ id: 'wc_cdkey_explain' })
-                      .split('\\n')[1]?.trim()
-                  }
-                </p>
-              </div>
-              <div className="w-48 relative z-10  aspect-square sm:block">
-                <img src={require('@/assets/promo-img.png')} alt="" />
-              </div>
-            </div>
-            <div className="w-full mt-5 flex rounded-xl">
-              <input
-                type="text"
-                className=" w-full bg-black rounded pl-4 focus:outline-none"
-                maxLength={12}
-                ref={cdKeyCodeRef}
-                placeholder={intl.formatMessage({ id: 'wc_cdkey_placeholder' })}
-              />
+        )} */}
+        {/* {tab === 1 && (
+          <> */}
+        <div className="flex h-fit w-full items-center gap-4 px-2 py-2 sm:py-0  bg-[url('@/assets/promo-bg.png')] bg-no-repeat bg-cover sm:pl-28 sm:pr-8 text-sm sm:text-md whitespace-pre-wrap font-semibold">
+          <div className="h-fit w-full grow sm:-mr-20 sm:-ml-16">
+            <p className="text-[16px] mb-2">
+              {intl.formatMessage({ id: 'wc_cdkey_explain' }).split('\\n')[0]}
+            </p>
+            <p>
+              {intl
+                .formatMessage({ id: 'wc_cdkey_explain' })
+                .split('\\n')[1]
+                ?.trim()}
+            </p>
+          </div>
+          <div className="w-48 relative z-10  aspect-square sm:block">
+            <img src={require('@/assets/promo-img.png')} alt="" />
+          </div>
+        </div>
+        <div className="w-full mt-5 flex rounded-xl">
+          <input
+            type="text"
+            className=" w-full bg-black rounded pl-4 focus:outline-none"
+            maxLength={12}
+            ref={cdKeyCodeRef}
+            placeholder={intl.formatMessage({ id: 'wc_cdkey_placeholder' })}
+          />
 
-              <div
-                className="btn btn-purple uppercase px-10"
-                onClick={onGetBenefit}
-              >
-                <FormattedMessage id="text_btn_apply" />
-              </div>
-            </div>
-          </>
-        )}
+          <div
+            className="btn btn-purple uppercase px-10"
+            onClick={onGetBenefit}
+          >
+            <FormattedMessage id="text_btn_apply" />
+          </div>
+        </div>
+        {/* </> */}
+        {/* )} */}
       </Modal.Body>
     </Modal>
   );

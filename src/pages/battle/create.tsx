@@ -125,7 +125,7 @@ export default function Create() {
 
   const increaseBox = (box: API.BoxPageVo) => {
     if (boxLists.length > 19) {
-      toast.error('You can only select up to 20 cases', {
+      toast.error(intl.formatMessage({ id: 'battle_select_limt' }), {
         toastId: 'case_limit',
       });
       return;

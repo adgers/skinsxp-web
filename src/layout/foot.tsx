@@ -6,7 +6,9 @@ export default function Foot() {
   return (
     <footer className="footer p-10 bg-base-300 text-base-content mt-10">
       <div>
-        <span className="footer-title">Services</span>
+        <span className="footer-title">
+          <FormattedMessage id="footer_services" />
+        </span>
         <Link
           className="link link-hover whitespace-nowrap"
           to="/docs/help/52"
@@ -31,7 +33,9 @@ export default function Foot() {
       </div>
 
       <div>
-        <span className="footer-title">Company</span>
+        <span className="footer-title">
+          <FormattedMessage id="footer_company" />
+        </span>
         <Link
           className="link link-hover whitespace-nowrap"
           to="/docs/help/50"
@@ -52,7 +56,9 @@ export default function Foot() {
       </div>
 
       <div>
-        <span className="footer-title">Social</span>
+        <span className="footer-title">
+          <FormattedMessage id="footer_social" />
+        </span>
         <div className="grid grid-flow-col gap-4">
           <a>
             <svg

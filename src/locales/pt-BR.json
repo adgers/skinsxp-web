@@ -168,7 +168,7 @@
   "main_tab_arena": "Batalhas",
   "main_tab_info": "Informações",
   "main_tab_account": "Conta",
-  "main_tab_shop": "Store",
+  "main_tab_shop": "Shop",
   "empty_page_main_txt": "Sem dados",
   "empty_page_coming_soon": "Em breve",
   "battle_fairness_verify": "Provavelmente Justo",
@@ -368,5 +368,10 @@
   "login_agree": "Eu concordo com os",
   "login_to_kx": "faça login para abrir o caso",
   "bag_all": "TODOS",
-  "text_sell": "vender"
+  "text_sell": "vender",
+  "footer_services": "Serviços",
+  "footer_company": "Empresa",
+  "footer_social": "Social",
+  "all_drop": "tudo cai",
+  "battle_select_limt": "você só pode selecionar até 20 casos"
 }

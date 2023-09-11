@@ -1,6 +1,6 @@
 {
   "login": "Login",
-  "home_spsc": "Store",
+  "home_spsc": "Shop",
   "roll_room_title": "Giveaways",
   "roll_room_gftj": "Recommend",
   "roll_room_zbfl": "KOL",
@@ -72,7 +72,7 @@
   "register_qydbjsxy": "Please read and accept the 'Terms of Sevice' and 'Privacy Policy'.",
   "not_login_title": "You`re not logged in",
   "not_login_subtitle": "You have to be logged.",
-  "home_item_spsc": "Store",
+  "home_item_spsc": "Shop",
   "home_item_roll": "Giveaways",
   "home_item_flzx": "Benefits",
   "home_item_hydj": "VIP",
@@ -163,12 +163,12 @@
   "item_txz": "Passport",
   "item_lw": "Gift",
   "title_arena_rank": "Rank",
-  "main_tab_home": "Case",
+  "main_tab_home": "CASE",
   "main_tab_dream": "Dream",
   "main_tab_arena": "Battles",
   "main_tab_info": "Info",
   "main_tab_account": "Account",
-  "main_tab_shop": "Store",
+  "main_tab_shop": "Shop",
   "empty_page_main_txt": "No Data",
   "empty_page_coming_soon": "Coming Soon",
   "battle_fairness_verify": "Provably Fair",
@@ -368,5 +368,10 @@
   "login_agree": "I agree to the",
   "login_to_kx": "Login to Open Case",
   "bag_all": "ALL",
-  "text_sell": "SELL"
+  "text_sell": "sell",
+  "footer_services": "Services",
+  "footer_company": "Company",
+  "footer_social": "Social",
+  "all_drop": "all drop",
+  "battle_select_limt": "you can only select up to 20 cases"
 }

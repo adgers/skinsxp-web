@@ -18,7 +18,7 @@ import { toast } from 'react-toastify';
 configResponsive({
   large: 1024,
 });
-enum PromoCodeState {
+enum PromoCodeState { // 只要有邀请码 就不能编辑了
   USING = 1, // 正在使用
   EDIT = 2, // 正在编辑
   VERIFY = 3, // 正在校验
@@ -37,7 +37,6 @@ export default function Deposit() {
   const [promoCodeState, setPromoCodeState] = useState<number>(
     PromoCodeState.EDIT,
   );
-  const [inputCode, setInputCode] = useState('');
   const [quantity, setQuantity] = useState(0);
   const { currencyRateVoList, rechargeAmountAllowList, rechargeChannelList } =
     rechargeConfig || {};
@@ -56,7 +55,7 @@ export default function Deposit() {
       toast.error(intl.formatMessage({ id: 'promoteCode_error' }));
       return;
     }
-
+    /* verifying */
     setPromoCodeState(PromoCodeState.VERIFY);
     const ret = await bindInviterUsingPOST({
       invitationCode: code,
@@ -66,6 +65,7 @@ export default function Deposit() {
       getUser();
     }
     if (ret.status === 1) {
+      /* bind code fail , to edit */
       setPromoCodeState(PromoCodeState.EDIT);
     }
   };
@@ -199,8 +199,6 @@ export default function Deposit() {
                 type="text"
                 className="w-full bg-black rounded pl-4 border border-light focus:outline-none h-12"
                 ref={promoCodeRef}
-                onChange={(e) => setInputCode(e?.target?.value)}
-                defaultValue={inputCode}
                 placeholder={intl.formatMessage({ id: 'register_qsryqm' })}
               />
             ) : promoCodeState === PromoCodeState.USING ? (
@@ -222,39 +220,28 @@ export default function Deposit() {
             ) : (
               <div className="flex-1 flex h-full rounded-lg items-center pl-8 bg-light/20 text-sm">
                 <LoadingOutlined className="mr-2" />
-                <div className="text-white/50 mr-2">{inputCode}</div>
+                <div className="text-white/50 mr-2">
+                  {promoCodeRef?.current?.value}
+                </div>
               </div>
             )}
 
             <div
-              className="btn btn-green uppercase px-10"
+              className={`btn btn-green uppercase px-10 ${
+                userInfo?.inviterPromotionCode ? 'btn-disabled' : ''
+              }`}
               onClick={() => {
                 switch (promoCodeState) {
-                  case PromoCodeState.USING:
-                    setPromoCodeState(PromoCodeState.EDIT);
-                    break;
                   case PromoCodeState.EDIT:
-                    if (inputCode) {
-                      onBindPromoCode();
-                    } else {
-                      if (userInfo?.inviterPromotionCode) {
-                        setPromoCodeState(PromoCodeState.USING);
-                        setInputCode('');
-                      }
-                    }
+                    onBindPromoCode();
                     break;
                   case PromoCodeState.VERIFY:
+                  case PromoCodeState.USING:
                     break;
                 }
               }}
             >
-              {promoCodeState === PromoCodeState.USING ? (
-                <FormattedMessage id="edit" />
-              ) : !!inputCode?.trim() ? (
-                <FormattedMessage id="text_btn_apply" />
-              ) : (
-                <FormattedMessage id="cancel" />
-              )}
+              <FormattedMessage id="text_btn_apply" />
             </div>
           </div>
           <div className="grid grid-cols-3 gap-3 md:gap-6">
@@ -327,7 +314,6 @@ export default function Deposit() {
     rechageInfo,
     selectChannel,
     promoCodeState,
-    inputCode,
   ]);
 
   useEffect(() => {
@@ -367,8 +353,8 @@ export default function Deposit() {
 
   useEffect(() => {
     if (!!userInfo?.inviterPromotionCode) {
+      /* has promoCode, can not edit */
       setPromoCodeState(PromoCodeState.USING);
-      setInputCode('');
     }
   }, [userInfo?.inviterPromotionCode]);
 

@@ -1,6 +1,6 @@
 import { IconFont } from '@/components/icons';
 import TopCard from '@/components/weaponCard/topCard';
-import { Link, useModel } from '@umijs/max';
+import { FormattedMessage, Link, useModel } from '@umijs/max';
 
 export default function OpenHistory() {
   const { recentBox, setIsTop, isTop } = useModel('socket');
@@ -16,9 +16,9 @@ export default function OpenHistory() {
             setIsTop(true);
           }}
         >
-          <IconFont type="icon-a-bestdrop" className='text-xs md:text-base'/>
+          <IconFont type="icon-a-bestdrop" className="text-xs md:text-base" />
           <span className="whitespace-nowrap text-center text-xs transform scale-75 font-semibold uppercase leading-none hidden md:block">
-            best drop
+            <FormattedMessage id="best_drop" />
           </span>
         </div>
         <div
@@ -29,31 +29,31 @@ export default function OpenHistory() {
             setIsTop(false);
           }}
         >
-          <IconFont type="icon-a-alldrop" className='text-xs md:text-base'/>
+          <IconFont type="icon-a-alldrop" className="text-xs md:text-base" />
           <span className="whitespace-nowrap text-center text-xs transform scale-75 font-semibold uppercase leading-none hidden md:block">
-            all drop
+            <FormattedMessage id="all_drop" />
           </span>
         </div>
       </div>
       <div className="flex gap-[5px]">
         {recentBox.length > 0
           ? recentBox?.map((item) => {
-            let url = `/case/${item.sourceId}`;
-            if (item.sourceType === 22) {
-              url = `/dream`;
-            } else if (item.sourceType === 23) {
-              url = `/battle/${item.sourceName}`;
-            }
-            return (
-              <Link
-                className="will-change-transform top-wrapper"
-                key={item.id}
-                to={url}
-              >
-                <TopCard data={item} />
-              </Link>
-            );
-          })
+              let url = `/case/${item.sourceId}`;
+              if (item.sourceType === 22) {
+                url = `/dream`;
+              } else if (item.sourceType === 23) {
+                url = `/battle/${item.sourceName}`;
+              }
+              return (
+                <Link
+                  className="will-change-transform top-wrapper"
+                  key={item.id}
+                  to={url}
+                >
+                  <TopCard data={item} />
+                </Link>
+              );
+            })
           : Array.from({ length: 20 }).map((_, i) => (
               <div className="flex-shrink-0" key={i}>
                 <TopCard loading />

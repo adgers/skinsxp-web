@@ -150,7 +150,7 @@ export default function PromotePage() {
             <div className="mb-4">
               <FormattedMessage id="promoteCode_myurl" />
             </div>
-            <div className='h-12'>
+            <div className="h-12">
               <span className="text-green text-sm">{`${window.location.origin}?promoteCode=${promoteCode}`}</span>
               <CopyToClipboard
                 text={`${window.location.origin}?promoteCode=${promoteCode}`}
@@ -222,7 +222,9 @@ export default function PromotePage() {
           </div>
         </div>
       </div>
-      <div className="box-title mt-10">Participants</div>
+      <div className="box-title mt-10 uppercase">
+        <FormattedMessage id="promote_user" />
+      </div>
       <ConfigProvider
         theme={{
           algorithm: theme.darkAlgorithm,

@@ -368,5 +368,10 @@
   "login_agree": "我同意",
   "login_to_kx": "登录后开箱",
   "bag_all": "全部",
-  "text_sell": "出售"
+  "text_sell": "出售",
+  "footer_services": "服务",
+  "footer_company": "公司",
+  "footer_social": "社交",
+  "all_drop": "全部的掉落",
+  "battle_select_limt": "您最多只能选择20个箱子"
 }
