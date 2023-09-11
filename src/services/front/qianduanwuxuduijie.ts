@@ -19,6 +19,21 @@ export async function adaPayCallbackUsingPOST(
   });
 }
 
+/** aiPayCallback POST /api/callback/aiPayCallback */
+export async function aiPayCallbackUsingPOST(
+  body: Record<string, any>,
+  options?: { [key: string]: any },
+) {
+  return request<string>('/api/callback/aiPayCallback', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    data: body,
+    ...(options || {}),
+  });
+}
+
 /** unionPayCallback POST /api/callback/fuxinPayCallback */
 export async function unionPayCallbackUsingPOST(
   body: API.FuxinCallback,
@@ -48,6 +63,21 @@ export async function jjkCallbackUsingPOST(
     },
     params: {
       ...params,
+    },
+    data: body,
+    ...(options || {}),
+  });
+}
+
+/** skinsBackCallback POST /api/callback/skinsBackCallback */
+export async function skinsBackCallbackUsingPOST(
+  body: Record<string, any>,
+  options?: { [key: string]: any },
+) {
+  return request<string>('/api/callback/skinsBackCallback', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
     },
     data: body,
     ...(options || {}),

@@ -70,21 +70,6 @@ export async function customerDetailUsingGET(options?: { [key: string]: any }) {
   });
 }
 
-/** 批量使用饰品兑换代币 这里ids为饰品id，多个饰品以逗号(,)隔开 POST /api/personalCenter/exchangeOrnamentToQuantity */
-export async function exchangeOrnamentToQuantityUsingPOST(
-  // 叠加生成的Param类型 (非body参数swagger默认没有生成对象)
-  params: API.exchangeOrnamentToQuantityUsingPOSTParams,
-  options?: { [key: string]: any },
-) {
-  return request<API.ResultDataBoolean_>('/api/personalCenter/exchangeOrnamentToQuantity', {
-    method: 'POST',
-    params: {
-      ...params,
-    },
-    ...(options || {}),
-  });
-}
-
 /** 批量使用兑换券兑换代币 这里ids为兑换券id，多个兑换券以逗号(,)隔开 POST /api/personalCenter/exchangeQuantity */
 export async function exchangeQuantityUsingPOST1(
   // 叠加生成的Param类型 (非body参数swagger默认没有生成对象)

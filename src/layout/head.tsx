@@ -15,7 +15,7 @@ import {
   useLocation,
   useModel,
 } from '@umijs/max';
-import { Fragment } from 'react';
+import { Fragment, useEffect } from 'react';
 import { Button, Navbar } from 'react-daisyui';
 import './index.less';
 import OpenHistory from './open-history';
@@ -26,6 +26,8 @@ import cnFlag from '@/assets/flags/cn.svg';
 import enFlag from '@/assets/flags/en.svg';
 import { IconFont } from '@/components/icons';
 import LoginConfirm from '@/pages/login/loginConfirm';
+import { getLangUsingGET } from '@/services/front/qiantaishouquanxiangguan';
+import { useRequest } from 'ahooks';
 import CountUp from 'react-countup';
 
 export default function Header() {
@@ -119,7 +121,7 @@ export default function Header() {
       link: '/profile/record',
       icon: 'icon-history',
     },
-    ...headExt
+    ...headExt,
   ];
 
   const customLinks = [
@@ -235,7 +237,7 @@ export default function Header() {
       <Navbar className="p-3 bg-black">
         <div className="flex-1">
           <Link to={'/'} className=" ml-2 w-[100px] sm:w-[164px]">
-            <img src={require('@/assets/wg-logo.png')}/>
+            <img src={require('@/assets/wg-logo.png')} />
           </Link>
 
           <Menu as="div" className="relative ml-2">

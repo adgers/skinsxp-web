@@ -32,6 +32,14 @@ export async function findpwdUsingPOST(
   });
 }
 
+/** 获取用户环境语言 GET /api/auth/lang */
+export async function getLangUsingGET(options?: { [key: string]: any }) {
+  return request<API.ResultDataString_>('/api/auth/lang', {
+    method: 'GET',
+    ...(options || {}),
+  });
+}
+
 /** 登录 type:0->手机登录,1->邮箱登录 POST /api/auth/login */
 export async function loginUsingPOST(
   // 叠加生成的Param类型 (非body参数swagger默认没有生成对象)

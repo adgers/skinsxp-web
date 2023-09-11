@@ -67,6 +67,7 @@ declare namespace API {
     giftPrice?: number;
     id?: number;
     sort?: number;
+    voucherId?: number;
   };
 
   type BattleBoxRecordVo = {
@@ -85,6 +86,7 @@ declare namespace API {
     round?: number;
     sort?: number;
     verifyId?: number;
+    voucherId?: number;
   };
 
   type BattleCustomerGainVo = {
@@ -380,6 +382,7 @@ declare namespace API {
     inviterId?: number;
     inviterIdHeadPic?: string;
     inviterNickname?: string;
+    inviterPromotionCode?: string;
     lastLoginIp?: string;
     lastLoginLocation?: string;
     lastLoginTime?: string;
@@ -393,7 +396,6 @@ declare namespace API {
     totalCheckInTimes?: number;
     tradeUrl?: string;
     verified?: boolean;
-    inviterPromotionCode?: string;
   };
 
   type CycleRedPacketVo = {
@@ -421,11 +423,6 @@ declare namespace API {
   type detailUsingGETParams = {
     /** giveawayId */
     giveawayId: number;
-  };
-
-  type exchangeOrnamentToQuantityUsingPOSTParams = {
-    /** ids */
-    ids: number[];
   };
 
   type exchangeQuantityUsingPOST1Params = {
@@ -1055,6 +1052,7 @@ declare namespace API {
     sourceType?: string;
     state?: number;
     stateStr?: string;
+    subSourceId?: string;
     targetType?: number;
     verifyId?: string;
     voucherName?: string;
@@ -1405,11 +1403,12 @@ declare namespace API {
     headPic?: string;
     id?: number;
     nickname?: string;
+    publicHash?: string;
     recoveryPrice?: number;
-    voucherName?: string;
     rollCode?: number;
-    verfiyId: string;
     round?: number;
+    verifyId?: number;
+    voucherName?: string;
   };
 
   type recentDropUsingGETParams = {
@@ -1436,18 +1435,20 @@ declare namespace API {
   };
 
   type RechargeChannelVo = {
+    bonusRate?: number;
     channelName?: string;
     channelType?: number;
     createTime?: string;
     currencyCode?: string;
+    currencyCodeList?: string[];
     delFlag?: boolean;
     id?: number;
+    logo?: string;
     modifyTime?: string;
     rechargeConfigId?: number;
     remark?: string;
     state?: number;
     ua?: string;
-    currencyCodeList?: string[]
   };
 
   type RechargeConfigVo = {
@@ -2212,6 +2213,7 @@ declare namespace API {
     sourceId?: string;
     sourceType?: string;
     state?: number;
+    subSourceId?: string;
     targetType?: number;
     voucherName?: string;
     zbtAcceptablePrice?: number;
