@@ -1,7 +1,8 @@
 import { IconFont } from '@/components/icons';
 import { exchangeQuantityUsingPOST } from '@/services/front/kaixiangxiangguan';
-import { isSafari, numberFixed, parseName } from '@/utils';
-import { FormattedMessage, useIntl, useModel } from '@umijs/max';
+import { numberFixed, parseName } from '@/utils';
+import { FormattedMessage, useModel } from '@umijs/max';
+import { Howl } from 'howler';
 import { useEffect, useMemo, useState } from 'react';
 import CountUp from 'react-countup';
 import { Button, Modal } from 'react-daisyui';
@@ -19,12 +20,12 @@ export default function Result({
   const [totalPrice, setTotalPrice] = useState(0);
   const [saleLoading, setSaleLoading] = useState(false);
   const { voice } = useModel('sys');
-  const [showEnded, setShowEnded] = useState(false);
-
-  const intl = useIntl();
 
   const audio = useMemo(
-    () => new Audio(require('@/assets/audio/item.wav')),
+    () =>
+      new Howl({
+        src: [require('@/assets/audio/exchange.mp3')],
+      }),
     [],
   );
 
@@ -41,30 +42,9 @@ export default function Result({
     setTotalPrice(numberFixed(total, 2));
   };
 
-  const putResults = async () => {
-    //间隔500ms将results中的数据放入openResults中
-    for (let i = 0; i < results.length; i++) {
-      const item = results[i];
-      await new Promise((resolve) => {
-        setTimeout(() => {
-          setOpenResults((prev) => [...prev, item]);
-
-          if (voice && !isSafari()) {
-            audio.currentTime = 0;
-            audio.play();
-          }
-          resolve(null);
-        }, 1000);
-      });
-    }
-  };
-
   useEffect(() => {
     if (show) {
-      setOpenResults([]);
-      putResults().then(() => {
-        setShowEnded(true);
-      });
+      setOpenResults(results);
     }
   }, [show]);
 
@@ -76,7 +56,6 @@ export default function Result({
     setSaleLoading(false);
     if (ret.status === 0) {
       if (voice) {
-        const audio = new Audio(require('@/assets/audio/exchange.mp3'));
         audio.play();
       }
       onClose();
@@ -91,7 +70,6 @@ export default function Result({
     setSaleLoading(false);
     if (ret.status === 0) {
       if (voice) {
-        const audio = new Audio(require('@/assets/audio/exchange.mp3'));
         audio.play();
       }
       const lResults = [...openResults];
@@ -131,7 +109,7 @@ export default function Result({
         <div className="flex flex-wrap items-center gap-x-2 gap-y-4 justify-center min-h-[200px]">
           {openResults?.map((item, i: number) => (
             <div
-              className="flex flex-col gap-1 w-[140px] sm:w-[180px] animate__animated animate__flipInX relative items-center justify-center"
+              className="flex flex-col gap-1 w-[140px] sm:w-[180px] animate__animated animate__fadeIn relative items-center justify-center"
               key={i}
             >
               <div
@@ -180,28 +158,26 @@ export default function Result({
             </div>
           ))}
         </div>
-        {showEnded && (
-          <div className="flex justify-center mt-6 gap-4">
-            <button onClick={onClose} className="btn-purple" type="button">
-              <FormattedMessage id="open_box_receive" />
-            </button>
+        <div className="flex justify-center mt-6 gap-4">
+          <button onClick={onClose} className="btn-purple" type="button">
+            <FormattedMessage id="open_box_receive" />
+          </button>
 
-            <Button
-              className="btn-green sm:w-full max-w-xs"
-              onClick={onSaleAll}
-              loading={saleLoading}
-            >
-              <FormattedMessage id="open_box_sell_all" />
-              <IconFont type="icon-coin" />
-              <CountUp
-                end={totalPrice}
-                duration={0.3}
-                decimals={2}
-                separator=""
-              />
-            </Button>
-          </div>
-        )}
+          <Button
+            className="btn-green sm:w-full max-w-xs"
+            onClick={onSaleAll}
+            loading={saleLoading}
+          >
+            <FormattedMessage id="open_box_sell_all" />
+            <IconFont type="icon-coin" />
+            <CountUp
+              end={totalPrice}
+              duration={0.3}
+              decimals={2}
+              separator=""
+            />
+          </Button>
+        </div>
       </Modal.Body>
     </Modal>
   );

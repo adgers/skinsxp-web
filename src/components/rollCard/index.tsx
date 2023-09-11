@@ -79,7 +79,7 @@ export default React.memo(function RollCard({
           {name && parseName(name)?.[2]}
         </div>
       </div>
-      <div className="mx-5 my-2 flex justify-between items-center text-sm">
+      <div className="mx-5 my-2 flex justify-between items-center text-sm capitalize">
         <div>
           <FormattedMessage id="room_giveaways_prizes" />: {data?.giftCount}
         </div>

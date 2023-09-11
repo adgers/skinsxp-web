@@ -18,7 +18,7 @@ export default function ProvablyFair() {
   }, []);
 
   return (
-    <div className="w-full">
+    <div className="w-full px-3">
       <div className="custom-tab flex mt-4 text-white justify-center border-b border-[#45444B] w-full h-[68px] relative">
         {tabLinks.map((item, index) => {
           const isActive = location.pathname.startsWith(item.link);
@@ -40,7 +40,7 @@ export default function ProvablyFair() {
         })}
       </div>
 
-      <div className="w-full">
+      <div className="w-full py-3">
         <Outlet />
       </div>
     </div>

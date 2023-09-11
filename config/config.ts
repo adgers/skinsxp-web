@@ -68,7 +68,7 @@ export default defineConfig({
           component: 'battle/room',
         },
         {
-          path: 'shop',
+          path: 'store',
           component: 'shop',
         },
         {

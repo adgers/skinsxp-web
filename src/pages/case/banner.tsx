@@ -10,7 +10,7 @@ export default function Banner() {
   const { data } = useRequest(() => getBannerListUsingGET({ topN: 10 }));
 
   return (
-    <div className='my-4 sm:my-6'>
+    <div className='my-4 h-[150px] sm:h-[330px]'>
       {data && data?.length > 0 && (
         <Swiper
           centeredSlides={true}
@@ -22,13 +22,13 @@ export default function Banner() {
             clickable: true,
           }}
           modules={[Pagination, Autoplay]}
-          className="w-full flex items-center"
+          className="w-full h-full flex items-center"
         >
           {data?.map((t, i) => (
             <SwiperSlide key={i}>
               <img
                 src={t.image}
-                className="w-full h-[150px] sm:h-[330px] object-cover md:object-contain"
+                className="w-full h-full object-cover"
               />
             </SwiperSlide>
           ))}

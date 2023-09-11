@@ -39,7 +39,7 @@ export default function Case() {
   const renderBox = (t: API.BoxThemeListVo, index: number) => {
     return (
       <div className="px-4" key={index}>
-        <div className="relative mb-10 flex border-b border-light">
+        <div className="relative mb-4 sm:mb-10 flex border-b border-light">
           <div className="flex w-1/6 items-end sm:w-1/3"></div>
           <div className="flex w-4/6 items-center sm:w-1/3">
             <h2
@@ -95,7 +95,7 @@ export default function Case() {
 
       {battleList && battleList.length > 0 && (
         <div className="px-4">
-          <div className="relative mb-10 flex border-b border-light">
+          <div className="relative mb-4 sm:mb-10 flex border-b border-light">
             <div className="flex w-1/6 items-end sm:w-1/3"></div>
             <div className="flex w-4/6 items-center sm:w-1/3">
               <h2

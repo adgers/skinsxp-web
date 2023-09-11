@@ -261,7 +261,7 @@ export default () => {
           })}
         </div>
         {!!data?.totalRows && data?.totalRows > pageSize && (
-          <div className="flex justify-center items-center">
+          <div className="flex justify-center items-center mt-8 sm:mt-5">
             <Pagination
               current={current}
               total={data?.totalRows}

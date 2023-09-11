@@ -47,8 +47,8 @@ export default function CaseModal({
   };
 
   const increaseBox = (box: API.BoxPageVo) => {
-    if (boxLists.length > 9) {
-      toast.error('You can only select up to 10 cases', {
+    if (boxLists.length > 19) {
+      toast.error('You can only select up to 20 cases', {
         toastId: 'case_limit',
       });
       return;
@@ -135,6 +135,7 @@ export default function CaseModal({
                           type="text"
                           className="input w-8 h-8 px-2 bg-transparent p-0 text-center text-xs font-semibold text-white outline-none focus:outline-none border border-light rounded-none"
                           value={count}
+                          readOnly
                         ></input>
                         <button
                           className="btn btn-sm bg-light font-bold text-white rounded-none border-0"

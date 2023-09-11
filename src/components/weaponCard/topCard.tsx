@@ -35,7 +35,7 @@ export default React.memo(function TopCard({ data, loading }: TopCardProps) {
   }
 
   const getTopIcon = () => {
-    let topIcon = <IconFont type="icon-cases" />;
+    let topIcon = <IconFont type="icon-cases1" />;
 
     if (data?.sourceType === 22) {
       topIcon = <IconFont type="icon-zhuimeng" />;

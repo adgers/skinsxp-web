@@ -18,9 +18,9 @@ export function getApiDomain() {
     return 'http://127.0.0.1:9999';
     return 'https://api.wgskins.com';
   } else if (location.href.indexOf('wgskins.com') > -1) {
-    return '//api.wgskins.com';
+    return 'https://api.wgskins.com';
   } else {
-    return '//api.wgskins.com';
+    return 'https://api.wgskins.com';
   }
 }
 
@@ -43,9 +43,9 @@ export function getImgHost() {
     // return 'http://muskins-test.oss-cn-hangzhou.aliyuncs.com/root/image/';
     return 'https://img.wgskins.com/root/image/';
   } else if (location.href.indexOf('wgskins.com') > -1) {
-    return '//img.wgskins.com/root/image/';
+    return 'https://img.wgskins.com/root/image/';
   }
-  return 'http://muskins-test.oss-cn-hangzhou.aliyuncs.com/root/image/';
+  return 'https://img.wgskins.com/root/image/';
 }
 
 export async function logout() {

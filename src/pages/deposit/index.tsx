@@ -38,13 +38,10 @@ export default function Deposit() {
     PromoCodeState.EDIT,
   );
   const [inputCode, setInputCode] = useState('');
-
   const [quantity, setQuantity] = useState(0);
   const { currencyRateVoList, rechargeAmountAllowList, rechargeChannelList } =
     rechargeConfig || {};
-
   const [payOrderId, setPayOrderId] = useState<string>();
-
   const responsive = useResponsive();
   const intl = useIntl();
   const promoCodeRef = useRef<HTMLInputElement>(null);
@@ -200,7 +197,7 @@ export default function Deposit() {
             {promoCodeState === PromoCodeState.EDIT ? (
               <input
                 type="text"
-                className="h-full w-full bg-black rounded  pl-4 border border-light focus:outline-none"
+                className="w-full bg-black rounded pl-4 border border-light focus:outline-none h-12"
                 ref={promoCodeRef}
                 onChange={(e) => setInputCode(e?.target?.value)}
                 defaultValue={inputCode}

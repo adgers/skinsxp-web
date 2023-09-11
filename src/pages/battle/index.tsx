@@ -174,7 +174,7 @@ export default function BattlePage() {
             </div>
           </div>
         </div>
-        <div className="battle-ranks mt-3 sm:mt-5 bg-black">
+        <div className="battle-ranks mt-3 sm:mt-4 bg-black">
           <div className="grid grid-cols-2 w-full">
             <div
               className={`h-9 text-sm  ${

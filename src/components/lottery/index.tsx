@@ -1,5 +1,6 @@
-import { isSafari, parseName, sleep } from '@/utils';
+import { parseName, sleep } from '@/utils';
 import { animated, easings, useSpring } from '@react-spring/web';
+import { Howl } from 'howler';
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import './index.less';
 
@@ -17,6 +18,7 @@ const Lottery = ({
   showName = false,
   voice = false,
   showLogo = true,
+  itemAudioOpen = true,
 }: {
   giftList: API.BoxGiftListVo[];
   lotteryWin?: API.BattleBoxGainVo;
@@ -31,17 +33,46 @@ const Lottery = ({
   showName?: boolean;
   voice?: boolean;
   showLogo?: boolean;
+  itemAudioOpen?: boolean;
 }) => {
   const baseNum = 36;
   const winLotteryIndex = 30;
-  const duration = fast ? 150 * winLotteryIndex : 250 * winLotteryIndex;
+  const duration = fast ? 150 * winLotteryIndex : 300 * winLotteryIndex;
   const [list, setList] = useState<API.BoxGiftListVo[]>([]);
   const prevMoveRef = useRef(0);
 
   const audio = useMemo(
-    () => new Audio(require('@/assets/audio/tick.mp3')),
+    // () => new Audio(require('@/assets/audio/tick.mp3')),
+    () =>
+      new Howl({
+        src: [require('@/assets/audio/tick.mp3')],
+      }),
     [],
   );
+
+  const itemAudio = useMemo(
+    // () => new Audio(require('@/assets/audio/item.wav')),
+    () =>
+      new Howl({
+        src: [require('@/assets/audio/item.wav')],
+      }),
+    [],
+  );
+
+  const playSpinAudio = useCallback(async () => {
+    if (!voice) {
+      return;
+    }
+
+    audio.play();
+  }, []);
+
+  const playItemAudio = useCallback(async () => {
+    if (!voice || !itemAudioOpen) {
+      return;
+    }
+    itemAudio.play();
+  }, []);
 
   const wrapRef = useRef<HTMLDivElement>(null);
 
@@ -70,6 +101,7 @@ const Lottery = ({
   };
 
   const animateEnd = () => {
+    playItemAudio();
     opacityApi.start({
       from: { opacity: 1 },
       to: { opacity: 0.2 },
@@ -98,6 +130,7 @@ const Lottery = ({
         to: { x: -centerPos },
         config: { duration: 2000 },
         onResolve: () => {
+          playItemAudio();
           scaleApi.start({
             from: { scale: 1 },
             to: { scale: 1.3 },
@@ -134,14 +167,6 @@ const Lottery = ({
     setList(newList);
   };
 
-  const playSpinAudio = useCallback(async () => {
-    if (isSafari()) return;
-
-    await audio.pause();
-    audio.currentTime = 0;
-    await audio.play();
-  }, []);
-
   const goMoveY = () => {
     const boxHeight = boxSize.height;
     let randomHeight;
@@ -166,7 +191,7 @@ const Lottery = ({
         const speed = Math.abs(distanceDelta);
         if (speed > boxHeight - 1) {
           prevMoveRef.current = currentMoveY;
-          if (lotteryIndex === 0 && voice) {
+          if (lotteryIndex === 0) {
             playSpinAudio();
           }
         }
@@ -210,7 +235,7 @@ const Lottery = ({
         //当移动距离超过一个box的宽度时，播放音效
         if (speed > boxWidth - 1) {
           prevMoveRef.current = currentMoveX;
-          if (lotteryIndex === 0 && voice) {
+          if (lotteryIndex === 0) {
             playSpinAudio();
           }
         }
@@ -262,7 +287,7 @@ const Lottery = ({
         {list.map((item: any, index: number) => {
           const isWin = item?.id === lotteryWin?.id;
           const grade = item?.grade ?? item?.giftGrade;
-          const name = parseName(item.giftName);
+          const name = parseName(item?.giftName);
 
           return (
             <animated.div
@@ -292,10 +317,10 @@ const Lottery = ({
                 />
               )}
               {showName && (
-                <div className="absolute bottom-0 left-0 -mb-1 w-full p-2 font-semibold uppercase leading-tight md:p-3">
-                  <div className="truncate text-xs md:text-sm text-center">
+                <div className="absolute bottom-0 left-0 -mb-1 w-full px-1 py-2 sm:px-2 font-semibold uppercase leading-tight md:p-3">
+                  <div className="text-xs md:text-sm text-center">
                     <div className="text-white text-opacity-50">{name[0]}</div>
-                    <div className="text-white">
+                    <div className="text-white truncate">
                       {name[1] && (
                         <span className="text-white/50">({name[1]})</span>
                       )}
