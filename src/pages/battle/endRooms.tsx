@@ -5,6 +5,7 @@ import { LoadingOutlined } from '@ant-design/icons';
 import { history, useModel, useRequest } from '@umijs/max';
 import { Pagination, Spin } from 'antd';
 import { useState } from 'react';
+import BoxDetail from './boxDetail';
 
 export default function EndRooms({
   show,
@@ -16,6 +17,9 @@ export default function EndRooms({
   pageSize?: number;
 }) {
   const [page, setPage] = useState(1);
+  const [boxDetailShow, setBoxDetailShow] = useState(false);
+  const [caseId, setCaseId] = useState(0);
+  const [caseName, setCaseName] = useState('');
 
   const { data: endBattles, loading } = useRequest(
     () => show && getPageUsingGET({ pageSize, page, state: 2, mode }),
@@ -40,6 +44,11 @@ export default function EndRooms({
               onSelect={() => {
                 history.push(`/battle/${t.battleCode}`);
               }}
+              onBoxSelect={(item)=>{
+                setCaseId(item.caseId);
+                setCaseName(item.boxName);
+                setBoxDetailShow(true);
+              }}
             />
           ))}
         </div>
@@ -56,6 +65,14 @@ export default function EndRooms({
             />
           </div>
         )}
+         <BoxDetail
+          caseId={caseId}
+          caseName={caseName}
+          show={boxDetailShow}
+          onClose={() => {
+            setBoxDetailShow(false);
+          }}
+        />
       </div>
     </Spin>
   );

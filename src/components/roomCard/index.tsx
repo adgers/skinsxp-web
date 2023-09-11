@@ -1,22 +1,25 @@
-import { useIntl, FormattedMessage } from '@umijs/max';
-import { memo, useEffect, useState } from 'react';
-import './index.less';
 import { PlusOutlined } from '@ant-design/icons';
+import { FormattedMessage, useIntl } from '@umijs/max';
+import { memo, useEffect, useState } from 'react';
 import { IconFont } from '../icons';
+import './index.less';
 
 interface IBattleBox {
   boxName: string;
   boxImage: string;
   count: number;
+  caseId: number;
 }
 
 const RoomCard = memo(
   ({
     data,
     onSelect,
+    onBoxSelect,
   }: {
     data: API.BattleVo;
     onSelect: () => void;
+    onBoxSelect?: (item: IBattleBox) => void;
     showTag?: boolean;
   }) => {
     const {
@@ -29,11 +32,11 @@ const RoomCard = memo(
     } = data;
 
     const intl = useIntl();
-    const battleStatus = [
-      intl.formatMessage({ id: 'arena_battel_waiting' }),
-      intl.formatMessage({ id: 'arena_battel_ing' }),
-      intl.formatMessage({ id: 'arena_battel_over' }),
-    ];
+    // const battleStatus = [
+    //   intl.formatMessage({ id: 'arena_battel_waiting' }),
+    //   intl.formatMessage({ id: 'arena_battel_ing' }),
+    //   intl.formatMessage({ id: 'arena_battel_over' }),
+    // ];
 
     const battleMode = [
       intl.formatMessage({ id: 'room_mode_oh' }),
@@ -70,6 +73,7 @@ const RoomCard = memo(
           boxName: key,
           boxImage: boxList.find((item) => item.boxName === key)?.boxImage,
           count: value,
+          caseId: boxList.find((item) => item.boxName === key)?.boxId,
         });
       });
       return arr;
@@ -103,8 +107,9 @@ const RoomCard = memo(
           <div className="flex-1 overflow-x-auto hide-scrollbar flex flex-nowrap gap-x-2">
             {boxListArr.map((item, index) => (
               <div
-                className="relative flex h-full w-[64px] md:w-[84px] flex-shrink-0 flex-col items-center overflow-hidden rounded-sm"
+                className="relative flex h-full w-[64px] md:w-[84px] flex-shrink-0 flex-col items-center overflow-hidden rounded-sm cursor-pointer"
                 key={index}
+                onClick={() => onBoxSelect && onBoxSelect(item)}
               >
                 <img
                   src={item.boxImage}

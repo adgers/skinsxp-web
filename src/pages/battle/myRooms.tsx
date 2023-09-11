@@ -5,6 +5,7 @@ import { LoadingOutlined } from '@ant-design/icons';
 import { history, useModel, useRequest } from '@umijs/max';
 import { Pagination, Spin } from 'antd';
 import { useEffect, useState } from 'react';
+import BoxDetail from './boxDetail';
 
 export default function MyRooms({
   show,
@@ -19,6 +20,10 @@ export default function MyRooms({
   const [rooms, setRooms] = useState<API.BattleVo[]>();
   const [page, setPage] = useState(1);
   const [total, setTotal] = useState(0);
+
+  const [boxDetailShow, setBoxDetailShow] = useState(false);
+  const [caseId, setCaseId] = useState(0);
+  const [caseName, setCaseName] = useState('');
 
   const { data: myBattles, loading } = useRequest(
     () =>
@@ -74,6 +79,11 @@ export default function MyRooms({
                 history.push(`/battle/${t.battleCode}`);
               }}
               showTag
+              onBoxSelect={(item) => {
+                setCaseId(item.caseId);
+                setCaseName(item.boxName);
+                setBoxDetailShow(true);
+              }}
             />
           ))}
         </div>
@@ -90,6 +100,14 @@ export default function MyRooms({
             />
           </div>
         )}
+        <BoxDetail
+          caseId={caseId}
+          caseName={caseName}
+          show={boxDetailShow}
+          onClose={() => {
+            setBoxDetailShow(false);
+          }}
+        />
       </div>
     </Spin>
   );
