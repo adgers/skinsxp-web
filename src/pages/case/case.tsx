@@ -3,6 +3,7 @@ import { getBoxListUsingGET } from '@/services/front/kaixiangxiangguan';
 import { isLogin } from '@/utils';
 import { FormattedMessage, history, useIntl, useRequest } from '@umijs/max';
 import { useEffect, useState } from 'react';
+import LazyLoad from 'react-lazyload';
 import { toast } from 'react-toastify';
 import BattleItem from './battleItem';
 import './index.less';
@@ -66,22 +67,24 @@ export default function Case() {
                 history.push(`/case/${v?.id}`);
               }}
             >
-              <img
-                src={v?.boxImage}
-                alt=""
-                className="w-full h-full object-contain rounded-md"
-              />
-              <div className="w-full h-full absolute top-0 left-0">
-                {/* <div className="absolute top-[1.5] left-[1.75] text-green">New !</div> */}
-                <div className="absolute top-[20px] right-0 bg-white/[0.2] rounded-l text-white px-2 py-1 font-num text-sm">
-                  ${v?.openPrice}
-                </div>
-                <div className="absolute bottom-0 left-0 w-full bg-black bg-opacity-50 backdrop-blur-sm py-3 px-2">
-                  <div className="w-full text-white truncate text-center">
-                    {v?.boxName}
+              <LazyLoad offset={200}>
+                <img
+                  src={v?.boxImage}
+                  alt={v.boxName}
+                  className="w-full h-full object-contain rounded-md"
+                />
+                <div className="w-full h-full absolute top-0 left-0">
+                  {/* <div className="absolute top-[1.5] left-[1.75] text-green">New !</div> */}
+                  <div className="absolute top-[20px] right-0 bg-white/[0.2] rounded-l text-white px-2 py-1 font-num text-sm">
+                    ${v?.openPrice}
+                  </div>
+                  <div className="absolute bottom-0 left-0 w-full bg-black bg-opacity-50 backdrop-blur-sm py-3 px-2">
+                    <div className="w-full text-white truncate text-center">
+                      {v?.boxName}
+                    </div>
                   </div>
                 </div>
-              </div>
+              </LazyLoad>
             </div>
           ))}
         </div>

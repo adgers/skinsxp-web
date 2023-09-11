@@ -6,6 +6,7 @@ import { FormattedMessage, history, useModel, useRequest } from '@umijs/max';
 import { Spin } from 'antd';
 import { useEffect, useState } from 'react';
 import { Button } from 'react-daisyui';
+import BoxDetail from './boxDetail';
 
 export default function CurrentRooms({
   show,
@@ -17,6 +18,10 @@ export default function CurrentRooms({
   const { battleRoomCreate, battleState } = useModel('socket');
   const [rooms, setRooms] = useState<API.BattleVo[]>();
   const [pageSize, setPageSize] = useState(12);
+
+  const [boxDetailShow, setBoxDetailShow] = useState(false);
+  const [caseId, setCaseId] = useState(0);
+  const [caseName, setCaseName] = useState('');
 
   const {
     data: currentBattles,
@@ -89,6 +94,11 @@ export default function CurrentRooms({
               onSelect={() => {
                 history.push(`/battle/${t.battleCode}`);
               }}
+              onBoxSelect={(item)=>{
+                setCaseId(item.caseId);
+                setCaseName(item.boxName);
+                setBoxDetailShow(true);
+              }}
             />
           ))}
         </div>
@@ -105,6 +115,15 @@ export default function CurrentRooms({
               </Button>
             </div>
           )}
+
+        <BoxDetail
+          caseId={caseId}
+          caseName={caseName}
+          show={boxDetailShow}
+          onClose={() => {
+            setBoxDetailShow(false);
+          }}
+        />
       </div>
     </Spin>
   );
