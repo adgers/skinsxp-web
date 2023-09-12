@@ -294,15 +294,19 @@ export default function Deposit() {
                         {selectCurrency?.symbol}
                         {numberFixed((selectCurrency?.rate || 0) * quantity, 2)}
                       </span>
-                      &nbsp;+&nbsp;
-                      <span className="text-purple">
-                        <IconFont type="icon-coin" className="mr-1" />
-                        {numberFixed(
-                          (Number(quantity) *
-                            Number(rechageInfo?.rechargeDiscount)) /
-                            100,
-                        )}
-                      </span>
+                      {selectChannel?.displayType === DisplayType.DEFAULT && (
+                        <>
+                          &nbsp;+&nbsp;
+                          <span className="text-purple">
+                            <IconFont type="icon-coin" className="mr-1" />
+                            {numberFixed(
+                              (Number(quantity) *
+                                Number(rechageInfo?.rechargeDiscount)) /
+                                100,
+                            )}
+                          </span>
+                        </>
+                      )}
                     </div>
                   </div>
                 </div>
