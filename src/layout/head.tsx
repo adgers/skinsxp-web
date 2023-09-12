@@ -2,8 +2,10 @@ import FindPwd from '@/components/account/findPwd';
 import Login from '@/components/account/login';
 import MobileLogin from '@/components/account/mobileLogin';
 import Register from '@/components/account/register';
+import { IconFont } from '@/components/icons';
 import Benefit from '@/pages/benefit';
-import { logout, numberFixed } from '@/utils';
+import LoginConfirm from '@/pages/login/loginConfirm';
+import { langs, logout, numberFixed } from '@/utils';
 import { MenuOutlined, PlusOutlined } from '@ant-design/icons';
 import { Menu, Transition } from '@headlessui/react';
 import {
@@ -15,20 +17,12 @@ import {
   useLocation,
   useModel,
 } from '@umijs/max';
-import { Fragment, useEffect } from 'react';
+import { Fragment } from 'react';
+import CountUp from 'react-countup';
 import { Button, Navbar } from 'react-daisyui';
 import './index.less';
 import OpenHistory from './open-history';
 import Placard from './placard';
-
-import brFlag from '@/assets/flags/br.svg';
-import cnFlag from '@/assets/flags/cn.svg';
-import enFlag from '@/assets/flags/en.svg';
-import { IconFont } from '@/components/icons';
-import LoginConfirm from '@/pages/login/loginConfirm';
-import { getLangUsingGET } from '@/services/front/qiantaishouquanxiangguan';
-import { useRequest } from 'ahooks';
-import CountUp from 'react-countup';
 
 export default function Header() {
   const {
@@ -60,24 +54,6 @@ export default function Header() {
   const changeConfirmLocale = (val: string) => {
     setLocale(val);
   };
-
-  const langs = [
-    {
-      title: 'EN',
-      value: 'en-US',
-      flag: enFlag,
-    },
-    {
-      title: 'BR',
-      value: 'pt-BR',
-      flag: brFlag,
-    },
-    {
-      title: 'HK',
-      value: 'zh-TW',
-      flag: cnFlag,
-    },
-  ];
 
   const headLinks = [
     {
@@ -295,8 +271,8 @@ export default function Header() {
               className="px-3 py-2 uppercase transition-colors font-semibold duration-200 text-white hover:text-green text-sm rounded-md cursor-pointer"
               onClick={showBenefit}
             >
-              <IconFont type="icon-key" className="mr-1" />
-              <FormattedMessage id="wc_cdkey_title" />
+              <IconFont type="icon-promocode" className="mr-1" />
+              <FormattedMessage id="mine_fllq" />
             </div>
           </div>
         </div>

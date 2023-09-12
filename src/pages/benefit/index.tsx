@@ -41,23 +41,23 @@ export default function Benefit() {
     }
   };
 
-  const onBindPromoCode = async () => {
-    const code = promoCodeRef?.current?.value;
-    if (!code) return;
+  // const onBindPromoCode = async () => {
+  //   const code = promoCodeRef?.current?.value;
+  //   if (!code) return;
 
-    if (/^[0-9a-zA-Z]{6,15}$/g.test(code) === false) {
-      toast.error(intl.formatMessage({ id: 'promoteCode_error' }));
-      return;
-    }
+  //   if (/^[0-9a-zA-Z]{6,15}$/g.test(code) === false) {
+  //     toast.error(intl.formatMessage({ id: 'promoteCode_error' }));
+  //     return;
+  //   }
 
-    const ret = await bindInviterUsingPOST({
-      invitationCode: code,
-    });
-    if (ret.status === 0) {
-      toast.success(intl.formatMessage({ id: 'mine_xgcg' }));
-      getUser();
-    }
-  };
+  //   const ret = await bindInviterUsingPOST({
+  //     invitationCode: code,
+  //   });
+  //   if (ret.status === 0) {
+  //     toast.success(intl.formatMessage({ id: 'mine_xgcg' }));
+  //     getUser();
+  //   }
+  // };
 
   return (
     <Modal
@@ -73,9 +73,9 @@ export default function Benefit() {
       >
         ✕
       </Button>
-      <Modal.Header className="mt-2 mb-2 text-center text-sm sm:text-lg">
+      {/* <Modal.Header className="mt-2 mb-2 text-center text-sm sm:text-lg">
         <div className="flex w-full justify-center gap-6 h-14 items-center rounded-t-xl">
-          {/* <div
+          <div
             className={`w-full h-full cursor-pointer flex items-center justify-center rounded ${
               tab === 0 ? 'bg-purple/[0.3] text-white' : 'bg-[#23232D] hover:'
             }`}
@@ -84,7 +84,7 @@ export default function Benefit() {
             <span className="uppercase font-semibold">
               <FormattedMessage id="benefit_promote_code" />
             </span>
-          </div> */}
+          </div>
           <div
             className={`w-full h-full tab-item flex items-center justify-center rounded`}
             onClick={() => setTab(1)}
@@ -94,7 +94,7 @@ export default function Benefit() {
             </span>
           </div>
         </div>
-      </Modal.Header>
+      </Modal.Header> */}
       <Modal.Body className="w-full flex flex-col items-center mt-5">
         {/* {tab === 0 && (
           <>

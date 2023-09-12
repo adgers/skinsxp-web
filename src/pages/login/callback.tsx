@@ -5,18 +5,26 @@ import { useEffect } from 'react';
 
 export default function LoginCallback() {
   const { getUser } = useModel('user');
+
   const steamLogin = async () => {
+    const urlParams = new URL(window.location.href).searchParams;
+    let query = location.href.split('?')[1];
+
+    const queryStr = urlParams.get('queryStr') || '{}';
+    const queryStrObj = JSON.parse(queryStr);
+
+    query += '&'+ new URLSearchParams(queryStrObj).toString();
+
     const ret = await steamSignUpUsingGET({
-      query: location.href.split('?')[1],
+      query: query
     });
     if (ret.status === 0) {
       if (ret.data?.token) {
         localStorage.setItem('token', ret.data.token);
       }
 
-      getUser();
-      const urlParams = new URL(window.location.href).searchParams;
-      history.push(urlParams.get('redirect') || '/');
+      getUser(); 
+      history.push(queryStrObj.redirectUrl || '/');
     } else {
       history.push('/login');
     }

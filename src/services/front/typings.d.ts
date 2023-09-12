@@ -1456,6 +1456,7 @@ declare namespace API {
     currencyRateVoList?: CurrencyRateVo[];
     rechargeAmountAllowList?: number[];
     rechargeChannelList?: RechargeChannelVo[];
+    languageList?: string[];
   };
 
   type RechargeCouponRecordVo = {

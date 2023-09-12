@@ -375,5 +375,6 @@
   "all_drop": "all drop",
   "battle_select_limt": "you can only select up to 20 cases",
   "reset_success_yhmy": "Reset client seed successfully",
-  "show_success_fwqmy": "Show server seed successfully"
+  "show_success_fwqmy": "Show server seed successfully",
+  "deposit_language": "language"
 }

@@ -1,4 +1,3 @@
-import { IconFont } from '@/components/icons';
 import {
   makePaymentUsingPOST,
   paymentStateUsingGET,
@@ -6,11 +5,12 @@ import {
   rechargeDiscountInfoUsingGET,
 } from '@/services/front/chongzhixiangguan';
 import { bindInviterUsingPOST } from '@/services/front/gerenzhongxinxiangguan';
-import { getImgHost, goback, numberFixed } from '@/utils';
+import { getImgHost, goback, langs, numberFixed } from '@/utils';
 import { LeftOutlined, LoadingOutlined } from '@ant-design/icons';
 import { Menu, Transition } from '@headlessui/react';
 import { FormattedMessage, useIntl, useModel, useRequest } from '@umijs/max';
 import { configResponsive, useResponsive } from 'ahooks';
+import { Spin } from 'antd';
 import { remove } from 'lodash';
 import { Fragment, useEffect, useMemo, useRef, useState } from 'react';
 import { toast } from 'react-toastify';
@@ -28,6 +28,7 @@ enum DisplayType { //  0:默认、1:不展示邀请码、2、不展示邀请码�
   HIDDEN_PROMO,
   HIDDEN_PROMO_ACCOUNT,
 }
+
 export default function Deposit() {
   const { getUser, userInfo } = useModel('user');
   const { data: rechargeConfig, loading } = useRequest(() =>
@@ -37,13 +38,13 @@ export default function Deposit() {
     rechargeDiscountInfoUsingGET(),
   );
   const [currentTab, setCurrentTab] = useState<number>(2); // 1 | 2
-  const [selectCurrency, setSelectCurrency] = useState<API.CurrencyRateVo>();
+  const [selectCurrency, setSelectCurrency] = useState<string>('');
   const [selectChannel, setSelectChannel] = useState<API.RechargeChannelVo>();
   const [promoCodeState, setPromoCodeState] = useState<number>(
     PromoCodeState.EDIT,
   );
   const [quantity, setQuantity] = useState(0);
-  const { currencyRateVoList, rechargeAmountAllowList, rechargeChannelList } =
+  const { languageList, rechargeAmountAllowList, rechargeChannelList } =
     rechargeConfig || {};
   const [payOrderId, setPayOrderId] = useState<string>();
   const responsive = useResponsive();
@@ -82,7 +83,7 @@ export default function Deposit() {
     }
     const ret = await makePaymentUsingPOST({
       // couponId: selectCoupon?.id,
-      currencyCode: selectCurrency?.currencyFrom || '',
+      currencyCode: selectCurrency || '',
       quantity,
       rechargeChannelId: selectChannel?.id || 0,
     });
@@ -101,11 +102,18 @@ export default function Deposit() {
       return (
         <div className="flex flex-col gap-4">
           <Menu as="div" className="relative">
-            <Menu.Button className="select select-sm md:select-md select-accent border-opacity-50 rounded uppercase w-full font-semibold flex justify-between items-center focus:outline-none bg-black">
+            <Menu.Button className="select select-sm md:select-md select-accent border-opacity-50 rounded w-full font-semibold flex justify-between items-center focus:outline-none bg-black">
               <div>
-                <FormattedMessage id="deposit_currency" />
+                <FormattedMessage id="deposit_language" />
               </div>
-              <div>{selectCurrency?.currencyFrom || 'please select'}</div>
+              <div>
+                <img
+                  src={
+                    langs.find((item) => item.value === selectCurrency)?.flag
+                  }
+                  className="w-5 h-5"
+                />
+              </div>
             </Menu.Button>
             <Transition
               as={Fragment}
@@ -117,16 +125,17 @@ export default function Deposit() {
               leaveTo="transform opacity-0 scale-95"
             >
               <Menu.Items className="absolute left-0 mt-2 w-full bg-dark ring-1 ring-accent rounded origin-top-left p-1 z-50">
-                {currencyRateVoList?.map((item) => (
-                  <Menu.Item key={item.id}>
+                {langs?.map((item) => (
+                  <Menu.Item key={item.value}>
                     {({ active }) => (
                       <div
                         className={`${
                           active ? 'bg-accent bg-opacity-10' : ''
-                        } flex justify-between items-center p-2 text-sm rounded`}
-                        onClick={() => setSelectCurrency(item)}
+                        } flex items-center p-2 gap-2 text-sm rounded`}
+                        onClick={() => setSelectCurrency(item.value)}
                       >
-                        {item.currencyFrom}
+                        <img src={item.flag} className="w-5" />
+                        <span>{item.title}</span>
                       </div>
                     )}
                   </Menu.Item>
@@ -136,9 +145,7 @@ export default function Deposit() {
           </Menu>
           <ul className="grid min-h-0 w-full grid-cols-2 gap-3 md:grid-cols-3">
             {rechargeChannelList?.map((item, index) => {
-              if (
-                item?.currencyCodeList?.includes(selectCurrency?.currencyFrom)
-              )
+              if (item?.languageCode?.includes(selectCurrency))
                 return (
                   <li className="h-[8rem] min-h-[5rem] md:h-auto" key={index}>
                     <div
@@ -166,19 +173,13 @@ export default function Deposit() {
           </ul>
         </div>
       );
-  }, [
-    selectCurrency,
-    selectChannel,
-    currencyRateVoList,
-    loading,
-    rechargeConfig,
-  ]);
+  }, [selectCurrency, selectChannel, languageList, loading, rechargeConfig]);
 
   const renderQuantity = useMemo(() => {
     if (!loading && rechageInfo && rechargeConfig)
       return (
         <div className="flex flex-col">
-          {selectChannel?.displayType === DisplayType.DEFAULT && (
+          {
             <>
               <div className="flex h-fit w-full items-center gap-4 px-2 py-2 sm:py-0  bg-[url('@/assets/promo-bg.png')] bg-no-repeat bg-cover sm:pl-28 sm:pr-8 text-sm sm:text-md whitespace-pre-wrap font-semibold">
                 <div className="h-fit w-full grow sm:-mr-20 sm:-ml-16">
@@ -209,19 +210,19 @@ export default function Deposit() {
                     placeholder={intl.formatMessage({ id: 'register_qsryqm' })}
                   />
                 ) : promoCodeState === PromoCodeState.USING ? (
-                  <div className="flex-1 flex h-full rounded-lg items-center pl-8 bg-light/20 text-sm">
+                  <div className="flex-1 flex rounded-lg items-center pl-8 bg-light/20 text-sm h-12">
                     <div className="text-white/50 mr-2">
-                      <FormattedMessage id="promoteCode_mine" />:
+                      <FormattedMessage id="benefit_promote_code" />:
                     </div>
                     <div className="text-green text-md font-semibold">
                       {userInfo?.inviterPromotionCode}
-                      {Number(rechageInfo?.rechargeDiscount) > 0 && (
+                      {/* {Number(rechageInfo?.rechargeDiscount) > 0 && (
                         <span className="ml-2">
                           + &nbsp;{Number(rechageInfo?.rechargeDiscount)}
                           %&nbsp;
                           <FormattedMessage id="vip_discount" />
                         </span>
-                      )}
+                      )} */}
                     </div>
                   </div>
                 ) : (
@@ -252,8 +253,8 @@ export default function Deposit() {
                 </div>
               </div>
             </>
-          )}
-          {selectChannel?.displayType !== DisplayType.HIDDEN_PROMO_ACCOUNT && (
+          }
+          {
             <>
               <div className="grid grid-cols-3 gap-3 md:gap-6">
                 {rechargeAmountAllowList?.map((item, i) => (
@@ -274,27 +275,15 @@ export default function Deposit() {
               </div>
               <div className="rounded-lg py-3 md:py-6 flex flex-col gap-6">
                 <div className="flex gap-x-8">
-                  <div className="flex flex-col w-fit gap-2">
-                    <div className="uppercase  text-xs">
-                      <FormattedMessage id="pay_amount" />
-                    </div>
-                    <div className="flex h-[40px] w-[176px] overflow-hidden pl-4 rounded border border-light text-xs font-bold items-center">
-                      $
-                      <div>
-                        {numberFixed(quantity, 2)}
-                      </div>
-                    </div>
-                  </div>
-                  <div className="flex flex-col w-full gap-2">
-                    <div className="uppercase text-xs">
+                  <div className="flex w-full gap-2">
+                    <div className="uppercase text-xs flex items-center">
                       <FormattedMessage id="deposit_actually_recevied" />
                     </div>
                     <div className="font-num h-[40px] flex items-center gap-2">
                       <span className="text-green">
-                        $
-                        {numberFixed(quantity, 2)}
+                        ${numberFixed(quantity, 2)}
                       </span>
-                      {selectChannel?.displayType === DisplayType.DEFAULT && (
+                      {/* {selectChannel?.displayType === DisplayType.DEFAULT && (
                         <>
                           &nbsp;+&nbsp;
                           <span className="text-purple">
@@ -306,7 +295,7 @@ export default function Deposit() {
                             )}
                           </span>
                         </>
-                      )}
+                      )} */}
                     </div>
                   </div>
                 </div>
@@ -315,22 +304,12 @@ export default function Deposit() {
                   onClick={onPay}
                   type="button"
                 >
-                  <FormattedMessage id={'pay_amount'} />{' '}
-                  $
+                  <FormattedMessage id={'pay_amount'} /> $
                   {numberFixed(quantity, 2)}
                 </button>
               </div>
             </>
-          )}
-          {selectChannel?.displayType === DisplayType.HIDDEN_PROMO_ACCOUNT && (
-            <button
-              className="btn btn-green btn-sm md:btn-md uppercase w-full rounded font-semibold"
-              onClick={onPay}
-              type="button"
-            >
-              <FormattedMessage id="deposit_pay" />
-            </button>
-          )}
+          }
         </div>
       );
   }, [
@@ -341,14 +320,15 @@ export default function Deposit() {
     rechageInfo,
     selectChannel,
     promoCodeState,
+    languageList,
   ]);
 
   useEffect(() => {
     if (rechargeAmountAllowList && rechargeAmountAllowList.length > 0) {
       setQuantity(rechargeAmountAllowList[0]);
     }
-    if (currencyRateVoList && currencyRateVoList.length > 0) {
-      setSelectCurrency(currencyRateVoList[0]);
+    if (languageList && languageList.length > 0) {
+      setSelectCurrency(languageList[0]);
     }
   }, [rechargeConfig]);
 
@@ -386,16 +366,15 @@ export default function Deposit() {
   }, [userInfo?.inviterPromotionCode]);
 
   useEffect(() => {
-    if (rechargeChannelList?.length && currencyRateVoList?.length) {
+    if (rechargeChannelList?.length && languageList?.length) {
       let curChannelList = JSON.parse(JSON.stringify(rechargeChannelList));
       remove(
         curChannelList,
-        (item) =>
-          !item?.currencyCodeList?.includes(selectCurrency?.currencyFrom),
+        (item) => !item?.languageCode?.includes(selectCurrency),
       );
       setSelectChannel(curChannelList?.[0] || null);
     }
-  }, [selectCurrency, rechargeChannelList, currencyRateVoList]);
+  }, [selectCurrency, rechargeChannelList, languageList]);
 
   return (
     <div className="max-w-[1400px] m-auto px-3 md:px-6">
@@ -430,16 +409,21 @@ export default function Deposit() {
           <FormattedMessage id="deposit_pay" />
         </div>
       </div>
-      {!showTab ? (
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mt-5">
-          {renderChannel}
-          {renderQuantity}
-        </div>
-      ) : (
-        <div>
-          {currentTab === 1 ? <>{renderChannel}</> : <>{renderQuantity}</>}
-        </div>
-      )}
+      <Spin
+        spinning={loading}
+        indicator={<LoadingOutlined style={{ fontSize: 48, color: 'green' }} />}
+      >
+        {!showTab ? (
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mt-5 min-h-16">
+            {renderChannel}
+            {renderQuantity}
+          </div>
+        ) : (
+          <div className='min-h-[300px]'>
+            {currentTab === 1 ? <>{renderChannel}</> : <>{renderQuantity}</>}
+          </div>
+        )}
+      </Spin>
     </div>
   );
 }

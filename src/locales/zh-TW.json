@@ -375,5 +375,6 @@
   "all_drop": "全部的掉落",
   "battle_select_limt": "您最多只能選擇 20 個箱子",
   "reset_success_yhmy": "用戶密鑰重置成功",
-  "show_success_fwqmy": "成功顯示服務器密鑰"
+  "show_success_fwqmy": "成功顯示服務器密鑰",
+  "deposit_language": "語言"
 }

@@ -3,6 +3,9 @@ import { logoutUsingPOST } from '@/services/front/qiantaishouquanxiangguan';
 import Big from 'big.js';
 import { EventEmitter } from 'events';
 //@ts-ignore
+import brFlag from '@/assets/flags/br.svg';
+import cnFlag from '@/assets/flags/cn.svg';
+import enFlag from '@/assets/flags/en.svg';
 import { BOX_GRADES } from '@/constants';
 import { history } from '@umijs/max';
 import qs from 'qs';
@@ -15,7 +18,8 @@ export function getApiDomain() {
     location.href.indexOf('localhost') > -1 ||
     location.href.indexOf('127.0.0.1') > -1
   ) {
-    return 'http://127.0.0.1:9999';
+    // return 'http://192.168.12.13:9999';
+    // return 'http://127.0.0.1:9999';
     return 'https://api.wgskins.com';
   } else if (location.href.indexOf('wgskins.com') > -1) {
     return 'https://api.wgskins.com';
@@ -219,12 +223,15 @@ export function getSteamLoginUrl() {
   const redirectUrl = urlParse().redirect || location.pathname;
   const params = urlParse();
 
-  let callbackUrl =`${window.location.origin}/login/callback?redirect=${redirectUrl}`;
+  let query = {
+    redirectUrl: redirectUrl,
+    promoteCode: params.promoteCode,
+    channelCode: params.channelCode,
+  };
 
-  if (params.promoteCode) {
-    callbackUrl += callbackUrl.indexOf('?') > -1 ? '&' : '?';
-    callbackUrl += `promoteCode=${params.promoteCode}`;
-  }
+  let callbackUrl = `${
+    window.location.origin
+  }/login/callback?queryStr=${JSON.stringify(query)}`;
 
   return (
     getApiDomain() +
@@ -254,3 +261,21 @@ export function isSafari() {
     navigator.userAgent.indexOf('Chrome') === -1
   );
 }
+
+export const langs = [
+  {
+    title: 'EN',
+    value: 'en-US',
+    flag: enFlag,
+  },
+  {
+    title: 'BR',
+    value: 'pt-BR',
+    flag: brFlag,
+  },
+  {
+    title: 'HK',
+    value: 'zh-TW',
+    flag: cnFlag,
+  },
+];

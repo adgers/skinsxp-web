@@ -375,5 +375,6 @@
   "all_drop": "全部的掉落",
   "battle_select_limt": "您最多只能选择20个箱子",
   "reset_success_yhmy": "用户密钥重置成功",
-  "show_success_fwqmy": "成功展示服务器密钥"
+  "show_success_fwqmy": "成功展示服务器密钥",
+  "deposit_language": "语言"
 }
