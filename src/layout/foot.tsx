@@ -50,9 +50,6 @@ export default function Foot() {
         >
           <FormattedMessage id="provably_fair_title" />
         </Link>
-        <span onClick={showLogin} className="cursor-pointer">
-          login
-        </span>
       </div>
 
       <div>
