@@ -397,7 +397,7 @@ export default function RoomDetail() {
     setCancelConfirmShow(false);
     if (ret.status === 0) {
       getUser();
-      history.replace('/battle');
+      history.replace({ pathname: '/battle', search: location?.search || '' });
     }
   };
 
@@ -487,7 +487,8 @@ export default function RoomDetail() {
   useEffect(() => {
     if (data?.state === 3) {
       toast.error(intl.formatMessage({ id: 'battle_room_cancel' }));
-      history.replace('/battle');
+      history.replace({ pathname: '/battle', search: location?.search || '' });
+
     }
 
     if (data?.customerList) {

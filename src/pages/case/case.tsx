@@ -13,6 +13,8 @@ export default function Case() {
   const [otherBoxList, setOtherBoxList] = useState<API.BoxThemeListVo[]>([]);
   const intl = useIntl();
 
+  const search = location.search;
+
   const { data: boxList = [] } = useRequest(
     () =>
       getBoxListUsingGET({
@@ -64,7 +66,10 @@ export default function Case() {
               key={idx}
               className="w-full h-full relative cursor-pointer case-wrap aspect-[1/1.4] rounded-md overflow-hidden"
               onClick={() => {
-                history.push(`/case/${v?.id}`);
+                history.push({
+                  pathname: `/case/${v?.id}`,
+                  search: search,
+                });
               }}
             >
               <LazyLoad offset={200}>
@@ -126,7 +131,10 @@ export default function Case() {
                 className="hidden btn btn-purple w-full items-center md:flex bettle-btn uppercase"
                 onClick={() => {
                   if (isLogin()) {
-                    history.push('/battle/create');
+                    history.push({
+                      pathname: `/battle/create`,
+                      search: search,
+                    });
                   } else {
                     toast.error(intl?.formatMessage({ id: 'not_login_title' }));
                   }
@@ -141,7 +149,10 @@ export default function Case() {
               <div
                 className="hidden btn btn-green w-full md:flex bettle-btn"
                 onClick={() => {
-                  history.push('/battle');
+                  history.push({
+                    pathname: `/battle`,
+                    search: search,
+                  });
                 }}
               >
                 <FormattedMessage id="room_join_battle" />

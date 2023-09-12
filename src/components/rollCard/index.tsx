@@ -94,10 +94,13 @@ export default React.memo(function RollCard({
             data?.roomType === 1 ? 'btn-purple' : 'btn-green'
           }`}
           onClick={() => {
-            history.push(`/giveaways/${data?.id}`);
+            history.push({
+              pathname: `/giveaways/${data?.id}`,
+              search: location.search || '',
+            });
           }}
         >
-          <FormattedMessage id="giveaways_ckxq"/>
+          <FormattedMessage id="giveaways_ckxq" />
         </div>
         <div className="roll-card-bottom">
           <div className="flex-1 justify-center text-center">

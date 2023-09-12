@@ -87,7 +87,12 @@ export default function User() {
                     </div>
                     <div
                       className="btn px-[16px] rounded border border-green text-green disp invisible xl:visible "
-                      onClick={() => history.push('/deposit')}
+                      onClick={() =>
+                        history.push({
+                          pathname: '/deposit',
+                          search: location.search,
+                        })
+                      }
                     >
                       <IconFont type="icon-funds" className="text-xl" />
                       <FormattedMessage id="wc_rewards_deposit" />
@@ -101,7 +106,11 @@ export default function User() {
                   onClick={() => setSteamLinkModalVisible(true)}
                 >
                   <IconFont type="icon-steam" />
-                  {userInfo?.tradeUrl ? <FormattedMessage id="trade_url_edit"/> :<FormattedMessage id="trade_url_add"/> }
+                  {userInfo?.tradeUrl ? (
+                    <FormattedMessage id="trade_url_edit" />
+                  ) : (
+                    <FormattedMessage id="trade_url_add" />
+                  )}
                 </div>
               </div>
             </div>
