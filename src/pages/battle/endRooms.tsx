@@ -2,7 +2,7 @@ import Empty from '@/components/empty';
 import RoomCard from '@/components/roomCard';
 import { getPageUsingGET } from '@/services/front/duizhanxiangguan';
 import { LoadingOutlined } from '@ant-design/icons';
-import { history, useModel, useRequest } from '@umijs/max';
+import { history, useRequest } from '@umijs/max';
 import { Pagination, Spin } from 'antd';
 import { useState } from 'react';
 import BoxDetail from './boxDetail';
@@ -42,9 +42,12 @@ export default function EndRooms({
               key={t.battleCode}
               data={t}
               onSelect={() => {
-                history.push(`/battle/${t.battleCode}`);
+                history.push({
+                  pathname: `/battle/${t.battleCode}`,
+                  search: location.search || '',
+                });
               }}
-              onBoxSelect={(item)=>{
+              onBoxSelect={(item) => {
                 setCaseId(item.caseId);
                 setCaseName(item.boxName);
                 setBoxDetailShow(true);
@@ -65,7 +68,7 @@ export default function EndRooms({
             />
           </div>
         )}
-         <BoxDetail
+        <BoxDetail
           caseId={caseId}
           caseName={caseName}
           show={boxDetailShow}

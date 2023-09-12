@@ -85,7 +85,10 @@ export default function Create() {
 
     if (ret.status === 0) {
       getUser();
-      history.push(`/battle/${ret.data}`);
+      history.push({
+        pathname: `/battle/${ret.data}`,
+        search: location.search || '',
+      });
     }
   };
 

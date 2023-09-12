@@ -71,7 +71,9 @@ export default React.memo(function WeaponCard({
           </div>
           <div className="truncate text-white text-xs sm:text-sm">
             {name && parseName(name)?.[1] && (
-              <span className="text-white/50 text-xs">({parseName(name)?.[1]})</span>
+              <span className="text-white/50 text-xs">
+                ({parseName(name)?.[1]})
+              </span>
             )}
             {name && parseName(name)?.[2]}
           </div>
@@ -84,7 +86,9 @@ export default React.memo(function WeaponCard({
             </div>
             <div className="truncate text-white text-xs sm:text-sm">
               {name && parseName(name)?.[1] && (
-                <span className="text-white/50 text-xs">({parseName(name)?.[1]})</span>
+                <span className="text-white/50 text-xs">
+                  ({parseName(name)?.[1]})
+                </span>
               )}
               {name && parseName(name)?.[2]}
             </div>
@@ -141,7 +145,10 @@ export default React.memo(function WeaponCard({
           <div
             className="flex flex-row gap-1 cursor-pointer z-30"
             onClick={() =>
-              history.push(`/provably-fair/verify/${data?.verifyId}`)
+              history.push({
+                pathname: `/provably-fair/verify/${data?.verifyId}`,
+                search: location.search || '',
+              })
             }
           >
             <div className="text-xs uppercase font-semibold text-white/[0.5]">

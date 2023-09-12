@@ -92,9 +92,12 @@ export default function CurrentRooms({
               key={t.battleCode}
               data={t}
               onSelect={() => {
-                history.push(`/battle/${t.battleCode}`);
+                history.push({
+                  pathname: `/battle/${t.battleCode}`,
+                  search: location.search || '',
+                });
               }}
-              onBoxSelect={(item)=>{
+              onBoxSelect={(item) => {
                 setCaseId(item.caseId);
                 setCaseName(item.boxName);
                 setBoxDetailShow(true);

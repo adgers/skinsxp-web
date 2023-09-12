@@ -20,7 +20,12 @@ export default function GiveawayItem(props: GiveawayItemProps) {
     <div
       className={`relative cursor-pointer grid h-36 min-w-[90%] snap-start overflow-hidden sm:min-w-[50%] md:min-w-[33.333333%] xl:min-w-[20%] giveaways-grade giveaways-grade-${index}`}
       key={`giveaways-${index}`}
-      onClick={() => history.push(`/giveaways/${item?.id}`)}
+      onClick={() =>
+        history.push({
+          pathname: `/giveaways/${item?.id}`,
+          search: location.search,
+        })
+      }
     >
       <div className="relative col-start-1 row-start-1 grid overflow-hidden pl-2.5 pt-2.5 giveaways-grade-item w-full">
         <div className="flex h-6">

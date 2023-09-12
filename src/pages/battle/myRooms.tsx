@@ -76,7 +76,10 @@ export default function MyRooms({
               key={t.battleCode}
               data={t}
               onSelect={() => {
-                history.push(`/battle/${t.battleCode}`);
+                history.push({
+                  pathname: `/battle/${t.battleCode}`,
+                  search: location.search || '',
+                });
               }}
               showTag
               onBoxSelect={(item) => {

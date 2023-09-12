@@ -225,9 +225,10 @@ export default function BagPage() {
                             className="border-solid bg-black"
                             onClick={(e) => {
                               e.stopPropagation();
-                              history.push(
-                                `/provably-fair/verify/${item?.verifyId}`,
-                              );
+                              history.push({
+                                pathname: `/provably-fair/verify/${item?.verifyId}`,
+                                search: location.search,
+                              });
                             }}
                           >
                             <div className="btn btn-sm flex w-fit max-w-full m-auto items-center justify-center text-sm font-semibold uppercase transition-colors duration-150 real-hover:text-white flex-nowrap">

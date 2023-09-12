@@ -17,7 +17,10 @@ export default function BattleItem(props: BattleItemProps) {
     <div
       className={`relative cursor-pointer z-10 flex items-start flex-col h-[226px] rounded  min-w-[90%] snap-start overflow-hidden sm:min-w-[50%] md:min-w-[33.333333%] xl:min-w-[20%] justify-between battle-item battle-item-grade-${data?.mode}`}
       onClick={() => {
-        history.push(`/battle/${data?.battleCode}`);
+        history.push({
+          pathname: `/battle/${data?.battleCode}`,
+          search: location.search,
+        });
       }}
     >
       <div className="flex items-center  mt-2.5 ml-4 gap-2 uppercase text-xs">
