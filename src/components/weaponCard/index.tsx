@@ -128,7 +128,7 @@ export default React.memo(function WeaponCard({
         {probability > 0 &&
           rollCode === 0 && ( // 有概率才显示
             <div className="text-white/[0.5] text-xs font-num flex items-center gap-2 z-30">
-              {numberFixed(probability * 100, 2)}%
+              {numberFixed(probability * 100, 3)}%
               <div
                 className="flex h-5 w-5 items-center justify-center rounded-full bg-white/[0.10] text-center font-bold transition-colors duration-200 lowercase"
                 onClick={() => setShowChance(!showChance)}
