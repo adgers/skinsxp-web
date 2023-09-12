@@ -23,6 +23,11 @@ enum PromoCodeState { // 只要有邀请码 就不能编辑了
   EDIT = 2, // 正在编辑
   VERIFY = 3, // 正在校验
 }
+enum DisplayType { //  0:默认、1:不展示邀请码、2、不展示邀请码和充值数
+  DEFAULT = 0,
+  HIDDEN_PROMO,
+  HIDDEN_PROMO_ACCOUNT,
+}
 export default function Deposit() {
   const { getUser, userInfo } = useModel('user');
   const { data: rechargeConfig, loading } = useRequest(() =>
@@ -173,137 +178,155 @@ export default function Deposit() {
     if (!loading && rechageInfo && rechargeConfig)
       return (
         <div className="flex flex-col">
-          <div className="flex h-fit w-full items-center gap-4 px-2 py-2 sm:py-0  bg-[url('@/assets/promo-bg.png')] bg-no-repeat bg-cover sm:pl-28 sm:pr-8 text-sm sm:text-md whitespace-pre-wrap font-semibold">
-            <div className="h-fit w-full grow sm:-mr-20 sm:-ml-16">
-              <p className="text-[16px] mb-2">
-                {
-                  intl
-                    .formatMessage({ id: 'benefit_promo_explain' })
-                    .split('\\n')[0]
-                }
-              </p>
-              <p>
-                {intl
-                  .formatMessage({ id: 'benefit_promo_explain' })
-                  .split('\\n')[1]
-                  ?.trim()}
-              </p>
-            </div>
-            <div className="w-48 relative z-10  aspect-square sm:block">
-              <img src={require('@/assets/promo-img.png')} alt="" />
-            </div>
-          </div>
-          <div className="w-full mt-5 flex justify-between gap-4 mb-4 items-center">
-            {promoCodeState === PromoCodeState.EDIT ? (
-              <input
-                type="text"
-                className="w-full bg-black rounded pl-4 border border-light focus:outline-none h-12"
-                ref={promoCodeRef}
-                placeholder={intl.formatMessage({ id: 'register_qsryqm' })}
-              />
-            ) : promoCodeState === PromoCodeState.USING ? (
-              <div className="flex-1 flex h-full rounded-lg items-center pl-8 bg-light/20 text-sm">
-                <div className="text-white/50 mr-2">
-                  <FormattedMessage id="promoteCode_mine" />:
+          {selectChannel?.displayType === DisplayType.DEFAULT && (
+            <>
+              <div className="flex h-fit w-full items-center gap-4 px-2 py-2 sm:py-0  bg-[url('@/assets/promo-bg.png')] bg-no-repeat bg-cover sm:pl-28 sm:pr-8 text-sm sm:text-md whitespace-pre-wrap font-semibold">
+                <div className="h-fit w-full grow sm:-mr-20 sm:-ml-16">
+                  <p className="text-[16px] mb-2">
+                    {
+                      intl
+                        .formatMessage({ id: 'benefit_promo_explain' })
+                        .split('\\n')[0]
+                    }
+                  </p>
+                  <p>
+                    {intl
+                      .formatMessage({ id: 'benefit_promo_explain' })
+                      .split('\\n')[1]
+                      ?.trim()}
+                  </p>
                 </div>
-                <div className="text-green text-md font-semibold">
-                  {userInfo?.inviterPromotionCode}
-                  {Number(rechageInfo?.rechargeDiscount) > 0 && (
-                    <span className="ml-2">
-                      + &nbsp;{Number(rechageInfo?.rechargeDiscount)}
-                      %&nbsp;
-                      <FormattedMessage id="vip_discount" />
-                    </span>
-                  )}
+                <div className="w-48 relative z-10  aspect-square sm:block">
+                  <img src={require('@/assets/promo-img.png')} alt="" />
                 </div>
               </div>
-            ) : (
-              <div className="flex-1 flex h-full rounded-lg items-center pl-8 bg-light/20 text-sm">
-                <LoadingOutlined className="mr-2" />
-                <div className="text-white/50 mr-2">
-                  {promoCodeRef?.current?.value}
-                </div>
-              </div>
-            )}
+              <div className="w-full mt-5 flex justify-between gap-4 mb-4 items-center">
+                {promoCodeState === PromoCodeState.EDIT ? (
+                  <input
+                    type="text"
+                    className="w-full bg-black rounded pl-4 border border-light focus:outline-none h-12"
+                    ref={promoCodeRef}
+                    placeholder={intl.formatMessage({ id: 'register_qsryqm' })}
+                  />
+                ) : promoCodeState === PromoCodeState.USING ? (
+                  <div className="flex-1 flex h-full rounded-lg items-center pl-8 bg-light/20 text-sm">
+                    <div className="text-white/50 mr-2">
+                      <FormattedMessage id="promoteCode_mine" />:
+                    </div>
+                    <div className="text-green text-md font-semibold">
+                      {userInfo?.inviterPromotionCode}
+                      {Number(rechageInfo?.rechargeDiscount) > 0 && (
+                        <span className="ml-2">
+                          + &nbsp;{Number(rechageInfo?.rechargeDiscount)}
+                          %&nbsp;
+                          <FormattedMessage id="vip_discount" />
+                        </span>
+                      )}
+                    </div>
+                  </div>
+                ) : (
+                  <div className="flex-1 flex h-full rounded-lg items-center pl-8 bg-light/20 text-sm">
+                    <LoadingOutlined className="mr-2" />
+                    <div className="text-white/50 mr-2">
+                      {promoCodeRef?.current?.value}
+                    </div>
+                  </div>
+                )}
 
-            <div
-              className={`btn btn-green uppercase px-10 ${
-                userInfo?.inviterPromotionCode ? 'btn-disabled' : ''
-              }`}
-              onClick={() => {
-                switch (promoCodeState) {
-                  case PromoCodeState.EDIT:
-                    onBindPromoCode();
-                    break;
-                  case PromoCodeState.VERIFY:
-                  case PromoCodeState.USING:
-                    break;
-                }
-              }}
-            >
-              <FormattedMessage id="text_btn_apply" />
-            </div>
-          </div>
-          <div className="grid grid-cols-3 gap-3 md:gap-6">
-            {rechargeAmountAllowList?.map((item, i) => (
-              <div
-                className={`rounded flex items-center py-3 justify-center relative cursor-pointer ${
-                  quantity === item
-                    ? 'bg-green/[0.3] border border-green'
-                    : 'bg-light/20 '
-                }`}
-                key={i}
-                onClick={() => {
-                  setQuantity(item);
-                }}
-              >
-                ${numberFixed(item)}
-              </div>
-            ))}
-          </div>
-          <div className="rounded-lg py-3 md:py-6 flex flex-col gap-6">
-            <div className="flex gap-x-8">
-              <div className="flex flex-col w-fit gap-2">
-                <div className="uppercase  text-xs">
-                  <FormattedMessage id="quantity" />
+                <div
+                  className={`btn btn-green uppercase px-10 ${
+                    userInfo?.inviterPromotionCode ? 'btn-disabled' : ''
+                  }`}
+                  onClick={() => {
+                    switch (promoCodeState) {
+                      case PromoCodeState.EDIT:
+                        onBindPromoCode();
+                        break;
+                      case PromoCodeState.VERIFY:
+                      case PromoCodeState.USING:
+                        break;
+                    }
+                  }}
+                >
+                  <FormattedMessage id="text_btn_apply" />
                 </div>
-                <div className="flex h-[40px] w-[176px] overflow-hidden pl-4 rounded border border-light text-xs font-bold items-center">
-                  {selectCurrency?.symbol}
-                  <div>
-                    {numberFixed((selectCurrency?.rate || 0) * quantity, 2)}
+              </div>
+            </>
+          )}
+          {selectChannel?.displayType !== DisplayType.HIDDEN_PROMO_ACCOUNT && (
+            <>
+              <div className="grid grid-cols-3 gap-3 md:gap-6">
+                {rechargeAmountAllowList?.map((item, i) => (
+                  <div
+                    className={`rounded flex items-center py-3 justify-center relative cursor-pointer ${
+                      quantity === item
+                        ? 'bg-green/[0.3] border border-green'
+                        : 'bg-light/20 '
+                    }`}
+                    key={i}
+                    onClick={() => {
+                      setQuantity(item);
+                    }}
+                  >
+                    ${numberFixed(item)}
+                  </div>
+                ))}
+              </div>
+              <div className="rounded-lg py-3 md:py-6 flex flex-col gap-6">
+                <div className="flex gap-x-8">
+                  <div className="flex flex-col w-fit gap-2">
+                    <div className="uppercase  text-xs">
+                      <FormattedMessage id="quantity" />
+                    </div>
+                    <div className="flex h-[40px] w-[176px] overflow-hidden pl-4 rounded border border-light text-xs font-bold items-center">
+                      {selectCurrency?.symbol}
+                      <div>
+                        {numberFixed((selectCurrency?.rate || 0) * quantity, 2)}
+                      </div>
+                    </div>
+                  </div>
+                  <div className="flex flex-col w-full gap-2">
+                    <div className="uppercase text-xs">
+                      <FormattedMessage id="deposit_actually_recevied" />
+                    </div>
+                    <div className="font-num h-[40px] flex items-center gap-2">
+                      <span className="text-green">
+                        {selectCurrency?.symbol}
+                        {numberFixed((selectCurrency?.rate || 0) * quantity, 2)}
+                      </span>
+                      &nbsp;+&nbsp;
+                      <span className="text-purple">
+                        <IconFont type="icon-coin" className="mr-1" />
+                        {numberFixed(
+                          (Number(quantity) *
+                            Number(rechageInfo?.rechargeDiscount)) /
+                            100,
+                        )}
+                      </span>
+                    </div>
                   </div>
                 </div>
+                <button
+                  className="btn btn-green btn-sm md:btn-md uppercase w-full rounded font-semibold"
+                  onClick={onPay}
+                  type="button"
+                >
+                  <FormattedMessage id={'pay_amount'} />{' '}
+                  {selectCurrency?.symbol}
+                  {numberFixed((selectCurrency?.rate || 0) * quantity, 2)}
+                </button>
               </div>
-              <div className="flex flex-col w-full gap-2">
-                <div className="uppercase text-xs">
-                  <FormattedMessage id="deposit_actually_recevied" />
-                </div>
-                <div className="font-num h-[40px] flex items-center gap-2">
-                  <span className="text-green">
-                    {selectCurrency?.symbol}
-                    {numberFixed((selectCurrency?.rate || 0) * quantity, 2)}
-                  </span>
-                  &nbsp;+&nbsp;
-                  <span className="text-purple">
-                    <IconFont type="icon-coin" className="mr-1" />
-                    {numberFixed(
-                      (Number(quantity) *
-                        Number(rechageInfo?.rechargeDiscount)) /
-                        100,
-                    )}
-                  </span>
-                </div>
-              </div>
-            </div>
+            </>
+          )}
+          {selectChannel?.displayType === DisplayType.HIDDEN_PROMO_ACCOUNT && (
             <button
               className="btn btn-green btn-sm md:btn-md uppercase w-full rounded font-semibold"
               onClick={onPay}
               type="button"
             >
-              <FormattedMessage id={'pay_amount'} /> {selectCurrency?.symbol}
-              {numberFixed((selectCurrency?.rate || 0) * quantity, 2)}
+              <FormattedMessage id="deposit_pay" />
             </button>
-          </div>
+          )}
         </div>
       );
   }, [

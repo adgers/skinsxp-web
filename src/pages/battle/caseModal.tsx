@@ -1,5 +1,5 @@
 import { numberFixed } from '@/utils';
-import { FormattedMessage } from '@umijs/max';
+import { FormattedMessage, useIntl } from '@umijs/max';
 import { useEffect, useState } from 'react';
 import CountUp from 'react-countup';
 import { Button, Modal } from 'react-daisyui';
@@ -20,6 +20,8 @@ export default function CaseModal({
 }) {
   const [boxLists, setBoxLists] = useState<API.BoxPageVo[]>([]);
   const [totalPrice, setTotalPrice] = useState(0);
+
+  const intl = useIntl();
 
   const onCreate = async () => {
     if (boxLists.length === 0) {
@@ -48,7 +50,7 @@ export default function CaseModal({
 
   const increaseBox = (box: API.BoxPageVo) => {
     if (boxLists.length > 19) {
-      toast.error('You can only select up to 20 cases', {
+      toast.error(intl.formatMessage({ id: 'battle_select_limt' }), {
         toastId: 'case_limit',
       });
       return;
