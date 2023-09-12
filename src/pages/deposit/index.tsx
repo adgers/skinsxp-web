@@ -276,12 +276,12 @@ export default function Deposit() {
                 <div className="flex gap-x-8">
                   <div className="flex flex-col w-fit gap-2">
                     <div className="uppercase  text-xs">
-                      <FormattedMessage id="quantity" />
+                      <FormattedMessage id="pay_amount" />
                     </div>
                     <div className="flex h-[40px] w-[176px] overflow-hidden pl-4 rounded border border-light text-xs font-bold items-center">
-                      {selectCurrency?.symbol}
+                      $
                       <div>
-                        {numberFixed((selectCurrency?.rate || 0) * quantity, 2)}
+                        {numberFixed(quantity, 2)}
                       </div>
                     </div>
                   </div>
@@ -291,8 +291,8 @@ export default function Deposit() {
                     </div>
                     <div className="font-num h-[40px] flex items-center gap-2">
                       <span className="text-green">
-                        {selectCurrency?.symbol}
-                        {numberFixed((selectCurrency?.rate || 0) * quantity, 2)}
+                        $
+                        {numberFixed(quantity, 2)}
                       </span>
                       {selectChannel?.displayType === DisplayType.DEFAULT && (
                         <>
@@ -316,8 +316,8 @@ export default function Deposit() {
                   type="button"
                 >
                   <FormattedMessage id={'pay_amount'} />{' '}
-                  {selectCurrency?.symbol}
-                  {numberFixed((selectCurrency?.rate || 0) * quantity, 2)}
+                  $
+                  {numberFixed(quantity, 2)}
                 </button>
               </div>
             </>
