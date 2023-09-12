@@ -226,7 +226,9 @@ export default function BattlePage() {
                       <div className="w-28 truncate" title={user.nickname}>
                         {user.nickname}
                       </div>
-                      <div className="text-xs text-green font-num "></div>
+                      <div className="text-xs text-green font-num">
+                        {user.rewardPoint}
+                      </div>
                     </div>
                   );
                 })}

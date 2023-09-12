@@ -512,7 +512,9 @@ export default function RoomDetail() {
         initOpenResult(round - 1);
         goTo(round);
         setLotteryShow(true);
-        setLotteryStart(true);
+        sleep(1000).then(()=>{
+          setLotteryStart(true);
+        })
       }
     }
   }, [roomResult, data?.state]);
@@ -813,6 +815,7 @@ export default function RoomDetail() {
                       wrapHeight={responsive.md ? 300 : 200}
                       fast
                       voice={voice}
+                      index={index}
                     />
                   )}
                 </div>
