@@ -305,7 +305,7 @@ const Lottery = ({
                 style={{
                   ...(isWin ? scaleSprings : opacitySprings),
                 }}
-                src={item.giftImage}
+                src={item?.giftImage}
                 className={`mx-auto object-contain h-full w-2/3`}
               />
               {showLogo && (

@@ -1,12 +1,10 @@
 import loginBg from '@/assets/login-bg.png';
 import { IconFont } from '@/components/icons';
-import { FormattedMessage,useModel } from '@umijs/max';
-import { useState } from 'react';
+import { FormattedMessage, useModel } from '@umijs/max';
 import { Button } from 'react-daisyui';
 
-
 export default function LoginPage() {
-  const {showSteamLogin}=useModel('user')
+  const { showSteamLogin } = useModel('user');
   return (
     <div className="z-10 flex flex-col justify-center items-center mt-20">
       <img src={loginBg} alt="" className="w-1/3 sm:w-1/3" />
@@ -26,7 +24,6 @@ export default function LoginPage() {
         <IconFont type="icon-steam" className="text-xl" />
         <FormattedMessage id="register_ljdl" />
       </Button>
-    
     </div>
   );
 }
