@@ -1,12 +1,13 @@
 import { IconFont } from '@/components/icons';
 import { getSteamLoginUrl } from '@/utils';
-import { FormattedMessage, useModel } from '@umijs/max';
+import { FormattedMessage, useIntl, useModel } from '@umijs/max';
 import { useEffect, useState } from 'react';
 import { Button, Checkbox, Modal } from 'react-daisyui';
 import { toast } from 'react-toastify';
 
 export default function LoginConfirm() {
   const { steamLoginShow, hideSteamLogin } = useModel('user');
+  const intl = useIntl();
 
   const [agreeForm, setAgreeForm] = useState({
     form_1_agree: false,
@@ -90,7 +91,7 @@ export default function LoginConfirm() {
           className="btn btn-green mt-8 w-full md:w-[60%] "
           onClick={() => {
             if (!agreeForm?.form_1_agree || !agreeForm?.form_2_agree) {
-              toast.error('Please read and agree to the agreement');
+              toast.error(intl.formatMessage({ id: 'register_qydbjsxy' }));
               return;
             }
             // onOK();

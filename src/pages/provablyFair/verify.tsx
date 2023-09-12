@@ -17,7 +17,6 @@ export default function ProvablyVerify() {
   const onVerify = async () => {
     const verifyId = inputRef.current?.value;
     if (!verifyId) {
-      toast.error('Please input verify id');
       return;
     }
 
@@ -32,7 +31,7 @@ export default function ProvablyVerify() {
   const onShowServerSeed = async () => {
     const ret = await resetUsingPOST({});
     if (ret.status === 0) {
-      toast.success('Show server seed successfully');
+      toast.success(intl.formatMessage({ id: 'show_success_fwqmy' }));
       setCurrentKey((prev) => {
         return {
           ...prev,

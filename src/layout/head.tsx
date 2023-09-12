@@ -295,9 +295,8 @@ export default function Header() {
               className="px-3 py-2 uppercase transition-colors font-semibold duration-200 text-white hover:text-green text-sm rounded-md cursor-pointer"
               onClick={showBenefit}
             >
-              <IconFont type="icon-promocode" className="mr-1" />
-
-              <FormattedMessage id="mine_fllq" />
+              <IconFont type="icon-key" className="mr-1" />
+              <FormattedMessage id="wc_cdkey_title" />
             </div>
           </div>
         </div>

@@ -35,7 +35,6 @@ export default function ProvablyConfig() {
   const onResetClientSeed = async () => {
     const seed = seedRef.current?.value;
     if (!seed) {
-      toast.error('Please input client seed');
       return;
     }
     setResetLoading(true);
@@ -44,7 +43,7 @@ export default function ProvablyConfig() {
     });
     setResetLoading(false);
     if (ret.status === 0) {
-      toast.success('Reset client seed successfully');
+      toast.success(intl.formatMessage({ id: 'reset_success_yhmy' }));
       toggleEditSeed();
       refresh();
     }
@@ -55,7 +54,7 @@ export default function ProvablyConfig() {
     const ret = await resetUsingPOST({});
     setShowLoading(false);
     if (ret.status === 0) {
-      toast.success('Show server seed successfully');
+      toast.success(intl.formatMessage({ id: 'show_success_fwqmy' }));
       setCurrentKey(ret.data);
     }
   };
