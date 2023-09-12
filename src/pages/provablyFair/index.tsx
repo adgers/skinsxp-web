@@ -9,6 +9,7 @@ import {
   useLocation,
 } from '@umijs/max';
 import { useMemo } from 'react';
+import RollCode from './code';
 import './index.less';
 
 export default function ProvablyFair() {
@@ -38,13 +39,15 @@ export default function ProvablyFair() {
           <IconFont type="icon-shield" className="text-green text-2xl" />
         </div>
       </div>
-      <div className="bg-black p-5 text-white sm:mt-8 max-w-4xl rounded-lg">
+      <div className="bg-black px-5 pb-5 text-white mt-4 max-w-4xl rounded-lg prose-base prose-slate overflow-hidden">
         <div
           dangerouslySetInnerHTML={{
             __html: intl.formatMessage({ id: 'provably_fair_content' }),
           }}
-          className="prose-base prose-slate"
+          className='mt-4'
         ></div>
+
+        <RollCode />
       </div>
       <div className="custom-tab flex mt-4 justify-center sm:justify-start text-white border-b border-[#45444B] w-full h-[68px]  max-w-4xl">
         {tabLinks.map((item, index) => {

@@ -102,8 +102,8 @@ export default function Deposit() {
       return (
         <div className="flex flex-col gap-4">
           <Menu as="div" className="relative">
-            <Menu.Button className="select select-sm md:select-md select-accent border-opacity-50 rounded w-full font-semibold flex justify-between items-center focus:outline-none bg-black">
-              <div>
+            <Menu.Button className="select select-md select-accent border-opacity-50 rounded w-full font-semibold flex justify-between items-center focus:outline-none bg-black">
+              <div className='uppercase'>
                 <FormattedMessage id="deposit_language" />
               </div>
               <div>
@@ -389,8 +389,8 @@ export default function Deposit() {
       <div className="relative mb-8 grid grid-cols-2 border-b border-light font-light lg:hidden">
         <div className="absolute bottom-0 left-0 h-0.5 w-1/2 transform bg-gold transition-transform duration-300 translate-x-full"></div>
         <div
-          className={`flex h-12 items-center justify-center cursor-pointer ${
-            currentTab === 1 ? 'text-green font-bold border-b border-green' : ''
+          className={`flex h-12 items-center justify-center cursor-pointer font-semibold ${
+            currentTab === 1 ? 'text-green border-b border-green' : ''
           } `}
           onClick={() => {
             if (currentTab !== 1) {
@@ -402,8 +402,8 @@ export default function Deposit() {
           <FormattedMessage id="deposit_choose_method" />
         </div>
         <div
-          className={`flex h-12 items-center justify-center cursor-pointer  ${
-            currentTab === 2 ? 'text-green font-bold border-b border-green' : ''
+          className={`flex h-12 items-center justify-center cursor-pointer font-semibold ${
+            currentTab === 2 ? 'text-green border-b border-green' : ''
           }`}
         >
           <FormattedMessage id="deposit_pay" />

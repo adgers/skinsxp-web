@@ -60,9 +60,9 @@ export default function ProvablyConfig() {
   };
 
   return (
-    <div className="flex flex-col space-y-4 mt-4 text-white max-w-4xl">
+    <div className="flex flex-col space-y-2 mt-4 text-white max-w-4xl">
       <div className="flex flex-col lg:h-14 lg:flex-row">
-        <div className="z-10 -mb-px flex h-full w-full items-center justify-center rounded bg-neutral py-2 text-center font-bold uppercase lg:py-1 lg:mb-0 lg:max-w-[250px]">
+        <div className="z-10 -mb-px flex h-full w-full items-center justify-center rounded bg-neutral py-2 text-center font-semibold uppercase lg:py-1 lg:mb-0 lg:max-w-[250px]">
           <FormattedMessage id="battle_user_seed" />
         </div>
         <div className="flex h-full flex-1 flex-col items-center rounded  border border-solid border-neutral-700  p-3 text-center md:flex-row lg:-ml-6  lg:pl-9">
@@ -73,7 +73,7 @@ export default function ProvablyConfig() {
             <button
               onClick={toggleEditSeed}
               type="button"
-              className="flex gap-1 h-10 items-center justify-center rounded border border-solid border-neutral-500 px-4 text-sm font-bold uppercase leading-none transition-colors duration-150 hover:bg-neutral-700 "
+              className="flex gap-1 h-10 items-center justify-center rounded border border-solid border-neutral-500 px-4 text-sm font-semibold uppercase leading-none transition-colors duration-150 hover:bg-neutral-700 "
             >
               <EditFilled />
               <FormattedMessage id="edit" />
@@ -81,7 +81,7 @@ export default function ProvablyConfig() {
             <button
               onClick={toggleClientSeedHistory}
               type="button"
-              className="flex h-10 items-center justify-center rounded border border-solid border-neutral-500 px-4 text-sm font-bold uppercase leading-none transition-colors duration-150 hover:bg-neutral-700"
+              className="flex h-10 items-center justify-center rounded border border-solid border-neutral-500 px-4 text-sm font-semibold uppercase leading-none transition-colors duration-150 hover:bg-neutral-700"
             >
               <FormattedMessage id="history" />
             </button>
@@ -89,7 +89,7 @@ export default function ProvablyConfig() {
         </div>
       </div>
       <div className="flex flex-col lg:h-14 lg:flex-row">
-        <div className="z-10 -mb-px flex h-full w-full items-center justify-center rounded bg-neutral py-2 text-center font-bold uppercase lg:py-1 lg:mb-0 lg:max-w-[250px] ">
+        <div className="z-10 -mb-px flex h-full w-full items-center justify-center rounded bg-neutral py-2 text-center font-semibold uppercase lg:py-1 lg:mb-0 lg:max-w-[250px] ">
           <FormattedMessage id="server_seed" />
         </div>
         <div className="flex h-full flex-1 flex-col items-center rounded  border border-solid border-neutral-700  p-3 text-center md:flex-row lg:-ml-6  lg:pl-9">
@@ -100,7 +100,7 @@ export default function ProvablyConfig() {
             <button
               onClick={toggleServerSeedHistory}
               type="button"
-              className="flex h-10 items-center justify-center rounded border border-solid text-xs border-neutral-500 px-4 sm:text-sm font-bold uppercase leading-none transition-colors duration-150 hover:bg-neutral-700"
+              className="flex h-10 items-center justify-center rounded border border-solid text-xs border-neutral-500 px-4 sm:text-sm font-semibold uppercase leading-none transition-colors duration-150 hover:bg-neutral-700"
             >
               <FormattedMessage id="history" />
             </button>
@@ -108,7 +108,7 @@ export default function ProvablyConfig() {
         </div>
       </div>
       <div className="flex flex-col lg:h-14 lg:flex-row">
-        <div className="z-10 -mb-px flex h-full w-full items-center justify-center rounded bg-neutral py-2 text-center font-bold uppercase lg:py-1 lg:mb-0 lg:max-w-[250px] ">
+        <div className="z-10 -mb-px flex h-full w-full items-center justify-center rounded bg-neutral py-2 text-center font-semibold uppercase lg:py-1 lg:mb-0 lg:max-w-[250px] ">
           <FormattedMessage id="secret_salt" />
         </div>
         <div className="flex h-full flex-1 flex-col items-center rounded  border border-solid border-neutral-700  p-3 text-center md:flex-row lg:-ml-6  lg:pl-9">
@@ -118,7 +118,7 @@ export default function ProvablyConfig() {
         </div>
       </div>
       <div className="flex flex-col lg:h-14 lg:flex-row">
-        <div className="z-10 -mb-px flex h-full w-full items-center justify-center rounded bg-neutral py-2 text-center font-bold uppercase lg:py-1 lg:mb-0 lg:max-w-[250px] ">
+        <div className="z-10 -mb-px flex h-full w-full items-center justify-center rounded bg-neutral py-2 text-center font-semibold uppercase lg:py-1 lg:mb-0 lg:max-w-[250px] ">
           <FormattedMessage id="publish_hash" />
         </div>
         <div className="flex h-full flex-1 flex-col items-center rounded  border border-solid border-neutral-700  p-3 text-center md:flex-row lg:-ml-6  lg:pl-9">
@@ -128,7 +128,7 @@ export default function ProvablyConfig() {
         </div>
       </div>
       <div className="flex flex-col lg:h-14 lg:flex-row">
-        <div className="z-10 -mb-px flex h-full w-full items-center justify-center rounded bg-neutral py-2 text-center font-bold uppercase lg:py-1 lg:mb-0 lg:max-w-[250px] ">
+        <div className="z-10 -mb-px flex h-full w-full items-center justify-center rounded bg-neutral py-2 text-center font-semibold uppercase lg:py-1 lg:mb-0 lg:max-w-[250px] ">
           <FormattedMessage id="round_label" />
         </div>
         <div className="flex h-full flex-1 flex-col items-center rounded  border border-solid border-neutral-700  p-3 text-center md:flex-row lg:-ml-6  lg:pl-9">
@@ -138,7 +138,7 @@ export default function ProvablyConfig() {
         </div>
       </div>
 
-      <div className="flex justify-end gap-2 p-3">
+      <div className="flex justify-end gap-4 py-3 items-center">
         <div className="text-white text-opacity-50 text-sm max-w-[300px]">
           <FormattedMessage id="show_hidden_ways" />
         </div>

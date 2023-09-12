@@ -7,6 +7,7 @@ import { toast } from 'react-toastify';
 
 export default function LoginConfirm() {
   const { steamLoginShow, hideSteamLogin } = useModel('user');
+  const [loading, setLoading] = useState(false);
   const intl = useIntl();
 
   const [agreeForm, setAgreeForm] = useState({
@@ -14,6 +15,7 @@ export default function LoginConfirm() {
     form_2_agree: false,
   });
   useEffect(() => {
+    setLoading(false);
     if (!steamLoginShow) {
       setAgreeForm({
         form_1_agree: false,
@@ -87,7 +89,7 @@ export default function LoginConfirm() {
             </span>
           </div>
         </div>
-        <div
+        <Button
           className="btn btn-green mt-8 w-full md:w-[60%] "
           onClick={() => {
             if (!agreeForm?.form_1_agree || !agreeForm?.form_2_agree) {
@@ -95,13 +97,15 @@ export default function LoginConfirm() {
               return;
             }
             // onOK();
-            hideSteamLogin();
+            // hideSteamLogin();
+            setLoading(true);
             window.location.href = getSteamLoginUrl();
           }}
+          loading={loading}
         >
           <IconFont type="icon-steam" className="mr-2" />
           <FormattedMessage id="sign_in" />
-        </div>
+        </Button>
       </Modal.Body>
     </Modal>
   );

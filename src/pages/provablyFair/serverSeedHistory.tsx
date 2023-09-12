@@ -46,29 +46,29 @@ export default function ServerSeedHistory({
               className="grid gap-y-px overflow-hidden break-all rounded-md text-xs leading-tight grid-cols-[auto_1fr]"
               key={item.id}
             >
-              <dt className="whitespace-nowrap bg-black p-3 font-bold">
+              <dt className="whitespace-nowrap bg-black p-3 font-semibold">
                 <FormattedMessage id="server_seed" />
               </dt>
               <dd className="bg-base-100 bg-opacity-30 p-3">
                 {item.secretHash}
               </dd>
-              <dt className="whitespace-nowrap bg-black p-3 font-bold ">
+              <dt className="whitespace-nowrap bg-black p-3 font-semibold ">
                 <FormattedMessage id="secret_salt" />
               </dt>
               <dd className="bg-base-100 bg-opacity-30 p-3">
                 {item.secretSalt}
               </dd>
-              <dt className="whitespace-nowrap bg-black p-3 font-bold ">
+              <dt className="whitespace-nowrap bg-black p-3 font-semibold ">
                 <FormattedMessage id="publish_hash" />
               </dt>
               <dd className="bg-base-100 bg-opacity-30 p-3">
                 {item.publicHash}
               </dd>
-              <dt className="whitespace-nowrap bg-black p-3 font-bold ">
+              <dt className="whitespace-nowrap bg-black p-3 font-semibold ">
                 <FormattedMessage id="round_label" />
               </dt>
               <dd className="bg-base-100 bg-opacity-30 p-3">{item.round}</dd>
-              <dt className="whitespace-nowrap bg-black p-3 font-bold ">
+              <dt className="whitespace-nowrap bg-black p-3 font-semibold ">
                 <FormattedMessage id="create_time" />
               </dt>
               <dd className="bg-base-100 bg-opacity-30 p-3">

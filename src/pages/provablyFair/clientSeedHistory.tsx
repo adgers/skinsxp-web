@@ -45,11 +45,11 @@ export default function ClientSeedHistory({
             className="grid gap-y-px overflow-hidden break-all rounded text-xs leading-tight grid-cols-[auto_1fr]"
             key={item.id}
           >
-            <dt className="whitespace-nowrap bg-black p-3 font-bold ">
+            <dt className="whitespace-nowrap bg-black p-3 font-semibold ">
               <FormattedMessage id="battle_user_seed" />
             </dt>
             <dd className="bg-base-100 bg-opacity-30 p-3">{item.clientSeed}</dd>
-            <dt className="whitespace-nowrap bg-black p-3 font-bold ">
+            <dt className="whitespace-nowrap bg-black p-3 font-semibold ">
               <FormattedMessage id="create_time" />
             </dt>
             <dd className="bg-base-100 bg-opacity-30 p-3 ">

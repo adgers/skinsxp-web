@@ -183,7 +183,7 @@ export default function BagPage() {
       {!loading && pageData?.length === 0 && <Empty />}
       <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-2 gap-y-[60px] sm:gap-x-4 md:gap-y-[40px]">
         {loading
-          ? Array.from({ length: pageSize }).map((_, i) => (
+          ? Array.from({ length: 12 }).map((_, i) => (
               <WeaponCard loading key={i} />
             ))
           : pageData?.map((item: any, i: number) => {
