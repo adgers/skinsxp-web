@@ -19,6 +19,7 @@ const Lottery = ({
   voice = false,
   showLogo = true,
   itemAudioOpen = true,
+  index,
 }: {
   giftList: API.BoxGiftListVo[];
   lotteryWin?: API.BattleBoxGainVo;
@@ -34,6 +35,7 @@ const Lottery = ({
   voice?: boolean;
   showLogo?: boolean;
   itemAudioOpen?: boolean;
+  index?: number;
 }) => {
   const baseNum = 36;
   const winLotteryIndex = 30;
@@ -249,7 +251,7 @@ const Lottery = ({
   useEffect(() => {
     initList();
     resetStyle();
-  }, [giftList]);
+  }, [giftList, index]);
 
   useEffect(() => {
     resetStyle();
