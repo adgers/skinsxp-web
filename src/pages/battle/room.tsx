@@ -479,7 +479,6 @@ export default function RoomDetail() {
             failAudio.play();
           }
         }
-        getUser();
       }
     } else {
       await sleep(1000);
@@ -525,15 +524,10 @@ export default function RoomDetail() {
 
   useEffect(() => {
     if (isEnd && roomResult?.customerGainList) {
-      if (responsive.md) {
-        setOpenResult(roomResult?.customerGainList);
-      } else {
-        const ret = roomResult?.customerGainList.map((t) => {
-          t.userOpenBoxRecord = t?.userOpenBoxRecord?.reverse();
-          return t;
-        });
-        setOpenResult(ret);
+      if (myRoom) {
+        getUser();
       }
+      setOpenResult(roomResult?.customerGainList);
     }
   }, [isEnd]);
 
@@ -882,13 +876,13 @@ export default function RoomDetail() {
               </div>
             </div>
             <div className="flex gap-2 flex-col sm:flex-row text-white/70 items-center">
-              <div className='flex gap-1'>
+              <div className="flex gap-1">
                 <div className="uppercase">
                   <FormattedMessage id="server_seed" />
                 </div>
-                {roomResult.info?.serverSeed}
+                {roomResult.randKeyVo?.secretHash}
               </div>
-              <div className='flex gap-1'>
+              <div className="flex gap-1">
                 <div className="uppercase">
                   <FormattedMessage id="started_at" />
                 </div>
