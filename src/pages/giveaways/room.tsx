@@ -202,7 +202,7 @@ export default function Room() {
           </div>
         </Skeleton>
       </div>
-      <div className="flex gap-10 py-4 border-b border-light">
+      <div className="flex gap-10 py-4 border-b border-light capitalize">
         <div>
           <div className="text-lg">
             <FormattedMessage id={'total_price'} />

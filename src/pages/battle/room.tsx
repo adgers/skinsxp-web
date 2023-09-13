@@ -178,7 +178,7 @@ const ResultBoxs = ({
 
   return (
     <TransitionGroup
-      className={`flex flex-col-reverse sm:grid gap-1 sm:gap-2 ${colsClass} items-center mt-2 sm:mt-4 w-full`}
+      className={`flex flex-col sm:grid gap-1 sm:grid-flow-row-dense sm:gap-2 ${colsClass} items-center mt-2 sm:mt-4 w-full`}
     >
       {boxs?.map((item) => (
         <CSSTransition
@@ -422,6 +422,11 @@ export default function RoomDetail() {
       return record;
     });
 
+    //将resultArr中的数据倒序
+    resultArr?.forEach((t) => {
+      t.userOpenBoxRecord = t?.userOpenBoxRecord?.reverse();
+    });
+
     setOpenResult(resultArr);
   };
 
@@ -488,7 +493,6 @@ export default function RoomDetail() {
     if (data?.state === 3) {
       toast.error(intl.formatMessage({ id: 'battle_room_cancel' }));
       history.replace({ pathname: '/battle', search: location?.search || '' });
-
     }
 
     if (data?.customerList) {
@@ -512,9 +516,9 @@ export default function RoomDetail() {
         initOpenResult(round - 1);
         goTo(round);
         setLotteryShow(true);
-        sleep(1000).then(()=>{
+        sleep(1000).then(() => {
           setLotteryStart(true);
-        })
+        });
       }
     }
   }, [roomResult, data?.state]);
@@ -674,20 +678,6 @@ export default function RoomDetail() {
           <div className="flex gap-3 items-center sm:justify-end flex-wrap">
             {roomResult && isEnd && (
               <>
-                <Verify
-                  show={verifyShow}
-                  onClose={() => setVerifyShow(false)}
-                  data={roomResult}
-                />
-                <div
-                  className="cursor-pointer flex gap-1 uppercase font-semibold"
-                  onClick={() => setVerifyShow(true)}
-                >
-                  <IconFont type="icon-shield" className="text-green" />
-                  <span className="text-xs text-green">
-                    <FormattedMessage id="mine_gpyz" />
-                  </span>
-                </div>
                 <div
                   className="cursor-pointer flex gap-2 uppercase font-semibold"
                   onClick={goHistory}
@@ -757,7 +747,7 @@ export default function RoomDetail() {
               (item) => item.customerId === user?.customerId,
             )[0];
 
-            const userOpeningReuslt = openResult?.filter(
+            const userOpeningResult = openResult?.filter(
               (item) => item.customerId === user?.customerId,
             )[0];
 
@@ -765,7 +755,7 @@ export default function RoomDetail() {
               ? userLastResult?.winner
               : isWinUser(data?.mode, user?.customerId);
 
-            const price = countTotalPrice(userOpeningReuslt?.userOpenBoxRecord);
+            const price = countTotalPrice(userOpeningResult?.userOpenBoxRecord);
 
             const lotteryWin = userOpenRecord?.userOpenBoxRecord?.[index - 1];
             const giftList = boxList?.filter(
@@ -857,15 +847,56 @@ export default function RoomDetail() {
                 </div>
                 <div className="battle-result">
                   <ResultBoxs
-                    boxs={userOpeningReuslt?.userOpenBoxRecord || []}
+                    boxs={userOpeningResult?.userOpenBoxRecord || []}
                     cols={data?.countCustomer || 2}
                     mini={!responsive.md}
                   />
+                </div>
+                <div className="mt-2 rounded text-center hidden sm:flex gap-1 flex-col sm:flex-row items-center py-3 bg-black justify-center text-xs text-white/70 ">
+                  <div className="uppercase">
+                    <FormattedMessage id="battle_user_seed" />:
+                  </div>
+                  <div>{userOpenRecord?.clientSeed}</div>
                 </div>
               </div>
             );
           })}
         </div>
+
+        {roomResult && isEnd && (
+          <div className="flex mt-4 p-3 gap-2 bg-black flex-col sm:flex-row sm:justify-between items-center text-xs rounded">
+            <div>
+              <Verify
+                show={verifyShow}
+                onClose={() => setVerifyShow(false)}
+                data={roomResult}
+              />
+              <div
+                className="cursor-pointer flex gap-1 uppercase font-semibold bg-dark py-3 px-4 rounded hover:bg-opacity-50"
+                onClick={() => setVerifyShow(true)}
+              >
+                <IconFont type="icon-shield" className="text-green" />
+                <span className="text-green">
+                  <FormattedMessage id="mine_gpyz" />
+                </span>
+              </div>
+            </div>
+            <div className="flex gap-2 flex-col sm:flex-row text-white/70 items-center">
+              <div className='flex gap-1'>
+                <div className="uppercase">
+                  <FormattedMessage id="server_seed" />
+                </div>
+                {roomResult.info?.serverSeed}
+              </div>
+              <div className='flex gap-1'>
+                <div className="uppercase">
+                  <FormattedMessage id="started_at" />
+                </div>
+                {roomResult.info?.battleTime}
+              </div>
+            </div>
+          </div>
+        )}
 
         {boxDetailShow && (
           <BoxDetail

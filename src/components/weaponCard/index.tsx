@@ -69,7 +69,7 @@ export default React.memo(function WeaponCard({
           <div className="truncate text-white/[0.5] text-xs">
             {name && parseName(name)?.[0]}
           </div>
-          <div className="truncate text-white text-xs sm:text-sm">
+          <div className="truncate text-white text-xs">
             {name && parseName(name)?.[1] && (
               <span className="text-white/50 text-xs">
                 ({parseName(name)?.[1]})
@@ -81,10 +81,10 @@ export default React.memo(function WeaponCard({
       ) : (
         <div className="item-footer flex gap-[2px] items-center">
           <div className="flex-1 overflow-hidden">
-            <div className="truncate text-white/[0.5] text-xs sm:text-sm">
+            <div className="truncate text-white/[0.5] text-xs">
               {name && parseName(name)?.[0]}
             </div>
-            <div className="truncate text-white text-xs sm:text-sm">
+            <div className="truncate text-white text-xs">
               {name && parseName(name)?.[1] && (
                 <span className="text-white/50 text-xs">
                   ({parseName(name)?.[1]})
@@ -107,7 +107,7 @@ export default React.memo(function WeaponCard({
       )}
 
       <div className="absolute left-0 top-0 text-xs sm:text-sm text-white p-[5px] sm:pt-[8px] sm:px-[10px] w-full flex justify-between items-center">
-        <span className="font-num">
+        <span className="font-num text-xs">
           {isShopList ? (
             <IconFont type="icon-coin" className="mr-1 text-purple" />
           ) : (
@@ -118,11 +118,11 @@ export default React.memo(function WeaponCard({
         {fromProfile && data?.state !== ItemState.ACTIVE && (
           <span
             className={`uppercase ${
-              data?.state === ItemState.SOLD ? 'text-red/100 font-bold' : ''
+              data?.state === ItemState.SOLD ? 'text-red/100 font-semibold' : ''
             } 
             ${
               data?.state === ItemState.RETRIEVED
-                ? 'text-white/60 font-bold'
+                ? 'text-white/60 font-semibold'
                 : ''
             }`}
           >
@@ -134,7 +134,7 @@ export default React.memo(function WeaponCard({
             <div className="text-white/[0.5] text-xs font-num flex items-center gap-2 z-30">
               {numberFixed(probability * 100, 3)}%
               <div
-                className="flex h-5 w-5 items-center justify-center rounded-full bg-white/[0.10] text-center font-bold transition-colors duration-200 lowercase"
+                className="flex h-5 w-5 items-center justify-center rounded-full bg-white/[0.10] text-center font-semibold transition-colors duration-200 lowercase"
                 onClick={() => setShowChance(!showChance)}
               >
                 {showChance ? 'x' : 'i'}

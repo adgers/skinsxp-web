@@ -188,7 +188,7 @@ export default function DreamPage() {
           <div className="flex flex-col items-center pb-3 text-center md:flex-row md:pb-6 md:pl-6 md:text-left">
             <div className="pr-1">
               <div className="flex">
-                <p className="text-sm font-bold leading-tight text-purple md:text-base lg:text-lg !text-gold">
+                <p className="text-sm font-semibold leading-tight text-purple md:text-base lg:text-lg !text-gold">
                   Choose your item
                 </p>
               </div>
@@ -197,10 +197,10 @@ export default function DreamPage() {
               </p>
             </div>
             <div className="mt-3 rounded-lg bg-navy-900 px-5 py-3 text-center md:ml-auto md:mt-0 md:rounded-r-none md:text-right">
-              <div className="whitespace-nowrap text-lg font-bold leading-none text-white">
+              <div className="whitespace-nowrap text-lg font-semibold leading-none text-white">
                 <span>US$0.00</span>
               </div>
-              <div className="text-xs font-bold leading-none text-gold">
+              <div className="text-xs font-semibold leading-none text-gold">
                 <span>+0.00%</span>
               </div>
             </div>
@@ -323,7 +323,7 @@ export default function DreamPage() {
             {/* <div className='text-sm'></div> */}
           </div>
           <div className="mt-6 flex h-full flex-col items-center justify-center py-20">
-            <p className="text-sm font-bold leading-tight text-white md:text-base lg:text-l mb-4">
+            <p className="text-sm font-semibold leading-tight text-white md:text-base lg:text-l mb-4">
               You don`t have any skins
             </p>
             <div className="btn btn-green text-white">Open Cases</div>
@@ -333,7 +333,7 @@ export default function DreamPage() {
             style={{ opacity: 0.5, pointerEvents: 'none' }}
           >
             <LeftOutlined/>
-            <div className="flex items-center justify-center rounded bg-navy-900 p-3 text-center text-sm font-bold leading-none text-white css-1mqx83j">
+            <div className="flex items-center justify-center rounded bg-navy-900 p-3 text-center text-sm font-semibold leading-none text-white css-1mqx83j">
               0/0
             </div>
             <RightOutlined/>

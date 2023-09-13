@@ -262,7 +262,7 @@ export default function Create() {
 
               <div className="mt-4 z-20 flex items-center justify-between rounded-xl px-2.5">
                 <button
-                  className="btn btn-sm font-bold bg-light rounded-none"
+                  className="btn btn-sm font-semibold bg-light rounded-none"
                   type="button"
                   onClick={() => {
                     reduceBox(item);
@@ -272,12 +272,12 @@ export default function Create() {
                 </button>
                 <input
                   type="text"
-                  className="input mx-1.5 h-auto w-full rounded border-0 bg-transparent text-center font-bold text-white outline-none focus:outline-none"
+                  className="input mx-1.5 h-auto w-full rounded border-0 bg-transparent text-center font-semibold text-white outline-none focus:outline-none"
                   value={item.count}
                   readOnly
                 />
                 <button
-                  className="btn btn-sm bg-light font-bold text-white rounded-none"
+                  className="btn btn-sm bg-light font-semibold text-white rounded-none"
                   type="button"
                   onClick={() => {
                     increaseBox(item);
@@ -295,7 +295,7 @@ export default function Create() {
           onClick={() => setCaseModalShow(true)}
         >
           <div className="flex w-10 h-10 rounded-full items-center justify-center bg-light hover:bg-opacity-70">
-            <PlusOutlined className="font-bold text-lg text-white" />
+            <PlusOutlined className="font-semibold text-lg text-white" />
           </div>
           <p className="mt-5 text-center text-sm font-semibold uppercase text-white">
             <FormattedMessage id="room_xzmh" />
@@ -306,7 +306,7 @@ export default function Create() {
       <div className="my-5 flex flex-col flex-wrap gap-4 sm:gap-8 border-y border-light py-5 sm:flex-row sm:items-center xl:flex-nowrap">
         <div className="flex flex-col">
           <div className="flex items-center gap-2">
-            <p className="text-xs font-bold uppercase text-white">
+            <p className="text-xs font-semibold uppercase text-white">
               <FormattedMessage id="battle_player_nums" />
             </p>
           </div>
@@ -332,7 +332,7 @@ export default function Create() {
         </div>
         <div className="flex flex-col">
           <div className="flex items-center gap-2">
-            <p className="text-xs font-bold uppercase text-white">
+            <p className="text-xs font-semibold uppercase text-white">
               <FormattedMessage id="room_mode" />
             </p>
           </div>
@@ -362,7 +362,7 @@ export default function Create() {
         <div className="flex h-min basis-full flex-col sm:flex-row xl:ml-auto xl:basis-auto">
           <div className="flex w-full sm:flex-row flex-col justify-center sm:justify-start gap-4 sm:gap-8">
             <div className="flex flex-row sm:flex-col gap-2 sm:gap-1 justify-center text-center sm:text-left">
-              <p className="text-xs font-bold uppercase text-white">
+              <p className="text-xs font-semibold uppercase text-white">
                 <FormattedMessage id="battle_total_cost" />
               </p>
               <p className="text-xs font-medium text-white text-opacity-50">

@@ -376,5 +376,6 @@
     "battle_select_limt": "você só pode selecionar até 20 casos",
     "reset_success_yhmy": "Redefinir seed do cliente com sucesso",
     "show_success_fwqmy": "Mostrar seed do servidor com sucesso",
-    "deposit_language": "linguagem"
+    "deposit_language": "linguagem",
+    "started_at": "começou em"
 }

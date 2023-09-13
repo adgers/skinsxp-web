@@ -65,7 +65,7 @@ export default function RollList() {
       <div className="flex w-full items-center justify-center mb-2 sm:mb-4 sm:justify-start">
         {roomStates.map((item, i) => (
           <Button
-            className={`flex items-center gap-2 whitespace-nowrap p-2 text-sm font-bold uppercase bg-transparent duration-200 border-none hover:bg-transparent hover:text-white 
+            className={`flex items-center gap-2 whitespace-nowrap p-2 text-sm font-semibold uppercase bg-transparent duration-200 border-none hover:bg-transparent hover:text-white 
             text-white ${roomState === item.value ? '' : 'text-opacity-50'}`}
             key={i}
             onClick={() => setRoomState(item.value)}

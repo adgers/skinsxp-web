@@ -161,6 +161,7 @@ declare namespace API {
     totalPrice?: number;
     winnerGain?: number;
     winnerIds?: string;
+    serverSeed: string;
     winners?: WinnerInfo[];
   };
 

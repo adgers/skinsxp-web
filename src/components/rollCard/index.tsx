@@ -85,7 +85,7 @@ export default React.memo(function RollCard({
         </div>
         <div>
           <FormattedMessage id="battle_room_total" />:{' '}
-          <span className="text-green font-bold">${data?.poolValue}</span>
+          <span className="text-green font-semibold">${data?.poolValue}</span>
         </div>
       </div>
       <div className="w-full absolute bottom-0 left-0">
