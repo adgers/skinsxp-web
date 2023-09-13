@@ -62,7 +62,7 @@ export default function Foot() {
               <img src={VisaSvg} alt="" className="h-[20px]" />
               <img src={AlipaySvg} alt="" className="h-[20px]" />
               <img src={ByteCoinSvg} alt="" className="h-[20px]" />
-              <img src={PixSvg} alt="" className="h-[20px]" />
+              <img src={require('@/assets/pix.png')} alt="" className="h-[20px]" />
             </div>
           </div>
 
