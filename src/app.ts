@@ -2,9 +2,10 @@ import { RequestConfig, getLocale, history } from '@umijs/max';
 import 'animate.css';
 import qs from 'qs';
 import { toast } from 'react-toastify';
-import { addImgHost, getApiDomain, urlParse } from './utils';
+import { addImgHost, getApiDomain, isLogin, urlParse } from './utils';
 
 let cancelFlag: boolean = false;
+let search = '';
 
 export const request: RequestConfig = {
   timeout: 15000,
@@ -61,7 +62,7 @@ export const request: RequestConfig = {
         setTimeout(() => {
           history.push(
             `/login?redirect=${location.pathname}&${
-              location.search.split('?')[1]
+              location.search.split('?')[1] || ''
             }`,
           );
           setTimeout(() => {
@@ -87,13 +88,14 @@ export function onRouteChange({
   console.log(location);
   if (isFirst) {
     if (!!location.search) {
-      localStorage.setItem('search', location.search);
+      search = location.search;
     } else {
-      localStorage.removeItem('search');
+      search = '';
     }
   } else {
-    if (!location.search && localStorage.getItem('search')) {
-      history.push(`${location.pathname}${localStorage.getItem('search')}`);
+    // history push|replace
+    if (!location.search && !!search && !isLogin()) {
+      history.push(`${location.pathname}${search}`);
     }
   }
 }
