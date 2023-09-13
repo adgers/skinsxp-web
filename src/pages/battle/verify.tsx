@@ -15,7 +15,7 @@ export default function Verify({
   const { boxOpenRecords } = data;
 
   return (
-    <Modal open={show} className="max-w-4xl w-full sm:w-auto">
+    <Modal open={show} className="max-w-4xl w-full sm:w-auto sm:min-w-[500px]">
       <Modal.Header className="mb-2 text-center uppercase font-semibold">
         <FormattedMessage id="battle_fairness_verify" />
       </Modal.Header>
