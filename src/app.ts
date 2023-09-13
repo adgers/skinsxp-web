@@ -5,6 +5,7 @@ import { toast } from 'react-toastify';
 import { addImgHost, getApiDomain, urlParse } from './utils';
 
 let cancelFlag: boolean = false;
+let search = '';
 
 export const request: RequestConfig = {
   timeout: 15000,
@@ -84,16 +85,16 @@ export function onRouteChange({
   location: { search: string; pathname: string };
   isFirst: boolean;
 }) {
-  console.log(location);
   if (isFirst) {
     if (!!location.search) {
-      localStorage.setItem('search', location.search);
+      search = location.search;
     } else {
-      localStorage.removeItem('search');
+      search = '';
     }
   } else {
-    if (!location.search && localStorage.getItem('search')) {
-      history.push(`${location.pathname}${localStorage.getItem('search')}`);
+    // history push|replace
+    if (!location.search && !!search) {
+      history.push(`${location.pathname}${search}`);
     }
   }
 }
