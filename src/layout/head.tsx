@@ -88,7 +88,7 @@ export default function Header() {
 
   const menuLinks = [
     {
-      title: <FormattedMessage id="mine_spbb" />,
+      title: <FormattedMessage id="personal_center" />,
       link: '/profile/bag',
       icon: 'icon-cases',
     },
