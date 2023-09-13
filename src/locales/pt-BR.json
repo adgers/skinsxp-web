@@ -302,7 +302,7 @@
   "recharge_unselect_channcel": "Please Select Payment Channel",
   "recharge_unselect_currency": "Please Select Payment Currency",
   "store_banner_content": "O valor dos pontos e das moedas de ouro são exatamente os mesmos. Os pontos são obtidos com a venda de acessórios. Durante o jogo, você consome moedas de ouro primeiro. Quando as moedas de ouro são insuficientes, os pontos são consumidos automaticamente. Além disso, você pode utilizar pontos para adquirir acessórios no WG Acessórios Mall. Venha escolher os acessórios que você gosta.",
-  "wc_promote_explain": "O que é código promocional? \\n Insira o código promocional e ative o bônus.",
+  "wc_promote_explain": "O que é código promocional? \\n Entre no código de promoção e ative o bónus.",
   "room_top_battle": "Principais batalhas",
   "room_create_battle": "Criar Batalha Caso",
   "text_normal_or": "ou",
@@ -380,5 +380,6 @@
   "started_at": "começou em",
   "footer_disclaimer": "Isenção de responsabilidade",
   "footer_ddzz": "Código de Ética",
-  "personal_center": "Meu PROFIL"
+  "personal_center": "Meu PROFIL",
+  "deposit_promoteCode_placeholder": "Por favor insira o código promocional"
 }

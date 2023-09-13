@@ -207,7 +207,7 @@ export default function Deposit() {
                     type="text"
                     className="w-full bg-black rounded pl-4 border border-light focus:outline-none h-12"
                     ref={promoCodeRef}
-                    placeholder={intl.formatMessage({ id: 'register_qsryqm' })}
+                    placeholder={intl.formatMessage({ id: 'deposit_promoteCode_placeholder' })}
                   />
                 ) : promoCodeState === PromoCodeState.USING ? (
                   <div className="flex-1 flex rounded-lg items-center pl-8 bg-light/20 text-sm h-12">

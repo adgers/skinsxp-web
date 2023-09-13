@@ -380,5 +380,6 @@
   "started_at": "started at",
   "footer_disclaimer": "Disclaimer",
   "footer_ddzz": "Code of ethics",
-  "personal_center": "MY PROFILE"
+  "personal_center": "MY PROFILE",
+  "deposit_promoteCode_placeholder": "Please enter promotion code"
 }
