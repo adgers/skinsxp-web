@@ -59,15 +59,15 @@ export default function Foot() {
               <img src={require('@/assets/wg-logo.png')} />
             </div>
             <div className="mt-8 flex flex-wrap items-center gap-x-8 gap-y-4">
-              <img src={VisaSvg} alt="" />
-              <img src={AlipaySvg} alt="" />
-              <img src={ByteCoinSvg} alt="" />
-              <img src={PixSvg} alt="" className='h-[30px]' />
+              <img src={VisaSvg} alt="" className="h-[20px]" />
+              <img src={AlipaySvg} alt="" className="h-[20px]" />
+              <img src={ByteCoinSvg} alt="" className="h-[20px]" />
+              <img src={PixSvg} alt="" className="h-[20px]" />
             </div>
           </div>
 
           <div className="grid grid-flow-row gap-y-10 mt-4 sm:mt-0 sm:grid-flow-col">
-            <div className="flex flex-col">
+            <div className="flex flex-col gap-2">
               <span className="footer-title text-sm">
                 <FormattedMessage id="footer_services" />
               </span>
@@ -94,7 +94,7 @@ export default function Foot() {
               </Link>
             </div>
 
-            <div className="flex flex-col">
+            <div className="flex flex-col gap-2">
               <span className="footer-title text-sm">
                 <FormattedMessage id="footer_company" />
               </span>
