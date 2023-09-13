@@ -1,6 +1,5 @@
 import AlipaySvg from '@/assets/alipay.svg';
 import ByteCoinSvg from '@/assets/byte-coin.svg';
-import PixSvg from '@/assets/pix.svg';
 import VisaSvg from '@/assets/visa.svg';
 import { FormattedMessage, Link, useModel } from '@umijs/max';
 
@@ -62,7 +61,11 @@ export default function Foot() {
               <img src={VisaSvg} alt="" className="h-[20px]" />
               <img src={AlipaySvg} alt="" className="h-[20px]" />
               <img src={ByteCoinSvg} alt="" className="h-[20px]" />
-              <img src={PixSvg} alt="" className="h-[20px]" />
+              <img
+                src={require('@/assets/pix.png')}
+                alt=""
+                className="h-[20px]"
+              />
             </div>
           </div>
 
@@ -84,6 +87,20 @@ export default function Foot() {
                 target="_blank"
               >
                 <FormattedMessage id="privacy_policy" />
+              </Link>
+              <Link
+                className="link link-hover whitespace-nowrap text-sm"
+                to="/docs/help/53"
+                target="_blank"
+              >
+                <FormattedMessage id="footer_disclaimer" />
+              </Link>
+              <Link
+                className="link link-hover whitespace-nowrap text-sm"
+                to="/docs/help/54"
+                target="_blank"
+              >
+                <FormattedMessage id="footer_ddzz" />
               </Link>
               <Link
                 className="link link-hover whitespace-nowrap text-sm"

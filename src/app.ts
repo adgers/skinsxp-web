@@ -76,3 +76,24 @@ export const request: RequestConfig = {
     },
   ],
 };
+
+export function onRouteChange({
+  location,
+  isFirst,
+}: {
+  location: { search: string; pathname: string };
+  isFirst: boolean;
+}) {
+  console.log(location);
+  if (isFirst) {
+    if (!!location.search) {
+      localStorage.setItem('search', location.search);
+    } else {
+      localStorage.removeItem('search');
+    }
+  } else {
+    if (!location.search && localStorage.getItem('search')) {
+      history.push(`${location.pathname}${localStorage.getItem('search')}`);
+    }
+  }
+}

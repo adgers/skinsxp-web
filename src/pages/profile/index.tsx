@@ -22,7 +22,7 @@ export default function User() {
   const tabLinks = useMemo(() => {
     return [
       {
-        title: <FormattedMessage id="my_package_title" />,
+        title: <FormattedMessage id="mine_spbb" />,
         link: '/profile/bag',
         icon: 'icon-cases',
       },
