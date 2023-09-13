@@ -83,7 +83,7 @@ export default function Deposit() {
     }
     const ret = await makePaymentUsingPOST({
       // couponId: selectCoupon?.id,
-      currencyCode: selectCurrency || '',
+      // currencyCode: selectCurrency || '',
       quantity,
       rechargeChannelId: selectChannel?.id || 0,
     });

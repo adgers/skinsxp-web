@@ -773,7 +773,7 @@ declare namespace API {
     /** couponId */
     couponId?: number;
     /** currencyCode */
-    currencyCode: string;
+    currencyCode?: string;
     /** quantity */
     quantity: number;
     /** rechargeChannelId */
