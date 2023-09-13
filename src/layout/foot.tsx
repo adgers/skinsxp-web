@@ -9,7 +9,7 @@ export default function Foot() {
   return (
     <footer className="bg-base-300 text-base-content mt-10">
       <div className="max-w-8xl w-full m-auto relative">
-        <div className="flex justify-end gap-4 w-full border-b border-light py-8 pr-6">
+        <div className="flex justify-end gap-4 w-full border-b border-light border-opacity-70 py-5 pr-6">
           <a>
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -52,7 +52,7 @@ export default function Foot() {
             </svg>
           </a>
         </div>
-        <div className="grid  grid-flow-row sm:grid-flow-col w-full py-10 px-4 gap-y-10">
+        <div className="grid  grid-flow-row sm:grid-flow-col w-full py-8 px-4 gap-y-10">
           <div>
             <div className="w-40">
               <img src={require('@/assets/wg-logo.png')} />

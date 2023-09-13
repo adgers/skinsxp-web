@@ -200,7 +200,7 @@ export function addImgHost(data: any) {
 }
 
 export function isInApp() {
-  return /muskins/i.test(navigator.userAgent);
+  return /wgskins/i.test(navigator.userAgent);
 }
 
 export function headHidden() {
