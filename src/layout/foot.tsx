@@ -1,5 +1,6 @@
 import AlipaySvg from '@/assets/alipay.svg';
 import ByteCoinSvg from '@/assets/byte-coin.svg';
+import PixSvg from '@/assets/pix.svg';
 import VisaSvg from '@/assets/visa.svg';
 import { FormattedMessage, Link, useModel } from '@umijs/max';
 
@@ -61,30 +62,31 @@ export default function Foot() {
               <img src={VisaSvg} alt="" />
               <img src={AlipaySvg} alt="" />
               <img src={ByteCoinSvg} alt="" />
+              <img src={PixSvg} alt="" className='h-[30px]' />
             </div>
           </div>
 
           <div className="grid grid-flow-row gap-y-10 mt-4 sm:mt-0 sm:grid-flow-col">
             <div className="flex flex-col">
-              <span className="footer-title">
+              <span className="footer-title text-sm">
                 <FormattedMessage id="footer_services" />
               </span>
               <Link
-                className="link link-hover whitespace-nowrap"
+                className="link link-hover whitespace-nowrap text-sm"
                 to="/docs/help/52"
                 target="_blank"
               >
                 <FormattedMessage id="terms_of_service" />
               </Link>
               <Link
-                className="link link-hover whitespace-nowrap"
+                className="link link-hover whitespace-nowrap text-sm"
                 to="/docs/help/51"
                 target="_blank"
               >
                 <FormattedMessage id="privacy_policy" />
               </Link>
               <Link
-                className="link link-hover whitespace-nowrap"
+                className="link link-hover whitespace-nowrap text-sm"
                 to="/docs/help"
                 target="_blank"
               >
@@ -93,18 +95,18 @@ export default function Foot() {
             </div>
 
             <div className="flex flex-col">
-              <span className="footer-title">
+              <span className="footer-title text-sm">
                 <FormattedMessage id="footer_company" />
               </span>
               <Link
-                className="link link-hover whitespace-nowrap"
+                className="link link-hover whitespace-nowrap text-sm"
                 to="/docs/help/50"
                 target="_blank"
               >
                 <FormattedMessage id="about_us" />
               </Link>
               <Link
-                className="link link-hover whitespace-nowrap"
+                className="link link-hover whitespace-nowrap text-sm"
                 to="/provably-fair"
                 target="_blank"
               >
