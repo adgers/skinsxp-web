@@ -211,15 +211,15 @@ export default function BagPage() {
                   >
                     <WeaponCard data={item} fromProfile={true} />
                     <div className="absolute left-0 top-0 z-10 mt-5 flex gap-10 justify-between items-center w-full  opacity-0 transition-opacity duration-200 group-hover:opacity-100 px-1 sm:p-4">
-                      <div className="text-xs font-bold uppercase leading-none css-rgj8xp text-white ">
+                      <div className="text-xs font-semibold uppercase leading-none css-rgj8xp text-white ">
                         {item?.sourceType}
                       </div>
-                      <div className="ml-auto text-right text-xs text-white font-bold uppercase whitespace-pre-wrap flex-1">
+                      <div className="ml-auto text-right text-xs text-white font-semibold uppercase whitespace-pre-wrap flex-1">
                         {item?.createTime}
                       </div>
                     </div>
                     <>
-                      <ul className="absolute bottom-0 left-0 z-[10] w-full  divide- whitespace-nowrap  text-white/50 text-xl font-bold leading-none transition-opacity duration-200 opacity-0 group-hover:opacity-100">
+                      <ul className="absolute bottom-0 left-0 z-[10] w-full  divide- whitespace-nowrap  text-white/50 text-xl font-semibold leading-none transition-opacity duration-200 opacity-0 group-hover:opacity-100">
                         {item?.verifyId && (
                           <li
                             className="border-solid bg-black"

@@ -25,7 +25,7 @@ export default function BattleItem(props: BattleItemProps) {
     >
       <div className="flex items-center  mt-2.5 ml-4 gap-2 uppercase text-xs">
         <div
-          className={`rounded-full text-white flex items-center flex-shrink-0 justify-center font-bold w-[34px] h-[34px] border-[2px] border-opacity-40 ${
+          className={`rounded-full text-white flex items-center flex-shrink-0 justify-center font-semibold w-[34px] h-[34px] border-[2px] border-opacity-40 ${
             data?.round === 0 ? 'border-green ' : 'border-red'
           }`}
         >
@@ -63,7 +63,7 @@ export default function BattleItem(props: BattleItemProps) {
                   {item?.boxName}
                 </div>
                 <div className="text-xs text-white/50">
-                  <span className="text-white text-sm font-bold">
+                  <span className="text-white text-sm font-semibold">
                     {index + 1}
                   </span>{' '}
                   / {data?.boxList?.length}
@@ -144,7 +144,7 @@ export default function BattleItem(props: BattleItemProps) {
                 key={index}
                 className="flex w-8 h-8 rounded-full items-center justify-center bg-light bg-opacity-70"
               >
-                <PlusOutlined className="font-bold text-lg text-white" />
+                <PlusOutlined className="font-semibold text-lg text-white" />
               </div>
             );
           })}

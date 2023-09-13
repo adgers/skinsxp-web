@@ -43,7 +43,7 @@ export default function Verify({
                   )}
                 </div>
                 <div className="flex text-xs gap-2">
-                  <span>
+                  <span className='uppercase'>
                     <FormattedMessage id="battle_user_seed" />
                   </span>
                   <div className="text-white text-opacity-50">
@@ -58,11 +58,11 @@ export default function Verify({
                   className="flex flex-col items-center flex-shrink-0 w-40 gap-1"
                   key={i}
                 >
-                  <div className="mb-2 mt-1 text-center text-xs font-bold uppercase">
+                  <div className="mb-2 mt-1 text-center text-xs font-semibold uppercase">
                      ROUND {urecord.round}
                   </div>
                   <WeaponCard key={i} data={urecord} showRoll={false} />
-                  <div className="mt-2 flex gap-1 text-xs font-bold uppercase">
+                  <div className="mt-2 flex gap-1 text-xs uppercase">
                     <span>
                       <FormattedMessage id="battle_roll_id" />{' '}
                       {urecord.rollCode}

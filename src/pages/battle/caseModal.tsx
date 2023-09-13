@@ -123,7 +123,7 @@ export default function CaseModal({
                     <div className="absolute left-0 top-0 flex w-full h-full items-center justify-center bg-black bg-opacity-80">
                       <div className="absolute left-1/2 top-1/2 z-20 mt-2 h-8 -translate-x-1/2 -translate-y-1/2 transform items-center justify-between flex">
                         <button
-                          className="btn btn-sm bg-light font-bold text-white rounded-none border-0"
+                          className="btn btn-sm bg-light font-semibold text-white rounded-none border-0"
                           type="button"
                           onClick={(e) => {
                             e.preventDefault();
@@ -140,7 +140,7 @@ export default function CaseModal({
                           readOnly
                         ></input>
                         <button
-                          className="btn btn-sm bg-light font-bold text-white rounded-none border-0"
+                          className="btn btn-sm bg-light font-semibold text-white rounded-none border-0"
                           type="button"
                           onClick={(e) => {
                             e.preventDefault();

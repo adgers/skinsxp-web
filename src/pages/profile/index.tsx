@@ -63,7 +63,7 @@ export default function User() {
                   <div className="text-white text-base md:text-xl flex items-center gap-2">
                     <span>{userInfo?.nickname}</span>
                   </div>
-                  <div className="flex justify-between text-xl font-bold items-center gap-2 w-full">
+                  <div className="flex justify-between text-xl font-semibold items-center gap-2 w-full">
                     <div className=" lg:w-fit">
                       <div className="text-white/70 text-sm font-normal mb-1">
                         <FormattedMessage id="balanceAfter" />

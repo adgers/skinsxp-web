@@ -84,7 +84,7 @@ export default function Result({
   return (
     <Modal
       open={show}
-      className="max-w-md md:max-w-3xl  result-modal rounded sm:rounded-lg backdrop-blur-md"
+      className="max-w-4xl w-full sm:w-auto result-modal rounded sm:rounded-lg backdrop-blur-md"
     >
       <Button
         size="xs"

@@ -35,11 +35,11 @@ export default function GiveawayItem(props: GiveawayItemProps) {
             >
               <img src={kingSvg} alt="" className="w-[8px] h-[8px]" />
             </div>
-            <p className="ml-2 text-xs font-bold text-white text-opacity-70">
+            <p className="ml-2 text-xs font-semibold text-white text-opacity-70">
               {item?.title}
             </p>
           </div>
-          <div className="ml-auto flex items-center rounded-none py-1.5 pl-1.5 pr-2 text-xs font-bold tabular-nums text-white bg-white/[.15] rounded-l">
+          <div className="ml-auto flex items-center rounded-none py-1.5 pl-1.5 pr-2 text-xs font-semibold tabular-nums text-white bg-white/[.15] rounded-l">
             <IconFont type="icon-online" className="mr-1 text-[10px]" />
             {item?.userCount}
           </div>
@@ -61,10 +61,10 @@ export default function GiveawayItem(props: GiveawayItemProps) {
           </div>
           <a className="flex w-[55%] flex-col pr-2.5 justify-start">
             <div className="flex flex-col">
-              <span className="truncate text-xs font-bold text-white text-opacity-70">
+              <span className="truncate text-xs font-semibold text-white text-opacity-70">
                 {name && parseName(name)?.[0]}
               </span>
-              <span className="truncate text-xs font-bold leading-none text-white">
+              <span className="truncate text-xs font-semibold leading-none text-white">
                 {/* {item?.giftVos?.[0]?.giftName?.split('|')?.[1]?.trim()} */}
                 {name && parseName(name)?.[1] && (
                   <span className="text-white/50">
@@ -80,7 +80,7 @@ export default function GiveawayItem(props: GiveawayItemProps) {
                   <div className="flex w-6 flex-shrink-0 flex-col items-center justify-center text-center">
                     <Countdown
                       value={days}
-                      className="days-value text-xs font-bold tabular-nums leading-none text-white"
+                      className="days-value text-xs font-semibold tabular-nums leading-none text-white"
                     />
                     <span className="transform scale-75 font-medium leading-none text-white text-opacity-70">
                       <FormattedMessage id="text_time_days" />
@@ -94,7 +94,7 @@ export default function GiveawayItem(props: GiveawayItemProps) {
               <div className="flex w-6 flex-shrink-0 flex-col items-center justify-center text-center">
                 <Countdown
                   value={hours}
-                  className="days-value text-xs font-bold tabular-nums leading-none text-white"
+                  className="days-value text-xs font-semibold tabular-nums leading-none text-white"
                 />
                 <span className="transform scale-75  font-medium leading-none text-white text-opacity-70">
                   <FormattedMessage id="text_time_hour" />
@@ -107,7 +107,7 @@ export default function GiveawayItem(props: GiveawayItemProps) {
               <div className="flex w-6 flex-shrink-0 flex-col items-center justify-center text-center">
                 <Countdown
                   value={minutes}
-                  className="days-value text-xs font-bold tabular-nums leading-none text-white"
+                  className="days-value text-xs font-semibold tabular-nums leading-none text-white"
                 />
                 <span className="transform scale-75 font-medium leading-none text-white text-opacity-70">
                   <FormattedMessage id="text_time_min" />
@@ -119,7 +119,7 @@ export default function GiveawayItem(props: GiveawayItemProps) {
               <div className="flex w-6 flex-shrink-0 flex-col items-center justify-center text-center">
                 <Countdown
                   value={seconds}
-                  className="days-value text-xs font-bold tabular-nums leading-none text-white"
+                  className="days-value text-xs font-semibold tabular-nums leading-none text-white"
                 />
                 <span className="transform scale-75 font-medium leading-none text-white text-opacity-70">
                   <FormattedMessage id="text_time_sec" />
