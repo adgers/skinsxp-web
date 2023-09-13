@@ -60,7 +60,11 @@ export const request: RequestConfig = {
         cancelFlag = true;
         localStorage.removeItem('token');
         setTimeout(() => {
-          history.push(`/login?redirect=${location.pathname}`);
+          history.push(
+            `/login?redirect=${location.pathname}&${
+              location.search.split('?')[1] || ''
+            }`,
+          );
           setTimeout(() => {
             cancelFlag = false;
           }, 1000);
@@ -81,7 +85,7 @@ export function onRouteChange({
   location: { search: string; pathname: string };
   isFirst: boolean;
 }) {
-  // console.log(location);
+  console.log(location);
   if (isFirst) {
     if (!!location.search) {
       search = location.search;
