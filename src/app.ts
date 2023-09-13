@@ -2,7 +2,7 @@ import { RequestConfig, getLocale, history } from '@umijs/max';
 import 'animate.css';
 import qs from 'qs';
 import { toast } from 'react-toastify';
-import { addImgHost, getApiDomain, urlParse } from './utils';
+import { addImgHost, getApiDomain, isLogin, urlParse } from './utils';
 
 let cancelFlag: boolean = false;
 let search = '';
@@ -60,11 +60,7 @@ export const request: RequestConfig = {
         cancelFlag = true;
         localStorage.removeItem('token');
         setTimeout(() => {
-          history.push(
-            `/login?redirect=${location.pathname}&${
-              location.search.split('?')[1]
-            }`,
-          );
+          history.push(`/login?redirect=${location.pathname}`);
           setTimeout(() => {
             cancelFlag = false;
           }, 1000);
@@ -85,6 +81,7 @@ export function onRouteChange({
   location: { search: string; pathname: string };
   isFirst: boolean;
 }) {
+  // console.log(location);
   if (isFirst) {
     if (!!location.search) {
       search = location.search;
@@ -93,7 +90,7 @@ export function onRouteChange({
     }
   } else {
     // history push|replace
-    if (!location.search && !!search) {
+    if (!location.search && !!search && !isLogin()) {
       history.push(`${location.pathname}${search}`);
     }
   }

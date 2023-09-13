@@ -24,6 +24,7 @@ export default function LoginCallback() {
       }
 
       getUser(); 
+      console.log(queryStrObj.redirectUrl )
       history.push(queryStrObj.redirectUrl || '/');
     } else {
       history.push('/login');
