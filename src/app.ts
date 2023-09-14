@@ -61,8 +61,10 @@ export const request: RequestConfig = {
         localStorage.removeItem('token');
         setTimeout(() => {
           history.push(
-            `/login?redirect=${location.pathname}&${
-              location.search.split('?')[1] || ''
+            `/login?redirect=${location.pathname}${
+              location.search.split('?')[1]
+                ? `&${location.search.split('?')[1]}`
+                : ''
             }`,
           );
           setTimeout(() => {
