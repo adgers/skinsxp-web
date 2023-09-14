@@ -2,6 +2,7 @@ import { useIntl } from '@umijs/max';
 import { useMemo, useState } from 'react';
 import BalanceRecord from './balance';
 import RechargeRecord from './recharge';
+import TakeRecord from './take';
 
 export default function FlowRecord() {
   const [roomState, setRoomState] = useState('recharge');
@@ -13,6 +14,7 @@ export default function FlowRecord() {
         value: 'recharge',
       },
       { label: intl.formatMessage({ id: 'balance_record' }), value: 'balance' },
+      { label: intl.formatMessage({ id: 'take_record' }), value: 'take' },
     ],
     [],
   );
@@ -21,11 +23,12 @@ export default function FlowRecord() {
     <div className="flex flex-col items-center">
       <div className="custom-tab w-full flex  mb-4 gap-8 text-white justify-center border-b border-[#45444B] h-[68px]">
         {roomStates.map((item, index) => {
-
           return (
             <div
-              className={`tab-item flex items-center  h-full ${
-                roomState === item.value ? 'text-green border-b-[1px] border-green' : 'text-white '
+              className={`tab-item flex items-center cursor-pointer h-full ${
+                roomState === item.value
+                  ? 'text-green border-b-[1px] border-green'
+                  : 'text-white '
               }`}
               key={index}
               onClick={() => setRoomState(item.value)}
@@ -35,9 +38,10 @@ export default function FlowRecord() {
           );
         })}
       </div>
-    
+
       {roomState === 'recharge' && <RechargeRecord />}
       {roomState === 'balance' && <BalanceRecord />}
+      {roomState === 'take' && <TakeRecord />}
     </div>
   );
 }

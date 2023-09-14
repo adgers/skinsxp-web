@@ -118,6 +118,18 @@ export async function unionPayH5CallbackUsingPOST(
   });
 }
 
+/** uniPaymentCallback POST /api/callback/uniPaymentCallback */
+export async function uniPaymentCallbackUsingPOST(body: string, options?: { [key: string]: any }) {
+  return request<string>('/api/callback/uniPaymentCallback', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    data: body,
+    ...(options || {}),
+  });
+}
+
 /** callback POST /api/zbt/callback */
 export async function callbackUsingPOST(
   body: Record<string, any>,

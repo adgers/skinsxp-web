@@ -1,5 +1,6 @@
 import {
   getPromotionInfoUsingGET,
+  listUsingGET1,
   modifyInvitationCodeUsingPOST,
   myPromotionLogPageUsingGET,
 } from '@/services/front/tuiguangzhongxinxiangguan';
@@ -7,13 +8,17 @@ import { CopyOutlined } from '@ant-design/icons';
 import { FormattedMessage, useIntl, useRequest } from '@umijs/max';
 import { ConfigProvider, theme } from 'antd';
 import Table, { ColumnsType } from 'antd/es/table';
+import { sortBy } from 'lodash';
 import { useEffect, useRef, useState } from 'react';
 import { CopyToClipboard } from 'react-copy-to-clipboard';
-import { Button, Input } from 'react-daisyui';
+import { Button, Input, Progress } from 'react-daisyui';
 import { toast } from 'react-toastify';
 
 export default function PromotePage() {
   const { data = {}, refresh } = useRequest(() => getPromotionInfoUsingGET());
+  const { data: promotionList = [] } = useRequest(() => listUsingGET1());
+  const sortedPromotionList = sortBy(promotionList, (item) => item.grade);
+
   const [promoteCode, setPromoteCode] = useState<string>('');
   const [upInvitationCode, setUpInvitationCode] = useState<string>('');
   const [promotoEdit, setPromoteEdit] = useState<boolean>(false);
@@ -26,6 +31,7 @@ export default function PromotePage() {
   });
   const [dataSource, setDataSource] = useState<API.MyPromotionLogPageVo[]>([]);
   const [total, setTotal] = useState(0);
+  const [tab, setTab] = useState<'rank' | 'history'>('rank');
 
   const promoteRef = useRef<HTMLInputElement>(null);
   const invRef = useRef<HTMLInputElement>(null);
@@ -59,6 +65,60 @@ export default function PromotePage() {
       key: 'createTime',
     },
   ];
+  const rankColumns: ColumnsType<API.Promotion> = [
+    {
+      title: <FormattedMessage id="promoteCode_level" />,
+      dataIndex: 'grade',
+      key: 'grade',
+      width: '25%',
+    },
+    {
+      title: <FormattedMessage id="promoteCode_nextlevel" />,
+      dataIndex: 'rebateAmountMin',
+      key: 'rebateAmountMin',
+      width: '25%',
+
+      render: (text, record) => {
+        return (
+          <div className="flex flex-col items-center">
+            <div>
+              $ <span className="text-white font-bold">{text}</span>
+              {record?.rebateAmountMax && `/${record?.rebateAmountMax}`}
+            </div>
+            <Progress
+              value={data?.accumulatedRechargeAmount}
+              max={record?.rebateAmountMax}
+            />
+          </div>
+        );
+      },
+    },
+    {
+      title: <FormattedMessage id="promoteCode_rebate" />,
+      dataIndex: 'rebateRate',
+      key: 'rebateRate',
+      width: '25%',
+
+      render: (text, record) => (
+        <span
+          className={`${
+            data?.promotionGrade === record.grade ? 'text-white font-bold' : ''
+          }`}
+        >
+          {text} %
+        </span>
+      ),
+    },
+    {
+      title: <FormattedMessage id="partner_rebate" />,
+      dataIndex: 'userRebateValue',
+      key: 'userRebateValue',
+      width: '25%',
+
+      render: (text, record) =>
+        record.userRebateType === 0 ? `${text}%` : `$${text}`,
+    },
+  ];
 
   const { loading } = useRequest(
     async () => {
@@ -71,7 +131,7 @@ export default function PromotePage() {
       }
     },
     {
-      refreshDeps: [searchParams.page, searchParams.pageSize],
+      refreshDeps: [searchParams.page, searchParams.pageSize, tab],
     },
   );
 
@@ -222,8 +282,27 @@ export default function PromotePage() {
           </div>
         </div>
       </div>
-      <div className="box-title mt-10 uppercase">
-        <FormattedMessage id="promote_user" />
+      <div className="custom-tab w-full flex  mb-4 gap-8 text-white justify-center border-b border-[#45444B] h-[68px]">
+        <div
+          className={`tab-item flex items-center  h-full ${
+            tab === 'rank'
+              ? 'text-green border-b-[1px] border-green'
+              : 'text-white '
+          }`}
+          onClick={() => setTab('rank')}
+        >
+          推广等级
+        </div>
+        <div
+          className={`tab-item flex items-center  h-full ${
+            tab === 'history'
+              ? 'text-green border-b-[1px] border-green'
+              : 'text-white '
+          }`}
+          onClick={() => setTab('history')}
+        >
+          <FormattedMessage id="promote_user" />
+        </div>
       </div>
       <ConfigProvider
         theme={{
@@ -233,24 +312,45 @@ export default function PromotePage() {
           locale: 'en-US',
         }}
       >
-        <Table
-          columns={affliateColumns}
-          dataSource={dataSource}
-          loading={loading}
-          scroll={{
-            x: 1000,
-          }}
-          pagination={{
-            pageSize: searchParams.pageSize,
-            total: total,
-            onChange: (page, pageSize) => {
-              // setPage(page);
-              // setPageSize(pageSize);
-              setSearchParams({ ...searchParams, page, pageSize });
-            },
-          }}
-          className="w-full"
-        ></Table>
+        {tab === 'history' ? (
+          <Table
+            columns={affliateColumns}
+            dataSource={dataSource}
+            loading={loading}
+            scroll={{
+              x: 1000,
+            }}
+            pagination={{
+              pageSize: searchParams.pageSize,
+              total: total,
+              onChange: (page, pageSize) => {
+                // setPage(page);
+                // setPageSize(pageSize);
+                setSearchParams({ ...searchParams, page, pageSize });
+              },
+            }}
+            className="w-full"
+          ></Table>
+        ) : (
+          <Table
+            columns={rankColumns}
+            dataSource={sortedPromotionList}
+            loading={loading}
+            scroll={{
+              x: 1000,
+            }}
+            pagination={{
+              pageSize: searchParams.pageSize,
+              total: total,
+              onChange: (page, pageSize) => {
+                // setPage(page);
+                // setPageSize(pageSize);
+                setSearchParams({ ...searchParams, page, pageSize });
+              },
+            }}
+            className="w-full"
+          ></Table>
+        )}
       </ConfigProvider>
     </>
   );

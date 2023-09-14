@@ -143,6 +143,7 @@ declare namespace API {
     createDate?: string;
     customerGainList?: BattleCustomerGainVo[];
     info?: BattleVo;
+    randKeyVo?: RandKeyVo;
   };
 
   type BattleVo = {
@@ -152,8 +153,6 @@ declare namespace API {
     countCustomer?: number;
     customerList?: Record<string, any>[];
     id?: number;
-    loserAvgAmount?: number;
-    loserPrize?: Record<string, any>;
     mode?: number;
     round?: number;
     state?: number;
@@ -161,7 +160,6 @@ declare namespace API {
     totalPrice?: number;
     winnerGain?: number;
     winnerIds?: string;
-    serverSeed: string;
     winners?: WinnerInfo[];
   };
 
@@ -390,6 +388,8 @@ declare namespace API {
     mail?: string;
     nickname?: string;
     phone?: string;
+    rebateType?: number;
+    rebateValue?: number;
     secondaryBalance?: number;
     secret?: string;
     signedInToday?: boolean;
@@ -462,6 +462,7 @@ declare namespace API {
   };
 
   type findpwdUsingPOSTParams = {
+    channelCode?: string;
     clientIp?: string;
     comeFrom?: number;
     id?: string;
@@ -1345,6 +1346,20 @@ declare namespace API {
     voucherGrade?: number;
   };
 
+  type Promotion = {
+    createTime?: string;
+    delFlag?: boolean;
+    grade?: number;
+    id?: number;
+    modifyTime?: string;
+    rebateAmountMax?: number;
+    rebateAmountMin?: number;
+    rebateRate?: number;
+    remark?: string;
+    userRebateType?: number;
+    userRebateValue?: number;
+  };
+
   type PromotionInfoVo = {
     accumulatedRebateAmount?: number;
     accumulatedRechargeAmount?: number;
@@ -1443,21 +1458,23 @@ declare namespace API {
     currencyCode?: string;
     currencyCodeList?: string[];
     delFlag?: boolean;
+    displayType?: number;
     id?: number;
+    languageCode?: string;
     logo?: string;
     modifyTime?: string;
     rechargeConfigId?: number;
     remark?: string;
     state?: number;
     ua?: string;
-    displayType?: number;
+    weight?: number;
   };
 
   type RechargeConfigVo = {
     currencyRateVoList?: CurrencyRateVo[];
+    languageList?: string[];
     rechargeAmountAllowList?: number[];
     rechargeChannelList?: RechargeChannelVo[];
-    languageList?: string[];
   };
 
   type RechargeCouponRecordVo = {
@@ -1648,6 +1665,12 @@ declare namespace API {
 
   type ResultDataListOrnamentRetrievalResultVo_ = {
     data?: OrnamentRetrievalResultVo[];
+    msg?: string;
+    status?: number;
+  };
+
+  type ResultDataListPromotion_ = {
+    data?: Promotion[];
     msg?: string;
     status?: number;
   };
@@ -1981,6 +2004,7 @@ declare namespace API {
   };
 
   type signUpUsingPOSTParams = {
+    channelCode?: string;
     clientIp?: string;
     comeFrom?: number;
     id?: string;

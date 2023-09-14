@@ -381,5 +381,9 @@
   "footer_disclaimer": "Disclaimer",
   "footer_ddzz": "Code of ethics",
   "personal_center": "MY PROFILE",
-  "deposit_promoteCode_placeholder": "Please enter affiliate code"
+  "deposit_promoteCode_placeholder": "Please enter affiliate code",
+  "partner_rebate_type": "User Recharge Rebate Type",
+  "partner_rebate": "Referral receive",
+  "record_take_item": "Item",
+  "record_take_craete": "CreateTime"
 }

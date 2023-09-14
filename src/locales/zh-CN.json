@@ -381,5 +381,9 @@
   "footer_disclaimer": "免责声明",
   "footer_ddzz": "道德准则",
   "personal_center": "个人中心",
-  "deposit_promoteCode_placeholder": "请输入推广码"
+  "deposit_promoteCode_placeholder": "请输入推广码",
+  "partner_rebate_type": "推广用户充值返利类型",
+  "partner_rebate": "推广用户将收",
+  "record_take_item": "饰品",
+  "record_take_craete": "创建时间"
 }

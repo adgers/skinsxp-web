@@ -103,7 +103,7 @@ export default function Deposit() {
         <div className="flex flex-col gap-4">
           <Menu as="div" className="relative">
             <Menu.Button className="select select-md select-accent border-opacity-50 rounded w-full font-semibold flex justify-between items-center focus:outline-none bg-black">
-              <div className='uppercase'>
+              <div className="uppercase">
                 <FormattedMessage id="deposit_language" />
               </div>
               <div>
@@ -207,7 +207,9 @@ export default function Deposit() {
                     type="text"
                     className="w-full bg-black rounded pl-4 border border-light focus:outline-none h-12"
                     ref={promoCodeRef}
-                    placeholder={intl.formatMessage({ id: 'deposit_promoteCode_placeholder' })}
+                    placeholder={intl.formatMessage({
+                      id: 'deposit_promoteCode_placeholder',
+                    })}
                   />
                 ) : promoCodeState === PromoCodeState.USING ? (
                   <div className="flex-1 flex rounded-lg items-center pl-8 bg-light/20 text-sm h-12">
@@ -216,13 +218,16 @@ export default function Deposit() {
                     </div>
                     <div className="text-green text-md font-semibold">
                       {userInfo?.inviterPromotionCode}
-                      {/* {Number(rechageInfo?.rechargeDiscount) > 0 && (
+                      {Number(userInfo?.rebateValue) > 0 && (
                         <span className="ml-2">
-                          + &nbsp;{Number(rechageInfo?.rechargeDiscount)}
-                          %&nbsp;
+                          + &nbsp;
+                          {userInfo?.rebateType === 0
+                            ? `${Number(rechageInfo?.rechargeDiscount)}%`
+                            : Number(rechageInfo?.rechargeDiscount)}
+                          &nbsp;
                           <FormattedMessage id="vip_discount" />
                         </span>
-                      )} */}
+                      )}
                     </div>
                   </div>
                 ) : (
@@ -419,7 +424,7 @@ export default function Deposit() {
             {renderQuantity}
           </div>
         ) : (
-          <div className='min-h-[300px]'>
+          <div className="min-h-[300px]">
             {currentTab === 1 ? <>{renderChannel}</> : <>{renderQuantity}</>}
           </div>
         )}

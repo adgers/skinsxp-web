@@ -381,5 +381,9 @@
   "footer_disclaimer": "Isenção de responsabilidade",
   "footer_ddzz": "Código de Ética",
   "personal_center": "Meu PROFIL",
-  "deposit_promoteCode_placeholder": "Por favor, introduz o código afiliado"
+  "deposit_promoteCode_placeholder": "Por favor, introduz o código afiliado",
+  "partner_rebate_type": "Tipo de desconto de recarga de usuário",
+  "partner_rebate": "Referência recebida",
+  "record_take_item": "Item",
+  "record_take_craete": "CriarTempo"
 }

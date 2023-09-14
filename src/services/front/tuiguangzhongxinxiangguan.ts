@@ -10,6 +10,14 @@ export async function getPromotionInfoUsingGET(options?: { [key: string]: any })
   });
 }
 
+/** 推广等级配置列表 GET /api/promotion/list */
+export async function listUsingGET1(options?: { [key: string]: any }) {
+  return request<API.ResultDataListPromotion_>('/api/promotion/list', {
+    method: 'GET',
+    ...(options || {}),
+  });
+}
+
 /** 修改推广码 POST /api/promotion/modifyInvitationCode */
 export async function modifyInvitationCodeUsingPOST(
   // 叠加生成的Param类型 (非body参数swagger默认没有生成对象)

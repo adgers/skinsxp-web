@@ -52,6 +52,9 @@ export async function makePaymentUsingPOST(
   return request<API.ResultDataPaymentVo_>('/api/recharge/makePayment', {
     method: 'POST',
     params: {
+      // currencyCode has a default value: USD
+      currencyCode: 'USD',
+
       ...params,
     },
     ...(options || {}),
