@@ -216,7 +216,7 @@
   "dream_percentage_tip": "最小{min}%，最大{max}%",
   "dream_open": "开启",
   "dream_dream_records": "最近战绩",
-  "create_battle_box_limit_tip": "最多选择10个箱子",
+  "create_battle_box_limit_tip": "最多选择20个箱子",
   "create_battle_chose_box_tip": "请选择盲盒",
   "promoteCode_error": "推广码格式错误，推广码由6-15位的数字和字母组成",
   "promoteCode_mine": "我的推广码",
