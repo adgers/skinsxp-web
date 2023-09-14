@@ -260,7 +260,10 @@ export default function BagPage() {
                               />
                               <span className="text-xs flex-1 truncate">
                                 <FormattedMessage id="bag_item_sell" />{' '}
-                                <span className="text-white">${price}</span>
+                                <span className="text-white">
+                                  <IconFont type="icon-coin" className="mr-1" />
+                                  {price}
+                                </span>
                               </span>
                             </div>
                           </li>
