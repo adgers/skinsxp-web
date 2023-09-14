@@ -122,7 +122,7 @@ export default React.memo(function WeaponCard({
             } 
             ${
               data?.state === ItemState.RETRIEVED
-                ? 'text-white/60 font-semibold'
+                ? 'text-primary font-semibold'
                 : ''
             }`}
           >

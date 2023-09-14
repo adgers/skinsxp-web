@@ -129,6 +129,7 @@ export default function Foot() {
               >
                 <FormattedMessage id="provably_fair_title" />
               </Link>
+              <div onClick={() => showLogin()}>login</div>
             </div>
           </div>
         </div>
