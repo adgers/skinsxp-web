@@ -385,5 +385,6 @@
   "partner_rebate_type": "User Recharge Rebate Type",
   "partner_rebate": "Referral receive",
   "record_take_item": "Item",
-  "record_take_craete": "CreateTime"
+  "record_take_craete": "CreateTime",
+  "partner_next_level": "Rank experience"
 }

@@ -11,7 +11,7 @@ import Table, { ColumnsType } from 'antd/es/table';
 import { sortBy } from 'lodash';
 import { useEffect, useRef, useState } from 'react';
 import { CopyToClipboard } from 'react-copy-to-clipboard';
-import { Button, Input, Progress } from 'react-daisyui';
+import { Button, Input } from 'react-daisyui';
 import { toast } from 'react-toastify';
 
 export default function PromotePage() {
@@ -73,22 +73,16 @@ export default function PromotePage() {
       width: '25%',
     },
     {
-      title: <FormattedMessage id="promoteCode_nextlevel" />,
+      title: <FormattedMessage id="partner_next_level" />,
       dataIndex: 'rebateAmountMin',
       key: 'rebateAmountMin',
       width: '25%',
 
       render: (text, record) => {
         return (
-          <div className="flex flex-col items-center">
-            <div>
-              $ <span className="text-white font-bold">{text}</span>
-              {record?.rebateAmountMax && `/${record?.rebateAmountMax}`}
-            </div>
-            <Progress
-              value={data?.accumulatedRechargeAmount}
-              max={record?.rebateAmountMax}
-            />
+          <div>
+            $ <span className="text-white font-bold">{text}</span>
+            {record?.rebateAmountMax && `/${record?.rebateAmountMax}`}
           </div>
         );
       },
@@ -284,17 +278,17 @@ export default function PromotePage() {
       </div>
       <div className="custom-tab w-full flex  mb-4 gap-8 text-white justify-center border-b border-[#45444B] h-[68px]">
         <div
-          className={`tab-item flex items-center  h-full ${
+          className={`tab-item flex items-center cursor-pointer h-full ${
             tab === 'rank'
               ? 'text-green border-b-[1px] border-green'
               : 'text-white '
           }`}
           onClick={() => setTab('rank')}
         >
-          推广等级
+          <FormattedMessage id="promoteCode_level" />
         </div>
         <div
-          className={`tab-item flex items-center  h-full ${
+          className={`tab-item flex items-center cursor-pointer h-full ${
             tab === 'history'
               ? 'text-green border-b-[1px] border-green'
               : 'text-white '

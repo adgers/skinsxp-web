@@ -225,7 +225,7 @@
   "promoteCode_upuser": "上級推廣碼",
   "promoteCode_level": "推廣等級",
   "copy_success": "複制成功",
-  "promoteCode_rebate": "返利比例",
+  "promoteCode_rebate": "您的返利比例",
   "promoteCode_nextlevel": "下一等級經驗",
   "promoteCode_user_num": "推廣用戶數",
   "promoteCode_recharge": "推廣用戶累計充值",
@@ -385,5 +385,6 @@
   "partner_rebate_type": "推廣用戶充值返利類型",
   "partner_rebate": "推廣用戶將收",
   "record_take_item": "飾品",
-  "record_take_craete": "創建時間"
+  "record_take_craete": "創建時間",
+  "partner_next_level": "等級經驗"
 }
