@@ -78,11 +78,18 @@ export default function PromotePage() {
       key: 'rebateAmountMin',
       width: '25%',
 
-      render: (text, record) => {
+      render: (text, record, index) => {
         return (
           <div>
-            $ <span className="text-white font-bold">{text}</span>
-            {record?.rebateAmountMax && `/${record?.rebateAmountMax}`}
+            $
+            {index === sortedPromotionList?.length - 1 ? (
+              <span className="text-white font-bold">{record?.rebateAmountMax}</span>
+            ) : (
+              <>
+                <span className="text-white font-bold">{text}</span>{' '}
+                {record?.rebateAmountMax && `/${record?.rebateAmountMax}`}
+              </>
+            )}
           </div>
         );
       },
@@ -239,7 +246,7 @@ export default function PromotePage() {
             <FormattedMessage id="promoteCode_rebate" />
           </div>
           <div className="text-white font-num text-lg">
-            {(data?.rebateRate || 0) * 100}%
+            {(data?.rebateRate || 0)}%
           </div>
         </div>
         <div className="text-center px-3 py-4 flex flex-col gap-2 rounded-none border-b md:border-b-0 md:border-r  border-light border-opacity-50">
