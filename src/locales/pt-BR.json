@@ -386,5 +386,15 @@
   "partner_rebate": "Referência recebida",
   "record_take_item": "Item",
   "record_take_craete": "CriarTempo",
-  "partner_next_level": "Experiência de classificação"
+  "partner_next_level": "Experiência de classificação",
+  "footer_collect": "Coleta mais rápida",
+  "footer_collect_content": "Oferecemos preços competitivos em mais de 100 milhões de itens.",
+  "footer_price": "Preço mais baixo",
+  "footer_price_content": "Nós enviamos para mais de 200 países e regiões, e nosso site vem em 3 línguas.",
+  "footer_drop": "Alta gota",
+  "footer_drop_content": "Pague com os métodos de pagamento mais populares e seguros do mundo.",
+  "footer_fair": "Mais justo",
+  "footer_fair_content": "Nossa política de proteção dos compradores cobre toda sua jornada de compra.",
+  "footer_reward": "Mais recompensa",
+  "footer_reward_content": "Assistência ao redor do relógio para uma experiência de compras suave."
 }

@@ -64,7 +64,7 @@ export default function RechargeRecord() {
       },
     },
     {
-      title: <FormattedMessage id="createTime" />,
+      title: <FormattedMessage id="create_time" />,
       dataIndex: 'createTime',
       key: 'createTime',
     },

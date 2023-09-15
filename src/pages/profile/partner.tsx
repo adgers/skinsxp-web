@@ -103,7 +103,7 @@ export default function PromotePage() {
       render: (text, record) => (
         <span
           className={`${
-            data?.promotionGrade === record.grade ? 'text-white font-bold' : ''
+            data?.promotionGrade === record.grade ? 'text-green font-bold' : ''
           }`}
         >
           {text} %

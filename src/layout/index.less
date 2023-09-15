@@ -114,3 +114,16 @@
   border-radius: 4px;
   cursor: pointer;
 }
+
+.right-line{
+  position: relative;
+  &::after{
+    position: absolute;
+    content: '';
+    right: 0;
+    top: 0;
+    width: 1px;
+    height: 68px;
+    background-color: #636363;
+  }
+}

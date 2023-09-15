@@ -8,7 +8,13 @@ import { bindInviterUsingPOST } from '@/services/front/gerenzhongxinxiangguan';
 import { getImgHost, goback, langs, numberFixed } from '@/utils';
 import { LeftOutlined, LoadingOutlined } from '@ant-design/icons';
 import { Menu, Transition } from '@headlessui/react';
-import { FormattedMessage, useIntl, useModel, useRequest } from '@umijs/max';
+import {
+  FormattedMessage,
+  getLocale,
+  useIntl,
+  useModel,
+  useRequest,
+} from '@umijs/max';
 import { configResponsive, useResponsive } from 'ahooks';
 import { Spin } from 'antd';
 import { remove } from 'lodash';
@@ -333,7 +339,12 @@ export default function Deposit() {
       setQuantity(rechargeAmountAllowList[0]);
     }
     if (languageList && languageList.length > 0) {
-      setSelectCurrency(languageList[0]);
+      const locale = getLocale();
+      if (languageList.includes(locale)) {
+        setSelectCurrency(locale);
+      } else {
+        setSelectCurrency(languageList[0]);
+      }
     }
   }, [rechargeConfig]);
 
