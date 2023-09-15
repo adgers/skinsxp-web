@@ -21,9 +21,6 @@ import { remove } from 'lodash';
 import { Fragment, useEffect, useMemo, useRef, useState } from 'react';
 import { toast } from 'react-toastify';
 
-configResponsive({
-  large: 1024,
-});
 enum PromoCodeState { // 只要有邀请码 就不能编辑了
   USING = 1, // 正在使用
   EDIT = 2, // 正在编辑
@@ -58,7 +55,7 @@ export default function Deposit() {
   const intl = useIntl();
   const promoCodeRef = useRef<HTMLInputElement>(null);
 
-  const showTab = !responsive?.large;
+  const showTab = !responsive?.lg;
 
   const onBindPromoCode = async () => {
     const code = promoCodeRef?.current?.value;

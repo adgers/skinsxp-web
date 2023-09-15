@@ -1,4 +1,5 @@
 import { RequestConfig, getLocale, history } from '@umijs/max';
+import { configResponsive } from 'ahooks';
 import 'animate.css';
 import qs from 'qs';
 import { toast } from 'react-toastify';
@@ -6,6 +7,13 @@ import { addImgHost, getApiDomain, isLogin, urlParse } from './utils';
 
 let cancelFlag: boolean = false;
 let search = '';
+
+configResponsive({
+  sm: 640,
+  md: 768,
+  lg: 1024,
+  xl: 1280,
+});
 
 export const request: RequestConfig = {
   timeout: 15000,
