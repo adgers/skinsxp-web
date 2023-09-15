@@ -391,7 +391,7 @@ export default function Deposit() {
 
   const checkPayStatus = async (id: string) => {
     const ret = await paymentStateUsingGET({ orderId: id });
-    if (ret.status === 0) {
+    if (ret?.data?.state === 1) {
       toast.success(intl?.formatMessage({ id: 'deposit_success' }));
       getUser();
       if (interval) {

@@ -38,15 +38,10 @@ export default function RechargeRecord() {
       key: 'channelName',
     },
     {
-      title: <FormattedMessage id="quantity" />,
-      dataIndex: 'quantity',
-      key: 'quantity',
-    },
-    {
       title: <FormattedMessage id="pay_amount" />,
       dataIndex: 'amount',
       key: 'amount',
-      render: (text) => <span className="text-primary">{text}</span>,
+      render: (text) => <span className="text-primary">${text}</span>,
     },
     {
       title: <FormattedMessage id="pay_state" />,

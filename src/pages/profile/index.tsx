@@ -27,7 +27,7 @@ export default function User() {
         icon: 'icon-cases',
       },
       {
-        title: <FormattedMessage id="history" />,
+        title: <FormattedMessage id="history_record" />,
         link: '/profile/record',
         icon: 'icon-history',
       },

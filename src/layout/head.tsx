@@ -93,7 +93,7 @@ export default function Header() {
       icon: 'icon-cases',
     },
     {
-      title: <FormattedMessage id="recharge_record" />,
+      title: <FormattedMessage id="history_record" />,
       link: '/profile/record',
       icon: 'icon-history',
     },
