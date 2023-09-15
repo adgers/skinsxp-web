@@ -83,7 +83,7 @@ export default function PromotePage() {
           <div>
             $
             {index === sortedPromotionList?.length - 1 ? (
-              <span className="text-white font-bold">{record?.rebateAmountMax}</span>
+              <span className="text-white font-bold">{record?.rebateAmountMin}</span>
             ) : (
               <>
                 <span className="text-white font-bold">{text}</span>{' '}
