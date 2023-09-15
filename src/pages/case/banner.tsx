@@ -36,7 +36,7 @@ export default function Banner() {
           className="w-full h-full flex items-center"
         >
           {data?.map((t, i) => (
-            <SwiperSlide key={i} className='h-[150px] sm:h-[200px] md:h-[250px] lg:h-[300px] xl:h-[350px] xxl:h-[400px]'>
+            <SwiperSlide key={i} className='h-[200px] sm:h-[200px] md:h-[250px] lg:h-[300px] xl:h-[350px] xxl:h-[400px]'>
               <img src={t.image} className="w-full h-full object-cover" />
             </SwiperSlide>
           ))}
