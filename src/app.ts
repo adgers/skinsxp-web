@@ -87,7 +87,6 @@ export function onRouteChange({
   location: { search: string; pathname: string };
   isFirst: boolean;
 }) {
-  console.log(location);
   if (isFirst) {
     if (!!location.search) {
       search = location.search;
