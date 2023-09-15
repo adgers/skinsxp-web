@@ -21,8 +21,11 @@ import { toast } from 'react-toastify';
 export enum ItemState {
   ALL = -1, // 全部
   ACTIVE = 0, // 已激活
-  SOLD = 1, // 已售出
-  RETRIEVED = 2, // 已回收
+  USED = 1, // 已使用
+}
+export enum ItemUseState {
+  SOLD = 0, // 售出
+  RETRIEVED = 1, // 回收
 }
 export default function BagPage() {
   const { getUser } = useModel('user');

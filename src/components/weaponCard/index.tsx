@@ -1,5 +1,5 @@
 import winnerIcon from '@/assets/winner-icon.png';
-import { ItemState } from '@/pages/profile/bag';
+import { ItemState, ItemUseState } from '@/pages/profile/bag';
 import { numberFixed, parseName } from '@/utils';
 import { FormattedMessage, history } from '@umijs/max';
 import React, { useState } from 'react';
@@ -23,7 +23,8 @@ export default React.memo(function WeaponCard({
     API.BoxGiftVo &
     API.BattleBoxRecordVo &
     API.UpgradePageVo &
-    API.RollRoomGiftVo;
+    API.RollRoomGiftVo &
+    API.MyVoucherVo;
   mini?: boolean;
   showRoll?: boolean;
   fromProfile?: boolean;
@@ -115,13 +116,15 @@ export default React.memo(function WeaponCard({
           )}
           {price && numberFixed(Number(price))}
         </span>
-        {fromProfile && data?.state !== ItemState.ACTIVE && (
+        {fromProfile && data?.state === ItemState.USED && (
           <span
             className={`uppercase ${
-              data?.state === ItemState.SOLD ? 'text-red/100 font-semibold' : ''
+              data?.targetType === ItemUseState.SOLD
+                ? 'text-red/100 font-semibold'
+                : ''
             } 
             ${
-              data?.state === ItemState.RETRIEVED
+              data?.targetType === ItemUseState.RETRIEVED
                 ? 'text-primary font-semibold'
                 : ''
             }`}
