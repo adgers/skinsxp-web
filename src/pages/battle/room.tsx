@@ -712,14 +712,14 @@ export default function RoomDetail() {
             </div>
 
             <CopyToClipboard
-              text={`${window.location.href}`}
+              text={`${window.location.href.split('?')[0]}`}
               onCopy={() => {
                 toast.success(intl.formatMessage({ id: 'copy_success' }));
               }}
             >
               <div className="flex gap-1 cursor-pointer font-semibold">
                 <CopyOutlined />
-                <span className="text-xs text-white/70">{location.href}</span>
+                <span className="text-xs text-white/70">{location.href.split('?')[0]}</span>
               </div>
             </CopyToClipboard>
           </div>
