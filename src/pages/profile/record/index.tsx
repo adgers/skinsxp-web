@@ -1,4 +1,4 @@
-import { Link, Outlet, useIntl, useLocation } from '@umijs/max';
+import { Outlet, useIntl, useLocation } from '@umijs/max';
 import { ConfigProvider, theme } from 'antd';
 import { useMemo } from 'react';
 
@@ -17,14 +17,10 @@ export default function Record() {
 
   return (
     <div className="w-full">
-     
       <div className=" w-full m-auto">
         <ConfigProvider
           theme={{
             algorithm: theme.darkAlgorithm,
-          }}
-          locale={{
-            locale: 'en-US',
           }}
         >
           <Outlet />

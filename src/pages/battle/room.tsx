@@ -846,12 +846,14 @@ export default function RoomDetail() {
                     mini={!responsive.md}
                   />
                 </div>
-                <div className="mt-2 rounded text-center hidden sm:flex gap-1 flex-col sm:flex-row items-center py-3 bg-black justify-center text-xs text-white/70 ">
-                  <div className="uppercase">
-                    <FormattedMessage id="battle_user_seed" />:
+                {userOpenRecord?.clientSeed && (
+                  <div className="mt-2 rounded text-center hidden sm:flex gap-1 flex-col sm:flex-row items-center py-3 bg-black justify-center text-xs text-white/70 ">
+                    <div className="uppercase">
+                      <FormattedMessage id="battle_user_seed" />:
+                    </div>
+                    <div>{userOpenRecord?.clientSeed}</div>
                   </div>
-                  <div>{userOpenRecord?.clientSeed}</div>
-                </div>
+                )}
               </div>
             );
           })}

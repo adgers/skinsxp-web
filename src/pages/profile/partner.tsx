@@ -181,7 +181,7 @@ export default function PromotePage() {
 
   return (
     <>
-      <div className="py-4 md:py-6 d flex flex-col gap-4">
+      <div className="py-4 md:py-6 flex flex-col gap-4">
         <div className="flex items-start flex-col lg:flex-row lg:items-center gap-4 sm:gap-8">
           <div className="w-full lg:w-1/2">
             <h3 className="font-sembold text-base mb-4">
@@ -308,9 +308,6 @@ export default function PromotePage() {
       <ConfigProvider
         theme={{
           algorithm: theme.darkAlgorithm,
-        }}
-        locale={{
-          locale: 'en-US',
         }}
       >
         {tab === 'history' ? (
