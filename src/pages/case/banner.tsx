@@ -20,7 +20,7 @@ export default function Banner() {
     <Spin
       spinning={loading}
       indicator={<LoadingOutlined style={{ fontSize: 48, color: 'green' }} />}
-      className="my-4 h-[150px] sm:h-[330px] flex items-center w-full justify-center"
+      className="my-4 h-[150px] sm:h-[460px] flex items-center w-full justify-center"
     >
       {data && data?.length > 0 && (
         <Swiper
@@ -36,7 +36,7 @@ export default function Banner() {
           className="w-full h-full flex items-center"
         >
           {data?.map((t, i) => (
-            <SwiperSlide key={i}>
+            <SwiperSlide key={i} className='h-[150px] sm:h-[200px] md:h-[250px] lg:h-[300px] xl:h-[350px] xxl:h-[400px]'>
               <img src={t.image} className="w-full h-full object-cover" />
             </SwiperSlide>
           ))}

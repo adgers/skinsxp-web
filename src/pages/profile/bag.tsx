@@ -318,7 +318,7 @@ export default function BagPage() {
             <span className="mx-1 text-primary">{checkedList.length}</span> */}
 
             <FormattedMessage id="total_price" />
-            <span className="mx-1 text-primary">{totalPrice}</span>
+            <span className="mx-1 text-primary font-normal">${totalPrice}</span>
           </div>
         </Modal.Body>
         <Modal.Actions>

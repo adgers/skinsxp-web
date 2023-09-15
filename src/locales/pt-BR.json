@@ -244,8 +244,6 @@
   "amount": "Alterado",
   "balanceAfter": "Disponível",
   "create_time": "Data",
-  "mu_bi": "Moeda WG",
-  "mu_nl": "WG Power",
   "battle_box": "Caixas",
   "battle_totalPrice": "Preço",
   "battle_mode": "Modo",
@@ -396,5 +394,7 @@
   "footer_fair": "Mais justo",
   "footer_fair_content": "Nossa política de proteção dos compradores cobre toda sua jornada de compra.",
   "footer_reward": "Mais recompensa",
-  "footer_reward_content": "Assistência ao redor do relógio para uma experiência de compras suave."
+  "footer_reward_content": "Assistência ao redor do relógio para uma experiência de compras suave.",
+  "benifit_scfl": "Benefícios do primeiro depósito",
+  "profile_balance": "equilíbrio"
 }

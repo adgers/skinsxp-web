@@ -244,8 +244,6 @@
   "amount": "Changed",
   "balanceAfter": "Available",
   "create_time": "Date",
-  "mu_bi": "WG Coin",
-  "mu_nl": "WG Power",
   "battle_box": "Cases",
   "battle_totalPrice": "Price",
   "battle_mode": "Mode",
@@ -396,5 +394,7 @@
   "footer_fair": "Fairer",
   "footer_fair_content": "Our Buyer Protection policy covers your entire purchase journey.",
   "footer_reward": "More Rewarding",
-  "footer_reward_content": "Round-the-clock assistance for a smooth shopping experience."
+  "footer_reward_content": "Round-the-clock assistance for a smooth shopping experience.",
+  "benifit_scfl": "First deposit benefits",
+  "profile_balance": "Balance"
 }

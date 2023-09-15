@@ -397,6 +397,7 @@ declare namespace API {
     totalCheckInTimes?: number;
     tradeUrl?: string;
     verified?: boolean;
+    firstRechargeRebate?: number;
   };
 
   type CycleRedPacketVo = {

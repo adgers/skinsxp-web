@@ -24,6 +24,10 @@ export default defineConfig({
       content:
         'viewport-fit=cover, width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1',
     },
+    {
+      name: 'description',
+      content: 'Faster collecting,Lower price,High drop,Fairer,More Rewarding',
+    },
   ],
   routes: [
     {

@@ -49,6 +49,7 @@ export default function Deposit() {
   const [promoCodeState, setPromoCodeState] = useState<number>(
     PromoCodeState.EDIT,
   );
+  const [inputCode, setInputCode] = useState('');
   const [quantity, setQuantity] = useState(0);
   const { languageList, rechargeAmountAllowList, rechargeChannelList } =
     rechargeConfig || {};
@@ -216,6 +217,8 @@ export default function Deposit() {
                     placeholder={intl.formatMessage({
                       id: 'deposit_promoteCode_placeholder',
                     })}
+                    onChange={(e) => setInputCode(e?.target?.value)}
+                    defaultValue={inputCode}
                   />
                 ) : promoCodeState === PromoCodeState.USING ? (
                   <div className="flex-1 flex rounded-lg items-center pl-8 bg-light/20 text-sm h-12">
@@ -228,8 +231,8 @@ export default function Deposit() {
                         <span className="ml-2">
                           + &nbsp;
                           {userInfo?.rebateType === 0
-                            ? `${Number(rechageInfo?.rechargeDiscount)}%`
-                            : Number(rechageInfo?.rechargeDiscount)}
+                            ? `${Number(userInfo?.rebateValue)}%`
+                            : Number(userInfo?.rebateValue)}
                           &nbsp;
                           <FormattedMessage id="vip_discount" />
                         </span>
@@ -239,28 +242,41 @@ export default function Deposit() {
                 ) : (
                   <div className="flex-1 flex h-full rounded-lg items-center pl-8 bg-light/20 text-sm">
                     <LoadingOutlined className="mr-2" />
-                    <div className="text-white/50 mr-2">
-                      {promoCodeRef?.current?.value}
-                    </div>
+                    <div className="text-white/50 mr-2">{inputCode}</div>
                   </div>
                 )}
 
                 <div
-                  className={`btn btn-green uppercase px-10 ${
-                    userInfo?.inviterPromotionCode ? 'btn-disabled' : ''
-                  }`}
+                  className="btn btn-green uppercase px-10"
                   onClick={() => {
                     switch (promoCodeState) {
+                      case PromoCodeState.USING:
+                        setPromoCodeState(PromoCodeState.EDIT);
+                        break;
+
                       case PromoCodeState.EDIT:
-                        onBindPromoCode();
+                        if (inputCode) {
+                          onBindPromoCode();
+                        } else {
+                          if (userInfo?.inviterPromotionCode) {
+                            setPromoCodeState(PromoCodeState.USING);
+                            setInputCode('');
+                          }
+                        }
+
                         break;
                       case PromoCodeState.VERIFY:
-                      case PromoCodeState.USING:
                         break;
                     }
                   }}
                 >
-                  <FormattedMessage id="text_btn_apply" />
+                  {promoCodeState === PromoCodeState.USING ? (
+                    <FormattedMessage id="edit" />
+                  ) : !!inputCode?.trim() ? (
+                    <FormattedMessage id="text_btn_apply" />
+                  ) : (
+                    <FormattedMessage id="cancel" />
+                  )}
                 </div>
               </div>
             </>
@@ -285,7 +301,7 @@ export default function Deposit() {
                 ))}
               </div>
               <div className="rounded-lg py-3 md:py-6 flex flex-col gap-6">
-                <div className="flex gap-x-8">
+                <div className="">
                   <div className="flex w-full gap-2">
                     <div className="uppercase text-xs flex items-center">
                       <FormattedMessage id="deposit_actually_recevied" />
@@ -294,6 +310,28 @@ export default function Deposit() {
                       <span className="text-green">
                         ${numberFixed(quantity, 2)}
                       </span>
+                      {Number(userInfo?.firstRechargeRebate) > 0 && (
+                        <span className="text-xs font-light">
+                          &nbsp;
+                          <span className="text-green font-semibold">
+                            + {userInfo?.firstRechargeRebate}%
+                          </span>
+                          （
+                          <FormattedMessage id="benifit_scfl" />）
+                        </span>
+                      )}
+                      {Number(userInfo?.rebateValue) > 0 && (
+                        <span className="text-xs font-light">
+                          &nbsp;
+                          <span className="text-green font-semibold">
+                            +
+                            {userInfo?.rebateType === 0
+                              ? `${Number(userInfo?.rebateValue)}%`
+                              : Number(userInfo?.rebateValue)}
+                          </span>
+                          （<FormattedMessage id="vip_discount" />）
+                        </span>
+                      )}
                       {/* {selectChannel?.displayType === DisplayType.DEFAULT && (
                         <>
                           &nbsp;+&nbsp;
@@ -332,6 +370,7 @@ export default function Deposit() {
     selectChannel,
     promoCodeState,
     languageList,
+    inputCode,
   ]);
 
   useEffect(() => {
@@ -377,6 +416,7 @@ export default function Deposit() {
   useEffect(() => {
     if (!!userInfo?.inviterPromotionCode) {
       /* has promoCode, can not edit */
+      setInputCode('');
       setPromoCodeState(PromoCodeState.USING);
     }
   }, [userInfo?.inviterPromotionCode]);

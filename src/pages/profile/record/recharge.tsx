@@ -46,7 +46,7 @@ export default function RechargeRecord() {
       title: <FormattedMessage id="pay_amount" />,
       dataIndex: 'amount',
       key: 'amount',
-      render: (text) => <span className="text-secondary">{text}</span>,
+      render: (text) => <span className="text-primary">{text}</span>,
     },
     {
       title: <FormattedMessage id="pay_state" />,

@@ -1,3 +1,4 @@
+import { IconFont } from '@/components/icons';
 import { getMyBalanceLogUsingGET } from '@/services/front/gerenzhongxinxiangguan';
 import { FormattedMessage, useRequest } from '@umijs/max';
 import { Table } from 'antd';
@@ -43,9 +44,9 @@ export default function BalanceRecord() {
       render: (balanceType) => {
         switch (balanceType) {
           case 0:
-            return <FormattedMessage id="mu_bi" />;
+            return <FormattedMessage id="profile_balance" />;
           case 1:
-            return <FormattedMessage id="mu_nl" />;
+            return <FormattedMessage id="profile_integral" />;
         }
       },
     },
@@ -54,10 +55,20 @@ export default function BalanceRecord() {
       dataIndex: 'amount',
       key: 'amount',
       render: (_, record: any) => {
-        return record.eventType === 0 ? (
-          <span className="text-green-500">+{record.amount}</span>
-        ) : (
-          <span className="text-red-500">-{record.amount}</span>
+        return (
+          <span
+            className={`${
+              record.balanceType === 0 ? 'text-primary' : 'text-secondary'
+            }`}
+          >
+            {record.eventType === 0 ? '+' : '-'}
+            {record.balanceType === 0 ? (
+              <>&nbsp;$</>
+            ) : (
+              <IconFont type="icon-coin" className="mx-1" />
+            )}
+            {record.amount}
+          </span>
         );
       },
     },
@@ -65,6 +76,20 @@ export default function BalanceRecord() {
       title: <FormattedMessage id="balanceAfter" />,
       dataIndex: 'balanceAfter',
       key: 'balanceAfter',
+      render: (text, record) => (
+        <span
+          className={`${
+            record.balanceType === 0 ? 'text-primary' : 'text-secondary'
+          }`}
+        >
+          {record.balanceType === 0 ? (
+            <>$</>
+          ) : (
+            <IconFont type="icon-coin" className="mr-1" />
+          )}
+          {text}
+        </span>
+      ),
     },
     {
       title: <FormattedMessage id="create_time" />,

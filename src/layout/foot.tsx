@@ -38,35 +38,16 @@ export default function Foot() {
   return (
     <footer className="bg-base-300 text-base-content mt-10">
       <div className="max-w-8xl w-full m-auto relative">
-        <div className="grid grid-cols-2 gap-y-4 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 text-gray pt-24 pb-16">
+        <div className="grid grid-cols-2 gap-y-4 sm:grid-cols-5 text-gray py-10">
           {footerTop.map((item, index) => {
             return (
               <div className="flex flex-col items-center" key={index}>
-                <IconFont type={item.icon} className="text-[40px] mb-3.5" />
-                <div
-                  className={`flex flex-col items-center px-2 ${
-                    (index + 1) % 2 === 0
-                      ? 'border-none md:border-solid border-gray'
-                      : ''
-                  } ${
-                    (index + 1) % 3 === 0
-                      ? 'border-r md:border-none lg:border-solid border-gray'
-                      : ''
-                  } ${
-                    (index + 1) % 4 === 0
-                      ? 'lg:border-none xl:border-solid border-gray'
-                      : ''
-                  }
-                  ${
-                    index === footerTop?.length - 1
-                      ? ''
-                      : 'border-r border-gray'
-                  } `}
-                >
-                  <div className="text-white font-semibold text-lg">
+                <IconFont type={item.icon} className="text-[32px] mb-3.5" />
+                <div className="flex flex-col items-center px-2  gap-2">
+                  <div className="text-white text-sm m font-semibold">
                     {item.title}
                   </div>
-                  <div className="text-center text-sm">{item.desc}</div>
+                  <div className="text-center text-xs">{item.desc}</div>
                 </div>
               </div>
             );
@@ -146,35 +127,35 @@ export default function Foot() {
                 <FormattedMessage id="footer_services" />
               </span>
               <Link
-                className="link link-hover whitespace-nowrap text-sm"
+                className="link link-hover whitespace-nowrap text-sm w-fit"
                 to="/docs/help/52"
                 target="_blank"
               >
                 <FormattedMessage id="terms_of_service" />
               </Link>
               <Link
-                className="link link-hover whitespace-nowrap text-sm"
+                className="link link-hover whitespace-nowrap text-sm w-fit"
                 to="/docs/help/51"
                 target="_blank"
               >
                 <FormattedMessage id="privacy_policy" />
               </Link>
               <Link
-                className="link link-hover whitespace-nowrap text-sm"
+                className="link link-hover whitespace-nowrap text-sm w-fit"
                 to="/docs/help/53"
                 target="_blank"
               >
                 <FormattedMessage id="footer_disclaimer" />
               </Link>
               <Link
-                className="link link-hover whitespace-nowrap text-sm"
+                className="link link-hover whitespace-nowrap text-sm w-fit"
                 to="/docs/help/54"
                 target="_blank"
               >
                 <FormattedMessage id="footer_ddzz" />
               </Link>
               <Link
-                className="link link-hover whitespace-nowrap text-sm"
+                className="link link-hover whitespace-nowrap text-sm w-fit"
                 to="/docs/help"
                 target="_blank"
               >
@@ -187,20 +168,20 @@ export default function Foot() {
                 <FormattedMessage id="footer_company" />
               </span>
               <Link
-                className="link link-hover whitespace-nowrap text-sm"
+                className="link link-hover whitespace-nowrap text-sm w-fit"
                 to="/docs/help/50"
                 target="_blank"
               >
                 <FormattedMessage id="about_us" />
               </Link>
               <Link
-                className="link link-hover whitespace-nowrap text-sm"
+                className="link link-hover whitespace-nowrap text-sm w-fit"
                 to="/provably-fair"
                 target="_blank"
               >
                 <FormattedMessage id="provably_fair_title" />
               </Link>
-              {/* <div onClick={() => showLogin()}>login</div> */}
+              <div onClick={() => showLogin()}>login</div>
             </div>
           </div>
         </div>

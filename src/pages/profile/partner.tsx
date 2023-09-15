@@ -40,8 +40,8 @@ export default function PromotePage() {
   const affliateColumns: ColumnsType<API.MyRechargeOrderPageVo> = [
     {
       title: <FormattedMessage id="promote_user" />,
-      dataIndex: 'nickName',
-      key: 'nickName',
+      dataIndex: 'nickname',
+      key: 'nickname',
     },
     {
       title: <FormattedMessage id="promoteCode_recharge" />,

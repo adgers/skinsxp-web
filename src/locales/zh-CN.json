@@ -244,8 +244,6 @@
   "amount": "变动金额",
   "balanceAfter": "可用余额",
   "create_time": "时间",
-  "mu_bi": "WG币",
-  "mu_nl": "WG能量",
   "battle_box": "对战箱子",
   "battle_totalPrice": "消耗金额",
   "battle_mode": "对战模式",
@@ -396,5 +394,7 @@
   "footer_fair": "公平公正",
   "footer_fair_content": "我们的买家保护政策涵盖您的整个购买过程。",
   "footer_reward": "奖励多多",
-  "footer_reward_content": "全天候协助，提供流畅的购物体验。"
+  "footer_reward_content": "全天候协助，提供流畅的购物体验。",
+  "benifit_scfl": "新用户首充福利",
+  "profile_balance": "余额"
 }

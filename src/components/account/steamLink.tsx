@@ -1,5 +1,5 @@
 import { updateTradeUrlUsingPOST } from '@/services/front/gerenzhongxinxiangguan';
-import { FormattedMessage, useIntl } from '@umijs/max';
+import { FormattedMessage, useIntl, useModel } from '@umijs/max';
 import { useRef, useState } from 'react';
 import { Button, Input, Modal } from 'react-daisyui';
 import { toast } from 'react-toastify';
@@ -14,6 +14,7 @@ export default function ModifySteamLink({
   onClose: () => void;
 }) {
   const [loading, setLoading] = useState<boolean>(false);
+  const { userInfo } = useModel('user');
 
   const tradeUrlRef = useRef<HTMLInputElement>(null);
   const intl = useIntl();
@@ -60,6 +61,7 @@ export default function ModifySteamLink({
         <Input
           placeholder={intl.formatMessage({ id: 'trade_link_qsrndjylj' })}
           ref={tradeUrlRef}
+          defaultValue={userInfo?.tradeUrl || ''}
         />
         <a
           href="https://steamcommunity.com/id/me/tradeoffers/privacy#trade_offer_access_url"
