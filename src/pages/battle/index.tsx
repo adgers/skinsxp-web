@@ -155,15 +155,17 @@ export default function BattlePage() {
 
       <div className="w-[280px] flex-shrink-0 m-0-auto" ref={rankRef}>
         <div className="battle-rank-point relative rounded-md">
-          <div className="top-[70px] flex items-center flex-col w-full absolute z-10">
-            <div className="relative w-[80px] h-[80px]">
-              <img src={topOneYesterday?.headPic} className="rounded-full" />
+          <div className=" bottom-0 flex items-center flex-col w-full absolute z-10">
+            <div className="relative w-[80px] h-[80px] border-2 rounded-[4px] border-[#FFDFA7]">
+              <img src={topOneYesterday?.headPic} className="rounded-[4px]" />
             </div>
-            <div className="mt-2">{topOneYesterday?.nickname}</div>
-            <div className="font-num mt-2 text-green">
+            <div className="mt-1 max-w-full truncate">
+              {topOneYesterday?.nickname}
+            </div>
+            <div className="font-num  text-[#FFDFA7]">
               {topOneYesterday?.rewardPoint}
             </div>
-            <div className="bg-black h-9 mt-6 uppercase text-xs flex justify-between w-full items-center px-2">
+            <div className="bg-black/50 h-9 mt-4 uppercase text-xs flex justify-between w-full items-center px-2">
               <div>
                 <IconFont type="icon-ranking" className="text-purple mr-2" />
                 <FormattedMessage id="arena_my_reward_point" />
