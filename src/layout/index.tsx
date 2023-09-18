@@ -28,6 +28,13 @@ export default function Layout() {
     if (!umi_locale && !!data) {
       setLocale(data);
     }
+
+    if (window?.ga) {
+      const channelCode = params.channelCode || 'wgskins';
+      ga('send', 'pageview', {
+        dimension1: channelCode,
+      });
+    }
   }, []);
 
   useEffect(() => {
