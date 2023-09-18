@@ -17,7 +17,6 @@ import { toast } from 'react-toastify';
 export default function PromotePage() {
   const { data = {}, refresh } = useRequest(() => getPromotionInfoUsingGET());
   const { data: promotionList = [] } = useRequest(() => listUsingGET1());
-  const sortedPromotionList = sortBy(promotionList, (item) => item.grade);
 
   const [promoteCode, setPromoteCode] = useState<string>('');
   const [upInvitationCode, setUpInvitationCode] = useState<string>('');
@@ -81,7 +80,7 @@ export default function PromotePage() {
       render: (text, record, index) => {
         return (
           <div className="font-num">
-            {index === sortedPromotionList?.length - 1 ? (
+            {index === promotionList?.length - 1 ? (
               <span className="text-white font-bold">
                 ${record?.rebateAmountMin}
               </span>
@@ -334,7 +333,7 @@ export default function PromotePage() {
         ) : (
           <Table
             columns={rankColumns}
-            dataSource={sortedPromotionList}
+            dataSource={promotionList}
             loading={loading}
             scroll={{
               x: 1000,
