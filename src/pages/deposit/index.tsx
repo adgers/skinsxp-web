@@ -15,7 +15,7 @@ import {
   useModel,
   useRequest,
 } from '@umijs/max';
-import { configResponsive, useResponsive } from 'ahooks';
+import { useResponsive } from 'ahooks';
 import { Spin } from 'antd';
 import { remove } from 'lodash';
 import { Fragment, useEffect, useMemo, useRef, useState } from 'react';

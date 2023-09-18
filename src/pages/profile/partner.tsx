@@ -70,23 +70,24 @@ export default function PromotePage() {
       title: <FormattedMessage id="promoteCode_level" />,
       dataIndex: 'grade',
       key: 'grade',
-      width: '25%',
+      width: '10%',
+      render:(text)=> <span className='pl-4'>{text}</span>
     },
     {
       title: <FormattedMessage id="partner_next_level" />,
       dataIndex: 'rebateAmountMin',
       key: 'rebateAmountMin',
-      width: '25%',
-
+      width: '30%',
       render: (text, record, index) => {
         return (
-          <div>
-            $
+          <div className="font-num">
             {index === sortedPromotionList?.length - 1 ? (
-              <span className="text-white font-bold">{record?.rebateAmountMin}</span>
+              <span className="text-white font-bold">
+                ${record?.rebateAmountMin}
+              </span>
             ) : (
               <>
-                <span className="text-white font-bold">{text}</span>{' '}
+                <span className="text-white font-bold">${text}</span>{' '}
                 {record?.rebateAmountMax && `/${record?.rebateAmountMax}`}
               </>
             )}
@@ -98,11 +99,10 @@ export default function PromotePage() {
       title: <FormattedMessage id="promoteCode_rebate" />,
       dataIndex: 'rebateRate',
       key: 'rebateRate',
-      width: '25%',
-
+      width: '30%',
       render: (text, record) => (
         <span
-          className={`${
+          className={`font-num ${
             data?.promotionGrade === record.grade ? 'text-green font-bold' : ''
           }`}
         >
@@ -114,10 +114,12 @@ export default function PromotePage() {
       title: <FormattedMessage id="partner_rebate" />,
       dataIndex: 'userRebateValue',
       key: 'userRebateValue',
-      width: '25%',
-
-      render: (text, record) =>
-        record.userRebateType === 0 ? `${text}%` : `$${text}`,
+      width: '30%',
+      render: (text, record) => (
+        <span className='font-num'>
+          {record.userRebateType === 0 ? `${text}%` : `$${text}`}
+        </span>
+      ),
     },
   ];
 
@@ -246,7 +248,7 @@ export default function PromotePage() {
             <FormattedMessage id="promoteCode_rebate" />
           </div>
           <div className="text-white font-num text-lg">
-            {(data?.rebateRate || 0)}%
+            {data?.rebateRate || 0}%
           </div>
         </div>
         <div className="text-center px-3 py-4 flex flex-col gap-2 rounded-none border-b md:border-b-0 md:border-r  border-light border-opacity-50">
