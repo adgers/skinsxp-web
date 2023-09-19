@@ -31,7 +31,7 @@ export default function Layout() {
 
     if (window?.gtag) {
       const channelCode = params.channelCode || 'wgskins';
-      gtag('send', 'pageview', {
+      gtag('event', 'pageview', {
         dimension1: channelCode,
       });
     }

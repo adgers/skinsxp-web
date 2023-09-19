@@ -29,7 +29,7 @@ export default function LoginCallback() {
         }
         if (ret.data?.promotionChannelId === '8') {
           // fb 推广用户 注册成功
-          window?.gtag('send', 'signup');
+          window?.gtag('event', 'signup');
         }
       }
 
