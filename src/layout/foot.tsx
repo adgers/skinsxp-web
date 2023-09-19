@@ -184,7 +184,7 @@ export default function Foot() {
               <div
                 onClick={() => {
                   showLogin();
-                  window?.ga('send','test')
+                  window?.gtag('send','test')
                 }}
                 className="mt-4 text-transparent hover:text-gray"
               >

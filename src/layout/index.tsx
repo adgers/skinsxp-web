@@ -29,9 +29,9 @@ export default function Layout() {
       setLocale(data);
     }
 
-    if (window?.ga) {
+    if (window?.gtag) {
       const channelCode = params.channelCode || 'wgskins';
-      ga('send', 'pageview', {
+      gtag('send', 'pageview', {
         dimension1: channelCode,
       });
     }

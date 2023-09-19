@@ -399,7 +399,7 @@ export default function Deposit() {
       }
       if (userInfo?.promotionChannelId === '8') {
         // ga
-        window?.ga('send', 'purchase', {
+        window?.gtag('send', 'purchase', {
           currency: 'USD',
           value: ret?.data?.quantity,
         });
