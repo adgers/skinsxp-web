@@ -31,8 +31,8 @@ export default function Layout() {
 
     if (window?.gtag) {
       const channelCode = params.channelCode || 'wgskins';
-      gtag('event', 'pageview', {
-        dimension1: channelCode,
+      gtag('event', 'page_view', {
+        channelCode: channelCode,
       });
     }
   }, []);
