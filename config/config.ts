@@ -28,6 +28,10 @@ export default defineConfig({
       name: 'description',
       content: 'Faster collecting,Lower price,High drop,Fairer,More Rewarding',
     },
+    {
+      name: 'facebook-domain-verification',
+      content: 'jcqton9h0hgwlsuhbcq29ocqoxjzk5',
+    },
   ],
   routes: [
     {
@@ -182,6 +186,30 @@ export default defineConfig({
       content: `window.$crisp = [];
     window.CRISP_WEBSITE_ID = '341c8e90-8633-4cb8-a31b-37b6a95ddb05';`,
     },
+    {
+      content: `!function(f,b,e,v,n,t,s)
+    {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+    n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+    if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+    n.queue=[];t=b.createElement(e);t.async=!0;
+    t.src=v;s=b.getElementsByTagName(e)[0];
+    s.parentNode.insertBefore(t,s)}(window, document,'script',
+    'https://connect.facebook.net/en_US/fbevents.js');
+    fbq('init', '1024868335308144');
+    fbq('track', 'PageView');
+`,
+    },
+    // {
+    //   src: 'https://www.googletagmanager.com/gtag/js?id=G-ZGN2EHKSPC',
+    //   async: true,
+    // },
+    // {
+    //   content: `window.dataLayer =window.dataLayer || [];
+    //   function gtag(){dataLayer.push(arguments);};
+    //   gtag('js', new Date());
+    //   gtag('config', 'G-ZGN2EHKSPC');
+    //   `,
+    // },
   ],
   presets: ['umi-presets-pro'],
   openAPI: [
