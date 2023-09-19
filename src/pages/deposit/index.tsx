@@ -389,6 +389,12 @@ export default function Deposit() {
   const checkPayStatus = async (id: string) => {
     const ret = await paymentStateUsingGET({ orderId: id });
     if (ret?.data?.state === 1) {
+      if (userInfo?.promotionChannelId === '7') {
+        window.fbq('track', 'Purchase', {
+          currency: 'USD',
+          value: ret?.data?.quantity,
+        });
+      }
       toast.success(intl?.formatMessage({ id: 'deposit_success' }));
       getUser();
       if (interval) {

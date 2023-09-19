@@ -13,17 +13,23 @@ export default function LoginCallback() {
     const queryStr = urlParams.get('queryStr') || '{}';
     const queryStrObj = JSON.parse(queryStr);
 
-    query += '&'+ new URLSearchParams(queryStrObj).toString();
+    query += '&' + new URLSearchParams(queryStrObj).toString();
 
     const ret = await steamSignUpUsingGET({
-      query: query
+      query: query,
     });
     if (ret.status === 0) {
       if (ret.data?.token) {
         localStorage.setItem('token', ret.data.token);
       }
+      if (ret.data?.register) {
+        if (ret.data?.promotionChannelId === '7') {
+          // fb 推广用户 注册成功
+          window?.fbq('track', 'Lead');
+        }
+      }
 
-      getUser(); 
+      getUser();
       history.push(queryStrObj.redirectUrl || '/');
     } else {
       history.push('/login');
