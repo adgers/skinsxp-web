@@ -27,6 +27,10 @@ export default function LoginCallback() {
           // fb 推广用户 注册成功
           window?.fbq('track', 'Lead');
         }
+        if (ret.data?.promotionChannelId === '8') {
+          // fb 推广用户 注册成功
+          window?.ga('send', 'signup');
+        }
       }
 
       getUser();

@@ -391,7 +391,15 @@ export default function Deposit() {
     if (ret?.data?.state === 1 && ret?.data?.fistRechargeFlag) {
       // 首次充值成功
       if (userInfo?.promotionChannelId === '7') {
-        window.fbq('track', 'Purchase', {
+        // fb
+        window?.fbq('track', 'Purchase', {
+          currency: 'USD',
+          value: ret?.data?.quantity,
+        });
+      }
+      if (userInfo?.promotionChannelId === '8') {
+        // ga
+        window?.ga('send', 'purchase', {
           currency: 'USD',
           value: ret?.data?.quantity,
         });
