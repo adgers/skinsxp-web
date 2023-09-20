@@ -193,6 +193,7 @@ export default function Foot() {
                     currency: 'USD',
                     value: '0',
                   });
+                  window?.gtag('event', 'test_2');
                 }}
                 className="mt-4 text-transparent hover:text-gray"
               >
