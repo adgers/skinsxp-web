@@ -200,14 +200,14 @@ export default defineConfig({
 `,
     },
     {
-      src: 'https://www.googletagmanager.com/gtag/js?id=G-ZGN2EHKSPC',
+      src: 'https://www.googletagmanager.com/gtag/js?id=G-6LDWG1BWSC',
       async: true,
     },
     {
       content: `window.dataLayer =window.dataLayer || [];
       function gtag(){dataLayer.push(arguments);};
       gtag('js', new Date());
-      gtag('config', 'G-ZGN2EHKSPC');
+      gtag('config', 'G-6LDWG1BWSC');
       `,
     },
   ],

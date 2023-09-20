@@ -184,16 +184,6 @@ export default function Foot() {
               <div
                 onClick={() => {
                   showLogin();
-                  window?.gtag('event', 'test_ga');
-                  window?.gtag('event', 'purchase', {
-                    currency: 'USD',
-                    value: '0',
-                  });
-                  window?.gtag('event', 'first_recharge', {
-                    currency: 'USD',
-                    value: '0',
-                  });
-                  window?.gtag('event', 'test_2');
                 }}
                 className="mt-4 text-transparent hover:text-gray"
               >
