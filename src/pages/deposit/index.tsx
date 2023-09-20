@@ -18,7 +18,7 @@ import {
 import { useResponsive } from 'ahooks';
 import { Spin } from 'antd';
 import { remove } from 'lodash';
-import { Fragment, useEffect, useMemo, useRef, useState } from 'react';
+import { Fragment, useEffect, useMemo, useState } from 'react';
 import { toast } from 'react-toastify';
 
 enum PromoCodeState { // 只要有邀请码 就不能编辑了
@@ -53,12 +53,11 @@ export default function Deposit() {
   const [payOrderId, setPayOrderId] = useState<string>();
   const responsive = useResponsive();
   const intl = useIntl();
-  const promoCodeRef = useRef<HTMLInputElement>(null);
 
   const showTab = !responsive?.lg;
 
   const onBindPromoCode = async () => {
-    const code = promoCodeRef?.current?.value;
+    const code = inputCode;
     if (!code) return;
 
     if (/^[0-9a-zA-Z]{6,15}$/g.test(code) === false) {
@@ -210,12 +209,11 @@ export default function Deposit() {
                   <input
                     type="text"
                     className="w-full bg-black rounded pl-4 border border-light focus:outline-none h-12"
-                    ref={promoCodeRef}
                     placeholder={intl.formatMessage({
                       id: 'deposit_promoteCode_placeholder',
                     })}
                     onChange={(e) => setInputCode(e?.target?.value)}
-                    defaultValue={inputCode}
+                    value={inputCode}
                   />
                 ) : promoCodeState === PromoCodeState.USING ? (
                   <div className="flex-1 flex rounded-lg items-center pl-8 bg-light/20 text-sm h-12">
@@ -253,7 +251,11 @@ export default function Deposit() {
 
                       case PromoCodeState.EDIT:
                         if (inputCode) {
-                          onBindPromoCode();
+                          if (inputCode !== userInfo?.inviterPromotionCode) {
+                            onBindPromoCode();
+                          } else {
+                            setInputCode('');
+                          }
                         } else {
                           if (userInfo?.inviterPromotionCode) {
                             setPromoCodeState(PromoCodeState.USING);
@@ -267,7 +269,8 @@ export default function Deposit() {
                     }
                   }}
                 >
-                  {promoCodeState === PromoCodeState.USING ? (
+                  {promoCodeState === PromoCodeState.USING ||
+                  inputCode === userInfo?.inviterPromotionCode ? (
                     <FormattedMessage id="edit" />
                   ) : !!inputCode?.trim() ? (
                     <FormattedMessage id="text_btn_apply" />
@@ -321,9 +324,13 @@ export default function Deposit() {
                         <span className="text-xs font-light">
                           &nbsp;
                           <span className="text-green font-semibold">
-                            +
+                            +&nbsp;
                             {userInfo?.rebateType === 0
-                              ? `${Number(userInfo?.rebateValue)}%`
+                              ? `$${numberFixed(
+                                  (Number(quantity) *
+                                    Number(userInfo?.rebateValue)) /
+                                    100,
+                                )}`
                               : Number(userInfo?.rebateValue)}
                           </span>
                           （<FormattedMessage id="vip_discount" />）
