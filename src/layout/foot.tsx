@@ -189,6 +189,10 @@ export default function Foot() {
                     currency: 'USD',
                     value: '0',
                   });
+                  window?.gtag('event', 'first_recharge', {
+                    currency: 'USD',
+                    value: '0',
+                  });
                 }}
                 className="mt-4 text-transparent hover:text-gray"
               >
