@@ -264,17 +264,17 @@ export function isSafari() {
 
 export const langs = [
   {
-    title: 'EN',
+    title: 'English(EN)',
     value: 'en-US',
     flag: enFlag,
   },
   {
-    title: 'BR',
+    title: 'Portugalia(BR)',
     value: 'pt-BR',
     flag: brFlag,
   },
   {
-    title: 'HK',
+    title: '繁體中文(HK)',
     value: 'zh-TW',
     flag: cnFlag,
   },

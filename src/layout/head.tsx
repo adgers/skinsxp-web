@@ -230,18 +230,18 @@ export default function Header() {
               leaveFrom="transform opacity-100 scale-100"
               leaveTo="transform opacity-0 scale-95"
             >
-              <Menu.Items className="z-50 flex flex-col focus:outline-none absolute left-0 top-8 h-auto overflow-hidden origin-top-right rounded transform opacity-100 bg-dark w-full">
+              <Menu.Items className="z-50 flex flex-col focus:outline-none absolute left-0 top-8 h-auto origin-top-right rounded transform opacity-100 bg-dark w-[120px]">
                 {langs.map((item, i) => (
                   <Menu.Item key={i}>
                     {({ active }) => (
                       <div
                         className={`${
                           active ? 'bg-accent bg-opacity-30 text-green' : ''
-                        } flex justify-between items-center px-2 py-1 text-xs rounded cursor-pointer`}
+                        } flex items-center px-2 py-1 text-xs rounded cursor-pointer w-full`}
                         onClick={() => changeConfirmLocale(item.value)}
                       >
                         <img src={item.flag} className="w-5 h-5" />
-                        <span>{item.title}</span>
+                        <span className='pl-2 whitespace-nowrap'>{item.title}</span>
                       </div>
                     )}
                   </Menu.Item>
