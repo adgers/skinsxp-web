@@ -401,14 +401,15 @@ export default function Deposit() {
     const ret = await paymentStateUsingGET({ orderId: id });
     if (ret?.data?.state === 1 && ret?.data?.fistRechargeFlag) {
       // 首次充值成功
-      if (userInfo?.promotionChannelId === '7') {
+      if (['3', '7']?.includes(userInfo?.promotionChannelId)) {
         // fb
         window?.fbq('track', 'Purchase', {
           currency: 'USD',
           value: ret?.data?.quantity,
         });
       }
-      if (userInfo?.promotionChannelId === '8') {
+      if (['2'].includes(userInfo?.promotionChannelId)) {
+        // 木瓜
         // ga
         window?.gtag('event', 'purchase', {
           currency: 'USD',
