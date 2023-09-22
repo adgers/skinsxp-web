@@ -315,17 +315,23 @@ export default function Deposit() {
                         ${numberFixed(quantity, 2)}
                       </span>
                       {Number(userInfo?.firstRechargeRebate) > 0 && (
-                        <span className="text-xs font-light">
+                        <div className="text-xs font-light flex items-center">
                           &nbsp;
-                          <span className="text-green font-semibold">
-                            + {userInfo?.firstRechargeRebate}%
+                          <span className="text-green font-semibold whitespace-nowrap">
+                            + &nbsp;
+                            {numberFixed(
+                              (Number(quantity) *
+                                Number(userInfo?.firstRechargeRebate)) /
+                                100,
+                            )}
                           </span>
-                          （
-                          <FormattedMessage id="benifit_scfl" />）
-                        </span>
+                          <span className="w-fit">
+                            （<FormattedMessage id="benifit_scfl" />）
+                          </span>
+                        </div>
                       )}
                       {Number(userInfo?.rebateValue) > 0 && (
-                        <span className="text-xs font-light">
+                        <div className="text-xs font-light flex items-center">
                           &nbsp;
                           <span className="text-green font-semibold">
                             +&nbsp;
@@ -337,8 +343,10 @@ export default function Deposit() {
                                 )}`
                               : Number(userInfo?.rebateValue)}
                           </span>
-                          （<FormattedMessage id="vip_discount" />）
-                        </span>
+                          <span>
+                            （<FormattedMessage id="vip_discount" />）
+                          </span>
+                        </div>
                       )}
                       {/* {selectChannel?.displayType === DisplayType.DEFAULT && (
                         <>
