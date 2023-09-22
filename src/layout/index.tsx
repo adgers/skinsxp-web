@@ -11,6 +11,8 @@ import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 // import BtmNav from './btm-nav';
 import { getLangUsingGET } from '@/services/front/qiantaishouquanxiangguan';
+import { useModel } from '@umijs/max';
+
 import Footer from './foot';
 import Header from './head';
 
@@ -18,6 +20,7 @@ export default function Layout() {
   const { pathname } = useLocation();
   const pathCls = pathname.split('/')[1];
   const { data } = useRequest(() => getLangUsingGET());
+  const { setPageLoaded } = useModel('socket');
   useEffect(() => {
     const params = urlParse();
     const umi_locale = localStorage.getItem('umi_locale');
@@ -35,6 +38,8 @@ export default function Layout() {
         channelCode: channelCode,
       });
     }
+    console.log('loaded');
+    setPageLoaded(true);
   }, []);
 
   useEffect(() => {

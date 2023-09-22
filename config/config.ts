@@ -33,6 +33,12 @@ export default defineConfig({
       content: 'jcqton9h0hgwlsuhbcq29ocqoxjzk5',
     },
   ],
+  links:[
+    {
+      rel:'preconnect dns-prefetch',
+      href: '//img.wgskins.com'
+    }
+  ],
   routes: [
     {
       path: '/',

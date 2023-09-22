@@ -36,7 +36,7 @@ export default function PromotePage() {
   const invRef = useRef<HTMLInputElement>(null);
   const intl = useIntl();
 
-  const affliateColumns: ColumnsType<API.MyRechargeOrderPageVo> = [
+  const affliateColumns: ColumnsType<API.MyPromotionLogPageVo> = [
     {
       title: <FormattedMessage id="promote_user" />,
       dataIndex: 'nickname',

@@ -11,16 +11,29 @@ export default () => {
   const [battleRoomCreate, setBattleRoomCreate] = useState<API.BattleVo>();
   const [battleState, setBattleState] = useState<API.BattleVo>();
   const [battleRank, setBattleRank] = useState<API.BattleRankPageVo>();
-  const battleRankResult = useRequest(() => battleRankUsingGET());
   const [isTop, setIsTop] = useState<boolean>(false);
+  const [pageLoaded, setPageLoaded] = useState<boolean>(false);
+
+  const battleRankResult = useRequest(
+    async() => {
+      if (!pageLoaded) return;
+      return await battleRankUsingGET();
+    },
+    {
+      refreshDeps: [pageLoaded],
+    },
+  );
+
   const recentBoxResult = useRequest(
-    () =>
-      recentDropUsingGET({
+    async () => {
+      if (!pageLoaded) return;
+      return await recentDropUsingGET({
         limit: 20,
         isTop,
-      }),
+      });
+    },
     {
-      refreshDeps: [isTop],
+      refreshDeps: [isTop, pageLoaded],
     },
   );
 
@@ -80,6 +93,9 @@ export default () => {
   };
 
   useEffect(() => {
+    if (!pageLoaded) {
+      return;
+    }
     const domain = getSocketDomain();
 
     const client = new Client({
@@ -96,7 +112,7 @@ export default () => {
     return () => {
       client.deactivate();
     };
-  }, []);
+  }, [pageLoaded]);
 
   return {
     recentBox,
@@ -104,6 +120,7 @@ export default () => {
     battleState,
     battleRank,
     setIsTop,
+    setPageLoaded,
     isTop,
   };
 };
