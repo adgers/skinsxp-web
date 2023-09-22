@@ -199,6 +199,10 @@ export default function Deposit() {
                       .split('\\n')[1]
                       ?.trim()}
                   </p>
+                  <p className="mt-2">
+                    <FormattedMessage id="deposit_default_tgmnr" />
+                    <span className="text-primary ml-2">{`"WGSKINS"`}</span>
+                  </p>
                 </div>
                 <div className="w-48 relative z-10  aspect-square sm:block">
                   <img src={require('@/assets/promo-img.png')} alt="" />
