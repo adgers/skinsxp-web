@@ -184,10 +184,6 @@ export default function Foot() {
               <div
                 onClick={() => {
                   showLogin();
-                  window?.fbq('track', 'Purchase', {
-                    currency: 'USD',
-                    value: '100000000000-test',
-                  });
                 }}
                 className="mt-4 text-transparent hover:text-gray"
               >
