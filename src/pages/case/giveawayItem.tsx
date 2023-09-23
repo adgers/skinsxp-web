@@ -18,7 +18,7 @@ export default function GiveawayItem(props: GiveawayItemProps) {
   const name = item?.giftVos?.[0]?.giftName;
   return (
     <div
-      className={`relative cursor-pointer grid h-36 min-w-[90%] snap-start overflow-hidden sm:min-w-[50%] md:min-w-[33.333333%] xl:min-w-[20%] giveaways-grade giveaways-grade-${index}`}
+      className={`relative cursor-pointer grid h-28 sm:h-36 min-w-[80%] snap-start overflow-hidden sm:min-w-[50%] md:min-w-[33.333333%] xl:min-w-[20%] giveaways-grade giveaways-grade-${index}`}
       key={`giveaways-${index}`}
       onClick={() =>
         history.push({
@@ -28,7 +28,7 @@ export default function GiveawayItem(props: GiveawayItemProps) {
       }
     >
       <div className="relative col-start-1 row-start-1 grid overflow-hidden pl-2.5 pt-2.5 giveaways-grade-item w-full">
-        <div className="flex h-6">
+        <div className="flex h-4 sm:h-6">
           <div className="flex items-center">
             <div
               className={`h-4 w-4 border-r-[50%] rounded-full flex justify-center items-center giveaways-icon`}
@@ -74,7 +74,7 @@ export default function GiveawayItem(props: GiveawayItemProps) {
                 {name && parseName(name)?.[2]}
               </span>
             </div>
-            <div className="mb-2 mt-auto flex items-center justify-center p-1.5 w-full bg-black/[0.25] rounded">
+            <div className="mb-1 sm:mb-2 mt-auto flex items-center justify-center p-1.5 w-full bg-black/[0.25] rounded">
               {days > 0 && (
                 <>
                   <div className="flex w-6 flex-shrink-0 flex-col items-center justify-center text-center">
