@@ -8,6 +8,7 @@ import { useEffect, useState } from 'react';
 
 export default () => {
   const [recentBox, setRecentBox] = useState<API.RecentOpenBoxGiftVo[]>([]);
+  const [topDropBox, setTopDropBox] = useState<API.RecentOpenBoxGiftVo[]>([]);
   const [battleRoomCreate, setBattleRoomCreate] = useState<API.BattleVo>();
   const [battleState, setBattleState] = useState<API.BattleVo>();
   const [battleRank, setBattleRank] = useState<API.BattleRankPageVo>();
@@ -15,7 +16,7 @@ export default () => {
   const [pageLoaded, setPageLoaded] = useState<boolean>(false);
 
   const battleRankResult = useRequest(
-    async() => {
+    async () => {
       if (!pageLoaded) return;
       return await battleRankUsingGET();
     },
@@ -47,7 +48,44 @@ export default () => {
     if (recentBoxResult.data) {
       setRecentBox(recentBoxResult.data);
     }
+    if (isTop) {
+      setTopDropBox(recentBoxResult.data);
+    }
   }, [recentBoxResult.data]);
+
+  const handleDropData = (data: API.RecentDropVo[]) => {
+    setRecentBox((prev) => {
+      const newRecentBox: API.RecentDropVo[] = [...data, ...prev];
+      // 对newRecentBox 数组中id重复的元素做去重
+      const newRecentBoxSet = new Set();
+      const newRecentBoxFilter = newRecentBox.filter((item) => {
+        if (newRecentBoxSet.has(item.id)) {
+          return false;
+        }
+        newRecentBoxSet.add(item.id);
+        return true;
+      });
+
+      return newRecentBoxFilter.slice(0, 20);
+    });
+    setTopDropBox((prev) => {
+      const filterData = data.filter(
+        (item) => item.grade === 1 || item.grade === 0,
+      );
+      const newTopDropBox: API.RecentDropVo[] = [...filterData, ...prev];
+      // 对newTopDropBox 数组中id重复的元素做去重
+      const newTopDropBoxSet = new Set();
+      const newTopDropBoxFilter = newTopDropBox.filter((item) => {
+        if (newTopDropBoxSet.has(item.id)) {
+          return false;
+        }
+        newTopDropBoxSet.add(item.id);
+        return true;
+      });
+
+      return newTopDropBoxFilter.slice(0, 20);
+    });
+  };
 
   const parseWsResult = (result: string) => {
     try {
@@ -55,25 +93,15 @@ export default () => {
       if (data.data) {
         addImgHost(data.data);
       }
-
       switch (data.eventType) {
-        case WsEventType.CASE_DROP ||
-          WsEventType.BATTLE_DROP ||
-          WsEventType.UPGRADE_DROP:
-          if (isTop) {
-            if (data.data.grade === 0 || data.data.grade === 1) {
-              setRecentBox((prev) => {
-                const newRecentBox = [...data.data, ...prev];
-                return newRecentBox.slice(0, 20);
-              });
-            }
-          } else {
-            setRecentBox((prev) => {
-              const newRecentBox = [...data.data, ...prev];
-              return newRecentBox.slice(0, 20);
-            });
-          }
-
+        case WsEventType.CASE_DROP:
+          handleDropData(data.data);
+          break;
+        case WsEventType.BATTLE_DROP:
+          handleDropData(data.data);
+          break;
+        case WsEventType.UPGRADE_DROP:
+          handleDropData(data.data);
           break;
         case WsEventType.BATTLE_CREATE:
           setBattleRoomCreate(data.data);
@@ -116,6 +144,7 @@ export default () => {
 
   return {
     recentBox,
+    topDropBox,
     battleRoomCreate,
     battleState,
     battleRank,

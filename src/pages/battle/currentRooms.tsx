@@ -81,7 +81,7 @@ export default function CurrentRooms({
 
   return (
     <Spin
-      spinning={loading}
+      spinning={loading && rooms?.length === 0}
       indicator={<LoadingOutlined style={{ fontSize: 48, color: 'green' }} />}
     >
       <div className="items-center flex flex-col w-full relative min-h-[300px]">
