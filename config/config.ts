@@ -33,11 +33,11 @@ export default defineConfig({
       content: 'jcqton9h0hgwlsuhbcq29ocqoxjzk5',
     },
   ],
-  links:[
+  links: [
     {
-      rel:'preconnect dns-prefetch',
-      href: '//img.wgskins.com'
-    }
+      rel: 'preconnect dns-prefetch',
+      href: '//img.wgskins.com',
+    },
   ],
   routes: [
     {
@@ -202,6 +202,19 @@ export default defineConfig({
     s.parentNode.insertBefore(t,s)}(window, document,'script',
     'https://connect.facebook.net/en_US/fbevents.js');
     fbq('init', '1024868335308144');
+    fbq('track', 'PageView');
+`,
+    },
+    {
+      content: `!function(f,b,e,v,n,t,s)
+    {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+    n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+    if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+    n.queue=[];t=b.createElement(e);t.async=!0;
+    t.src=v;s=b.getElementsByTagName(e)[0];
+    s.parentNode.insertBefore(t,s)}(window, document,'script',
+    'https://connect.facebook.net/en_US/fbevents.js');
+    fbq('init', '274963705003545');
     fbq('track', 'PageView');
 `,
     },

@@ -315,17 +315,23 @@ export default function Deposit() {
                         ${numberFixed(quantity, 2)}
                       </span>
                       {Number(userInfo?.firstRechargeRebate) > 0 && (
-                        <span className="text-xs font-light">
+                        <div className="text-xs font-light flex items-center">
                           &nbsp;
-                          <span className="text-green font-semibold">
-                            + {userInfo?.firstRechargeRebate}%
+                          <span className="text-green font-semibold whitespace-nowrap">
+                            + &nbsp;
+                            {numberFixed(
+                              (Number(quantity) *
+                                Number(userInfo?.firstRechargeRebate)) /
+                                100,
+                            )}
                           </span>
-                          （
-                          <FormattedMessage id="benifit_scfl" />）
-                        </span>
+                          <span className="w-fit">
+                            （<FormattedMessage id="benifit_scfl" />）
+                          </span>
+                        </div>
                       )}
                       {Number(userInfo?.rebateValue) > 0 && (
-                        <span className="text-xs font-light">
+                        <div className="text-xs font-light flex items-center">
                           &nbsp;
                           <span className="text-green font-semibold">
                             +&nbsp;
@@ -337,8 +343,10 @@ export default function Deposit() {
                                 )}`
                               : Number(userInfo?.rebateValue)}
                           </span>
-                          （<FormattedMessage id="vip_discount" />）
-                        </span>
+                          <span>
+                            （<FormattedMessage id="vip_discount" />）
+                          </span>
+                        </div>
                       )}
                       {/* {selectChannel?.displayType === DisplayType.DEFAULT && (
                         <>
@@ -401,14 +409,15 @@ export default function Deposit() {
     const ret = await paymentStateUsingGET({ orderId: id });
     if (ret?.data?.state === 1 && ret?.data?.fistRechargeFlag) {
       // 首次充值成功
-      if (userInfo?.promotionChannelId === '7') {
+      if (['3', '7']?.includes(userInfo?.promotionChannelId)) {
         // fb
         window?.fbq('track', 'Purchase', {
           currency: 'USD',
           value: ret?.data?.quantity,
         });
       }
-      if (userInfo?.promotionChannelId === '8') {
+      if (['2'].includes(userInfo?.promotionChannelId)) {
+        // 木瓜
         // ga
         window?.gtag('event', 'purchase', {
           currency: 'USD',

@@ -23,11 +23,11 @@ export default function LoginCallback() {
         localStorage.setItem('token', ret.data.token);
       }
       if (ret.data?.register) {
-        if (ret.data?.promotionChannelId === '7') {
+        if (['3', '7']?.includes(ret.data?.promotionChannelId)) {
           // fb 推广用户 注册成功
           window?.fbq('track', 'Lead');
         }
-        if (ret.data?.promotionChannelId === '8') {
+        if (['2'].includes(ret.data?.promotionChannelId)) {
           // fb 推广用户 注册成功
           window?.gtag('event', 'signup');
         }
