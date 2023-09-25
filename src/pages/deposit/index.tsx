@@ -408,6 +408,7 @@ export default function Deposit() {
   const checkPayStatus = async (id: string) => {
     const ret = await paymentStateUsingGET({ orderId: id });
     if (ret?.data?.state === 1 && ret?.data?.fistRechargeFlag) {
+        /* 后续由后台配置平台列表 */
       // 首次充值成功
       if (['3', '7']?.includes(userInfo?.promotionChannelId)) {
         // fb

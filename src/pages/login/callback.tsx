@@ -23,12 +23,13 @@ export default function LoginCallback() {
         localStorage.setItem('token', ret.data.token);
       }
       if (ret.data?.register) {
+        /* 后续由后台配置平台列表 */
         if (['3', '7']?.includes(ret.data?.promotionChannelId)) {
           // fb 推广用户 注册成功
           window?.fbq('track', 'Lead');
         }
         if (['2'].includes(ret.data?.promotionChannelId)) {
-          // fb 推广用户 注册成功
+          // gg 推广用户 注册成功
           window?.gtag('event', 'signup');
         }
       }
