@@ -259,7 +259,16 @@ export default function BoxPage() {
               className="btn-green sm:px-12 !h-10 sm:!h-[60px] !min-h-fit !rounded-none uppercase font-num font-semibold sm:min-w-[310px]"
             >
               {isLogin() ? (
-                <div className="flex gap-2 px-1 flex-1 justify-center">
+                <div
+                  className="flex gap-2 px-1 flex-1 justify-center"
+                  onClick={() => {
+                    window?.fbq(
+                      'trackSingleCustom',
+                      '1024868335308144',
+                      'click_OpenBox',
+                    );
+                  }}
+                >
                   {openLoading && <LoadingOutlined />}
                   $
                   <CountUp
@@ -272,7 +281,15 @@ export default function BoxPage() {
                   <FormattedMessage id="open_box_open" />
                 </div>
               ) : (
-                <div>
+                <div
+                  onClick={() => {
+                    window?.fbq(
+                      'trackSingleCustom',
+                      '1024868335308144',
+                      'click_Login_To_Open',
+                    );
+                  }}
+                >
                   <FormattedMessage id="login_to_kx" />
                 </div>
               )}

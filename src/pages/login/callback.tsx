@@ -30,7 +30,12 @@ export default function LoginCallback() {
         }
         if (['2'].includes(ret.data?.promotionChannelId)) {
           // gg 推广用户 注册成功
-          window?.gtag('event', 'signup');
+          window?.gtag('event', 'signup_mg');
+
+          /* send to aw */
+          window?.gtag('event', 'conversion', {
+            send_to: 'AW-11334119378/Kco9CIyyluUYENLfw5wq',
+          });
         }
       }
 

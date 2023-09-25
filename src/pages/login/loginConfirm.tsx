@@ -43,7 +43,9 @@ export default function LoginConfirm() {
         </div>
       </Modal.Header>
       <Modal.Body className="flex flex-col items-center px-8 py-4">
-        <div className="mb-8 text-xl font-semibold text-center">
+        <div className="mb-8 text-xl font-semibold text-center" onClick={()=>{
+          window?.fbq('trackSingleCustom','1024868335308144','click_confirm_LOGIN')
+        }}>
           <FormattedMessage id="login_need_tip" />
         </div>
         <div className="flex flex-col gap-1 w-full">
