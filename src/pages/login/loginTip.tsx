@@ -9,7 +9,7 @@ export default function LoginTip() {
   return (
     <Modal
       open={loginTipShow}
-      className="w-[300px] h-[340px] sm:w-[450px] sm:h-[510px] border-none p-0 overflow-hidden rounded-md"
+      className="w-[300px] h-[340px] sm:w-[450px] sm:h-[470px] border-none p-0 overflow-hidden rounded-md"
     >
       <Button
         size="xs"
@@ -21,7 +21,7 @@ export default function LoginTip() {
         ✕
       </Button>
       <Modal.Body
-        className="flex h-full flex-col items-center px-8 py-6 sm:py-10 bg-no-repeat  bg-cover "
+        className="flex h-full flex-col items-center px-8 py-6 sm:py-10 bg-no-repeat bg-contain "
         style={{ backgroundImage: `url(${bgImg})` }}
       >
         <div className="w-full h-full relative flex flex-col items-center uppercase">
@@ -64,11 +64,11 @@ export default function LoginTip() {
               </div>
             </div>
           </div>
-          <div className="absolute top-[128px] sm:top-[189px] w-[50px] sm:w-[75px] left-0 sm:left-[10px] font-semibold text-right sm:text-xl">
+          <div className="absolute top-[100px] sm:top-[155px] w-[50px] sm:w-[75px] left-0 sm:left-[10px] font-semibold text-right sm:text-xl">
             <FormattedMessage id="loginTip_up" />
           </div>
           <div
-            className="absolute top-[114px] sm:top-[174px] right-0 sm:right-[10px] w-[100px] sm:w-[160px] font-bold text-center"
+            className="absolute top-[90px] sm:top-[140px] right-0 sm:right-[10px] w-[100px] sm:w-[160px] font-bold text-center"
             style={{
               backgroundImage:
                 'linear-gradient(270deg, #FFB1B6 0%, #FFEEF4 43.4%, #FFC8DE 93.42%)',
@@ -81,7 +81,7 @@ export default function LoginTip() {
           </div>
 
           <Button
-            className="btn btn-purple absolute m-auto bottom-0  "
+            className="btn btn-purple absolute w-full m-auto bottom-0"
             onClick={() => {
               hideLoginTip();
               showSteamLogin();

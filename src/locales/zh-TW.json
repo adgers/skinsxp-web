@@ -73,11 +73,11 @@
   "not_login_title": "您尚未登錄",
   "not_login_subtitle": "請登錄後訪問該頁面",
   "home_item_spsc": "WG商店",
-  "home_item_roll": "福利贈送",
+  "home_item_roll": "用戶贈送",
   "home_item_flzx": "福利中心",
   "home_item_hydj": "會員等級",
   "home_item_hzhb": "合作夥伴",
-  "register_qsryqm": "請輸入邀請碼",
+  "register_qsryqm": "輸入促銷程式碼",
   "login_title": "用戶登錄",
   "login_hmywzzh": "還沒有網站賬號?",
   "login_ljzc": "立即注冊",
@@ -405,5 +405,6 @@
   "loginTip_get": "以獲得",
   "loginTip_jl": "獎勵",
   "loginTip_up": "最高",
-  "banner_bonus": "+ 20% 獎金"
+  "banner_bonus": "+20% 獎金",
+  "btm_nav_market": "商店"
 }

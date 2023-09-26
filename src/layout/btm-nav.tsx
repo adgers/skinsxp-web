@@ -10,7 +10,7 @@ export default function BtmNav() {
       icon: 'icon-case2',
     },
     {
-      title:  <FormattedMessage id="home_spsc" />,
+      title:  <FormattedMessage id="btm_nav_market" />,
       link: '/store',
       icon: 'icon-market2',
     },
