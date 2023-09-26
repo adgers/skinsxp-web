@@ -399,10 +399,11 @@
   "profile_balance": "余额",
   "history_record": "历史记录",
   "deposit_default_tgmnr": "使用特殊的推廣碼",
-  "banner_first_recharge": "首次存款 \\n +10%獎金",
-  "banner_promo": "促銷代碼 \\n + 10% 獎金",
+  "banner_first_recharge": "首次存款",
+  "banner_promo": "促銷代碼",
   "loginTip_sign": "登入",
   "loginTip_get": "以獲得",
   "loginTip_jl": "獎勵",
-  "loginTip_up": "最高"
+  "loginTip_up": "最高",
+  "banner_bonus": "+ 20% 奖金"
 }
