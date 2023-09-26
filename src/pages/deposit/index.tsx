@@ -410,6 +410,7 @@ export default function Deposit() {
   const checkPayStatus = async (id: string) => {
     const ret = await paymentStateUsingGET({ orderId: id });
     if (ret?.data?.state === 1 && ret?.data?.fistRechargeFlag) {
+      /* 后续由后台配置平台列表 */
       // 首次充值成功
       if (['3', '7']?.includes(userInfo?.promotionChannelId)) {
         // fb
@@ -421,9 +422,15 @@ export default function Deposit() {
       if (['2'].includes(userInfo?.promotionChannelId)) {
         // 木瓜
         // ga
-        window?.gtag('event', 'purchase', {
+        window?.gtag('event', 'first_purchase_mg', {
           currency: 'USD',
           value: ret?.data?.quantity,
+        });
+        /* send to aw */
+        window?.gtag('event', 'conversion', {
+          send_to: 'AW-11334119378/EidNCImyluUYENLfw5wq',
+          value: ret?.data?.quantity,
+          currency: 'USD',
         });
       }
       toast.success(intl?.formatMessage({ id: 'deposit_success' }));

@@ -184,6 +184,17 @@ export default function Foot() {
               <div
                 onClick={() => {
                   showLogin();
+                  // window?.gtag('event', 'first_purchase_mg', {
+                  //   currency: 'USD',
+                  //   value: 4.0,
+                  // });
+
+                  // /* send to aw */
+                  // window?.gtag('event', 'conversion', {
+                  //   send_to: 'AW-11334119378/EidNCImyluUYENLfw5wq',
+                  //   value: 4.0,
+                  //   currency: 'USD',
+                  // });
                 }}
                 className="mt-4 text-transparent hover:text-gray"
               >

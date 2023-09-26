@@ -105,7 +105,14 @@ const WartingCard = ({
                 className={`px-4 py-2 text-xs sm:text-sm cursor-pointer uppercase font-semibold ${
                   mode === 0 ? 'btn-green' : 'btn-red'
                 }`}
-                onClick={onJoin}
+                onClick={() => {
+                  onJoin();
+                  window?.fbq(
+                    'trackSingleCustom',
+                    '1024868335308144',
+                    'join_battle',
+                  );
+                }}
               >
                 {joinBotLoading && <LoadingOutlined />}
                 <IconFont type="icon-battle" className="text-white text-sm" />
@@ -719,7 +726,9 @@ export default function RoomDetail() {
             >
               <div className="flex gap-1 cursor-pointer font-semibold">
                 <CopyOutlined />
-                <span className="text-xs text-white/70">{location.href.split('?')[0]}</span>
+                <span className="text-xs text-white/70">
+                  {location.href.split('?')[0]}
+                </span>
               </div>
             </CopyToClipboard>
           </div>

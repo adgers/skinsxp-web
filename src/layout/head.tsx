@@ -241,7 +241,9 @@ export default function Header() {
                         onClick={() => changeConfirmLocale(item.value)}
                       >
                         <img src={item.flag} className="w-5 h-5" />
-                        <span className='pl-2 whitespace-nowrap'>{item.title}</span>
+                        <span className="pl-2 whitespace-nowrap">
+                          {item.title}
+                        </span>
                       </div>
                     )}
                   </Menu.Item>
@@ -391,7 +393,14 @@ export default function Header() {
             <>
               <Button
                 className="btn btn-sm text-black gap-1 rounded uppercase"
-                onClick={() => showSteamLogin()}
+                onClick={() => {
+                  showSteamLogin();
+                  window?.fbq(
+                    'trackSingleCustom',
+                    '1024868335308144',
+                    'click_LOGIN',
+                  );
+                }}
                 style={{
                   background:
                     'linear-gradient(270deg, #0BFF59 0%, #B4FC3B 100%)',
@@ -427,7 +436,14 @@ export default function Header() {
                     <div className="bg-neutral py-2">{menus}</div>
                     <Button
                       className="btn btn-sm text-black gap-1 rounded uppercase mx-3 mt-4"
-                      onClick={() => showSteamLogin()}
+                      onClick={() => {
+                        showSteamLogin();
+                        window?.fbq(
+                          'trackSingleCustom',
+                          '1024868335308144',
+                          'click_LOGIN',
+                        );
+                      }}
                       style={{
                         background:
                           'linear-gradient(270deg, #0BFF59 0%, #B4FC3B 100%)',

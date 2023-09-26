@@ -23,13 +23,19 @@ export default function LoginCallback() {
         localStorage.setItem('token', ret.data.token);
       }
       if (ret.data?.register) {
+        /* 后续由后台配置平台列表 */
         if (['3', '7']?.includes(ret.data?.promotionChannelId)) {
           // fb 推广用户 注册成功
           window?.fbq('track', 'Lead');
         }
         if (['2'].includes(ret.data?.promotionChannelId)) {
-          // fb 推广用户 注册成功
-          window?.gtag('event', 'signup');
+          // gg 推广用户 注册成功
+          window?.gtag('event', 'signup_mg');
+
+          /* send to aw */
+          window?.gtag('event', 'conversion', {
+            send_to: 'AW-11334119378/Kco9CIyyluUYENLfw5wq',
+          });
         }
       }
 
