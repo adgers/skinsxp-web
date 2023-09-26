@@ -87,12 +87,17 @@ export default function User() {
                     </div>
                     <div
                       className="btn px-[16px] rounded border border-green text-green disp invisible xl:visible "
-                      onClick={() =>
+                      onClick={() => {
                         history.push({
                           pathname: '/deposit',
                           search: location.search,
-                        })
-                      }
+                        });
+                        window?.fbq(
+                          'trackSingleCustom',
+                          '1024868335308144',
+                          'InitiateCheckout',
+                        );
+                      }}
                     >
                       <IconFont type="icon-funds" className="text-xl" />
                       <FormattedMessage id="wc_rewards_deposit" />

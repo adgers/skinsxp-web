@@ -366,7 +366,14 @@ export default function Deposit() {
                 </div>
                 <button
                   className="btn btn-green btn-sm md:btn-md uppercase w-full rounded font-semibold"
-                  onClick={onPay}
+                  onClick={() => {
+                    onPay();
+                    window?.fbq(
+                      'trackSingleCustom',
+                      '1024868335308144',
+                      'click_CHECKOUT',
+                    );
+                  }}
                   type="button"
                 >
                   <FormattedMessage id={'pay_amount'} /> $

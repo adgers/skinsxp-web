@@ -303,7 +303,17 @@ export default function Header() {
                   />
                 </span>
               </div>
-              <Link className="btn-green !btn-sm !px-1" to="/deposit">
+              <Link
+                className="btn-green !btn-sm !px-1"
+                to="/deposit"
+                onClick={() => {
+                  window?.fbq(
+                    'trackSingleCustom',
+                    '1024868335308144',
+                    'InitiateCheckout',
+                  );
+                }}
+              >
                 <IconFont type="icon-funds" className="text-xl text-green" />
                 <PlusOutlined className="text-xs text-green" />
               </Link>
