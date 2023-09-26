@@ -7,22 +7,27 @@ export default function BtmNav() {
     {
       title: <FormattedMessage id="main_tab_home" />,
       link: '/case',
-      icon: 'icon-cases1',
+      icon: 'icon-case2',
     },
     {
-      title: <FormattedMessage id="main_tab_arena" />,
-      link: '/battle',
-      icon: 'icon-battle',
+      title:  <FormattedMessage id="home_spsc" />,
+      link: '/store',
+      icon: 'icon-market2',
     },
     {
       title: <FormattedMessage id="roll_room_title" />,
       link: '/giveaways',
-      icon: 'icon-giveaway',
+      icon: 'icon-giveaway2',
+    },
+    {
+      title: <FormattedMessage id="main_tab_arena" />,
+      link: '/battle',
+      icon: 'icon-a-battle2',
     },
     {
       title: <FormattedMessage id="main_tab_account" />,
       link: '/profile',
-      icon: 'icon-online',
+      icon: 'icon-account2',
     },
   ];
 
@@ -35,10 +40,10 @@ export default function BtmNav() {
           <Link to={t.link} key={i}>
             <IconFont
               type={t.icon}
-              className={`text-2xl ${isActive ? 'text-primary' : ''}`}
+              className={`text-2xl text-gray ${isActive ? 'text-primary' : ''}`}
             />
             <span
-              className={`btm-nav-label uppercase font-semibold mt-1 text-xs ${
+              className={`btm-nav-label uppercase  text-gray font-semibold mt-1 text-xs ${
                 isActive ? 'text-primary' : ''
               }`}
             >
