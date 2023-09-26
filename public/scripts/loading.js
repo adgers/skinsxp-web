@@ -97,7 +97,7 @@
       
       </style>
 
-      <div class="wg-ring">Loading
+      <div class="wg-ring">WGSKINS
         <span></span>
       </div>    
     `;

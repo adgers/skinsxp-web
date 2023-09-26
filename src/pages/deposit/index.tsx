@@ -92,7 +92,9 @@ export default function Deposit() {
     });
     if (ret.status === 0) {
       if (ret.data?.payUrl) {
-        window.open(ret.data.payUrl);
+        setTimeout(() => {
+          window.open(ret?.data?.payUrl, '_blank');
+        });
       }
       if (ret.data?.orderId) {
         setPayOrderId(ret.data.orderId);

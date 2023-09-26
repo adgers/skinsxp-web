@@ -6,7 +6,11 @@ import {
   v3StartUpgradeUsingPOST,
 } from '@/services/front/shengjixiangguan';
 import { goback, numberRoundUp } from '@/utils';
-import { LeftOutlined, LoadingOutlined,RightOutlined } from '@ant-design/icons';
+import {
+  LeftOutlined,
+  LoadingOutlined,
+  RightOutlined,
+} from '@ant-design/icons';
 import { FormattedMessage, useModel, useRequest } from '@umijs/max';
 import { useResponsive, useToggle } from 'ahooks';
 import { Slider } from 'antd';
@@ -15,9 +19,10 @@ import CountUp from 'react-countup';
 import { animated, easings, useSpring } from 'react-spring';
 import { toast } from 'react-toastify';
 // import Result from '../box/result';
+import { getMyVoucherPageUsingGET } from '@/services/front/gerenzhongxinxiangguan';
+import { Range } from 'react-daisyui';
 import DreamItems from './dreamItems';
 import './index.less';
-import { getMyVoucherPageUsingGET } from '@/services/front/gerenzhongxinxiangguan';
 
 export default function DreamPage() {
   const { voice, toggleVoice } = useModel('sys');
@@ -46,10 +51,9 @@ export default function DreamPage() {
       getMyVoucherPageUsingGET({
         ...searchParams,
         pageSize: 12,
-        orderByPrice,
       }),
     {
-      refreshDeps: [searchParams?.page, searchParams?.stat, orderByPrice],
+      refreshDeps: [searchParams?.page, searchParams?.stat],
     },
   );
   const [selectItem, setSelectItem] = useState<API.UpgradeGiftPageVo>();
@@ -205,6 +209,9 @@ export default function DreamPage() {
               </div>
             </div>
           </div>
+          <div className="w-full px-5">
+            <Range size="xs" color="primary"/>
+          </div>
         </div>
         {/* 概率 */}
         <div className="flex flex-row md:flex-col items-center justify-center gap-4 md:gap-2">
@@ -233,7 +240,7 @@ export default function DreamPage() {
               ></animated.div>
             </div>
           </div>
-          <div className="slider-bg w-full flex justify-center items-center px-4 md:px-10 mt-10">
+          {/* <div className="slider-bg w-full flex justify-center items-center px-4 md:px-10 mt-10">
             <Slider
               className="w-full"
               range
@@ -253,7 +260,7 @@ export default function DreamPage() {
                 100: '100',
               }}
             />
-          </div>
+          </div> */}
           <div className="flex w-full justify-center my-2 text-sm">
             {config?.minProb}% to {config?.maxProb}% percentage of the range
             <FormattedMessage
@@ -295,19 +302,11 @@ export default function DreamPage() {
             <button
               type="button"
               onClick={open}
-              className="flex items-center justify-center min-w-[300px] h-8 sm:h-12 px-4 uppercase border border-secondary text-secondary rounded font-num font-semibold bg-secondary bg-opacity-20"
+              className="btn-green w-full"
             >
               <div className="open-btn-arr animate-pulse" />
               <div className="flex gap-2 px-1 flex-1 justify-center">
                 {openLoading && <LoadingOutlined />}
-                <IconFont type="icon-coin" />
-                <CountUp
-                  end={quantity}
-                  duration={0.3}
-                  decimals={2}
-                  separator=""
-                  className="font-num"
-                />
                 <FormattedMessage id="dream_open" />
               </div>
               <div className="open-btn-arr-right animate-pulse" />
@@ -332,11 +331,11 @@ export default function DreamPage() {
             className="mt-auto flex items-center justify-between pt-6 transition-opacity duration-300"
             style={{ opacity: 0.5, pointerEvents: 'none' }}
           >
-            <LeftOutlined/>
+            <LeftOutlined />
             <div className="flex items-center justify-center rounded bg-navy-900 p-3 text-center text-sm font-semibold leading-none text-white css-1mqx83j">
               0/0
             </div>
-            <RightOutlined/>
+            <RightOutlined />
           </div>
         </div>
         <div className="py-6 px-4 bg-black rounded-lg">
