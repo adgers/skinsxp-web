@@ -6,7 +6,7 @@ import { IconFont } from '@/components/icons';
 import Benefit from '@/pages/benefit';
 import LoginConfirm from '@/pages/login/loginConfirm';
 import LoginTip from '@/pages/login/loginTip';
-import { langs, logout, numberFixed } from '@/utils';
+import { isLogin, langs, logout, numberFixed } from '@/utils';
 import { MenuOutlined, PlusOutlined } from '@ant-design/icons';
 import { Menu, Transition } from '@headlessui/react';
 import {
@@ -59,7 +59,7 @@ export default function Header() {
   };
 
   useEffect(() => {
-    if (!userInfo) {
+    if (!isLogin()) {
       showLoginTip();
     }
   }, []);
