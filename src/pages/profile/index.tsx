@@ -97,6 +97,9 @@ export default function User() {
                           '1024868335308144',
                           'InitiateCheckout',
                         );
+                        window?.gtag('event', 'conversion', {
+                          send_to: 'AW-11345409756/EOFKCIqQy-UYENzt9KEq',
+                        });
                       }}
                     >
                       <IconFont type="icon-funds" className="text-xl" />

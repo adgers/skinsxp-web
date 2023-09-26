@@ -43,7 +43,7 @@ export default function BtmNav() {
               className={`text-2xl text-gray ${isActive ? 'text-primary' : ''}`}
             />
             <span
-              className={`btm-nav-label uppercase  text-gray font-semibold mt-1 text-xs ${
+              className={`btm-nav-label uppercase  text-gray font-semibold mt-1 text-xs whitespace-nowrap ${
                 isActive ? 'text-primary' : ''
               }`}
             >

@@ -7,7 +7,7 @@
   "roll_room_wcyd": "我參與的",
   "roll_recommand_jxz": "進行中",
   "roll_recommand_yjs": "已結束",
-  "arena": "競技場",
+  "arena": "箱子大戰",
   "arena_gftj": "活躍的戰鬥",
   "arena_wcyd": "我的戰鬥",
   "arena_dzls": "已完成的戰鬥",
@@ -399,6 +399,10 @@
   "profile_balance": "餘額",
   "history_record": "歷史記錄",
   "deposit_default_tgmnr": "使用特殊的促銷程式碼",
-  "banner_first_recharge": "首次存款 \\n +10%獎金。",
-  "banner_promo": "促銷代碼 \\n + 10% 獎金。"
+  "banner_first_recharge": "首次存款 \\n +10%獎金",
+  "banner_promo": "促銷代碼 \\n + 10% 獎金",
+  "loginTip_sign": "登入",
+  "loginTip_get": "以獲得",
+  "loginTip_jl": "獎勵",
+  "loginTip_up": "最高"
 }

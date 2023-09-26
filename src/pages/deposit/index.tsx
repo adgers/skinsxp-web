@@ -375,6 +375,9 @@ export default function Deposit() {
                       '1024868335308144',
                       'click_CHECKOUT',
                     );
+                    window?.gtag('event', 'conversion', {
+                      send_to: 'AW-11345409756/X-e6CI2Qy-UYENzt9KEq',
+                    });
                   }}
                   type="button"
                 >
@@ -436,6 +439,12 @@ export default function Deposit() {
         /* send to aw */
         window?.gtag('event', 'conversion', {
           send_to: 'AW-11334119378/EidNCImyluUYENLfw5wq',
+          value: ret?.data?.quantity,
+          currency: 'USD',
+        });
+
+        window?.gtag('event', 'conversion', {
+          send_to: 'AW-11345409756/UtjlCJCQy-UYENzt9KEq',
           value: ret?.data?.quantity,
           currency: 'USD',
         });

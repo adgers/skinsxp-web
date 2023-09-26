@@ -11,6 +11,7 @@ export default () => {
   const [steamLoginShow, setSteamLoginShow] = useState<boolean>(false);
   const [userInfo, setUserInfo] = useState<API.CustomerDetailVo>();
   const localAgreePing = getLocalSettings('agreePing');
+  const [loginTipShow, setLoginTipShow] = useState<boolean>(false);
 
   const [agreePing, setAgreePing] = useState<boolean>(
     localAgreePing === undefined ? true : localAgreePing,
@@ -68,12 +69,19 @@ export default () => {
     setBenefitShow(false);
   };
 
-  const showSteamLogin=()=>{
-    setSteamLoginShow(true)
-  }
-  const hideSteamLogin=()=>{
-    setSteamLoginShow(false)
-  }
+  const showSteamLogin = () => {
+    setSteamLoginShow(true);
+  };
+  const hideSteamLogin = () => {
+    setSteamLoginShow(false);
+  };
+
+  const showLoginTip = () => {
+    setLoginTipShow(true);
+  };
+  const hideLoginTip = () => {
+    setLoginTipShow(false);
+  };
 
   const getUser = async () => {
     const ret = await customerDetailUsingGET();
@@ -111,5 +119,8 @@ export default () => {
     getUser,
     agreePing,
     toggleAgreePing,
+    loginTipShow,
+    showLoginTip,
+    hideLoginTip,
   };
 };

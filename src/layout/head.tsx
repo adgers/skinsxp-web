@@ -5,6 +5,7 @@ import Register from '@/components/account/register';
 import { IconFont } from '@/components/icons';
 import Benefit from '@/pages/benefit';
 import LoginConfirm from '@/pages/login/loginConfirm';
+import LoginTip from '@/pages/login/loginTip';
 import { langs, logout, numberFixed } from '@/utils';
 import { MenuOutlined, PlusOutlined } from '@ant-design/icons';
 import { Menu, Transition } from '@headlessui/react';
@@ -17,7 +18,7 @@ import {
   useLocation,
   useModel,
 } from '@umijs/max';
-import { Fragment } from 'react';
+import { Fragment, useEffect } from 'react';
 import CountUp from 'react-countup';
 import { Button, Navbar } from 'react-daisyui';
 import './index.less';
@@ -35,6 +36,8 @@ export default function Header() {
     showBenefit,
     steamLoginShow,
     showSteamLogin,
+    loginTipShow,
+    showLoginTip,
   } = useModel('user');
 
   const location = useLocation();
@@ -54,6 +57,12 @@ export default function Header() {
   const changeConfirmLocale = (val: string) => {
     setLocale(val);
   };
+
+  useEffect(() => {
+    if (!userInfo) {
+      showLoginTip();
+    }
+  }, []);
 
   const headLinks = [
     {
@@ -312,6 +321,9 @@ export default function Header() {
                     '1024868335308144',
                     'InitiateCheckout',
                   );
+                  window?.gtag('event', 'conversion', {
+                    send_to: 'AW-11345409756/EOFKCIqQy-UYENzt9KEq',
+                  });
                 }}
               >
                 <IconFont type="icon-funds" className="text-xl text-green" />
@@ -477,6 +489,7 @@ export default function Header() {
       {findPwdShow && <FindPwd />}
       {benefitShow && <Benefit />}
       {steamLoginShow && <LoginConfirm />}
+      {loginTipShow && <LoginTip />}
     </div>
   );
 }

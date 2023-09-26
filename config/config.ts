@@ -222,16 +222,17 @@ export default defineConfig({
       src: 'https://www.googletagmanager.com/gtag/js?id=G-6LDWG1BWSC',
       async: true,
     },
-    {
-      src: 'https://www.googletagmanager.com/gtag/js?id=AW-11334119378',
-      async: true,
-    },
+    // {
+    //   src: 'https://www.googletagmanager.com/gtag/js?id=AW-11334119378',
+    //   async: true,
+    // },
     {
       content: `window.dataLayer =window.dataLayer || [];
       function gtag(){dataLayer.push(arguments);};
       gtag('js', new Date());
       gtag('config', 'AW-11334119378');
       gtag('config', 'G-6LDWG1BWSC');
+      gtag('config', 'AW-11345409756');
       `,
     },
   ],

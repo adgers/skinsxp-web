@@ -64,7 +64,11 @@ export default function Foot() {
           </div>
 
           <div className="flex justify-end gap-4">
-            <a>
+            <a
+              href="https://twitter.com/wgskins"
+              rel="noreferrer"
+              target="_blank"
+            >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 width="24"
