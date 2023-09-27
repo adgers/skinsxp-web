@@ -247,7 +247,7 @@ export default () => {
                       onExchange(item);
                     }}
                   >
-                    <div className="btn btn-sm w-full rounded-b  md-w-[calc(100%-2px)]  bg-green border-none text-dark text-sm rounded-none  hover:bg-green group-hover:w-full">
+                    <div className="btn btn-sm w-full rounded-b  md-w-[calc(100%-2px)] bg-green border-none text-dark text-sm rounded-none  hover:bg-green group-hover:w-full">
                       <IconFont
                         type="icon-collect"
                         className={exChangeLoading ? 'animate-spin' : ''}

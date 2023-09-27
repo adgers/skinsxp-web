@@ -11,7 +11,7 @@ export default function BtmNav() {
     },
     {
       title:  <FormattedMessage id="btm_nav_market" />,
-      link: '/store',
+      link: '/market',
       icon: 'icon-market2',
     },
     {

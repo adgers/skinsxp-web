@@ -132,7 +132,7 @@ const ResultCard = ({ result }: { result: API.BattleCustomerGainVo }) => {
     <div className="flex flex-col animate__animated animate__zoomIn items-center gap-1">
       {result?.winner ? (
         <>
-          <div className="font-num text-green text-sm sm:text-[42px] sm:leading-[42px]">
+          <div className="font-num text-green text-sm sm:text-[42px] sm:leading-[42px] animate-bounce">
             WINNER
           </div>
           <div className="flex gap-1 items-center font-num text-green text-xs sm:text-base">

@@ -82,7 +82,7 @@ export default defineConfig({
           component: 'battle/room',
         },
         {
-          path: 'store',
+          path: 'market',
           component: 'shop',
         },
         {

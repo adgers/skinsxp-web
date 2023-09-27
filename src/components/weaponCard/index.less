@@ -294,9 +294,9 @@
 
   .box-img-wrapper {
     position: absolute;
-    right: -35px;
+    left: 50%;
     bottom: -25px;
-    transform: translateY(30px);
+    transform: translateY(30px) translateX(-50%);
     transition: transform 0.7s ease;
 
     img {
@@ -305,7 +305,7 @@
   }
   &:hover {
     .box-img-wrapper {
-      transform: none;
+      transform: translateY(0) translateX(-50%);
     }
   }
 }
@@ -326,7 +326,6 @@
     }
 
     .box-img-wrapper {
-      right: -25px;
       bottom: -15px;
 
       img {
@@ -360,7 +359,6 @@
     }
 
     .box-img-wrapper {
-      right: -20px;
       bottom: -10px;
 
       img {
