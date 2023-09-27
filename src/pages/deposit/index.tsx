@@ -40,7 +40,7 @@ export default function Deposit() {
   const { data: rechageInfo } = useRequest(() =>
     rechargeDiscountInfoUsingGET(),
   );
-  const [currentTab, setCurrentTab] = useState<number>(2); // 1 | 2
+  const [currentTab, setCurrentTab] = useState<number>(1); // 1 | 2
   const [selectCurrency, setSelectCurrency] = useState<string>('');
   const [selectChannel, setSelectChannel] = useState<API.RechargeChannelVo>();
   const [promoCodeState, setPromoCodeState] = useState<number>(
