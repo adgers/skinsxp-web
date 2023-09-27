@@ -7,7 +7,7 @@ import Benefit from '@/pages/benefit';
 import LoginConfirm from '@/pages/login/loginConfirm';
 import LoginTip from '@/pages/login/loginTip';
 import { isLogin, langs, logout, numberFixed } from '@/utils';
-import { MenuOutlined, PlusOutlined } from '@ant-design/icons';
+import { MenuOutlined } from '@ant-design/icons';
 import { Menu, Transition } from '@headlessui/react';
 import {
   FormattedMessage,
@@ -87,13 +87,15 @@ export default function Header() {
     },
   ];
 
-  const headExt = [
-    {
-      title: <FormattedMessage id="home_item_hzhb" />,
-      link: '/profile/partner',
-      icon: 'icon-partner',
-    },
-  ];
+  const headExt = isLogin()
+    ? [
+        {
+          title: <FormattedMessage id="home_item_hzhb" />,
+          link: '/profile/partner',
+          icon: 'icon-partner',
+        },
+      ]
+    : [];
 
   const menuLinks = [
     {
@@ -330,9 +332,11 @@ export default function Header() {
                 <div className="text-xs text-white px-1 font-semibold hidden sm:block">
                   <FormattedMessage id="wc_rewards_deposit" />
                 </div>
-                
+
                 {userInfo?.rebateValue && userInfo?.rebateValue > 0 && (
-                  <div className='text-green font-num'>+{Number(userInfo?.rebateValue)}%</div>
+                  <div className="text-green font-num">
+                    +{Number(userInfo?.rebateValue)}%
+                  </div>
                 )}
               </Link>
 

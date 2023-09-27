@@ -181,7 +181,7 @@ export default function PromotePage() {
 
   return (
     <>
-      <div className="p-4 flex flex-col sm:flex-row sm:justify-between gap-4 bg-black rounded">
+      <div className="p-4 flex gap-4 bg-black rounded">
         <div className="flex items-start flex-col lg:flex-row lg:items-center gap-4 sm:gap-8 flex-shrink-0">
           <div className="w-full">
             <h3 className="font-sembold text-base mb-4">
@@ -226,8 +226,10 @@ export default function PromotePage() {
             </div>
           </div>
         </div>
-        <div className="grid grid-cols-6 flex-shrink-0">
-          <div className="text-center px-3 py-4 flex flex-col gap-2 rounded-none">
+      </div>
+      <div className="p-4 bg-black rounded mt-4">
+        <div className="grid grid-cols-3 sm:grid-cols-6 flex-shrink-0">
+          <div className="text-center px-3 py-4 flex flex-col gap-2 rounded-none bg-black">
             <div className="text-sm">
               <FormattedMessage id="promoteCode_level" />
             </div>
