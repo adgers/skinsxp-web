@@ -56,7 +56,6 @@ export default () => {
   const handleDropData = (data: API.RecentDropVo[]) => {
     setRecentBox((prev) => {
       const newRecentBox: API.RecentDropVo[] = [...data, ...prev];
-      // 对newRecentBox 数组中id重复的元素做去重
       const newRecentBoxSet = new Set();
       const newRecentBoxFilter = newRecentBox.filter((item) => {
         if (newRecentBoxSet.has(item.id)) {
@@ -73,7 +72,6 @@ export default () => {
         (item) => item.grade === 1 || item.grade === 0,
       );
       const newTopDropBox: API.RecentDropVo[] = [...filterData, ...prev];
-      // 对newTopDropBox 数组中id重复的元素做去重
       const newTopDropBoxSet = new Set();
       const newTopDropBoxFilter = newTopDropBox.filter((item) => {
         if (newTopDropBoxSet.has(item.id)) {
