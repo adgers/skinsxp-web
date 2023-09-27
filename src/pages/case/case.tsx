@@ -80,7 +80,7 @@ export default function Case() {
                 />
                 <div className="w-full h-full absolute top-0 left-0">
                   {/* <div className="absolute top-[1.5] left-[1.75] text-green">New !</div> */}
-                  <div className="absolute top-[20px] right-0 bg-white/[0.2] rounded-l text-white px-2 py-1 font-num text-sm">
+                  <div className="absolute top-[20px] right-0 bg-black/[0.8] rounded-l text-white px-2 py-0.5 font-num text-xl">
                     ${v?.openPrice}
                   </div>
                   <div className="absolute bottom-0 left-0 w-full bg-black bg-opacity-50 backdrop-blur-sm py-3 px-2">
