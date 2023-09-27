@@ -69,7 +69,7 @@ export const request: RequestConfig = {
         localStorage.removeItem('token');
         setTimeout(() => {
           history.push(
-            `/login?redirect=${location.pathname}${
+            `/login?callbackUrl=${location.pathname}${
               location.search.split('?')[1]
                 ? `&${location.search.split('?')[1]}`
                 : ''

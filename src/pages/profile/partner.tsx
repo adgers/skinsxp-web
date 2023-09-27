@@ -8,7 +8,6 @@ import { CopyOutlined } from '@ant-design/icons';
 import { FormattedMessage, useIntl, useRequest } from '@umijs/max';
 import { ConfigProvider, theme } from 'antd';
 import Table, { ColumnsType } from 'antd/es/table';
-import { sortBy } from 'lodash';
 import { useEffect, useRef, useState } from 'react';
 import { CopyToClipboard } from 'react-copy-to-clipboard';
 import { Button, Input } from 'react-daisyui';
@@ -59,7 +58,7 @@ export default function PromotePage() {
       key: 'rebateAmount',
     },
     {
-      title: <FormattedMessage id="create_time" />,
+      title: <FormattedMessage id="updateTime" />,
       dataIndex: 'createTime',
       key: 'createTime',
     },
@@ -70,7 +69,7 @@ export default function PromotePage() {
       dataIndex: 'grade',
       key: 'grade',
       width: '10%',
-      render:(text)=> <span className='pl-4'>{text}</span>
+      render: (text) => <span className="pl-4">{text}</span>,
     },
     {
       title: <FormattedMessage id="partner_next_level" />,
@@ -115,7 +114,7 @@ export default function PromotePage() {
       key: 'userRebateValue',
       width: '30%',
       render: (text, record) => (
-        <span className='font-num'>
+        <span className="font-num">
           {record.userRebateType === 0 ? `${text}%` : `$${text}`}
         </span>
       ),
@@ -182,9 +181,9 @@ export default function PromotePage() {
 
   return (
     <>
-      <div className="py-4 md:py-6 flex flex-col gap-4">
-        <div className="flex items-start flex-col lg:flex-row lg:items-center gap-4 sm:gap-8">
-          <div className="w-full lg:w-1/2">
+      <div className="p-4 flex flex-col sm:flex-row sm:justify-between gap-4 bg-black rounded">
+        <div className="flex items-start flex-col lg:flex-row lg:items-center gap-4 sm:gap-8 flex-shrink-0">
+          <div className="w-full">
             <h3 className="font-sembold text-base mb-4">
               <FormattedMessage id="promoteCode_mine" />
             </h3>
@@ -207,12 +206,8 @@ export default function PromotePage() {
                 <FormattedMessage id="confirm" />
               </div>
             </div>
-          </div>
-          <div className="flex flex-col">
-            <div className="mb-4">
+            <div className="mt-4 flex gap-2 items-center">
               <FormattedMessage id="promoteCode_myurl" />
-            </div>
-            <div className="h-12">
               <span className="text-green text-sm">{`${window.location.origin}?promoteCode=${promoteCode}`}</span>
               <CopyToClipboard
                 text={`${window.location.origin}?promoteCode=${promoteCode}`}
@@ -231,60 +226,60 @@ export default function PromotePage() {
             </div>
           </div>
         </div>
+        <div className="grid grid-cols-6 flex-shrink-0">
+          <div className="text-center px-3 py-4 flex flex-col gap-2 rounded-none">
+            <div className="text-sm">
+              <FormattedMessage id="promoteCode_level" />
+            </div>
+            <div className="text-white font-num text-lg">
+              {data?.promotionGrade}
+            </div>
+          </div>
+          <div className="text-center px-3 py-4 flex flex-col gap-2 rounded-none ">
+            <div className="text-sm">
+              <FormattedMessage id="promoteCode_rebate" />
+            </div>
+            <div className="text-white font-num text-lg">
+              {data?.rebateRate || 0}%
+            </div>
+          </div>
+          <div className="text-center px-3 py-4 flex flex-col gap-2 rounded-none ">
+            <div className="text-sm">
+              <FormattedMessage id="promoteCode_nextlevel" />
+            </div>
+            <div className="text-white font-num text-lg">
+              {(data?.nextPromotionGrade || 0) -
+                (data?.accumulatedRechargeAmount || 0)}
+            </div>
+          </div>
+          <div className="text-center px-3 py-4 flex flex-col gap-2 rounded-none">
+            <div className="text-sm">
+              <FormattedMessage id="promoteCode_user_num" />
+            </div>
+            <div className="text-white font-num text-lg">
+              {data?.accumulatedRegisterCount}
+            </div>
+          </div>
+          <div className="text-center px-3 py-4 flex flex-col gap-2 rounded-none">
+            <div className="text-sm">
+              <FormattedMessage id="promoteCode_recharge" />
+            </div>
+            <div className="text-green font-num text-lg">
+              ${data?.accumulatedRechargeAmount}
+            </div>
+          </div>
+          <div className="text-center px-3 py-4 flex flex-col gap-2 rounded-none ">
+            <div className="text-sm">
+              <FormattedMessage id="promoteCode_rebate_num" />
+            </div>
+            <div className="text-green font-num text-lg">
+              ${data?.accumulatedRebateAmount}
+            </div>
+          </div>
+        </div>
       </div>
 
-      <div className="grid grid-cols-3 md:grid-cols-6 border border-light border-collapse text-gray border-opacity-50">
-        <div className="text-center px-3 py-4 flex flex-col gap-2 rounded-none border-r border-b md:border-b-0 border-light border-opacity-50">
-          <div className="text-sm">
-            <FormattedMessage id="promoteCode_level" />
-          </div>
-          <div className="text-white font-num text-lg">
-            {data?.promotionGrade}
-          </div>
-        </div>
-        <div className="text-center px-3 py-4 flex flex-col gap-2 rounded-none border-r border-b md:border-b-0  border-light border-opacity-50">
-          <div className="text-sm">
-            <FormattedMessage id="promoteCode_rebate" />
-          </div>
-          <div className="text-white font-num text-lg">
-            {data?.rebateRate || 0}%
-          </div>
-        </div>
-        <div className="text-center px-3 py-4 flex flex-col gap-2 rounded-none border-b md:border-b-0 md:border-r  border-light border-opacity-50">
-          <div className="text-sm">
-            <FormattedMessage id="promoteCode_nextlevel" />
-          </div>
-          <div className="text-white font-num text-lg">
-            {(data?.nextPromotionGrade || 0) -
-              (data?.accumulatedRechargeAmount || 0)}
-          </div>
-        </div>
-        <div className="text-center px-3 py-4 flex flex-col gap-2 rounded-none border-r  border-light border-opacity-50">
-          <div className="text-sm">
-            <FormattedMessage id="promoteCode_user_num" />
-          </div>
-          <div className="text-white font-num text-lg">
-            {data?.accumulatedRegisterCount}
-          </div>
-        </div>
-        <div className="text-center px-3 py-4 flex flex-col gap-2 rounded-none border-r  border-light border-opacity-50">
-          <div className="text-sm">
-            <FormattedMessage id="promoteCode_recharge" />
-          </div>
-          <div className="text-green font-num text-lg">
-            ${data?.accumulatedRechargeAmount}
-          </div>
-        </div>
-        <div className="text-center px-3 py-4 flex flex-col gap-2 rounded-none ">
-          <div className="text-sm">
-            <FormattedMessage id="promoteCode_rebate_num" />
-          </div>
-          <div className="text-green font-num text-lg">
-            ${data?.accumulatedRebateAmount}
-          </div>
-        </div>
-      </div>
-      <div className="custom-tab w-full flex  mb-4 gap-8 text-white justify-center border-b border-[#45444B] h-[68px]">
+      <div className="custom-tab w-full flex mb-4 gap-8 text-white justify-center border-b border-[#45444B] h-[68px]">
         <div
           className={`tab-item flex items-center cursor-pointer h-full ${
             tab === 'rank'

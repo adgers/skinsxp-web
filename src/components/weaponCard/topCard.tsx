@@ -52,9 +52,9 @@ export default React.memo(function TopCard({ data, loading }: TopCardProps) {
       <div className="front">
         <div className="img-wrapper">
           <img src={data?.giftImage} />
-          <div className="absolute top-1 right-1 transform scale-75 text-xs sm:scale-100 text-white">
+          {/* <div className="absolute top-1 right-1 transform scale-75 text-xs sm:scale-100 text-white">
             {getTopIcon()}
-          </div>
+          </div> */}
         </div>
         <div className="item-footer flex flex-row gap-1 justify-between">
           <div className="item-title">

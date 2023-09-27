@@ -220,7 +220,7 @@ export function currencyFormat(
 }
 
 export function getSteamLoginUrl() {
-  const redirectUrl = urlParse().redirect || location.pathname;
+  const redirectUrl = urlParse().callbackUrl || location.pathname;
   const params = urlParse();
 
   let query = {
@@ -231,7 +231,7 @@ export function getSteamLoginUrl() {
 
   let callbackUrl = `${
     window.location.origin
-  }/login/callback?queryStr=${JSON.stringify(query)}`;
+  }/login/callback?params=${JSON.stringify(query)}`;
 
   return (
     getApiDomain() +

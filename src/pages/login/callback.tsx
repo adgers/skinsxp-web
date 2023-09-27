@@ -10,7 +10,7 @@ export default function LoginCallback() {
     const urlParams = new URL(window.location.href).searchParams;
     let query = location.href.split('?')[1];
 
-    const queryStr = urlParams.get('queryStr') || '{}';
+    const queryStr = urlParams.get('params') || '{}';
     const queryStrObj = JSON.parse(queryStr);
 
     query += '&' + new URLSearchParams(queryStrObj).toString();
