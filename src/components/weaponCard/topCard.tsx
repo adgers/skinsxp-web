@@ -46,7 +46,9 @@ export default React.memo(function TopCard({ data, loading }: TopCardProps) {
   };
 
   return (
-    <div className={`weapon-card-top weapon-card-grade-${data?.grade}`}>
+    <div
+      className={`weapon-card-top weapon-card-grade-${data?.grade} ${data?.sourceType === 21 ? 'card-flip' : ''}`}
+    >
       <div className="front">
         <div className="img-wrapper">
           <img src={data?.giftImage} />
@@ -80,28 +82,13 @@ export default React.memo(function TopCard({ data, loading }: TopCardProps) {
           </div>
         </div>
       </div>
-      {/* <div className="back">
-        {data?.sourceType === 21 ? (
-          <>
-            <div className="box-img-wrapper">
-              <img src={data?.sourceImage} />
-            </div>
-            <div className="item-footer">
-              <div className="avatar relative rounded">
-                <img src={data?.headPic} />
-              </div>
-              <div className="text-white text-xs mt-2">{data?.nickname}</div>
-            </div>
-          </>
-        ) : (
-          <div className="item-footer items-center flex flex-col gap-1 justify-center">
-            <div className="avatar relative rounded">
-              <img src={data?.headPic} />
-            </div>
-            <div className="text-white text-xs mt-2">{data?.nickname}</div>
+      {data?.sourceType === 21 && (
+        <div className="back">
+          <div className="box-img-wrapper">
+            <img src={data?.sourceImage} />
           </div>
-        )}
-      </div> */}
+        </div>
+      )}
     </div>
   );
 });

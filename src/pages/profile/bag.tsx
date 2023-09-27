@@ -7,6 +7,7 @@ import {
   ornamentRetrievalUsingPOST,
 } from '@/services/front/gerenzhongxinxiangguan';
 import { numberFixed } from '@/utils';
+import { ArrowDownOutlined, ArrowUpOutlined } from '@ant-design/icons';
 import {
   FormattedMessage,
   history,
@@ -18,6 +19,9 @@ import { Pagination } from 'antd';
 import { useState } from 'react';
 import { Button, Modal } from 'react-daisyui';
 import { toast } from 'react-toastify';
+import { CSSTransition, TransitionGroup } from 'react-transition-group';
+import './index.less';
+
 export enum ItemState {
   ALL = -1, // 全部
   ACTIVE = 0, // 已激活
@@ -44,6 +48,7 @@ export default function BagPage() {
   const [exchangeConfirm, setExchangeConfirm] = useState<boolean>(false);
   const [steamConfrim, setSteamConfirm] = useState<boolean>(false);
   const [takeLoading, setTakeLoading] = useState<boolean>(false);
+  const [saleLoading, setSaleLoading] = useState<boolean>(false);
   const intl = useIntl();
 
   const pageSize = 24;
@@ -113,56 +118,66 @@ export default function BagPage() {
   };
 
   const onExchangeCoin = async (itemId?: string) => {
+    setSaleLoading(true);
     const ret = await exchangeQuantityUsingPOST1({
       ids: itemId ?? checkedList.join(','),
     });
+    setSaleLoading(false);
     setExchangeConfirm(false);
     if (ret.status === 0) {
       toast.success(intl.formatMessage({ id: 'exchange_success' }));
       refresh();
       getUser();
       setCheckedList([]);
-      setAllChecked(false);
       setTotalPrice(0);
     }
   };
 
   return (
     <div className="w-full">
-      <div className="flex gap-2 sm:gap-4 px-3 pb-4 items-center justify-end text-sm">
-        <div className="text-white/[0.5] items-center flex ">
-          <span
-            className={`${
-              searchParams?.stat === ItemState.ALL
-                ? 'text-white font-semibold'
-                : ''
-            }`}
+      <div className="flex justify-between pb-4">
+        <div className="flex gap-2 sm:gap-4 items-center text-sm">
+          <div
+            className="btn btn-sm btn-ghost rounded"
+            onClick={() => setOrderByPrice(!orderByPrice)}
           >
-            <FormattedMessage id="bag_all" />
-          </span>
-          <input
-            type="checkbox"
-            className="toggle toggle-primary mx-4"
-            checked={searchParams.stat === 0}
-            onClick={() => {
-              setSearchParams({
-                ...searchParams,
-                stat:
-                  searchParams.stat === ItemState.ACTIVE
-                    ? ItemState.ALL
-                    : ItemState.ACTIVE,
-              });
-            }}
-          />
-          <span
-            className={`${
-              searchParams?.stat === ItemState.ACTIVE
-                ? 'text-white font-semibold'
-                : ''
-            }`}
-          >
-            <FormattedMessage id="bag_avaliable_sale" />
-          </span>
+            <FormattedMessage id="recoveryPrice" />{' '}
+            {orderByPrice ? <ArrowDownOutlined /> : <ArrowUpOutlined />}
+          </div>
+          <div className="text-white/[0.5] items-center flex ">
+            <span
+              className={`${
+                searchParams?.stat === ItemState.ALL
+                  ? 'text-white font-semibold'
+                  : ''
+              }`}
+            >
+              <FormattedMessage id="bag_all" />
+            </span>
+            <input
+              type="checkbox"
+              className="toggle toggle-primary mx-4"
+              checked={searchParams.stat === 0}
+              onClick={() => {
+                setSearchParams({
+                  ...searchParams,
+                  stat:
+                    searchParams.stat === ItemState.ACTIVE
+                      ? ItemState.ALL
+                      : ItemState.ACTIVE,
+                });
+              }}
+            />
+            <span
+              className={`${
+                searchParams?.stat === ItemState.ACTIVE
+                  ? 'text-white font-semibold'
+                  : ''
+              }`}
+            >
+              <FormattedMessage id="bag_avaliable_sale" />
+            </span>
+          </div>
         </div>
         <div
           className="btn-green !btn-sm !sm:btn-base !px-8 "
@@ -179,31 +194,39 @@ export default function BagPage() {
             setExchangeConfirm(true);
           }}
         >
-          <IconFont type="icon-a-allsale" className="text-xl" />
+          <IconFont type="icon-coin" className="text-xl" />
           <FormattedMessage id="open_box_sell_all" />
         </div>
       </div>
-      {!loading && pageData?.length === 0 && <Empty />}
-      <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-2 gap-y-[60px] sm:gap-x-4 md:gap-y-[40px]">
-        {loading
-          ? Array.from({ length: 12 }).map((_, i) => (
-              <WeaponCard loading key={i} />
-            ))
-          : pageData?.map((item: any, i: number) => {
-              // const isChecked = checkedList.includes(item.id);
-              const price =
-                item?.recoveryPrice ||
-                item?.giftPrice ||
-                item?.winRecoveryPrice;
 
-              const grade = item?.grade ?? item?.giftGrade;
+      {!loading && pageData?.length === 0 && <Empty />}
+      <>
+        {loading && pageData?.length === 0 ? (
+          <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-2 gap-y-[60px] sm:gap-x-4 md:gap-y-[40px]">
+            {Array.from({ length: 12 }).map((_, i) => (
+              <WeaponCard loading key={i} />
+            ))}
+          </div>
+        ) : (
+          <TransitionGroup className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-2 gap-y-[60px] sm:gap-x-4 md:gap-y-[40px]">
+            {pageData?.map((item) => {
+              // const isChecked = checkedList.includes(item.id);
+              const price = item?.recoveryPrice;
+
+              const isSaleing = saleLoading && checkedList.includes(item.id);
               return (
-                <div
+                <CSSTransition
                   className="group relative cursor-pointer overflow-y-visible"
-                  key={i}
-                  // onClick={() => {
-                  //   onItemClick(item);
-                  // }}
+                  key={item.id}
+                  classNames={{
+                    enter: 'animate-item-enter',
+                    enterActive: 'animate-item-enter-active',
+                    enterDone: 'animate-item-enter-done',
+                    exit: 'animate-item-exit',
+                    exitActive: 'animate-item-exit-active',
+                    exitDone: 'animate-item-exit-done',
+                  }}
+                  timeout={500}
                 >
                   <div
                     className={`transition-transform duration-200 will-change-transform real-group-hover:rounded-b-none ${
@@ -250,16 +273,18 @@ export default function BagPage() {
                             className="border-solid  bg-purple hover:bg-purple"
                             onClick={(e) => {
                               e.stopPropagation();
-                              // onExchangeCoin(item?.id);
-                              setExchangeConfirm(true);
+                              onExchangeCoin(item?.id);
+                              // setExchangeConfirm(true);
                               setCheckedList([item?.id]);
-                              setTotalPrice(item.recoveryPrice);
+                              // setTotalPrice(item.recoveryPrice);
                             }}
                           >
                             <div className="btn btn-sm flex  w-fit max-w-full m-auto border-none  items-center rounded-none justify-center text-sm  font-semibold uppercase transition-colors duration-150 real-hover:text-white  bg-purple hover:bg-purple">
                               <IconFont
                                 type="icon-collect"
-                                className="text-white"
+                                className={`text-white ${
+                                  isSaleing ? 'animate-spin' : ''
+                                }`}
                               />
                               <span className="text-xs flex-1 truncate">
                                 <FormattedMessage id="bag_item_sell" />{' '}
@@ -274,11 +299,11 @@ export default function BagPage() {
                       </ul>
                       {item?.state === ItemState.ACTIVE && (
                         <div
-                          className="absolute bottom-0 bg-green flex justify-center w-full overflow-hidden rounded-none transition-transform duration-200 will-change-transform z-[-1] h-[32px] translate-y-[32px] md:h-[32px] md:translate-y-[-1px] group-hover:md:translate-y-[32px]"
+                          className="absolute bottom-0 bg-green cursor-pointer flex justify-center w-full overflow-hidden rounded-none transition-transform duration-200 will-change-transform h-[32px] translate-y-[32px] sm:hidden sm:group-hover:flex"
                           onClick={(e) => {
                             e.stopPropagation();
                             setSteamConfirm(true);
-                            setTotalPrice(item.recoveryPrice);
+                            setTotalPrice(item.recoveryPrice as number);
                             setCheckedList([item?.id]);
                           }}
                         >
@@ -292,13 +317,15 @@ export default function BagPage() {
                       )}
                     </>
                   </div>
-                </div>
+                </CSSTransition>
               );
             })}
-      </div>
+          </TransitionGroup>
+        )}
+      </>
 
       {totalRows > pageSize && (
-        <div className="flex justify-center items-center mt-12 md:mt-4">
+        <div className="flex justify-center items-center mt-12">
           <Pagination
             current={searchParams.page}
             total={totalRows}

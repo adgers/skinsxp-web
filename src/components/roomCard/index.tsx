@@ -15,10 +15,12 @@ const RoomCard = memo(
   ({
     data,
     onSelect,
+    onJoin,
     onBoxSelect,
   }: {
     data: API.BattleVo;
     onSelect: () => void;
+    onJoin?: (pos: number) => void;
     onBoxSelect?: (item: IBattleBox) => void;
     showTag?: boolean;
   }) => {
@@ -145,7 +147,8 @@ const RoomCard = memo(
                 return (
                   <div
                     key={i}
-                    className="flex w-8 h-8 rounded-full items-center justify-center bg-light bg-opacity-70"
+                    onClick={() => onJoin && onJoin(i)}
+                    className="flex w-8 h-8 rounded-full items-center justify-center bg-light bg-opacity-70 cursor-pointer"
                   >
                     <PlusOutlined className="font-semibold text-lg text-white" />
                   </div>

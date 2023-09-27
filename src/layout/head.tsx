@@ -77,7 +77,7 @@ export default function Header() {
     },
     {
       title: <FormattedMessage id="home_spsc" />,
-      link: '/store',
+      link: '/market',
       icon: 'icon-store',
     },
     {
@@ -290,7 +290,7 @@ export default function Header() {
         <div className="flex-none flex gap-3">
           {userInfo ? (
             <>
-              <div className="flex flex-col sm:flex-row gap-0 sm:gap-2 text-xs font-num ">
+              <div className="flex flex-col sm:flex-row gap-0 sm:gap-2 text-xs sm:text-sm font-num ">
                 <div className="text-green">
                   $
                   <CountUp
@@ -327,7 +327,8 @@ export default function Header() {
                 }}
               >
                 <IconFont type="icon-funds" className="text-xl text-green" />
-                <PlusOutlined className="text-xs text-green" />
+                <PlusOutlined className="text-xs text-green sm:hidden" />
+                <div className='text-xs text-green px-1 font-semibold hidden sm:block'><FormattedMessage id="wc_rewards_deposit" /></div>
               </Link>
 
               <Menu

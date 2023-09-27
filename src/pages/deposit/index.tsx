@@ -318,9 +318,8 @@ export default function Deposit() {
                       </span>
                       {Number(userInfo?.firstRechargeRebate) > 0 && (
                         <div className="text-xs font-light flex items-center">
-                          &nbsp;
                           <span className="text-green font-semibold whitespace-nowrap">
-                            + &nbsp;
+                            +$
                             {numberFixed(
                               (Number(quantity) *
                                 Number(userInfo?.firstRechargeRebate)) /
@@ -334,11 +333,10 @@ export default function Deposit() {
                       )}
                       {Number(userInfo?.rebateValue) > 0 && (
                         <div className="text-xs font-light flex items-center">
-                          &nbsp;
                           <span className="text-green font-semibold">
-                            +&nbsp;
+                            +$
                             {userInfo?.rebateType === 0
-                              ? `$${numberFixed(
+                              ? `${numberFixed(
                                   (Number(quantity) *
                                     Number(userInfo?.rebateValue)) /
                                     100,

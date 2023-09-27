@@ -155,22 +155,24 @@ export default function BattlePage() {
 
       <div className="w-[280px] flex-shrink-0 m-0-auto" ref={rankRef}>
         <div className="battle-rank-point relative rounded-md">
-          <div className=" bottom-0 flex items-center flex-col w-full absolute z-10">
-            <div className="relative w-[80px] h-[80px] border-2 rounded-[4px] border-[#FFDFA7]">
+          <div className="absolute left-[25px] top-[80px]">
+            <div className="relative w-[80px] h-[80px] rounded-[4px] ">
               <img src={topOneYesterday?.headPic} className="rounded-[4px]" />
             </div>
-            <div className="mt-1 max-w-full truncate">
+            <div className="mt-1 max-w-full truncate text-[#FFDFA7] font-semibold font-num">
               {topOneYesterday?.nickname}
             </div>
-            <div className="font-num  text-[#FFDFA7]">
+            <div className="font-num text-2xl text-white">
               {topOneYesterday?.rewardPoint}
             </div>
+          </div>
+          <div className="bottom-0 flex items-center w-full absolute z-10">
             <div className="bg-black/50 h-9 mt-4 uppercase text-xs flex justify-between w-full items-center px-2">
               <div>
-                <IconFont type="icon-ranking" className="text-purple mr-2" />
+                <IconFont type="icon-ranking" className="text-white mr-2" />
                 <FormattedMessage id="arena_my_reward_point" />
               </div>
-              <span className="font-num text-purple">
+              <span className="font-num text-white">
                 {myReward?.rewardPoint || 0}
               </span>
             </div>
@@ -179,7 +181,7 @@ export default function BattlePage() {
         <div className="battle-ranks mt-3 sm:mt-4 bg-black">
           <div className="grid grid-cols-2 w-full">
             <div
-              className={`h-9 text-sm  ${
+              className={`h-9  ${
                 recordTab === 0
                   ? 'btn-green !rounded-none'
                   : 'btn-light !rounded-none'
@@ -189,7 +191,7 @@ export default function BattlePage() {
               <FormattedMessage id="today_rank" />
             </div>
             <div
-              className={`h-9 text-sm  ${
+              className={`h-9 ${
                 recordTab === 1
                   ? 'btn-green !rounded-none'
                   : 'btn-light !rounded-none'

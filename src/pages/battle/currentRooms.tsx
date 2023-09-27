@@ -1,6 +1,9 @@
 import Empty from '@/components/empty';
 import RoomCard from '@/components/roomCard';
-import { getCurrentPageUsingGET } from '@/services/front/duizhanxiangguan';
+import {
+  getCurrentPageUsingGET,
+  joinBattleUsingPOST,
+} from '@/services/front/duizhanxiangguan';
 import { LoadingOutlined } from '@ant-design/icons';
 import { FormattedMessage, history, useModel, useRequest } from '@umijs/max';
 import { Spin } from 'antd';
@@ -79,6 +82,19 @@ export default function CurrentRooms({
     }
   }, [battleState, show]);
 
+  const onJoin = async (pos: number, battleCode: string) => {
+    const ret = await joinBattleUsingPOST({
+      battleCode: battleCode,
+      pos,
+    });
+    if (ret.status === 0) {
+      history.push({
+        pathname: `/battle/${battleCode}`,
+        search: location.search || '',
+      });
+    }
+  };
+
   return (
     <Spin
       spinning={loading && rooms?.length === 0}
@@ -102,6 +118,7 @@ export default function CurrentRooms({
                 setCaseName(item.boxName);
                 setBoxDetailShow(true);
               }}
+              onJoin={(pos) => onJoin(pos + 1, t.battleCode as string)}
             />
           ))}
         </div>

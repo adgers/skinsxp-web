@@ -72,11 +72,11 @@ export default function User() {
                         ${userInfo?.balance}
                       </div>
                     </div>
-                    <div className=" lg:w-fit">
+                    <div className="lg:w-fit">
                       <div className="text-white/70 text-sm font-normal mb-1">
                         <FormattedMessage id="profile_integral" />
                       </div>
-                      <div className=" text-purple truncate font-num">
+                      <div className="text-purple truncate font-num">
                         <IconFont
                           type="icon-coin"
                           className="text-purple mr-1"
