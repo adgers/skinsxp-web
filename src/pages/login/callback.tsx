@@ -37,9 +37,11 @@ export default function LoginCallback() {
             send_to: 'AW-11334119378/Kco9CIyyluUYENLfw5wq',
           });
         }
-        window?.gtag('event', 'conversion', {
-          send_to: 'AW-11345409756/C-brCIeQy-UYENzt9KEq',
-        });
+        if (ret.data?.promotionChannelId === '11') {
+          window?.gtag('event', 'conversion', {
+            send_to: 'AW-11345409756/C-brCIeQy-UYENzt9KEq',
+          });
+        }
       }
 
       getUser();
