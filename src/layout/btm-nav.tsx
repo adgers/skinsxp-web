@@ -20,7 +20,7 @@ export default function BtmNav() {
       icon: 'icon-giveaway2',
     },
     {
-      title: <FormattedMessage id="main_tab_arena" />,
+      title: <FormattedMessage id="main_tab_arena2" />,
       link: '/battle',
       icon: 'icon-a-battle2',
     },

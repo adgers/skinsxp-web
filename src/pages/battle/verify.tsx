@@ -1,4 +1,3 @@
-import { IconFont } from '@/components/icons';
 import WeaponCard from '@/components/weaponCard';
 import { FormattedMessage, Link } from '@umijs/max';
 import { Button, Modal } from 'react-daisyui';
@@ -43,7 +42,7 @@ export default function Verify({
                   )}
                 </div>
                 <div className="flex text-xs gap-2">
-                  <span className='uppercase'>
+                  <span className="uppercase">
                     <FormattedMessage id="battle_user_seed" />
                   </span>
                   <div className="text-white text-opacity-50">
@@ -62,15 +61,13 @@ export default function Verify({
                     {urecord.round} ROUND
                   </div>
                   <WeaponCard key={i} data={urecord} showRoll={false} />
-                  <div className="mt-2 flex gap-1 text-xs uppercase">
-                    <span>
-                      <FormattedMessage id="battle_roll_id" />{' '}
-                      {urecord.rollCode}
-                    </span>
-                    <Link to={`/provably-fair/verify/${urecord.verifyId}`}>
-                      <IconFont type="icon-shield" className="text-green" />
-                    </Link>
-                  </div>
+                  <Link
+                    to={`/provably-fair/verify/${urecord.verifyId}`}
+                    className="mt-2 flex gap-1 text-xs uppercase font-semibold"
+                  >
+                    <span>verify</span>
+                    <FormattedMessage id="battle_roll_id" />{urecord.rollCode}
+                  </Link>
                 </div>
               ))}
             </div>
