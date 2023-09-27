@@ -278,15 +278,13 @@ export default function Header() {
                 </Link>
               );
             })}
-            {isLogin() && (
-              <div
-                className="px-3 py-2 uppercase transition-colors font-semibold duration-200 text-white hover:text-green text-sm rounded-md cursor-pointer"
-                onClick={showBenefit}
-              >
-                <IconFont type="icon-promocode" className="mr-1" />
-                <FormattedMessage id="mine_fllq" />
-              </div>
-            )}
+            <div
+              className="px-3 py-2 uppercase transition-colors font-semibold duration-200 text-white hover:text-green text-sm rounded-md cursor-pointer"
+              onClick={showBenefit}
+            >
+              <IconFont type="icon-promocode" className="mr-1" />
+              <FormattedMessage id="mine_fllq" />
+            </div>
           </div>
         </div>
         <div className="flex-none flex gap-3">

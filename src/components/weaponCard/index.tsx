@@ -147,18 +147,18 @@ export default React.memo(function WeaponCard({
         {rollCode > 0 && showRoll && (
           <div
             className="flex flex-row gap-1 cursor-pointer z-30"
-            onClick={() =>
-              history.push({
-                pathname: `/provably-fair/verify/${data?.verifyId}`,
-                search: location.search || '',
-              })
-            }
+            // onClick={() =>
+            //   history.push({
+            //     pathname: `/provably-fair/verify/${data?.verifyId}`,
+            //     search: location.search || '',
+            //   })
+            // }
           >
             <div className="text-xs uppercase font-semibold text-white/[0.5]">
               <FormattedMessage id="rollcode" />
             </div>
             <div className="text-white/[0.5] text-xs font-num">{rollCode}</div>
-            <IconFont type="icon-shield" className="text-green" />
+            {/* <IconFont type="icon-shield" className="text-green" /> */}
           </div>
         )}
       </div>

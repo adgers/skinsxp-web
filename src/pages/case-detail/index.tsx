@@ -300,22 +300,22 @@ export default function BoxPage() {
         {recentBoxs && recentBoxs?.length > 0 && (
           <>
             <div className="box-title mt-10">
-              <span className="text-center  text-white sm:text-2xl uppercase font-semibold">
+              <span className="text-center text-white sm:text-2xl uppercase font-semibold">
                 <FormattedMessage id="open_box_lastdrop" />
               </span>
             </div>
             <div className="grid grid-cols-2 md:grid-cols-4 xl:grid-cols-6 gap-2 mt-4">
               {recentBoxs?.map((item, i: number) => {
                 return (
-                  <div className="card-flip relative group" key={i}>
+                  <div className="relative" key={i}>
                     <WeaponCard data={item} key={i} isGiveawayWinList={true} />
-                    <div className="absolute w-full h-full top-0 left-0 z-[11] bg-black/80 flex flex-col items-center opacity-0  transition-opacity justify-center group-hover:opacity-100 gap-1">
+                    {/* <div className="absolute w-full h-full top-0 left-0 z-[11] bg-black/80 flex flex-col items-center opacity-0  transition-opacity justify-center group-hover:opacity-100 gap-1">
                       <div className="w-[66px] h-[66px] rounded-full overflow-hidden">
                         <img src={item?.headPic} alt={item.nickname} />
                       </div>
                       <div className="text-sm">{item?.nickname}</div>
                       <div className="text-xs">{item?.createTime}</div>
-                    </div>
+                    </div> */}
                   </div>
                 );
               })}

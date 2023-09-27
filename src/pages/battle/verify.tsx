@@ -28,10 +28,10 @@ export default function Verify({
       >
         ✕
       </Button>
-      <Modal.Body className="max-h-[calc(100vh-64px)] overflow-y-scroll sm:overflow-y-auto">
+      <Modal.Body className="max-h-[calc(100vh-64px)] overflow-y-scroll sm:overflow-y-auto hide-scrollbar">
         {boxOpenRecords?.map((record, i) => (
           <div className="w-full" key={i}>
-            <div className="flex w-full gap-2 items-center px-3 py-3">
+            <div className="flex w-full gap-2 items-center px-3 py-3 bg-black rounded">
               <img src={record?.headPic} className="w-8 h-8 rounded" />
               <div className="flex flex-col text-xs">
                 <div>
@@ -52,14 +52,14 @@ export default function Verify({
                 </div>
               </div>
             </div>
-            <div className="flex gap-2 overflow-x-auto p-3 bg-dark rounded-md">
+            <div className="flex gap-2 overflow-x-auto py-2 bg-dark rounded-md">
               {record?.userOpenBoxRecord?.map((urecord, i) => (
                 <div
-                  className="flex flex-col items-center flex-shrink-0 w-40 gap-1"
+                  className="flex flex-col items-center flex-shrink-0 w-40 gap-1 bg-black/40 p-2 rounded"
                   key={i}
                 >
                   <div className="mb-2 mt-1 text-center text-xs font-semibold uppercase">
-                     ROUND {urecord.round}
+                    {urecord.round} ROUND
                   </div>
                   <WeaponCard key={i} data={urecord} showRoll={false} />
                   <div className="mt-2 flex gap-1 text-xs uppercase">

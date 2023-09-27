@@ -111,13 +111,14 @@ export default function Deposit() {
               <div className="uppercase">
                 <FormattedMessage id="deposit_language" />
               </div>
-              <div>
+              <div className='flex gap-1 items-center'>
                 <img
                   src={
                     langs.find((item) => item.value === selectCurrency)?.flag
                   }
                   className="w-5 h-5"
                 />
+                {langs.find((item) => item.value === selectCurrency)?.title}
               </div>
             </Menu.Button>
             <Transition

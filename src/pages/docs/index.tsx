@@ -7,13 +7,13 @@ export default function ProvablyFair() {
   const tabLinks = useMemo(() => {
     return [
       {
-        title: intl.formatMessage({ id: 'doc_help' }),
+        title: intl.formatMessage({ id: 'mine_bzzx' }),
         link: '/docs/help',
       },
-      {
-        title: intl.formatMessage({ id: 'doc_support' }),
-        link: '/docs/support',
-      },
+      // {
+      //   title: intl.formatMessage({ id: 'doc_support' }),
+      //   link: '/docs/support',
+      // },
     ];
   }, []);
 
