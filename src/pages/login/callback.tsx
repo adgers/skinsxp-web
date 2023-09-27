@@ -36,11 +36,10 @@ export default function LoginCallback() {
           window?.gtag('event', 'conversion', {
             send_to: 'AW-11334119378/Kco9CIyyluUYENLfw5wq',
           });
-
-          window?.gtag('event', 'conversion', {
-            send_to: 'AW-11345409756/C-brCIeQy-UYENzt9KEq',
-          });
         }
+        window?.gtag('event', 'conversion', {
+          send_to: 'AW-11345409756/C-brCIeQy-UYENzt9KEq',
+        });
       }
 
       getUser();

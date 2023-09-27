@@ -9,7 +9,7 @@ export default function LoginTip() {
   return (
     <Modal
       open={loginTipShow}
-      className="w-[300px] h-[340px] sm:w-[450px] sm:h-[470px] border-none p-0 overflow-hidden rounded-md"
+      className="w-[300px] h-[316px] sm:w-[445px] sm:h-[470px] border-none p-0 overflow-hidden rounded-md"
     >
       <Button
         size="xs"
