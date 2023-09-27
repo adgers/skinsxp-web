@@ -2,6 +2,7 @@ import { IconFont } from '@/components/icons';
 import { isLogin } from '@/utils';
 import { FormattedMessage, Link, useModel } from '@umijs/max';
 import { useEffect, useRef, useState } from 'react';
+import Giveaways from '../case/giveaways';
 import CurrentRooms from './currentRooms';
 import EndRooms from './endRooms';
 import './index.less';
@@ -63,97 +64,103 @@ export default function BattlePage() {
   }, [battleRank, recordTab]);
 
   return (
-    <div className="flex sm:mt-4 gap-2 sm:gap-5 flex-col items-center lg:flex-row lg:items-start w-full px-3">
-      <div className="flex flex-col w-full overflow-hidden">
-        <div className="my-4 flex w-full justify-center sm:justify-start border-b border-light relative h-[68px]">
-          <div className="flex items-center">
-            {filters.map((t) => {
-              const selected = t.key === filter;
+    <>
+      <div className="mt-4">
+        <Giveaways />
+      </div>
+      <div className="flex sm:mt-4 gap-2 sm:gap-5 flex-col items-center lg:flex-row lg:items-start w-full px-3">
+        <div className="flex flex-col w-full overflow-hidden">
+          <div className="my-4 flex w-full justify-center sm:justify-start border-b border-light relative h-[68px]">
+            <div className="flex items-center">
+              {filters.map((t) => {
+                const selected = t.key === filter;
+                return (
+                  <div
+                    className={`cursor-pointer font-semibold px-4 text-base uppercase leading-none h-full inline-flex gap-1 items-center transition-colors duration-200 hover:text-green border-b ${
+                      selected
+                        ? 'border-green text-green'
+                        : 'text-white border-transparent'
+                    }`}
+                    key={t.key}
+                    onClick={() => {
+                      setFilter(t.key);
+                    }}
+                  >
+                    {t.name}
+                  </div>
+                );
+              })}
+            </div>
+
+            {isLogin() && (
+              <div className="hidden sm:block absolute right-0 bottom-5">
+                <Link className="btn-purple" to={`/battle/create`}>
+                  <IconFont type="icon-battle" className="text-lg" />
+                  <FormattedMessage id="create_case_battle" />
+                </Link>
+              </div>
+            )}
+          </div>
+
+          {isLogin() && (
+            <Link className="sm:hidden btn-purple mb-2" to={`/battle/create`}>
+              <IconFont type="icon-battle" className="text-lg" />
+              <FormattedMessage id="create_case_battle" />
+            </Link>
+          )}
+          <div className="flex w-full items-center justify-center sm:justify-end mb-2 sm:mb-4">
+            {modfilters.map((t) => {
+              const selected = t.key === modFilter;
               return (
-                <div
-                  className={`cursor-pointer font-semibold px-4 text-base uppercase leading-none h-full inline-flex gap-1 items-center transition-colors duration-200 hover:text-green border-b ${
-                    selected
-                      ? 'border-green text-green'
-                      : 'text-white border-transparent'
-                  }`}
+                <button
                   key={t.key}
+                  type="button"
                   onClick={() => {
-                    setFilter(t.key);
+                    setModFilter(t.key);
                   }}
+                  className={`flex items-center gap-2 whitespace-nowrap p-2 text-sm uppercase transition-colors duration-200 hover:text-white 
+                 ${selected ? 'text-white' : 'text-white text-opacity-50'}`}
                 >
                   {t.name}
-                </div>
+                </button>
               );
             })}
           </div>
 
-          {isLogin() && (
-            <div className="hidden sm:block absolute right-0 bottom-5">
-              <Link className="btn-purple" to={`/battle/create`}>
-                <IconFont type="icon-battle" className="text-lg" />
-                <FormattedMessage id="create_case_battle" />
-              </Link>
+          <div className="h-14 hidden lg:flex gap-2 items-center bg-black text-center mb-2 p-4 rounded">
+            <div className="w-24 text-xs font-semibold uppercase text-white text-opacity-50">
+              {/* Rounds */}
+              <FormattedMessage id="battle_title_rounds" />
             </div>
+            <div className="text-xs font-semibold uppercase text-white text-opacity-50 flex-1">
+              {/* Cases */}
+              <FormattedMessage id="battle_box" />
+            </div>
+            <div className="w-28 text-xs font-semibold uppercase text-white text-opacity-50">
+              <FormattedMessage id="battle_title_value" />
+            </div>
+            <div className="w-48 text-xs font-semibold uppercase text-white text-opacity-50">
+              {/* Players */}
+              <FormattedMessage id="battle_box" />
+            </div>
+            <div className="w-72 text-xs font-semibold uppercase text-white text-opacity-50">
+              {/* Status */}
+              <FormattedMessage id="pay_state" />
+            </div>
+          </div>
+
+          {filter === 'in' && (
+            <CurrentRooms show={filter === 'in'} mode={modFilter} />
+          )}
+          {filter === 'my' && (
+            <MyRooms show={filter === 'my'} mode={modFilter} />
+          )}
+          {filter === 'end' && (
+            <EndRooms show={filter === 'end'} mode={modFilter} />
           )}
         </div>
 
-        {isLogin() && (
-          <Link className="sm:hidden btn-purple mb-2" to={`/battle/create`}>
-            <IconFont type="icon-battle" className="text-lg" />
-            <FormattedMessage id="create_case_battle" />
-          </Link>
-        )}
-        <div className="flex w-full items-center justify-center sm:justify-end mb-2 sm:mb-4">
-          {modfilters.map((t) => {
-            const selected = t.key === modFilter;
-            return (
-              <button
-                key={t.key}
-                type="button"
-                onClick={() => {
-                  setModFilter(t.key);
-                }}
-                className={`flex items-center gap-2 whitespace-nowrap p-2 text-sm uppercase transition-colors duration-200 hover:text-white 
-                 ${selected ? 'text-white' : 'text-white text-opacity-50'}`}
-              >
-                {t.name}
-              </button>
-            );
-          })}
-        </div>
-
-        <div className="h-14 hidden lg:flex gap-2 items-center bg-black text-center mb-2 p-4 rounded">
-          <div className="w-24 text-xs font-semibold uppercase text-white text-opacity-50">
-            {/* Rounds */}
-            <FormattedMessage id="battle_title_rounds" />
-          </div>
-          <div className="text-xs font-semibold uppercase text-white text-opacity-50 flex-1">
-            {/* Cases */}
-            <FormattedMessage id="battle_box" />
-          </div>
-          <div className="w-28 text-xs font-semibold uppercase text-white text-opacity-50">
-            <FormattedMessage id="battle_title_value" />
-          </div>
-          <div className="w-48 text-xs font-semibold uppercase text-white text-opacity-50">
-            {/* Players */}
-            <FormattedMessage id="battle_box" />
-          </div>
-          <div className="w-72 text-xs font-semibold uppercase text-white text-opacity-50">
-            {/* Status */}
-            <FormattedMessage id="pay_state" />
-          </div>
-        </div>
-
-        {filter === 'in' && (
-          <CurrentRooms show={filter === 'in'} mode={modFilter} />
-        )}
-        {filter === 'my' && <MyRooms show={filter === 'my'} mode={modFilter} />}
-        {filter === 'end' && (
-          <EndRooms show={filter === 'end'} mode={modFilter} />
-        )}
-      </div>
-
-      <div className="w-[280px] flex-shrink-0 m-0-auto" ref={rankRef}>
+        {/* <div className="w-[280px] flex-shrink-0 m-0-auto" ref={rankRef}>
         <div className="battle-rank-point relative rounded-md">
           <div className="absolute left-[25px] top-[80px]">
             <div className="relative w-[80px] h-[80px] rounded-[4px] ">
@@ -239,7 +246,8 @@ export default function BattlePage() {
             </div>
           </div>
         </div>
+      </div> */}
       </div>
-    </div>
+    </>
   );
 }

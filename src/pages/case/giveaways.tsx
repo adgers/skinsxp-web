@@ -1,6 +1,7 @@
 import { listHostGiveawayUsingGET } from '@/services/front/ROLLfangxiangguan';
 import { FormattedMessage, useRequest } from '@umijs/max';
 import GiveawayItem from './giveawayItem';
+import './index.less';
 
 export default function Giveaways() {
   const { data: giveawayList } = useRequest(() => listHostGiveawayUsingGET(), {

@@ -74,7 +74,7 @@ export default function ProvablyVerify() {
               <div className="z-10 -mb-px  flex h-full w-full items-center justify-center rounded-none bg-neutral py-2 text-center font-semibold uppercase lg:py-1 lg:mb-0 lg:max-w-[250px] ">
                 <FormattedMessage id="battle_user_seed" />
               </div>
-              <div className="flex h-full flex-1 flex-col items-center border border-solid border-neutral-700 p-3 text-center md:flex-row lg:-ml-6  lg:pl-9">
+              <div className="flex h-full flex-1 flex-col items-center bg-black/50 p-3 text-center md:flex-row lg:-ml-6  lg:pl-9">
                 <span className="mx-3 break-all font-mono text-sm">
                   {currentKey.clientSeed}
                 </span>
@@ -85,7 +85,7 @@ export default function ProvablyVerify() {
                 <FormattedMessage id="server_seed" />
               </div>
 
-              <div className="flex h-full flex-1 flex-col items-center border border-solid border-neutral-700 p-3 text-center md:flex-row lg:-ml-6  lg:pl-9">
+              <div className="flex h-full flex-1 flex-col items-center bg-black/50 p-3 text-center md:flex-row lg:-ml-6  lg:pl-9">
                 <span className="mx-3 break-all font-mono text-sm">
                   {currentKey.secretHash}
                 </span>
@@ -106,7 +106,7 @@ export default function ProvablyVerify() {
               <div className="z-10 -mb-px flex h-full w-full items-center justify-center rounded-t bg-neutral py-2 text-center font-semibold uppercase lg:py-1 lg:mb-0 lg:max-w-[250px] ">
                 <FormattedMessage id="secret_salt" />
               </div>
-              <div className="flex h-full flex-1 flex-col items-center border border-solid border-neutral-700 p-3 text-center md:flex-row lg:-ml-6  lg:pl-9">
+              <div className="flex h-full flex-1 flex-col items-center bg-black/50 p-3 text-center md:flex-row lg:-ml-6  lg:pl-9">
                 <span className="mx-3 break-all font-mono text-sm">
                   {currentKey.secretSalt}
                 </span>
@@ -116,7 +116,7 @@ export default function ProvablyVerify() {
               <div className="z-10 -mb-px flex h-full w-full items-center justify-center rounded-t bg-neutral py-2 text-center font-semibold uppercase lg:py-1 lg:mb-0 lg:max-w-[250px] ">
                 <FormattedMessage id="publish_hash" />
               </div>
-              <div className="flex h-full flex-1 flex-col items-center border border-solid border-neutral-700 p-3 text-center md:flex-row lg:-ml-6  lg:pl-9">
+              <div className="flex h-full flex-1 flex-col items-center bg-black/50 p-3 text-center md:flex-row lg:-ml-6  lg:pl-9">
                 <span className="mx-3 break-all font-mono text-sm">
                   {currentKey.publicHash}
                 </span>
@@ -126,7 +126,7 @@ export default function ProvablyVerify() {
               <div className="z-10 -mb-px flex h-full w-full items-center justify-center rounded-t bg-neutral py-2 text-center font-semibold uppercase lg:py-1 lg:mb-0 lg:max-w-[250px] ">
                 <FormattedMessage id="round_label" />
               </div>
-              <div className="flex h-full flex-1 flex-col items-center border border-solid border-neutral-700 p-3 text-center md:flex-row lg:-ml-6  lg:pl-9">
+              <div className="flex h-full flex-1 flex-col items-center bg-black/50 p-3 text-center md:flex-row lg:-ml-6  lg:pl-9">
                 <span className="mx-3 break-all font-mono text-sm">
                   {currentKey.round}
                 </span>
@@ -136,7 +136,7 @@ export default function ProvablyVerify() {
               <div className="z-10 -mb-px flex h-full w-full items-center justify-center rounded-t bg-neutral py-2 text-center font-semibold uppercase lg:py-1 lg:mb-0 lg:max-w-[250px] ">
                 <FormattedMessage id="rolled_at" />
               </div>
-              <div className="flex h-full flex-1 flex-col items-center border border-solid border-neutral-700 p-3 text-center md:flex-row lg:-ml-6  lg:pl-9">
+              <div className="flex h-full flex-1 flex-col items-center bg-black/50 p-3 text-center md:flex-row lg:-ml-6  lg:pl-9">
                 <span className="mx-3 break-all font-mono text-sm">
                   {currentKey.createTime}
                 </span>
@@ -146,7 +146,7 @@ export default function ProvablyVerify() {
               <div className="z-10 -mb-px flex h-full w-full items-center justify-center rounded-t bg-neutral py-2 text-center font-semibold uppercase lg:py-1 lg:mb-0 lg:max-w-[250px] ">
                 <FormattedMessage id="rollcode" />
               </div>
-              <div className="flex h-full flex-1 flex-col items-center border border-solid border-neutral-700 p-3 text-center md:flex-row lg:-ml-6  lg:pl-9">
+              <div className="flex h-full flex-1 flex-col items-center bg-black/50 p-3 text-center md:flex-row lg:-ml-6  lg:pl-9">
                 <span className="mx-3 break-all font-mono text-sm">
                   {currentKey.rollCode}
                 </span>

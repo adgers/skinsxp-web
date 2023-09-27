@@ -94,7 +94,7 @@ export default defineConfig({
           component: 'login',
         },
         {
-          path: '/login/callback',
+          path: '/login/steamCallback',
           component: 'login/callback',
         },
         {

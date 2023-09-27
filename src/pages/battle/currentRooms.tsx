@@ -4,6 +4,7 @@ import {
   getCurrentPageUsingGET,
   joinBattleUsingPOST,
 } from '@/services/front/duizhanxiangguan';
+import { isLogin } from '@/utils';
 import { LoadingOutlined } from '@ant-design/icons';
 import { FormattedMessage, history, useModel, useRequest } from '@umijs/max';
 import { Spin } from 'antd';
@@ -118,7 +119,11 @@ export default function CurrentRooms({
                 setCaseName(item.boxName);
                 setBoxDetailShow(true);
               }}
-              onJoin={(pos) => onJoin(pos + 1, t.battleCode as string)}
+              onJoin={(pos) => {
+                if (isLogin()) {
+                  onJoin(pos + 1, t.battleCode as string);
+                }
+              }}
             />
           ))}
         </div>

@@ -231,7 +231,7 @@ export default function Room() {
 
       {roomInfo?.data?.state === 1 && (
         <>
-          <div className="box-title mt-6">
+          <div className="case-title mt-6">
             <span className="text-center text-base sm:text-2xl">
               <FormattedMessage id="roll_detail_jclb" />
             </span>
@@ -246,7 +246,7 @@ export default function Room() {
                   <WeaponCard key={i} data={item} />
                 ))}
           </div>
-          <div className="box-title mt-4 sm:mt-8">
+          <div className="case-title mt-4 sm:mt-8">
             <span className="text-center text-base sm:text-2xl">
               <FormattedMessage id="roll_detail_cyyh" />
             </span>
@@ -288,7 +288,7 @@ export default function Room() {
       )}
       {winnerList?.data && winnerList?.data?.length > 0 && (
         <>
-          <div className="box-title mt-4 sm:mt-8">
+          <div className="case-title mt-4 sm:mt-8">
             <span className="text-center text-base sm:text-2xl">
               <FormattedMessage id="roll_detail_zjyh" />
             </span>

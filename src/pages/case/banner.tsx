@@ -53,14 +53,14 @@ export default function Banner() {
             className="w-full h-full object-cover"
           />
           <div className="absolute top-0 left-0 w-full h-full flex flex-col justify-center items-center z-30">
-            <div className="sm:text-[40px] text-center uppercase font-num">
+            <div className="sm:text-[40px] text-center uppercase font-num font-semibold">
               {intl.formatMessage({ id: 'banner_first_recharge' })} &
             </div>
-            <div className="sm:text-[40px] sm:mb-6 text-center uppercase font-num">
+            <div className="sm:text-[40px] sm:mb-6 text-center uppercase font-num font-semibold">
               {intl.formatMessage({ id: 'banner_promo' })}
             </div>
             <div
-              className="text-primary text-xl mt-2 sm:mt-0 sm:h-[60px] sm:leading-none sm:text-[60px] font-num uppercase"
+              className="text-primary text-xl mt-2 sm:mt-0 sm:h-[60px] sm:leading-none sm:text-[60px] font-num uppercase font-semibold"
               style={{
                 backgroundImage:
                   'linear-gradient(270deg, #0BFF59 0.04%, #B4FC3B 99.77%)',

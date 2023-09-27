@@ -299,7 +299,7 @@ export default function BoxPage() {
 
         {recentBoxs && recentBoxs?.length > 0 && (
           <>
-            <div className="box-title mt-10">
+            <div className="case-title mt-10">
               <span className="text-center text-white sm:text-2xl uppercase font-semibold">
                 <FormattedMessage id="open_box_lastdrop" />
               </span>
@@ -323,7 +323,7 @@ export default function BoxPage() {
           </>
         )}
 
-        <div className="box-title mt-10">
+        <div className="case-title mt-10">
           <span className="text-center text-white sm:text-2xl uppercase font-semibold">
             <FormattedMessage id="open_box_content" />
           </span>

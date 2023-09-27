@@ -346,7 +346,7 @@ export default function DreamPage() {
         </div>
       </div>
 
-      <div className="box-title mt-10">
+      <div className="case-title mt-10">
         <span className="text-center text-base sm:text-2xl uppercase font-semibold">
           <FormattedMessage id="dream_dream_records" />
         </span>

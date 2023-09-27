@@ -108,10 +108,7 @@ export default function Deposit() {
         <div className="flex flex-col gap-4">
           <Menu as="div" className="relative">
             <Menu.Button className="select select-md select-accent border-opacity-50 rounded w-full font-semibold flex justify-between items-center focus:outline-none bg-black">
-              <div className="uppercase">
-                <FormattedMessage id="deposit_language" />
-              </div>
-              <div className='flex gap-1 items-center'>
+              <div className="flex gap-1 items-center">
                 <img
                   src={
                     langs.find((item) => item.value === selectCurrency)?.flag

@@ -327,10 +327,13 @@ export default function Header() {
                 }}
               >
                 <IconFont type="icon-funds" className="text-xl text-green" />
-                <PlusOutlined className="text-xs text-green sm:hidden" />
-                <div className="text-xs text-green px-1 font-semibold hidden sm:block">
+                <div className="text-xs text-white px-1 font-semibold hidden sm:block">
                   <FormattedMessage id="wc_rewards_deposit" />
                 </div>
+                
+                {userInfo?.rebateValue && userInfo?.rebateValue > 0 && (
+                  <div className='text-green font-num'>+{Number(userInfo?.rebateValue)}%</div>
+                )}
               </Link>
 
               <Menu

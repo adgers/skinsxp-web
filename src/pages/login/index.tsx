@@ -9,11 +9,8 @@ export default function LoginPage() {
     <div className="z-10 flex flex-col justify-center items-center mt-20">
       <img src={loginBg} alt="" className="w-1/3 sm:w-1/3" />
       <h2 className="mt-5 text-[1.6vw] leading-none text-green font-semibold">
-        <FormattedMessage id="not_login_title" />
-      </h2>
-      <p className="mt-4 text-sm leading-tight text-gray font-light text-center">
         <FormattedMessage id="not_login_subtitle" />
-      </p>
+      </h2>
       <Button
         className="mt-5 w-52 btn  text-black gap-1 rounded uppercase"
         onClick={() => showSteamLogin()}

@@ -45,11 +45,11 @@ export function getImgHost() {
     location.href.indexOf('127.0.0.1') > -1
   ) {
     // return 'http://muskins-test.oss-cn-hangzhou.aliyuncs.com/root/image/';
-    return 'https://img.wgskins.com/root/image/';
+    return 'https://img.wgskins.com/cdn/image/';
   } else if (location.href.indexOf('wgskins.com') > -1) {
-    return 'https://img.wgskins.com/root/image/';
+    return 'https://img.wgskins.com/cdn/image/';
   }
-  return 'https://img.wgskins.com/root/image/';
+  return 'https://img.wgskins.com/cdn/image/';
 }
 
 export async function logout() {
@@ -231,7 +231,7 @@ export function getSteamLoginUrl() {
 
   let callbackUrl = `${
     window.location.origin
-  }/login/callback?params=${JSON.stringify(query)}`;
+  }/login/steamCallback?params=${JSON.stringify(query)}`;
 
   return (
     getApiDomain() +
