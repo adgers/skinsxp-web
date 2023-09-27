@@ -4,7 +4,7 @@ import { history, useModel } from '@umijs/max';
 import { useEffect } from 'react';
 
 export default function LoginCallback() {
-  const { getUser } = useModel('user');
+  const { getUser, hideLoginTip } = useModel('user');
 
   const steamLogin = async () => {
     const urlParams = new URL(window.location.href).searchParams;
@@ -14,7 +14,7 @@ export default function LoginCallback() {
     const queryStrObj = JSON.parse(queryStr);
 
     query += '&' + new URLSearchParams(queryStrObj).toString();
-
+    hideLoginTip();
     const ret = await steamSignUpUsingGET({
       query: query,
     });
