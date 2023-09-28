@@ -148,7 +148,7 @@ export default function Header() {
           </Menu.Item>
         ))}
       </Menu.Items>
-      <div className="my-2 mx-5 md:mx-3 text-xs uppercase">Games</div>
+      <div className="my-2 mx-5 md:mx-3 text-xs uppercase font-semibold">Games</div>
       <Menu.Items className="outline-none">
         {headLinks.map((link, i) => (
           <Menu.Item key={i}>
@@ -171,7 +171,7 @@ export default function Header() {
           </Menu.Item>
         ))}
       </Menu.Items>
-      <div className="my-2 mx-5 md:mx-3 text-xs uppercase">
+      <div className="my-2 mx-5 md:mx-3 text-xs uppercase font-semibold">
         Customer service
       </div>
       <Menu.Items className="outline-none">
@@ -294,11 +294,11 @@ export default function Header() {
             })}
           </div>
         </div>
-        <div className="flex-none flex gap-3">
+        <div className="flex-none flex gap-4">
           {userInfo ? (
             <>
               <div
-                className="p-3 uppercase transition-colors font-semibold duration-200 text-white hover:text-green text-sm rounded-md cursor-pointer hidden sm:block"
+                className="uppercase transition-colors font-semibold duration-200 text-white hover:text-green text-sm rounded-md cursor-pointer hidden sm:block"
                 onClick={showBenefit}
               >
                 <IconFont type="icon-promocode" className="mr-1" />
@@ -330,7 +330,7 @@ export default function Header() {
                 )}
               </Link>
 
-              <div className="flex flex-col  gap-0 text-xs font-num">
+              <div className="flex flex-col text-xs font-num">
                 <div className="text-green">
                   $
                   <CountUp
@@ -364,10 +364,7 @@ export default function Header() {
                   <div className="w-8 h-8 cursor-pointer relative hidden sm:block">
                     <img src={userInfo.headPic} className="rounded-full" />
                   </div>
-                  <span className="text-sm hidden sm:block">
-                    {userInfo.nickname}
-                  </span>
-                  <div className="py-1 px-2 bg-dark sm:hidden">
+                  <div className="py-1 px-2 bg-dark">
                     <MenuOutlined />
                   </div>
                 </Menu.Button>
