@@ -324,7 +324,7 @@ export default function Header() {
                 </div>
 
                 {!!userInfo?.rebateValue && userInfo?.rebateValue > 0 && (
-                  <div className="text-green font-num">
+                  <div className="text-green font-semibold">
                     +{Number(userInfo?.rebateValue)}%
                   </div>
                 )}
