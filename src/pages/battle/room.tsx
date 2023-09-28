@@ -135,8 +135,9 @@ const ResultCard = ({ result }: { result: API.BattleCustomerGainVo }) => {
           <div className="font-num text-green text-sm sm:text-[42px] sm:leading-[42px] animate-bounce">
             WINNER
           </div>
-          <div className="flex gap-1 items-center font-num text-green text-xs sm:text-base">
-            $
+          <div className="flex gap-1 items-center font-num text-green text-xs sm:text-base uppercase">
+            <FormattedMessage id="battle_room_total" />
+            <span>$</span>
             <CountUp
               end={result?.totalPrice || 0}
               duration={1}
@@ -148,9 +149,9 @@ const ResultCard = ({ result }: { result: API.BattleCustomerGainVo }) => {
       ) : (
         <>
           <div className="font-num text-light text-sm sm:text-[42px] sm:leading-[42px]">
-            LOSE
+            LOSER
           </div>
-          <div className="flex gap-1 items-center font-num text-xs sm:text-base">
+          {/* <div className="flex gap-1 items-center font-num text-xs sm:text-base">
             $
             <CountUp
               end={result?.totalPrice || 0}
@@ -158,7 +159,7 @@ const ResultCard = ({ result }: { result: API.BattleCustomerGainVo }) => {
               decimals={2}
               separator=""
             />
-          </div>
+          </div> */}
         </>
       )}
     </div>
@@ -758,7 +759,9 @@ export default function RoomDetail() {
               ? userLastResult?.winner
               : isWinUser(data?.mode, user?.customerId);
 
-            const price = countTotalPrice(userOpeningResult?.userOpenBoxRecord);
+            const price = isEnd
+              ? userOpenRecord?.totalPrice
+              : countTotalPrice(userOpeningResult?.userOpenBoxRecord);
 
             const lotteryWin = userOpenRecord?.userOpenBoxRecord?.[index - 1];
             const giftList = boxList?.filter(
@@ -790,7 +793,7 @@ export default function RoomDetail() {
                     />
                   )}
                   {isEnd && userOpenRecord && (
-                    <ResultCard result={userOpenRecord} />
+                    <ResultCard result={userLastResult} />
                   )}
                   {lotteryShow && lotteryWin && (
                     <Lottery

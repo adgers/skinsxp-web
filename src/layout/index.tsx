@@ -1,20 +1,21 @@
+import { getLangUsingGET } from '@/services/front/qiantaishouquanxiangguan';
 import { headHidden, urlParse } from '@/utils';
 import {
   Outlet,
   history,
   setLocale,
   useLocation,
+  useModel,
   useRequest,
 } from '@umijs/max';
 import { useEffect } from 'react';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import BtmNav from './btm-nav';
-import { getLangUsingGET } from '@/services/front/qiantaishouquanxiangguan';
-import { useModel } from '@umijs/max';
 
 import Footer from './foot';
 import Header from './head';
+import RightNav from './right-nav';
 
 export default function Layout() {
   const { pathname } = useLocation();
@@ -56,6 +57,7 @@ export default function Layout() {
       </div>
       {!headHidden() && <BtmNav />}
       {!headHidden() && <Footer />}
+      {<RightNav />}
       <ToastContainer theme="dark" autoClose={2000} limit={1} />
     </div>
   );
