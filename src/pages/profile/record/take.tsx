@@ -33,7 +33,7 @@ export default function TakeRecord() {
       key: 'orderId',
     },
     {
-      title: '饰品',
+      title: <FormattedMessage id="record_take_item" />,
       dataIndex: 'ornamentName',
       key: 'ornamentName',
     },
