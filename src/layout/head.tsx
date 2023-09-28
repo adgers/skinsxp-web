@@ -323,7 +323,7 @@ export default function Header() {
                   <FormattedMessage id="wc_rewards_deposit" />
                 </div>
 
-                {userInfo?.rebateValue && userInfo?.rebateValue > 0 && (
+                {!!userInfo?.rebateValue && userInfo?.rebateValue > 0 && (
                   <div className="text-green font-num">
                     +{Number(userInfo?.rebateValue)}%
                   </div>
