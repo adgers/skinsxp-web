@@ -124,17 +124,18 @@ export default function Result({
                   src={item.giftImage}
                   className="z-10 w-full h-[98px] sm:h-[135px]"
                 />
+                <Button
+                  className="btn rounded-sm btn-green !btn-xs uppercase absolute top-[4px] right-0 z-[10]"
+                  onClick={() => onSale(item.voucherId as number)}
+                >
+                  <FormattedMessage id="text_sell" />
+                </Button>
+
                 <div className="w-full flex flex-col px-[15px] z-20 gap-2">
                   <div className="flex justify-between">
                     <div className="text-sm flex gap-1 font-num text-green">
                       ${item.giftPrice}
                     </div>
-                    <Button
-                      className="btn rounded-sm btn-green !btn-xs uppercase"
-                      onClick={() => onSale(item.voucherId as number)}
-                    >
-                      <FormattedMessage id="text_sell" />
-                    </Button>
                   </div>
 
                   <div className="text-xs flex flex-col">
@@ -158,7 +159,7 @@ export default function Result({
 
         <div className="flex justify-center mt-6 gap-4">
           <button onClick={onClose} className="btn-purple" type="button">
-            <FormattedMessage id="open_box_receive" />
+            <FormattedMessage id="confirm" />
           </button>
 
           <Button
@@ -166,14 +167,17 @@ export default function Result({
             onClick={onSaleAll}
             loading={saleLoading}
           >
+            <FormattedMessage id="total_price" />
+            <span className="inline-flex gap-1">
+              <IconFont type="icon-coin" />
+              <CountUp
+                end={totalPrice}
+                duration={0.3}
+                decimals={2}
+                separator=""
+              />
+            </span>
             <FormattedMessage id="open_box_sell_all" />
-            <IconFont type="icon-coin" />
-            <CountUp
-              end={totalPrice}
-              duration={0.3}
-              decimals={2}
-              separator=""
-            />
           </Button>
         </div>
       </Modal.Body>

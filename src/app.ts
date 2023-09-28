@@ -25,10 +25,10 @@ export const request: RequestConfig = {
         error.code === 'ERR_NETWORK' ||
         error.code === 'ERR_BAD_REQUEST'
       ) {
-        toast.error('network error', { toastId: 'networkError' });
+        // toast.error('network error', { toastId: 'networkError' });
       }
       if (error?.response?.status === 500) {
-        toast.error('system error', { toastId: 'systemError' });
+        // toast.error('system error', { toastId: 'systemError' });
       }
     },
   },

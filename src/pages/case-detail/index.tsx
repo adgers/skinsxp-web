@@ -19,7 +19,6 @@ import {
 import { LeftOutlined, LoadingOutlined } from '@ant-design/icons';
 import { FormattedMessage, useModel, useParams, useRequest } from '@umijs/max';
 import { useResponsive } from 'ahooks';
-import { Spin } from 'antd';
 import { useEffect, useState } from 'react';
 import CountUp from 'react-countup';
 import './index.less';
@@ -126,10 +125,7 @@ export default function BoxPage() {
   }, [boxInfoTickets?.boxGiftVo]);
 
   return (
-    <Spin
-      spinning={loading}
-      indicator={<LoadingOutlined style={{ fontSize: 48, color: 'green' }} />}
-    >
+    <div>
       <div className="max-w-[1400px] w-full m-auto mt-4 px-3">
         <div className="flex flex-row items-center h-[50px] sm:h-[100px] box-open-title">
           <div
@@ -360,6 +356,6 @@ export default function BoxPage() {
           onClose={onResultClose}
         />
       </div>
-    </Spin>
+    </div>
   );
 }
