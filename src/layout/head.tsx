@@ -263,7 +263,7 @@ export default function Header() {
             </Transition>
           </Menu>
 
-          <div className="hidden lg:flex ml-2">
+          <div className="hidden lg:flex ml-2 relative">
             {[...headLinks, ...headExt].map((item, i) => {
               const isActive = location.pathname.startsWith(item.link);
 
@@ -271,48 +271,38 @@ export default function Header() {
                 <Link
                   key={i}
                   to={item.link}
-                  className={`px-3 py-2 uppercase transition-colors font-semibold duration-200  hover:text-green text-sm rounded-md ${
+                  className={`p-3 uppercase transition-colors font-semibold duration-200 hover:text-green text-sm ${
                     isActive ? 'text-green' : 'text-white'
                   }`}
+                  style={{
+                    background: isActive
+                      ? 'linear-gradient(0deg, #50B444 -19.44%, rgba(0, 0, 0, 0.00) 90.14%)'
+                      : 'none',
+                  }}
                 >
-                  {item.icon && <IconFont type={item.icon} className="mr-1" />}
+                  {item.icon && (
+                    <IconFont
+                      type={item.icon}
+                      className={`mr-2 ${
+                        isActive ? 'text-green' : 'text-[#a4a4a4]'
+                      } `}
+                    />
+                  )}
                   {item.title}
                 </Link>
               );
             })}
-            <div
-              className="px-3 py-2 uppercase transition-colors font-semibold duration-200 text-white hover:text-green text-sm rounded-md cursor-pointer"
-              onClick={showBenefit}
-            >
-              <IconFont type="icon-promocode" className="mr-1" />
-              <FormattedMessage id="mine_fllq" />
-            </div>
           </div>
         </div>
         <div className="flex-none flex gap-3">
           {userInfo ? (
             <>
-              <div className="flex flex-col sm:flex-row gap-0 sm:gap-2 text-xs sm:text-sm font-num ">
-                <div className="text-green">
-                  $
-                  <CountUp
-                    end={numberFixed(userInfo?.balance || 0)}
-                    duration={1}
-                    decimals={2}
-                    separator=""
-                    className="font-num"
-                  />
-                </div>
-                <span className="text-purple">
-                  <IconFont type="icon-coin" className="mr-1" />
-                  <CountUp
-                    end={numberFixed(userInfo?.secondaryBalance || 0)}
-                    duration={1}
-                    decimals={2}
-                    separator=""
-                    className="font-num"
-                  />
-                </span>
+              <div
+                className="p-3 uppercase transition-colors font-semibold duration-200 text-white hover:text-green text-sm rounded-md cursor-pointer hidden sm:block"
+                onClick={showBenefit}
+              >
+                <IconFont type="icon-promocode" className="mr-1" />
+                <FormattedMessage id="mine_fllq" />
               </div>
               <Link
                 className="btn-green !btn-sm !px-1"
@@ -340,14 +330,43 @@ export default function Header() {
                 )}
               </Link>
 
+              <div className="flex flex-col  gap-0 text-xs font-num">
+                <div className="text-green">
+                  $
+                  <CountUp
+                    end={numberFixed(userInfo?.balance || 0)}
+                    duration={1}
+                    decimals={2}
+                    separator=""
+                    className="font-num"
+                  />
+                </div>
+                <span className="text-purple">
+                  <IconFont type="icon-coin" className="mr-1" />
+                  <CountUp
+                    end={numberFixed(userInfo?.secondaryBalance || 0)}
+                    duration={1}
+                    decimals={2}
+                    separator=""
+                    className="font-num"
+                  />
+                </span>
+              </div>
+
               <Menu
                 as="div"
                 className="relative flex justify-center items-center"
               >
-                <Menu.Button as="div">
+                <Menu.Button
+                  as="div"
+                  className="flex gap-1 items-center cursor-pointer"
+                >
                   <div className="w-8 h-8 cursor-pointer relative hidden sm:block">
                     <img src={userInfo.headPic} className="rounded-full" />
                   </div>
+                  <span className="text-sm hidden sm:block">
+                    {userInfo.nickname}
+                  </span>
                   <div className="py-1 px-2 bg-dark sm:hidden">
                     <MenuOutlined />
                   </div>

@@ -9,7 +9,7 @@ module.exports = {
   theme: {
     extend: {
       maxWidth: {
-        '8xl': '1800px',
+        '8xl': '1680px',
       },
       animation: {
         'spin-slow': 'spin 3s linear infinite',

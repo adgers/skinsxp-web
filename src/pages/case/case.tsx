@@ -1,3 +1,4 @@
+import { IconFont } from '@/components/icons';
 import { getHostListUsingGET } from '@/services/front/duizhanxiangguan';
 import { getBoxListUsingGET } from '@/services/front/kaixiangxiangguan';
 import { isLogin } from '@/utils';
@@ -113,7 +114,8 @@ export default function Case() {
                     'var(--j-1, linear-gradient(0deg, rgba(54, 122, 46, 0.68) 0%, rgba(0, 0, 0, 0.00) 98.14%))',
                 }}
               >
-                <div className="flex h-7 items-center sm:h-8 text-sm sm:text-base">
+                <div className="flex h-7 gap-1 items-center sm:h-8 text-sm sm:text-base">
+                  <IconFont type="icon-battle" />
                   <FormattedMessage id="room_top_battle" />
                 </div>
               </h2>
@@ -121,7 +123,7 @@ export default function Case() {
             <div className="flex w-1/6 items-end sm:w-1/3"></div>
           </div>
           <div className="relative flex h-full">
-            <div className="flex w-full snap-x snap-mandatory overflow-x-auto xl:grid xl:snap-none xl:grid-cols-4 opacity-100 gap-2">
+            <div className="flex w-full snap-x snap-mandatory overflow-x-auto xl:grid xl:snap-none xl:grid-cols-4 opacity-100 gap-2 hide-scrollbar">
               {battleList?.map((item, index) => {
                 return <BattleItem data={item} key={index} index={index} />;
               })}

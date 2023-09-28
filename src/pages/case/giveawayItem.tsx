@@ -27,27 +27,25 @@ export default function GiveawayItem(props: GiveawayItemProps) {
         })
       }
     >
-      <div className="relative col-start-1 row-start-1 grid overflow-hidden pl-2.5 pt-2.5 giveaways-grade-item w-full">
-        <div className="flex h-4 sm:h-6">
-          <div className="flex items-center">
+      <div className="relative overflow-hidden giveaways-grade-item w-full flex flex-col">
+        <div className="flex justify-between h-[30px] px-2 py-1 top-color text-black/70">
+          <div className="flex items-center justify-center gap-1">
             <div
-              className={`h-4 w-4 border-r-[50%] rounded-full flex justify-center items-center giveaways-icon`}
+              className={`rounded-full flex justify-center items-center bg-black/70 w-[18px] h-[18px]`}
             >
-              <img src={kingSvg} alt="" className="w-[8px] h-[8px]" />
+              <IconFont type='icon-a-bestdrop' className='text-[8px] icon-color'/>
             </div>
-            <p className="ml-2 text-xs font-semibold text-white text-opacity-70">
-              {item?.title}
-            </p>
+            <p className="text-xs font-semibold">{item?.title}</p>
           </div>
-          <div className="ml-auto flex items-center rounded-none py-1.5 pl-1.5 pr-2 text-xs font-semibold tabular-nums text-white bg-white/[.15] rounded-l">
+          <div className="text-xs font-semibold flex items-center justify-center">
             <IconFont type="icon-online" className="mr-1 text-[10px]" />
             {item?.userCount}
           </div>
         </div>
-        <div className="relative flex min-h-0 flex-shrink w-full overflow-hidden">
-          <div className="flex w-[45%] flex-col">
+        <div className="relative flex flex-1 h-full w-full overflow-hidden">
+          <div className="flex w-[45%] flex-col justify-between">
             <div className="flex min-h-0 flex-shrink">
-              <div className="grid-stack -mx-2 grid h-full max-h-[74px] min-h-0 w-4/5 ml-[16px]">
+              <div className="h-full  min-h-0 w-4/5 ml-[16px]">
                 <img
                   src={item?.giftVos?.[0]?.giftImage}
                   className="aspect-[98.5/74] h-full min-h-0 w-full object-contain"
@@ -55,17 +53,16 @@ export default function GiveawayItem(props: GiveawayItemProps) {
                 />
               </div>
             </div>
-            <span className="mb-2 mt-auto truncate text-xs font-semibold text-white">
+            <span className="ml-4 mb-3 truncate text-xs font-semibold text-white">
               ${item?.poolValue}
             </span>
           </div>
-          <a className="flex w-[55%] flex-col pr-2.5 justify-start">
-            <div className="flex flex-col">
+          <div className="flex w-[55%] flex-col pr-2.5 justify-between">
+            <div className="flex flex-col mt-1 sm:mt-3 sm:gap-1">
               <span className="truncate text-xs font-semibold text-white text-opacity-70">
                 {name && parseName(name)?.[0]}
               </span>
               <span className="truncate text-xs font-semibold leading-none text-white">
-                {/* {item?.giftVos?.[0]?.giftName?.split('|')?.[1]?.trim()} */}
                 {name && parseName(name)?.[1] && (
                   <span className="text-white/50">
                     ({parseName(name)?.[1]})
@@ -74,7 +71,7 @@ export default function GiveawayItem(props: GiveawayItemProps) {
                 {name && parseName(name)?.[2]}
               </span>
             </div>
-            <div className="mb-1 sm:mb-2 mt-auto flex items-center justify-center p-1.5 w-full bg-black/[0.25] rounded">
+            <div className="sm:mb-3 flex items-center flex-shrink-0 justify-start w-auto bg-black/50 rounded p-1.5">
               {days > 0 && (
                 <>
                   <div className="flex w-6 flex-shrink-0 flex-col items-center justify-center text-center">
@@ -126,7 +123,7 @@ export default function GiveawayItem(props: GiveawayItemProps) {
                 </span>
               </div>
             </div>
-          </a>
+          </div>
         </div>
       </div>
     </div>

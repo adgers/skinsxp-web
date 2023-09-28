@@ -23,7 +23,7 @@ export default function BattleItem(props: BattleItemProps) {
         });
       }}
     >
-      <div className="flex items-center  mt-2.5 ml-4 gap-2 uppercase text-xs">
+      <div className="flex items-center mt-2.5 ml-4 gap-2 uppercase text-xs">
         <div
           className={`rounded-full text-white flex items-center flex-shrink-0 justify-center font-semibold w-[34px] h-[34px] border-[2px] border-opacity-40 ${
             data?.round === 0 ? 'border-green ' : 'border-red'

@@ -6,7 +6,7 @@ import {
   getTagsUsingGET,
   getVoucherStockPageUsingGET,
 } from '@/services/front/duihuanquanshangchengxiangguan';
-import { LoadingOutlined } from '@ant-design/icons';
+import { ArrowDownOutlined, ArrowUpOutlined, LoadingOutlined } from '@ant-design/icons';
 import { Menu, Transition } from '@headlessui/react';
 import { FormattedMessage, useIntl, useModel, useRequest } from '@umijs/max';
 import { Pagination, Spin } from 'antd';
@@ -92,51 +92,14 @@ export default () => {
       </div>
       <div className="flex flex-col-reverse sm:flex-row gap-2 sm:justify-between pt-4 px-3">
         <div className="grid grid-cols-3 gap-1 sm:gap-2">
-          <Menu as="div" className="relative">
-            <Menu.Button className="whitespace-nowrap select select-sm select-accent border-opacity-50 rounded uppercase w-full font-semibold flex justify-between items-center focus:outline-none text-xs truncate">
-              <FormattedMessage id="mall_sort_mrpx" />
-            </Menu.Button>
-            <Transition
-              as={Fragment}
-              enter="transition ease-out duration-100"
-              enterFrom="transform opacity-0 scale-95"
-              enterTo="transform opacity-100 scale-100"
-              leave="transition ease-in duration-75"
-              leaveFrom="transform opacity-100 scale-100"
-              leaveTo="transform opacity-0 scale-95"
-            >
-              <Menu.Items className="absolute left-0 mt-2 w-full bg-dark ring-1 ring-accent rounded-sm origin-top-left p-2 z-50">
-                <Menu.Item>
-                  {({ active }) => (
-                    <div
-                      className={`${
-                        active ? 'bg-accent bg-opacity-10' : ''
-                      } flex justify-between items-center p-2 text-sm rounded cursor-pointer`}
-                      onClick={() => onOrderChange('asc')}
-                    >
-                      <FormattedMessage id="mall_sort_ascending" />
-                    </div>
-                  )}
-                </Menu.Item>
-                <Menu.Item>
-                  {({ active }) => (
-                    <div
-                      className={`${
-                        active ? 'bg-accent bg-opacity-10' : ''
-                      } flex justify-between items-center p-2 text-sm rounded cursor-pointer`}
-                      onClick={() => onOrderChange('desc')}
-                    >
-                      <FormattedMessage id="mall_sort_descending" />
-                    </div>
-                  )}
-                </Menu.Item>
-              </Menu.Items>
-            </Transition>
-          </Menu>
+          <div className="bg-dark border h-8 border-accent border-opacity-50 rounded-sm text-xs flex items-center justify-center cursor-pointer" onClick={()=> setOrderByPrice(!orderByPrice)}>
+            <FormattedMessage id="recoveryPrice" />{' '}
+            {orderByPrice ? <ArrowDownOutlined /> : <ArrowUpOutlined />}
+          </div>
 
           {selectFilters &&
             selectFilters.map((filter, i) => {
-              if (filter.key && !['Exterior', 'Type'].includes(filter.key)) {
+              if (filter.key && !['Type'].includes(filter.key)) {
                 return null;
               }
 
@@ -154,7 +117,7 @@ export default () => {
                     leaveFrom="transform opacity-100 scale-100"
                     leaveTo="transform opacity-0 scale-95"
                   >
-                    <Menu.Items className="absolute left-0 mt-2 w-full bg-neutral ring-1 ring-accent rounded origin-top-left p-2 z-50 max-h-80 overflow-y-auto">
+                    <Menu.Items className="absolute left-0 mt-2 bg-neutral ring-1 ring-accent rounded origin-top-left p-2 z-50 max-h-80 overflow-y-auto w-[120px]">
                       <Menu.Item key={i}>
                         {({ active }) => (
                           <div

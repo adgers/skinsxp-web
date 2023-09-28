@@ -1,5 +1,5 @@
 import { listHostGiveawayUsingGET } from '@/services/front/ROLLfangxiangguan';
-import { FormattedMessage, useRequest } from '@umijs/max';
+import { FormattedMessage, Link, useRequest } from '@umijs/max';
 import GiveawayItem from './giveawayItem';
 import './index.less';
 
@@ -21,17 +21,17 @@ export default function Giveaways() {
           <span className="inline-block -rotate-90 transform text-white md:hidden whitespace-nowrap">
             <FormattedMessage id="roll_room_title" />
           </span>
-          <a
+          <Link
             className="btn btn-sm mt-4 hidden h-7 bg-purple px-2 text-[10px] text-white  md:flex xl:px-3"
-            href="/giveaways"
+            to="/giveaways"
           >
             <span className="uppercase">
               <FormattedMessage id={'roll_ljcy'} />
             </span>
-          </a>
+          </Link>
         </div>
         <div className="w-full overflow-hidden">
-          <div className="flex w-full snap-x snap-mandatory overflow-x-auto xl:grid xl:snap-none xl:grid-cols-4 opacity-100 gap-1">
+          <div className="flex w-full snap-x snap-mandatory overflow-x-auto hide-scrollbar xl:grid xl:snap-none xl:grid-cols-4 opacity-100 gap-1">
             {giveawayList?.map((item, index) => {
               return <GiveawayItem index={index} item={item} key={index} />;
             })}
