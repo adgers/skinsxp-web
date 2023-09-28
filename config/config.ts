@@ -38,6 +38,10 @@ export default defineConfig({
       rel: 'preconnect dns-prefetch',
       href: '//img.wgskins.com',
     },
+    {
+      rel: 'preconnect dns-prefetch',
+      href: '//api.wgskins.com',
+    },
   ],
   routes: [
     {
