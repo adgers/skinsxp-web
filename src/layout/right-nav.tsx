@@ -3,8 +3,8 @@ import { Popover, QRCode } from 'antd';
 
 export default function RightNav() {
   const androidLink =
-    'https://img.wgskins.com/cdn/app/9bf92b98ec9c4a00b5790ee433887287.apk.1.1';
-
+    'https://img.wgskins.com/cdn/app/c92bc1efa9b2f7eef7d9bb26da9174b6.apk.1.1';
+    
   return (
     <>
       <div className="fixed bottom-1/3 translate-y-1/2 z-50 right-3">
