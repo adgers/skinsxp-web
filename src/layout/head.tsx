@@ -148,7 +148,9 @@ export default function Header() {
           </Menu.Item>
         ))}
       </Menu.Items>
-      <div className="my-2 mx-5 md:mx-3 text-xs uppercase font-semibold">Games</div>
+      <div className="my-2 mx-5 md:mx-3 text-xs uppercase font-semibold">
+        Games
+      </div>
       <Menu.Items className="outline-none">
         {headLinks.map((link, i) => (
           <Menu.Item key={i}>
@@ -419,8 +421,9 @@ export default function Header() {
                             className={`${
                               active ? 'bg-accent bg-opacity-30 text-green' : ''
                             } flex items-center py-2 rounded cursor-pointer w-full`}
+                            onClick={logout}
                           >
-                            <div className="w-full" onClick={logout}>
+                            <div className="w-full">
                               <IconFont
                                 type={'icon-logout'}
                                 className="mx-5 md:mx-3 text-base"
