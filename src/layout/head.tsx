@@ -417,9 +417,8 @@ export default function Header() {
                       {menus}
 
                       <div
-                        className={`flex items-center rounded cursor-pointer w-full  py-2`}
-                        onClick={(e) => {
-                          e.stopPropagation();
+                        className={`flex items-center rounded cursor-pointer w-full  py-2 z-99 relative`}
+                        onClick={() => {
                           logout();
                         }}
                       >
