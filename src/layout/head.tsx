@@ -415,31 +415,21 @@ export default function Header() {
                     </div>
                     <div className="bg-neutral pb-2">
                       {menus}
-                      <Menu.Item>
-                        {({ active }) => (
-                          <div
-                            className={`${
-                              active ? 'bg-accent bg-opacity-30 text-green' : ''
-                            } flex items-center rounded cursor-pointer w-full  py-2`}
-                          >
-                            <div
-                              className="w-full"
-                              onClick={() => {
-                                console.log('logout')
-                                logout();
-                              }}
-                            >
-                              <IconFont
-                                type={'icon-logout'}
-                                className="mx-5 md:mx-3 text-base"
-                              />
-                              <span className="capitalize text-sm">
-                                <FormattedMessage id="mine_tcdl" />
-                              </span>
-                            </div>
-                          </div>
-                        )}
-                      </Menu.Item>
+
+                      <div
+                        className={`flex items-center rounded cursor-pointer w-full  py-2`}
+                        onClick={() => {
+                          logout();
+                        }}
+                      >
+                        <IconFont
+                          type={'icon-logout'}
+                          className="mx-5 md:mx-3 text-base"
+                        />
+                        <span className="capitalize text-sm">
+                          <FormattedMessage id="mine_tcdl" />
+                        </span>
+                      </div>
                     </div>
                   </div>
                 </Transition>
