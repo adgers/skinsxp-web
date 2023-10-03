@@ -415,9 +415,8 @@ export default function Header() {
                     </div>
                     <div className="bg-neutral pb-2">
                       {menus}
-
-                      <div
-                        className={`flex items-center rounded cursor-pointer w-full  py-2 z-99 relative`}
+                      <Button
+                        className="btn btn-sm px-0 gap-0 w-full justify-start bg-transparent"
                         onClick={() => {
                           logout();
                         }}
@@ -429,7 +428,7 @@ export default function Header() {
                         <span className="capitalize text-sm">
                           <FormattedMessage id="mine_tcdl" />
                         </span>
-                      </div>
+                      </Button>
                     </div>
                   </div>
                 </Transition>
