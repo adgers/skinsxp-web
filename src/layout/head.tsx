@@ -418,7 +418,8 @@ export default function Header() {
 
                       <div
                         className={`flex items-center rounded cursor-pointer w-full  py-2`}
-                        onClick={() => {
+                        onClick={(e) => {
+                          e.stopPropagation();
                           logout();
                         }}
                       >
