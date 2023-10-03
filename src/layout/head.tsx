@@ -413,17 +413,17 @@ export default function Header() {
                         </div>
                       </div>
                     </div>
-                    <div className="bg-neutral">
+                    <div className="bg-neutral pb-2">
                       {menus}
                       <Menu.Item>
                         {({ active }) => (
                           <div
                             className={`${
                               active ? 'bg-accent bg-opacity-30 text-green' : ''
-                            } flex items-center rounded cursor-pointer w-full`}
+                            } flex items-center rounded cursor-pointer w-full  py-2`}
                           >
                             <div
-                              className="w-full py-2"
+                              className="w-full"
                               onClick={() => {
                                 console.log('logout')
                                 logout();
