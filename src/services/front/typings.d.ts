@@ -398,6 +398,7 @@ declare namespace API {
     tradeUrl?: string;
     verified?: boolean;
     firstRechargeRebate?: number;
+    promotionChannelId?: string;
   };
 
   type CycleRedPacketVo = {
@@ -1525,6 +1526,7 @@ declare namespace API {
     show?: boolean;
     showTime?: string;
     state?: number;
+    firstRechargeFlag?: boolean;
   };
 
   type resetUsingPOSTParams = {
