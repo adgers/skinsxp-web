@@ -6,6 +6,7 @@ import { EventEmitter } from 'events';
 import brFlag from '@/assets/flags/br.svg';
 import cnFlag from '@/assets/flags/cn.svg';
 import enFlag from '@/assets/flags/en.svg';
+import trFlag from '@/assets/flags/tr.svg';
 import { BOX_GRADES } from '@/constants';
 import { history } from '@umijs/max';
 import qs from 'qs';
@@ -277,5 +278,10 @@ export const langs = [
     title: '繁體中文(HK)',
     value: 'zh-TW',
     flag: cnFlag,
+  },
+  {
+    title: 'Türk(TR)',
+    value: 'tr-TL',
+    flag: trFlag,
   },
 ];
