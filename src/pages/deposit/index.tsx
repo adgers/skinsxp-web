@@ -419,7 +419,7 @@ export default function Deposit() {
     if (ret?.data?.state === 1) {
       window?.fbq('trackSingleCustom', '1024868335308144', 'payment_success');
     }
-    if (ret?.data?.state === 1 && ret?.data?.fistRechargeFlag) {
+    if (ret?.data?.state === 1 && ret?.data?.firstRechargeFlag) {
       /* 后续由后台配置平台列表 */
       // 首次充值成功
       window?.fbq('trackSingleCustom', '1024868335308144', 'fistRecharge');
