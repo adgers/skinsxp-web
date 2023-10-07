@@ -415,15 +415,15 @@ export default function Deposit() {
 
   const checkPayStatus = async (id: string) => {
     const ret = await paymentStateUsingGET({ orderId: id });
-    window?.fbq('trackSingleCustom', '1024868335308144', 'payment_result', {
-      value: ret?.data?.quantity,
-      channelCode: userInfo?.promotionChannelId,
-      state: ret?.data?.state,
-      isFirstRecharge: ret?.data?.fistRechargeFlag,
-    });
+
+    if (ret?.data?.state === 1) {
+      window?.fbq('trackSingleCustom', '1024868335308144', 'payment_success');
+    }
     if (ret?.data?.state === 1 && ret?.data?.fistRechargeFlag) {
       /* 后续由后台配置平台列表 */
       // 首次充值成功
+      window?.fbq('trackSingleCustom', '1024868335308144', 'fistRecharge');
+
       if (['3', '7']?.includes(userInfo?.promotionChannelId)) {
         // fb
         window?.fbq('track', 'Purchase', {
