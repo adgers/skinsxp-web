@@ -380,5 +380,7 @@
     "loginTip_up": "最高",
     "banner_bonus": "+20% 獎金",
     "btm_nav_market": "商店",
-    "vip_discount": "充值返利"
+    "vip_discount": "充值返利",
+    "nav_title_games": "玩法",
+    "nav_title_services": "客戶服務"
 }
