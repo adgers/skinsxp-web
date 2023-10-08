@@ -65,7 +65,7 @@ export default function Case() {
           {t.boxList?.map((v, idx) => (
             <div
               key={idx}
-              className="w-full h-full relative cursor-pointer case-wrap aspect-[1/1.4] rounded-md overflow-hidden ransition-all duration-200 will-change-transform hover:-translate-y-0.5"
+              className="w-full h-full relative cursor-pointer case-wrap aspect-[1/1.4] rounded-md overflow-hidden transition-all duration-200 will-change-transform hover:-translate-y-0.5"
               onClick={() => {
                 history.push({
                   pathname: `/case/${v?.id}`,
