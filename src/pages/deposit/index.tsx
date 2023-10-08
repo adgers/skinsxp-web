@@ -152,7 +152,7 @@ export default function Deposit() {
                 return (
                   <li className="h-[8rem] min-h-[5rem] md:h-auto" key={index}>
                     <div
-                      className={`trainstion relative cursor-pointer flex items-center justify-center h-full min-h-0 flex-col rounded-lg border bg-black bg-opacity-90 bg-clip-padding bg-no-repeat outline-none  duration-300 focus:outline-none focus-visible:light ${
+                      className={`trainstion relative cursor-pointer flex items-center justify-center h-full min-h-0 flex-col rounded-lg border bg-black bg-opacity-90 bg-clip-padding bg-no-repeat outline-none overflow-hidden duration-300 focus:outline-none focus-visible:light ${
                         item?.id === selectChannel?.id
                           ? 'border-green'
                           : 'border-light'

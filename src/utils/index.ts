@@ -281,7 +281,7 @@ export const langs = [
   },
   {
     title: 'Türk(TR)',
-    value: 'tr-TL',
+    value: 'tr-TR',
     flag: trFlag,
   },
 ];
