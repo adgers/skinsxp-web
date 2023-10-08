@@ -149,7 +149,7 @@ export default function Header() {
         ))}
       </Menu.Items>
       <div className="my-2 mx-5 md:mx-3 text-xs uppercase font-semibold">
-        Games
+        <FormattedMessage id="nav_title_games" />
       </div>
       <Menu.Items className="outline-none">
         {headLinks.map((link, i) => (
@@ -174,7 +174,7 @@ export default function Header() {
         ))}
       </Menu.Items>
       <div className="my-2 mx-5 md:mx-3 text-xs uppercase font-semibold">
-        Customer service
+        <FormattedMessage id="nav_title_services" />
       </div>
       <Menu.Items className="outline-none">
         {customLinks.map((link, i) => (

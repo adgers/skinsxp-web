@@ -351,7 +351,7 @@
     "started_at": "開始時間",
     "footer_disclaimer": "免責聲明",
     "footer_ddzz": "道德準則",
-    "personal_center": "個人中心",
+    "personal_center": "個人主頁",
     "deposit_promoteCode_placeholder": "輸入促銷程式碼",
     "partner_rebate_type": "推廣用戶充值返利類型",
     "partner_rebate": "推薦獎金",
@@ -380,5 +380,7 @@
     "loginTip_up": "最高",
     "banner_bonus": "+20% 獎金",
     "btm_nav_market": "商店",
-    "vip_discount": "充值返利"
+    "vip_discount": "充值返利",
+    "nav_title_games": "玩法",
+    "nav_title_services": "客戶服務"
 }
