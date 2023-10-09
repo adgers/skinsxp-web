@@ -22,17 +22,20 @@ export default function Layout() {
   const pathCls = pathname.split('/')[1];
   const { data } = useRequest(() => getLangUsingGET());
   const { setPageLoaded } = useModel('socket');
+  const params = urlParse();
+
   useEffect(() => {
-    const params = urlParse();
-    const umi_locale = localStorage.getItem('umi_locale');
     if (params?.lang) {
-      const lang = params?.lang || 'en-US';
-      setLocale(lang as string);
+      setLocale(params.lang as string);
+      return;
     }
+    const umi_locale = localStorage.getItem('umi_locale');
     if (!umi_locale && !!data) {
       setLocale(data);
     }
+  }, [data]);
 
+  useEffect(() => {
     if (window?.gtag) {
       const channelCode = params.channelCode || 'wgskins';
       gtag('event', 'pageview', {

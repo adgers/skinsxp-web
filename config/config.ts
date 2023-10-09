@@ -218,7 +218,7 @@ export default defineConfig({
     t.src=v;s=b.getElementsByTagName(e)[0];
     s.parentNode.insertBefore(t,s)}(window, document,'script',
     'https://connect.facebook.net/en_US/fbevents.js');
-    fbq('init', '274963705003545');
+    fbq('init', '1503865573697061');
     fbq('track', 'PageView');
 `,
     },

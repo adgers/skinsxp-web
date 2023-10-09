@@ -424,7 +424,7 @@ export default function Deposit() {
       // 首次充值成功
       window?.fbq('trackSingleCustom', '1024868335308144', 'fistRecharge');
 
-      if (['3', '7']?.includes(userInfo?.promotionChannelId)) {
+      if (['7', '21']?.includes(userInfo?.promotionChannelId)) {
         // fb
         window?.fbq('track', 'Purchase', {
           currency: 'USD',

@@ -24,7 +24,7 @@ export default function LoginCallback() {
       }
       if (ret.data?.register) {
         /* 后续由后台配置平台列表 */
-        if (['3', '7']?.includes(ret.data?.promotionChannelId)) {
+        if (['7', '21']?.includes(ret.data?.promotionChannelId)) {
           // fb 推广用户 注册成功
           window?.fbq('track', 'Lead');
         }
