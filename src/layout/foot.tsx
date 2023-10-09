@@ -72,7 +72,7 @@ export default function Foot() {
               <IconFont type="icon-X" className="text-[24px]" />
             </a>
             <a
-              href="https://youtube.com/@WGskins?si=UwhJtVEFuX4j6WNd"
+              href="https://www.youtube.com/@WGskins/about"
               rel="noreferrer"
               target="_blank"
             >
@@ -93,7 +93,7 @@ export default function Foot() {
               <IconFont type="icon-ins" className="text-[24px]" />
             </a>
             <a
-              href="https://t.me/Wgskins1"
+              href="https://t.me/wgskin"
               rel="noreferrer"
               target="_blank"
             >
