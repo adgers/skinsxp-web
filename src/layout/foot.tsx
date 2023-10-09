@@ -79,7 +79,7 @@ export default function Foot() {
               <IconFont type="icon-youtube" className="text-[24px]" />
             </a>
             <a
-              href="https://www.facebook.com/wgskins?mibextid=9R9pXO"
+              href="https://www.facebook.com/profile.php?id=61551644411431"
               rel="noreferrer"
               target="_blank"
             >
