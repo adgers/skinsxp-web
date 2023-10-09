@@ -72,7 +72,7 @@ export default function Foot() {
               <IconFont type="icon-X" className="text-[24px]" />
             </a>
             <a
-              href="https://www.youtube.com/@WGskins/about"
+              href="https://youtube.com/@WGskins?si=UwhJtVEFuX4j6WNd"
               rel="noreferrer"
               target="_blank"
             >
@@ -105,6 +105,13 @@ export default function Foot() {
               target="_blank"
             >
               <IconFont type="icon-tiktok" className="text-[24px]" />
+            </a>
+            <a
+              href="https://discord.gg/j2NxjZW5"
+              rel="noreferrer"
+              target="_blank"
+            >
+              <IconFont type="icon-discord" className="text-[24px]" />
             </a>
           </div>
         </div>
