@@ -7,6 +7,10 @@ import brFlag from '@/assets/flags/br.svg';
 import cnFlag from '@/assets/flags/cn.svg';
 import enFlag from '@/assets/flags/en.svg';
 import trFlag from '@/assets/flags/tr.svg';
+import deFlag from '@/assets/flags/de.svg';
+import frFlag from '@/assets/flags/fr.svg';
+import plFlag from '@/assets/flags/pl.svg'
+
 import { BOX_GRADES } from '@/constants';
 import { history } from '@umijs/max';
 import qs from 'qs';
@@ -19,6 +23,8 @@ export function getApiDomain() {
       location.href.indexOf('localhost') > -1 ||
       location.href.indexOf('127.0.0.1') > -1
   ) {
+    return 'https://api.wgskins.com';
+
     return 'http://114.55.56.184:9999';
   } else if (location.href.indexOf('wgskins.com') > -1) {
     return 'https://api.wgskins.com';
@@ -282,5 +288,20 @@ export const langs = [
     title: 'Türk(TR)',
     value: 'tr-TR',
     flag: trFlag,
+  },
+  {
+    title: 'Français(FR)',
+    value: 'fr-FR',
+    flag: frFlag,
+  },
+  {
+    title: 'Deutsch(DE)',
+    value: 'de-DE',
+    flag: deFlag,
+  },
+  {
+    title: 'Polski(PL)',
+    value: 'pl-PL',
+    flag: plFlag,
   },
 ];

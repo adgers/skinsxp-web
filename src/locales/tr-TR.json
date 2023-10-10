@@ -158,7 +158,7 @@
     "battle_fairness_verify": "Kanıtlanabilirlik",
     "failed": "Başarısız oldu",
     "success": "Başarılı",
-    "roll_id": "ID",
+    "roll_id": "KIMLIK",
     "open_box_open": "Açık",
     "open_box_box_include_gifts": "Jewelry includes",
     "open_box_box_actually_obtained": "Actually obtained",
@@ -351,7 +351,7 @@
     "started_at": "Başlama tarihi",
     "footer_disclaimer": "Sorumluluk reddi beyanı",
     "footer_ddzz": "Etik kurallar",
-    "personal_center": "PROFİLİM",
+    "personal_center": "Benim profilim",
     "deposit_promoteCode_placeholder": "Promosyon kodu gir",
     "partner_rebate_type": "Kullanıcı Ek Ücret İadesi Türü",
     "partner_rebate": "BİLİKİ BONUS",
@@ -381,6 +381,6 @@
     "banner_bonus": "+20% BONUS",
     "btm_nav_market": "pazarı",
     "vip_discount": "Bonus",
-    "nav_title_games": "OYUNLAR",
+    "nav_title_games": "Oyunlar",
     "nav_title_services": "MÜŞTERİ SERVİSİ"
 }
