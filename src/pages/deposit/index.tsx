@@ -19,6 +19,7 @@ import { useResponsive } from 'ahooks';
 import { Spin } from 'antd';
 import { remove } from 'lodash';
 import { Fragment, useEffect, useMemo, useState } from 'react';
+import { Button } from 'react-daisyui';
 import { toast } from 'react-toastify';
 
 enum PromoCodeState { // 只要有邀请码 就不能编辑了
@@ -48,6 +49,7 @@ export default function Deposit() {
   );
   const [inputCode, setInputCode] = useState('');
   const [quantity, setQuantity] = useState(0);
+  const [payLoading, setPayLoading] = useState<boolean>(false);
   const { languageList, rechargeAmountAllowList, rechargeChannelList } =
     rechargeConfig || {};
   const [payOrderId, setPayOrderId] = useState<string>();
@@ -90,6 +92,7 @@ export default function Deposit() {
       quantity,
       rechargeChannelId: selectChannel?.id || 0,
     });
+    setPayLoading(false);
     if (ret.status === 0) {
       if (ret.data?.payUrl) {
         setTimeout(() => {
@@ -362,10 +365,11 @@ export default function Deposit() {
                     </div>
                   </div>
                 </div>
-                <button
+                <Button
                   className="btn btn-green btn-sm md:btn-md uppercase w-full rounded font-semibold"
                   onClick={() => {
                     onPay();
+                    setPayLoading(true);
                     window?.fbq(
                       'trackSingleCustom',
                       '1024868335308144',
@@ -376,10 +380,11 @@ export default function Deposit() {
                     });
                   }}
                   type="button"
+                  loading={payLoading}
                 >
                   <FormattedMessage id={'pay_amount'} /> $
                   {numberFixed(quantity, 2)}
-                </button>
+                </Button>
               </div>
             </>
           }
@@ -395,6 +400,7 @@ export default function Deposit() {
     promoCodeState,
     languageList,
     inputCode,
+    payLoading,
   ]);
 
   useEffect(() => {
