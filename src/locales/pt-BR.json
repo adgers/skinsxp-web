@@ -218,7 +218,7 @@
     "promoteCode_rule_content": "1. Seus indicados (por meio do seu link de afiliado ou código promocional) recarregaram a conta, você ganhará dinheiro.\n2. Quanto maior o nível, maior a porcentagem.",
     "take_steam_success": "Coleta bem-sucedida, por favor, aguarde um minuto!",
     "has_select": "Selecionado",
-    "total_price": "Soma total dos prêmios:",
+    "total_price": "PRÊMIOS :",
     "total_num": "Total",
     "take_steam_confrm_title": "Você tem certeza que deseja coletá-lo para o Steam?",
     "exchange_confirm_title": "Tens a certeza que queres vender?",
@@ -382,5 +382,6 @@
     "btm_nav_market": "Mercado",
     "vip_discount": "Bônus",
     "nav_title_games": "Jogos",
-    "nav_title_services": "ATENDIMENTO AO CLIENTE"
+    "nav_title_services": "ATENDIMENTO AO CLIENTE",
+    "choose_lang": "ESCOLHA SEU IDIOMA"
 }

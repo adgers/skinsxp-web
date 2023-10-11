@@ -218,7 +218,7 @@
     "promoteCode_rule_content": "1. Lorsque de nouveaux utilisateurs, grâce à votre lien de promotion, accèdent au site et réussissent à effectuer une recharge, vous recevrez des récompenses de remise correspondantes.\n\nÀ mesure que votre niveau de promotion évolue, le pourcentage de remise évoluera également en conséquence.\"",
     "take_steam_success": "L'opération de retrait a réussi, veuillez patienter",
     "has_select": "Sélectionné",
-    "total_price": "Valeur totale",
+    "total_price": "PRIX :",
     "total_num": "Total.",
     "take_steam_confrm_title": "Voulez-vous vraiment récupérer sur Steam ?",
     "exchange_confirm_title": "Voulez-vous vraiment échanger ?",
@@ -382,5 +382,6 @@
     "btm_nav_market": "Boutique",
     "vip_discount": "Bonus",
     "nav_title_games": "Jeux",
-    "nav_title_services": "SERVICE CLIENTÈLE"
+    "nav_title_services": "SERVICE CLIENTÈLE",
+    "choose_lang": "CHOISISSEZ VOTRE LANGUE"
 }

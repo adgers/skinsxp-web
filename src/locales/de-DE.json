@@ -218,7 +218,7 @@
     "promoteCode_rule_content": "1: Wenn ein neuer Nutzer die Website über Ihren Aktionslink betritt und erfolgreich auflädt, werden Sie mit einem entsprechenden Rabatt belohnt.\n2： Wenn sich Ihre Aktionsstufe ändert, ändert sich auch der Prozentsatz des Rabatts entsprechend.",
     "take_steam_success": "Abholung erfolgreich, bitte warten Sie kurz!",
     "has_select": "Ausgewählte",
-    "total_price": "Gesamte Preissumme:",
+    "total_price": "PREISE :",
     "total_num": "Insgesamt",
     "take_steam_confrm_title": "Sind Sie sicher, dass Sie es zu Steam zurückbringen wollen?",
     "exchange_confirm_title": "Wollen Sie es wirklich einlösen?",
@@ -382,5 +382,6 @@
     "btm_nav_market": "MARKT",
     "vip_discount": "Bonus",
     "nav_title_games": "Spiele",
-    "nav_title_services": "KUNDENBETREUUNG"
+    "nav_title_services": "KUNDENBETREUUNG",
+    "choose_lang": "WÄHLE DEINE SPRACHE"
 }

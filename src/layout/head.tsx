@@ -3,6 +3,7 @@ import Login from '@/components/account/login';
 import MobileLogin from '@/components/account/mobileLogin';
 import Register from '@/components/account/register';
 import { IconFont } from '@/components/icons';
+import SelectLang from '@/components/selectLang';
 import Benefit from '@/pages/benefit';
 import LoginConfirm from '@/pages/login/loginConfirm';
 import LoginTip from '@/pages/login/loginTip';
@@ -38,6 +39,8 @@ export default function Header() {
     showSteamLogin,
     loginTipShow,
     showLoginTip,
+    langShow,
+    showLang,
   } = useModel('user');
 
   const location = useLocation();
@@ -230,11 +233,14 @@ export default function Header() {
           </Link>
 
           <Menu as="div" className="relative ml-2">
-            <Menu.Button className="select select-xs flex items-center border-0 bg-black focus:outline-none">
+            <Menu.Button
+              className="select select-xs flex items-center border-0 bg-black focus:outline-none"
+              onClick={() => showLang()}
+            >
               <img src={currentLoale.flag} className="w-5 h-5" />
             </Menu.Button>
 
-            <Transition
+            {/* <Transition
               as={Fragment}
               enter="transition ease-out duration-100"
               enterFrom="transform opacity-0 scale-95"
@@ -262,7 +268,7 @@ export default function Header() {
                   </Menu.Item>
                 ))}
               </Menu.Items>
-            </Transition>
+            </Transition> */}
           </Menu>
 
           <div className="hidden lg:flex ml-2 relative">
@@ -513,6 +519,7 @@ export default function Header() {
       {benefitShow && <Benefit />}
       {steamLoginShow && <LoginConfirm />}
       {loginTipShow && <LoginTip />}
+      {true && <SelectLang />}
     </div>
   );
 }

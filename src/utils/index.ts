@@ -10,6 +10,8 @@ import trFlag from '@/assets/flags/tr.svg';
 import deFlag from '@/assets/flags/de.svg';
 import frFlag from '@/assets/flags/fr.svg';
 import plFlag from '@/assets/flags/pl.svg'
+import esFlag from '@/assets/flags/es.svg'
+
 
 import { BOX_GRADES } from '@/constants';
 import { history } from '@umijs/max';
@@ -304,4 +306,9 @@ export const langs = [
     value: 'pl-PL',
     flag: plFlag,
   },
+  // {
+  //   title: 'Polski(ES)',
+  //   value: 'es-ES',
+  //   flag: esFlag,
+  // },
 ];

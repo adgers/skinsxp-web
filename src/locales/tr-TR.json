@@ -218,7 +218,7 @@
     "promoteCode_rule_content": "1.Sizin Yönlendirmeleriniz (ortak bağlantınız veya promosyon kodunuz aracılığıyla) yüklendiğinde, para kazanacaksınız.\n2.Seviye ne kadar yüksekse, yüzde oranı da o kadar yüksek olur.",
     "take_steam_success": "Tahsilat başarılı, lütfen bir dakika bekleyin!",
     "has_select": "Seçildi",
-    "total_price": "Toplam Ödül Toplamı Ödül Toplamı:",
+    "total_price": "ÖDÜLLER :",
     "total_num": "Toplam",
     "take_steam_confrm_title": "Steam'e toplamak istediğinizden emin misiniz?",
     "exchange_confirm_title": "Satmak istediğinizden emin misiniz?",
@@ -382,5 +382,6 @@
     "btm_nav_market": "pazarı",
     "vip_discount": "Bonus",
     "nav_title_games": "Oyunlar",
-    "nav_title_services": "MÜŞTERİ SERVİSİ"
+    "nav_title_services": "MÜŞTERİ SERVİSİ",
+    "choose_lang": "DİLİNİZİ SEÇİN"
 }

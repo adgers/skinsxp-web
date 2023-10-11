@@ -12,6 +12,7 @@ export default () => {
   const [userInfo, setUserInfo] = useState<API.CustomerDetailVo>();
   const localAgreePing = getLocalSettings('agreePing');
   const [loginTipShow, setLoginTipShow] = useState<boolean>(false);
+  const [langShow, setLangShow] = useState<boolean>(false);
 
   const [agreePing, setAgreePing] = useState<boolean>(
     localAgreePing === undefined ? true : localAgreePing,
@@ -83,6 +84,13 @@ export default () => {
     setLoginTipShow(false);
   };
 
+  const showLang = () => {
+    setLangShow(true);
+  };
+  const hideLang = () => {
+    setLangShow(false);
+  };
+
   const getUser = async () => {
     const ret = await customerDetailUsingGET();
     if (ret.data) {
@@ -122,5 +130,8 @@ export default () => {
     loginTipShow,
     showLoginTip,
     hideLoginTip,
+    langShow,
+    showLang,
+    hideLang,
   };
 };

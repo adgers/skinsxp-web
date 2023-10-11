@@ -218,7 +218,7 @@
     "promoteCode_rule_content": "1. Po doładowaniu konta przez poleconych (za pośrednictwem linku partnerskiego lub kodu promocyjnego) zarobisz pieniądze.\n2. Im wyższy poziom, tym wyższy procent.",
     "take_steam_success": "Zbiórka powiodła się, poczekaj chwilę!",
     "has_select": "Wybrane",
-    "total_price": "Nagrody",
+    "total_price": "NAGRODY :",
     "total_num": "Łącznie",
     "take_steam_confrm_title": "Czy na pewno chcesz pobrać go na Steam?",
     "exchange_confirm_title": "Czy na pewno chcesz sprzedać?",
@@ -382,5 +382,6 @@
     "btm_nav_market": "RYNEK",
     "vip_discount": "Bonus",
     "nav_title_games": "Gry",
-    "nav_title_services": "OBSŁUGA KLIENTA"
+    "nav_title_services": "OBSŁUGA KLIENTA",
+    "choose_lang": "WYBIERZ SWÓJ JĘZYK"
 }

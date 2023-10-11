@@ -218,7 +218,7 @@
     "promoteCode_rule_content": "1. Your Referrals (through your partner link or promo code) recharged, you will earn money.\n2. The higher the level, the higher the percentage.",
     "take_steam_success": "Collection successful, please wait a minute!",
     "has_select": "Selected",
-    "total_price": "Total Prizes Sum:",
+    "total_price": "PRIZES :",
     "total_num": "Total",
     "take_steam_confrm_title": "Are you sure you want to collect it to Steam?",
     "exchange_confirm_title": "Are you sure you want to sell?",
@@ -382,5 +382,6 @@
     "btm_nav_market": "MARKET",
     "vip_discount": "Bonus",
     "nav_title_games": "Games",
-    "nav_title_services": "CUSTOMER SERVICE"
+    "nav_title_services": "CUSTOMER SERVICE",
+    "choose_lang": "CHOOSE YOUR LANUAGE"
 }
