@@ -9,8 +9,10 @@ import enFlag from '@/assets/flags/en.svg';
 import trFlag from '@/assets/flags/tr.svg';
 import deFlag from '@/assets/flags/de.svg';
 import frFlag from '@/assets/flags/fr.svg';
-import plFlag from '@/assets/flags/pl.svg'
-import esFlag from '@/assets/flags/es.svg'
+import plFlag from '@/assets/flags/pl.svg';
+import esFlag from '@/assets/flags/es.svg';
+import jaFlag from '@/assets/flags/ja.svg';
+import krFlag from '@/assets/flags/kr.svg';
 
 
 import { BOX_GRADES } from '@/constants';
@@ -306,9 +308,19 @@ export const langs = [
     value: 'pl-PL',
     flag: plFlag,
   },
-  // {
-  //   title: 'Polski(ES)',
-  //   value: 'es-ES',
-  //   flag: esFlag,
-  // },
+  {
+    title: 'Polski(ES)',
+    value: 'es-ES',
+    flag: esFlag,
+  },
+  {
+    title: '日本語(JP)',
+    value: 'ja-JP',
+    flag: jaFlag,
+  },
+  {
+    title: '한국인(KR)',
+    value: 'ko-KR',
+    flag: krFlag,
+  },
 ];
