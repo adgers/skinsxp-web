@@ -23,6 +23,7 @@ export default function LoginCallback() {
         localStorage.setItem('token', ret.data.token);
       }
       if (ret.data?.register) {
+        window.fbq('trackSingleCustom', '1024868335308144', 'register_success');
         /* 后续由后台配置平台列表 */
         if (['7', '21']?.includes(ret.data?.promotionChannelId)) {
           // fb 推广用户 注册成功

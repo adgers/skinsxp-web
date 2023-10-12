@@ -15,7 +15,7 @@ export default function SelectLang() {
   };
 
   return (
-    <Modal open={langShow} className="overflow-visible w-[300px] sm:w-full max-w-2xl max-h-full">
+    <Modal open={langShow} className="overflow-visible w-[300px] sm:w-full max-w-md max-h-full">
       <Button
         size="xs"
         shape="circle"
@@ -27,7 +27,7 @@ export default function SelectLang() {
       </Button>
       <Modal.Body className=" overflow-visible">
         <div className="text-center mb-8"><FormattedMessage id="choose_lang" /></div>
-        <Menu as="div" className="relative w-full  sm:w-[60%] mx-auto">
+        <Menu as="div" className="relative w-full  sm:w-[80%] mx-auto">
           <Menu.Button
             className={
               'flex w-[100%] bg-black px-6 py-4 items-center justify-between'
