@@ -168,7 +168,9 @@ export default function Deposit() {
                       }}
                     >
                       <img
-                        src={`${getImgHost()}${item?.logo}.png`}
+                        src={`${getImgHost()}${item?.logo}${
+                          item?.logo?.includes('.') ? '' : '.png'
+                        }`}
                         className="h-full min-h-0 w-full max-w-full object-contain text-center leading-[100px]"
                         alt="visa_mastercard"
                       />
