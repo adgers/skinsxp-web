@@ -32,6 +32,8 @@ export function getApiDomain() {
     return 'http://114.55.56.184:9999';
   } else if (location.href.indexOf('wgskins.com') > -1) {
     return 'https://api.wgskins.com';
+  } else if (location.href.indexOf('wgskins.club') > -1) {
+    return 'https://api.wgskins.com';
   } else {
     return 'http://114.55.56.184:9999';
   }
@@ -44,6 +46,8 @@ export function getSocketDomain() {
   ) {
     return 'ss://114.55.56.184:9999/ws';
   } else if (location.href.indexOf('wgskins.com') > -1) {
+    return 'wss://api.wgskins.com/ws';
+  } else if (location.href.indexOf('wgskins.club') > -1) {
     return 'wss://api.wgskins.com/ws';
   } else {
     return 'ss://114.55.56.184:9999/ws';
