@@ -30,9 +30,7 @@ export function getApiDomain() {
     return 'https://api.wgskins.com';
 
     return 'http://114.55.56.184:9999';
-  } else if (location.href.indexOf('wgskins.com') > -1) {
-    return 'https://api.wgskins.com';
-  } else if (location.href.indexOf('wgskins.club') > -1) {
+  } else if (location.href.indexOf('wgskins') > -1) {
     return 'https://api.wgskins.com';
   } else {
     return 'http://114.55.56.184:9999';
@@ -45,9 +43,7 @@ export function getSocketDomain() {
       location.href.indexOf('127.0.0.1') > -1
   ) {
     return 'ss://114.55.56.184:9999/ws';
-  } else if (location.href.indexOf('wgskins.com') > -1) {
-    return 'wss://api.wgskins.com/ws';
-  } else if (location.href.indexOf('wgskins.club') > -1) {
+  } else if (location.href.indexOf('wgskins') > -1) {
     return 'wss://api.wgskins.com/ws';
   } else {
     return 'ss://114.55.56.184:9999/ws';
@@ -60,9 +56,7 @@ export function getImgHost() {
       location.href.indexOf('127.0.0.1') > -1
   ) {
     return 'http://test-wgskins-file.oss-cn-hangzhou.aliyuncs.com/cdn/image/';
-  } else if (location.href.indexOf('wgskins.com') > -1) {
-    return 'https://img.wgskins.com/cdn/image/';
-  } else if (location.href.indexOf('wgskins.club') > -1) {
+  } else if (location.href.indexOf('wgskins') > -1) {
     return 'https://img.wgskins.com/cdn/image/';
   }
   return 'http://test-wgskins-file.oss-cn-hangzhou.aliyuncs.com/cdn/image/';
