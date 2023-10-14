@@ -62,6 +62,8 @@ export function getImgHost() {
     return 'http://test-wgskins-file.oss-cn-hangzhou.aliyuncs.com/cdn/image/';
   } else if (location.href.indexOf('wgskins.com') > -1) {
     return 'https://img.wgskins.com/cdn/image/';
+  } else if (location.href.indexOf('wgskins.club') > -1) {
+    return 'https://img.wgskins.com/cdn/image/';
   }
   return 'http://test-wgskins-file.oss-cn-hangzhou.aliyuncs.com/cdn/image/';
 }
