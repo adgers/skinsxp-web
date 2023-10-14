@@ -380,6 +380,9 @@ export default function Deposit() {
                     window?.gtag('event', 'conversion', {
                       send_to: 'AW-11345409756/X-e6CI2Qy-UYENzt9KEq',
                     });
+                    window?.gtag('event', 'conversion', {
+                      send_to: 'AW-11366618499/hRUTCJWBm-wYEIOrg6wq',
+                    });
                   }}
                   type="button"
                   loading={payLoading}
@@ -431,6 +434,10 @@ export default function Deposit() {
       /* 后续由后台配置平台列表 */
       // 首次充值成功
       window?.fbq('trackSingleCustom', '1024868335308144', 'fistRecharge');
+      gtag('event', 'conversion', {
+        send_to: 'AW-11366618499/U60XCO3zmuwYEIOrg6wq',
+        transaction_id: '',
+      });
 
       if (['7', '21']?.includes(userInfo?.promotionChannelId)) {
         // fb

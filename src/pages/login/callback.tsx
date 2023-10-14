@@ -24,6 +24,9 @@ export default function LoginCallback() {
       }
       if (ret.data?.register) {
         window.fbq('trackSingleCustom', '1024868335308144', 'register_success');
+        gtag('event', 'conversion', { // lanhan
+          send_to: 'AW-11366618499/WyYOCOeNlewYEIOrg6wq',
+        });
         /* 后续由后台配置平台列表 */
         if (['7', '21']?.includes(ret.data?.promotionChannelId)) {
           // fb 推广用户 注册成功
