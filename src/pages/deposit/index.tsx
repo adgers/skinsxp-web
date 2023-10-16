@@ -466,6 +466,13 @@ export default function Deposit() {
           currency: 'USD',
         });
       }
+      if (['24'].includes(userInfo?.promotionChannelId)) {
+        window.gtag('event', 'conversion', {
+          send_to: 'AW-11366921880/yBvMCL624ewYEJjtlawq',
+          value: ret?.data?.quantity,
+          currency: 'USD',
+        });
+      }
       toast.success(intl?.formatMessage({ id: 'deposit_success' }));
       getUser();
       if (interval) {

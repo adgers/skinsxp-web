@@ -236,6 +236,7 @@ export default defineConfig({
       gtag('js', new Date());
       gtag('config', 'AW-11334119378');
       gtag('config', 'G-6LDWG1BWSC');
+      gtag('config', 'AW-11366921880');
       gtag('config', 'AW-11345409756');
       gtag('config', 'AW-11366618499');
       `,

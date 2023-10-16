@@ -24,7 +24,8 @@ export default function LoginCallback() {
       }
       if (ret.data?.register) {
         window.fbq('trackSingleCustom', '1024868335308144', 'register_success');
-        gtag('event', 'conversion', { // lanhan
+        gtag('event', 'conversion', {
+          // lanhan
           send_to: 'AW-11366618499/WyYOCOeNlewYEIOrg6wq',
         });
         /* 后续由后台配置平台列表 */
@@ -42,8 +43,15 @@ export default function LoginCallback() {
           });
         }
         if (ret.data?.promotionChannelId === '11') {
+          // taidong
           window?.gtag('event', 'conversion', {
             send_to: 'AW-11345409756/C-brCIeQy-UYENzt9KEq',
+          });
+        }
+        if (ret.data?.promotionChannelId === '24') {
+          // tiger_2
+          window?.gtag('event', 'conversion', {
+            send_to: 'AW-11366921880/B4TyCMG24ewYEJjtlawq',
           });
         }
       }
