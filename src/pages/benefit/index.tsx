@@ -141,7 +141,7 @@ export default function Benefit() {
         )} */}
         {/* {tab === 1 && (
           <> */}
-        <div className="flex h-fit w-full items-center gap-4 px-2 py-2 sm:py-0  bg-[url('@/assets/promo-bg.png')] bg-no-repeat bg-cover sm:pl-28 sm:pr-8 text-sm sm:text-md whitespace-pre-wrap font-semibold">
+        <div className="flex h-fit w-full items-center gap-4 px-2 py-2 sm:py-0  bg-[url('@/assets/golden-code-bg.png')] bg-no-repeat bg-cover sm:pl-28 sm:pr-8 text-sm sm:text-md whitespace-pre-wrap font-semibold">
           <div className="h-fit w-full grow sm:-mr-20 sm:-ml-16">
             <p className="text-[16px] mb-2">
               {intl.formatMessage({ id: 'wc_cdkey_explain' }).split('\\n')[0]}
@@ -154,7 +154,7 @@ export default function Benefit() {
             </p>
           </div>
           <div className="w-48 relative z-10  aspect-square sm:block">
-            <img src={require('@/assets/promo-img.png')} alt="" />
+            <img src={require('@/assets/golden-code-box.png')} alt="" />
           </div>
         </div>
         <div className="w-full mt-5 flex rounded-xl">
@@ -167,7 +167,7 @@ export default function Benefit() {
           />
 
           <div
-            className="btn btn-purple uppercase px-10"
+            className="btn btn-yellow uppercase px-10"
             onClick={onGetBenefit}
           >
             <FormattedMessage id="text_btn_apply" />

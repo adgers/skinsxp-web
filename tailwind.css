@@ -18,3 +18,7 @@
 .btn-light {
   @apply btn border border-light gap-1 rounded bg-dark text-white hover:border-light hover:bg-black hover:bg-opacity-50 flex items-center justify-center
 }
+
+.btn-yellow {
+  @apply btn border border-none gap-1 rounded bg-yellow text-black hover:border-yellow hover:bg-yellow hover:bg-opacity-50 flex items-center justify-center
+}
