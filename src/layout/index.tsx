@@ -36,13 +36,13 @@ export default function Layout() {
   }, [data]);
 
   useEffect(() => {
+    const channelCode = params.channelCode || 'wgskins';
     if (window?.gtag) {
-      const channelCode = params.channelCode || 'wgskins';
       gtag('event', 'pageview', {
         channelCode: channelCode,
       });
     }
-    console.log('loaded');
+    sessionStorage.setItem('channelCode', params?.cCode as string);
     setPageLoaded(true);
   }, []);
 

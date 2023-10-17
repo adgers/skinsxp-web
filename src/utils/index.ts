@@ -239,7 +239,7 @@ export function getSteamLoginUrl() {
   let query = {
     redirectUrl: redirectUrl,
     promoteCode: params.promoteCode,
-    channelCode: params.channelCode,
+    channelCode: params.channelCode || sessionStorage.getItem('channelCode'),
   };
 
   let callbackUrl = `${
