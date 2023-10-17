@@ -21,6 +21,7 @@ import { Button, Modal } from 'react-daisyui';
 import { toast } from 'react-toastify';
 import { CSSTransition, TransitionGroup } from 'react-transition-group';
 import { Swiper, SwiperSlide } from 'swiper/react';
+import 'swiper/css';
 import './index.less';
 
 export enum ItemState {
