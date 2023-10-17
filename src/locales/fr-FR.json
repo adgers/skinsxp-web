@@ -308,7 +308,7 @@
     "battle_total_cost": "Choisissez votre mode de boîte aveugle",
     "battle_total_price": "Coût total",
     "battle_select_cases": "Valeur totale de la boîte aveugle",
-    "bag_avaliable_sale": "Objets",
+    "bag_avaliable_sale": "De l'activité",
     "bag_item_sell": "Vendre",
     "server_seed": "Clé du serveur",
     "server_seed_show": "Afficher la clé du serveur",
@@ -338,7 +338,7 @@
     "login_confirm_adult": "J'ai plus de 18 ans",
     "login_agree": "J'accepte",
     "login_to_kx": "Ouvrir après connexion",
-    "bag_all": "Historique",
+    "bag_all": "TOUTE",
     "text_sell": "Vendre",
     "footer_services": "Services",
     "footer_company": "Société",
@@ -383,5 +383,14 @@
     "vip_discount": "Bonus",
     "nav_title_games": "Jeux",
     "nav_title_services": "SERVICE CLIENTÈLE",
-    "choose_lang": "CHOISISSEZ VOTRE LANGUE"
+    "choose_lang": "CHOISISSEZ VOTRE LANGUE",
+    "collect_history": "COLLECTER L'HISTOIRE",
+    "collect_annouce": "Il faut jusqu'à 12 heures pour récupérer les articles.",
+    "collect_annouce_detail": "Certaines armes, skins et autres accessoires virtuels doivent être expédiés depuis l'Asie. En raison du décalage horaire, il peut y avoir un retard de 12 heures pour arriver sur votre compte Steam.",
+    "collect_checksteam": "Vérifiez votre compte Steam et remplissez l'URL d'échange",
+    "collect_checksteam_detail": "Veuillez vérifier si le compte Steam a un profil et un inventaire publics. S'il est terminé, veuillez remplir l'URL de l'échange Steam.",
+    "collect_help": "Laissez-nous vous aider",
+    "collect_help_detail": "Lors de la collecte des heures supplémentaires, vous pouvez nous contacter directement en bas à droite de la page pour obtenir de l'aide.",
+    "Steam_errorcode": "Il y a une erreur avec votre compte Steam, veuillez vérifier.",
+    "collect_help_link": "RECUEILLER DE L'AIDE"
 }

@@ -308,7 +308,7 @@
     "battle_total_cost": "Savaşın maliyeti",
     "battle_total_price": "Toplam kasa sayısı",
     "battle_select_cases": "KASA EKLE",
-    "bag_avaliable_sale": "Öge",
+    "bag_avaliable_sale": "AKTIV",
     "bag_item_sell": "Satış için",
     "server_seed": "SUNUCU TOHUMU",
     "server_seed_show": "SUNUCU SEED'İNİ GÖSTER",
@@ -338,7 +338,7 @@
     "login_confirm_adult": "18 yaşındayım ya da yaşındayım.",
     "login_agree": "Ben de kabul ediyorum.",
     "login_to_kx": "Açık Bölüme Gir",
-    "bag_all": "Geçmiş",
+    "bag_all": "TODOS",
     "text_sell": "satın",
     "footer_services": "Hizmetler",
     "footer_company": "Şirketi",
@@ -383,5 +383,14 @@
     "vip_discount": "Bonus",
     "nav_title_games": "Oyunlar",
     "nav_title_services": "MÜŞTERİ SERVİSİ",
-    "choose_lang": "DİLİNİZİ SEÇİN"
+    "choose_lang": "DİLİNİZİ SEÇİN",
+    "collect_history": "TARİHİ TOPLA",
+    "collect_annouce": "Eşyaların alınması 12 saat kadar sürüyor.",
+    "collect_annouce_detail": "Bazı silahların, görünümlerin ve diğer sanal eşyaların Asya'dan gönderilmesi gerekiyor. Zaman farklılıklarından dolayı Steam hesabınıza ulaşmasında 12 saatlik bir gecikme olabilir.",
+    "collect_checksteam": "Steam hesabınızı kontrol edin ve takas URL'sini girin",
+    "collect_checksteam_detail": "Lütfen Steam hesabının herkese açık profili ve envanteri olup olmadığını kontrol edin. Tamamlandıysa lütfen Steam Ticaret URL'sini doldurun.",
+    "collect_help": "yardım edelim",
+    "collect_help_detail": "Tahsilat fazla mesai yaptığında yardım için sayfanın sağ alt kısmından bizimle doğrudan iletişime geçebilirsiniz.",
+    "Steam_errorcode": "Steam hesabınızda bir hata var, lütfen kontrol edin.",
+    "collect_help_link": "YARDIM TOPLA"
 }

@@ -20,6 +20,7 @@ import { useState } from 'react';
 import { Button, Modal } from 'react-daisyui';
 import { toast } from 'react-toastify';
 import { CSSTransition, TransitionGroup } from 'react-transition-group';
+import { Swiper, SwiperSlide } from 'swiper/react';
 import './index.less';
 
 export enum ItemState {
@@ -135,7 +136,7 @@ export default function BagPage() {
 
   return (
     <div className="w-full">
-      <div className="flex justify-between pb-4">
+      <div className="flex flex-col gap-2 sm:flex-row justify-between pb-4">
         <div className="flex gap-2 sm:gap-4 items-center text-sm">
           <div
             className="btn btn-sm btn-ghost rounded"
@@ -179,25 +180,145 @@ export default function BagPage() {
             </span>
           </div>
         </div>
-        <div
-          className="btn-green !btn-sm !sm:btn-base !px-8 "
-          onClick={() => {
-            setCheckedList(pageData?.map((item: any) => item.id));
-            setTotalPrice(
-              numberFixed(
-                pageData?.reduce(
-                  (a: any, b: any) => Number(a) + Number(b.recoveryPrice),
-                  0,
+        <div className="flex items-center justify-between  sm:justify-end gap-4">
+          <div
+            className="text-sm text-gray cursor-pointer"
+            onClick={() => history.push('/profile/record/flow#take')}
+          >
+            <IconFont type="icon-history" className="mr-2" />
+            <FormattedMessage id="collect_history" />
+          </div>
+          <div
+            className="btn-green !btn-sm !sm:btn-base !px-8 "
+            onClick={() => {
+              setCheckedList(pageData?.map((item: any) => item.id));
+              setTotalPrice(
+                numberFixed(
+                  pageData?.reduce(
+                    (a: any, b: any) => Number(a) + Number(b.recoveryPrice),
+                    0,
+                  ),
                 ),
-              ),
-            );
-            setExchangeConfirm(true);
-          }}
-        >
-          <IconFont type="icon-coin" className="text-xl" />
-          <FormattedMessage id="open_box_sell_all" />
+              );
+              setExchangeConfirm(true);
+            }}
+          >
+            <IconFont type="icon-coin" className="text-xl" />
+            <FormattedMessage id="open_box_sell_all" />
+          </div>
         </div>
       </div>
+
+      <div className="mb-8 mt-4 hidden grid-cols-3 gap-12 lg:grid">
+        <div className="relative flex h-full rounded-lg bg-black px-6">
+          <IconFont type="icon-step1" className="text-green text-[40px] mr-4" />
+
+          <div className="flex flex-col justify-center py-8">
+            <h4 className="text-sm">
+              <FormattedMessage id="collect_annouce" />
+            </h4>
+            <p className="mt-1 text-xs text-light">
+              <FormattedMessage id="collect_annouce_detail" />
+            </p>
+          </div>
+        </div>
+        <div className="relative flex rounded-lg bg-black px-6">
+          <IconFont type="icon-step2" className="text-green text-[40px] mr-4" />
+          <div className="flex flex-col justify-center py-8">
+            <h4 className="text-sm">
+              <FormattedMessage id="collect_checksteam" />
+            </h4>
+            <p className="text-xs text-light">
+              <FormattedMessage id="collect_checksteam_detail" />
+            </p>
+          </div>
+        </div>
+        <div className="flex rounded-lg bg-black px-6">
+          <IconFont type="icon-step3" className="text-green text-[40px] mr-4" />
+
+          <div className="flex flex-col justify-center py-8">
+            <h4 className="text-sm">
+              <FormattedMessage id="collect_help" />
+            </h4>
+            <p className="text-xs text-light">
+              <FormattedMessage id="collect_help_detail" />
+              <a href="/docs/help/32" target="_blank" className="underline">
+                <FormattedMessage id="collect_help_link" />
+              </a>
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <Swiper className="mb-10 block lg:hidden">
+        <SwiperSlide>
+          <div className="swiper-slide swiper-slide-active">
+            <div
+              className="relative flex h-full rounded-lg bg-black px-6"
+              style={{ margin: '0px 5px' }}
+            >
+              <IconFont
+                type="icon-step1"
+                className="text-green text-[40px] mr-4"
+              />
+              <div className="flex flex-col justify-center py-8">
+                <h4 className="text-sm">
+                  <FormattedMessage id="collect_annouce" />
+                </h4>
+                <p className="mt-1 text-xs text-light">
+                  <FormattedMessage id="collect_annouce_detail" />
+                </p>
+              </div>
+            </div>
+          </div>
+        </SwiperSlide>
+        <SwiperSlide>
+          <div className="swiper-slide swiper-slide-next">
+            <div
+              className="relative flex h-full rounded-lg bg-black px-6"
+              style={{ margin: '0px 5px' }}
+            >
+              <IconFont
+                type="icon-step2"
+                className="text-green text-[40px] mr-4"
+              />
+
+              <div className="flex flex-col justify-center py-8">
+                <h4 className="text-sm">
+                  <FormattedMessage id="collect_checksteam" />
+                </h4>
+                <p className="text-xs text-light">
+                  <FormattedMessage id="collect_checksteam_detail" />
+                </p>
+              </div>
+            </div>
+          </div>
+        </SwiperSlide>
+        <SwiperSlide>
+          <div className="swiper-slide">
+            <div
+              className="flex h-full rounded-lg bg-black px-6"
+              style={{ margin: '0px 5px' }}
+            >
+              <IconFont
+                type="icon-step3"
+                className="text-green text-[40px] mr-4"
+              />
+              <div className="flex flex-col justify-center py-8">
+                <h4 className="text-sm">
+                  <FormattedMessage id="collect_help" />
+                </h4>
+                <p className="text-xs text-light">
+                  <FormattedMessage id="collect_help_detail" />
+                  <a href="/docs/help/32" target="_blank" className="underline">
+                    <FormattedMessage id="collect_help_link" />
+                  </a>
+                </p>
+              </div>
+            </div>
+          </div>
+        </SwiperSlide>
+      </Swiper>
 
       {!loading && pageData?.length === 0 && <Empty />}
       <>

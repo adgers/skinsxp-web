@@ -308,7 +308,7 @@
     "battle_total_cost": "Custo da batalha",
     "battle_total_price": "Preço total das caixas",
     "battle_select_cases": "ADICIONAR CAIXA",
-    "bag_avaliable_sale": "Itens",
+    "bag_avaliable_sale": "ACTIVO",
     "bag_item_sell": "vender para",
     "server_seed": "Semente do Servidor",
     "server_seed_show": "mostrar semente do servidor",
@@ -338,7 +338,7 @@
     "login_confirm_adult": "Tenho 18 anos ou mais",
     "login_agree": "Eu concordo com os",
     "login_to_kx": "faça login para abrir o caso",
-    "bag_all": "História",
+    "bag_all": "TODOS",
     "text_sell": "vender",
     "footer_services": "Serviços",
     "footer_company": "Empresa",
@@ -383,5 +383,14 @@
     "vip_discount": "Bônus",
     "nav_title_games": "Jogos",
     "nav_title_services": "ATENDIMENTO AO CLIENTE",
-    "choose_lang": "ESCOLHA SEU IDIOMA"
+    "choose_lang": "ESCOLHA SEU IDIOMA",
+    "collect_history": "COLETE HISTÓRIA",
+    "collect_annouce": "Demora até 12 horas para retirar os itens.",
+    "collect_annouce_detail": "Algumas armas, skins e outros acessórios virtuais precisam ser enviados da Ásia. Devido a diferenças de horário, pode haver um atraso de 12 horas na chegada à sua conta Steam.",
+    "collect_checksteam": "Verifique sua conta Steam e preencha o URL de negociação",
+    "collect_checksteam_detail": "Verifique se a conta Steam tem perfil e inventário públicos. Se tiver sido concluído, preencha o URL de negociação do Steam.",
+    "collect_help": "Deixe-nos ajudar",
+    "collect_help_detail": "Quando a cobrança for prorrogada, você pode entrar em contato conosco diretamente no canto inferior direito da página para obter ajuda.",
+    "Steam_errorcode": "Há algo de errado com sua conta Steam, verifique.",
+    "collect_help_link": "COLETE AJUDA"
 }

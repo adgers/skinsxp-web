@@ -308,7 +308,7 @@
     "battle_total_cost": "전투 비용",
     "battle_total_price": "케이스의 총 가격",
     "battle_select_cases": "케이스 추가",
-    "bag_avaliable_sale": "물건",
+    "bag_avaliable_sale": "활성",
     "bag_item_sell": "판매 대상",
     "server_seed": "서버 시드",
     "server_seed_show": "서버 시드 표시",
@@ -338,7 +338,7 @@
     "login_confirm_adult": "본인은 만 18세 이상입니다.",
     "login_agree": "개인정보 취급방침에 동의합니다.",
     "login_to_kx": "로그인하여 케이스 열기",
-    "bag_all": "역사",
+    "bag_all": "모두",
     "text_sell": "판매",
     "footer_services": "서비스",
     "footer_company": "회사",
@@ -383,5 +383,14 @@
     "vip_discount": "보너스",
     "nav_title_games": "게임",
     "nav_title_services": "고객 서비스",
-    "choose_lang": "언어 선택"
+    "choose_lang": "언어 선택",
+    "collect_history": "역사 수집",
+    "collect_annouce": "아이템을 수령하는 데 최대 12시간이 소요됩니다.",
+    "collect_annouce_detail": "일부 무기, 스킨 및 기타 가상 소품은 아시아에서 배송되어야 합니다. 시차로 인해 Steam 계정에 도착하는 데 12시간 정도 지연될 수 있습니다.",
+    "collect_checksteam": "Steam 계정을 확인하고 거래 URL을 입력하세요.",
+    "collect_checksteam_detail": "Steam 계정에 공개 프로필과 인벤토리가 있는지 확인하세요. 완료하셨다면 스팀거래 URL을 입력해 주세요.",
+    "collect_help": "우리가 도와주세요",
+    "collect_help_detail": "수집 시간이 초과되면 페이지 오른쪽 하단에서 직접 문의하여 도움을 받을 수 있습니다.",
+    "Steam_errorcode": "Steam 계정에 오류가 있습니다. 확인해 주세요.",
+    "collect_help_link": "도움을 받으세요"
 }

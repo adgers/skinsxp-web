@@ -308,7 +308,7 @@
     "battle_total_cost": "總花費",
     "battle_total_price": "盲盒總價值",
     "battle_select_cases": "選擇盲盒",
-    "bag_avaliable_sale": "物品",
+    "bag_avaliable_sale": "活躍的物品",
     "bag_item_sell": "賣",
     "server_seed": "服務器密鑰",
     "server_seed_show": "展示服務器密鑰",
@@ -338,7 +338,7 @@
     "login_confirm_adult": "我已年滿 18 歲",
     "login_agree": "我同意",
     "login_to_kx": "登錄後開箱",
-    "bag_all": "歷史",
+    "bag_all": "全部物品",
     "text_sell": "出售",
     "footer_services": "服务",
     "footer_company": "公司",
@@ -383,5 +383,14 @@
     "vip_discount": "充值返利",
     "nav_title_games": "玩法",
     "nav_title_services": "客戶服務",
-    "choose_lang": "選擇您的語言"
+    "choose_lang": "選擇您的語言",
+    "collect_history": "取回歷史",
+    "collect_annouce": "取貨到賬最長需要12小時",
+    "collect_annouce_detail": "部分武器、皮膚等虛擬道具需要從亞洲地區發貨，由於時差原因，可能會延遲12小時到達您的Steam賬戶。",
+    "collect_checksteam": "檢查Steam賬戶並填入交易鏈接",
+    "collect_checksteam_detail": "請檢查steam賬戶是否已公開個人資料和庫存，如果已完成，請在上方填入steam交易鏈接。",
+    "collect_help": "讓我們來協助",
+    "collect_help_detail": "當超過取貨時長後，可以在頁面右下方直接聯系我們以尋求幫助。",
+    "Steam_errorcode": "您的 Steam 賬號存在異常，請進行排查。",
+    "collect_help_link": "常見取回問題"
 }

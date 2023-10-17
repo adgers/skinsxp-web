@@ -383,5 +383,14 @@
     "vip_discount": "充值返利",
     "nav_title_games": "玩法",
     "nav_title_services": "客户服务",
-    "choose_lang": "选择您的语言"
+    "choose_lang": "选择您的语言",
+    "collect_history": "取回歷史",
+    "collect_annouce": "取貨到賬最長需要12小時",
+    "collect_annouce_detail": "部分武器、皮膚等虛擬道具需要從亞洲地區發貨，由於時差原因，可能會延遲12小時到達您的Steam賬戶。",
+    "collect_checksteam": "檢查Steam賬戶並填入交易鏈接",
+    "collect_checksteam_detail": "請檢查steam賬戶是否已公開個人資料和庫存，如果已完成，請在上方填入steam交易鏈接。",
+    "collect_help": "讓我們來協助",
+    "collect_help_detail": "當超過取貨時長後，可以在頁面右下方直接聯系我們以尋求幫助。",
+    "Steam_errorcode": "您的 Steam 賬號存在異常，請進行排查。",
+    "collect_help_link": "常見取回問題"
 }

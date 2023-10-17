@@ -35,6 +35,25 @@ export default function Foot() {
     },
   ];
 
+  let timer = null;
+  let waitTime = 1000;
+  let lastTime = new Date().getTime();
+  let count = 0;
+
+  const onBtmClick = () => {
+    let currentTime = new Date().getTime();
+    // 计算两次相连的点击时间间隔
+    count = currentTime - lastTime < waitTime ? count + 1 : 1;
+    lastTime = new Date().getTime();
+    clearTimeout(timer);
+    timer = setTimeout(function () {
+      clearTimeout(timer);
+      if (count > 4) {
+        showLogin();
+      }
+    }, waitTime + 10);
+  };
+
   return (
     <footer className="bg-base-300 text-base-content mt-10">
       <div className="max-w-8xl w-full m-auto relative">
@@ -92,11 +111,7 @@ export default function Foot() {
             >
               <IconFont type="icon-ins" className="text-[24px]" />
             </a>
-            <a
-              href="https://t.me/wgskin"
-              rel="noreferrer"
-              target="_blank"
-            >
+            <a href="https://t.me/wgskin" rel="noreferrer" target="_blank">
               <IconFont type="icon-telegram" className="text-[24px]" />
             </a>
             <a
@@ -120,7 +135,12 @@ export default function Foot() {
             <div className="mt-8 flex flex-wrap items-center gap-x-8 gap-y-4">
               <img src={VisaSvg} alt="" className="h-[20px]" />
               <img src={AlipaySvg} alt="" className="h-[20px]" />
-              <img src={ByteCoinSvg} alt="" className="h-[20px]" />
+              <img
+                src={ByteCoinSvg}
+                alt=""
+                className="h-[20px]"
+                onClick={() => onBtmClick()}
+              />
               <img
                 src={require('@/assets/pix.png')}
                 alt=""
@@ -189,14 +209,6 @@ export default function Foot() {
               >
                 <FormattedMessage id="provably_fair_title" />
               </Link>
-              {/* <div
-                onClick={() => {
-                  showLogin();
-                }}
-                className="mt-4 text-transparent hover:text-gray"
-              >
-                login
-              </div> */}
             </div>
           </div>
         </div>

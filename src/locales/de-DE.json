@@ -308,7 +308,7 @@
     "battle_total_cost": "Kosten der Schlacht",
     "battle_total_price": "Gesamtpreis der Koffer",
     "battle_select_cases": "Fälle hinzufügen",
-    "bag_avaliable_sale": "Gegenstände",
+    "bag_avaliable_sale": "AKTIV",
     "bag_item_sell": "Verkaufen für",
     "server_seed": "Serverschlüssel",
     "server_seed_show": "Server-Seed anzeigen",
@@ -338,7 +338,7 @@
     "login_confirm_adult": "Ich bin 18 Jahre alt oder älter",
     "login_agree": "Ich akzeptiere die",
     "login_to_kx": "Anmelden, um Fall zu öffnen",
-    "bag_all": "Verlauf",
+    "bag_all": "ALLE",
     "text_sell": "verkaufen",
     "footer_services": "Dienstleistungen",
     "footer_company": "Unternehmen",
@@ -383,5 +383,14 @@
     "vip_discount": "Bonus",
     "nav_title_games": "Spiele",
     "nav_title_services": "KUNDENBETREUUNG",
-    "choose_lang": "WÄHLE DEINE SPRACHE"
+    "choose_lang": "WÄHLE DEINE SPRACHE",
+    "collect_history": "SAMMLE GESCHICHTE",
+    "collect_annouce": "Die Abholung der Artikel dauert bis zu 12 Stunden.",
+    "collect_annouce_detail": "Einige Waffen, Skins und andere virtuelle Requisiten müssen aus Asien verschifft werden. Aufgrund von Zeitunterschieden kann es zu einer 12-stündigen Verzögerung beim Eintreffen auf Ihrem Steam-Konto kommen.",
+    "collect_checksteam": "Überprüfen Sie Ihr Steam-Konto und geben Sie die Handels-URL ein",
+    "collect_checksteam_detail": "Bitte prüfen Sie, ob das Steam-Konto über ein öffentliches Profil und Inventar verfügt. Wenn der Vorgang abgeschlossen ist, geben Sie bitte die Steam-Handels-URL ein.",
+    "collect_help": "Lasst uns helfen",
+    "collect_help_detail": "Wenn die Abholung zu spät ist, können Sie uns unten rechts auf der Seite direkt kontaktieren, um Hilfe zu erhalten.",
+    "Steam_errorcode": "Es liegt ein Fehler mit Ihrem Steam-Konto vor. Bitte überprüfen Sie dies.",
+    "collect_help_link": "SAMMLE HILFE"
 }

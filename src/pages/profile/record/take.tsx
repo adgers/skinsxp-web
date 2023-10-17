@@ -1,8 +1,10 @@
 import { getMyRetrievalPageUsingGET } from '@/services/front/gezhongjiluxiangguan';
+import { ExclamationCircleOutlined } from '@ant-design/icons';
 import { FormattedMessage, useRequest } from '@umijs/max';
 import { Table } from 'antd';
 import { ColumnsType } from 'antd/es/table';
 import { useState } from 'react';
+import { Tooltip } from 'react-daisyui';
 
 export default function TakeRecord() {
   const [dataSource, setDataSource] = useState<API.MyRetrievalPageVo[]>([]);
@@ -27,11 +29,11 @@ export default function TakeRecord() {
   );
 
   const gameColumns: ColumnsType<API.MyRetrievalPageVo> = [
-    {
-      title: <FormattedMessage id="order_id" />,
-      dataIndex: 'orderId',
-      key: 'orderId',
-    },
+    // {
+    //   title: <FormattedMessage id="order_id" />,
+    //   dataIndex: 'orderId',
+    //   key: 'orderId',
+    // },
     {
       title: <FormattedMessage id="record_take_item" />,
       dataIndex: 'ornamentName',
@@ -46,7 +48,7 @@ export default function TakeRecord() {
       title: <FormattedMessage id="take_state" />,
       dataIndex: 'state',
       key: 'state',
-      render: (state) => {
+      render: (state, record) => {
         switch (state) {
           case 0:
             return <FormattedMessage id="take_state0" />;
@@ -57,7 +59,16 @@ export default function TakeRecord() {
           case 3:
             return <FormattedMessage id="take_state3" />;
           case 4:
-            return <FormattedMessage id="take_state4" />;
+            return (
+              <>
+                <FormattedMessage id="take_state4" />
+                {record?.remark && (
+                  <Tooltip color="error" message={record?.remark}>
+                    <ExclamationCircleOutlined className="ml-2 text-error" />
+                  </Tooltip>
+                )}
+              </>
+            );
         }
       },
     },

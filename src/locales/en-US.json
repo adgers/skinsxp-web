@@ -308,7 +308,7 @@
     "battle_total_cost": "Battle's cost",
     "battle_total_price": "Total price of cases",
     "battle_select_cases": "Add Cases",
-    "bag_avaliable_sale": "Items",
+    "bag_avaliable_sale": "ACTIVE",
     "bag_item_sell": "Sell for",
     "server_seed": "Server Seed",
     "server_seed_show": "show server seed",
@@ -338,7 +338,7 @@
     "login_confirm_adult": "I am 18 years of age or older",
     "login_agree": "I agree to the",
     "login_to_kx": "Login to Open Case",
-    "bag_all": "History",
+    "bag_all": "ALL",
     "text_sell": "sell",
     "footer_services": "Services",
     "footer_company": "Company",
@@ -383,5 +383,14 @@
     "vip_discount": "Bonus",
     "nav_title_games": "Games",
     "nav_title_services": "CUSTOMER SERVICE",
-    "choose_lang": "CHOOSE YOUR LANUAGE"
+    "choose_lang": "CHOOSE YOUR LANUAGE",
+    "collect_history": "COLLECT HISTORY",
+    "collect_annouce": "It takes up to 12 hours to pick up the items.",
+    "collect_annouce_detail": "Some weapons, skins and other virtual props need to be shipped from Asia. Due to time differences, there may be a 12-hour delay in arriving in your Steam account.",
+    "collect_checksteam": "Check your Steam account and fill in the trade URL",
+    "collect_checksteam_detail": "Please check whether the steam account has public profile and inventory. If it has been completed, please fill in the steam trade URL.",
+    "collect_help": "Let us help",
+    "collect_help_detail": "When the collection overtime, you can contact us directly at the bottom right of the page for help.",
+    "Steam_errorcode": "There is something error with your Steam account, please check.",
+    "collect_help_link": "COLLECT HELP"
 }

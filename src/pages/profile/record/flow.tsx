@@ -1,5 +1,5 @@
-import { useIntl } from '@umijs/max';
-import { useMemo, useState } from 'react';
+import { useIntl, useLocation,history } from '@umijs/max';
+import { useEffect, useMemo, useState } from 'react';
 import BalanceRecord from './balance';
 import RechargeRecord from './recharge';
 import TakeRecord from './take';
@@ -7,6 +7,8 @@ import TakeRecord from './take';
 export default function FlowRecord() {
   const [roomState, setRoomState] = useState('recharge');
   const intl = useIntl();
+  const location = useLocation();
+
   const roomStates = useMemo(
     () => [
       {
@@ -18,6 +20,13 @@ export default function FlowRecord() {
     ],
     [],
   );
+
+  useEffect(() => {
+    const flag = location.hash;
+    if (flag === '#take') {
+      setRoomState('take');
+    }
+  }, []);
 
   return (
     <div className="flex flex-col items-center">
@@ -31,7 +40,10 @@ export default function FlowRecord() {
                   : 'text-white '
               }`}
               key={index}
-              onClick={() => setRoomState(item.value)}
+              onClick={() => {
+                setRoomState(item.value)
+                history.push(`${location.pathname}#${item.value}`)
+              }}
             >
               {item.label}
             </div>

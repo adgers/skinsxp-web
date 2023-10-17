@@ -308,7 +308,7 @@
     "battle_total_cost": "合計コスト",
     "battle_total_price": "ブラインドボックスの総額",
     "battle_select_cases": "ブラインドボックスを選択",
-    "bag_avaliable_sale": "もの",
+    "bag_avaliable_sale": "アクティブ",
     "bag_item_sell": "販売する",
     "server_seed": "サーバーキー",
     "server_seed_show": "サーバーキーを表示",
@@ -338,7 +338,7 @@
     "login_confirm_adult": "私は18歳以上です。",
     "login_agree": "同意する",
     "login_to_kx": "ログインして開封する",
-    "bag_all": "履歴",
+    "bag_all": "全て",
     "text_sell": "販売",
     "footer_services": "サービス",
     "footer_company": "コーポレート",
@@ -383,5 +383,14 @@
     "vip_discount": "リチャージリベート",
     "nav_title_games": "プレー",
     "nav_title_services": "カスタマーサービス",
-    "choose_lang": "言語を選択"
+    "choose_lang": "言語を選択",
+    "collect_history": "履歴を収集する",
+    "collect_annouce": "商品の受け取りには最大12時間かかります。",
+    "collect_annouce_detail": "一部の武器、スキン、その他の仮想小道具はアジアから発送する必要があります。 時差の関係で、Steam アカウントに到着するまでに 12 時間の遅れが生じる可能性があります。",
+    "collect_checksteam": "Steam アカウントを確認し、取引 URL を入力してください",
+    "collect_checksteam_detail": "Steam アカウントに公開プロフィールとインベントリがあるかどうかを確認してください。 完了していればsteam tradeのURLを記入してください。",
+    "collect_help": "お手伝いしましょう",
+    "collect_help_detail": "収集が時間外になる場合は、ページの右下から直接お問い合わせください。",
+    "Steam_errorcode": "Steam アカウントにエラーがあります。確認してください。",
+    "collect_help_link": "助けを集める"
 }

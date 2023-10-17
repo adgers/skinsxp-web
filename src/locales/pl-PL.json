@@ -308,7 +308,7 @@
     "battle_total_cost": "Koszt bitwy",
     "battle_total_price": "Łączna cena skrzyń",
     "battle_select_cases": "DODAJ SKRZYNIE",
-    "bag_avaliable_sale": "Przedmioty",
+    "bag_avaliable_sale": "AKTYWNE",
     "bag_item_sell": "Sprzedam za",
     "server_seed": "SERVER SEED",
     "server_seed_show": "show server seed",
@@ -338,7 +338,7 @@
     "login_confirm_adult": "Mam ukończone 18 lat",
     "login_agree": "Zgadzam się na",
     "login_to_kx": "Zaloguj się, aby otworzyć sprawę",
-    "bag_all": "Historia",
+    "bag_all": "WSZYSTKO",
     "text_sell": "sprzedawać",
     "footer_services": "Usługi",
     "footer_company": "Firma",
@@ -383,5 +383,14 @@
     "vip_discount": "Bonus",
     "nav_title_games": "Gry",
     "nav_title_services": "OBSŁUGA KLIENTA",
-    "choose_lang": "WYBIERZ SWÓJ JĘZYK"
+    "choose_lang": "WYBIERZ SWÓJ JĘZYK",
+    "collect_history": "HISTÓRICO DE RECOLHA",
+    "collect_annouce": "A recolha dos artigos demora até 12 horas.",
+    "collect_annouce_detail": "Algumas armas, skins e outros objectos virtuais têm de ser enviados da Ásia. Devido às diferenças horárias, pode haver um atraso de 12 horas na chegada à tua conta Steam.",
+    "collect_checksteam": "Verifica a tua conta Steam e preenche o URL de troca",
+    "collect_checksteam_detail": "Verifica se a conta Steam tem perfil e inventário públicos. Se tiver sido concluída, preencha o URL de troca no Steam.",
+    "collect_help": "Deixe-nos ajudar",
+    "collect_help_detail": "Quando a recolha terminar, podes contactar-nos diretamente no canto inferior direito da página para obteres ajuda.",
+    "Steam_errorcode": "Existe algum erro na tua conta Steam, verifica.",
+    "collect_help_link": "ZBIERZ POMOC"
 }
