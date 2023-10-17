@@ -251,7 +251,7 @@ export default function BagPage() {
         </div>
       </div>
 
-      <Swiper className="mb-10 block lg:hidden">
+      <Swiper className="mb-10 block lg:!hidden">
         <SwiperSlide>
           <div className="swiper-slide swiper-slide-active">
             <div
