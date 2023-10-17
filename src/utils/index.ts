@@ -5,15 +5,14 @@ import { EventEmitter } from 'events';
 //@ts-ignore
 import brFlag from '@/assets/flags/br.svg';
 import cnFlag from '@/assets/flags/cn.svg';
-import enFlag from '@/assets/flags/en.svg';
-import trFlag from '@/assets/flags/tr.svg';
 import deFlag from '@/assets/flags/de.svg';
-import frFlag from '@/assets/flags/fr.svg';
-import plFlag from '@/assets/flags/pl.svg';
+import enFlag from '@/assets/flags/en.svg';
 import esFlag from '@/assets/flags/es.svg';
+import frFlag from '@/assets/flags/fr.svg';
 import jaFlag from '@/assets/flags/ja.svg';
 import krFlag from '@/assets/flags/kr.svg';
-
+import plFlag from '@/assets/flags/pl.svg';
+import trFlag from '@/assets/flags/tr.svg';
 
 import { BOX_GRADES } from '@/constants';
 import { history } from '@umijs/max';
@@ -24,42 +23,46 @@ const globalEventEmitter = new EventEmitter();
 
 export function getApiDomain() {
   if (
-      location.href.indexOf('localhost') > -1 ||
-      location.href.indexOf('127.0.0.1') > -1
+    location.href.indexOf('localhost') > -1 ||
+    location.href.indexOf('127.0.0.1') > -1 ||
+    location.href.indexOf('114.55.56.184')
   ) {
-    return 'https://api.wgskins.com';
-
     return 'http://114.55.56.184:9999';
-  } else if (location.href.indexOf('wgskins') > -1) {
-    return 'https://api.wgskins.com';
   } else {
-    return 'http://114.55.56.184:9999';
+    let url = location.href;
+    let mainDomain = url.match(
+      /^(?:https?:\/\/)?(?:[^@\n]+@)?(?:www\.)?([^:\/\n]+\.[^:\/\n.]+)/im,
+    )?.[1];
+    return 'https://api.' + mainDomain;
   }
 }
 
 export function getSocketDomain() {
   if (
-      location.href.indexOf('localhost') > -1 ||
-      location.href.indexOf('127.0.0.1') > -1
+    location.href.indexOf('localhost') > -1 ||
+    location.href.indexOf('127.0.0.1') > -1 ||
+    location.href.indexOf('114.55.56.184')
   ) {
     return 'ss://114.55.56.184:9999/ws';
-  } else if (location.href.indexOf('wgskins') > -1) {
-    return 'wss://api.wgskins.com/ws';
   } else {
-    return 'ss://114.55.56.184:9999/ws';
+    let url = location.href;
+    let mainDomain = url.match(
+      /^(?:https?:\/\/)?(?:[^@\n]+@)?(?:www\.)?([^:\/\n]+\.[^:\/\n.]+)/im,
+    )?.[1];
+    return 'wss://api.' + mainDomain + '/ws';
   }
 }
 
 export function getImgHost() {
   if (
-      location.href.indexOf('localhost') > -1 ||
-      location.href.indexOf('127.0.0.1') > -1
+    location.href.indexOf('localhost') > -1 ||
+    location.href.indexOf('127.0.0.1') > -1 ||
+    location.href.indexOf('114.55.56.184')
   ) {
     return 'http://test-wgskins-file.oss-cn-hangzhou.aliyuncs.com/cdn/image/';
-  } else if (location.href.indexOf('wgskins') > -1) {
+  } else {
     return 'https://img.wgskins.com/cdn/image/';
   }
-  return 'http://test-wgskins-file.oss-cn-hangzhou.aliyuncs.com/cdn/image/';
 }
 
 export async function logout() {
@@ -124,10 +127,10 @@ export function parseName(name: string) {
       //   有磨损度
       const pifuNameArr = pifuName.split(' (');
       const [first, second] = pifuNameArr?.[1]
-          ?.replace(/[()]/g, '')
-          ?.split(' ')
-          ?.join('-')
-          ?.split('-');
+        ?.replace(/[()]/g, '')
+        ?.split(' ')
+        ?.join('-')
+        ?.split('-');
       const rF = first?.split('')?.[0];
       const rS = second?.split('')?.[0];
       let realDura = rS ? rF + rS : rF;
@@ -220,12 +223,12 @@ export function headHidden() {
 }
 
 export function currencyFormat(
-    country: string,
-    currency: string,
-    number: number,
+  country: string,
+  currency: string,
+  number: number,
 ) {
   return new Intl.NumberFormat(country, { style: 'currency', currency }).format(
-      number,
+    number,
   );
 }
 
@@ -240,13 +243,13 @@ export function getSteamLoginUrl() {
   };
 
   let callbackUrl = `${
-      window.location.origin
+    window.location.origin
   }/login/steamCallback?params=${JSON.stringify(query)}`;
 
   return (
-      getApiDomain() +
-      '/api/auth/steamLogin?callbackUrl=' +
-      encodeURIComponent(callbackUrl)
+    getApiDomain() +
+    '/api/auth/steamLogin?callbackUrl=' +
+    encodeURIComponent(callbackUrl)
   );
 }
 
@@ -267,8 +270,8 @@ export function useStateRef(state: any) {
 
 export function isSafari() {
   return (
-      navigator.userAgent.indexOf('Safari') > -1 &&
-      navigator.userAgent.indexOf('Chrome') === -1
+    navigator.userAgent.indexOf('Safari') > -1 &&
+    navigator.userAgent.indexOf('Chrome') === -1
   );
 }
 

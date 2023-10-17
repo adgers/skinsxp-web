@@ -225,22 +225,23 @@ export default function Header() {
   const currentLoale = langs.filter((item) => item.value === locale)[0];
 
   return (
-    <div className="sticky left-0 top-0 z-[99]">
-      <Navbar className="p-3 bg-black">
-        <div className="flex-1">
-          <Link to={'/'} className=" ml-2 w-[100px] sm:w-[164px]">
-            <img src={require('@/assets/wg-logo.png')} />
-          </Link>
+    <>
+      <div className="sticky left-0 top-0 z-[99]">
+        <Navbar className="p-3 bg-black">
+          <div className="flex-1">
+            <Link to={'/'} className=" ml-2 w-[100px] sm:w-[164px]">
+              <img src={require('@/assets/wg-logo.png')} />
+            </Link>
 
-          <Menu as="div" className="relative ml-2">
-            <Menu.Button
-              className="select select-xs flex items-center border-0 bg-black focus:outline-none"
-              onClick={() => showLang()}
-            >
-              <img src={currentLoale.flag} className="w-5 h-5" />
-            </Menu.Button>
+            <Menu as="div" className="relative ml-2">
+              <Menu.Button
+                className="select select-xs flex items-center border-0 bg-black focus:outline-none"
+                onClick={() => showLang()}
+              >
+                <img src={currentLoale.flag} className="w-5 h-5" />
+              </Menu.Button>
 
-            {/* <Transition
+              {/* <Transition
               as={Fragment}
               enter="transition ease-out duration-100"
               enterFrom="transform opacity-0 scale-95"
@@ -269,247 +270,248 @@ export default function Header() {
                 ))}
               </Menu.Items>
             </Transition> */}
-          </Menu>
+            </Menu>
 
-          <div className="hidden lg:flex ml-2 relative">
-            {[...headLinks, ...headExt].map((item, i) => {
-              const isActive = location.pathname.startsWith(item.link);
+            <div className="hidden lg:flex ml-2 relative">
+              {[...headLinks, ...headExt].map((item, i) => {
+                const isActive = location.pathname.startsWith(item.link);
 
-              return (
+                return (
+                  <Link
+                    key={i}
+                    to={item.link}
+                    className={`p-3 uppercase transition-colors font-semibold duration-200 hover:text-green text-sm ${
+                      isActive ? 'text-green' : 'text-white'
+                    }`}
+                    style={{
+                      background: isActive
+                        ? 'linear-gradient(0deg, #50B444 -19.44%, rgba(0, 0, 0, 0.00) 90.14%)'
+                        : 'none',
+                    }}
+                  >
+                    {item.icon && (
+                      <IconFont
+                        type={item.icon}
+                        className={`mr-2 ${
+                          isActive ? 'text-green' : 'text-[#a4a4a4]'
+                        } `}
+                      />
+                    )}
+                    {item.title}
+                  </Link>
+                );
+              })}
+            </div>
+          </div>
+          <div className="flex-none flex gap-4">
+            {userInfo ? (
+              <>
+                <div
+                  className="uppercase transition-colors font-semibold duration-200 text-white hover:text-green text-sm rounded-md cursor-pointer hidden sm:block"
+                  onClick={showBenefit}
+                >
+                  <IconFont type="icon-promocode" className="mr-1" />
+                  <FormattedMessage id="mine_fllq" />
+                </div>
                 <Link
-                  key={i}
-                  to={item.link}
-                  className={`p-3 uppercase transition-colors font-semibold duration-200 hover:text-green text-sm ${
-                    isActive ? 'text-green' : 'text-white'
-                  }`}
-                  style={{
-                    background: isActive
-                      ? 'linear-gradient(0deg, #50B444 -19.44%, rgba(0, 0, 0, 0.00) 90.14%)'
-                      : 'none',
+                  className="btn-green !btn-sm !px-1"
+                  to="/deposit"
+                  onClick={() => {
+                    window?.fbq(
+                      'trackSingleCustom',
+                      '1024868335308144',
+                      'InitiateCheckout',
+                    );
+                    window?.gtag('event', 'conversion', {
+                      send_to: 'AW-11345409756/EOFKCIqQy-UYENzt9KEq',
+                    });
                   }}
                 >
-                  {item.icon && (
-                    <IconFont
-                      type={item.icon}
-                      className={`mr-2 ${
-                        isActive ? 'text-green' : 'text-[#a4a4a4]'
-                      } `}
-                    />
+                  <IconFont type="icon-funds" className="text-xl text-green" />
+                  <div className="text-xs text-white px-1 font-semibold hidden sm:block">
+                    <FormattedMessage id="wc_rewards_deposit" />
+                  </div>
+
+                  {!!userInfo?.rebateValue && userInfo?.rebateValue > 0 && (
+                    <div className="text-green font-semibold">
+                      +{Number(userInfo?.rebateValue)}%
+                    </div>
                   )}
-                  {item.title}
                 </Link>
-              );
-            })}
-          </div>
-        </div>
-        <div className="flex-none flex gap-4">
-          {userInfo ? (
-            <>
-              <div
-                className="uppercase transition-colors font-semibold duration-200 text-white hover:text-green text-sm rounded-md cursor-pointer hidden sm:block"
-                onClick={showBenefit}
-              >
-                <IconFont type="icon-promocode" className="mr-1" />
-                <FormattedMessage id="mine_fllq" />
-              </div>
-              <Link
-                className="btn-green !btn-sm !px-1"
-                to="/deposit"
-                onClick={() => {
-                  window?.fbq(
-                    'trackSingleCustom',
-                    '1024868335308144',
-                    'InitiateCheckout',
-                  );
-                  window?.gtag('event', 'conversion', {
-                    send_to: 'AW-11345409756/EOFKCIqQy-UYENzt9KEq',
-                  });
-                }}
-              >
-                <IconFont type="icon-funds" className="text-xl text-green" />
-                <div className="text-xs text-white px-1 font-semibold hidden sm:block">
-                  <FormattedMessage id="wc_rewards_deposit" />
-                </div>
 
-                {!!userInfo?.rebateValue && userInfo?.rebateValue > 0 && (
-                  <div className="text-green font-semibold">
-                    +{Number(userInfo?.rebateValue)}%
+                <div className="flex flex-col text-xs font-num">
+                  <div className="text-green">
+                    $
+                    <CountUp
+                      end={numberFixed(userInfo?.balance || 0)}
+                      duration={1}
+                      decimals={2}
+                      separator=""
+                      className="font-num"
+                    />
                   </div>
-                )}
-              </Link>
-
-              <div className="flex flex-col text-xs font-num">
-                <div className="text-green">
-                  $
-                  <CountUp
-                    end={numberFixed(userInfo?.balance || 0)}
-                    duration={1}
-                    decimals={2}
-                    separator=""
-                    className="font-num"
-                  />
+                  <span className="text-purple">
+                    <IconFont type="icon-coin" className="mr-1" />
+                    <CountUp
+                      end={numberFixed(userInfo?.secondaryBalance || 0)}
+                      duration={1}
+                      decimals={2}
+                      separator=""
+                      className="font-num"
+                    />
+                  </span>
                 </div>
-                <span className="text-purple">
-                  <IconFont type="icon-coin" className="mr-1" />
-                  <CountUp
-                    end={numberFixed(userInfo?.secondaryBalance || 0)}
-                    duration={1}
-                    decimals={2}
-                    separator=""
-                    className="font-num"
-                  />
-                </span>
-              </div>
 
-              <Menu
-                as="div"
-                className="relative flex justify-center items-center"
-              >
-                <Menu.Button
+                <Menu
                   as="div"
-                  className="flex gap-1 items-center cursor-pointer"
+                  className="relative flex justify-center items-center"
                 >
-                  <div className="w-8 h-8 cursor-pointer relative hidden sm:block">
-                    <img src={userInfo.headPic} className="rounded-full" />
-                  </div>
-                  <div className="py-1 px-2 bg-dark">
-                    <MenuOutlined />
-                  </div>
-                </Menu.Button>
-                <Transition
-                  as={Fragment}
-                  enter="transition ease-out duration-100"
-                  enterFrom="transform opacity-0 scale-95"
-                  enterTo="transform opacity-100 scale-100"
-                  leave="transition ease-in duration-75"
-                  leaveFrom="transform opacity-100 scale-100"
-                  leaveTo="transform opacity-0 scale-95"
-                >
-                  <div className="fixed left-0 top-0 z-[999] flex h-screen w-full origin-top flex-col overflow-scroll focus:outline-none md:absolute md:left-auto md:right-0 md:top-10 md:h-auto md:w-48 md:origin-top-right md:overflow-hidden md:rounded-b transform opacity-100 bg-base-100">
-                    <div className="my-3 ml-auto mr-3 flex aspect-square  md:hidden">
-                      <Button
-                        size="xs"
-                        shape="circle"
-                        color="ghost"
-                        onClick={close}
-                      >
-                        ✕
-                      </Button>
+                  <Menu.Button
+                    as="div"
+                    className="flex gap-1 items-center cursor-pointer"
+                  >
+                    <div className="w-8 h-8 cursor-pointer relative hidden sm:block">
+                      <img src={userInfo.headPic} className="rounded-full" />
                     </div>
-                    <div className="flex items-center px-2.5 pb-5 md:hidden">
-                      <div className="flex-shrink-0 relative mr-4 ">
-                        <img
-                          src={userInfo?.headPic}
-                          className="h-12 w-12 rounded-full object-cover"
-                        />
+                    <div className="py-1 px-2 bg-dark">
+                      <MenuOutlined />
+                    </div>
+                  </Menu.Button>
+                  <Transition
+                    as={Fragment}
+                    enter="transition ease-out duration-100"
+                    enterFrom="transform opacity-0 scale-95"
+                    enterTo="transform opacity-100 scale-100"
+                    leave="transition ease-in duration-75"
+                    leaveFrom="transform opacity-100 scale-100"
+                    leaveTo="transform opacity-0 scale-95"
+                  >
+                    <div className="fixed left-0 top-0 z-[999] flex h-screen w-full origin-top flex-col overflow-scroll focus:outline-none md:absolute md:left-auto md:right-0 md:top-10 md:h-auto md:w-48 md:origin-top-right md:overflow-hidden md:rounded-b transform opacity-100 bg-base-100">
+                      <div className="my-3 ml-auto mr-3 flex aspect-square  md:hidden">
+                        <Button
+                          size="xs"
+                          shape="circle"
+                          color="ghost"
+                          onClick={close}
+                        >
+                          ✕
+                        </Button>
                       </div>
-                      <div className="w-full">
-                        <div className="block text-base font-semibold uppercase">
-                          {userInfo?.nickname}
+                      <div className="flex items-center px-2.5 pb-5 md:hidden">
+                        <div className="flex-shrink-0 relative mr-4 ">
+                          <img
+                            src={userInfo?.headPic}
+                            className="h-12 w-12 rounded-full object-cover"
+                          />
                         </div>
-                        <div className="flex mt-2 text-xs font-num gap-2">
-                          <div className="text-green">
-                            <span className="mr-1">$</span>
-                            {numberFixed(userInfo?.balance || 0)}
+                        <div className="w-full">
+                          <div className="block text-base font-semibold uppercase">
+                            {userInfo?.nickname}
                           </div>
-                          <span className="text-purple">
-                            <IconFont type="icon-coin" className="mr-1" />
-                            {numberFixed(userInfo?.secondaryBalance || 0)}
-                          </span>
+                          <div className="flex mt-2 text-xs font-num gap-2">
+                            <div className="text-green">
+                              <span className="mr-1">$</span>
+                              {numberFixed(userInfo?.balance || 0)}
+                            </div>
+                            <span className="text-purple">
+                              <IconFont type="icon-coin" className="mr-1" />
+                              {numberFixed(userInfo?.secondaryBalance || 0)}
+                            </span>
+                          </div>
                         </div>
                       </div>
+                      <div className="bg-neutral pb-2">
+                        {menus}
+                        <Button
+                          className="btn btn-sm px-0 gap-0 w-full justify-start bg-transparent"
+                          onClick={() => {
+                            logout();
+                          }}
+                        >
+                          <IconFont
+                            type={'icon-logout'}
+                            className="mx-5 md:mx-3 text-base"
+                          />
+                          <span className="capitalize text-sm">
+                            <FormattedMessage id="mine_tcdl" />
+                          </span>
+                        </Button>
+                      </div>
                     </div>
-                    <div className="bg-neutral pb-2">
-                      {menus}
+                  </Transition>
+                </Menu>
+              </>
+            ) : (
+              <>
+                <Button
+                  className="btn btn-sm text-black gap-1 rounded uppercase"
+                  onClick={() => {
+                    showSteamLogin();
+                    window?.fbq(
+                      'trackSingleCustom',
+                      '1024868335308144',
+                      'click_LOGIN',
+                    );
+                  }}
+                  style={{
+                    background:
+                      'linear-gradient(270deg, #0BFF59 0%, #B4FC3B 100%)',
+                  }}
+                >
+                  <IconFont type="icon-steam" className="text-xl" />
+                  <FormattedMessage id="register_ljdl" />
+                </Button>
+                <Menu as="div" className="relative md:hidden">
+                  <Menu.Button as="div" className="py-1 px-2 bg-dark">
+                    <MenuOutlined />
+                  </Menu.Button>
+                  <Transition
+                    as={Fragment}
+                    enter="transition ease-out duration-100"
+                    enterFrom="transform opacity-0 scale-95"
+                    enterTo="transform opacity-100 scale-100"
+                    leave="transition ease-in duration-75"
+                    leaveFrom="transform opacity-100 scale-100"
+                    leaveTo="transform opacity-0 scale-95"
+                  >
+                    <div className="fixed left-0 top-0 z-50 flex h-screen w-full origin-top flex-col overflow-scroll focus:outline-none md:absolute md:left-auto md:right-0 md:top-10 md:h-auto md:w-48 md:origin-top-right md:overflow-hidden md:rounded-b transform opacity-100 bg-base-100">
+                      <div className="my-3 ml-auto mr-3 flex aspect-square  md:hidden">
+                        <Button
+                          size="xs"
+                          shape="circle"
+                          color="ghost"
+                          onClick={close}
+                        >
+                          ✕
+                        </Button>
+                      </div>
+                      <div className="bg-neutral py-2">{menus}</div>
                       <Button
-                        className="btn btn-sm px-0 gap-0 w-full justify-start bg-transparent"
+                        className="btn btn-sm text-black gap-1 rounded uppercase mx-3 mt-4"
                         onClick={() => {
-                          logout();
+                          showSteamLogin();
+                          window?.fbq(
+                            'trackSingleCustom',
+                            '1024868335308144',
+                            'click_LOGIN',
+                          );
+                        }}
+                        style={{
+                          background:
+                            'linear-gradient(270deg, #0BFF59 0%, #B4FC3B 100%)',
                         }}
                       >
-                        <IconFont
-                          type={'icon-logout'}
-                          className="mx-5 md:mx-3 text-base"
-                        />
-                        <span className="capitalize text-sm">
-                          <FormattedMessage id="mine_tcdl" />
-                        </span>
+                        <IconFont type="icon-steam" className="text-xl" />
+                        <FormattedMessage id="register_ljdl" />
                       </Button>
                     </div>
-                  </div>
-                </Transition>
-              </Menu>
-            </>
-          ) : (
-            <>
-              <Button
-                className="btn btn-sm text-black gap-1 rounded uppercase"
-                onClick={() => {
-                  showSteamLogin();
-                  window?.fbq(
-                    'trackSingleCustom',
-                    '1024868335308144',
-                    'click_LOGIN',
-                  );
-                }}
-                style={{
-                  background:
-                    'linear-gradient(270deg, #0BFF59 0%, #B4FC3B 100%)',
-                }}
-              >
-                <IconFont type="icon-steam" className="text-xl" />
-                <FormattedMessage id="register_ljdl" />
-              </Button>
-              <Menu as="div" className="relative md:hidden">
-                <Menu.Button as="div" className="py-1 px-2 bg-dark">
-                  <MenuOutlined />
-                </Menu.Button>
-                <Transition
-                  as={Fragment}
-                  enter="transition ease-out duration-100"
-                  enterFrom="transform opacity-0 scale-95"
-                  enterTo="transform opacity-100 scale-100"
-                  leave="transition ease-in duration-75"
-                  leaveFrom="transform opacity-100 scale-100"
-                  leaveTo="transform opacity-0 scale-95"
-                >
-                  <div className="fixed left-0 top-0 z-50 flex h-screen w-full origin-top flex-col overflow-scroll focus:outline-none md:absolute md:left-auto md:right-0 md:top-10 md:h-auto md:w-48 md:origin-top-right md:overflow-hidden md:rounded-b transform opacity-100 bg-base-100">
-                    <div className="my-3 ml-auto mr-3 flex aspect-square  md:hidden">
-                      <Button
-                        size="xs"
-                        shape="circle"
-                        color="ghost"
-                        onClick={close}
-                      >
-                        ✕
-                      </Button>
-                    </div>
-                    <div className="bg-neutral py-2">{menus}</div>
-                    <Button
-                      className="btn btn-sm text-black gap-1 rounded uppercase mx-3 mt-4"
-                      onClick={() => {
-                        showSteamLogin();
-                        window?.fbq(
-                          'trackSingleCustom',
-                          '1024868335308144',
-                          'click_LOGIN',
-                        );
-                      }}
-                      style={{
-                        background:
-                          'linear-gradient(270deg, #0BFF59 0%, #B4FC3B 100%)',
-                      }}
-                    >
-                      <IconFont type="icon-steam" className="text-xl" />
-                      <FormattedMessage id="register_ljdl" />
-                    </Button>
-                  </div>
-                </Transition>
-              </Menu>
-            </>
-          )}
-        </div>
-      </Navbar>
+                  </Transition>
+                </Menu>
+              </>
+            )}
+          </div>
+        </Navbar>
+      </div>
       <OpenHistory />
       {!hidePlacard() && <Placard />}
       {smsLoginShow && <MobileLogin />}
@@ -519,7 +521,7 @@ export default function Header() {
       {benefitShow && <Benefit />}
       {steamLoginShow && <LoginConfirm />}
       {loginTipShow && <LoginTip />}
-      {true && <SelectLang />}
-    </div>
+      <SelectLang />
+    </>
   );
 }
