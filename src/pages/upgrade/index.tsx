@@ -7,25 +7,29 @@ import {
 } from '@/services/front/shengjixiangguan';
 import { goback, numberRoundUp } from '@/utils';
 import {
+  DownOutlined,
   LeftOutlined,
   LoadingOutlined,
   RightOutlined,
+  SearchOutlined,
+  UpOutlined,
 } from '@ant-design/icons';
-import { FormattedMessage, useModel, useRequest } from '@umijs/max';
+import { FormattedMessage, useIntl, useModel, useRequest } from '@umijs/max';
 import { useResponsive, useToggle } from 'ahooks';
-import { Slider } from 'antd';
+import { Spin } from 'antd';
 import { useEffect, useState } from 'react';
-import CountUp from 'react-countup';
 import { animated, easings, useSpring } from 'react-spring';
 import { toast } from 'react-toastify';
 // import Result from '../box/result';
 import { getMyVoucherPageUsingGET } from '@/services/front/gerenzhongxinxiangguan';
+import { remove } from 'lodash';
 import { Range } from 'react-daisyui';
 import DreamItems from './dreamItems';
 import './index.less';
 
 export default function DreamPage() {
   const { voice, toggleVoice } = useModel('sys');
+  const intl = useIntl();
   const [openLoading, setOpenLoading] = useState(false);
   const [quantity, setQuantity] = useState(0);
   const [range, setRange] = useState<[number, number]>([0, 1]);
@@ -41,19 +45,43 @@ export default function DreamPage() {
     page: 1,
     stat: 0,
   });
+  const [orderByPrice, setOrderByPrice] = useState<boolean>(true);
+  const [selectWeapon, setSelectWeapon] = useState<string[]>([]);
+
+  const [searchDreamsParams, setSearchDreamsParams] = useState<{
+    page: number;
+    pageSize: number;
+    giftName: string;
+    orderByPrice: boolean;
+    priceStart: string | null;
+    priceEnd: string | null;
+  }>({
+    page: 1,
+    pageSize: 16,
+    giftName: '',
+    orderByPrice: false,
+    priceStart: null,
+    priceEnd: null,
+  });
 
   const { data: config } = useRequest(() => getUpgradeConfigUsingGET());
   const { data: records } = useRequest(() =>
     upgradeRecordPageUsingGET({ page: 1, pageSize: 24 }),
   );
-  const { data, refresh, loading } = useRequest(
+  const {
+    data: bagData,
+    refresh,
+    loading,
+  } = useRequest(
     () =>
       getMyVoucherPageUsingGET({
         ...searchParams,
-        pageSize: 12,
+        pageSize: 16,
+        orderByPrice,
       }),
+
     {
-      refreshDeps: [searchParams?.page, searchParams?.stat],
+      refreshDeps: [searchParams?.page, searchParams?.stat, orderByPrice],
     },
   );
   const [selectItem, setSelectItem] = useState<API.UpgradeGiftPageVo>();
@@ -210,7 +238,7 @@ export default function DreamPage() {
             </div>
           </div>
           <div className="w-full px-5">
-            <Range size="xs" color="primary"/>
+            <Range size="xs" color="primary" />
           </div>
         </div>
         {/* 概率 */}
@@ -299,11 +327,7 @@ export default function DreamPage() {
         <div className="rounded-md bg-black flex-1 w-full flex flex-col">
           <div className="flex-1"></div>
           <div className="flex mt-5 justify-center p-8">
-            <button
-              type="button"
-              onClick={open}
-              className="btn-green w-full"
-            >
+            <button type="button" onClick={open} className="btn-green w-full">
               <div className="open-btn-arr animate-pulse" />
               <div className="flex gap-2 px-1 flex-1 justify-center">
                 {openLoading && <LoadingOutlined />}
@@ -316,65 +340,189 @@ export default function DreamPage() {
       </div>
 
       <div className="w-full mt-8 grid grid-cols-2 gap-4">
-        <div className="py-6 px-4 bg-black rounded-lg h-fit">
-          <div className="w-full flex justify-between items-center">
-            <div className="text-lg">YOUR ITEMS</div>
-            {/* <div className='text-sm'></div> */}
-          </div>
-          <div className="mt-6 flex h-full flex-col items-center justify-center py-20">
-            <p className="text-sm font-semibold leading-tight text-white md:text-base lg:text-l mb-4">
-              You don`t have any skins
-            </p>
-            <div className="btn btn-green text-white">Open Cases</div>
-          </div>
-          <div
-            className="mt-auto flex items-center justify-between pt-6 transition-opacity duration-300"
-            style={{ opacity: 0.5, pointerEvents: 'none' }}
-          >
-            <LeftOutlined />
-            <div className="flex items-center justify-center rounded bg-navy-900 p-3 text-center text-sm font-semibold leading-none text-white css-1mqx83j">
-              0/0
+        <Spin
+          spinning={loading}
+          indicator={
+            <LoadingOutlined style={{ fontSize: 48, color: 'green' }} />
+          }
+        >
+          <div className="pb-6 px-4 bg-black rounded-lg h-fit">
+            <div className="flex items-center justify-between py-3.5 border-b border-light">
+              <div className="text-lg font-semibold">
+                MY Items
+                <span className="text-gray font-medium">
+                  （{bagData?.totalRows}）
+                </span>{' '}
+              </div>
+              <div
+                className="border border-light h-10 py-2 px-4 rounded cursor-pointer"
+                onClick={() => setOrderByPrice(!orderByPrice)}
+              >
+                <FormattedMessage id="recoveryPrice" />{' '}
+                {orderByPrice ? <DownOutlined /> : <UpOutlined />}
+              </div>
             </div>
-            <RightOutlined />
+            {bagData?.totalRows > 0 ? (
+              <div className="grid grid-cols-2 lg:grid-cols-4 gap-2 mt-7">
+                {bagData?.pageData?.map((item, index) => (
+                  <div
+                    key={index}
+                    className="relative"
+                    onClick={() => {
+                      let prevWeapons = JSON.parse(
+                        JSON.stringify(selectWeapon),
+                      );
+                      if (selectWeapon?.includes(item?.verifyId)) {
+                        remove(prevWeapons, (id) => id === item.verifyId);
+                      } else {
+                        prevWeapons.push(item.verifyId);
+                      }
+                      setSelectWeapon(prevWeapons);
+                    }}
+                  >
+                    <WeaponCard data={item} />
+                    {selectWeapon?.includes(item?.verifyId) && (
+                      <div className="absolute bottom-0 right-0">
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          width="46"
+                          height="46"
+                          viewBox="0 0 46 46"
+                          fill="none"
+                        >
+                          <path
+                            d="M46 0V42C46 44.2091 44.2091 46 42 46H0L46 0Z"
+                            fill="#35F05E"
+                          />
+                          <path
+                            d="M31.3455 38.4368C31.0227 38.7491 30.5089 38.7441 30.1922 38.4257L24.1076 32.307C23.4984 31.6944 23.508 30.7018 24.1289 30.1011C24.7412 29.5088 25.7168 29.522 26.3129 30.1306L30.3461 34.2488C30.577 34.4845 30.9548 34.4896 31.1919 34.2602L39.6837 26.0454C40.2863 25.4625 41.2426 25.4625 41.8452 26.0454C42.4767 26.6563 42.4767 27.6689 41.8452 28.2798L31.3455 38.4368Z"
+                            fill="#252228"
+                          />
+                        </svg>
+                      </div>
+                    )}
+                  </div>
+                ))}
+              </div>
+            ) : (
+              <>
+                <div className="w-full flex justify-between items-center">
+                  <div className="text-lg">YOUR ITEMS</div>
+                  {/* <div className='text-sm'></div> */}
+                </div>
+                <div className="mt-6 flex h-full flex-col items-center justify-center py-20">
+                  <p className="text-sm font-semibold leading-tight text-white md:text-base lg:text-l mb-4">
+                    You don`t have any skins
+                  </p>
+                  <div className="btn btn-green text-white">Open Cases</div>
+                </div>
+              </>
+            )}
+            <div className="mt-auto flex items-center justify-center pt-6">
+              <span
+                className={`${
+                  searchParams?.page === 1
+                    ? 'cursor-not-allowed text-gray'
+                    : 'cursor-pointer text-white'
+                }`}
+                onClick={() => {
+                  if (loading) return;
+                  if (searchParams?.page > 1) {
+                    setSearchParams({
+                      ...searchParams,
+                      page: searchParams?.page - 1,
+                    });
+                  }
+                }}
+              >
+                <LeftOutlined />
+              </span>
+              <div className="flex items-center justify-center rounded bg-navy-900 p-3 text-center text-sm font-semibold leading-none text-white css-1mqx83j">
+                {bagData?.page}/{bagData?.totalPages}
+              </div>
+              <span
+                className={`${
+                  bagData && searchParams?.page === bagData?.totalPages
+                    ? 'cursor-not-allowed'
+                    : 'cursor-pointer text-white'
+                }`}
+                onClick={() => {
+                  if (loading) return;
+
+                  if (searchParams?.page < Number(bagData?.totalPages)) {
+                    setSearchParams({
+                      ...searchParams,
+                      page: searchParams?.page + 1,
+                    });
+                  }
+                }}
+              >
+                <RightOutlined />
+              </span>
+            </div>
           </div>
-        </div>
-        <div className="py-6 px-4 bg-black rounded-lg">
-          <div className="w-full flex justify-between items-center">
-            <div className="text-lg">Dreams</div>
+        </Spin>
+        <div className="pb-6 px-4 bg-black rounded-lg">
+          <div className="w-full flex justify-between items-center py-3.5 border-b border-light">
+            <div>UPGRADE</div>
+            <div className="flex gap-2">
+              <div className="flex border rounded border-[rgba(255,255,255,0.2)] h-10 w-[140px] items-center py-[1px] px-2">
+                <SearchOutlined className="text-white text-lg" />
+                <input
+                  className="input w-full border border-l-0 rounded-r h-full pl-[5px] bg-transparent focus:outline-none text-white text-sm"
+                  value={searchDreamsParams.giftName}
+                  placeholder={'FIND SKIN'}
+                  onChange={(e) =>
+                    setSearchDreamsParams({
+                      ...searchDreamsParams,
+                      priceStart: e.target.value,
+                    })
+                  }
+                />
+              </div>
+              <div className="flex items-center text-white/20 gap-2">
+                <div className="flex border w-[120px] rounded border-[rgba(255,255,255,0.2)] h-10 items-center py-[1px] pl-2">
+                  <span className="text-white">$</span>
+                  <input
+                    className="input w-full  border border-l-0 rounded-r h-full focus:outline-none text-white text-sm bg-transparent"
+                    onChange={(e) => {
+                      setSearchDreamsParams({
+                        ...searchDreamsParams,
+                        priceStart: e.target.value,
+                      });
+                    }}
+                    type="number"
+                    value={searchDreamsParams.priceStart || 0}
+                    placeholder={intl.formatMessage({
+                      id: 'home_filter_price_min',
+                    })}
+                  />
+                </div>
+                -
+                <div className="flex border w-[120px] rounded border-[rgba(255,255,255,0.2)] h-10 items-center py-[1px] pl-2">
+                  <span className="text-white">$</span>
+                  <input
+                    className="input w-full border border-l-0 rounded-r h-full focus:outline-none text-white text-sm bg-transparent"
+                    onChange={(e) => {
+                      setSearchDreamsParams({
+                        ...searchDreamsParams,
+                        priceEnd: e.target.value,
+                      });
+                    }}
+                    type="number"
+                    value={searchDreamsParams.priceEnd || 0}
+                    placeholder={intl.formatMessage({
+                      id: 'home_filter_price_max',
+                    })}
+                  />
+                </div>
+              </div>
+            </div>
             {/* <div className='text-sm'></div> */}
           </div>
         </div>
       </div>
 
-      <div className="case-title mt-10">
-        <span className="text-center text-base sm:text-2xl uppercase font-semibold">
-          <FormattedMessage id="dream_dream_records" />
-        </span>
-      </div>
-      <div className="grid grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-2 mt-4">
-        {records?.pageData?.map((item, i: number) => {
-          return (
-            <div className="card-flip" key={i}>
-              <div className="front">
-                <WeaponCard data={item} />
-              </div>
-              <div className="back">
-                <div className="flex flex-col gap-3 items-center justify-center w-full h-full bg-dark bg-opacity-70 cursor-pointer rounded-md">
-                  <div className="avatar w-10 h-10 relative">
-                    <img src={item?.headPic} className="rounded" />
-                  </div>
-                  <div className="text-sm">{item?.nickname}</div>
-                </div>
-              </div>
-            </div>
-          );
-        })}
-      </div>
-      <DreamItems
-        show={modalVisible}
-        onClose={toggleVisible}
-        onSelect={onItemSelect}
-      />
       {/* {resultShow && result && (
         <Result
           show={resultShow}

@@ -189,14 +189,14 @@ export default function Foot() {
               >
                 <FormattedMessage id="provably_fair_title" />
               </Link>
-              {/* <div
+              <div
                 onClick={() => {
                   showLogin();
                 }}
                 className="mt-4 text-transparent hover:text-gray"
               >
                 login
-              </div> */}
+              </div>
             </div>
           </div>
         </div>
