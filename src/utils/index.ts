@@ -25,7 +25,7 @@ export function getApiDomain() {
   if (
     location.href.indexOf('localhost') > -1 ||
     location.href.indexOf('127.0.0.1') > -1 ||
-    location.href.indexOf('114.55.56.184')
+    location.href.indexOf('114.55.56.184') > -1
   ) {
     return 'http://114.55.56.184:9999';
   } else {
@@ -41,7 +41,7 @@ export function getSocketDomain() {
   if (
     location.href.indexOf('localhost') > -1 ||
     location.href.indexOf('127.0.0.1') > -1 ||
-    location.href.indexOf('114.55.56.184')
+    location.href.indexOf('114.55.56.184') > -1
   ) {
     return 'ss://114.55.56.184:9999/ws';
   } else {
@@ -57,7 +57,7 @@ export function getImgHost() {
   if (
     location.href.indexOf('localhost') > -1 ||
     location.href.indexOf('127.0.0.1') > -1 ||
-    location.href.indexOf('114.55.56.184')
+    location.href.indexOf('114.55.56.184') > -1
   ) {
     return 'http://test-wgskins-file.oss-cn-hangzhou.aliyuncs.com/cdn/image/';
   } else {
