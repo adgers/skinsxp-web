@@ -16,16 +16,15 @@ import {
 } from '@ant-design/icons';
 import { FormattedMessage, useIntl, useModel, useRequest } from '@umijs/max';
 import { useResponsive, useToggle } from 'ahooks';
-import { Spin } from 'antd';
+import { Slider, Spin } from 'antd';
 import { useEffect, useState } from 'react';
 import { animated, easings, useSpring } from 'react-spring';
 import { toast } from 'react-toastify';
 // import Result from '../box/result';
 import { getMyVoucherPageUsingGET } from '@/services/front/gerenzhongxinxiangguan';
 import { remove } from 'lodash';
-import { Range } from 'react-daisyui';
-import DreamItems from './dreamItems';
 import './index.less';
+import { Range } from 'react-daisyui';
 
 export default function DreamPage() {
   const { voice, toggleVoice } = useModel('sys');
@@ -46,7 +45,7 @@ export default function DreamPage() {
     stat: 0,
   });
   const [orderByPrice, setOrderByPrice] = useState<boolean>(true);
-  const [selectWeapon, setSelectWeapon] = useState<string[]>([]);
+  const [selectWeapon, setSelectWeapon] = useState<API.MyVoucherVo[]>([]);
 
   const [searchDreamsParams, setSearchDreamsParams] = useState<{
     page: number;
@@ -209,47 +208,66 @@ export default function DreamPage() {
       </div>
       <div className="grid grid-cols-3 gap-5">
         {/* 已选择的武器 */}
-        <div className="flex flex-col h-full rounded-l-lg rounded-r-lg bg-black lg:rounded-r-none ">
-          <div className="my-auto p-3 pb-0 sm:p-6 sm:pb-0">
-            <img
-              src="https://key-drop.com/web/KD/static/images/item-placeholder.png?v85"
-              alt=""
-              className="pointer-events-none mx-auto mt-6 block h-full w-3/5 object-contain"
-            />
+        {/* <div>
+          <div className='w-full h-full'>
+            <img src={require('@/assets/upgrade-select-bg.png')} alt="" />
           </div>
-          <div className="flex flex-col items-center pb-3 text-center md:flex-row md:pb-6 md:pl-6 md:text-left">
+          {selectWeapon?.map((item, index) => (
+            <div key={index}>
+              <img src={item?.giftImage} />
+            </div>
+          ))}
+        </div> */}
+        <div className="flex flex-col h-full rounded-l-lg rounded-r-lg bg-black lg:rounded-r-none ">
+          <div className="flex flex-col items-center w-full m-auto bg-[url('@/assets/upgrade-gun.png')] bg-no-repeat bg-center bg-[size:50%]">
+            <div className="upgrade-selected-items__placeholder-arrows animated-arrows">
+              <img
+                src={require('@/assets/upgrade-select-arrow.png')}
+                alt="animated arrow"
+                className="animated-arrows__arrow"
+              />
+              <img
+                src={require('@/assets/upgrade-select-arrow.png')}
+                alt="animated arrow"
+                className="animated-arrows__arrow"
+              />
+              <img
+                src={require('@/assets/upgrade-select-arrow.png')}
+                alt="animated arrow"
+                className="animated-arrows__arrow"
+              />
+            </div>
             <div className="pr-1">
-              <div className="flex">
-                <p className="text-sm font-semibold leading-tight text-purple md:text-base lg:text-lg !text-gold">
-                  Choose your item
-                </p>
-              </div>
-              <p className="text-xs leading-tight text-navy-300 sm:text-sm">
+              <p className="text-sm font-semibold text-center leading-tight text-white md:text-base lg:text-lg !text-gold">
+                Choose your item
+              </p>
+
+              <p className="text-xs leading-tight text-light sm:text-sm">
                 Item, that you want to upgrade
               </p>
             </div>
-            <div className="mt-3 rounded-lg bg-navy-900 px-5 py-3 text-center md:ml-auto md:mt-0 md:rounded-r-none md:text-right">
-              <div className="whitespace-nowrap text-lg font-semibold leading-none text-white">
-                <span>US$0.00</span>
-              </div>
-              <div className="text-xs font-semibold leading-none text-gold">
-                <span>+0.00%</span>
-              </div>
-            </div>
-          </div>
-          <div className="w-full px-5">
-            <Range size="xs" color="primary" />
           </div>
         </div>
         {/* 概率 */}
         <div className="flex flex-row md:flex-col items-center justify-center gap-4 md:gap-2">
-          <div className="dream-bg w-[150px] h-[150px] md:w-[300px] md:h-[300px] flex-shrink-0">
-            <div className="dream-bg-percent md:text-2xl font-num">
-              {percent}%
+          <div className="dream-bg w-[150px] h-[150px] md:w-[240px] md:h-[240px] flex-shrink-0">
+            <div className="dream-bg-percent md:text-2xl font-num text-white text-center z-30">
+              {percent}% <br />
+              <div className="text-xs  text-white/50 font-light">
+                Probability
+              </div>
             </div>
+            {/* 底部圆圈 */}
             <div className="dream-arr-wrap w-[102px] h-[102px] md:w-[204px] md:h-[204px]">
-              <div className="dream-arr-cricle"></div>
+              <div
+                className="w-full h-full border-[12px] border-[#657068] rounded-full"
+                style={{
+                  backgroundImage:
+                    'linear-gradient(180deg, #0A1C15 0%, rgba(43, 123, 66, 0.48) 100%)',
+                }}
+              ></div>
             </div>
+            {/* 绿圈 */}
             <div
               className={`radial-progress  text-primary dream-bg-percent w-[102px] h-[102px] md:w-[204px] md:h-[204px]`}
               style={{
@@ -259,6 +277,7 @@ export default function DreamPage() {
                 transform: `translate(-50%, -50%) rotate(${range[0] * 3.6}deg)`,
               }}
             ></div>
+            {/* 剪头 */}
             <div className="dream-arr-wrap w-[102px] h-[102px] md:w-[204px] md:h-[204px]">
               <animated.div
                 className="dream-arr"
@@ -268,32 +287,26 @@ export default function DreamPage() {
               ></animated.div>
             </div>
           </div>
-          {/* <div className="slider-bg w-full flex justify-center items-center px-4 md:px-10 mt-10">
+          {/* 金额 */}
+          <div
+            className="flex flex-col items-center w-60 py-2 gap-1 tr"
+            style={{
+              background:
+                'linear-gradient(90deg, rgba(21, 21, 21, 0.00) 2.64%, rgba(21, 21, 21, 0.70) 19.53%, #151515 46.53%, rgba(21, 21, 21, 0.70) 79.41%, rgba(21, 21, 21, 0.00) 94.03%)',
+            }}
+          >
+            <div className="text-green text-xl">$0.99</div>
+            <div className="text-white/50 text-xs">Total Value</div>
+          </div>
+          <div className="w-full h-10 bg-black flex flex-col justify-between items-center rounded mt-10 border border-light border-b-0">
+            <div>
+              <span>+2.00%</span>
+              <div></div>
+            </div>
             <Slider
               className="w-full"
-              range
               value={range}
               onChange={onSliderChange}
-              marks={{
-                0: '0',
-                10: '10',
-                20: '20',
-                30: '30',
-                40: '40',
-                50: '50',
-                60: '60',
-                70: '70',
-                80: '80',
-                90: '90',
-                100: '100',
-              }}
-            />
-          </div> */}
-          <div className="flex w-full justify-center my-2 text-sm">
-            {config?.minProb}% to {config?.maxProb}% percentage of the range
-            <FormattedMessage
-              id="dream_percentage_tip"
-              values={{ min: config?.minProb, max: config?.maxProb }}
             />
           </div>
           {/* <div className="ring-1 ring-secondary rounded-md bg-base-100 bg-opacity-20 backdrop-blur-md px-2 md:px-5 py-3 flex items-center flex-col">
@@ -372,16 +385,21 @@ export default function DreamPage() {
                       let prevWeapons = JSON.parse(
                         JSON.stringify(selectWeapon),
                       );
-                      if (selectWeapon?.includes(item?.verifyId)) {
-                        remove(prevWeapons, (id) => id === item.verifyId);
+                      if (
+                        selectWeapon?.find((weapon) => weapon.id === item.id)
+                      ) {
+                        remove(
+                          prevWeapons,
+                          (weapon: API.MyVoucherVo) => weapon.id === item.id,
+                        );
                       } else {
-                        prevWeapons.push(item.verifyId);
+                        prevWeapons.push(item);
                       }
                       setSelectWeapon(prevWeapons);
                     }}
                   >
                     <WeaponCard data={item} />
-                    {selectWeapon?.includes(item?.verifyId) && (
+                    {selectWeapon?.find((weapon) => weapon.id === item.id) && (
                       <div className="absolute bottom-0 right-0">
                         <svg
                           xmlns="http://www.w3.org/2000/svg"
@@ -406,10 +424,6 @@ export default function DreamPage() {
               </div>
             ) : (
               <>
-                <div className="w-full flex justify-between items-center">
-                  <div className="text-lg">YOUR ITEMS</div>
-                  {/* <div className='text-sm'></div> */}
-                </div>
                 <div className="mt-6 flex h-full flex-col items-center justify-center py-20">
                   <p className="text-sm font-semibold leading-tight text-white md:text-base lg:text-l mb-4">
                     You don`t have any skins

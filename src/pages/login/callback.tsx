@@ -24,9 +24,12 @@ export default function LoginCallback() {
       }
       if (ret.data?.register) {
         window.fbq('trackSingleCustom', '1024868335308144', 'register_success');
-        gtag('event', 'conversion', {
+        window?.gtag('event', 'conversion', {
           // lanhan
           send_to: 'AW-11366618499/WyYOCOeNlewYEIOrg6wq',
+        });
+        window?.gtag('event', 'conversion', {
+          send_to: 'AW-11379374504/qjkoCPWU7u0YEKjzjbIq',
         });
         /* 后续由后台配置平台列表 */
         if (['7', '21']?.includes(ret.data?.promotionChannelId)) {
