@@ -31,7 +31,7 @@ export default function Giveaways() {
           </Link>
         </div>
         <div className="w-full overflow-hidden">
-          <div className="flex w-full snap-x snap-mandatory overflow-x-auto hide-scrollbar xl:grid xl:snap-none xl:grid-cols-4 opacity-100 gap-1">
+          <div className="flex w-full snap-x snap-mandatory overflow-x-auto hide-scrollbar xl:grid xl:snap-none xl:grid-cols-4 opacity-100 gap-1.5">
             {giveawayList?.map((item, index) => {
               return <GiveawayItem index={index} item={item} key={index} />;
             })}

@@ -280,7 +280,7 @@ export default function Header() {
                   <Link
                     key={i}
                     to={item.link}
-                    className={`p-3 uppercase transition-colors font-semibold duration-200 hover:text-green text-sm ${
+                    className={`p-3 uppercase transition-colors font-semibold duration-200 relative hover:text-green text-sm ${
                       isActive ? 'text-green' : 'text-white'
                     }`}
                     style={{
@@ -298,6 +298,7 @@ export default function Header() {
                       />
                     )}
                     {item.title}
+                    {item.link === '/market' && <div className='absolute w-8 -top-0.5 -right-3'><img src={require('@/assets/hot-flag.png')} className='w-full object-cover'/></div>}
                   </Link>
                 );
               })}

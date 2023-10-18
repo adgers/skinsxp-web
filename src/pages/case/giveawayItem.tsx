@@ -1,4 +1,3 @@
-import kingSvg from '@/assets/king.svg';
 import { IconFont } from '@/components/icons';
 import { parseName } from '@/utils';
 import { FormattedMessage, history } from '@umijs/max';
@@ -18,7 +17,7 @@ export default function GiveawayItem(props: GiveawayItemProps) {
   const name = item?.giftVos?.[0]?.giftName;
   return (
     <div
-      className={`relative cursor-pointer grid h-28 sm:h-36 min-w-[80%] snap-start overflow-hidden sm:min-w-[50%] md:min-w-[33.333333%] xl:min-w-[20%] giveaways-grade giveaways-grade-${index}`}
+      className={`relative cursor-pointer grid h-28 sm:h-36 min-w-[80%] snap-start overflow-x-visible sm:min-w-[50%] md:min-w-[33.333333%] xl:min-w-[20%] giveaways-grade giveaways-grade-${index}`}
       key={`giveaways-${index}`}
       onClick={() =>
         history.push({
@@ -27,13 +26,24 @@ export default function GiveawayItem(props: GiveawayItemProps) {
         })
       }
     >
+      {item?.accumulatedAmount === 0 && (
+        <div className="absolute -right-1 -top-1 z-30 w-16 h-12">
+          <img
+            src={require('@/assets/free-rool.png')}
+            className="w-full object-cover"
+          />
+        </div>
+      )}
       <div className="relative overflow-hidden giveaways-grade-item w-full flex flex-col">
         <div className="flex justify-between h-[30px] px-2 py-1 top-color text-black/70">
           <div className="flex items-center justify-center gap-1">
             <div
               className={`rounded-full flex justify-center items-center bg-black/70 w-[18px] h-[18px]`}
             >
-              <IconFont type='icon-a-bestdrop' className='text-[8px] icon-color'/>
+              <IconFont
+                type="icon-a-bestdrop"
+                className="text-[8px] icon-color"
+              />
             </div>
             <p className="text-xs font-semibold">{item?.title}</p>
           </div>

@@ -37,6 +37,14 @@ export default React.memo(function RollCard({
             }
       }
     >
+       {data?.accumulatedAmount === 0 && (
+        <div className="absolute -right-1 -top-1 z-30 w-12">
+          <img
+            src={require('@/assets/free-rool.png')}
+            className="w-full object-cover"
+          />
+        </div>
+      )}
       <div
         className="roll-card-banner blur-md"
         style={{
