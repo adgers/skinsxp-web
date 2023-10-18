@@ -298,7 +298,14 @@ export default function Header() {
                       />
                     )}
                     {item.title}
-                    {item.link === '/market' && <div className='absolute w-8 -top-0.5 -right-3'><img src={require('@/assets/hot-flag.png')} className='w-full object-cover'/></div>}
+                    {item.link === '/market' && (
+                      <div className="absolute w-8 top-0.5 left-0.5 transform -rotate-[20deg]">
+                        <img
+                          src={require('@/assets/hot-flag.png')}
+                          className="w-full object-cover"
+                        />
+                      </div>
+                    )}
                   </Link>
                 );
               })}

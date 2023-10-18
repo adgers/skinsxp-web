@@ -23,7 +23,7 @@ export default function RollList() {
   const roomTypes = useMemo(() => {
     return [
       { label: <FormattedMessage id="roll_room_gftj" />, value: 1 },
-      // { label: <FormattedMessage id="roll_room_zbfl" />, value: 2 },
+      { label: <FormattedMessage id="roll_room_zbfl" />, value: 2 },
       { label: <FormattedMessage id="roll_room_wcyd" />, value: 0 },
     ];
   }, []);
