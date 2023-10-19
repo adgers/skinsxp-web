@@ -11,17 +11,8 @@ export default function LoginTip() {
       open={loginTipShow}
       className="w-[300px] h-[316px] sm:w-[445px] sm:h-[470px] border-none p-0 overflow-hidden rounded-md"
     >
-      <Button
-        size="xs"
-        shape="circle"
-        color="ghost"
-        className="absolute right-2 top-2"
-        onClick={() => hideLoginTip()}
-      >
-        ✕
-      </Button>
       <Modal.Body
-        className="flex h-full flex-col items-center px-8 py-6 sm:py-10 bg-no-repeat bg-contain "
+        className="flex h-full flex-col items-center px-8 py-6 sm:py-10 bg-no-repeat bg-contain"
         style={{ backgroundImage: `url(${bgImg})` }}
       >
         <div className="w-full h-full relative flex flex-col items-center uppercase">
@@ -64,7 +55,7 @@ export default function LoginTip() {
               </div>
             </div>
           </div>
-          <div className="absolute top-[100px] sm:top-[155px] w-[50px] sm:w-[75px] left-0 sm:left-[10px] font-semibold text-right sm:text-xl">
+          <div className="absolute top-[120px] sm:top-[170px] w-[50px] sm:w-[75px] left-0 sm:left-[10px] font-semibold text-right sm:text-xl">
             <FormattedMessage id="loginTip_up" />
           </div>
           <div
@@ -81,7 +72,7 @@ export default function LoginTip() {
           </div>
 
           <Button
-            className="btn btn-purple absolute w-full m-auto bottom-0"
+            className="btn btn-purple absolute w-full m-auto bottom-0 max-w-xs"
             onClick={() => {
               hideLoginTip();
               showSteamLogin();

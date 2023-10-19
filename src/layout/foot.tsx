@@ -122,7 +122,7 @@ export default function Foot() {
               <IconFont type="icon-tiktok" className="text-[24px]" />
             </a>
             <a
-              href="https://discord.gg/j2NxjZW5"
+              href="https://discord.gg/aG67xJwWDH"
               rel="noreferrer"
               target="_blank"
             >

@@ -4,7 +4,7 @@ import { history, useModel } from '@umijs/max';
 import { useEffect } from 'react';
 
 export default function LoginCallback() {
-  const { getUser, hideLoginTip } = useModel('user');
+  const { getUser, hideLoginTip ,showRegTip, setRegNum} = useModel('user');
 
   const steamLogin = async () => {
     const urlParams = new URL(window.location.href).searchParams;
@@ -57,6 +57,8 @@ export default function LoginCallback() {
             send_to: 'AW-11366921880/B4TyCMG24ewYEJjtlawq',
           });
         }
+        setRegNum(ret?.data?.result || 0);
+        showRegTip();
       }
 
       getUser();

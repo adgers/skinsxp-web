@@ -3,7 +3,7 @@
     "home_spsc": "WGショップ",
     "roll_room_title": "ロールルーム",
     "roll_room_gftj": "オフィシャル福祉",
-    "roll_room_zbfl": "KOL",
+    "roll_room_zbfl": "KOL GIVEAWAYS",
     "roll_room_wcyd": "マイ・プレゼント",
     "roll_recommand_jxz": "アクティブな景品",
     "roll_recommand_yjs": "プレゼント履歴",
@@ -392,5 +392,6 @@
     "collect_help": "お手伝いしましょう",
     "collect_help_detail": "収集が時間外になる場合は、ページの右下から直接お問い合わせください。",
     "Steam_errorcode": "Steam アカウントにエラーがあります。確認してください。",
-    "collect_help_link": "助けを集める"
+    "collect_help_link": "助けを集める",
+    "rewards_you": "たくさんのご褒美をあなたに。"
 }

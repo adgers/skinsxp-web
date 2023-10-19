@@ -3,7 +3,7 @@
     "home_spsc": "WG Sklep",
     "roll_room_title": "Rozdania",
     "roll_room_gftj": "Poleć prezenty",
-    "roll_room_zbfl": "KOL",
+    "roll_room_zbfl": "Rozdania użytkowników",
     "roll_room_wcyd": "MOJE ROZDANIA",
     "roll_recommand_jxz": "AKTYWNE ROZDANIA",
     "roll_recommand_yjs": "HISTORIA ROZDAŃ",
@@ -392,5 +392,6 @@
     "collect_help": "Deixe-nos ajudar",
     "collect_help_detail": "Quando a recolha terminar, podes contactar-nos diretamente no canto inferior direito da página para obteres ajuda.",
     "Steam_errorcode": "Existe algum erro na tua conta Steam, verifica.",
-    "collect_help_link": "ZBIERZ POMOC"
+    "collect_help_link": "ZBIERZ POMOC",
+    "rewards_you": "Wiele nagród dla Ciebie."
 }

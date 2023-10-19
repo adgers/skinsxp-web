@@ -3,7 +3,7 @@
     "home_spsc": "WG pazarı",
     "roll_room_title": "ÇEKİLİŞLER",
     "roll_room_gftj": "Önermek ÇEKİLİŞLER",
-    "roll_room_zbfl": "KOL",
+    "roll_room_zbfl": "Kullanıcı çekilişleri",
     "roll_room_wcyd": "ÇEKILIŞLERIM",
     "roll_recommand_jxz": "AKTIF ÇEKILIŞLER",
     "roll_recommand_yjs": "ÇEKILIŞ GEÇMIŞI",
@@ -392,5 +392,6 @@
     "collect_help": "yardım edelim",
     "collect_help_detail": "Tahsilat fazla mesai yaptığında yardım için sayfanın sağ alt kısmından bizimle doğrudan iletişime geçebilirsiniz.",
     "Steam_errorcode": "Steam hesabınızda bir hata var, lütfen kontrol edin.",
-    "collect_help_link": "YARDIM TOPLA"
+    "collect_help_link": "YARDIM TOPLA",
+    "rewards_you": "Sizin için birçok ödül."
 }

@@ -3,7 +3,7 @@
     "home_spsc": "WG-Markt",
     "roll_room_title": "Giveaways",
     "roll_room_gftj": "Offizielles Giveaway",
-    "roll_room_zbfl": "KOL",
+    "roll_room_zbfl": "Benutzer Giveaways",
     "roll_room_wcyd": "Meine Giveaways",
     "roll_recommand_jxz": "Laufend Laufendes Giveaway",
     "roll_recommand_yjs": "Geschlossene Giveaways",
@@ -392,5 +392,6 @@
     "collect_help": "Lasst uns helfen",
     "collect_help_detail": "Wenn die Abholung zu spät ist, können Sie uns unten rechts auf der Seite direkt kontaktieren, um Hilfe zu erhalten.",
     "Steam_errorcode": "Es liegt ein Fehler mit Ihrem Steam-Konto vor. Bitte überprüfen Sie dies.",
-    "collect_help_link": "SAMMLE HILFE"
+    "collect_help_link": "SAMMLE HILFE",
+    "rewards_you": "Viele Belohnungen für Sie."
 }
