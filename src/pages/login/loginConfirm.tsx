@@ -11,17 +11,11 @@ export default function LoginConfirm() {
   const intl = useIntl();
 
   const [agreeForm, setAgreeForm] = useState({
-    form_1_agree: false,
-    form_2_agree: false,
+    form_1_agree: true,
+    form_2_agree: true,
   });
   useEffect(() => {
     setLoading(false);
-    if (!steamLoginShow) {
-      setAgreeForm({
-        form_1_agree: false,
-        form_2_agree: false,
-      });
-    }
   }, [steamLoginShow]);
   return (
     <Modal
