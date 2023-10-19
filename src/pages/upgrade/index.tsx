@@ -17,14 +17,14 @@ import {
 import { FormattedMessage, useIntl, useModel, useRequest } from '@umijs/max';
 import { useResponsive, useToggle } from 'ahooks';
 import { Slider, Spin } from 'antd';
-import { useEffect, useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import { animated, easings, useSpring } from 'react-spring';
 import { toast } from 'react-toastify';
 // import Result from '../box/result';
 import { getMyVoucherPageUsingGET } from '@/services/front/gerenzhongxinxiangguan';
 import { remove } from 'lodash';
+import { Button } from 'react-daisyui';
 import './index.less';
-import { Range } from 'react-daisyui';
 
 export default function DreamPage() {
   const { voice, toggleVoice } = useModel('sys');
@@ -166,6 +166,21 @@ export default function DreamPage() {
     }
   };
 
+  const selectWeaponRender = useMemo(() => {
+    return (
+      <div className="flex items-center flex-1 flex-wrap px-5">
+        {selectWeapon.map((item, index) => (
+          <div
+            key={index}
+            className="flex items-center justify-center max-w-[75%] flex-grow basis-[25%] m-auto"
+          >
+            <img src={item?.giftImage} className="w-full object-cover" />
+          </div>
+        ))}
+      </div>
+    );
+  }, [selectWeapon]);
+
   useEffect(() => {
     refreshQuantity();
   }, [selectItem, range]);
@@ -206,7 +221,7 @@ export default function DreamPage() {
           </div>
         </div>
       </div>
-      <div className="grid grid-cols-3 gap-5">
+      <div className="flex flex-wrap relative w-full py-2.5">
         {/* 已选择的武器 */}
         {/* <div>
           <div className='w-full h-full'>
@@ -218,39 +233,43 @@ export default function DreamPage() {
             </div>
           ))}
         </div> */}
-        <div className="flex flex-col h-full rounded-l-lg rounded-r-lg bg-black lg:rounded-r-none ">
-          <div className="flex flex-col items-center w-full m-auto bg-[url('@/assets/upgrade-gun.png')] bg-no-repeat bg-center bg-[size:50%]">
-            <div className="upgrade-selected-items__placeholder-arrows animated-arrows">
-              <img
-                src={require('@/assets/upgrade-select-arrow.png')}
-                alt="animated arrow"
-                className="animated-arrows__arrow"
-              />
-              <img
-                src={require('@/assets/upgrade-select-arrow.png')}
-                alt="animated arrow"
-                className="animated-arrows__arrow"
-              />
-              <img
-                src={require('@/assets/upgrade-select-arrow.png')}
-                alt="animated arrow"
-                className="animated-arrows__arrow"
-              />
-            </div>
-            <div className="pr-1">
-              <p className="text-sm font-semibold text-center leading-tight text-white md:text-base lg:text-lg !text-gold">
-                Choose your item
-              </p>
+        <div className="aspect-square  flex w-[33.33%]  flex-col h-full rounded-l-lg rounded-r-lg bg-black lg:rounded-r-none ">
+          {selectWeapon?.length > 0 ? (
+            <>{selectWeaponRender}</>
+          ) : (
+            <div className="flex flex-col items-center w-full m-auto bg-[url('@/assets/upgrade-gun.png')] bg-no-repeat bg-center bg-[size:50%]">
+              <div className="upgrade-selected-items__placeholder-arrows animated-arrows">
+                <img
+                  src={require('@/assets/upgrade-select-arrow.png')}
+                  alt="animated arrow"
+                  className="animated-arrows__arrow"
+                />
+                <img
+                  src={require('@/assets/upgrade-select-arrow.png')}
+                  alt="animated arrow"
+                  className="animated-arrows__arrow"
+                />
+                <img
+                  src={require('@/assets/upgrade-select-arrow.png')}
+                  alt="animated arrow"
+                  className="animated-arrows__arrow"
+                />
+              </div>
+              <div className="pr-1">
+                <p className="text-sm font-semibold text-center leading-tight text-white md:text-base lg:text-lg !text-gold">
+                  Choose your item
+                </p>
 
-              <p className="text-xs leading-tight text-light sm:text-sm">
-                Item, that you want to upgrade
-              </p>
+                <p className="text-xs leading-tight text-light sm:text-sm">
+                  Item, that you want to upgrade
+                </p>
+              </div>
             </div>
-          </div>
+          )}
         </div>
         {/* 概率 */}
-        <div className="flex flex-row md:flex-col items-center justify-center gap-4 md:gap-2">
-          <div className="dream-bg w-[150px] h-[150px] md:w-[240px] md:h-[240px] flex-shrink-0">
+        <div className="aspect-square  flex w-[33.33%]  flex-row md:flex-col items-center justify-center gap-4 md:gap-2">
+          <div className="dream-bg w-[150px] h-[150px] md:w-[300px] md:h-[300px] flex-shrink-0">
             <div className="dream-bg-percent md:text-2xl font-num text-white text-center z-30">
               {percent}% <br />
               <div className="text-xs  text-white/50 font-light">
@@ -298,17 +317,6 @@ export default function DreamPage() {
             <div className="text-green text-xl">$0.99</div>
             <div className="text-white/50 text-xs">Total Value</div>
           </div>
-          <div className="w-full h-10 bg-black flex flex-col justify-between items-center rounded mt-10 border border-light border-b-0">
-            <div>
-              <span>+2.00%</span>
-              <div></div>
-            </div>
-            <Slider
-              className="w-full"
-              value={range}
-              onChange={onSliderChange}
-            />
-          </div>
           {/* <div className="ring-1 ring-secondary rounded-md bg-base-100 bg-opacity-20 backdrop-blur-md px-2 md:px-5 py-3 flex items-center flex-col">
             <div className="uppercase font-num text-sm md:text-base text-secondary">
               <FormattedMessage id="dream_chose_target" />
@@ -337,17 +345,80 @@ export default function DreamPage() {
           </div> */}
         </div>
         {/* 想要获得的武器 */}
-        <div className="rounded-md bg-black flex-1 w-full flex flex-col">
-          <div className="flex-1"></div>
-          <div className="flex mt-5 justify-center p-8">
-            <button type="button" onClick={open} className="btn-green w-full">
-              <div className="open-btn-arr animate-pulse" />
-              <div className="flex gap-2 px-1 flex-1 justify-center">
-                {openLoading && <LoadingOutlined />}
-                <FormattedMessage id="dream_open" />
+        <div className="aspect-square w-[33.33%]  rounded-md bg-black flex-1  flex flex-col">
+          {selectWeapon?.length > 0 ? (
+            <>{selectWeaponRender}</>
+          ) : (
+            <div className="flex flex-col items-center w-full m-auto bg-[url('@/assets/upgrade-gun.png')] bg-no-repeat bg-center bg-[size:50%]">
+              <div className="upgrade-selected-items__placeholder-arrows animated-arrows">
+                <img
+                  src={require('@/assets/upgrade-select-arrow.png')}
+                  alt="animated arrow"
+                  className="animated-arrows__arrow"
+                />
+                <img
+                  src={require('@/assets/upgrade-select-arrow.png')}
+                  alt="animated arrow"
+                  className="animated-arrows__arrow"
+                />
+                <img
+                  src={require('@/assets/upgrade-select-arrow.png')}
+                  alt="animated arrow"
+                  className="animated-arrows__arrow"
+                />
               </div>
-              <div className="open-btn-arr-right animate-pulse" />
-            </button>
+              <div className="pr-1">
+                <p className="text-sm font-semibold text-center leading-tight text-white md:text-base lg:text-lg !text-gold">
+                  Choose your item
+                </p>
+                <p className="text-xs leading-tight text-light sm:text-sm">
+                  Item that you want to recive
+                </p>
+              </div>
+            </div>
+          )}
+        </div>
+        <div className="flex items-center w-full h-[100px] mt-2 relative">
+          <div className="w-[33.33%] flex gap-3 lg:px-4 lg:pt-4 flex-wrap">
+            <Button className="btn rounded border border-light bg-black w-[94px] h-[50px]">
+              1
+            </Button>
+            <Button className="btn rounded border border-light bg-black w-[94px] h-[50px]">
+              1.5x
+            </Button>
+            <Button className="btn rounded border border-light bg-black w-[94px] h-[50px]">
+              2x
+            </Button>
+            <Button className="btn rounded border border-light bg-black w-[94px] h-[50px]">
+              5x
+            </Button>
+            <Button className="btn rounded border border-light bg-black w-[94px] h-[50px]">
+              10x
+            </Button>
+          </div>
+
+          <div className="w-[33.33%]  px-4">
+            <p className="text-white/50 mt-3 font-normal">
+              Added probability with balance
+            </p>
+
+            <div className="w-full  bg-black flex flex-col justify-between items-center rounded mt-2 border border-light border-b-0">
+              <div className="w-full pr-2 py-2 flex items-center justify-end font-bold">
+                <span className="text-green mr-2 text-sm">+2.00%</span>
+                <div className="text-gray">
+                  <span className="text-white">$0.00</span>
+                  /$0.00
+                </div>
+              </div>
+              <Slider
+                className="w-full"
+                value={range}
+                onChange={onSliderChange}
+              />
+            </div>
+          </div>
+          <div className="w-[33.33%]  lg:px-10 lg:pt-10 css-nn2bo0">
+            <Button className="btn btn-green w-full">Upgrade</Button>
           </div>
         </div>
       </div>

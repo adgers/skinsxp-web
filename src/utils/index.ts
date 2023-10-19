@@ -312,7 +312,7 @@ export const langs = [
     flag: plFlag,
   },
   {
-    title: 'Polski(ES)',
+    title: 'España(ES)',
     value: 'es-ES',
     flag: esFlag,
   },
