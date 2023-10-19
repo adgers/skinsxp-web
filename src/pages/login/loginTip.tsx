@@ -12,7 +12,7 @@ export default function LoginTip() {
       className="w-[300px] h-[316px] sm:w-[445px] sm:h-[470px] border-none p-0 overflow-hidden rounded-md"
     >
       <Modal.Body
-        className="flex h-full flex-col items-center px-8 py-6 sm:py-10 bg-no-repeat bg-contain "
+        className="flex h-full flex-col items-center px-8 py-6 sm:py-10 bg-no-repeat bg-contain"
         style={{ backgroundImage: `url(${bgImg})` }}
       >
         <div className="w-full h-full relative flex flex-col items-center uppercase">

@@ -17,11 +17,11 @@ export default function RegTip() {
         style={{ backgroundImage: `url(${bgImg})` }}
       >
         <div className="w-full h-full relative flex flex-col items-center uppercase">
-          <div className="w-full max-w-xs top-[45px] sm:top-[70px] text-center relative text-lg sm:text-2xl font-semibold">
+          <div className="w-full max-w-xs top-[45px] sm:top-[70px] text-center relative font-semibold text-xs sm:text-base">
             <FormattedMessage id="rewards_you" />
           </div>
 
-          <div className="left-[70px] sm:left-[100px] top-[75px] sm:top-[120px] relative flex gap-1 items-center">
+          <div className="left-[70px] sm:left-[100px] top-[85px] sm:top-[120px] relative flex gap-1 items-center">
             <span className="text-green text-2xl sm:text-3xl font-semibold">$</span>
             <span className="text-2xl sm:text-3xl font-num">{numberFixed(regNum)}</span>
           </div>
