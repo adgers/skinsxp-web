@@ -2,8 +2,8 @@
     "login": "Log in",
     "home_spsc": "WG Market",
     "roll_room_title": "Giveaways",
-    "roll_room_gftj": "Recommend Giveaways",
-    "roll_room_zbfl": "KOL",
+    "roll_room_gftj": "Recommend  Giveaways",
+    "roll_room_zbfl": "User Giveaways",
     "roll_room_wcyd": "My Giveaways",
     "roll_recommand_jxz": "ACTIVE GIVEAWAYS",
     "roll_recommand_yjs": "GIVEAWAYS HISTORY",
@@ -392,5 +392,6 @@
     "collect_help": "Let us help",
     "collect_help_detail": "When the collection overtime, you can contact us directly at the bottom right of the page for help.",
     "Steam_errorcode": "There is something error with your Steam account, please check.",
-    "collect_help_link": "COLLECT HELP"
+    "collect_help_link": "COLLECT HELP",
+    "rewards_you": "Many rewards for you."
 }

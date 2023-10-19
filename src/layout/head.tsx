@@ -25,6 +25,7 @@ import { Button, Navbar } from 'react-daisyui';
 import './index.less';
 import OpenHistory from './open-history';
 import Placard from './placard';
+import RegTip from '@/pages/login/regTip';
 
 export default function Header() {
   const {
@@ -39,7 +40,7 @@ export default function Header() {
     showSteamLogin,
     loginTipShow,
     showLoginTip,
-    langShow,
+    regTipShow,
     showLang,
   } = useModel('user');
 
@@ -529,6 +530,7 @@ export default function Header() {
       {benefitShow && <Benefit />}
       {steamLoginShow && <LoginConfirm />}
       {loginTipShow && <LoginTip />}
+      {regTipShow && <RegTip />}
       <SelectLang />
     </>
   );

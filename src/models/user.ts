@@ -12,7 +12,9 @@ export default () => {
   const [userInfo, setUserInfo] = useState<API.CustomerDetailVo>();
   const localAgreePing = getLocalSettings('agreePing');
   const [loginTipShow, setLoginTipShow] = useState<boolean>(false);
+  const [regTipShow, setRegTipShow] = useState<boolean>(false);
   const [langShow, setLangShow] = useState<boolean>(false);
+  const [regNum, setRegNum] = useState(0);
 
   const [agreePing, setAgreePing] = useState<boolean>(
     localAgreePing === undefined ? true : localAgreePing,
@@ -84,6 +86,13 @@ export default () => {
     setLoginTipShow(false);
   };
 
+  const showRegTip = () => {
+    setRegTipShow(true);
+  };
+  const hideRegTip = () => {
+    setRegTipShow(false);
+  };
+
   const showLang = () => {
     setLangShow(true);
   };
@@ -130,8 +139,13 @@ export default () => {
     loginTipShow,
     showLoginTip,
     hideLoginTip,
+    showRegTip,
+    hideRegTip,
+    regTipShow,
     langShow,
     showLang,
     hideLang,
+    regNum,
+    setRegNum,
   };
 };
