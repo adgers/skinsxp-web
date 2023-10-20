@@ -76,7 +76,6 @@ export function isLogin() {
 }
 
 export function numberFixed(num: number, fixed: number = 2) {
-  console.log(num,'targetPrice')
   return new Big(num).toFixed(fixed);
 }
 

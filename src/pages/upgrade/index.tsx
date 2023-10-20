@@ -5,7 +5,7 @@ import {
   pageUsingGET1,
   v3StartUpgradeUsingPOST,
 } from '@/services/front/shengjixiangguan';
-import { goback, numberFixed, numberRoundUp, parseName } from '@/utils';
+import { goback, numberFixed, parseName } from '@/utils';
 import {
   DownOutlined,
   LeftOutlined,
@@ -15,7 +15,7 @@ import {
 } from '@ant-design/icons';
 import { FormattedMessage, useIntl, useModel, useRequest } from '@umijs/max';
 import { useResponsive } from 'ahooks';
-import { Slider } from 'antd';
+import { Slider, message } from 'antd';
 import { useEffect, useMemo, useState } from 'react';
 import { animated, easings, useSpring } from 'react-spring';
 import { toast } from 'react-toastify';
@@ -23,23 +23,20 @@ import { toast } from 'react-toastify';
 import { getMyVoucherPageUsingGET } from '@/services/front/gerenzhongxinxiangguan';
 import { remove } from 'lodash';
 import { Button } from 'react-daisyui';
+import { ItemState } from '../profile/bag';
 import './index.less';
 
 export default function DreamPage() {
   const { voice, toggleVoice } = useModel('sys');
   const intl = useIntl();
   const [openLoading, setOpenLoading] = useState(false);
-  const [quantity, setQuantity] = useState(0);
-  const [range, setRange] = useState<number>(0);
-  const [percent, setPercent] = useState(5);
-  const [balanceRange, setBalanceRange] = useState<number>(0); // 额外金额fanwei
 
-  const [balancePercent, setBalancePercent] = useState<number>(0); // 额外金额百分比
-  const [balance, setBalance] = useState<number>(0); // 额外金额
-
+  const [percent, setPercent] = useState(5); /* 显示 中奖率 */
+  const [maxBalance, setMaxBalance] = useState(0); // 最大可选额外金额
+  const [balancePercent, setBalancePercent] = useState<number>(0); // 额外金额所占百分比
   const [itemsPercent, setItemsPercent] = useState<number>(0); // 背包饰品 占比
-  const [itemsTotal, setItemsTotal] = useState(0);
-  const [targetPrice, setTargetPrice] = useState(0);
+  const [itemsTotal, setItemsTotal] = useState(0); // 背包饰品价值
+  const [targetPrice, setTargetPrice] = useState(0); // 目标饰品价值
 
   const [resultShow, setResultShow] = useState(false);
   const [result, setResult] = useState<API.UpgradeResultVo>();
@@ -102,6 +99,36 @@ export default function DreamPage() {
 
   const { data: config } = useRequest(() => getUpgradeConfigUsingGET());
 
+  /* 获取 */
+  const getMaxQuantity = ({
+    price = 0,
+    returnRate = 0,
+    maxProb = 0,
+  }: {
+    price: number;
+    returnRate: number;
+    maxProb: number;
+  }) => {
+    return numberFixed((price * returnRate) / (maxProb / 100), 2);
+  };
+
+  const getPercent = ({
+    curPrice = 0,
+    returnRate = 0,
+    totalPrice = 0,
+  }: {
+    curPrice: number;
+    returnRate: number;
+    totalPrice: number;
+  }) => {
+    return numberFixed(
+      (curPrice * (returnRate * 100 || 0)) / totalPrice || 0,
+      2,
+    );
+  };
+
+  const getBalance = () => {};
+
   /* 获取背包饰品 */
   const {
     data: bagData,
@@ -145,10 +172,10 @@ export default function DreamPage() {
     let rotateTo = 360 * 3;
     if (success) {
       //如果成功就停止range[0]和range[1]之间的随机数
-      rotateTo += (Math.floor(Math.random() * range) + range) * 3.6;
+      rotateTo += (Math.floor(Math.random() * percent) + percent) * 3.6;
     } else {
       //如果失败则停在rang[0]和rang[1]以外地方,rang[1]往后2-20内的随机地方
-      rotateTo += (Math.floor(Math.random() * 20) + range + 2) * 3.6;
+      rotateTo += (Math.floor(Math.random() * 20) + percent + 2) * 3.6;
     }
 
     setRotateStart(true);
@@ -169,9 +196,17 @@ export default function DreamPage() {
     rotateApi.start({
       from: { rotate: 0 },
     });
-    debugger;
     const ret = await v3StartUpgradeUsingPOST({
-      quantity: balance,
+      quantity: numberFixed(
+        (getPercent({
+          curPrice: (balancePercent / 100) * maxBalance,
+          returnRate: config?.returnRate,
+          totalPrice: targetPrice,
+        }) /
+          100) *
+          maxBalance,
+        2,
+      ),
       upgradeGiftIds:
         selectDreamWeapon?.map((item) => item.id)?.join(',') || '',
       vouchers: selectWeapon?.map((item) => item.id)?.join(',') || '',
@@ -185,40 +220,28 @@ export default function DreamPage() {
   };
 
   const onSliderChange = (range: number) => {
-    console.log('range', range);
     if (!selectDreamWeapon?.length) {
       toast.error('Please select a target accessory first', {
         toastId: 'selectItem',
       });
       return;
     }
-    // const percent = range;
-    // if (percent < (config?.minProb || 5) || percent > (config?.maxProb || 75)) {
-    //   return;
-    // }
-    const balance = numberFixed((range / 100) * quantity, 2);
+    const percent = getPercent({
+      curPrice: (range / 100) * maxBalance,
+      returnRate: config?.returnRate,
+      totalPrice: targetPrice,
+    });
+    if (
+      percent + Number(itemsPercent) < (config?.minProb || 5) ||
+      percent + Number(itemsPercent) > (config?.maxProb || 75)
+    ) {
+      return;
+    }
 
-    setBalanceRange(range);
-    setBalance(balance);
+    setBalancePercent(range);
   };
 
-  // const refreshQuantity = () => {
-  //   const returnRate = config?.returnRate;
-  //   const targetPirce = selectDreamWeapon.reduce(
-  //     (a: number, b: API.UpgradeGiftPageVo) => {
-  //       return a + Number(b.recoveryPrice);
-  //     },
-  //     0,
-  //   );
-
-  //   if (targetPirce && returnRate && percent > 0) {
-  //     const quantity = numberRoundUp(
-  //       (targetPirce * returnRate) / config.maxProb,
-  //     );
-  //     setQuantity(quantity);
-  //   }
-  // };
-
+  /* 饰品总额&倍率 目标视频最低价变化 */
   useEffect(() => {
     setSearchDreamsParams({
       ...searchDreamsParams,
@@ -226,22 +249,82 @@ export default function DreamPage() {
     });
   }, [itemsTotal, currentTimes]);
 
+  /* 饰品金额所占百分比 */
   useEffect(() => {
-    const percent = numberFixed(
-      ((balanceRange / 100) * quantity * (config?.returnRate * 100 || 0)) /
-        targetPrice || 0,
-      2,
-    );
-    setBalancePercent(percent);
-  }, [balanceRange]);
+    if (targetPrice > 0) {
+      const percent = getPercent({
+        curPrice: Number(itemsTotal),
+        returnRate: Number(config?.returnRate) || 0,
+        totalPrice: Number(targetPrice),
+      });
 
+      setMaxBalance(
+        getMaxQuantity({
+          price: Number(targetPrice) - Number(itemsTotal),
+          returnRate: config?.returnRate,
+          maxProb: config?.maxProb,
+        }),
+      );
+
+      setItemsPercent(percent);
+      // if (percent < config?.returnRate) {
+      //   const autoAddPercent = numberFixed(config?.returnRate - percent);
+      //   setBalanceRange(autoAddPercent * 100);
+      //   setBalancePercent(autoAddPercent);
+      //   setBalance(numberFixed(autoAddPercent));
+      // }
+      setBalancePercent(0);
+    } else {
+      setItemsPercent(0);
+      setBalancePercent(0);
+    }
+  }, [itemsTotal, config, targetPrice]);
+
+  /* 最大可选额外金额, 目标饰品总额 */
   useEffect(() => {
-    const percent = numberFixed(
-      (itemsTotal * (config?.returnRate * 100 || 0)) / targetPrice || 0,
+    const targetPirce = selectDreamWeapon.reduce(
+      (a: number, b: API.UpgradeGiftPageVo) => {
+        return a + Number(b.recoveryPrice);
+      },
+      0,
+    );
+    if (targetPirce && config.returnRate) {
+      const quantity = getMaxQuantity({
+        price: Number(targetPirce) - Number(itemsTotal),
+        returnRate: config?.returnRate,
+        maxProb: config?.maxProb,
+      });
+      setMaxBalance(quantity);
+    }
+    setTargetPrice(targetPirce);
+  }, [selectDreamWeapon, config, itemsTotal]);
+
+  /* 饰品总额 */
+  useEffect(() => {
+    const itemsTotal =
+      selectWeapon.reduce((a: number, b: API.MyVoucherVo) => {
+        return a + Number(b.recoveryPrice);
+      }, 0) || 0;
+
+    setItemsTotal(itemsTotal);
+  }, [selectWeapon]);
+
+  /* 总百分比 */
+  useEffect(() => {
+    setPercent(
+      numberFixed(
+        Number(itemsPercent) +
+          Number(
+            getPercent({
+              curPrice: (balancePercent / 100) * maxBalance,
+              returnRate: config?.returnRate,
+              totalPrice: targetPrice,
+            }),
+          ),
+      ),
       2,
     );
-    setItemsPercent(percent);
-  }, [itemsTotal, config?.returnRate, targetPrice]);
+  }, [itemsPercent, balancePercent, maxBalance]);
 
   const selectWeaponRender = useMemo(() => {
     return (
@@ -312,44 +395,6 @@ export default function DreamPage() {
     );
   }, [selectDreamWeapon]);
 
-  useEffect(() => {
-    const targetPirce = selectDreamWeapon.reduce(
-      (a: number, b: API.UpgradeGiftPageVo) => {
-        return a + Number(b.recoveryPrice);
-      },
-      0,
-    );
-    if (targetPirce && config.returnRate) {
-      const quantity = numberRoundUp(
-        (targetPirce * config.returnRate) / config.maxProb,
-      );
-      setQuantity(quantity);
-    }
-    console.log(targetPirce, 'targetPirce');
-    setTargetPrice(targetPirce);
-  }, [selectDreamWeapon, config]);
-
-  useEffect(() => {
-    const itemsTotal =
-      selectWeapon.reduce((a: number, b: API.MyVoucherVo) => {
-        return a + Number(b.recoveryPrice);
-      }, 0) || 0;
-    console.log(itemsTotal, 'itemsTotal');
-    setItemsTotal(itemsTotal);
-  }, [selectWeapon]);
-
-  useEffect(() => {
-    if (config) {
-      setPercent(config?.minProb || 1);
-      setRange(config?.minProb || 1);
-    }
-  }, [config]);
-
-  useEffect(() => {
-    console.log(itemsPercent + balancePercent,'itemsPercent + balancePercent')
-    setPercent(numberFixed(Number(itemsPercent) + Number(balancePercent), 2));
-  }, [itemsPercent, balancePercent]);
-
   return (
     <div className="max-w-[1400px] m-auto px-3 mt-5">
       <div className="flex grid-cols-3 items-center sm:grid h-[38px] sm:h-[76px]">
@@ -380,17 +425,6 @@ export default function DreamPage() {
         </div>
       </div>
       <div className="flex flex-wrap relative w-full py-2.5">
-        {/* 已选择的武器 */}
-        {/* <div>
-          <div className='w-full h-full'>
-            <img src={require('@/assets/upgrade-select-bg.png')} alt="" />
-          </div>
-          {selectWeapon?.map((item, index) => (
-            <div key={index}>
-              <img src={item?.giftImage} />
-            </div>
-          ))}
-        </div> */}
         <div className="aspect-square  flex order-3 lg:order-none w-full lg:w-[33.33%] max-h-[26rem] lg:h-full  flex-col  rounded-l-lg rounded-r-lg bg-black/70 lg:rounded-r-none ">
           {selectWeapon?.length > 0 ? (
             <>
@@ -493,36 +527,23 @@ export default function DreamPage() {
             }}
           >
             <div className="text-green text-xl">
-              ${numberFixed(Number(itemsTotal) + Number(balance), 2)}
+              $
+              {numberFixed(
+                Number(itemsTotal) +
+                  Number(
+                    (getPercent({
+                      curPrice: (balancePercent / 100) * maxBalance,
+                      returnRate: config?.returnRate,
+                      totalPrice: targetPrice,
+                    }) /
+                      100) *
+                      maxBalance,
+                  ),
+                2,
+              )}
             </div>
             <div className="text-white/50 text-xs">Total Value</div>
           </div>
-          {/* <div className="ring-1 ring-secondary rounded-md bg-base-100 bg-opacity-20 backdrop-blur-md px-2 md:px-5 py-3 flex items-center flex-col">
-            <div className="uppercase font-num text-sm md:text-base text-secondary">
-              <FormattedMessage id="dream_chose_target" />
-            </div>
-            {selectItem ? (
-              <div className="flex my-5 relative" onClick={toggleVisible}>
-                <img
-                  className="h-[50px] md:h-[100px] cursor-pointer"
-                  src={selectItem?.giftImage}
-                />
-                <div className="absolute text-xs w-full -bottom-2 left-0 truncate">
-                  {selectItem.giftName}
-                </div>
-              </div>
-            ) : (
-              <img
-                src={dreamBtn}
-                className="w-[50px] md:w-[100px] cursor-pointer my-5 animate-pulse"
-                onClick={toggleVisible}
-              />
-            )}
-
-            <div className="text-xs">
-              <FormattedMessage id="dream_failed_tip" />
-            </div>
-          </div> */}
         </div>
         {/* 想要获得的武器 */}
         <div className="aspect-square order-3 lg:order-none w-full lg:w-[33.33%] max-h-[26rem]    lg:h-full  rounded-md bg-black flex-1 mt-6 lg:mt-0 flex flex-col">
@@ -591,11 +612,11 @@ export default function DreamPage() {
           )}
         </div>
         <div className="flex flex-col lg:flex-row items-center order-2 lg:order-none w-full h-auto lg:h-[100px] mt-2 relative gap-3">
-          <div className="w-full lg:w-[33.33%] flex gap-3 lg:px-4 lg:pt-4 flex-wrap">
+          <div className="w-full lg:w-[33.33%] flex gap-3 lg:px-4 lg:pt-4 flex-wrap justify-center">
             {timesBtn.map((item, index) => {
               return (
                 <Button
-                  className={`btn rounded border bg-black w-[94px] h-[50px] ${
+                  className={`btn rounded border bg-black ${
                     currentTimes === item.value
                       ? 'border-green text-green'
                       : 'border-light'
@@ -626,18 +647,28 @@ export default function DreamPage() {
               <div className="w-full pr-2 py-2 flex items-center justify-end font-bold">
                 <span className="text-green mr-2 text-sm">
                   {'+'}
-                  {targetPrice > 0 ? balancePercent : '0.00'}%
+                  {targetPrice > 0
+                    ? numberFixed(
+                        getPercent({
+                          curPrice: (balancePercent / 100) * maxBalance,
+                          returnRate: config?.returnRate,
+                          totalPrice: targetPrice,
+                        }),
+                        2,
+                      )
+                    : '0.00'}
+                  %
                 </span>
                 <div className="text-gray">
                   <span className="text-white">
-                    ${numberFixed((balanceRange / 100) * quantity, 2)}
+                    ${numberFixed((balancePercent / 100) * maxBalance, 2)}
                   </span>
-                  /${quantity}
+                  /${numberFixed(maxBalance, 2)}
                 </div>
               </div>
               <Slider
                 className="w-full"
-                value={balanceRange}
+                value={balancePercent}
                 onChange={onSliderChange}
               />
             </div>
@@ -701,6 +732,9 @@ export default function DreamPage() {
                   key={index}
                   className="relative"
                   onClick={() => {
+                    if (item.state !== ItemState.ACTIVE) {
+                      return;
+                    }
                     let prevWeapons = JSON.parse(JSON.stringify(selectWeapon));
                     if (selectWeapon?.find((weapon) => weapon.id === item.id)) {
                       remove(
@@ -708,11 +742,33 @@ export default function DreamPage() {
                         (weapon: API.MyVoucherVo) => weapon.id === item.id,
                       );
                     } else {
+                      const total =
+                        [...prevWeapons, item].reduce(
+                          (a: number, b: API.MyVoucherVo) => {
+                            return a + Number(b.recoveryPrice);
+                          },
+                          0,
+                        ) || 0;
+                      if (
+                        getPercent({
+                          curPrice: total,
+                          returnRate: config?.returnRate,
+                          totalPrice: targetPrice,
+                        }) > config?.maxProb
+                      ) {
+                        message.error('饰品总价值超出！');
+                        return;
+                      }
                       prevWeapons.push(item);
                     }
                     setSelectWeapon(prevWeapons);
                   }}
                 >
+                  {item?.state !== ItemState.ACTIVE && (
+                    <div className="absolute right-0 top-0 z-30 text-sm pt-2 pr-2 text-gray">
+                      {item?.stateStr}
+                    </div>
+                  )}
                   <WeaponCard data={item} />
                   {selectWeapon?.find((weapon) => weapon.id === item.id) && (
                     <div className="absolute bottom-0 right-0">
