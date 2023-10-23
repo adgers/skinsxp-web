@@ -1913,7 +1913,7 @@ declare namespace API {
   };
 
   type ResultDataUpgradeResultVo_ = {
-    data?: UpgradeResultVo;
+    data?: UpgradeResultVo[];
     msg?: string;
     status?: number;
   };

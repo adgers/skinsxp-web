@@ -3,7 +3,7 @@
     "home_spsc": "WG-Markt",
     "roll_room_title": "Giveaways",
     "roll_room_gftj": "Offizielles Giveaway",
-    "roll_room_zbfl": "Benutzer Giveaways",
+    "roll_room_zbfl": "KOL",
     "roll_room_wcyd": "Meine Giveaways",
     "roll_recommand_jxz": "Laufend Laufendes Giveaway",
     "roll_recommand_yjs": "Geschlossene Giveaways",
@@ -393,5 +393,17 @@
     "collect_help_detail": "Wenn die Abholung zu spät ist, können Sie uns unten rechts auf der Seite direkt kontaktieren, um Hilfe zu erhalten.",
     "Steam_errorcode": "Es liegt ein Fehler mit Ihrem Steam-Konto vor. Bitte überprüfen Sie dies.",
     "collect_help_link": "SAMMLE HILFE",
-    "rewards_you": "Viele Belohnungen für Sie."
+    "got_it": "Ich hab's.",
+    "upgrade_xzsp": "Wähle Items und/oder Guthaben zum benutzen aus",
+    "upgrade_xzsp_recive": "Wähle ein Item, zu welchen du upgraden möchtest",
+    "upgrade_add_balance": "Durch Guthaben hinzugefügte Wahrscheinlichkeit",
+    "upgrade_wdsp": "MEINE ARTIKEL",
+    "upgrade_no_skin": "DU HAST KEINE ITEMS",
+    "open_case": "Öffnen Sie die Box",
+    "upgrade_no_items": "Keine Artikel entsprechen diesen Kriterien!",
+    "upgrade_jzcc": "Der Gesamtwert des Artikels übersteigt!",
+    "upgrade_result_fail": "Leider",
+    "upgrade_probability": "Wahrscheinlichkeit",
+    "upgrade_zjz": "Gesamtwert",
+    "upgrade_select_tip": "Bitte wählen Sie zunächst ein Zielzubehör aus"
 }

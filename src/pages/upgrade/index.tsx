@@ -1,5 +1,6 @@
 import { IconFont } from '@/components/icons';
 import WeaponCard from '@/components/weaponCard';
+import { getMyVoucherPageUsingGET } from '@/services/front/gerenzhongxinxiangguan';
 import {
   getUpgradeConfigUsingGET,
   pageUsingGET1,
@@ -21,16 +22,15 @@ import {
   useRequest,
 } from '@umijs/max';
 import { useResponsive } from 'ahooks';
-import { Slider, message } from 'antd';
-import { useEffect, useMemo, useState } from 'react';
+import { Slider } from 'antd';
+import { remove } from 'lodash';
+import { useEffect, useMemo, useRef, useState } from 'react';
+import { Button } from 'react-daisyui';
 import { animated, easings, useSpring } from 'react-spring';
 import { toast } from 'react-toastify';
-// import Result from '../box/result';
-import { getMyVoucherPageUsingGET } from '@/services/front/gerenzhongxinxiangguan';
-import { remove } from 'lodash';
-import { Button } from 'react-daisyui';
 import { ItemState } from '../profile/bag';
 import './index.less';
+import Result from './result';
 
 export default function DreamPage() {
   const { voice, toggleVoice } = useModel('sys');
@@ -41,11 +41,11 @@ export default function DreamPage() {
   const [maxBalance, setMaxBalance] = useState(0); // 最大可选额外金额
   const [balancePercent, setBalancePercent] = useState<number>(0); // 额外金额所占百分比
   const [itemsPercent, setItemsPercent] = useState<number>(0); // 背包饰品 占比
-  const [itemsTotal, setItemsTotal] = useState(0); // 背包饰品价值
-  const [targetPrice, setTargetPrice] = useState(0); // 目标饰品价值
+  const [itemsTotal, setItemsTotal] = useState<number>(0); // 背包饰品价值
+  const [targetPrice, setTargetPrice] = useState<number>(0); // 目标饰品价值
 
   const [resultShow, setResultShow] = useState(false);
-  const [result, setResult] = useState<API.UpgradeResultVo>();
+  const [result, setResult] = useState<API.UpgradeResultVo[]>();
   const responsive = useResponsive();
   const [rotateStart, setRotateStart] = useState(false);
   const [searchParams, setSearchParams] = useState<{
@@ -60,6 +60,7 @@ export default function DreamPage() {
   const [currentTimes, setCurrentTimes] = useState<number>(1);
 
   const [currentTab, setCurrentTab] = useState<'upgrade' | 'items'>('items');
+  const percentRef = useRef(5);
 
   const timesBtn = [
     {
@@ -105,18 +106,13 @@ export default function DreamPage() {
 
   const { data: config } = useRequest(() => getUpgradeConfigUsingGET());
 
-  /* 获取 */
-  const getMaxQuantity = ({
-    price = 0,
-    returnRate = 0,
-    maxProb = 0,
-  }: {
-    price: number;
-    returnRate: number;
-    maxProb: number;
-  }) => {
-    return numberFixed((price / returnRate) * (maxProb / 100), 2);
-  };
+  const audio = useMemo(
+    () =>
+      new Howl({
+        src: [require('@/assets/audio/upgrade.mp3')],
+      }),
+    [],
+  );
 
   const getPercent = ({
     curPrice = 0,
@@ -127,10 +123,7 @@ export default function DreamPage() {
     returnRate: number;
     totalPrice: number;
   }) => {
-    return numberFixed(
-      (curPrice * (returnRate * 100 || 0)) / totalPrice || 0,
-      2,
-    );
+    return Number((curPrice * (returnRate * 100 || 0)) / totalPrice || 0);
   };
 
   const getBalance = ({
@@ -142,7 +135,7 @@ export default function DreamPage() {
     returnRate: number;
     percent: number;
   }) => {
-    return numberFixed((percent * totalPrice) / (returnRate * 100), 2);
+    return Number((percent * totalPrice) / (returnRate * 100));
   };
 
   /* 获取背包饰品 */
@@ -196,6 +189,10 @@ export default function DreamPage() {
     }
 
     setRotateStart(true);
+    if (voice) {
+      audio.play();
+    }
+
     rotateApi.start({
       from: { rotate: 0 },
       to: { rotate: rotateTo },
@@ -203,6 +200,8 @@ export default function DreamPage() {
       onResolve: () => {
         setResultShow(true);
         setRotateStart(false);
+        refresh();
+        dreamRefresh();
       },
     });
   };
@@ -214,16 +213,7 @@ export default function DreamPage() {
       from: { rotate: 0 },
     });
     const ret = await v3StartUpgradeUsingPOST({
-      quantity: numberFixed(
-        (getPercent({
-          curPrice: (balancePercent / 100) * maxBalance,
-          returnRate: config?.returnRate,
-          totalPrice: targetPrice,
-        }) /
-          100) *
-          maxBalance,
-        2,
-      ),
+      quantity: numberFixed((balancePercent / 100) * maxBalance),
       upgradeGiftIds:
         selectDreamWeapon?.map((item) => item.id)?.join(',') || '',
       vouchers: selectWeapon?.map((item) => item.id)?.join(',') || '',
@@ -238,7 +228,7 @@ export default function DreamPage() {
 
   const onSliderChange = (range: number) => {
     if (!selectDreamWeapon?.length) {
-      toast.error('Please select a target accessory first', {
+      toast.error(intl.formatMessage({ id: 'upgrade_select_tip' }), {
         toastId: 'selectItem',
       });
       return;
@@ -248,10 +238,19 @@ export default function DreamPage() {
       returnRate: config?.returnRate,
       totalPrice: targetPrice,
     });
-    if (
-      percent + Number(itemsPercent) < (config?.minProb || 5) ||
-      percent + Number(itemsPercent) > (config?.maxProb || 75)
-    ) {
+
+    if (percent + Number(itemsPercent) < (config?.minProb || 5)) {
+      const balance = getBalance({
+        percent: (config?.minProb || 5) - Number(itemsPercent),
+        returnRate: config?.returnRate,
+        totalPrice: targetPrice,
+      });
+
+      const autoAddBalancePercent = (balance / maxBalance) * 100;
+
+      setBalancePercent(autoAddBalancePercent);
+      return;
+    } else if (percent + Number(itemsPercent) > (config?.maxProb || 75)) {
       return;
     }
 
@@ -275,23 +274,25 @@ export default function DreamPage() {
       0,
     );
     setTargetPrice(targetPrice);
-    if (targetPrice > 0 && config.returnRate) {
+    if (targetPrice > 0 && config?.returnRate) {
       const curPercent = getPercent({
         curPrice: Number(itemsTotal),
         returnRate: Number(config?.returnRate) || 0,
         totalPrice: Number(targetPrice),
       });
-      const quantity = getMaxQuantity({
-        price: Number(targetPrice) - Number(itemsTotal),
+      // const quantity = getMaxQuantity({
+      //   price: Number(targetPrice) - Number(itemsTotal),
+      //   returnRate: config?.returnRate,
+      //   maxProb: config?.maxProb,
+      // });
+      const quantity = getBalance({
+        totalPrice: targetPrice,
         returnRate: config?.returnRate,
-        maxProb: config?.maxProb,
+        percent: Number(config?.maxProb - curPercent),
       });
       setMaxBalance(quantity);
       setItemsPercent(curPercent);
-      if (
-        Number(curPercent) > 0 &&
-        Number(curPercent) < Number(config?.minProb)
-      ) {
+      if (Number(curPercent) < Number(config?.minProb)) {
         const autoAddBalancePercent =
           Number(config?.minProb) - Number(curPercent) || 0;
 
@@ -301,7 +302,7 @@ export default function DreamPage() {
             returnRate: config?.returnRate,
             totalPrice: targetPrice,
           }) || 0;
-        setBalancePercent(numberFixed((autoBalance / quantity) * 100, 2));
+        setBalancePercent((autoBalance / quantity) * 100);
       } else {
         setBalancePercent(0);
       }
@@ -323,19 +324,17 @@ export default function DreamPage() {
 
   /* 总百分比 */
   useEffect(() => {
-    setPercent(
-      numberFixed(
-        Number(itemsPercent) +
-          Number(
-            getPercent({
-              curPrice: (balancePercent / 100) * maxBalance,
-              returnRate: config?.returnRate,
-              totalPrice: targetPrice,
-            }),
-          ),
-      ),
-      2,
-    );
+    const percent =
+      Number(itemsPercent) +
+      Number(
+        getPercent({
+          curPrice: (balancePercent / 100) * maxBalance,
+          returnRate: config?.returnRate,
+          totalPrice: targetPrice,
+        }),
+      );
+    setPercent(Number(percent));
+    percentRef.current = percent;
   }, [itemsPercent, balancePercent, maxBalance]);
 
   const selectWeaponRender = useMemo(() => {
@@ -408,7 +407,7 @@ export default function DreamPage() {
   }, [selectDreamWeapon]);
 
   return (
-    <div className="max-w-[1400px] m-auto px-3 mt-5">
+    <div className="max-w-[1400px] m-auto px-3 mt-5 bg-[url('@/assets/upgrade-bg.png')] bg-no-repeat bg-contain  ">
       <div className="flex grid-cols-3 items-center sm:grid h-[38px] sm:h-[76px]">
         <button
           className="btn btn-sm btn-neutral w-16 !gap-[2px] !px-0"
@@ -455,8 +454,12 @@ export default function DreamPage() {
                   </p>
                 </div>
                 <div className="flex flex-col items-end">
-                  <p className="text-white text-xl font-bold">${itemsTotal}</p>
-                  <p className="text-sm text-green mt-2">+{itemsPercent}%</p>
+                  <p className="text-white text-xl font-bold">
+                    ${numberFixed(itemsTotal)}
+                  </p>
+                  <p className="text-sm text-green mt-2">
+                    +{numberFixed(itemsPercent)}%
+                  </p>
                 </div>
               </div>
             </>
@@ -481,11 +484,11 @@ export default function DreamPage() {
               </div>
               <div className="pr-1">
                 <p className="text-sm font-semibold text-center leading-tight text-white md:text-base lg:text-lg !text-gold">
-                  Choose your item
+                  <FormattedMessage id="upgrade_xzsp" />
                 </p>
 
                 <p className="text-xs leading-tight text-light sm:text-sm">
-                  Item, that you want to upgrade
+                  <FormattedMessage id="upgrade_xzsp_recive" />
                 </p>
               </div>
             </div>
@@ -495,9 +498,9 @@ export default function DreamPage() {
         <div className="aspect-square  flex order-1 lg:order-none w-full lg:w-[33.33%] h-96 lg:h-auto  flex-col items-center justify-center gap-4 md:gap-2">
           <div className="dream-bg w-[300px] h-[300px] md:w-[300px] md:h-[300px] flex-shrink-0">
             <div className="dream-bg-percent md:text-2xl font-num text-white text-center z-30">
-              {percent}% <br />
+              {numberFixed(percent)}% <br />
               <div className="text-xs  text-white/50 font-light">
-                Probability
+                <FormattedMessage id="upgrade_probability" />
               </div>
             </div>
             {/* 底部圆圈 */}
@@ -545,7 +548,9 @@ export default function DreamPage() {
                 2,
               )}
             </div>
-            <div className="text-white/50 text-xs">Total Value</div>
+            <div className="text-white/50 text-xs">
+              <FormattedMessage id="upgrade_zjz" />
+            </div>
           </div>
         </div>
         {/* 想要获得的武器 */}
@@ -568,7 +573,9 @@ export default function DreamPage() {
                   </p>
                 </div>
                 <div className="flex flex-col items-end">
-                  <p className="text-gray text-sm">Price</p>
+                  <p className="text-gray text-sm">
+                    <FormattedMessage id="recoveryPrice" />
+                  </p>
                   <p className="text-xl font-bold mt-2">
                     $
                     {numberFixed(
@@ -605,10 +612,7 @@ export default function DreamPage() {
               </div>
               <div className="pr-1">
                 <p className="text-sm font-semibold text-center leading-tight text-white md:text-base lg:text-lg !text-gold">
-                  Choose your item
-                </p>
-                <p className="text-xs leading-tight text-light sm:text-sm">
-                  Item that you want to recive
+                  <FormattedMessage id="upgrade_xzsp_recive" />
                 </p>
               </div>
             </div>
@@ -643,7 +647,7 @@ export default function DreamPage() {
 
           <div className="w-full lg:w-[33.33%]  px-4">
             <p className="text-white/50 mt-3 font-normal">
-              Added probability with balance
+              <FormattedMessage id="upgrade_add_balance" />
             </p>
 
             <div className="w-full  bg-black flex flex-col justify-between items-center rounded mt-2 border border-light border-b-0">
@@ -679,7 +683,7 @@ export default function DreamPage() {
           </div>
           <div className="w-full lg:w-[33.33%] lg:px-10 lg:pt-10 css-nn2bo0">
             <Button className="btn btn-green w-full" onClick={open}>
-              Upgrade
+              <FormattedMessage id="main_tab_dream" />
             </Button>
           </div>
         </div>
@@ -695,7 +699,7 @@ export default function DreamPage() {
             }`}
             onClick={() => setCurrentTab('items')}
           >
-            my items
+            <FormattedMessage id="upgrade_wdsp" />
           </div>
           <div
             className={`w-1/2 flex items-center cursor-pointer justify-center uppercase pb-4 ${
@@ -705,7 +709,7 @@ export default function DreamPage() {
             }`}
             onClick={() => setCurrentTab('upgrade')}
           >
-            Upgrade
+            <FormattedMessage id="main_tab_dream" />
           </div>
         </div>
 
@@ -716,9 +720,9 @@ export default function DreamPage() {
         >
           <div className="flex items-center justify-between py-3.5 border-b border-light">
             <div className="text-lg font-semibold">
-              MY Items
+              <FormattedMessage id="upgrade_wdsp" />
               <span className="text-gray font-medium">
-                （{bagData?.totalRows}）
+                （{bagData?.totalRows || 0}）
               </span>{' '}
             </div>
             <div
@@ -761,7 +765,7 @@ export default function DreamPage() {
                           totalPrice: targetPrice,
                         }) > config?.maxProb
                       ) {
-                        message.error('饰品总价值超出！');
+                        toast.error(intl.formatMessage({ id: 'upgrade_jzcc' }));
                         return;
                       }
                       prevWeapons.push(item);
@@ -802,7 +806,7 @@ export default function DreamPage() {
             <>
               <div className="mt-6 flex h-full flex-col items-center justify-center py-20">
                 <p className="text-sm font-semibold leading-tight text-white md:text-base lg:text-l mb-4">
-                  You don`t have any skins
+                  <FormattedMessage id="upgrade_no_skin" />
                 </p>
                 <div
                   className="btn btn-green text-white"
@@ -810,53 +814,55 @@ export default function DreamPage() {
                     history.push('/case');
                   }}
                 >
-                  Open Cases
+                  <FormattedMessage id="open_case" />
                 </div>
               </div>
             </>
           )}
-          <div className="mt-auto flex items-center justify-center pt-6">
-            <span
-              className={`${
-                searchParams?.page === 1
-                  ? 'cursor-not-allowed text-gray'
-                  : 'cursor-pointer text-white'
-              }`}
-              onClick={() => {
-                if (loading) return;
-                if (searchParams?.page > 1) {
-                  setSearchParams({
-                    ...searchParams,
-                    page: searchParams?.page - 1,
-                  });
-                }
-              }}
-            >
-              <LeftOutlined />
-            </span>
-            <div className="flex items-center justify-center rounded bg-navy-900 p-3 text-center text-sm font-semibold leading-none text-white css-1mqx83j">
-              {bagData?.page}/{bagData?.totalPages}
-            </div>
-            <span
-              className={`${
-                bagData && searchParams?.page === bagData?.totalPages
-                  ? 'cursor-not-allowed'
-                  : 'cursor-pointer text-white'
-              }`}
-              onClick={() => {
-                if (loading) return;
+          {bagData?.totalRows > 0 && (
+            <div className="mt-auto flex items-center justify-center pt-6">
+              <span
+                className={`${
+                  searchParams?.page === 1
+                    ? 'cursor-not-allowed text-gray'
+                    : 'cursor-pointer text-white'
+                }`}
+                onClick={() => {
+                  if (loading) return;
+                  if (searchParams?.page > 1) {
+                    setSearchParams({
+                      ...searchParams,
+                      page: searchParams?.page - 1,
+                    });
+                  }
+                }}
+              >
+                <LeftOutlined />
+              </span>
+              <div className="flex items-center justify-center rounded bg-navy-900 p-3 text-center text-sm font-semibold leading-none text-white css-1mqx83j">
+                {bagData?.page}/{bagData?.totalPages}
+              </div>
+              <span
+                className={`${
+                  bagData && searchParams?.page === bagData?.totalPages
+                    ? 'cursor-not-allowed'
+                    : 'cursor-pointer text-white'
+                }`}
+                onClick={() => {
+                  if (loading) return;
 
-                if (searchParams?.page < Number(bagData?.totalPages)) {
-                  setSearchParams({
-                    ...searchParams,
-                    page: searchParams?.page + 1,
-                  });
-                }
-              }}
-            >
-              <RightOutlined />
-            </span>
-          </div>
+                  if (searchParams?.page < Number(bagData?.totalPages)) {
+                    setSearchParams({
+                      ...searchParams,
+                      page: searchParams?.page + 1,
+                    });
+                  }
+                }}
+              >
+                <RightOutlined />
+              </span>
+            </div>
+          )}
         </div>
 
         <div
@@ -865,7 +871,9 @@ export default function DreamPage() {
           }`}
         >
           <div className="w-full flex justify-between items-center py-3.5 border-b border-light">
-            <div className="hidden lg:block">UPGRADE</div>
+            <div className="hidden lg:block">
+              <FormattedMessage id="main_tab_dream" />
+            </div>
             <div className="flex gap-2 flex-wrap">
               <div className="flex border rounded border-[rgba(255,255,255,0.2)] h-10 w-full lg:w-[140px] items-center py-[1px] px-2">
                 <SearchOutlined className="text-white text-lg" />
@@ -990,7 +998,7 @@ export default function DreamPage() {
             <>
               <div className="mt-6 flex h-full flex-col items-center justify-center py-20 bg-[url('@/assets/upgrade-gun.png')] bg-no-repeat bg-center bg-[size:50%]">
                 <p className="text-sm font-semibold leading-tight text-white md:text-base lg:text-l mb-4 mt-32">
-                  NO ITEMS ARE MATCHING THESE CRITERIA!
+                  <FormattedMessage id="upgrade_no_items" />
                 </p>
               </div>
             </>
@@ -1042,13 +1050,13 @@ export default function DreamPage() {
         </div>
       </div>
 
-      {/* {resultShow && result && (
+      {resultShow && result?.length && (
         <Result
           show={resultShow}
-          results={[result]}
+          results={result}
           onClose={() => setResultShow(false)}
         />
-      )} */}
+      )}
     </div>
   );
 }
