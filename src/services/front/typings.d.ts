@@ -2199,12 +2199,10 @@ declare namespace API {
   type v3StartUpgradeUsingPOSTParams = {
     /** 额外支付的代币 */
     quantity: number;
-    /** ROLL点上界, 闭区间 */
-    requestRollCodeHigh?: number;
-    /** ROLL点下界, 闭区间 */
-    requestRollCodeLow?: number;
-    /** upgradeGiftId */
-    upgradeGiftId: number;
+    /** upgradeGiftIds */
+    upgradeGiftIds?: string;
+    /** 选择的背包物品  **/
+    vouchers?: string
   };
 
   type verifyUsingGET1Params = {
