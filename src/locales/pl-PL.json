@@ -3,7 +3,7 @@
     "home_spsc": "WG Sklep",
     "roll_room_title": "Rozdania",
     "roll_room_gftj": "Poleć prezenty",
-    "roll_room_zbfl": "Rozdania użytkowników",
+    "roll_room_zbfl": "KOL",
     "roll_room_wcyd": "MOJE ROZDANIA",
     "roll_recommand_jxz": "AKTYWNE ROZDANIA",
     "roll_recommand_yjs": "HISTORIA ROZDAŃ",
@@ -393,5 +393,17 @@
     "collect_help_detail": "Quando a recolha terminar, podes contactar-nos diretamente no canto inferior direito da página para obteres ajuda.",
     "Steam_errorcode": "Existe algum erro na tua conta Steam, verifica.",
     "collect_help_link": "ZBIERZ POMOC",
-    "rewards_you": "Wiele nagród dla Ciebie."
+    "got_it": "Mam ją",
+    "upgrade_xzsp": "Zaznacz przedmioty i/lub balans do wykorzystania",
+    "upgrade_xzsp_recive": "Wybierz przedmiot do ulepszenia",
+    "upgrade_add_balance": "Dodano szansę balansem",
+    "upgrade_wdsp": "MOJE PRZEDMIOTY",
+    "upgrade_no_skin": "NIE MASZ ŻADNYCH PRZEDMIOTÓW",
+    "open_case": "Otwórz pudełko",
+    "upgrade_no_items": "Żadne przedmioty nie pasują do tych kryteriów!",
+    "upgrade_jzcc": "Całkowita wartość przedmiotu przekracza!",
+    "upgrade_result_fail": "Niestety",
+    "upgrade_probability": "Prawdopodobieństwo",
+    "upgrade_zjz": "Wartość całkowita",
+    "upgrade_select_tip": "Najpierw wybierz docelowe akcesorium"
 }

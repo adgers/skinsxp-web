@@ -3,7 +3,7 @@
     "home_spsc": "WGショップ",
     "roll_room_title": "ロールルーム",
     "roll_room_gftj": "オフィシャル福祉",
-    "roll_room_zbfl": "KOL GIVEAWAYS",
+    "roll_room_zbfl": "KOL",
     "roll_room_wcyd": "マイ・プレゼント",
     "roll_recommand_jxz": "アクティブな景品",
     "roll_recommand_yjs": "プレゼント履歴",
@@ -393,5 +393,17 @@
     "collect_help_detail": "収集が時間外になる場合は、ページの右下から直接お問い合わせください。",
     "Steam_errorcode": "Steam アカウントにエラーがあります。確認してください。",
     "collect_help_link": "助けを集める",
-    "rewards_you": "たくさんのご褒美をあなたに。"
+    "got_it": "わかりました",
+    "upgrade_xzsp": "使用するアイテムまたは残高の選択",
+    "upgrade_xzsp_recive": "アップグレードするアイテムの選択",
+    "upgrade_add_balance": "残高を使用した確率の増加",
+    "upgrade_wdsp": "マイアイテム",
+    "upgrade_no_skin": "あなたは品物を持っていません",
+    "open_case": "箱を開ける",
+    "upgrade_no_items": "これらの条件に該当する項目はありません！",
+    "upgrade_jzcc": "プロジェクトの総額超過！",
+    "upgrade_result_fail": "残念",
+    "upgrade_probability": "確率",
+    "upgrade_zjz": "総価値",
+    "upgrade_select_tip": "最初に対象のアクセサリを選択してください"
 }

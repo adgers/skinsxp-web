@@ -92,7 +92,7 @@ export default function Header() {
     {
       title: <FormattedMessage id="main_tab_dream" />,
       link: '/upgrade',
-      icon: 'icon-giveaway',
+      icon: 'icon-upgrade',
     },
   ];
 

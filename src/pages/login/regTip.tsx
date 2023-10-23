@@ -26,13 +26,12 @@ export default function RegTip() {
             <span className="text-2xl sm:text-3xl font-num">{numberFixed(regNum)}</span>
           </div>
 
-          <Link
-            to="/"
+          <button
             className="btn btn-purple absolute w-full m-auto bottom-0 max-w-[200px] sm:max-w-xs"
             onClick={hideRegTip}
           >
-            <FormattedMessage id="roll_ljcy" />
-          </Link>
+            <FormattedMessage id="got_it" />
+          </button>
         </div>
       </Modal.Body>
     </Modal>

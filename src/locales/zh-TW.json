@@ -393,5 +393,17 @@
     "collect_help_detail": "當超過取貨時長後，可以在頁面右下方直接聯系我們以尋求幫助。",
     "Steam_errorcode": "您的 Steam 賬號存在異常，請進行排查。",
     "collect_help_link": "常見取回問題",
-    "rewards_you": "許多獎勵給你"
+    "got_it": "我明白了",
+    "upgrade_xzsp": "選擇要使用的物品和/或餘額",
+    "upgrade_xzsp_recive": "選擇要陞級到的物品",
+    "upgrade_add_balance": "使用餘額新增機率",
+    "upgrade_wdsp": "我的物品",
+    "upgrade_no_skin": "你沒有物品",
+    "open_case": "打開箱子",
+    "upgrade_no_items": "沒有符合這些條件的物品！",
+    "upgrade_jzcc": "項目的總值超過！",
+    "upgrade_result_fail": "遺憾",
+    "upgrade_probability": "機率",
+    "upgrade_zjz": "總值",
+    "upgrade_select_tip": "请先选择目标配件"
 }

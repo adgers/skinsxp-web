@@ -20,6 +20,7 @@ export default function Result({
   const [totalPrice, setTotalPrice] = useState(0);
   const [saleLoading, setSaleLoading] = useState(false);
   const { voice } = useModel('sys');
+  const { getUser } = useModel('user');
 
   const audio = useMemo(
     () =>
@@ -58,6 +59,7 @@ export default function Result({
       if (voice) {
         audio.play();
       }
+      getUser();
       onClose();
     }
   };
@@ -72,6 +74,7 @@ export default function Result({
       if (voice) {
         audio.play();
       }
+      getUser();
       const lResults = [...openResults];
       const ret = lResults.filter((result) => result.voucherId !== id);
       if (ret.length === 0) {
@@ -169,7 +172,7 @@ export default function Result({
             loading={saleLoading}
           >
             <FormattedMessage id="total_price" />
-            <span className='inline-flex gap-1'>
+            <span className="inline-flex gap-1">
               <IconFont type="icon-coin" />
               <CountUp
                 end={totalPrice}

@@ -3,7 +3,7 @@
     "home_spsc": "WG 마켓",
     "roll_room_title": "경품",
     "roll_room_gftj": "경품 추천",
-    "roll_room_zbfl": "KOL GIVEAWAYS",
+    "roll_room_zbfl": "KOL",
     "roll_room_wcyd": "내 경품",
     "roll_recommand_jxz": "진행 중인 경품",
     "roll_recommand_yjs": "경품 행사 내역",
@@ -393,5 +393,17 @@
     "collect_help_detail": "수집 시간이 초과되면 페이지 오른쪽 하단에서 직접 문의하여 도움을 받을 수 있습니다.",
     "Steam_errorcode": "Steam 계정에 오류가 있습니다. 확인해 주세요.",
     "collect_help_link": "도움을 받으세요",
-    "rewards_you": "당신을 위한 많은 보상."
+    "got_it": "알겠습니다",
+    "upgrade_xzsp": "사용할 항목 및 / 또는 잔액 선택",
+    "upgrade_xzsp_recive": "업그레이드할 항목 선택",
+    "upgrade_add_balance": "사용 잔액 증가 확률",
+    "upgrade_wdsp": "내 물건",
+    "upgrade_no_skin": "너는 물건이 없다",
+    "open_case": "상자를 열다",
+    "upgrade_no_items": "이 기준에 맞는 물건이 없습니다!",
+    "upgrade_jzcc": "프로젝트 총액 초과!",
+    "upgrade_result_fail": "유감",
+    "upgrade_probability": "개연성",
+    "upgrade_zjz": "총 가치",
+    "upgrade_select_tip": "먼저 대상 액세서리를 선택하십시오."
 }
