@@ -28,6 +28,7 @@ export function getApiDomain() {
     location.href.indexOf('114.55.56.184') > -1
   ) {
     return 'http://114.55.56.184:9999';
+    // return 'https://api.wgskins.com';
   } else {
     let url = location.href;
     let mainDomain = url.match(

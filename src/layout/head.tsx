@@ -7,6 +7,7 @@ import SelectLang from '@/components/selectLang';
 import Benefit from '@/pages/benefit';
 import LoginConfirm from '@/pages/login/loginConfirm';
 import LoginTip from '@/pages/login/loginTip';
+import RegTip from '@/pages/login/regTip';
 import { isLogin, langs, logout, numberFixed } from '@/utils';
 import { MenuOutlined } from '@ant-design/icons';
 import { Menu, Transition } from '@headlessui/react';
@@ -25,7 +26,6 @@ import { Button, Navbar } from 'react-daisyui';
 import './index.less';
 import OpenHistory from './open-history';
 import Placard from './placard';
-import RegTip from '@/pages/login/regTip';
 
 export default function Header() {
   const {
@@ -337,15 +337,20 @@ export default function Header() {
                   }}
                 >
                   <IconFont type="icon-funds" className="text-xl text-green" />
-                  <div className="text-xs text-white px-1 font-semibold hidden sm:block">
-                    <FormattedMessage id="wc_rewards_deposit" />
+                  <div className="text-xs text-white px-1 font-semibold inline-flex gap-1 items-center">
+                    <span className="hidden sm:block">
+                      <FormattedMessage id="wc_rewards_deposit" />
+                    </span>
+                    <span className="font-num text-green font-semibold">
+                      +{(userInfo?.firstRechargeRebate || 0) + 10}%
+                    </span>
                   </div>
 
-                  {!!userInfo?.rebateValue && userInfo?.rebateValue > 0 && (
+                  {/* {!!userInfo?.rebateValue && userInfo?.rebateValue > 0 && (
                     <div className="text-green font-semibold">
                       +{Number(userInfo?.rebateValue)}%
                     </div>
-                  )}
+                  )} */}
                 </Link>
 
                 <div className="flex flex-col text-xs font-num">
