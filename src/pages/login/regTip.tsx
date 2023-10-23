@@ -27,7 +27,7 @@ export default function RegTip() {
           </div>
 
           <Link
-            to="/giveaways"
+            to="/"
             className="btn btn-purple absolute w-full m-auto bottom-0 max-w-[200px] sm:max-w-xs"
             onClick={hideRegTip}
           >
