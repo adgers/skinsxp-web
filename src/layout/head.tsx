@@ -89,11 +89,11 @@ export default function Header() {
       link: '/giveaways',
       icon: 'icon-giveaway',
     },
-    {
-      title: <FormattedMessage id="main_tab_dream" />,
-      link: '/upgrade',
-      icon: 'icon-upgrade',
-    },
+    // {
+    //   title: <FormattedMessage id="main_tab_dream" />,
+    //   link: '/upgrade',
+    //   icon: 'icon-upgrade',
+    // },
   ];
 
   const headExt = isLogin()
