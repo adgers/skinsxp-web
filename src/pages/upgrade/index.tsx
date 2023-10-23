@@ -1,5 +1,6 @@
 import { IconFont } from '@/components/icons';
 import WeaponCard from '@/components/weaponCard';
+import { getMyVoucherPageUsingGET } from '@/services/front/gerenzhongxinxiangguan';
 import {
   getUpgradeConfigUsingGET,
   pageUsingGET1,
@@ -21,16 +22,15 @@ import {
   useRequest,
 } from '@umijs/max';
 import { useResponsive } from 'ahooks';
-import { Slider, message } from 'antd';
-import { useEffect, useMemo, useState } from 'react';
+import { Slider } from 'antd';
+import { remove } from 'lodash';
+import { useEffect, useMemo, useRef, useState } from 'react';
+import { Button, Toast } from 'react-daisyui';
 import { animated, easings, useSpring } from 'react-spring';
 import { toast } from 'react-toastify';
-// import Result from '../box/result';
-import { getMyVoucherPageUsingGET } from '@/services/front/gerenzhongxinxiangguan';
-import { remove } from 'lodash';
-import { Button } from 'react-daisyui';
 import { ItemState } from '../profile/bag';
 import './index.less';
+import Result from './result';
 
 export default function DreamPage() {
   const { voice, toggleVoice } = useModel('sys');
@@ -45,7 +45,7 @@ export default function DreamPage() {
   const [targetPrice, setTargetPrice] = useState(0); // 目标饰品价值
 
   const [resultShow, setResultShow] = useState(false);
-  const [result, setResult] = useState<API.UpgradeResultVo>();
+  const [result, setResult] = useState<API.UpgradeResultVo[]>();
   const responsive = useResponsive();
   const [rotateStart, setRotateStart] = useState(false);
   const [searchParams, setSearchParams] = useState<{
@@ -60,6 +60,7 @@ export default function DreamPage() {
   const [currentTimes, setCurrentTimes] = useState<number>(1);
 
   const [currentTab, setCurrentTab] = useState<'upgrade' | 'items'>('items');
+  const percentRef = useRef(5);
 
   const timesBtn = [
     {
@@ -188,10 +189,14 @@ export default function DreamPage() {
     let rotateTo = 360 * 3;
     if (success) {
       //如果成功就停止range[0]和range[1]之间的随机数
-      rotateTo += (Math.floor(Math.random() * percent) + percent) * 3.6;
+      rotateTo += Math.floor(Math.random() * Number(percentRef.current)) * 3.6;
     } else {
       //如果失败则停在rang[0]和rang[1]以外地方,rang[1]往后2-20内的随机地方
-      rotateTo += (Math.floor(Math.random() * 20) + percent + 2) * 3.6;
+      const random = Math.random();
+      rotateTo +=
+        (Math.floor(random * (100 - Number(percentRef.current))) +
+          Number(percentRef.current)) *
+        3.6;
     }
 
     setRotateStart(true);
@@ -230,7 +235,7 @@ export default function DreamPage() {
     setOpenLoading(false);
 
     if (ret.status === 0 && ret.data) {
-      startRotate(!!ret.data?.won);
+      startRotate(!!ret.data?.[0]?.won);
       setResult(ret.data);
     }
   };
@@ -322,19 +327,18 @@ export default function DreamPage() {
 
   /* 总百分比 */
   useEffect(() => {
-    setPercent(
-      numberFixed(
-        Number(itemsPercent) +
-          Number(
-            getPercent({
-              curPrice: (balancePercent / 100) * maxBalance,
-              returnRate: config?.returnRate,
-              totalPrice: targetPrice,
-            }),
-          ),
-      ),
-      2,
+    const percent = numberFixed(
+      Number(itemsPercent) +
+        Number(
+          getPercent({
+            curPrice: (balancePercent / 100) * maxBalance,
+            returnRate: config?.returnRate,
+            totalPrice: targetPrice,
+          }),
+        ),
     );
+    setPercent(percent);
+    percentRef.current = percent;
   }, [itemsPercent, balancePercent, maxBalance]);
 
   const selectWeaponRender = useMemo(() => {
@@ -759,7 +763,7 @@ export default function DreamPage() {
                           totalPrice: targetPrice,
                         }) > config?.maxProb
                       ) {
-                        message.error('饰品总价值超出！');
+                        Toast.error('饰品总价值超出！');
                         return;
                       }
                       prevWeapons.push(item);
@@ -1040,13 +1044,13 @@ export default function DreamPage() {
         </div>
       </div>
 
-      {/* {resultShow && result && (
+      {resultShow && result?.length && (
         <Result
           show={resultShow}
-          results={[result]}
+          results={result}
           onClose={() => setResultShow(false)}
         />
-      )} */}
+      )}
     </div>
   );
 }
