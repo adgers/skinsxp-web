@@ -320,7 +320,7 @@ export default function Deposit() {
                         ${numberFixed(quantity, 2)}
                       </span>
                       {Number(userInfo?.firstRechargeRebate) > 0 && (
-                        <div className="text-xs font-light flex items-center">
+                        <div className="flex items-center">
                           <span className="text-green font-semibold whitespace-nowrap">
                             +$
                             {numberFixed(
@@ -329,13 +329,13 @@ export default function Deposit() {
                                 100,
                             )}
                           </span>
-                          <span className="w-fit">
+                          <span className="text-xs">
                             （<FormattedMessage id="benifit_scfl" />）
                           </span>
                         </div>
                       )}
                       {Number(userInfo?.rebateValue) > 0 && (
-                        <div className="text-xs font-light flex items-center">
+                        <div className="flex items-center">
                           <span className="text-green font-semibold">
                             +$
                             {userInfo?.rebateType === 0
@@ -346,7 +346,7 @@ export default function Deposit() {
                                 )}`
                               : Number(userInfo?.rebateValue)}
                           </span>
-                          <span>
+                          <span className='text-xs'>
                             （<FormattedMessage id="vip_discount" />）
                           </span>
                         </div>
