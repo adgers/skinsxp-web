@@ -105,7 +105,11 @@ export default function Result({
       </Button>
       <Modal.Header className="text-center">
         <div className="result-title">
-          <FormattedMessage id="open_box_congratulations" />
+          {results?.[0]?.won ? (
+            <FormattedMessage id="open_box_congratulations" />
+          ) : (
+            <FormattedMessage id="upgrade_result_fail" />
+          )}
         </div>
       </Modal.Header>
       <Modal.Body>
