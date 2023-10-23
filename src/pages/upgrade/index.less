@@ -101,6 +101,28 @@
       background-repeat: no-repeat;
       background-size: contain;
     }
+
+    .wave {
+      animation: wave 2s linear forwards infinite;
+    }
+    @keyframes wave {
+      0% {
+        box-shadow: 0 0 0 0 rgba(144, 144, 144, 0.1),
+          0 0 0 0 rgba(144, 144, 144, 0.21), 0 0 0 16px rgba(144, 144, 144, 0.21);
+      }
+      25% {
+        box-shadow: 0 0 0 0 rgba(144, 144, 144, 0.1),
+          0 0 0 0 rgba(144, 144, 144, 0.2), 0 0 0 12px rgba(144, 144, 144, 0.3);
+      }
+      50% {
+        box-shadow: 0 0 0 33px rgba(144, 144, 144, 0.1),
+          0 0 0 17px rgba(144, 144, 144, 0.2), 0 0 0 8px rgba(144, 144, 144, 0.3);
+      }
+      100% {
+        box-shadow: 0 0 0 76px rgba(144, 144, 144, 0),
+          0 0 0 34px rgba(144, 144, 144, 0.1), 0 0 0 0px rgba(144, 144, 144, 0.3);
+      }
+    }
   }
 }
 
@@ -142,5 +164,3 @@
     opacity: 0;
   }
 }
-
-

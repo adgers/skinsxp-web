@@ -127,7 +127,17 @@ export default function DreamPage() {
     );
   };
 
-  const getBalance = () => {};
+  const getBalance = ({
+    totalPrice,
+    returnRate,
+    percent,
+  }: {
+    totalPrice: number;
+    returnRate: number;
+    percent: number;
+  }) => {
+    return numberFixed((percent * totalPrice) / (returnRate * 100), 2);
+  };
 
   /* 获取背包饰品 */
   const {
@@ -249,54 +259,49 @@ export default function DreamPage() {
     });
   }, [itemsTotal, currentTimes]);
 
-  /* 饰品金额所占百分比 */
-  useEffect(() => {
-    if (targetPrice > 0) {
-      const percent = getPercent({
-        curPrice: Number(itemsTotal),
-        returnRate: Number(config?.returnRate) || 0,
-        totalPrice: Number(targetPrice),
-      });
-
-      setMaxBalance(
-        getMaxQuantity({
-          price: Number(targetPrice) - Number(itemsTotal),
-          returnRate: config?.returnRate,
-          maxProb: config?.maxProb,
-        }),
-      );
-
-      setItemsPercent(percent);
-      // if (percent < config?.returnRate) {
-      //   const autoAddPercent = numberFixed(config?.returnRate - percent);
-      //   setBalanceRange(autoAddPercent * 100);
-      //   setBalancePercent(autoAddPercent);
-      //   setBalance(numberFixed(autoAddPercent));
-      // }
-      setBalancePercent(0);
-    } else {
-      setItemsPercent(0);
-      setBalancePercent(0);
-    }
-  }, [itemsTotal, config, targetPrice]);
-
   /* 最大可选额外金额, 目标饰品总额 */
   useEffect(() => {
-    const targetPirce = selectDreamWeapon.reduce(
+    const targetPrice = selectDreamWeapon.reduce(
       (a: number, b: API.UpgradeGiftPageVo) => {
         return a + Number(b.recoveryPrice);
       },
       0,
     );
-    if (targetPirce && config.returnRate) {
+    setTargetPrice(targetPrice);
+    if (targetPrice > 0 && config.returnRate) {
+      const curPercent = getPercent({
+        curPrice: Number(itemsTotal),
+        returnRate: Number(config?.returnRate) || 0,
+        totalPrice: Number(targetPrice),
+      });
       const quantity = getMaxQuantity({
-        price: Number(targetPirce) - Number(itemsTotal),
+        price: Number(targetPrice) - Number(itemsTotal),
         returnRate: config?.returnRate,
         maxProb: config?.maxProb,
       });
       setMaxBalance(quantity);
+      setItemsPercent(curPercent);
+      if (
+        Number(curPercent) > 0 &&
+        Number(curPercent) < Number(config?.minProb)
+      ) {
+        const autoAddBalancePercent =
+          Number(config?.minProb) - Number(curPercent) || 0;
+
+        const autoBalance =
+          getBalance({
+            percent: autoAddBalancePercent,
+            returnRate: config?.returnRate,
+            totalPrice: targetPrice,
+          }) || 0;
+        setBalancePercent(numberFixed((autoBalance / quantity) * 100, 2));
+      } else {
+        setBalancePercent(0);
+      }
+    } else {
+      setItemsPercent(0);
+      setBalancePercent(0);
     }
-    setTargetPrice(targetPirce);
   }, [selectDreamWeapon, config, itemsTotal]);
 
   /* 饰品总额 */
@@ -491,7 +496,7 @@ export default function DreamPage() {
             {/* 底部圆圈 */}
             <div className="dream-arr-wrap w-[204px] h-[204px] md:w-[204px] md:h-[204px]">
               <div
-                className="w-full h-full border-[12px] border-[#657068] rounded-full"
+                className="w-full h-full border-[12px] border-[#657068] rounded-full wave"
                 style={{
                   backgroundImage:
                     'linear-gradient(180deg, #0A1C15 0%, rgba(43, 123, 66, 0.48) 100%)',
@@ -529,16 +534,7 @@ export default function DreamPage() {
             <div className="text-green text-xl">
               $
               {numberFixed(
-                Number(itemsTotal) +
-                  Number(
-                    (getPercent({
-                      curPrice: (balancePercent / 100) * maxBalance,
-                      returnRate: config?.returnRate,
-                      totalPrice: targetPrice,
-                    }) /
-                      100) *
-                      maxBalance,
-                  ),
+                Number(itemsTotal) + (balancePercent / 100) * maxBalance,
                 2,
               )}
             </div>
@@ -750,6 +746,7 @@ export default function DreamPage() {
                           0,
                         ) || 0;
                       if (
+                        targetPrice > 0 &&
                         getPercent({
                           curPrice: total,
                           returnRate: config?.returnRate,
