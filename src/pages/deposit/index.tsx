@@ -310,48 +310,47 @@ export default function Deposit() {
                 ))}
               </div>
               <div className="rounded-lg py-3 md:py-6 flex flex-col gap-6">
-                <div className="">
-                  <div className="flex w-full gap-2">
-                    <div className="uppercase text-xs flex items-center">
-                      <FormattedMessage id="deposit_actually_recevied" />
-                    </div>
-                    <div className="font-num h-[40px] flex items-center gap-2">
-                      <span className="text-green">
-                        ${numberFixed(quantity, 2)}
-                      </span>
-                      {Number(userInfo?.firstRechargeRebate) > 0 && (
-                        <div className="flex items-center">
-                          <span className="text-purple font-semibold whitespace-nowrap">
-                            +$
-                            {numberFixed(
-                              (Number(quantity) *
-                                Number(userInfo?.firstRechargeRebate)) /
-                                100,
-                            )}
-                          </span>
-                          <span className="text-xs">
-                            （<FormattedMessage id="benifit_scfl" />）
-                          </span>
-                        </div>
-                      )}
-                      {Number(userInfo?.rebateValue) > 0 && (
-                        <div className="flex items-center">
-                          <span className="text-purple font-semibold">
-                            +$
-                            {userInfo?.rebateType === 0
-                              ? `${numberFixed(
-                                  (Number(quantity) *
-                                    Number(userInfo?.rebateValue)) /
-                                    100,
-                                )}`
-                              : Number(userInfo?.rebateValue)}
-                          </span>
-                          <span className='text-xs'>
-                            （<FormattedMessage id="vip_discount" />）
-                          </span>
-                        </div>
-                      )}
-                      {/* {selectChannel?.displayType === DisplayType.DEFAULT && (
+                <div className="flex w-full gap-2 text-base">
+                  <div className="uppercase flex items-center font-semibold">
+                    <FormattedMessage id="deposit_actually_recevied" />
+                  </div>
+                  <div className="font-num h-[40px] flex items-center gap-2">
+                    <span className="text-green">
+                      ${numberFixed(quantity, 2)}
+                    </span>
+                    {Number(userInfo?.firstRechargeRebate) > 0 && (
+                      <div className="flex items-center">
+                        <span className="text-purple font-semibold whitespace-nowrap">
+                          +$
+                          {numberFixed(
+                            (Number(quantity) *
+                              Number(userInfo?.firstRechargeRebate)) /
+                              100,
+                          )}
+                        </span>
+                        <span className="text-xs">
+                          （<FormattedMessage id="benifit_scfl" />）
+                        </span>
+                      </div>
+                    )}
+                    {Number(userInfo?.rebateValue) > 0 && (
+                      <div className="flex items-center">
+                        <span className="text-purple font-semibold">
+                          +$
+                          {userInfo?.rebateType === 0
+                            ? `${numberFixed(
+                                (Number(quantity) *
+                                  Number(userInfo?.rebateValue)) /
+                                  100,
+                              )}`
+                            : Number(userInfo?.rebateValue)}
+                        </span>
+                        <span className="text-xs">
+                          （<FormattedMessage id="vip_discount" />）
+                        </span>
+                      </div>
+                    )}
+                    {/* {selectChannel?.displayType === DisplayType.DEFAULT && (
                         <>
                           &nbsp;+&nbsp;
                           <span className="text-purple">
@@ -364,7 +363,6 @@ export default function Deposit() {
                           </span>
                         </>
                       )} */}
-                    </div>
                   </div>
                 </div>
                 <Button
