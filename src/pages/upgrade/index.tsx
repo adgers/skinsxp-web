@@ -192,8 +192,7 @@ export default function DreamPage() {
       rotateTo += Math.floor(Math.random() * per) * 3.6;
     } else {
       //如果失败停留在 percent到100之间的位置
-      rotateTo +=
-      (Math.floor(Math.random() * (100 - per)) + per) * 3.6;
+      rotateTo += (Math.floor(Math.random() * (100 - per)) + per) * 3.6;
     }
 
     setRotateStart(true);
@@ -425,7 +424,7 @@ export default function DreamPage() {
         <div className="flex justify-center space-x-1 sm:justify-end sm:space-x-2">
           <div
             className={`cursor-pointer border border-accent p-1 rounded ${
-              !voice && 'border-opacity-20'
+              !voice ? 'border-opacity-20' : ''
             }`}
             onClick={toggleVoice}
           >
@@ -674,6 +673,7 @@ export default function DreamPage() {
                 className="w-full"
                 value={balancePercent}
                 onChange={onSliderChange}
+                tooltip={{ open: false }}
               />
             </div>
           </div>
