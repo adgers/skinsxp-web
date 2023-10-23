@@ -13,7 +13,13 @@ import {
   SearchOutlined,
   UpOutlined,
 } from '@ant-design/icons';
-import { FormattedMessage, useIntl, useModel, useRequest } from '@umijs/max';
+import {
+  FormattedMessage,
+  history,
+  useIntl,
+  useModel,
+  useRequest,
+} from '@umijs/max';
 import { useResponsive } from 'ahooks';
 import { Slider, message } from 'antd';
 import { useEffect, useMemo, useState } from 'react';
@@ -109,7 +115,7 @@ export default function DreamPage() {
     returnRate: number;
     maxProb: number;
   }) => {
-    return numberFixed((price * returnRate) / (maxProb / 100), 2);
+    return numberFixed((price / returnRate) * (maxProb / 100), 2);
   };
 
   const getPercent = ({
@@ -391,7 +397,7 @@ export default function DreamPage() {
                 setSelectDreamWeapon(prevWeapons);
               }}
             >
-              X
+              x
             </div>
             <img src={item?.giftImage} className="w-full object-cover" />
           </div>
@@ -514,7 +520,7 @@ export default function DreamPage() {
               }}
             ></div>
             {/* 剪头 */}
-            <div className="dream-arr-wrap w-[204px] h-[204px] md:w-[204px] md:h-[204px]">
+            <div className="dream-arr-wrap w-[280px] h-[280px] md:w-[280px] md:h-[280px]">
               <animated.div
                 className="dream-arr"
                 style={{
@@ -721,7 +727,7 @@ export default function DreamPage() {
               {orderByPrice ? <DownOutlined /> : <UpOutlined />}
             </div>
           </div>
-          {bagData?.totalRows > 0 ? (
+          {Number(bagData?.totalRows) > 0 ? (
             <div className="grid grid-cols-2 lg:grid-cols-4 gap-2 mt-7">
               {bagData?.pageData?.map((item, index) => (
                 <div
@@ -796,7 +802,14 @@ export default function DreamPage() {
                 <p className="text-sm font-semibold leading-tight text-white md:text-base lg:text-l mb-4">
                   You don`t have any skins
                 </p>
-                <div className="btn btn-green text-white">Open Cases</div>
+                <div
+                  className="btn btn-green text-white"
+                  onClick={() => {
+                    history.push('/case');
+                  }}
+                >
+                  Open Cases
+                </div>
               </div>
             </>
           )}
@@ -850,7 +863,7 @@ export default function DreamPage() {
           }`}
         >
           <div className="w-full flex justify-between items-center py-3.5 border-b border-light">
-            <div className="hidden lg::block">UPGRADE</div>
+            <div className="hidden lg:block">UPGRADE</div>
             <div className="flex gap-2 flex-wrap">
               <div className="flex border rounded border-[rgba(255,255,255,0.2)] h-10 w-full lg:w-[140px] items-center py-[1px] px-2">
                 <SearchOutlined className="text-white text-lg" />
@@ -902,6 +915,22 @@ export default function DreamPage() {
                     })}
                   />
                 </div>
+              </div>
+              <div
+                className="border border-light h-10 py-2 px-4 rounded cursor-pointer"
+                onClick={() =>
+                  setSearchDreamsParams({
+                    ...searchDreamsParams,
+                    orderByPrice: !searchDreamsParams?.orderByPrice,
+                  })
+                }
+              >
+                <FormattedMessage id="recoveryPrice" />{' '}
+                {searchDreamsParams?.orderByPrice ? (
+                  <DownOutlined />
+                ) : (
+                  <UpOutlined />
+                )}
               </div>
             </div>
             {/* <div className='text-sm'></div> */}
@@ -964,48 +993,50 @@ export default function DreamPage() {
               </div>
             </>
           )}
-          <div className="mt-auto flex items-center justify-center pt-6">
-            <span
-              className={`${
-                searchParams?.page === 1
-                  ? 'cursor-not-allowed text-gray'
-                  : 'cursor-pointer text-white'
-              }`}
-              onClick={() => {
-                if (loading) return;
-                if (searchParams?.page > 1) {
-                  setSearchParams({
-                    ...searchParams,
-                    page: searchParams?.page - 1,
-                  });
-                }
-              }}
-            >
-              <LeftOutlined />
-            </span>
-            <div className="flex items-center justify-center rounded bg-navy-900 p-3 text-center text-sm font-semibold leading-none text-white css-1mqx83j">
-              {dreamsData?.page}/{dreamsData?.totalPages}
-            </div>
-            <span
-              className={`${
-                dreamsData && searchParams?.page === dreamsData?.totalPages
-                  ? 'cursor-not-allowed'
-                  : 'cursor-pointer text-white'
-              }`}
-              onClick={() => {
-                if (loading) return;
+          {Number(dreamsData?.totalRows) > 0 && (
+            <div className="mt-auto flex items-center justify-center pt-6">
+              <span
+                className={`${
+                  searchParams?.page === 1
+                    ? 'cursor-not-allowed text-gray'
+                    : 'cursor-pointer text-white'
+                }`}
+                onClick={() => {
+                  if (loading) return;
+                  if (searchDreamsParams?.page > 1) {
+                    setSearchDreamsParams({
+                      ...searchDreamsParams,
+                      page: searchParams?.page - 1,
+                    });
+                  }
+                }}
+              >
+                <LeftOutlined />
+              </span>
+              <div className="flex items-center justify-center rounded bg-navy-900 p-3 text-center text-sm font-semibold leading-none text-white css-1mqx83j">
+                {dreamsData?.page}/{dreamsData?.totalPages}
+              </div>
+              <span
+                className={`${
+                  dreamsData && searchParams?.page === dreamsData?.totalPages
+                    ? 'cursor-not-allowed'
+                    : 'cursor-pointer text-white'
+                }`}
+                onClick={() => {
+                  if (loading) return;
 
-                if (searchParams?.page < Number(dreamsData?.totalPages)) {
-                  setSearchParams({
-                    ...searchParams,
-                    page: searchParams?.page + 1,
-                  });
-                }
-              }}
-            >
-              <RightOutlined />
-            </span>
-          </div>
+                  if (searchParams?.page < Number(dreamsData?.totalPages)) {
+                    setSearchDreamsParams({
+                      ...searchDreamsParams,
+                      page: searchParams?.page + 1,
+                    });
+                  }
+                }}
+              >
+                <RightOutlined />
+              </span>
+            </div>
+          )}
         </div>
       </div>
 

@@ -89,6 +89,11 @@ export default function Header() {
       link: '/giveaways',
       icon: 'icon-giveaway',
     },
+    {
+      title: <FormattedMessage id="main_tab_dream" />,
+      link: '/upgrade',
+      icon: 'icon-giveaway',
+    },
   ];
 
   const headExt = isLogin()
@@ -472,7 +477,7 @@ export default function Header() {
                       'linear-gradient(270deg, #0BFF59 0%, #B4FC3B 100%)',
                   }}
                 >
-                  {/* <IconFont type="icon-steam" className="text-xl" /> */}
+                  <IconFont type="icon-steam" className="text-xl" />
                   <FormattedMessage id="register_ljdl" />
                 </Button>
                 <Menu as="div" className="relative md:hidden">
