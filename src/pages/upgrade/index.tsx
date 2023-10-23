@@ -186,12 +186,14 @@ export default function DreamPage() {
 
   const startRotate = (success: boolean) => {
     let rotateTo = 360 * 3;
+    let per = Number(percent);
+
     if (success) {
-      //如果成功就停止range[0]和range[1]之间的随机数
-      rotateTo += (Math.floor(Math.random() * percent) + percent) * 3.6;
+      rotateTo += Math.floor(Math.random() * per) * 3.6;
     } else {
-      //如果失败则停在rang[0]和rang[1]以外地方,rang[1]往后2-20内的随机地方
-      rotateTo += (Math.floor(Math.random() * 20) + percent + 2) * 3.6;
+      //如果失败停留在 percent到100之间的位置
+      rotateTo +=
+      (Math.floor(Math.random() * (100 - per)) + per) * 3.6;
     }
 
     setRotateStart(true);
@@ -230,7 +232,7 @@ export default function DreamPage() {
     setOpenLoading(false);
 
     if (ret.status === 0 && ret.data) {
-      startRotate(!!ret.data?.won);
+      startRotate(!!ret.data?.[0]?.won);
       setResult(ret.data);
     }
   };
