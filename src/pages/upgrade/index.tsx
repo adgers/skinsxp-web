@@ -137,7 +137,9 @@ export default function DreamPage() {
     returnRate: number;
     percent: number;
   }) => {
-    return Number((percent * totalPrice) / (returnRate * 100));
+    return Number((percent * totalPrice) / (returnRate * 100)) > 0
+      ? Number((percent * totalPrice) / (returnRate * 100))
+      : 0;
   };
 
   /* 获取背包饰品 */
@@ -278,6 +280,7 @@ export default function DreamPage() {
     );
     setTargetPrice(targetPrice);
     if (targetPrice > 0 && config?.returnRate) {
+      // 当前饰品所提供的百分比
       const curPercent = getPercent({
         curPrice: Number(itemsTotal),
         returnRate: Number(config?.returnRate) || 0,
@@ -290,6 +293,7 @@ export default function DreamPage() {
       });
       setMaxBalance(quantity);
       setItemsPercent(curPercent);
+      // 如果当前饰品提供的比例小于最低比例 自动补充
       if (Number(curPercent) < Number(config?.minProb)) {
         const autoAddBalancePercent =
           Number(config?.minProb) - Number(curPercent) || 0;
@@ -301,6 +305,8 @@ export default function DreamPage() {
             totalPrice: targetPrice,
           }) || 0;
         setBalancePercent((autoBalance / quantity) * 100);
+      } else if (Number(curPercent) > Number(config?.maxProb)) {
+        setSelectWeapon([]);
       } else {
         setBalancePercent(0);
       }
@@ -562,7 +568,7 @@ export default function DreamPage() {
         )}
       </>
     );
-  }, [bagData, selectWeapon, showSelected, searchParams]);
+  }, [bagData, selectWeapon, showSelected, searchParams,targetPrice]);
 
   const dreamsRender = useMemo(() => {
     const sourceData = showDreamSelected
