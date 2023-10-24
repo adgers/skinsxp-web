@@ -8,10 +8,10 @@ export default function OpenHistory() {
 
   return (
     <div className="w-full open-history bg-dark overflow-hidden flex">
-      <div className="flex flex-col px-4 items-center justify-center">
-        <IconFont type="icon-xinhao1" className='text-green text-[24px]' />
-
-        online {siteStat?.activeSession}
+      <div className="flex flex-col px-4 items-center justify-center gap-1">
+        <IconFont type="icon-xinhao1" className="text-green text-[24px]" />
+        <span className="text-gray text-sm uppercase">online</span>
+        <span>{siteStat?.activeSession}</span>
       </div>
       <div className="flex flex-col self-stretch overflow-hidden flex-shrink-0 mx-1">
         <div
