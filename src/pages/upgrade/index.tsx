@@ -1067,7 +1067,7 @@ export default function DreamPage() {
                 <input
                   className="input w-full border border-l-0 rounded-r h-full pl-[5px] bg-transparent focus:outline-none text-white text-sm"
                   value={searchDreamsParams.giftName}
-                  placeholder={'FIND SKIN'}
+                  placeholder={intl.formatMessage({ id: 'mall_search' })}
                   onChange={(e) =>
                     setSearchDreamsParams({
                       ...searchDreamsParams,
