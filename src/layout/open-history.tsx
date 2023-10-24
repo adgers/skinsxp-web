@@ -3,11 +3,14 @@ import TopCard from '@/components/weaponCard/topCard';
 import { FormattedMessage, Link, useModel } from '@umijs/max';
 
 export default function OpenHistory() {
-  const { recentBox, topDropBox, setIsTop, isTop } = useModel('socket');
+  const { recentBox, topDropBox, setIsTop, isTop ,siteStat} = useModel('socket');
 
   return (
     <div className="w-full open-history bg-dark overflow-hidden flex">
-      {/* <div className="flex flex-col self-stretch overflow-hidden flex-shrink-0 mx-1">
+      <div className='flex flex-col'>
+        online  {siteStat?.activeSession}
+      </div>
+      <div className="flex flex-col self-stretch overflow-hidden flex-shrink-0 mx-1">
         <div
           className={`flex flex-1 flex-col items-center justify-center px-2 md:px-0 gap-1 bg-black cursor-pointer ${
             isTop ? 'text-green' : 'bg-opacity-50 text-gray'
@@ -34,7 +37,7 @@ export default function OpenHistory() {
             <FormattedMessage id="all_drop" />
           </span>
         </div>
-      </div> */}
+      </div>
       {isTop ? (
         <div className="flex gap-[5px]">
           {topDropBox.length > 0

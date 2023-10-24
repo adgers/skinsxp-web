@@ -2,6 +2,17 @@
 /* eslint-disable */
 import { request } from '@umijs/max';
 
+/** 归档展示渠道列表 GET /api/promotion/channel/listArchived */
+export async function listChannelArchivedUsingGET(options?: { [key: string]: any }) {
+  return request<API.ResultDataMapStringListPromotionChannel_>(
+    '/api/promotion/channel/listArchived',
+    {
+      method: 'GET',
+      ...(options || {}),
+    },
+  );
+}
+
 /** 获取推广信息 推广码链接说明:前端需要根据推广码生成推广链接用户访问推广链接时将推广码存下,注册时自动填充.如果用户使用了不同的推广链接,会覆盖上一个推广链接的推广码 GET /api/promotion/getPromotionInfo */
 export async function getPromotionInfoUsingGET(options?: { [key: string]: any }) {
   return request<API.ResultDataPromotionInfoVo_>('/api/promotion/getPromotionInfo', {

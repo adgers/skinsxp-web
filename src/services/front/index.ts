@@ -14,6 +14,7 @@ import * as kaixiangxiangguan from './kaixiangxiangguan';
 import * as miyaozhongzixiangguan from './miyaozhongzixiangguan';
 import * as qianduanwuxuduijie from './qianduanwuxuduijie';
 import * as qiantaishouquanxiangguan from './qiantaishouquanxiangguan';
+import * as rechargeCallbackController from './rechargeCallbackController';
 import * as shengjixiangguan from './shengjixiangguan';
 import * as tuiguangzhongxinxiangguan from './tuiguangzhongxinxiangguan';
 import * as yonghufulipeizhi from './yonghufulipeizhi';
@@ -23,7 +24,7 @@ export default {
   qiantaishouquanxiangguan,
   duizhanxiangguan,
   yonghufulipeizhi,
-  qianduanwuxuduijie,
+  rechargeCallbackController,
   kaixiangxiangguan,
   ROLLfangxiangguan,
   miyaozhongzixiangguan,
@@ -35,4 +36,5 @@ export default {
   zhandianweidushuju,
   duihuanquanshangchengxiangguan,
   shengjixiangguan,
+  qianduanwuxuduijie,
 };
