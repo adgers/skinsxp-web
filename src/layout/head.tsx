@@ -328,7 +328,7 @@ export default function Header() {
                   <FormattedMessage id="mine_fllq" />
                 </div>
                 <Link
-                  className="btn-green !btn-sm !px-1"
+                  className="btn-sm border border-green rounded-sm inline-flex gap-1"
                   to="/deposit"
                   onClick={() => {
                     window?.fbq(
@@ -340,13 +340,16 @@ export default function Header() {
                       send_to: 'AW-11345409756/EOFKCIqQy-UYENzt9KEq',
                     });
                   }}
+                  style={{
+                    background: 'rgba(53, 240, 94, 0.40)'
+                  }}
                 >
                   <IconFont type="icon-funds" className="text-xl text-green" />
                   <div className="text-xs text-white px-1 font-semibold inline-flex gap-1 items-center">
                     <span className="hidden sm:block">
                       <FormattedMessage id="wc_rewards_deposit" />
                     </span>
-                    <span className="font-num text-green font-semibold">
+                    <span className="font-num font-semibold">
                       +{(userInfo?.firstRechargeRebate || 0) + 10}%
                     </span>
                   </div>
