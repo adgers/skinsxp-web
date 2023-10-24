@@ -3,12 +3,15 @@ import TopCard from '@/components/weaponCard/topCard';
 import { FormattedMessage, Link, useModel } from '@umijs/max';
 
 export default function OpenHistory() {
-  const { recentBox, topDropBox, setIsTop, isTop ,siteStat} = useModel('socket');
+  const { recentBox, topDropBox, setIsTop, isTop, siteStat } =
+    useModel('socket');
 
   return (
     <div className="w-full open-history bg-dark overflow-hidden flex">
-      <div className='flex flex-col'>
-        online  {siteStat?.activeSession}
+      <div className="flex flex-col px-4 items-center justify-center">
+        <IconFont type="icon-xinhao1" className='text-green text-[24px]' />
+
+        online {siteStat?.activeSession}
       </div>
       <div className="flex flex-col self-stretch overflow-hidden flex-shrink-0 mx-1">
         <div
