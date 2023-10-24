@@ -58,6 +58,8 @@ export default function DreamPage() {
   const [orderByPrice, setOrderByPrice] = useState<boolean>(true);
   const [selectWeapon, setSelectWeapon] = useState<API.MyVoucherVo[]>([]);
   const [currentTimes, setCurrentTimes] = useState<number>(1);
+  const [showSelected, setShowSelected] = useState<boolean>(false);
+  const [showDreamSelected, setShowDreamSelected] = useState<boolean>(false);
 
   const [currentTab, setCurrentTab] = useState<'upgrade' | 'items'>('items');
   const percentRef = useRef(5);
@@ -202,6 +204,7 @@ export default function DreamPage() {
         setRotateStart(false);
         refresh();
         dreamRefresh();
+        setSelectWeapon([]);
       },
     });
   };
@@ -280,11 +283,6 @@ export default function DreamPage() {
         returnRate: Number(config?.returnRate) || 0,
         totalPrice: Number(targetPrice),
       });
-      // const quantity = getMaxQuantity({
-      //   price: Number(targetPrice) - Number(itemsTotal),
-      //   returnRate: config?.returnRate,
-      //   maxProb: config?.maxProb,
-      // });
       const quantity = getBalance({
         totalPrice: targetPrice,
         returnRate: config?.returnRate,
@@ -405,6 +403,280 @@ export default function DreamPage() {
       </div>
     );
   }, [selectDreamWeapon]);
+
+  const weaponsRender = useMemo(() => {
+    const sourceData = showSelected ? selectWeapon : bagData?.pageData;
+    return (
+      <>
+        {Number(sourceData?.length) > 0 ? (
+          <div className="grid grid-cols-2 lg:grid-cols-4 gap-2 mt-7">
+            {sourceData?.map((item, index) => (
+              <div
+                key={index}
+                className="relative"
+                onClick={() => {
+                  if (
+                    item.state !== ItemState.ACTIVE ||
+                    selectWeapon?.length === 10
+                  ) {
+                    return;
+                  }
+                  let prevWeapons = JSON.parse(JSON.stringify(selectWeapon));
+                  if (selectWeapon?.find((weapon) => weapon.id === item.id)) {
+                    remove(
+                      prevWeapons,
+                      (weapon: API.MyVoucherVo) => weapon.id === item.id,
+                    );
+                  } else {
+                    const total =
+                      [...prevWeapons, item].reduce(
+                        (a: number, b: API.MyVoucherVo) => {
+                          return a + Number(b.recoveryPrice);
+                        },
+                        0,
+                      ) || 0;
+                    if (
+                      targetPrice > 0 &&
+                      getPercent({
+                        curPrice: total,
+                        returnRate: config?.returnRate,
+                        totalPrice: targetPrice,
+                      }) > config?.maxProb
+                    ) {
+                      toast.error(intl.formatMessage({ id: 'upgrade_jzcc' }));
+                      return;
+                    }
+                    prevWeapons.push(item);
+                  }
+                  setSelectWeapon(prevWeapons);
+                }}
+              >
+                {item?.state !== ItemState.ACTIVE && (
+                  <div className="absolute right-0 top-0 z-30 text-sm pt-2 pr-2 text-gray">
+                    {item?.stateStr}
+                  </div>
+                )}
+                <WeaponCard data={item} />
+                {selectWeapon?.find((weapon) => weapon.id === item.id) && (
+                  <div className="absolute bottom-0 right-0">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="46"
+                      height="46"
+                      viewBox="0 0 46 46"
+                      fill="none"
+                    >
+                      <path
+                        d="M46 0V42C46 44.2091 44.2091 46 42 46H0L46 0Z"
+                        fill="#35F05E"
+                      />
+                      <path
+                        d="M31.3455 38.4368C31.0227 38.7491 30.5089 38.7441 30.1922 38.4257L24.1076 32.307C23.4984 31.6944 23.508 30.7018 24.1289 30.1011C24.7412 29.5088 25.7168 29.522 26.3129 30.1306L30.3461 34.2488C30.577 34.4845 30.9548 34.4896 31.1919 34.2602L39.6837 26.0454C40.2863 25.4625 41.2426 25.4625 41.8452 26.0454C42.4767 26.6563 42.4767 27.6689 41.8452 28.2798L31.3455 38.4368Z"
+                        fill="#252228"
+                      />
+                    </svg>
+                  </div>
+                )}
+              </div>
+            ))}
+          </div>
+        ) : (
+          <>
+            <div className="mt-6 flex h-full flex-col items-center justify-center py-20 bg-[url('@/assets/upgrade-gun.png')] bg-no-repeat bg-center bg-[size:50%]">
+              <p className="text-sm font-semibold leading-tight text-white md:text-base lg:text-l mb-4 mt-32">
+                {showSelected ? (
+                  <FormattedMessage id="upgrade_no_items" />
+                ) : (
+                  <FormattedMessage id="upgrade_no_skin" />
+                )}
+              </p>
+              {!showSelected && (
+                <div
+                  className="btn btn-green text-white"
+                  onClick={() => {
+                    history.push('/case');
+                  }}
+                >
+                  <FormattedMessage id="open_case" />
+                </div>
+              )}
+            </div>
+            {/* <div className="mt-6 flex h-full flex-col items-center justify-center py-20">
+              <p className="text-sm font-semibold leading-tight text-white md:text-base lg:text-l mb-4">
+                <FormattedMessage id="upgrade_no_skin" />
+              </p>
+              <div
+                className="btn btn-green text-white"
+                onClick={() => {
+                  history.push('/case');
+                }}
+              >
+                <FormattedMessage id="open_case" />
+              </div>
+            </div> */}
+          </>
+        )}
+        {!showSelected && bagData?.totalRows > 0 && (
+          <div className="mt-auto flex items-center justify-center pt-6">
+            <span
+              className={`${
+                searchParams?.page === 1
+                  ? 'cursor-not-allowed text-gray'
+                  : 'cursor-pointer text-white'
+              }`}
+              onClick={() => {
+                if (loading) return;
+                if (searchParams?.page > 1) {
+                  setSearchParams({
+                    ...searchParams,
+                    page: searchParams?.page - 1,
+                  });
+                }
+              }}
+            >
+              <LeftOutlined />
+            </span>
+            <div className="flex items-center justify-center rounded bg-navy-900 p-3 text-center text-sm font-semibold leading-none text-white css-1mqx83j">
+              {bagData?.page}/{bagData?.totalPages}
+            </div>
+            <span
+              className={`${
+                bagData && searchParams?.page === bagData?.totalPages
+                  ? 'cursor-not-allowed'
+                  : 'cursor-pointer text-white'
+              }`}
+              onClick={() => {
+                if (loading) return;
+
+                if (searchParams?.page < Number(bagData?.totalPages)) {
+                  setSearchParams({
+                    ...searchParams,
+                    page: searchParams?.page + 1,
+                  });
+                }
+              }}
+            >
+              <RightOutlined />
+            </span>
+          </div>
+        )}
+      </>
+    );
+  }, [bagData, selectWeapon, showSelected, searchParams]);
+
+  const dreamsRender = useMemo(() => {
+    const sourceData = showDreamSelected
+      ? selectDreamWeapon
+      : dreamsData?.pageData;
+
+    return (
+      <>
+        {Number(sourceData?.length) > 0 ? (
+          <div className="grid grid-cols-2 lg:grid-cols-4 gap-2 mt-7 h-full">
+            {sourceData?.map((item, index) => (
+              <div
+                key={index}
+                className="relative h-fit"
+                onClick={() => {
+                  if (selectDreamWeapon?.length === 10) {
+                    return;
+                  }
+                  let prevWeapons = JSON.parse(
+                    JSON.stringify(selectDreamWeapon),
+                  );
+                  if (
+                    selectDreamWeapon?.find((weapon) => weapon.id === item.id)
+                  ) {
+                    remove(
+                      prevWeapons,
+                      (weapon: API.MyVoucherVo) => weapon.id === item.id,
+                    );
+                  } else {
+                    prevWeapons.push(item);
+                  }
+                  setSelectDreamWeapon(prevWeapons);
+                }}
+              >
+                <WeaponCard data={item} />
+                {selectDreamWeapon?.find((weapon) => weapon.id === item.id) && (
+                  <div className="absolute bottom-0 right-0">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="46"
+                      height="46"
+                      viewBox="0 0 46 46"
+                      fill="none"
+                    >
+                      <path
+                        d="M46 0V42C46 44.2091 44.2091 46 42 46H0L46 0Z"
+                        fill="#35F05E"
+                      />
+                      <path
+                        d="M31.3455 38.4368C31.0227 38.7491 30.5089 38.7441 30.1922 38.4257L24.1076 32.307C23.4984 31.6944 23.508 30.7018 24.1289 30.1011C24.7412 29.5088 25.7168 29.522 26.3129 30.1306L30.3461 34.2488C30.577 34.4845 30.9548 34.4896 31.1919 34.2602L39.6837 26.0454C40.2863 25.4625 41.2426 25.4625 41.8452 26.0454C42.4767 26.6563 42.4767 27.6689 41.8452 28.2798L31.3455 38.4368Z"
+                        fill="#252228"
+                      />
+                    </svg>
+                  </div>
+                )}
+              </div>
+            ))}
+          </div>
+        ) : (
+          <>
+            <div className="mt-6 flex h-full flex-col items-center justify-center py-20 bg-[url('@/assets/upgrade-gun.png')] bg-no-repeat bg-center bg-[size:50%]">
+              <p className="text-sm font-semibold leading-tight text-white md:text-base lg:text-l mb-4 mt-32">
+                <FormattedMessage id="upgrade_no_items" />
+              </p>
+            </div>
+          </>
+        )}
+        {!showDreamSelected && Number(dreamsData?.totalRows) > 0 && (
+          <div className="mt-auto flex items-center justify-center pt-6">
+            <span
+              className={`${
+                searchParams?.page === 1
+                  ? 'cursor-not-allowed text-gray'
+                  : 'cursor-pointer text-white'
+              }`}
+              onClick={() => {
+                if (loading) return;
+                if (searchDreamsParams?.page > 1) {
+                  setSearchDreamsParams({
+                    ...searchDreamsParams,
+                    page: searchParams?.page - 1,
+                  });
+                }
+              }}
+            >
+              <LeftOutlined />
+            </span>
+            <div className="flex items-center justify-center rounded bg-navy-900 p-3 text-center text-sm font-semibold leading-none text-white css-1mqx83j">
+              {dreamsData?.page}/{dreamsData?.totalPages}
+            </div>
+            <span
+              className={`${
+                dreamsData && searchParams?.page === dreamsData?.totalPages
+                  ? 'cursor-not-allowed'
+                  : 'cursor-pointer text-white'
+              }`}
+              onClick={() => {
+                if (loading) return;
+
+                if (searchParams?.page < Number(dreamsData?.totalPages)) {
+                  setSearchDreamsParams({
+                    ...searchDreamsParams,
+                    page: searchParams?.page + 1,
+                  });
+                }
+              }}
+            >
+              <RightOutlined />
+            </span>
+          </div>
+        )}
+      </>
+    );
+  }, [dreamsData, searchDreamsParams, selectDreamWeapon, showDreamSelected]);
 
   return (
     <div className="max-w-[1400px] m-auto px-3 mt-5 bg-[url('@/assets/upgrade-bg.png')] bg-no-repeat bg-contain  ">
@@ -725,144 +997,27 @@ export default function DreamPage() {
                 （{bagData?.totalRows || 0}）
               </span>{' '}
             </div>
-            <div
-              className="border border-light h-10 py-2 px-4 rounded cursor-pointer"
-              onClick={() => setOrderByPrice(!orderByPrice)}
-            >
-              <FormattedMessage id="recoveryPrice" />{' '}
-              {orderByPrice ? <DownOutlined /> : <UpOutlined />}
+            <div className="flex gap-2">
+              <div
+                className={` border h-10 py-2 px-4 rounded cursor-pointer ${
+                  showSelected
+                    ? 'border-primary text-primary'
+                    : 'border-light text-white'
+                }`}
+                onClick={() => setShowSelected(!showSelected)}
+              >
+                <FormattedMessage id="has_select" />
+              </div>
+              <div
+                className="border border-light h-10 py-2 px-4 rounded cursor-pointer"
+                onClick={() => setOrderByPrice(!orderByPrice)}
+              >
+                <FormattedMessage id="recoveryPrice" />{' '}
+                {orderByPrice ? <DownOutlined /> : <UpOutlined />}
+              </div>
             </div>
           </div>
-          {Number(bagData?.totalRows) > 0 ? (
-            <div className="grid grid-cols-2 lg:grid-cols-4 gap-2 mt-7">
-              {bagData?.pageData?.map((item, index) => (
-                <div
-                  key={index}
-                  className="relative"
-                  onClick={() => {
-                    if (item.state !== ItemState.ACTIVE) {
-                      return;
-                    }
-                    let prevWeapons = JSON.parse(JSON.stringify(selectWeapon));
-                    if (selectWeapon?.find((weapon) => weapon.id === item.id)) {
-                      remove(
-                        prevWeapons,
-                        (weapon: API.MyVoucherVo) => weapon.id === item.id,
-                      );
-                    } else {
-                      const total =
-                        [...prevWeapons, item].reduce(
-                          (a: number, b: API.MyVoucherVo) => {
-                            return a + Number(b.recoveryPrice);
-                          },
-                          0,
-                        ) || 0;
-                      if (
-                        targetPrice > 0 &&
-                        getPercent({
-                          curPrice: total,
-                          returnRate: config?.returnRate,
-                          totalPrice: targetPrice,
-                        }) > config?.maxProb
-                      ) {
-                        toast.error(intl.formatMessage({ id: 'upgrade_jzcc' }));
-                        return;
-                      }
-                      prevWeapons.push(item);
-                    }
-                    setSelectWeapon(prevWeapons);
-                  }}
-                >
-                  {item?.state !== ItemState.ACTIVE && (
-                    <div className="absolute right-0 top-0 z-30 text-sm pt-2 pr-2 text-gray">
-                      {item?.stateStr}
-                    </div>
-                  )}
-                  <WeaponCard data={item} />
-                  {selectWeapon?.find((weapon) => weapon.id === item.id) && (
-                    <div className="absolute bottom-0 right-0">
-                      <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        width="46"
-                        height="46"
-                        viewBox="0 0 46 46"
-                        fill="none"
-                      >
-                        <path
-                          d="M46 0V42C46 44.2091 44.2091 46 42 46H0L46 0Z"
-                          fill="#35F05E"
-                        />
-                        <path
-                          d="M31.3455 38.4368C31.0227 38.7491 30.5089 38.7441 30.1922 38.4257L24.1076 32.307C23.4984 31.6944 23.508 30.7018 24.1289 30.1011C24.7412 29.5088 25.7168 29.522 26.3129 30.1306L30.3461 34.2488C30.577 34.4845 30.9548 34.4896 31.1919 34.2602L39.6837 26.0454C40.2863 25.4625 41.2426 25.4625 41.8452 26.0454C42.4767 26.6563 42.4767 27.6689 41.8452 28.2798L31.3455 38.4368Z"
-                          fill="#252228"
-                        />
-                      </svg>
-                    </div>
-                  )}
-                </div>
-              ))}
-            </div>
-          ) : (
-            <>
-              <div className="mt-6 flex h-full flex-col items-center justify-center py-20">
-                <p className="text-sm font-semibold leading-tight text-white md:text-base lg:text-l mb-4">
-                  <FormattedMessage id="upgrade_no_skin" />
-                </p>
-                <div
-                  className="btn btn-green text-white"
-                  onClick={() => {
-                    history.push('/case');
-                  }}
-                >
-                  <FormattedMessage id="open_case" />
-                </div>
-              </div>
-            </>
-          )}
-          {bagData?.totalRows > 0 && (
-            <div className="mt-auto flex items-center justify-center pt-6">
-              <span
-                className={`${
-                  searchParams?.page === 1
-                    ? 'cursor-not-allowed text-gray'
-                    : 'cursor-pointer text-white'
-                }`}
-                onClick={() => {
-                  if (loading) return;
-                  if (searchParams?.page > 1) {
-                    setSearchParams({
-                      ...searchParams,
-                      page: searchParams?.page - 1,
-                    });
-                  }
-                }}
-              >
-                <LeftOutlined />
-              </span>
-              <div className="flex items-center justify-center rounded bg-navy-900 p-3 text-center text-sm font-semibold leading-none text-white css-1mqx83j">
-                {bagData?.page}/{bagData?.totalPages}
-              </div>
-              <span
-                className={`${
-                  bagData && searchParams?.page === bagData?.totalPages
-                    ? 'cursor-not-allowed'
-                    : 'cursor-pointer text-white'
-                }`}
-                onClick={() => {
-                  if (loading) return;
-
-                  if (searchParams?.page < Number(bagData?.totalPages)) {
-                    setSearchParams({
-                      ...searchParams,
-                      page: searchParams?.page + 1,
-                    });
-                  }
-                }}
-              >
-                <RightOutlined />
-              </span>
-            </div>
-          )}
+          {weaponsRender}
         </div>
 
         <div
@@ -870,11 +1025,21 @@ export default function DreamPage() {
             currentTab === 'upgrade' ? 'flex w-full' : 'hidden lg:flex'
           }`}
         >
-          <div className="w-full flex justify-between items-center py-3.5 border-b border-light">
+          <div className="w-full flex justify-between items-center py-3.5 border-b border-light lg:gap-4">
             <div className="hidden lg:block">
               <FormattedMessage id="main_tab_dream" />
             </div>
-            <div className="flex gap-2 flex-wrap">
+            <div className="flex gap-2 flex-wrap lg:justify-end">
+              <div
+                className={` border h-10 py-2 px-4 rounded cursor-pointer ${
+                  showDreamSelected
+                    ? 'border-primary text-primary'
+                    : 'border-light text-white'
+                }`}
+                onClick={() => setShowDreamSelected(!showDreamSelected)}
+              >
+                <FormattedMessage id="has_select" />
+              </div>
               <div className="flex border rounded border-[rgba(255,255,255,0.2)] h-10 w-full lg:w-[140px] items-center py-[1px] px-2">
                 <SearchOutlined className="text-white text-lg" />
                 <input
@@ -890,10 +1055,10 @@ export default function DreamPage() {
                 />
               </div>
               <div className="flex items-center text-white/20 gap-2">
-                <div className="flex border w-[120px] rounded border-[rgba(255,255,255,0.2)] h-10 items-center py-[1px] pl-2">
+                <div className="flex border w-[90px] rounded border-[rgba(255,255,255,0.2)] h-10 items-center py-[1px] pl-2">
                   <span className="text-white">$</span>
                   <input
-                    className="input w-full  border border-l-0 rounded-r h-full focus:outline-none text-white text-sm bg-transparent"
+                    className="input w-full border border-l-0 rounded-r h-full focus:outline-none text-white text-sm bg-transparent"
                     onChange={(e) => {
                       setSearchDreamsParams({
                         ...searchDreamsParams,
@@ -908,7 +1073,7 @@ export default function DreamPage() {
                   />
                 </div>
                 -
-                <div className="flex border w-[120px] rounded border-[rgba(255,255,255,0.2)] h-10 items-center py-[1px] pl-2">
+                <div className="flex border w-[90px] rounded border-[rgba(255,255,255,0.2)] h-10 items-center py-[1px] pl-2">
                   <span className="text-white">$</span>
                   <input
                     className="input w-full border border-l-0 rounded-r h-full focus:outline-none text-white text-sm bg-transparent"
@@ -945,108 +1110,7 @@ export default function DreamPage() {
             </div>
             {/* <div className='text-sm'></div> */}
           </div>
-          {Number(dreamsData?.totalRows) > 0 ? (
-            <div className="grid grid-cols-2 lg:grid-cols-4 gap-2 mt-7 h-full">
-              {dreamsData?.pageData?.map((item, index) => (
-                <div
-                  key={index}
-                  className="relative h-fit"
-                  onClick={() => {
-                    let prevWeapons = JSON.parse(
-                      JSON.stringify(selectDreamWeapon),
-                    );
-                    if (
-                      selectDreamWeapon?.find((weapon) => weapon.id === item.id)
-                    ) {
-                      remove(
-                        prevWeapons,
-                        (weapon: API.MyVoucherVo) => weapon.id === item.id,
-                      );
-                    } else {
-                      prevWeapons.push(item);
-                    }
-                    setSelectDreamWeapon(prevWeapons);
-                  }}
-                >
-                  <WeaponCard data={item} />
-                  {selectDreamWeapon?.find(
-                    (weapon) => weapon.id === item.id,
-                  ) && (
-                    <div className="absolute bottom-0 right-0">
-                      <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        width="46"
-                        height="46"
-                        viewBox="0 0 46 46"
-                        fill="none"
-                      >
-                        <path
-                          d="M46 0V42C46 44.2091 44.2091 46 42 46H0L46 0Z"
-                          fill="#35F05E"
-                        />
-                        <path
-                          d="M31.3455 38.4368C31.0227 38.7491 30.5089 38.7441 30.1922 38.4257L24.1076 32.307C23.4984 31.6944 23.508 30.7018 24.1289 30.1011C24.7412 29.5088 25.7168 29.522 26.3129 30.1306L30.3461 34.2488C30.577 34.4845 30.9548 34.4896 31.1919 34.2602L39.6837 26.0454C40.2863 25.4625 41.2426 25.4625 41.8452 26.0454C42.4767 26.6563 42.4767 27.6689 41.8452 28.2798L31.3455 38.4368Z"
-                          fill="#252228"
-                        />
-                      </svg>
-                    </div>
-                  )}
-                </div>
-              ))}
-            </div>
-          ) : (
-            <>
-              <div className="mt-6 flex h-full flex-col items-center justify-center py-20 bg-[url('@/assets/upgrade-gun.png')] bg-no-repeat bg-center bg-[size:50%]">
-                <p className="text-sm font-semibold leading-tight text-white md:text-base lg:text-l mb-4 mt-32">
-                  <FormattedMessage id="upgrade_no_items" />
-                </p>
-              </div>
-            </>
-          )}
-          {Number(dreamsData?.totalRows) > 0 && (
-            <div className="mt-auto flex items-center justify-center pt-6">
-              <span
-                className={`${
-                  searchParams?.page === 1
-                    ? 'cursor-not-allowed text-gray'
-                    : 'cursor-pointer text-white'
-                }`}
-                onClick={() => {
-                  if (loading) return;
-                  if (searchDreamsParams?.page > 1) {
-                    setSearchDreamsParams({
-                      ...searchDreamsParams,
-                      page: searchParams?.page - 1,
-                    });
-                  }
-                }}
-              >
-                <LeftOutlined />
-              </span>
-              <div className="flex items-center justify-center rounded bg-navy-900 p-3 text-center text-sm font-semibold leading-none text-white css-1mqx83j">
-                {dreamsData?.page}/{dreamsData?.totalPages}
-              </div>
-              <span
-                className={`${
-                  dreamsData && searchParams?.page === dreamsData?.totalPages
-                    ? 'cursor-not-allowed'
-                    : 'cursor-pointer text-white'
-                }`}
-                onClick={() => {
-                  if (loading) return;
-
-                  if (searchParams?.page < Number(dreamsData?.totalPages)) {
-                    setSearchDreamsParams({
-                      ...searchDreamsParams,
-                      page: searchParams?.page + 1,
-                    });
-                  }
-                }}
-              >
-                <RightOutlined />
-              </span>
-            </div>
-          )}
+          {dreamsRender}
         </div>
       </div>
 
