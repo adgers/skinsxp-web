@@ -186,8 +186,15 @@ export default function DreamPage() {
     if (success) {
       rotateTo += Math.floor(Math.random() * per) * 3.6;
     } else {
-      //如果失败停留在 percent到100之间的位置
-      rotateTo += (Math.floor(Math.random() * (100 - per)) + per) * 3.6;
+      //如果失败停留在 percent + 2 到 98 之间的位置
+      const random = Math.random();
+      const rotate =
+        Math.floor(random * (100 - per)) + per > 98
+          ? 98
+          : Math.floor(random * (100 - per)) + per < per + 2
+          ? per + 2
+          : Math.floor(random * (100 - per)) + per;
+      rotateTo += rotate * 3.6;
     }
 
     setRotateStart(true);
