@@ -2,8 +2,8 @@ import { IconFont } from '@/components/icons';
 import WeaponCard from '@/components/weaponCard';
 import {
   getUpgradeConfigUsingGET,
+  myVoucherUsingGET,
   pageUsingGET1,
-  upgradeRecordPageUsingGET,
   v3StartUpgradeUsingPOST,
 } from '@/services/front/shengjixiangguan';
 import { goback, numberFixed, parseName } from '@/utils';
@@ -54,7 +54,7 @@ export default function DreamPage() {
     page: 1,
   });
   const [orderByPrice, setOrderByPrice] = useState<boolean>(true);
-  const [selectWeapon, setSelectWeapon] = useState<API.MyVoucherVo[]>([]);
+  const [selectWeapon, setSelectWeapon] = useState<API.Voucher[]>([]);
   const [currentTimes, setCurrentTimes] = useState<number>(1);
   const [showSelected, setShowSelected] = useState<boolean>(false);
   const [showDreamSelected, setShowDreamSelected] = useState<boolean>(false);
@@ -147,7 +147,7 @@ export default function DreamPage() {
     loading,
   } = useRequest(
     () =>
-      upgradeRecordPageUsingGET({
+      myVoucherUsingGET({
         ...searchParams,
         pageSize: 16,
         orderByPrice,
