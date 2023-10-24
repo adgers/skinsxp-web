@@ -182,6 +182,8 @@ export default defineConfig({
           ],
         },
         { path: '/upgrade', component: 'upgrade' },
+        { path: '/event', component: 'event' },
+
         { path: '/*', component: '@/pages/404' },
       ],
     },
