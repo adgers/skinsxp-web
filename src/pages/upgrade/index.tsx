@@ -39,7 +39,7 @@ export default function DreamPage() {
 
   const [percent, setPercent] = useState(5); /* 显示 中奖率 */
   const [maxBalance, setMaxBalance] = useState(0); // 最大可选额外金额
-  const [balancePercent, setBalancePercent] = useState<number>(0); // 额外金额所占百分比
+  const [balance, setBalance] = useState<number>(0); // 额外金额
   const [itemsPercent, setItemsPercent] = useState<number>(0); // 背包饰品 占比
   const [itemsTotal, setItemsTotal] = useState<number>(0); // 背包饰品价值
   const [targetPrice, setTargetPrice] = useState<number>(0); // 目标饰品价值
@@ -123,7 +123,7 @@ export default function DreamPage() {
     returnRate: number;
     totalPrice: number;
   }) => {
-    return Number((curPrice * (returnRate * 100 || 0)) / totalPrice || 0);
+    return Number((curPrice * returnRate * 100) / totalPrice) || 0;
   };
 
   const getBalance = ({
@@ -135,8 +135,8 @@ export default function DreamPage() {
     returnRate: number;
     percent: number;
   }) => {
-    return Number((percent * totalPrice) / (returnRate * 100)) > 0
-      ? Number((percent * totalPrice) / (returnRate * 100))
+    return Number(((percent / 100) * totalPrice) / returnRate) > 0
+      ? Number(((percent / 100) * totalPrice) / returnRate)
       : 0;
   };
 
@@ -215,7 +215,8 @@ export default function DreamPage() {
       from: { rotate: 0 },
     });
     const ret = await v3StartUpgradeUsingPOST({
-      quantity: numberFixed((balancePercent / 100) * maxBalance),
+      // quantity: numberFixed((balancePercent / 100) * maxBalance),
+      quantity: balance,
       upgradeGiftIds:
         selectDreamWeapon?.map((item) => item.id)?.join(',') || '',
       vouchers: selectWeapon?.map((item) => item.id)?.join(',') || '',
@@ -248,15 +249,15 @@ export default function DreamPage() {
         totalPrice: targetPrice,
       });
 
-      const autoAddBalancePercent = (balance / maxBalance) * 100;
-
-      setBalancePercent(autoAddBalancePercent);
+      // const autoAddBalancePercent = (balance / maxBalance) * 100;
+      setBalance(balance);
+      // setBalancePercent(autoAddBalancePercent);
       return;
     } else if (percent + Number(itemsPercent) > (config?.maxProb || 75)) {
       return;
     }
-
-    setBalancePercent(range);
+    setBalance((range / 100) * maxBalance);
+    // setBalancePercent(range);
   };
 
   /* 饰品总额&倍率 目标视频最低价变化 */
@@ -289,12 +290,24 @@ export default function DreamPage() {
         returnRate: config?.returnRate,
         percent: Number(config?.maxProb - curPercent),
       });
+      const curBalancePercent = getPercent({
+        curPrice: Number(balance),
+        returnRate: Number(config?.returnRate) || 0,
+        totalPrice: targetPrice,
+      });
       setMaxBalance(quantity);
       setItemsPercent(curPercent);
-      // 如果当前饰品提供的比例小于最低比例 自动补充
-      if (Number(curPercent) < Number(config?.minProb)) {
+      // 如果当前饰品提供的比例+当前已选金额比例 小于最低比例 自动补充
+      if (
+        Number(curPercent) + Number(curBalancePercent) <
+        Number(config?.minProb)
+      ) {
         const autoAddBalancePercent =
           Number(config?.minProb) - Number(curPercent) || 0;
+
+        if (Number(itemsTotal) + Number(balance) < maxBalance) {
+        } else {
+        }
 
         const autoBalance =
           getBalance({
@@ -302,15 +315,32 @@ export default function DreamPage() {
             returnRate: config?.returnRate,
             totalPrice: targetPrice,
           }) || 0;
-        setBalancePercent((autoBalance / quantity) * 100);
+        // setBalancePercent((autoBalance / quantity) * 100);
+        setBalance(autoBalance);
       } else if (Number(curPercent) > Number(config?.maxProb)) {
+        // 目标饰品减少 左边饰品价值超出时 自动将左边饰品滞空
         setSelectWeapon([]);
-      } else {
-        setBalancePercent(0);
+      } else if (
+        Number(curPercent) + Number(curBalancePercent) >
+        Number(config?.maxProb)
+      ) {
+        // 如果当前目标饰品+当前金额 大于最高限额 自动减少金额
+        const autoAddBalancePercent =
+          Number(config?.maxProb) - Number(curPercent) || 0;
+        const autoBalance =
+          getBalance({
+            percent: autoAddBalancePercent,
+            returnRate: config?.returnRate,
+            totalPrice: targetPrice,
+          }) || 0;
+
+        setBalance(autoBalance);
       }
     } else {
       setItemsPercent(0);
-      setBalancePercent(0);
+      // setBalancePercent(0)
+      setBalance(0);
+      setMaxBalance(0);
     }
   }, [selectDreamWeapon, config, itemsTotal]);
 
@@ -330,14 +360,16 @@ export default function DreamPage() {
       Number(itemsPercent) +
       Number(
         getPercent({
-          curPrice: (balancePercent / 100) * maxBalance,
+          // curPrice: (balancePercent / 100) * maxBalance,
+          curPrice: balance,
           returnRate: config?.returnRate,
           totalPrice: targetPrice,
         }),
       );
+
     setPercent(Number(percent));
     percentRef.current = percent;
-  }, [itemsPercent, balancePercent, maxBalance]);
+  }, [itemsPercent, balance, maxBalance]);
 
   const selectWeaponRender = useMemo(() => {
     return (
@@ -812,11 +844,7 @@ export default function DreamPage() {
             }}
           >
             <div className="text-green text-xl">
-              $
-              {numberFixed(
-                Number(itemsTotal) + (balancePercent / 100) * maxBalance,
-                2,
-              )}
+              ${numberFixed(Number(itemsTotal) + balance, 2)}
             </div>
             <div className="text-white/50 text-xs">
               <FormattedMessage id="upgrade_zjz" />
@@ -927,7 +955,9 @@ export default function DreamPage() {
                   {targetPrice > 0
                     ? numberFixed(
                         getPercent({
-                          curPrice: (balancePercent / 100) * maxBalance,
+                          // curPrice: (balancePercent / 100) * maxBalance,
+                          curPrice: balance,
+
                           returnRate: config?.returnRate,
                           totalPrice: targetPrice,
                         }),
@@ -937,15 +967,13 @@ export default function DreamPage() {
                   %
                 </span>
                 <div className="text-gray">
-                  <span className="text-white">
-                    ${numberFixed((balancePercent / 100) * maxBalance, 2)}
-                  </span>
+                  <span className="text-white">${numberFixed(balance)}</span>
                   /${numberFixed(maxBalance, 2)}
                 </div>
               </div>
               <Slider
                 className="w-full"
-                value={balancePercent}
+                value={(balance / maxBalance) * 100}
                 onChange={onSliderChange}
                 tooltip={{ open: false }}
               />
