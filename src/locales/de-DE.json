@@ -402,9 +402,10 @@
     "upgrade_no_skin": "DU HAST KEINE ITEMS",
     "open_case": "Öffnen Sie die Box",
     "upgrade_no_items": "Keine Artikel entsprechen diesen Kriterien!",
-    "upgrade_jzcc": "Der Gesamtwert des Artikels übersteigt!",
+    "upgrade_jzcc": "Der Wert des Gegenstandes und des Saldos übersteigt den Wert des Zielgegenstandes!",
     "upgrade_result_fail": "Leider",
     "upgrade_probability": "Wahrscheinlichkeit",
     "upgrade_zjz": "Gesamtwert",
-    "upgrade_select_tip": "Bitte wählen Sie zunächst ein Zielzubehör aus"
+    "upgrade_select_tip": "Bitte wählen Sie den Zielpunkt aus",
+    "Deposit_limit": "Bitte führen Sie eine Aufladung von mindestens 3 $ durch, um Ihre Bestellung sofort abholen zu können."
 }

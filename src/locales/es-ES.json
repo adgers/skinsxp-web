@@ -402,9 +402,10 @@
     "upgrade_no_skin": "NO TIENES ITEMS",
     "open_case": "Abrir la Caja",
     "upgrade_no_items": "¡¡ no hay proyectos que cumplan estas condiciones!",
-    "upgrade_jzcc": "¡¡ el valor total del proyecto supera!",
+    "upgrade_jzcc": "¡¡ el valor de los artículos y saldos supera el valor de los artículos objetivo!",
     "upgrade_result_fail": "Es una pena.",
     "upgrade_probability": "Posibilidad",
     "upgrade_zjz": "Valor total",
-    "upgrade_select_tip": "Seleccione primero un accesorio de destino"
+    "upgrade_select_tip": "Por favor, seleccione el objeto objetivo",
+    "Deposit_limit": "Una vez completado, es posible ingresar al mercado con un pequeño precio de $3."
 }

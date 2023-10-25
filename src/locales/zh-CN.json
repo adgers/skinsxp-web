@@ -402,9 +402,10 @@
     "upgrade_no_skin": "你没有物品",
     "open_case": "开箱",
     "upgrade_no_items": "没有物品符合这些标准！",
-    "upgrade_jzcc": "饰品总价值超出！",
+    "upgrade_jzcc": "物品和余额的价值超过了目标物品的价值！",
     "upgrade_result_fail": "遗憾",
     "upgrade_probability": "概率",
     "upgrade_zjz": "总价值",
-    "upgrade_select_tip": "请先选择目标配件"
+    "upgrade_select_tip": "请选择目标物品",
+    "Deposit_limit": "请完成最少$3的充值，即可马上取货。"
 }

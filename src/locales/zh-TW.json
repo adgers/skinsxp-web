@@ -3,7 +3,7 @@
     "home_spsc": "WG商店",
     "roll_room_title": "ROLL房",
     "roll_room_gftj": "官方ROLL房",
-    "roll_room_zbfl": "用戶贈品",
+    "roll_room_zbfl": "用戶ROLL房",
     "roll_room_wcyd": "我參與的ROLL房",
     "roll_recommand_jxz": "進行中的ROLL房",
     "roll_recommand_yjs": "已完成的ROLL房",
@@ -402,9 +402,10 @@
     "upgrade_no_skin": "你沒有物品",
     "open_case": "打開箱子",
     "upgrade_no_items": "沒有符合這些條件的物品！",
-    "upgrade_jzcc": "項目的總值超過！",
+    "upgrade_jzcc": "物品和餘額的總價值超過了目標物品的價值！",
     "upgrade_result_fail": "遺憾",
     "upgrade_probability": "機率",
     "upgrade_zjz": "總值",
-    "upgrade_select_tip": "请先选择目标配件"
+    "upgrade_select_tip": "請選擇目標物品",
+    "Deposit_limit": "請完成最少$3的儲值，即可馬上取貨。"
 }

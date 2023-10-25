@@ -402,9 +402,10 @@
     "upgrade_no_skin": "VOUS N'AVEZ PAS D'OBJET",
     "open_case": "Ouvrir la boîte",
     "upgrade_no_items": "Aucun projet ne répond à ces critères!",
-    "upgrade_jzcc": "La valeur totale du projet dépasse!",
+    "upgrade_jzcc": "La valeur de l'article et du solde dépasse la valeur de l'article cible!",
     "upgrade_result_fail": "Regrets",
     "upgrade_probability": "Possibilités",
     "upgrade_zjz": "Valeur totale",
-    "upgrade_select_tip": "Veuillez d'abord sélectionner un accessoire cible"
+    "upgrade_select_tip": "Veuillez sélectionner un objet cible",
+    "Deposit_limit": "Veuillez effectuer une recharge minimale de 3 $ pour récupérer votre commande immédiatement."
 }

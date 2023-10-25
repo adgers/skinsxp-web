@@ -402,9 +402,10 @@
     "upgrade_no_skin": "NIE MASZ ŻADNYCH PRZEDMIOTÓW",
     "open_case": "Otwórz pudełko",
     "upgrade_no_items": "Żadne przedmioty nie pasują do tych kryteriów!",
-    "upgrade_jzcc": "Całkowita wartość przedmiotu przekracza!",
+    "upgrade_jzcc": "Wartość przedmiotu i saldo przekracza wartość przedmiotu docelowego!",
     "upgrade_result_fail": "Niestety",
     "upgrade_probability": "Prawdopodobieństwo",
     "upgrade_zjz": "Wartość całkowita",
-    "upgrade_select_tip": "Najpierw wybierz docelowe akcesorium"
+    "upgrade_select_tip": "Proszę wybrać pozycję docelową",
+    "Deposit_limit": "Aby natychmiast odebrać zamówienie, należy doładować konto na kwotę co najmniej 3 USD."
 }

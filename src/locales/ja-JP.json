@@ -402,9 +402,10 @@
     "upgrade_no_skin": "あなたは品物を持っていません",
     "open_case": "箱を開ける",
     "upgrade_no_items": "これらの条件に該当する項目はありません！",
-    "upgrade_jzcc": "プロジェクトの総額超過！",
+    "upgrade_jzcc": "アイテムと残高の価値が目標アイテムの価値を超えている！",
     "upgrade_result_fail": "残念",
     "upgrade_probability": "確率",
     "upgrade_zjz": "総価値",
-    "upgrade_select_tip": "最初に対象のアクセサリを選択してください"
+    "upgrade_select_tip": "対象物を選択してください",
+    "Deposit_limit": "注文をすぐに受け取るには、最低 3 ドルのリチャージを完了してください。"
 }
