@@ -1098,13 +1098,14 @@ export default function DreamPage() {
                   className="input w-full border border-l-0 rounded-r h-full pl-[5px] bg-transparent focus:outline-none text-white text-sm"
                   value={searchDreamsParams.giftName}
                   placeholder={intl.formatMessage({ id: 'mall_search' })}
-                  onChange={(e) =>
+                  onChange={(e) => {
                     setSearchDreamsParams({
                       ...searchDreamsParams,
                       giftName: e.target.value,
                       page: 1,
-                    })
-                  }
+                    });
+                    setShowDreamSelected(false);
+                  }}
                 />
               </div>
               <div className="flex items-center text-white/20 gap-2">
@@ -1118,6 +1119,7 @@ export default function DreamPage() {
                         priceStart: e.target.value,
                         page: 1,
                       });
+                      setShowDreamSelected(false);
                     }}
                     type="number"
                     value={searchDreamsParams.priceStart || 0}
@@ -1137,6 +1139,7 @@ export default function DreamPage() {
                         priceEnd: e.target.value,
                         page: 1,
                       });
+                      setShowDreamSelected(false);
                     }}
                     type="number"
                     value={searchDreamsParams.priceEnd || 0}
@@ -1148,13 +1151,14 @@ export default function DreamPage() {
               </div>
               <div
                 className="border border-light h-10 py-2 px-4 rounded cursor-pointer"
-                onClick={() =>
+                onClick={() => {
                   setSearchDreamsParams({
                     ...searchDreamsParams,
                     orderByPrice: !searchDreamsParams?.orderByPrice,
                     page: 1,
-                  })
-                }
+                  });
+                  setShowDreamSelected(false);
+                }}
               >
                 <FormattedMessage id="recoveryPrice" />{' '}
                 {searchDreamsParams?.orderByPrice ? (
