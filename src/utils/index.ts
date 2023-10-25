@@ -80,6 +80,14 @@ export function numberFixed(num: number, fixed: number = 2) {
   return new Big(num).toFixed(fixed);
 }
 
+export function numberSplit(num: number, fixed: number = 2) {
+  return Number((Math.floor(Number(num) * 100) / 100).toFixed(fixed));
+}
+
+export function numberSplitCeil(num: number, fixed: number = 2) {
+  return Number((Math.ceil(Number(num) * 100) / 100).toFixed(fixed));
+}
+
 export function numberRoundUp(num: number) {
   return Math.ceil(num * 100) / 100;
 }
