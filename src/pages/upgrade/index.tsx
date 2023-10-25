@@ -279,7 +279,7 @@ export default function DreamPage() {
   useEffect(() => {
     const limitQuantity =
       (Number(itemsTotal) * currentTimes * (config?.returnRate || 0.75) * 100) /
-        config?.maxProb || 75;
+      (config?.maxProb || 75);
     setSearchDreamsParams({
       ...searchDreamsParams,
       priceStart: numberFixed(limitQuantity, 2),
