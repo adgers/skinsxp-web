@@ -223,7 +223,7 @@ export default function DreamPage() {
       });
       return;
     }
-    if ( openLoading || rotateStart) return;
+    if (openLoading || rotateStart) return;
     setOpenLoading(true);
     rotateApi.start({
       from: { rotate: 0 },
@@ -277,12 +277,15 @@ export default function DreamPage() {
 
   /* 饰品总额&倍率 目标视频最低价变化 */
   useEffect(() => {
+    const limitQuantity =
+      (Number(itemsTotal) * currentTimes * (config?.returnRate || 0.75) * 100) /
+        config?.maxProb || 75;
     setSearchDreamsParams({
       ...searchDreamsParams,
-      priceStart: numberFixed(itemsTotal * currentTimes, 2),
+      priceStart: numberFixed(limitQuantity, 2),
       page: 1,
     });
-  }, [itemsTotal, currentTimes]);
+  }, [itemsTotal, currentTimes, config]);
 
   /* 最大可选额外金额, 目标饰品总额 */
   useEffect(() => {
