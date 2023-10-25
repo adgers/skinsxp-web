@@ -257,8 +257,9 @@ export default function DreamPage() {
       });
       return;
     }
-    const prevRange = (balance / maxBalance) * 100;
-    const isAdd = range > prevRange;
+    const isAdd =
+      (range / 100) * maxBalance >=
+      numberSplit((range / 100) * maxBalance) + 0.005;
     /* 当前所选金额百分比 */
     const autoBalance = isAdd
       ? numberSplitCeil((range / 100) * maxBalance)
