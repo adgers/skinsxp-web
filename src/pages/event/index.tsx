@@ -3,7 +3,7 @@ import { useRequest } from '@umijs/max';
 import Banner from '../case/banner';
 export default () => {
   const { data, loading, refresh } = useRequest(() => taskListUsingGET());
-  console.log(data,'data')
+  console.log(data, 'data');
   return (
     <div className="w-full max-w-[1400px] m-auto relative min-h-[500px]">
       <Banner />
@@ -30,6 +30,46 @@ export default () => {
       <div className="text-xl font-bold text-center">
         HALLOWEEN LIMITED TIMEEVENT
       </div>
+      <div className="relative mb-4 sm:mb-10 flex border-b border-light">
+        <div className="flex w-1/6 items-end sm:w-1/3"></div>
+        <div className="flex w-4/6 items-center sm:w-1/3">
+          <h2
+            className="row-start-1 row-end-1 -mb-px ml-auto mr-auto mt-10 border-b-[3px] border-green px-7 pb-[20px] pt-[5px] text-center text-base font-semibold uppercase text-white sm:text-lg lg:col-start-2 lg:col-end-2"
+            style={{
+              background:
+                ' var(--j-1, linear-gradient(0deg, rgba(54, 122, 46, 0.68) 0%, rgba(0, 0, 0, 0.00) 98.14%))',
+            }}
+          >
+            <div className="flex items-center text-sm sm:text-base sm:leading-[28px]">
+              Issue DEtails
+            </div>
+          </h2>
+        </div>
+        <div className="flex w-1/6 items-end sm:w-1/3"></div>
+      </div>
+      {data && data?.length > 0 && (
+        <>
+          {data?.map((item, index) => {
+            return (
+              <div className="flex justify-between items-center bg-black" key={index}>
+                <div className="flex-1 flex items-center py-2 bg-[url('@/assets/halloween-issue-bg.png')] bg-no-repeat bg-contain">
+                  <div className=" w-24 h-24 overflow-hidden">
+                    <img
+                      src={require('@/assets/halloween-issue-tag.png')}
+                      className="w-full object-cover"
+                    />
+                  </div>
+                  {item?.taskName}
+                </div>
+                <div>
+                  <div>${item?.quantity}</div>
+                  <button className="btn btn-primary">BEGIN</button>
+                </div>
+              </div>
+            );
+          })}
+        </>
+      )}
     </div>
   );
 };
