@@ -34,6 +34,7 @@ import Result from './result';
 
 export default function DreamPage() {
   const { voice, toggleVoice } = useModel('sys');
+  const { getUser } = useModel('user');
   const intl = useIntl();
   const [openLoading, setOpenLoading] = useState(false);
 
@@ -231,6 +232,7 @@ export default function DreamPage() {
     setOpenLoading(false);
 
     if (ret.status === 0 && ret.data) {
+      getUser();
       startRotate(!!ret.data?.[0]?.won);
       setResult(ret.data);
     }
