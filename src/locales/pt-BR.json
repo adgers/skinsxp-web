@@ -402,9 +402,10 @@
     "upgrade_no_skin": "VOCÊ NÃO TEM ITENS",
     "open_case": "Caso aberto",
     "upgrade_no_items": "Nenhum elemento está observando esses critérios!",
-    "upgrade_jzcc": "O valor total do item excede!",
+    "upgrade_jzcc": "O valor total do item e do saldo excede o valor do item alvo!",
     "upgrade_result_fail": "Infelizmente",
     "upgrade_probability": "Probabilidade",
     "upgrade_zjz": "Valor Total",
-    "upgrade_select_tip": "Selecione um acessório alvo primeiro"
+    "upgrade_select_tip": "Por favor seleccione o item alvo",
+    "Deposit_limit": "Por favor, complete uma recarga mínima de $ 3 para retirar seu pedido imediatamente."
 }

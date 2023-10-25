@@ -79,11 +79,11 @@ export default function Header() {
       link: '/battle',
       icon: 'icon-battle',
     },
-    // {
-    //   title: <FormattedMessage id="main_tab_dream" />,
-    //   link: '/upgrade',
-    //   icon: 'icon-upgrade',
-    // },
+    {
+      title: <FormattedMessage id="main_tab_dream" />,
+      link: '/upgrade',
+      icon: 'icon-upgrade',
+    },
     {
       title: <FormattedMessage id="home_spsc" />,
       link: '/market',

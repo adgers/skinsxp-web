@@ -6,7 +6,13 @@ import {
   pageUsingGET1,
   v3StartUpgradeUsingPOST,
 } from '@/services/front/shengjixiangguan';
-import { goback, numberFixed, parseName } from '@/utils';
+import {
+  goback,
+  numberFixed,
+  numberSplit,
+  numberSplitCeil,
+  parseName,
+} from '@/utils';
 import {
   DownOutlined,
   LeftOutlined,
@@ -217,7 +223,13 @@ export default function DreamPage() {
   };
 
   const open = async () => {
-    if (!selectDreamWeapon?.length || openLoading || rotateStart) return;
+    if (!selectDreamWeapon?.length) {
+      toast.error(intl.formatMessage({ id: 'upgrade_select_tip' }), {
+        toastId: 'selectItem',
+      });
+      return;
+    }
+    if (openLoading || rotateStart) return;
     setOpenLoading(true);
     rotateApi.start({
       from: { rotate: 0 },
@@ -245,8 +257,14 @@ export default function DreamPage() {
       });
       return;
     }
+    const prevRange = (balance / maxBalance) * 100;
+    const isAdd = range > prevRange;
+    /* 当前所选金额百分比 */
+    const autoBalance = isAdd
+      ? numberSplitCeil((range / 100) * maxBalance)
+      : numberSplit((range / 100) * maxBalance);
     const percent = getPercent({
-      curPrice: (range / 100) * maxBalance,
+      curPrice: autoBalance,
       returnRate: config?.returnRate,
       totalPrice: targetPrice,
     });
@@ -265,18 +283,21 @@ export default function DreamPage() {
     } else if (percent + Number(itemsPercent) > (config?.maxProb || 75)) {
       return;
     }
-    setBalance((range / 100) * maxBalance);
+    setBalance(autoBalance);
     // setBalancePercent(range);
   };
 
   /* 饰品总额&倍率 目标视频最低价变化 */
   useEffect(() => {
+    const limitQuantity =
+      (Number(itemsTotal) * currentTimes * (config?.returnRate || 0.75) * 100) /
+      (config?.maxProb || 75);
     setSearchDreamsParams({
       ...searchDreamsParams,
-      priceStart: numberFixed(itemsTotal * currentTimes, 2),
+      priceStart: numberFixed(limitQuantity, 2),
       page: 1,
     });
-  }, [itemsTotal, currentTimes]);
+  }, [itemsTotal, currentTimes, config]);
 
   /* 最大可选额外金额, 目标饰品总额 */
   useEffect(() => {
@@ -304,7 +325,7 @@ export default function DreamPage() {
         returnRate: Number(config?.returnRate) || 0,
         totalPrice: targetPrice,
       });
-      setMaxBalance(quantity);
+      setMaxBalance(numberSplit(quantity));
       setItemsPercent(curPercent);
       // 如果当前饰品提供的比例+当前已选金额比例 小于最低比例 自动补充
       if (

@@ -402,9 +402,10 @@
     "upgrade_no_skin": "HIÇ EŞYANIZ YOK",
     "open_case": "Kutuyu aç",
     "upgrade_no_items": "Bu kriteriyi anlamıyor!",
-    "upgrade_jzcc": "Elementin toplam değeri aşıyor!",
+    "upgrade_jzcc": "Örneğin ve dengesinin toplam değeri hedef öğesinin değerini aştır!",
     "upgrade_result_fail": "Ne yazık ki",
     "upgrade_probability": "Muhtemelen",
     "upgrade_zjz": "Toplam Değer",
-    "upgrade_select_tip": "Lütfen önce bir hedef aksesuar seçin"
+    "upgrade_select_tip": "Lütfen hedefi seçin",
+    "Deposit_limit": "Siparişinizi hemen almak için lütfen minimum 3$'lık yükleme işlemini tamamlayın."
 }

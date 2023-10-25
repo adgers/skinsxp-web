@@ -402,9 +402,10 @@
     "upgrade_no_skin": "YOU HAVE NO ITEMS",
     "open_case": "Open Case",
     "upgrade_no_items": "NO ITEMS ARE MATCHING THESE CRITERIA!",
-    "upgrade_jzcc": "The total value of the item exceeds!",
+    "upgrade_jzcc": "The total value of the item and balance exceeds the value of the target item!",
     "upgrade_result_fail": "Regret",
     "upgrade_probability": "Probability",
     "upgrade_zjz": "Total Value",
-    "upgrade_select_tip": "Please select a target accessory first"
+    "upgrade_select_tip": "Please select the target item",
+    "Deposit_limit": "Please complete a minimum recharge of $3 to pick up your order immediately."
 }
