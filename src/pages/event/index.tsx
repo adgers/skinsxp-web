@@ -14,10 +14,12 @@ export default () => {
             'var(--C3, radial-gradient(124.94% 91.38% at 49.87% 100%, #533476 0%, #1F1A33 100%))',
         }}
       >
-        <div className="w-full flex flex-col items-center justify-center">
-          <div>FIRST DEPOSIT</div>
-          <span>Enter the code “helloween” +20%</span>
-          <button className="btn btn-purple">Refil</button>
+        <div className="w-full flex flex-col items-center justify-center gap-1">
+          <div className='flex gap-2 text-lg font-bold items-center'>
+            <img src={require('@/assets/halloween-face1.png')} className=' w-8' /> FIRST DEPOSIT
+          </div>
+          <span className='text-md font-normal'>Enter the code “helloween” +20%</span>
+          <div className="btn btn-purple uppercase">Refill</div>
         </div>
         <div className="w-full flex items-center justify-center">
           <div>Free roll</div>
@@ -48,7 +50,7 @@ export default () => {
         <div className="flex w-1/6 items-end sm:w-1/3"></div>
       </div>
       {data && data?.length > 0 && (
-        <>
+        <div className="flex flex-col gap-4">
           {data?.map((item, index) => {
             return (
               <div
@@ -78,7 +80,7 @@ export default () => {
               </div>
             );
           })}
-        </>
+        </div>
       )}
     </div>
   );

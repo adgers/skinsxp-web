@@ -117,7 +117,7 @@ export async function mailCodeUsingGET(
   params: API.mailCodeUsingGETParams,
   options?: { [key: string]: any },
 ) {
-  return request<API.ResultDataBoolean_>('/api/common/mailCode', {
+  return request<API.ResultDataBoolean_>('/api/common/sendEmailCode', {
     method: 'GET',
     params: {
       ...params,
