@@ -41,7 +41,7 @@ export default function OpenHistory() {
             ? topDropBox?.map((item) => {
                 let url = `/case/${item.sourceId}`;
                 if (item.sourceType === 22) {
-                  url = `/dream`;
+                  url = `/upgrade`;
                 } else if (item.sourceType === 23) {
                   url = `/battle/${item.sourceName}`;
                 }
@@ -67,7 +67,7 @@ export default function OpenHistory() {
             ? recentBox?.map((item) => {
                 let url = `/case/${item.sourceId}`;
                 if (item.sourceType === 22) {
-                  url = `/dream`;
+                  url = `/upgrade`;
                 } else if (item.sourceType === 23) {
                   url = `/battle/${item.sourceName}`;
                 }
