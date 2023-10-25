@@ -1,9 +1,9 @@
 import { taskListUsingGET } from '@/services/front/huodongzhongxinxiangguan';
-import { useRequest } from '@umijs/max';
+import { useModel, useRequest } from '@umijs/max';
 import Banner from '../case/banner';
 export default () => {
   const { data, loading, refresh } = useRequest(() => taskListUsingGET());
-  console.log(data, 'data');
+  const { showEmail } = useModel('user');
   return (
     <div className="w-full max-w-[1400px] m-auto relative min-h-[500px]">
       <Banner />
@@ -51,8 +51,11 @@ export default () => {
         <>
           {data?.map((item, index) => {
             return (
-              <div className="flex justify-between items-center bg-black" key={index}>
-                <div className="flex-1 flex items-center py-2 bg-[url('@/assets/halloween-issue-bg.png')] bg-no-repeat bg-contain">
+              <div
+                className="flex justify-between items-center bg-black rounded"
+                key={index}
+              >
+                <div className="flex-1 flex items-center py-2 px-10 bg-[url('@/assets/halloween-issue-bg.png')] bg-no-repeat bg-contain">
                   <div className=" w-24 h-24 overflow-hidden">
                     <img
                       src={require('@/assets/halloween-issue-tag.png')}
@@ -61,9 +64,16 @@ export default () => {
                   </div>
                   {item?.taskName}
                 </div>
-                <div>
-                  <div>${item?.quantity}</div>
-                  <button className="btn btn-primary">BEGIN</button>
+                <div className="flex items-center pr-16 gap-20">
+                  <div className="text-green text-lg font-semibold">
+                    ${item?.quantity}
+                  </div>
+                  <div
+                    className="btn btn-green w-[256px]"
+                    onClick={() => showEmail()}
+                  >
+                    BEGIN
+                  </div>
                 </div>
               </div>
             );

@@ -14,6 +14,8 @@ export default () => {
   const [loginTipShow, setLoginTipShow] = useState<boolean>(false);
   const [regTipShow, setRegTipShow] = useState<boolean>(false);
   const [langShow, setLangShow] = useState<boolean>(false);
+  const [emailShow, setEmailShow] = useState<boolean>(false);
+
   const [regNum, setRegNum] = useState(0);
 
   const [agreePing, setAgreePing] = useState<boolean>(
@@ -100,6 +102,13 @@ export default () => {
     setLangShow(false);
   };
 
+  const showEmail = () => {
+    setEmailShow(true);
+  };
+  const hideEmail = () => {
+    setEmailShow(false);
+  };
+
   const getUser = async () => {
     const ret = await customerDetailUsingGET();
     if (ret.data) {
@@ -145,6 +154,9 @@ export default () => {
     langShow,
     showLang,
     hideLang,
+    emailShow,
+    showEmail,
+    hideEmail,
     regNum,
     setRegNum,
   };

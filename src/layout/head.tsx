@@ -8,6 +8,7 @@ import Benefit from '@/pages/benefit';
 import LoginConfirm from '@/pages/login/loginConfirm';
 import LoginTip from '@/pages/login/loginTip';
 import RegTip from '@/pages/login/regTip';
+import SaveEmail from '@/pages/login/saveEmail';
 import { isLogin, langs, logout, numberFixed } from '@/utils';
 import { MenuOutlined } from '@ant-design/icons';
 import { Menu, Transition } from '@headlessui/react';
@@ -341,7 +342,7 @@ export default function Header() {
                     });
                   }}
                   style={{
-                    background: 'rgba(53, 240, 94, 0.40)'
+                    background: 'rgba(53, 240, 94, 0.40)',
                   }}
                 >
                   <IconFont type="icon-funds" className="text-xl text-green" />
@@ -545,6 +546,7 @@ export default function Header() {
       {loginTipShow && <LoginTip />}
       {regTipShow && <RegTip />}
       <SelectLang />
+      <SaveEmail />
     </>
   );
 }
