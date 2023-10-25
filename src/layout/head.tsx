@@ -312,6 +312,14 @@ export default function Header() {
                         />
                       </div>
                     )}
+                    {item.link === '/upgrade' && (
+                      <div className="absolute w-8 top-0.5 left-0.5 transform -rotate-[20deg]">
+                        <img
+                          src={require('@/assets/new-flag.png')}
+                          className="w-full object-cover"
+                        />
+                      </div>
+                    )}
                   </Link>
                 );
               })}
