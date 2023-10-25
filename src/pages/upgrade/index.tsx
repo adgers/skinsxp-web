@@ -217,7 +217,13 @@ export default function DreamPage() {
   };
 
   const open = async () => {
-    if (!selectDreamWeapon?.length || openLoading || rotateStart) return;
+    if (!selectDreamWeapon?.length) {
+      toast.error(intl.formatMessage({ id: 'upgrade_select_tip' }), {
+        toastId: 'selectItem',
+      });
+      return;
+    }
+    if ( openLoading || rotateStart) return;
     setOpenLoading(true);
     rotateApi.start({
       from: { rotate: 0 },
