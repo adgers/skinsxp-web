@@ -97,8 +97,8 @@ export default function DreamPage() {
     pageSize: number;
     giftName: string;
     orderByPrice: boolean;
-    priceStart: string | null;
-    priceEnd: string | null;
+    priceStart: number | string | null;
+    priceEnd: number | string | null;
   }>({
     page: 1,
     pageSize: 16,
@@ -257,8 +257,9 @@ export default function DreamPage() {
       });
       return;
     }
-    const prevRange = (balance / maxBalance) * 100;
-    const isAdd = range > prevRange;
+    const isAdd =
+      (range / 100) * maxBalance >=
+      numberSplit((range / 100) * maxBalance) + 0.005;
     /* 当前所选金额百分比 */
     const autoBalance = isAdd
       ? numberSplitCeil((range / 100) * maxBalance)
@@ -294,7 +295,7 @@ export default function DreamPage() {
       (config?.maxProb || 75);
     setSearchDreamsParams({
       ...searchDreamsParams,
-      priceStart: numberFixed(limitQuantity, 2),
+      priceStart: numberSplitCeil(limitQuantity, 2),
       page: 1,
     });
   }, [itemsTotal, currentTimes, config]);
@@ -334,11 +335,6 @@ export default function DreamPage() {
       ) {
         const autoAddBalancePercent =
           Number(config?.minProb) - Number(curPercent) || 0;
-
-        if (Number(itemsTotal) + Number(balance) < maxBalance) {
-        } else {
-        }
-
         const autoBalance =
           getBalance({
             percent: autoAddBalancePercent,
@@ -346,7 +342,7 @@ export default function DreamPage() {
             totalPrice: targetPrice,
           }) || 0;
         // setBalancePercent((autoBalance / quantity) * 100);
-        setBalance(autoBalance);
+        setBalance(numberSplitCeil(autoBalance));
       } else if (Number(curPercent) > Number(config?.maxProb)) {
         // 目标饰品减少 左边饰品价值超出时 自动将左边饰品滞空
         setSelectWeapon([]);
@@ -364,7 +360,7 @@ export default function DreamPage() {
             totalPrice: targetPrice,
           }) || 0;
 
-        setBalance(autoBalance);
+        setBalance(numberSplit(autoBalance));
       }
     } else {
       setItemsPercent(0);
@@ -481,10 +477,7 @@ export default function DreamPage() {
                 key={index}
                 className="relative"
                 onClick={() => {
-                  if (
-                    item.state !== ItemState.ACTIVE ||
-                    selectWeapon?.length === 10
-                  ) {
+                  if (item.state !== ItemState.ACTIVE) {
                     return;
                   }
                   let prevWeapons = JSON.parse(JSON.stringify(selectWeapon));
@@ -493,7 +486,7 @@ export default function DreamPage() {
                       prevWeapons,
                       (weapon: API.MyVoucherVo) => weapon.id === item.id,
                     );
-                  } else {
+                  } else if (selectWeapon?.length < 10) {
                     const total =
                       [...prevWeapons, item].reduce(
                         (a: number, b: API.MyVoucherVo) => {
@@ -631,9 +624,6 @@ export default function DreamPage() {
                 key={index}
                 className="relative h-fit"
                 onClick={() => {
-                  if (selectDreamWeapon?.length === 10) {
-                    return;
-                  }
                   let prevWeapons = JSON.parse(
                     JSON.stringify(selectDreamWeapon),
                   );
@@ -644,7 +634,7 @@ export default function DreamPage() {
                       prevWeapons,
                       (weapon: API.MyVoucherVo) => weapon.id === item.id,
                     );
-                  } else {
+                  } else if (selectDreamWeapon?.length < 10) {
                     prevWeapons.push(item);
                   }
                   setSelectDreamWeapon(prevWeapons);
@@ -1108,13 +1098,14 @@ export default function DreamPage() {
                   className="input w-full border border-l-0 rounded-r h-full pl-[5px] bg-transparent focus:outline-none text-white text-sm"
                   value={searchDreamsParams.giftName}
                   placeholder={intl.formatMessage({ id: 'mall_search' })}
-                  onChange={(e) =>
+                  onChange={(e) => {
                     setSearchDreamsParams({
                       ...searchDreamsParams,
                       giftName: e.target.value,
                       page: 1,
-                    })
-                  }
+                    });
+                    setShowDreamSelected(false);
+                  }}
                 />
               </div>
               <div className="flex items-center text-white/20 gap-2">
@@ -1128,6 +1119,7 @@ export default function DreamPage() {
                         priceStart: e.target.value,
                         page: 1,
                       });
+                      setShowDreamSelected(false);
                     }}
                     type="number"
                     value={searchDreamsParams.priceStart || 0}
@@ -1147,6 +1139,7 @@ export default function DreamPage() {
                         priceEnd: e.target.value,
                         page: 1,
                       });
+                      setShowDreamSelected(false);
                     }}
                     type="number"
                     value={searchDreamsParams.priceEnd || 0}
@@ -1158,13 +1151,14 @@ export default function DreamPage() {
               </div>
               <div
                 className="border border-light h-10 py-2 px-4 rounded cursor-pointer"
-                onClick={() =>
+                onClick={() => {
                   setSearchDreamsParams({
                     ...searchDreamsParams,
                     orderByPrice: !searchDreamsParams?.orderByPrice,
                     page: 1,
-                  })
-                }
+                  });
+                  setShowDreamSelected(false);
+                }}
               >
                 <FormattedMessage id="recoveryPrice" />{' '}
                 {searchDreamsParams?.orderByPrice ? (
