@@ -9,7 +9,7 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 
 export default function Banner() {
   const intl = useIntl();
-  const [countdown, formattedRes] = useCountDown({ leftTime: 14888552 });
+  const [countdown, formattedRes] = useCountDown({ targetDate: 1699804799000 });
   const { days, hours, minutes, seconds } = formattedRes;
   const location = useLocation();
 

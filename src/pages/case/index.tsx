@@ -1,8 +1,8 @@
 import { getBoxListUsingGET } from '@/services/front/kaixiangxiangguan';
+import { numberSplitCeil } from '@/utils';
 import { history, useRequest } from '@umijs/max';
 import { useEffect, useState } from 'react';
 import LazyLoad from 'react-lazyload';
-import Banner from './banner';
 import Case from './case';
 import Giveaways from './giveaways';
 import './index.less';
@@ -49,7 +49,20 @@ export default function Home() {
               />
               <div className="w-full h-full absolute top-0 left-0">
                 {/* <div className="absolute top-[1.5] left-[1.75] text-green">New !</div> */}
-                <div className="absolute top-[20px] right-0 bg-black/[0.8] rounded-l text-white px-2 py-0.5 font-num sm:text-xl">
+                {Number(v?.discount) < 100 && (
+                  <div className="absolute top-[25px] left-[25px]  text-green px-1.5 rounded bg-[#123F0D]">
+                    -{100 - Number(v?.discount)}%
+                  </div>
+                )}
+                <div className="absolute top-[20px] right-0 flex flex-col items-center bg-black/[0.8] rounded-l text-white px-2 py-0.5 font-num sm:text-xl">
+                  {Number(v?.discount) < 100 && (
+                    <span className="text-gray text-sm font-normal line-through">
+                      $
+                      {numberSplitCeil(
+                        (Number(v?.openPrice) * 100) / Number(v?.discount),
+                      )}
+                    </span>
+                  )}
                   ${v?.openPrice}
                 </div>
                 <div className="absolute bottom-0 left-0 w-full bg-black bg-opacity-50 backdrop-blur-sm py-3 px-2">
