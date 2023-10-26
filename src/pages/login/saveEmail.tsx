@@ -64,10 +64,9 @@ export default function SaveEmail() {
   };
 
   return (
-    <Modal open={emailShow} className="max-w-lg">
+    <Modal open={false} className="max-w-lg">
       <Modal.Header className="flex items-center mb-2">
-        {/* <FormattedMessage id="email_bind" /> */}
-        BIND EMAIL
+        <FormattedMessage id="bind_email" />
       </Modal.Header>
       <Button
         size="xs"
@@ -80,21 +79,21 @@ export default function SaveEmail() {
       </Button>
       <Modal.Body className="flex flex-col gap-4">
         <Input
-          placeholder={intl.formatMessage({ id: 'mine_qsremail' })}
+          placeholder={intl.formatMessage({ id: 'input_email' })}
           ref={emailRef}
         />
         <div className="join">
           <Input
-            placeholder={intl.formatMessage({ id: 'smscode_qsryzm' })}
+            placeholder={intl.formatMessage({ id: 'input_verify' })}
             className="join-item w-full mr-1"
             ref={codeRef}
           />
           <Button
             onClick={onSendEmail}
-            className="join-item rounded  btn-green btn-outline"
+            className="join-item rounded  btn-green btn-outline hover:!text-white"
           >
             {countdown === 0 ? (
-              <FormattedMessage id="smscode_fsyzm" />
+              <FormattedMessage id="verify_send" />
             ) : (
               intl
                 .formatMessage({

@@ -40,27 +40,27 @@ export default function Foot() {
 
   const onlineStatMap = [
     {
-      title: 'online',
+      title: <FormattedMessage id="site_online" />,
       value: 'activeSession',
       icon: 'icon-a-xinhao11',
     },
     {
-      title: 'Users',
+      title: <FormattedMessage id="site_users" />,
       value: 'userTotal',
       icon: 'icon-a-alluser',
     },
     {
-      title: 'Opened Cases',
+      title: <FormattedMessage id="main_tab_home" />,
       value: 'boxCnt',
       icon: 'icon-openedcase',
     },
     {
-      title: 'Cases battle',
+      title: <FormattedMessage id="main_tab_arena2" />,
       value: 'boxCnt',
       icon: 'icon-battle',
     },
     {
-      title: 'Upgrade',
+      title: <FormattedMessage id="main_tab_dream" />,
       value: 'upgradeCnt',
       icon: 'icon-upgrade',
     },
@@ -125,7 +125,7 @@ export default function Foot() {
                     type={item.icon}
                     className="text-green text-[40px]"
                   />
-                  <div className="flex flex-col text-gray text-sm">
+                  <div className="flex flex-col text-gray text-sm uppercase">
                     {item.title}
                     <div className="text-white font-semibold text-lg">
                       {siteStat?.[item.value]}

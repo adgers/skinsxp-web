@@ -95,6 +95,11 @@ export default function Header() {
       link: '/giveaways',
       icon: 'icon-giveaway',
     },
+    {
+      title: <FormattedMessage id="main_tab_event" />,
+      link: '/event',
+      icon: 'icon-message',
+    },
   ];
 
   const headExt = isLogin()
@@ -313,7 +318,7 @@ export default function Header() {
                         />
                       </div>
                     )}
-                    {item.link === '/upgrade' && (
+                    {(item.link === '/upgrade' || item.link === '/event') && (
                       <div className="absolute w-8 top-0.5 left-0.5 transform -rotate-[20deg]">
                         <img
                           src={require('@/assets/new-flag.png')}

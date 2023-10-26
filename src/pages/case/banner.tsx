@@ -8,7 +8,6 @@ import { Autoplay, Pagination } from 'swiper/modules';
 import { Swiper, SwiperSlide } from 'swiper/react';
 
 export default function Banner() {
-  const intl = useIntl();
   const [countdown, formattedRes] = useCountDown({ targetDate: 1699804799000 });
   const { days, hours, minutes, seconds } = formattedRes;
   const location = useLocation();
@@ -33,12 +32,12 @@ export default function Banner() {
           clickable: true,
         }}
         modules={[Pagination, Autoplay]}
-        className="w-full rounded h-[210px]  md:h-[350px] lg:h-[350px] xl:h-[400px] xxl:h-[450px] flex items-center !z-0"
+        className="w-full rounded h-[210px]  md:h-[350px] lg:h-[350px] xl:h-[400px] 2xl:h-[450px] flex items-center !z-0"
       >
         {/* {data?.map((t, i) => ( */}
         <SwiperSlide
           key={0}
-          className="h-[210px]  md:h-[350px] lg:h-[350px] xl:h-[400px] xxl:h-[450px] relative"
+          className="h-[210px]  md:h-[350px] lg:h-[350px] xl:h-[400px] 2xl:h-[450px] relative"
           // onClick={() => {
           //   history.push('/event');
           // }}
@@ -50,39 +49,39 @@ export default function Banner() {
           <div className="absolute top-0 left-0 w-full h-full flex flex-col  items-center z-30">
             <div className="w-fit mt-[64px] md:mt-[140px] mx-auto flex gap-2">
               {days > 0 && (
-                <div className="flex w-[80px] h-[36px] md:h-[50px] flex-shrink-0 flex-col items-center justify-center text-center bg-black/70 rounded">
+                <div className="flex w-[60px] md:w-[80px] h-[36px] md:h-[50px] flex-shrink-0 flex-col items-center justify-center text-center bg-black/70 rounded">
                   <Countdown
                     value={days}
-                    className="days-value text-lg font-semibold tabular-nums leading-none text-white"
+                    className="days-value text-sm md:text-lg font-semibold tabular-nums leading-none text-white"
                   />
                   <span className="transform scale-75 font-medium leading-none text-white text-opacity-70">
                     <FormattedMessage id="text_time_days" />
                   </span>
                 </div>
               )}
-              <div className="flex w-[80px] h-[36px] md:h-[50px] flex-shrink-0 flex-col items-center justify-center text-center bg-black/70 rounded">
+              <div className="flex w-[60px] md:w-[80px] h-[36px] md:h-[50px] flex-shrink-0 flex-col items-center justify-center text-center bg-black/70 rounded">
                 <Countdown
                   value={hours}
-                  className="days-value text-lg font-semibold tabular-nums leading-none text-white"
+                  className="days-value text-sm md:text-lg font-semibold tabular-nums leading-none text-white"
                 />
                 <span className="transform scale-75 font-medium leading-none text-white text-opacity-70">
                   <FormattedMessage id="text_time_hour" />
                 </span>
               </div>
-              <div className="flex w-[80px] h-[36px] md:h-[50px] flex-shrink-0 flex-col items-center justify-center text-center bg-black/70 rounded">
+              <div className="flex w-[60px] md:w-[80px] h-[36px] md:h-[50px] flex-shrink-0 flex-col items-center justify-center text-center bg-black/70 rounded">
                 <Countdown
                   value={minutes}
-                  className="days-value text-lg font-semibold tabular-nums leading-none text-white"
+                  className="days-value text-sm md:text-lg font-semibold tabular-nums leading-none text-white"
                 />
                 <span className="transform scale-75 font-medium leading-none text-white text-opacity-70">
                   <FormattedMessage id="text_time_min" />
                 </span>
               </div>
 
-              <div className="flex w-[80px] h-[36px] md:h-[50px] flex-shrink-0 flex-col items-center justify-center text-center bg-black/70 rounded">
+              <div className="flex w-[60px] md:w-[80px] h-[36px] md:h-[50px] flex-shrink-0 flex-col items-center justify-center text-center bg-black/70 rounded">
                 <Countdown
                   value={seconds}
-                  className="days-value text-lg font-semibold tabular-nums leading-none text-white"
+                  className="days-value text-sm md:text-lg font-semibold tabular-nums leading-none text-white"
                 />
                 <span className="transform scale-75 font-medium leading-none text-white text-opacity-70">
                   <FormattedMessage id="text_time_sec" />
@@ -96,7 +95,7 @@ export default function Banner() {
                   history.push('/event');
                 }}
               >
-                GO TO EVENT
+                <FormattedMessage id="go_event"/>
               </div>
             )}
           </div>
