@@ -56,7 +56,7 @@ export default function Foot() {
     },
     {
       title: <FormattedMessage id="main_tab_arena2" />,
-      value: 'boxCnt',
+      value: 'battleCnt',
       icon: 'icon-battle',
     },
     // {
