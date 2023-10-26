@@ -1,4 +1,4 @@
-import { FormattedMessage, history, useIntl } from '@umijs/max';
+import { FormattedMessage, history, useIntl, useLocation } from '@umijs/max';
 
 import { useCountDown } from 'ahooks';
 import { Countdown } from 'react-daisyui';
@@ -11,6 +11,7 @@ export default function Banner() {
   const intl = useIntl();
   const [countdown, formattedRes] = useCountDown({ leftTime: 14888552 });
   const { days, hours, minutes, seconds } = formattedRes;
+  const location = useLocation();
 
   // const { data, loading } = useRequest(
   //   () => getBannerListUsingGET({ topN: 10 }),
@@ -32,24 +33,24 @@ export default function Banner() {
           clickable: true,
         }}
         modules={[Pagination, Autoplay]}
-        className="w-full rounded h-[125px] sm:h-[200px] md:h-[250px] lg:h-[300px] xl:h-[350px] xxl:h-[400px] flex items-center z-0"
+        className="w-full rounded h-[170px] sm:h-[200px] md:h-[250px] lg:h-[300px] xl:h-[350px] xxl:h-[400px] flex items-center z-0"
       >
         {/* {data?.map((t, i) => ( */}
         <SwiperSlide
           key={0}
-          className="h-[125px] sm:h-[200px] md:h-[250px] lg:h-[300px] xl:h-[350px] xxl:h-[400px] relative"
-          onClick={() => {
-            history.push('/event');
-          }}
+          className="h-[170px] sm:h-[200px] md:h-[250px] lg:h-[300px] xl:h-[350px] xxl:h-[400px] relative"
+          // onClick={() => {
+          //   history.push('/event');
+          // }}
         >
           <img
             src={require('@/assets/halloween-banner.png')}
             className="w-full h-full object-cover"
           />
-          <div className="absolute top-0 left-0 w-full h-full flex flex-col justify-center items-center z-30">
-            <div className="w-fit m-auto flex gap-2">
+          <div className="absolute top-0 left-0 w-full h-full flex flex-col  items-center z-30">
+            <div className="w-fit mt-[64px] md:mt-[140px] mx-auto flex gap-2">
               {days > 0 && (
-                <div className="flex w-[60px] h-[50px] flex-shrink-0 flex-col items-center justify-center text-center bg-black/70 rounded">
+                <div className="flex w-[60px] h-[36px] md:h-[50px] flex-shrink-0 flex-col items-center justify-center text-center bg-black/70 rounded">
                   <Countdown
                     value={days}
                     className="days-value text-xs font-semibold tabular-nums leading-none text-white"
@@ -59,7 +60,7 @@ export default function Banner() {
                   </span>
                 </div>
               )}
-              <div className="flex w-[60px] h-[50px] flex-shrink-0 flex-col items-center justify-center text-center bg-black/70 rounded">
+              <div className="flex w-[60px] h-[36px] md:h-[50px] flex-shrink-0 flex-col items-center justify-center text-center bg-black/70 rounded">
                 <Countdown
                   value={hours}
                   className="days-value text-xs font-semibold tabular-nums leading-none text-white"
@@ -68,7 +69,7 @@ export default function Banner() {
                   <FormattedMessage id="text_time_hour" />
                 </span>
               </div>
-              <div className="flex w-[60px] h-[50px] flex-shrink-0 flex-col items-center justify-center text-center bg-black/70 rounded">
+              <div className="flex w-[60px] h-[36px] md:h-[50px] flex-shrink-0 flex-col items-center justify-center text-center bg-black/70 rounded">
                 <Countdown
                   value={minutes}
                   className="days-value text-xs font-semibold tabular-nums leading-none text-white"
@@ -78,7 +79,7 @@ export default function Banner() {
                 </span>
               </div>
 
-              <div className="flex w-[60px] h-[50px] flex-shrink-0 flex-col items-center justify-center text-center bg-black/70 rounded">
+              <div className="flex w-[60px] h-[36px] md:h-[50px] flex-shrink-0 flex-col items-center justify-center text-center bg-black/70 rounded">
                 <Countdown
                   value={seconds}
                   className="days-value text-xs font-semibold tabular-nums leading-none text-white"
@@ -88,6 +89,16 @@ export default function Banner() {
                 </span>
               </div>
             </div>
+            {location.pathname === '/case' && (
+              <div
+                className="btn btn-purple !h-[32px] md:!h-12 min-h-0 mt-3 md:mt-8"
+                onClick={() => {
+                  history.push('/event');
+                }}
+              >
+                GO TO EVENT
+              </div>
+            )}
           </div>
         </SwiperSlide>
         {/* ))} */}

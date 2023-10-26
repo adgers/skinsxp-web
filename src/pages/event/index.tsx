@@ -1,9 +1,36 @@
-import { taskListUsingGET } from '@/services/front/huodongzhongxinxiangguan';
-import { useModel, useRequest } from '@umijs/max';
+import { IconFont } from '@/components/icons';
+import { listHostGiveawayUsingGET } from '@/services/front/ROLLfangxiangguan';
+import {
+  rewardUsingPOST,
+  taskListUsingGET,
+} from '@/services/front/huodongzhongxinxiangguan';
+import { history, useModel, useRequest } from '@umijs/max';
+import { toast } from 'react-toastify';
 import Banner from '../case/banner';
+
+enum CycleMode {
+  ONE_TIME = 0,
+  DAY = 1,
+  WEEK = 2,
+}
+
 export default () => {
   const { data, loading, refresh } = useRequest(() => taskListUsingGET());
+  const { data: giveawayList } = useRequest(() => listHostGiveawayUsingGET(), {
+    cacheKey: 'giveawayList',
+  });
+  const freeRoll = giveawayList?.[0];
   const { showEmail } = useModel('user');
+
+  const reward = async (taskId: string) => {
+    const ret = await rewardUsingPOST({
+      taskId,
+    });
+    if (ret?.status === 0) {
+      toast.success('领取成功');
+      refresh();
+    }
+  };
   return (
     <div className="w-full max-w-[1400px] m-auto relative min-h-[500px]">
       <Banner />
@@ -14,23 +41,71 @@ export default () => {
             'var(--C3, radial-gradient(124.94% 91.38% at 49.87% 100%, #533476 0%, #1F1A33 100%))',
         }}
       >
-        <div className="w-full flex flex-col items-center justify-center gap-1">
-          <div className='flex gap-2 text-lg font-bold items-center'>
-            <img src={require('@/assets/halloween-face1.png')} className=' w-8' /> FIRST DEPOSIT
+        <div className="w-full flex flex-col items-center justify-center gap-2">
+          <div className="flex gap-2 text-lg font-bold items-center">
+            <img
+              src={require('@/assets/halloween-face1.png')}
+              className=" w-8"
+            />{' '}
+            FIRST DEPOSIT
           </div>
-          <span className='text-md font-normal'>Enter the code “helloween” +20%</span>
-          <div className="btn btn-purple uppercase">Refill</div>
+          <span className="text-md font-normal">
+            Enter the code “helloween” +20%
+          </span>
+          <div
+            className="rounded bg-purple text-white font-bold uppercase cursor-pointer px-8 py-2"
+            onClick={() => {
+              history.push('/deposit');
+            }}
+          >
+            Refill
+          </div>
         </div>
-        <div className="w-full flex items-center justify-center">
-          <div>Free roll</div>
-          <div>
-            <span>12/279</span>
-            <button className="btn btn-purple">JOIN THE GIVEAWAY</button>
+        <span className="w-[1px] h-[100px] bg-light"></span>
+        <div className="w-full flex items-center justify-center gap-10">
+          <div className="text-gray text-sm text-center">
+            Free roll
+            <div className="bg-[url('@/assets/halloween-roll-bg.png')] bg-no-repeat bg-contain w-[126px] h-[94px]">
+              <img
+                src={freeRoll?.giftVos?.[0]?.giftImage}
+                className="w-full object-cover"
+              />
+            </div>
+          </div>
+          <div className="flex flex-col items-center gap-2">
+            <div className="text-gray text-sm">
+              <IconFont type="icon-online" className="text-purple mr-2" />
+              <span className="text-white">{freeRoll?.userCount}</span>/
+              {freeRoll?.giftCount}
+            </div>
+            <div
+              className="btn btn-purple"
+              onClick={() => {
+                history.push(`/giveaways/${freeRoll?.id}`);
+              }}
+            >
+              JOIN THE GIVEAWAY
+            </div>
           </div>
         </div>
       </div>
-      <div className="text-xl font-bold text-center">
-        HALLOWEEN LIMITED TIMEEVENT
+      <div className="w-full flex flex-col items-center">
+        <div className="flex gap-4 items-center  text-4xl font-bold text-center">
+          <img
+            src={require('@/assets/halloween-ng.png')}
+            className="w-[70px] h-[70px] object-cover"
+            alt=""
+          />
+          HALLOWEEN LIMITED TIMEEVENT
+          <img
+            src={require('@/assets/halloween-face2.png')}
+            className="w-[70px] h-[70px] object-cover"
+            alt=""
+          />
+        </div>
+        <p className="text-gray">
+          You can get tokens from event cases and by completing event quests
+        </p>
       </div>
       <div className="relative mb-4 sm:mb-10 flex border-b border-light">
         <div className="flex w-1/6 items-end sm:w-1/3"></div>
@@ -71,10 +146,26 @@ export default () => {
                     ${item?.quantity}
                   </div>
                   <div
-                    className="btn btn-green w-[256px]"
-                    onClick={() => showEmail()}
+                    className={`btn w-[256px] ${
+                      item?.reward ? 'btn-light' : 'btn-green'
+                    } `}
+                    onClick={() => {
+                      if (!item?.complete) {
+                        showEmail();
+                      } else {
+                        if (!item?.reward) {
+                          reward(item?.id);
+                        } else {
+                          return;
+                        }
+                      }
+                    }}
                   >
-                    BEGIN
+                    {!item?.complete
+                      ? 'BEGIN'
+                      : item?.reward
+                      ? 'DONE'
+                      : 'RECIEVE'}
                   </div>
                 </div>
               </div>

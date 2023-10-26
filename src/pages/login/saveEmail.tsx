@@ -66,7 +66,8 @@ export default function SaveEmail() {
   return (
     <Modal open={emailShow} className="max-w-lg">
       <Modal.Header className="flex items-center mb-2">
-        <FormattedMessage id="email_bind" />
+        {/* <FormattedMessage id="email_bind" /> */}
+        BIND EMAIL
       </Modal.Header>
       <Button
         size="xs"
@@ -90,7 +91,7 @@ export default function SaveEmail() {
           />
           <Button
             onClick={onSendEmail}
-            className="join-item rounded  btn-secondary btn-outline"
+            className="join-item rounded  btn-green btn-outline"
           >
             {countdown === 0 ? (
               <FormattedMessage id="smscode_fsyzm" />
@@ -106,7 +107,7 @@ export default function SaveEmail() {
       </Modal.Body>
       <Modal.Actions className="flex flex-col mt-4">
         <Button
-          className="btn-primary w-full"
+          className="btn-green w-full"
           onClick={onSaveEmail}
           loading={loading}
         >
