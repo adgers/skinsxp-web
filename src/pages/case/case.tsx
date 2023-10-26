@@ -9,23 +9,19 @@ import { toast } from 'react-toastify';
 import BattleItem from './battleItem';
 import './index.less';
 
-export default function Case() {
+interface CaseProps{
+  boxList:API.BoxThemeListVo[]
+}
+
+export default function Case(props:CaseProps) {
+  const {boxList} =props
   const [hotBoxList, setHotBoxList] = useState<API.BoxThemeListVo[]>([]);
   const [otherBoxList, setOtherBoxList] = useState<API.BoxThemeListVo[]>([]);
   const intl = useIntl();
 
   const search = location.search;
 
-  const { data: boxList = [] } = useRequest(
-    () =>
-      getBoxListUsingGET({
-        boxType: 1,
-        moduleId: 5,
-      }),
-    {
-      cacheKey: 'boxList',
-    },
-  );
+
   const { data: battleList } = useRequest(() => getHostListUsingGET(), {
     cacheKey: 'battleList',
   });
@@ -33,8 +29,8 @@ export default function Case() {
     if (boxList.length === 0) return;
 
     if (boxList.length > 1) {
-      setHotBoxList(boxList.slice(0, 1));
-      setOtherBoxList(boxList.slice(1));
+      setHotBoxList(boxList.slice(1, 1));
+      setOtherBoxList(boxList.slice(2));
     } else {
       setHotBoxList(boxList);
     }

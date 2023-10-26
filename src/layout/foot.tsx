@@ -57,7 +57,7 @@ export default function Foot() {
   return (
     <>
       <div
-        className="bg-[url('@/assets/footer-deposit.png')] w-full h-[80px] md:h-[140px] bg-no-repeat bg-cover  bg-center sticky left-0 bottom-[64px] md:bottom-0 mt-10"
+        className="bg-[url('@/assets/footer-deposit.png')] w-full h-[80px] md:h-[140px] bg-no-repeat bg-cover  bg-center sticky left-0 bottom-[64px] md:bottom-0 mt-10 z-[199]"
         onClick={() => {
           history.push('/deposit');
         }}
