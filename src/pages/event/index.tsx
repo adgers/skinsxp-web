@@ -36,7 +36,7 @@ export default () => {
     cacheKey: 'giveawayList',
   });
   const freeRoll = giveawayList?.[0];
-  const { showEmail, userInfo } = useModel('user');
+  const { showEmail, userInfo, getUser } = useModel('user');
 
   const reward = async (taskId: string) => {
     const ret = await rewardUsingPOST({
@@ -45,6 +45,7 @@ export default () => {
     if (ret?.status === 0) {
       toast.success(intl.formatMessage({ id: 'recieve_success' }));
       refresh();
+      getUser();
     }
   };
 
@@ -64,8 +65,9 @@ export default () => {
         );
       case TaskEvent.RECHARGE:
         return (
-          <div className='text-gray'>
-            <span className='text-green'>${item.currentRechargeAmount}</span> / ${item.rechargeAmount}
+          <div className="text-gray">
+            <span className="text-green">${item.currentRechargeAmount}</span> /
+            ${item.rechargeAmount}
           </div>
         );
       case TaskEvent.BATTLE:
