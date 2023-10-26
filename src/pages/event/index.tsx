@@ -53,6 +53,37 @@ export default () => {
       refresh();
     }
   }, [userInfo?.mail]);
+
+  const renderProgress = (item: API.MyTaskVo) => {
+    switch (item.taskAchieveType) {
+      case TaskEvent.BOX:
+        return (
+          <div>
+            {item.currentBoxTimes} / {item.boxTimes}
+          </div>
+        );
+      case TaskEvent.RECHARGE:
+        return (
+          <div className='text-gray'>
+            <span className='text-green'>${item.currentRechargeAmount}</span> / ${item.rechargeAmount}
+          </div>
+        );
+      case TaskEvent.BATTLE:
+        return (
+          <div>
+            {item.currentBattleTimes} / {item.battleTimes}
+          </div>
+        );
+      case TaskEvent.UPGRADE:
+        return (
+          <div>
+            {item.currentUpgradeTimes} / {item.upgradeTimes}
+          </div>
+        );
+      case TaskEvent.EMAIL:
+        return null;
+    }
+  };
   return (
     <div className="w-full max-w-[1400px] m-auto relative min-h-[500px]">
       <div
@@ -161,7 +192,10 @@ export default () => {
                       className="w-full object-cover"
                     />
                   </div>
-                  {item?.taskName}
+                  <div className=" flex flex-col md:flex-row items-center gap-2">
+                    {item?.taskName}
+                    {renderProgress(item)}
+                  </div>
                 </div>
                 <div className="flex flex-col md:flex-row items-center md:pr-16 md:gap-20">
                   <div className="text-green text-lg font-semibold">
