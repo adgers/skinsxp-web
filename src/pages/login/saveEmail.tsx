@@ -64,7 +64,7 @@ export default function SaveEmail() {
   };
 
   return (
-    <Modal open={false} className="max-w-lg">
+    <Modal open={emailShow} className="max-w-lg">
       <Modal.Header className="flex items-center mb-2">
         <FormattedMessage id="bind_email" />
       </Modal.Header>
