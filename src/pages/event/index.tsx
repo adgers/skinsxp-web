@@ -14,6 +14,15 @@ enum CycleMode {
   WEEK = 2,
 }
 
+enum TaskEvent {
+  BOX = 0,
+  BATTLE,
+  RECHARGE,
+  UPGRADE = 4,
+  EMAIL,
+  MALL,
+}
+
 export default () => {
   const { data, loading, refresh } = useRequest(() => taskListUsingGET());
   const { data: giveawayList } = useRequest(() => listHostGiveawayUsingGET(), {
@@ -151,7 +160,26 @@ export default () => {
                     } `}
                     onClick={() => {
                       if (!item?.complete) {
-                        showEmail();
+                        switch (item.taskAchieveType) {
+                          case TaskEvent.BOX:
+                            history.push('/case');
+                            break;
+                          case TaskEvent.BATTLE:
+                            history.push('/battle');
+                            break;
+                          case TaskEvent.RECHARGE:
+                            history.push('/deposit');
+                            break;
+                          case TaskEvent.UPGRADE:
+                            history.push('/upgrade');
+                            break;
+                          case TaskEvent.EMAIL:
+                            showEmail();
+                            break;
+                          case TaskEvent.MALL:
+                            history.push('/shop');
+                            break;
+                        }
                       } else {
                         if (!item?.reward) {
                           reward(item?.id);

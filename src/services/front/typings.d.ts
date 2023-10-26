@@ -1022,6 +1022,7 @@ declare namespace API {
     rewardName?: string;
     taskName?: string;
     total?: number;
+    taskAchieveType?: number
   };
 
   type MyUpgradePageVo = {
