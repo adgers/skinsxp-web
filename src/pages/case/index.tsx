@@ -23,7 +23,11 @@ export default function Home() {
   );
   useEffect(() => {
     if (boxList?.length > 0) {
-      setDiscountBox(boxList.slice(0, 1));
+      const DiscountCases = boxList.find(
+        (item) => item.themeName === 'Best Deals',
+      );
+      console.log(DiscountCases,'DiscountCases')
+      setDiscountBox([DiscountCases]);
     }
   }, [boxList]);
   return (

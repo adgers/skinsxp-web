@@ -1,39 +1,40 @@
 import { IconFont } from '@/components/icons';
 import { getHostListUsingGET } from '@/services/front/duizhanxiangguan';
-import { getBoxListUsingGET } from '@/services/front/kaixiangxiangguan';
 import { isLogin } from '@/utils';
 import { FormattedMessage, history, useIntl, useRequest } from '@umijs/max';
+import { remove } from 'lodash';
 import { useEffect, useState } from 'react';
 import LazyLoad from 'react-lazyload';
 import { toast } from 'react-toastify';
 import BattleItem from './battleItem';
 import './index.less';
 
-interface CaseProps{
-  boxList:API.BoxThemeListVo[]
+interface CaseProps {
+  boxList: API.BoxThemeListVo[];
 }
 
-export default function Case(props:CaseProps) {
-  const {boxList} =props
+export default function Case(props: CaseProps) {
+  const { boxList } = props;
   const [hotBoxList, setHotBoxList] = useState<API.BoxThemeListVo[]>([]);
   const [otherBoxList, setOtherBoxList] = useState<API.BoxThemeListVo[]>([]);
   const intl = useIntl();
 
   const search = location.search;
 
-
   const { data: battleList } = useRequest(() => getHostListUsingGET(), {
     cacheKey: 'battleList',
   });
   useEffect(() => {
     if (boxList.length === 0) return;
+    let list = JSON.parse(JSON.stringify(boxList));
 
-    if (boxList.length > 1) {
-      setHotBoxList(boxList.slice(1, 1));
-      setOtherBoxList(boxList.slice(2));
-    } else {
-      setHotBoxList(boxList);
-    }
+    remove(list, (item) => item.themeName === 'Best Deals');
+    setOtherBoxList(list);
+    // if (boxList.length > 1) {
+
+    // } else {
+    //   setHotBoxList(boxList);
+    // }
   }, [boxList]);
 
   const renderBox = (t: API.BoxThemeListVo, index: number) => {
