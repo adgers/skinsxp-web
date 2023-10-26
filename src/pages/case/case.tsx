@@ -1,8 +1,7 @@
 import { IconFont } from '@/components/icons';
 import { getHostListUsingGET } from '@/services/front/duizhanxiangguan';
-import { isLogin } from '@/utils';
+import { isLogin, numberSplitCeil } from '@/utils';
 import { FormattedMessage, history, useIntl, useRequest } from '@umijs/max';
-import { remove } from 'lodash';
 import { useEffect, useState } from 'react';
 import LazyLoad from 'react-lazyload';
 import { toast } from 'react-toastify';
@@ -21,20 +20,28 @@ export default function Case(props: CaseProps) {
 
   const search = location.search;
 
+  // const { data: boxList = [] } = useRequest(
+  //   () =>
+  //     getBoxListUsingGET({
+  //       boxType: 1,
+  //       moduleId: 5,
+  //     }),
+  //   {
+  //     cacheKey: 'boxList',
+  //   },
+  // );
   const { data: battleList } = useRequest(() => getHostListUsingGET(), {
     cacheKey: 'battleList',
   });
   useEffect(() => {
     if (boxList.length === 0) return;
-    let list = JSON.parse(JSON.stringify(boxList));
 
-    remove(list, (item) => item.themeName === 'Best Deals');
-    setOtherBoxList(list);
-    // if (boxList.length > 1) {
-
-    // } else {
-    //   setHotBoxList(boxList);
-    // }
+    if (boxList.length > 1) {
+      // setHotBoxList(boxList.slice(0, 1));
+      setOtherBoxList(boxList.slice(1));
+    } else {
+      // setHotBoxList(boxList);
+    }
   }, [boxList]);
 
   const renderBox = (t: API.BoxThemeListVo, index: number) => {
@@ -77,8 +84,21 @@ export default function Case(props: CaseProps) {
                   className="w-full h-full object-contain rounded-md"
                 />
                 <div className="w-full h-full absolute top-0 left-0">
+                  {Number(v?.discount) < 100 && (
+                    <div className="absolute top-[25px] left-[25px]  text-green px-1.5 rounded bg-[#123F0D]">
+                      -{100 - Number(v?.discount)}%
+                    </div>
+                  )}
                   {/* <div className="absolute top-[1.5] left-[1.75] text-green">New !</div> */}
-                  <div className="absolute top-[20px] right-0 bg-black/[0.8] rounded-l text-white px-2 py-0.5 font-num sm:text-xl">
+                  <div className="absolute top-[20px] flex flex-col items-center right-0 bg-black/[0.8] rounded-l text-white px-2 py-0.5 font-num sm:text-xl">
+                    {Number(v?.discount) < 100 && (
+                      <span className="text-gray text-sm font-normal line-through">
+                        $
+                        {numberSplitCeil(
+                          (Number(v?.openPrice) * 100) / Number(v?.discount),
+                        )}
+                      </span>
+                    )}
                     ${v?.openPrice}
                   </div>
                   <div className="absolute bottom-0 left-0 w-full bg-black bg-opacity-50 backdrop-blur-sm py-3 px-2">
