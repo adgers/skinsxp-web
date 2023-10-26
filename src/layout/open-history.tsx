@@ -9,7 +9,7 @@ export default function OpenHistory() {
   return (
     <div className="w-full open-history bg-dark overflow-hidden flex">
       <div className="flex flex-col px-4 items-center justify-center gap-1">
-        <IconFont type="icon-xinhao1" className="text-green text-[24px]" />
+        <IconFont type="icon-a-xinhao11" className="text-green text-[24px]" />
         <span className="text-gray text-sm uppercase">online</span>
         <span>{siteStat?.activeSession}</span>
       </div>
@@ -22,7 +22,7 @@ export default function OpenHistory() {
             setIsTop(true);
           }}
         >
-          <IconFont type="icon-a-bestdrop" className="text-xs md:text-base" />
+          <IconFont type="icon-a-bestdrop1" className="text-xs md:text-base" />
           <span className="whitespace-nowrap text-center text-xs transform scale-75 font-semibold uppercase leading-none hidden md:block">
             <FormattedMessage id="best_drop" />
           </span>
@@ -35,7 +35,7 @@ export default function OpenHistory() {
             setIsTop(false);
           }}
         >
-          <IconFont type="icon-a-alldrop" className="text-xs md:text-base" />
+          <IconFont type="icon-a-alldrop1" className="text-xs md:text-base" />
           <span className="whitespace-nowrap text-center text-xs transform scale-75 font-semibold uppercase leading-none hidden md:block">
             <FormattedMessage id="all_drop" />
           </span>

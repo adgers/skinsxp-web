@@ -5,8 +5,8 @@ import {
   taskListUsingGET,
 } from '@/services/front/huodongzhongxinxiangguan';
 import { history, useModel, useRequest } from '@umijs/max';
+import { useEffect } from 'react';
 import { toast } from 'react-toastify';
-import Banner from '../case/banner';
 
 enum CycleMode {
   ONE_TIME = 0,
@@ -29,7 +29,7 @@ export default () => {
     cacheKey: 'giveawayList',
   });
   const freeRoll = giveawayList?.[0];
-  const { showEmail } = useModel('user');
+  const { showEmail, userInfo } = useModel('user');
 
   const reward = async (taskId: string) => {
     const ret = await rewardUsingPOST({
@@ -40,9 +40,14 @@ export default () => {
       refresh();
     }
   };
+
+  useEffect(() => {
+    if (userInfo?.mail) {
+      refresh();
+    }
+  }, [userInfo?.mail]);
   return (
     <div className="w-full max-w-[1400px] m-auto relative min-h-[500px]">
-      <Banner />
       <div
         className="flex max-w-5xl border border-purple py-[30px] mx-auto translate-y-[-50px] "
         style={{
@@ -177,7 +182,7 @@ export default () => {
                             showEmail();
                             break;
                           case TaskEvent.MALL:
-                            history.push('/shop');
+                            history.push('/market');
                             break;
                         }
                       } else {

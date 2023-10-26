@@ -3,10 +3,13 @@ import ByteCoinSvg from '@/assets/byte-coin.svg';
 import VisaSvg from '@/assets/visa.svg';
 import { IconFont } from '@/components/icons';
 import { FormattedMessage, Link, history, useModel } from '@umijs/max';
+import { useEffect, useState } from 'react';
 import './index.less';
 
 export default function Foot() {
-  const { showLogin } = useModel('user');
+  const { showLogin, userInfo } = useModel('user');
+  const { siteStat } = useModel('socket');
+  const [showDeposit, setShowDeposit] = useState(false);
   const footerTop = [
     {
       title: <FormattedMessage id="footer_collect" />,
@@ -35,6 +38,34 @@ export default function Foot() {
     },
   ];
 
+  const onlineStatMap = [
+    {
+      title: 'online',
+      value: 'activeSession',
+      icon: 'icon-a-xinhao11',
+    },
+    {
+      title: 'Users',
+      value: 'userTotal',
+      icon: 'icon-a-alluser',
+    },
+    {
+      title: 'Opened Cases',
+      value: 'boxCnt',
+      icon: 'icon-openedcase',
+    },
+    {
+      title: 'Cases battle',
+      value: 'boxCnt',
+      icon: 'icon-battle',
+    },
+    {
+      title: 'Upgrade',
+      value: 'upgradeCnt',
+      icon: 'icon-upgrade',
+    },
+  ];
+
   let timer = null;
   let waitTime = 1000;
   let lastTime = new Date().getTime();
@@ -54,19 +85,57 @@ export default function Foot() {
     }, waitTime + 10);
   };
 
+  useEffect(() => {
+    if (
+      Number(userInfo?.firstRechargeRebate) > 0 &&
+      !sessionStorage.getItem('showedDepositBanner')
+    ) {
+      setShowDeposit(true);
+      sessionStorage.setItem('showedDepositBanner', 'true');
+    }
+  }, [userInfo?.firstRechargeRebate]);
+
   return (
     <>
-      <div
-        className="bg-[url('@/assets/footer-deposit.png')] w-full h-[80px] md:h-[140px] bg-no-repeat bg-cover  bg-center sticky left-0 bottom-[64px] md:bottom-0 mt-10 z-[199]"
-        onClick={() => {
-          history.push('/deposit');
-        }}
-      >
-        <div className="w-5 md:w-10 h-5 md:h-10 rounded-full cursor-pointer absolute right-5 md:right-[80px] top:20px md:top-[30px]">
-          <img src={require('@/assets/footer-deposit-close.png')} alt="" />
+      {showDeposit && (
+        <div
+          className="bg-[url('@/assets/footer-deposit.png')] w-full h-[80px] md:h-[140px] bg-no-repeat bg-cover  bg-center sticky left-0 bottom-[64px] md:bottom-0 mt-10 z-[199]"
+          onClick={() => {
+            history.push('/deposit');
+          }}
+        >
+          <div
+            className="w-5 md:w-10 h-5 md:h-10 rounded-full cursor-pointer absolute right-5 md:right-[80px] top:20px md:top-[30px]"
+            onClick={(e) => {
+              e.stopPropagation();
+              setShowDeposit(false);
+            }}
+          >
+            <img src={require('@/assets/footer-deposit-close.png')} alt="" />
+          </div>
         </div>
-      </div>
-      <footer className="bg-base-300 text-base-content mt-10">
+      )}
+      <footer className="bg-base-300 text-base-content mt-10 flex flex-col">
+        <div className="bg-black w-full flex justify-center">
+          <div className="max-w-8xl w-full relative grid grid-cols-2 gap-y-4 sm:grid-cols-5 text-gray py-10">
+            {onlineStatMap.map((item, index) => {
+              return (
+                <div key={index} className="flex items-center gap-3 px-10">
+                  <IconFont
+                    type={item.icon}
+                    className="text-green text-[40px]"
+                  />
+                  <div className="flex flex-col text-gray text-sm">
+                    {item.title}
+                    <div className="text-white font-semibold text-lg">
+                      {siteStat?.[item.value]}
+                    </div>
+                  </div>
+                </div>
+              );
+            })}
+          </div>
+        </div>
         <div className="max-w-8xl w-full m-auto relative">
           <div className="grid grid-cols-2 gap-y-4 sm:grid-cols-5 text-gray py-10">
             {footerTop.map((item, index) => {
