@@ -8,7 +8,7 @@ export default function OpenHistory() {
 
   return (
     <div className="w-full open-history bg-dark overflow-hidden flex">
-      <div className="flex md:flex-col px-1 md:px-4 items-center justify-center gap-2 md:gap-1">
+      {/* <div className="flex md:flex-col px-1 md:px-4 items-center justify-center gap-2 md:gap-1">
         <IconFont
           type="icon-a-xinhao11"
           className="text-green text-[16px] md:text-[24px]"
@@ -22,7 +22,7 @@ export default function OpenHistory() {
             {siteStat?.activeSession}
           </div>
         </div>
-      </div>
+      </div> */}
       <div className="flex flex-col self-stretch overflow-hidden flex-shrink-0 mx-1">
         <div
           className={`flex flex-1 flex-col items-center justify-center px-2 md:px-0 gap-1 bg-black cursor-pointer ${

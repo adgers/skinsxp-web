@@ -39,11 +39,11 @@ export default function Foot() {
   ];
 
   const onlineStatMap = [
-    {
-      title: <FormattedMessage id="site_online" />,
-      value: 'activeSession',
-      icon: 'icon-a-xinhao11',
-    },
+    // {
+    //   title: <FormattedMessage id="site_online" />,
+    //   value: 'activeSession',
+    //   icon: 'icon-a-xinhao11',
+    // },
     {
       title: <FormattedMessage id="site_users" />,
       value: 'userTotal',
@@ -59,11 +59,11 @@ export default function Foot() {
       value: 'boxCnt',
       icon: 'icon-battle',
     },
-    {
-      title: <FormattedMessage id="main_tab_dream" />,
-      value: 'upgradeCnt',
-      icon: 'icon-upgrade',
-    },
+    // {
+    //   title: <FormattedMessage id="main_tab_dream" />,
+    //   value: 'upgradeCnt',
+    //   icon: 'icon-upgrade',
+    // },
   ];
 
   let timer = null;
