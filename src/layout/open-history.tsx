@@ -11,7 +11,10 @@ export default function OpenHistory() {
       <div className="flex flex-col px-4 items-center justify-center gap-1">
         <IconFont type="icon-a-xinhao11" className="text-green text-[24px]" />
         <span className="text-gray text-sm uppercase">online</span>
-        <span>{siteStat?.activeSession}</span>
+        <div className='flex justify-center items-center gap-1'>
+          <div className="rounded-full w-[6px] h-[6px] bg-green animate-pulse"></div>{' '}
+          {siteStat?.activeSession}
+        </div>
       </div>
       <div className="flex flex-col self-stretch overflow-hidden flex-shrink-0 mx-1">
         <div

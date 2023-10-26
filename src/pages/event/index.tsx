@@ -89,8 +89,7 @@ export default () => {
           <div className="flex flex-col items-center gap-2">
             <div className="text-gray text-sm">
               <IconFont type="icon-online" className="text-purple mr-2" />
-              <span className="text-white">{freeRoll?.userCount}</span>/
-              {freeRoll?.giftCount}
+              <span className="text-white">{freeRoll?.userCount}</span>
             </div>
             <div
               className="btn btn-purple"
