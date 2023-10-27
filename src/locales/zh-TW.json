@@ -428,5 +428,6 @@
     "verify_send": "發送驗證碼",
     "main_tab_event": "活動",
     "site_online": "在線",
-    "site_users": "玩家"
+    "site_users": "玩家",
+    "email_invail": "電子郵件格式錯誤"
 }

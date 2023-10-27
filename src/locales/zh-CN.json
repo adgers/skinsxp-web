@@ -428,5 +428,6 @@
     "verify_send": "发送验证码",
     "main_tab_event": "活动",
     "site_online": "在线",
-    "site_users": "用户"
+    "site_users": "用户",
+    "email_invail": "邮箱格式错误"
 }

@@ -428,5 +428,6 @@
     "verify_send": "Send Verification Code",
     "main_tab_event": "Etkinlik",
     "site_online": "Çevrim içi",
-    "site_users": "Kullanıcılar"
+    "site_users": "Kullanıcılar",
+    "email_invail": "E-posta biçimi hatası"
 }

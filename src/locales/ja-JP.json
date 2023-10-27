@@ -428,5 +428,6 @@
     "verify_send": "認証コードを送信",
     "main_tab_event": "イベント",
     "site_online": "オンライン",
-    "site_users": "ユーザー"
+    "site_users": "ユーザー",
+    "email_invail": "メールフォーマットエラー"
 }

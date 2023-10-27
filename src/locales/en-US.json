@@ -428,5 +428,6 @@
     "verify_send": "Send Verification Code",
     "main_tab_event": "EVENT",
     "site_online": "Online",
-    "site_users": "Users"
+    "site_users": "Users",
+    "email_invail": "Email format error"
 }

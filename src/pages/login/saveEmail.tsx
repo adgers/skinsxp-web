@@ -57,7 +57,7 @@ export default function SaveEmail() {
     });
     setLoading(false);
     if (ret.status === 0) {
-      toast.success(intl.formatMessage({ id: 'email_bind_success' }));
+      toast.success(intl.formatMessage({ id: 'recieve_success' }));
       hideEmail();
       getUser();
     }

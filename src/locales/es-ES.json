@@ -428,5 +428,6 @@
     "verify_send": "Enviar código de verificación",
     "main_tab_event": "Evento",
     "site_online": "En línea",
-    "site_users": "Usuarios"
+    "site_users": "Usuarios",
+    "email_invail": "Error de formato de correo electrónico"
 }

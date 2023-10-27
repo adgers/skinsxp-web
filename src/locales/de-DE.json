@@ -428,5 +428,6 @@
     "verify_send": "Verifizierungscode senden",
     "main_tab_event": "Event",
     "site_online": "Online",
-    "site_users": "Nutzer"
+    "site_users": "Nutzer",
+    "email_invail": "Fehler im E-Mail-Format"
 }
