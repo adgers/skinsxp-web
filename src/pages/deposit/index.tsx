@@ -486,6 +486,14 @@ export default function Deposit() {
           currency: 'USD',
         });
       }
+      if (['26'].includes(userInfo?.promotionChannelId)) {
+        // 木瓜 gg2
+        window.gtag('event', 'conversion', {
+          send_to: 'AW-11394247259/VDmMCLOVhvIYENvUmbkq',
+          value: ret?.data?.quantity,
+          currency: 'USD',
+        });
+      }
       if (['28'].includes(userInfo?.promotionChannelId)) {
         // lanhan 3
         window.gtag('event', 'conversion', {

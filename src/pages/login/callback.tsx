@@ -60,6 +60,12 @@ export default function LoginCallback() {
             send_to: 'AW-11366921880/B4TyCMG24ewYEJjtlawq',
           });
         }
+        if (ret.data?.promotionChannelId === '26') {
+          // 木瓜 gg2
+          window?.gtag('event', 'conversion', {
+            send_to: 'AW-11394247259/MztXCNrAifIYENvUmbkq',
+          });
+        }
         setRegNum(ret?.data?.result || 0);
         showRegTip();
       }
