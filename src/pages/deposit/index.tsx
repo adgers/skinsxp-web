@@ -441,6 +441,12 @@ export default function Deposit() {
       window?.gtag('event', 'conversion', {
         send_to: 'AW-11379374504/YmJUCPiU7u0YEKjzjbIq',
       });
+      gtag('event', 'conversion', {
+        send_to: 'AW-11379263638/v0pfCKr-9_AYEJaRh7Iq',
+        value: 1.0,
+        currency: 'USD',
+        transaction_id: '',
+      });
 
       if (['7', '21']?.includes(userInfo?.promotionChannelId)) {
         // fb
@@ -453,6 +459,7 @@ export default function Deposit() {
         // 木瓜
         // ga
         window?.gtag('event', 'first_purchase_mg', {
+          // 木瓜-代投
           currency: 'USD',
           value: ret?.data?.quantity,
         });
@@ -462,16 +469,27 @@ export default function Deposit() {
           value: ret?.data?.quantity,
           currency: 'USD',
         });
-
+      }
+      if (['11'].includes(userInfo?.promotionChannelId)) {
         window?.gtag('event', 'conversion', {
+          // 钛动自投
           send_to: 'AW-11345409756/UtjlCJCQy-UYENzt9KEq',
           value: ret?.data?.quantity,
           currency: 'USD',
         });
       }
       if (['24'].includes(userInfo?.promotionChannelId)) {
+        // tiger 代投
         window.gtag('event', 'conversion', {
           send_to: 'AW-11366921880/yBvMCL624ewYEJjtlawq',
+          value: ret?.data?.quantity,
+          currency: 'USD',
+        });
+      }
+      if (['28'].includes(userInfo?.promotionChannelId)) {
+        // lanhan 3
+        window.gtag('event', 'conversion', {
+          send_to: 'AW-11379263638/v0pfCKr-9_AYEJaRh7Iq',
           value: ret?.data?.quantity,
           currency: 'USD',
         });
