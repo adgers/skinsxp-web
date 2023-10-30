@@ -39,16 +39,16 @@ export default function Foot() {
   ];
 
   const onlineStatMap = [
-    // {
-    //   title: <FormattedMessage id="site_online" />,
-    //   value: 'activeSession',
-    //   icon: 'icon-a-xinhao11',
-    // },
     {
-      title: <FormattedMessage id="site_users" />,
-      value: 'userTotal',
-      icon: 'icon-a-alluser',
+      title: <FormattedMessage id="site_online" />,
+      value: 'activeSession',
+      icon: 'icon-a-xinhao11',
     },
+    // {
+    //   title: <FormattedMessage id="site_users" />,
+    //   value: 'userTotal',
+    //   icon: 'icon-a-alluser',
+    // },
     {
       title: <FormattedMessage id="main_tab_home" />,
       value: 'boxCnt',
