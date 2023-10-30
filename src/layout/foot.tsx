@@ -117,7 +117,7 @@ export default function Foot() {
       )}
       <footer className="bg-base-300 text-base-content mt-10 flex flex-col">
         <div className="bg-black w-full flex justify-center">
-          <div className="max-w-8xl w-full relative grid grid-cols-2 gap-y-4 sm:grid-cols-5 text-gray py-10">
+          <div className="max-w-8xl w-full relative grid grid-cols-2 gap-y-4 sm:flex justify-center items-center flex-wrap text-gray py-10">
             {onlineStatMap.map((item, index) => {
               return (
                 <div key={index} className="flex items-center gap-3 px-10">
