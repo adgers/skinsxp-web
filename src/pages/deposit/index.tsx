@@ -437,13 +437,12 @@ export default function Deposit() {
       window?.fbq('trackSingleCustom', '1024868335308144', 'fistRecharge');
       window?.gtag('event', 'conversion', {
         send_to: 'AW-11366618499/U60XCO3zmuwYEIOrg6wq',
-      });
-      window?.gtag('event', 'conversion', {
-        send_to: 'AW-11379374504/YmJUCPiU7u0YEKjzjbIq',
+        value: ret?.data?.quantity,
+        currency: 'USD',
       });
       gtag('event', 'conversion', {
         send_to: 'AW-11379263638/v0pfCKr-9_AYEJaRh7Iq',
-        value: 1.0,
+        value: ret?.data?.quantity,
         currency: 'USD',
         transaction_id: '',
       });
@@ -474,6 +473,14 @@ export default function Deposit() {
         window?.gtag('event', 'conversion', {
           // 钛动自投
           send_to: 'AW-11345409756/UtjlCJCQy-UYENzt9KEq',
+          value: ret?.data?.quantity,
+          currency: 'USD',
+        });
+      }
+      if (['23'].includes(userInfo?.promotionChannelId)) {
+        // 自投-蓝瀚-gg
+        window?.gtag('event', 'conversion', {
+          send_to: 'AW-11379374504/YmJUCPiU7u0YEKjzjbIq',
           value: ret?.data?.quantity,
           currency: 'USD',
         });
