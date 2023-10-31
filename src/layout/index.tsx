@@ -13,9 +13,12 @@ import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import BtmNav from './btm-nav';
 
+import Banner from '@/pages/case/banner';
 import Footer from './foot';
 import Header from './head';
 import RightNav from './right-nav';
+
+const showBannerRoutes = ['case', 'event'];
 
 export default function Layout() {
   const { pathname } = useLocation();
@@ -55,6 +58,8 @@ export default function Layout() {
   return (
     <div className={`root-bg ${pathCls}`}>
       {!headHidden() && <Header />}
+      {showBannerRoutes?.includes(pathCls) && <Banner />}
+
       <div className="max-w-8xl w-full min-h-[calc(100vh-64px)] m-auto relative">
         <Outlet />
       </div>

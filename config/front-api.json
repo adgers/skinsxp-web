@@ -11,11 +11,15 @@
       "url": "http://www.apache.org/licenses/LICENSE-2.0"
     }
   },
-  "host": "localhost:9999",
+  "host": "127.0.0.1:9999",
   "basePath": "/",
   "tags": [
     {
       "name": "ROLL房相关",
+      "x-order": "2147483647"
+    },
+    {
+      "name": "recharge-callback-controller",
       "x-order": "2147483647"
     },
     {
@@ -82,11 +86,17 @@
   "paths": {
     "/api/activityCenter/activity/reward": {
       "post": {
-        "tags": ["活动中心相关"],
+        "tags": [
+          "活动中心相关"
+        ],
         "summary": "活跃度奖励领取",
         "operationId": "activityRewardUsingPOST",
-        "consumes": ["application/json"],
-        "produces": ["*/*"],
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "*/*"
+        ],
         "parameters": [
           {
             "name": "activityId",
@@ -101,8 +111,8 @@
           "200": {
             "description": "OK",
             "schema": {
-              "$ref": "#/definitions/ResultData«ActivityRewardResultVo»",
-              "originalRef": "ResultData«ActivityRewardResultVo»"
+              "originalRef": "ResultData«ActivityRewardResultVo»",
+              "$ref": "#/definitions/ResultData«ActivityRewardResultVo»"
             }
           },
           "201": {
@@ -123,16 +133,20 @@
     },
     "/api/activityCenter/activityInfo": {
       "get": {
-        "tags": ["活动中心相关"],
+        "tags": [
+          "活动中心相关"
+        ],
         "summary": "获取活跃度信息",
         "operationId": "activityInfoUsingGET",
-        "produces": ["*/*"],
+        "produces": [
+          "*/*"
+        ],
         "responses": {
           "200": {
             "description": "OK",
             "schema": {
-              "$ref": "#/definitions/ResultData«ActivityInfoVo»",
-              "originalRef": "ResultData«ActivityInfoVo»"
+              "originalRef": "ResultData«ActivityInfoVo»",
+              "$ref": "#/definitions/ResultData«ActivityInfoVo»"
             }
           },
           "401": {
@@ -150,17 +164,23 @@
     },
     "/api/activityCenter/signIn": {
       "post": {
-        "tags": ["活动中心相关"],
+        "tags": [
+          "活动中心相关"
+        ],
         "summary": "签到",
         "operationId": "signInUsingPOST",
-        "consumes": ["application/json"],
-        "produces": ["*/*"],
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "*/*"
+        ],
         "responses": {
           "200": {
             "description": "OK",
             "schema": {
-              "$ref": "#/definitions/ResultData«SignInListVo»",
-              "originalRef": "ResultData«SignInListVo»"
+              "originalRef": "ResultData«SignInListVo»",
+              "$ref": "#/definitions/ResultData«SignInListVo»"
             }
           },
           "201": {
@@ -181,11 +201,15 @@
     },
     "/api/activityCenter/signIn/list": {
       "get": {
-        "tags": ["活动中心相关"],
+        "tags": [
+          "活动中心相关"
+        ],
         "summary": "获取N天签到信息",
         "description": "不传参数,默认为7天",
         "operationId": "signInListUsingGET",
-        "produces": ["*/*"],
+        "produces": [
+          "*/*"
+        ],
         "parameters": [
           {
             "name": "days",
@@ -201,8 +225,8 @@
           "200": {
             "description": "OK",
             "schema": {
-              "$ref": "#/definitions/ResultData«SignInInfoVo»",
-              "originalRef": "ResultData«SignInInfoVo»"
+              "originalRef": "ResultData«SignInInfoVo»",
+              "$ref": "#/definitions/ResultData«SignInInfoVo»"
             }
           },
           "401": {
@@ -220,16 +244,20 @@
     },
     "/api/activityCenter/task/list": {
       "get": {
-        "tags": ["活动中心相关"],
+        "tags": [
+          "活动中心相关"
+        ],
         "summary": "任务列表",
         "operationId": "taskListUsingGET",
-        "produces": ["*/*"],
+        "produces": [
+          "*/*"
+        ],
         "responses": {
           "200": {
             "description": "OK",
             "schema": {
-              "$ref": "#/definitions/ResultData«List«MyTaskVo»»",
-              "originalRef": "ResultData«List«MyTaskVo»»"
+              "originalRef": "ResultData«List«MyTaskVo»»",
+              "$ref": "#/definitions/ResultData«List«MyTaskVo»»"
             }
           },
           "401": {
@@ -247,11 +275,17 @@
     },
     "/api/activityCenter/task/reward": {
       "post": {
-        "tags": ["活动中心相关"],
+        "tags": [
+          "活动中心相关"
+        ],
         "summary": "任务领奖",
         "operationId": "rewardUsingPOST",
-        "consumes": ["application/json"],
-        "produces": ["*/*"],
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "*/*"
+        ],
         "parameters": [
           {
             "name": "taskId",
@@ -266,8 +300,8 @@
           "200": {
             "description": "OK",
             "schema": {
-              "$ref": "#/definitions/ResultData«boolean»",
-              "originalRef": "ResultData«boolean»"
+              "originalRef": "ResultData«boolean»",
+              "$ref": "#/definitions/ResultData«boolean»"
             }
           },
           "201": {
@@ -288,11 +322,17 @@
     },
     "/api/auth/changePassword": {
       "post": {
-        "tags": ["前台授权相关"],
+        "tags": [
+          "前台授权相关"
+        ],
         "summary": "修改密码",
         "operationId": "changePasswordUsingPOST",
-        "consumes": ["application/json"],
-        "produces": ["*/*"],
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "*/*"
+        ],
         "parameters": [
           {
             "name": "confirmPassword",
@@ -317,8 +357,8 @@
           "200": {
             "description": "OK",
             "schema": {
-              "$ref": "#/definitions/ResultData«boolean»",
-              "originalRef": "ResultData«boolean»"
+              "originalRef": "ResultData«boolean»",
+              "$ref": "#/definitions/ResultData«boolean»"
             }
           },
           "201": {
@@ -339,11 +379,17 @@
     },
     "/api/auth/findpwd": {
       "post": {
-        "tags": ["前台授权相关"],
+        "tags": [
+          "前台授权相关"
+        ],
         "summary": "找回密码",
         "operationId": "findpwdUsingPOST",
-        "consumes": ["application/json"],
-        "produces": ["*/*"],
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "*/*"
+        ],
         "parameters": [
           {
             "name": "channelCode",
@@ -431,8 +477,8 @@
           "200": {
             "description": "OK",
             "schema": {
-              "$ref": "#/definitions/ResultData«boolean»",
-              "originalRef": "ResultData«boolean»"
+              "originalRef": "ResultData«boolean»",
+              "$ref": "#/definitions/ResultData«boolean»"
             }
           },
           "201": {
@@ -453,16 +499,20 @@
     },
     "/api/auth/lang": {
       "get": {
-        "tags": ["前台授权相关"],
+        "tags": [
+          "前台授权相关"
+        ],
         "summary": "获取用户环境语言",
         "operationId": "getLangUsingGET",
-        "produces": ["*/*"],
+        "produces": [
+          "*/*"
+        ],
         "responses": {
           "200": {
             "description": "OK",
             "schema": {
-              "$ref": "#/definitions/ResultData«string»",
-              "originalRef": "ResultData«string»"
+              "originalRef": "ResultData«string»",
+              "$ref": "#/definitions/ResultData«string»"
             }
           },
           "401": {
@@ -480,12 +530,18 @@
     },
     "/api/auth/login": {
       "post": {
-        "tags": ["前台授权相关"],
+        "tags": [
+          "前台授权相关"
+        ],
         "summary": "登录",
         "description": "type:0->手机登录,1->邮箱登录",
         "operationId": "loginUsingPOST",
-        "consumes": ["application/json"],
-        "produces": ["*/*"],
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "*/*"
+        ],
         "parameters": [
           {
             "name": "id",
@@ -514,8 +570,8 @@
           "200": {
             "description": "OK",
             "schema": {
-              "$ref": "#/definitions/ResultData«string»",
-              "originalRef": "ResultData«string»"
+              "originalRef": "ResultData«string»",
+              "$ref": "#/definitions/ResultData«string»"
             }
           },
           "201": {
@@ -536,11 +592,17 @@
     },
     "/api/auth/loginForTrial": {
       "post": {
-        "tags": ["前台授权相关"],
+        "tags": [
+          "前台授权相关"
+        ],
         "summary": "试玩登录",
         "operationId": "loginForTrialUsingPOST",
-        "consumes": ["application/json"],
-        "produces": ["*/*"],
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "*/*"
+        ],
         "parameters": [
           {
             "name": "captchaKey",
@@ -561,8 +623,8 @@
           "200": {
             "description": "OK",
             "schema": {
-              "$ref": "#/definitions/ResultData«string»",
-              "originalRef": "ResultData«string»"
+              "originalRef": "ResultData«string»",
+              "$ref": "#/definitions/ResultData«string»"
             }
           },
           "201": {
@@ -583,17 +645,23 @@
     },
     "/api/auth/logout": {
       "post": {
-        "tags": ["前台授权相关"],
+        "tags": [
+          "前台授权相关"
+        ],
         "summary": "注销登录(token将失效)",
         "operationId": "logoutUsingPOST",
-        "consumes": ["application/json"],
-        "produces": ["*/*"],
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "*/*"
+        ],
         "responses": {
           "200": {
             "description": "OK",
             "schema": {
-              "$ref": "#/definitions/ResultData«boolean»",
-              "originalRef": "ResultData«boolean»"
+              "originalRef": "ResultData«boolean»",
+              "$ref": "#/definitions/ResultData«boolean»"
             }
           },
           "201": {
@@ -614,12 +682,18 @@
     },
     "/api/auth/signUp": {
       "post": {
-        "tags": ["前台授权相关"],
+        "tags": [
+          "前台授权相关"
+        ],
         "summary": "注册",
         "description": "type:0->手机注册,1->邮箱注册,2->steam注册",
         "operationId": "signUpUsingPOST",
-        "consumes": ["application/json"],
-        "produces": ["*/*"],
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "*/*"
+        ],
         "parameters": [
           {
             "name": "channelCode",
@@ -707,8 +781,8 @@
           "200": {
             "description": "OK",
             "schema": {
-              "$ref": "#/definitions/ResultData«AuthLoginVo»",
-              "originalRef": "ResultData«AuthLoginVo»"
+              "originalRef": "ResultData«AuthLoginVo»",
+              "$ref": "#/definitions/ResultData«AuthLoginVo»"
             }
           },
           "201": {
@@ -729,12 +803,18 @@
     },
     "/api/auth/smslogin": {
       "post": {
-        "tags": ["前台授权相关"],
+        "tags": [
+          "前台授权相关"
+        ],
         "summary": "登录",
         "description": "type:0->手机登录,1->邮箱登录",
         "operationId": "smsLoginUsingPOST",
-        "consumes": ["application/json"],
-        "produces": ["*/*"],
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "*/*"
+        ],
         "parameters": [
           {
             "name": "code",
@@ -755,8 +835,8 @@
           "200": {
             "description": "OK",
             "schema": {
-              "$ref": "#/definitions/ResultData«string»",
-              "originalRef": "ResultData«string»"
+              "originalRef": "ResultData«string»",
+              "$ref": "#/definitions/ResultData«string»"
             }
           },
           "201": {
@@ -777,10 +857,14 @@
     },
     "/api/auth/steamLogin": {
       "get": {
-        "tags": ["前台授权相关"],
+        "tags": [
+          "前台授权相关"
+        ],
         "summary": "登陆steam",
         "operationId": "steamLoginUsingGET",
-        "produces": ["*/*"],
+        "produces": [
+          "*/*"
+        ],
         "parameters": [
           {
             "name": "callbackUrl",
@@ -809,10 +893,14 @@
     },
     "/api/auth/steamSignUp": {
       "get": {
-        "tags": ["前台授权相关"],
+        "tags": [
+          "前台授权相关"
+        ],
         "summary": "steam登陆注册",
         "operationId": "steamSignUpUsingGET",
-        "produces": ["*/*"],
+        "produces": [
+          "*/*"
+        ],
         "parameters": [
           {
             "name": "query",
@@ -826,8 +914,8 @@
           "200": {
             "description": "OK",
             "schema": {
-              "$ref": "#/definitions/ResultData«AuthLoginVo»",
-              "originalRef": "ResultData«AuthLoginVo»"
+              "originalRef": "ResultData«AuthLoginVo»",
+              "$ref": "#/definitions/ResultData«AuthLoginVo»"
             }
           },
           "401": {
@@ -845,11 +933,17 @@
     },
     "/api/auth/verify": {
       "post": {
-        "tags": ["前台授权相关"],
+        "tags": [
+          "前台授权相关"
+        ],
         "summary": "实名认证",
         "operationId": "verifyUsingPOST",
-        "consumes": ["application/json"],
-        "produces": ["*/*"],
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "*/*"
+        ],
         "parameters": [
           {
             "name": "idCard",
@@ -877,8 +971,8 @@
           "200": {
             "description": "OK",
             "schema": {
-              "$ref": "#/definitions/ResultData«boolean»",
-              "originalRef": "ResultData«boolean»"
+              "originalRef": "ResultData«boolean»",
+              "$ref": "#/definitions/ResultData«boolean»"
             }
           },
           "201": {
@@ -899,16 +993,20 @@
     },
     "/api/battle/battleRank": {
       "get": {
-        "tags": ["对战相关"],
+        "tags": [
+          "对战相关"
+        ],
         "summary": "对战排行",
         "operationId": "battleRankUsingGET",
-        "produces": ["*/*"],
+        "produces": [
+          "*/*"
+        ],
         "responses": {
           "200": {
             "description": "OK",
             "schema": {
-              "$ref": "#/definitions/ResultData«BattleRankPageVo»",
-              "originalRef": "ResultData«BattleRankPageVo»"
+              "originalRef": "ResultData«BattleRankPageVo»",
+              "$ref": "#/definitions/ResultData«BattleRankPageVo»"
             }
           },
           "401": {
@@ -926,11 +1024,17 @@
     },
     "/api/battle/cancelBattle": {
       "post": {
-        "tags": ["对战相关"],
+        "tags": [
+          "对战相关"
+        ],
         "summary": "解散对战房间",
         "operationId": "cancelBattleUsingPOST",
-        "consumes": ["application/json"],
-        "produces": ["*/*"],
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "*/*"
+        ],
         "parameters": [
           {
             "name": "battleCode",
@@ -944,8 +1048,8 @@
           "200": {
             "description": "OK",
             "schema": {
-              "$ref": "#/definitions/ResultData«boolean»",
-              "originalRef": "ResultData«boolean»"
+              "originalRef": "ResultData«boolean»",
+              "$ref": "#/definitions/ResultData«boolean»"
             }
           },
           "201": {
@@ -966,11 +1070,17 @@
     },
     "/api/battle/createBattle": {
       "post": {
-        "tags": ["对战相关"],
+        "tags": [
+          "对战相关"
+        ],
         "summary": "创建对战房间(和玩家)",
         "operationId": "createBattleUsingPOST",
-        "consumes": ["application/json"],
-        "produces": ["*/*"],
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "*/*"
+        ],
         "parameters": [
           {
             "name": "boxLists",
@@ -1017,8 +1127,8 @@
           "200": {
             "description": "OK",
             "schema": {
-              "$ref": "#/definitions/ResultData«string»",
-              "originalRef": "ResultData«string»"
+              "originalRef": "ResultData«string»",
+              "$ref": "#/definitions/ResultData«string»"
             }
           },
           "201": {
@@ -1039,10 +1149,14 @@
     },
     "/api/battle/getBattleDetail": {
       "get": {
-        "tags": ["对战相关"],
+        "tags": [
+          "对战相关"
+        ],
         "summary": "获取房间详情",
         "operationId": "getBattleDetailUsingGET",
-        "produces": ["*/*"],
+        "produces": [
+          "*/*"
+        ],
         "parameters": [
           {
             "name": "battleCode",
@@ -1056,8 +1170,8 @@
           "200": {
             "description": "OK",
             "schema": {
-              "$ref": "#/definitions/ResultData«BattleDetailVo»",
-              "originalRef": "ResultData«BattleDetailVo»"
+              "originalRef": "ResultData«BattleDetailVo»",
+              "$ref": "#/definitions/ResultData«BattleDetailVo»"
             }
           },
           "401": {
@@ -1075,10 +1189,14 @@
     },
     "/api/battle/getBattleResults": {
       "get": {
-        "tags": ["对战相关"],
+        "tags": [
+          "对战相关"
+        ],
         "summary": "获取对战结果",
         "operationId": "getBattleResultsUsingGET",
-        "produces": ["*/*"],
+        "produces": [
+          "*/*"
+        ],
         "parameters": [
           {
             "name": "battleCode",
@@ -1092,8 +1210,8 @@
           "200": {
             "description": "OK",
             "schema": {
-              "$ref": "#/definitions/ResultData«BattleResultVo»",
-              "originalRef": "ResultData«BattleResultVo»"
+              "originalRef": "ResultData«BattleResultVo»",
+              "$ref": "#/definitions/ResultData«BattleResultVo»"
             }
           },
           "401": {
@@ -1111,10 +1229,14 @@
     },
     "/api/battle/getCurrentPage": {
       "get": {
-        "tags": ["对战相关"],
+        "tags": [
+          "对战相关"
+        ],
         "summary": "获取当前对战分页",
         "operationId": "getCurrentPageUsingGET",
-        "produces": ["*/*"],
+        "produces": [
+          "*/*"
+        ],
         "parameters": [
           {
             "name": "mode",
@@ -1148,8 +1270,8 @@
           "200": {
             "description": "OK",
             "schema": {
-              "$ref": "#/definitions/ResultData«PageInfo«BattleVo»»",
-              "originalRef": "ResultData«PageInfo«BattleVo»»"
+              "originalRef": "ResultData«PageInfo«BattleVo»»",
+              "$ref": "#/definitions/ResultData«PageInfo«BattleVo»»"
             }
           },
           "401": {
@@ -1167,16 +1289,20 @@
     },
     "/api/battle/getHostList": {
       "get": {
-        "tags": ["对战相关"],
+        "tags": [
+          "对战相关"
+        ],
         "summary": "首页对战列表",
         "operationId": "getHostListUsingGET",
-        "produces": ["*/*"],
+        "produces": [
+          "*/*"
+        ],
         "responses": {
           "200": {
             "description": "OK",
             "schema": {
-              "$ref": "#/definitions/ResultData«List«BattleVo»»",
-              "originalRef": "ResultData«List«BattleVo»»"
+              "originalRef": "ResultData«List«BattleVo»»",
+              "$ref": "#/definitions/ResultData«List«BattleVo»»"
             }
           },
           "401": {
@@ -1194,10 +1320,14 @@
     },
     "/api/battle/getMyPage": {
       "get": {
-        "tags": ["对战相关"],
+        "tags": [
+          "对战相关"
+        ],
         "summary": "获取我的对战房间分页",
         "operationId": "getMyPageUsingGET",
-        "produces": ["*/*"],
+        "produces": [
+          "*/*"
+        ],
         "parameters": [
           {
             "name": "mode",
@@ -1231,8 +1361,8 @@
           "200": {
             "description": "OK",
             "schema": {
-              "$ref": "#/definitions/ResultData«PageInfo«BattleVo»»",
-              "originalRef": "ResultData«PageInfo«BattleVo»»"
+              "originalRef": "ResultData«PageInfo«BattleVo»»",
+              "$ref": "#/definitions/ResultData«PageInfo«BattleVo»»"
             }
           },
           "401": {
@@ -1250,11 +1380,15 @@
     },
     "/api/battle/getPage": {
       "get": {
-        "tags": ["对战相关"],
+        "tags": [
+          "对战相关"
+        ],
         "summary": "获取对战房间分页",
         "description": "0->等待中,1->对战中,2->完成; mode: 0->欧皇,1->非酋,不传全部",
         "operationId": "getPageUsingGET",
-        "produces": ["*/*"],
+        "produces": [
+          "*/*"
+        ],
         "parameters": [
           {
             "name": "mode",
@@ -1297,8 +1431,8 @@
           "200": {
             "description": "OK",
             "schema": {
-              "$ref": "#/definitions/ResultData«PageInfo«BattleVo»»",
-              "originalRef": "ResultData«PageInfo«BattleVo»»"
+              "originalRef": "ResultData«PageInfo«BattleVo»»",
+              "$ref": "#/definitions/ResultData«PageInfo«BattleVo»»"
             }
           },
           "401": {
@@ -1316,11 +1450,17 @@
     },
     "/api/battle/joinBattle": {
       "post": {
-        "tags": ["对战相关"],
+        "tags": [
+          "对战相关"
+        ],
         "summary": "加入对战房间",
         "operationId": "joinBattleUsingPOST",
-        "consumes": ["application/json"],
-        "produces": ["*/*"],
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "*/*"
+        ],
         "parameters": [
           {
             "name": "battleCode",
@@ -1343,8 +1483,8 @@
           "200": {
             "description": "OK",
             "schema": {
-              "$ref": "#/definitions/ResultData«boolean»",
-              "originalRef": "ResultData«boolean»"
+              "originalRef": "ResultData«boolean»",
+              "$ref": "#/definitions/ResultData«boolean»"
             }
           },
           "201": {
@@ -1365,11 +1505,17 @@
     },
     "/api/battle/joinBot": {
       "post": {
-        "tags": ["对战相关"],
+        "tags": [
+          "对战相关"
+        ],
         "summary": "加入一个机哥",
         "operationId": "joinBotUsingPOST",
-        "consumes": ["application/json"],
-        "produces": ["*/*"],
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "*/*"
+        ],
         "parameters": [
           {
             "name": "battleCode",
@@ -1400,8 +1546,8 @@
           "200": {
             "description": "OK",
             "schema": {
-              "$ref": "#/definitions/ResultData«boolean»",
-              "originalRef": "ResultData«boolean»"
+              "originalRef": "ResultData«boolean»",
+              "$ref": "#/definitions/ResultData«boolean»"
             }
           },
           "201": {
@@ -1422,16 +1568,20 @@
     },
     "/api/bonus/list": {
       "get": {
-        "tags": ["用户福利配置"],
+        "tags": [
+          "用户福利配置"
+        ],
         "summary": "用户福利等级列表",
         "operationId": "listUsingGET",
-        "produces": ["*/*"],
+        "produces": [
+          "*/*"
+        ],
         "responses": {
           "200": {
             "description": "OK",
             "schema": {
-              "$ref": "#/definitions/ResultData«CustomerBounsPageVo»",
-              "originalRef": "ResultData«CustomerBounsPageVo»"
+              "originalRef": "ResultData«CustomerBounsPageVo»",
+              "$ref": "#/definitions/ResultData«CustomerBounsPageVo»"
             }
           },
           "401": {
@@ -1449,11 +1599,17 @@
     },
     "/api/bonus/receive": {
       "post": {
-        "tags": ["用户福利配置"],
+        "tags": [
+          "用户福利配置"
+        ],
         "summary": "领取等级福利",
         "operationId": "listUsingPOST",
-        "consumes": ["application/json"],
-        "produces": ["*/*"],
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "*/*"
+        ],
         "parameters": [
           {
             "name": "grade",
@@ -1468,8 +1624,8 @@
           "200": {
             "description": "OK",
             "schema": {
-              "$ref": "#/definitions/ResultData«boolean»",
-              "originalRef": "ResultData«boolean»"
+              "originalRef": "ResultData«boolean»",
+              "$ref": "#/definitions/ResultData«boolean»"
             }
           },
           "201": {
@@ -1490,11 +1646,17 @@
     },
     "/api/callback/adaPayCallback": {
       "post": {
-        "tags": ["前端无需对接"],
+        "tags": [
+          "recharge-callback-controller"
+        ],
         "summary": "adaPayCallback",
         "operationId": "adaPayCallbackUsingPOST",
-        "consumes": ["application/json"],
-        "produces": ["text/plain"],
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "text/plain"
+        ],
         "parameters": [
           {
             "name": "adaPayCallback",
@@ -1529,11 +1691,17 @@
     },
     "/api/callback/aiPayCallback": {
       "post": {
-        "tags": ["前端无需对接"],
+        "tags": [
+          "recharge-callback-controller"
+        ],
         "summary": "aiPayCallback",
         "operationId": "aiPayCallbackUsingPOST",
-        "consumes": ["application/json"],
-        "produces": ["application/json"],
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
         "parameters": [
           {
             "in": "body",
@@ -1570,11 +1738,17 @@
     },
     "/api/callback/fuxinPayCallback": {
       "post": {
-        "tags": ["前端无需对接"],
+        "tags": [
+          "recharge-callback-controller"
+        ],
         "summary": "unionPayCallback",
         "operationId": "unionPayCallbackUsingPOST",
-        "consumes": ["application/json"],
-        "produces": ["text/plain"],
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "text/plain"
+        ],
         "parameters": [
           {
             "in": "body",
@@ -1582,8 +1756,55 @@
             "description": "fuxinCallback",
             "required": true,
             "schema": {
-              "$ref": "#/definitions/FuxinCallback",
-              "originalRef": "FuxinCallback"
+              "originalRef": "FuxinCallback",
+              "$ref": "#/definitions/FuxinCallback"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "type": "string"
+            }
+          },
+          "201": {
+            "description": "Created"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        },
+        "x-order": "2147483647"
+      }
+    },
+    "/api/callback/goopagoCallback": {
+      "post": {
+        "tags": [
+          "recharge-callback-controller"
+        ],
+        "summary": "gooPagoCallback",
+        "operationId": "gooPagoCallbackUsingPOST",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "goopagoCallback",
+            "description": "goopagoCallback",
+            "required": true,
+            "schema": {
+              "type": "object"
             }
           }
         ],
@@ -1612,11 +1833,17 @@
     },
     "/api/callback/jjkCallback": {
       "post": {
-        "tags": ["前端无需对接"],
+        "tags": [
+          "recharge-callback-controller"
+        ],
         "summary": "jjkCallback",
         "operationId": "jjkCallbackUsingPOST",
-        "consumes": ["application/json"],
-        "produces": ["text/plain"],
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "text/plain"
+        ],
         "parameters": [
           {
             "in": "body",
@@ -1714,22 +1941,62 @@
         "x-order": "2147483647"
       }
     },
+    "/api/callback/payerMaxCallback": {
+      "post": {
+        "tags": [
+          "recharge-callback-controller"
+        ],
+        "summary": "payerMaxCallback",
+        "operationId": "payerMaxCallbackUsingPOST",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "type": "string"
+            }
+          },
+          "201": {
+            "description": "Created"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        },
+        "x-order": "2147483647"
+      }
+    },
     "/api/callback/skinsBackCallback": {
       "post": {
-        "tags": ["前端无需对接"],
+        "tags": [
+          "recharge-callback-controller"
+        ],
         "summary": "skinsBackCallback",
         "operationId": "skinsBackCallbackUsingPOST",
-        "consumes": ["application/json"],
-        "produces": ["application/json"],
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
         "parameters": [
           {
-            "in": "body",
             "name": "skinsBackCallback",
+            "in": "query",
             "description": "skinsBackCallback",
             "required": true,
-            "schema": {
-              "type": "object"
-            }
+            "type": "object"
           }
         ],
         "responses": {
@@ -1757,11 +2024,17 @@
     },
     "/api/callback/uniPaymentCallback": {
       "post": {
-        "tags": ["前端无需对接"],
+        "tags": [
+          "recharge-callback-controller"
+        ],
         "summary": "uniPaymentCallback",
         "operationId": "uniPaymentCallbackUsingPOST",
-        "consumes": ["application/json"],
-        "produces": ["application/json"],
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
         "parameters": [
           {
             "in": "body",
@@ -1798,11 +2071,17 @@
     },
     "/api/callback/unionPayCallback": {
       "post": {
-        "tags": ["前端无需对接"],
+        "tags": [
+          "recharge-callback-controller"
+        ],
         "summary": "unionPayCallback",
         "operationId": "unionPayCallbackUsingPOST_1",
-        "consumes": ["application/json"],
-        "produces": ["text/plain"],
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "text/plain"
+        ],
         "parameters": [
           {
             "name": "unionpayCallback",
@@ -1837,11 +2116,17 @@
     },
     "/api/callback/unionPayH5Callback": {
       "post": {
-        "tags": ["前端无需对接"],
+        "tags": [
+          "recharge-callback-controller"
+        ],
         "summary": "unionPayH5Callback",
         "operationId": "unionPayH5CallbackUsingPOST",
-        "consumes": ["application/json"],
-        "produces": ["text/plain"],
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "text/plain"
+        ],
         "parameters": [
           {
             "name": "unionpayCallback",
@@ -1876,10 +2161,14 @@
     },
     "/api/case/caseDetail": {
       "get": {
-        "tags": ["开箱相关"],
+        "tags": [
+          "开箱相关"
+        ],
         "summary": "箱子详情",
         "operationId": "boxDetailUsingGET",
-        "produces": ["*/*"],
+        "produces": [
+          "*/*"
+        ],
         "parameters": [
           {
             "name": "caseId",
@@ -1894,8 +2183,8 @@
           "200": {
             "description": "OK",
             "schema": {
-              "$ref": "#/definitions/ResultData«BoxDetailVo»",
-              "originalRef": "ResultData«BoxDetailVo»"
+              "originalRef": "ResultData«BoxDetailVo»",
+              "$ref": "#/definitions/ResultData«BoxDetailVo»"
             }
           },
           "401": {
@@ -1913,10 +2202,14 @@
     },
     "/api/case/caseGiftList": {
       "get": {
-        "tags": ["开箱相关"],
+        "tags": [
+          "开箱相关"
+        ],
         "summary": "包含礼物",
         "operationId": "boxGiftListUsingGET",
-        "produces": ["*/*"],
+        "produces": [
+          "*/*"
+        ],
         "parameters": [
           {
             "name": "caseId",
@@ -1931,8 +2224,8 @@
           "200": {
             "description": "OK",
             "schema": {
-              "$ref": "#/definitions/ResultData«BoxGiftInfoVo»",
-              "originalRef": "ResultData«BoxGiftInfoVo»"
+              "originalRef": "ResultData«BoxGiftInfoVo»",
+              "$ref": "#/definitions/ResultData«BoxGiftInfoVo»"
             }
           },
           "401": {
@@ -1950,11 +2243,15 @@
     },
     "/api/case/casePage": {
       "get": {
-        "tags": ["开箱相关"],
+        "tags": [
+          "开箱相关"
+        ],
         "summary": "箱子分页",
         "description": "箱子类型,-1->全部,0->免费,1->正常,2->推广",
         "operationId": "boxPageUsingGET",
-        "produces": ["*/*"],
+        "produces": [
+          "*/*"
+        ],
         "parameters": [
           {
             "name": "boxType",
@@ -2005,8 +2302,8 @@
           "200": {
             "description": "OK",
             "schema": {
-              "$ref": "#/definitions/ResultData«PageInfo«BoxPageVo»»",
-              "originalRef": "ResultData«PageInfo«BoxPageVo»»"
+              "originalRef": "ResultData«PageInfo«BoxPageVo»»",
+              "$ref": "#/definitions/ResultData«PageInfo«BoxPageVo»»"
             }
           },
           "401": {
@@ -2024,11 +2321,17 @@
     },
     "/api/case/exchangeQuantity": {
       "post": {
-        "tags": ["开箱相关"],
+        "tags": [
+          "开箱相关"
+        ],
         "summary": "回收兑换券",
         "operationId": "exchangeQuantityUsingPOST",
-        "consumes": ["application/json"],
-        "produces": ["*/*"],
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "*/*"
+        ],
         "parameters": [
           {
             "name": "ids",
@@ -2047,8 +2350,8 @@
           "200": {
             "description": "OK",
             "schema": {
-              "$ref": "#/definitions/ResultData«boolean»",
-              "originalRef": "ResultData«boolean»"
+              "originalRef": "ResultData«boolean»",
+              "$ref": "#/definitions/ResultData«boolean»"
             }
           },
           "201": {
@@ -2069,11 +2372,15 @@
     },
     "/api/case/getCaseList": {
       "get": {
-        "tags": ["开箱相关"],
+        "tags": [
+          "开箱相关"
+        ],
         "summary": "箱子详情分页",
         "description": "箱子类型,-1->全部,0->免费,1->正常,2->推广",
         "operationId": "getBoxListUsingGET",
-        "produces": ["*/*"],
+        "produces": [
+          "*/*"
+        ],
         "parameters": [
           {
             "name": "boxType",
@@ -2106,8 +2413,8 @@
           "200": {
             "description": "OK",
             "schema": {
-              "$ref": "#/definitions/ResultData«List«BoxThemeListVo»»",
-              "originalRef": "ResultData«List«BoxThemeListVo»»"
+              "originalRef": "ResultData«List«BoxThemeListVo»»",
+              "$ref": "#/definitions/ResultData«List«BoxThemeListVo»»"
             }
           },
           "401": {
@@ -2125,11 +2432,15 @@
     },
     "/api/case/openCase": {
       "get": {
-        "tags": ["开箱相关"],
+        "tags": [
+          "开箱相关"
+        ],
         "summary": "开箱",
         "description": "在个人中心相关,找到:获取我的折扣券接口,可以获得可用的优惠券,如需使用优惠券,则将couponId传入本接口,不使用,则留空或-1",
         "operationId": "v2OpenBoxUsingGET",
-        "produces": ["*/*"],
+        "produces": [
+          "*/*"
+        ],
         "parameters": [
           {
             "name": "caseId",
@@ -2161,8 +2472,8 @@
           "200": {
             "description": "OK",
             "schema": {
-              "$ref": "#/definitions/ResultData«OpenBoxResult»",
-              "originalRef": "ResultData«OpenBoxResult»"
+              "originalRef": "ResultData«OpenBoxResult»",
+              "$ref": "#/definitions/ResultData«OpenBoxResult»"
             }
           },
           "401": {
@@ -2180,10 +2491,14 @@
     },
     "/api/case/recentCaseGift": {
       "get": {
-        "tags": ["开箱相关"],
+        "tags": [
+          "开箱相关"
+        ],
         "summary": "最近掉落",
         "operationId": "recentBoxGiftUsingGET",
-        "produces": ["*/*"],
+        "produces": [
+          "*/*"
+        ],
         "parameters": [
           {
             "name": "caseId",
@@ -2215,8 +2530,8 @@
           "200": {
             "description": "OK",
             "schema": {
-              "$ref": "#/definitions/ResultData«List«RecentBoxGiftVo»»",
-              "originalRef": "ResultData«List«RecentBoxGiftVo»»"
+              "originalRef": "ResultData«List«RecentBoxGiftVo»»",
+              "$ref": "#/definitions/ResultData«List«RecentBoxGiftVo»»"
             }
           },
           "401": {
@@ -2234,11 +2549,15 @@
     },
     "/api/giveaway/detail": {
       "get": {
-        "tags": ["ROLL房相关"],
+        "tags": [
+          "ROLL房相关"
+        ],
         "summary": "roll详情",
         "description": "state: 1->进行中 2->完成",
         "operationId": "detailUsingGET",
-        "produces": ["*/*"],
+        "produces": [
+          "*/*"
+        ],
         "parameters": [
           {
             "name": "giveawayId",
@@ -2253,8 +2572,8 @@
           "200": {
             "description": "OK",
             "schema": {
-              "$ref": "#/definitions/ResultData«RollRoomPageVo»",
-              "originalRef": "ResultData«RollRoomPageVo»"
+              "originalRef": "ResultData«RollRoomPageVo»",
+              "$ref": "#/definitions/ResultData«RollRoomPageVo»"
             }
           },
           "401": {
@@ -2272,11 +2591,15 @@
     },
     "/api/giveaway/giftList": {
       "get": {
-        "tags": ["ROLL房相关"],
+        "tags": [
+          "ROLL房相关"
+        ],
         "summary": "奖品列表",
         "description": "state: 1->进行中 2->完成",
         "operationId": "giftListUsingGET",
-        "produces": ["*/*"],
+        "produces": [
+          "*/*"
+        ],
         "parameters": [
           {
             "name": "giveawayId",
@@ -2292,8 +2615,8 @@
           "200": {
             "description": "OK",
             "schema": {
-              "$ref": "#/definitions/ResultData«List«RollRoomGiftVo»»",
-              "originalRef": "ResultData«List«RollRoomGiftVo»»"
+              "originalRef": "ResultData«List«RollRoomGiftVo»»",
+              "$ref": "#/definitions/ResultData«List«RollRoomGiftVo»»"
             }
           },
           "401": {
@@ -2311,17 +2634,21 @@
     },
     "/api/giveaway/listHostGiveaway": {
       "get": {
-        "tags": ["ROLL房相关"],
+        "tags": [
+          "ROLL房相关"
+        ],
         "summary": "roll房首页列表",
         "description": "state: 1->进行中 2->完成",
         "operationId": "listHostGiveawayUsingGET",
-        "produces": ["*/*"],
+        "produces": [
+          "*/*"
+        ],
         "responses": {
           "200": {
             "description": "OK",
             "schema": {
-              "$ref": "#/definitions/ResultData«List«RollRoomPageVo»»",
-              "originalRef": "ResultData«List«RollRoomPageVo»»"
+              "originalRef": "ResultData«List«RollRoomPageVo»»",
+              "$ref": "#/definitions/ResultData«List«RollRoomPageVo»»"
             }
           },
           "401": {
@@ -2339,11 +2666,15 @@
     },
     "/api/giveaway/page": {
       "get": {
-        "tags": ["ROLL房相关"],
+        "tags": [
+          "ROLL房相关"
+        ],
         "summary": "roll房分页列表",
         "description": "state: 1->进行中 2->完成",
         "operationId": "pageUsingGET",
-        "produces": ["*/*"],
+        "produces": [
+          "*/*"
+        ],
         "parameters": [
           {
             "name": "page",
@@ -2386,8 +2717,8 @@
           "200": {
             "description": "OK",
             "schema": {
-              "$ref": "#/definitions/ResultData«PageInfo«RollRoomPageVo»»",
-              "originalRef": "ResultData«PageInfo«RollRoomPageVo»»"
+              "originalRef": "ResultData«PageInfo«RollRoomPageVo»»",
+              "$ref": "#/definitions/ResultData«PageInfo«RollRoomPageVo»»"
             }
           },
           "401": {
@@ -2405,11 +2736,17 @@
     },
     "/api/giveaway/partake": {
       "post": {
-        "tags": ["ROLL房相关"],
+        "tags": [
+          "ROLL房相关"
+        ],
         "summary": "加入房间",
         "operationId": "partakeUsingPOST",
-        "consumes": ["application/json"],
-        "produces": ["*/*"],
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "*/*"
+        ],
         "parameters": [
           {
             "name": "giveawayId",
@@ -2432,8 +2769,8 @@
           "200": {
             "description": "OK",
             "schema": {
-              "$ref": "#/definitions/ResultData«boolean»",
-              "originalRef": "ResultData«boolean»"
+              "originalRef": "ResultData«boolean»",
+              "$ref": "#/definitions/ResultData«boolean»"
             }
           },
           "201": {
@@ -2454,10 +2791,14 @@
     },
     "/api/giveaway/partakeList": {
       "get": {
-        "tags": ["ROLL房相关"],
+        "tags": [
+          "ROLL房相关"
+        ],
         "summary": "参与列表",
         "operationId": "partakeListUsingGET",
-        "produces": ["*/*"],
+        "produces": [
+          "*/*"
+        ],
         "parameters": [
           {
             "name": "giveawayId",
@@ -2473,8 +2814,8 @@
           "200": {
             "description": "OK",
             "schema": {
-              "$ref": "#/definitions/ResultData«List«RollCustomerVo»»",
-              "originalRef": "ResultData«List«RollCustomerVo»»"
+              "originalRef": "ResultData«List«RollCustomerVo»»",
+              "$ref": "#/definitions/ResultData«List«RollCustomerVo»»"
             }
           },
           "401": {
@@ -2492,10 +2833,14 @@
     },
     "/api/giveaway/winnerList": {
       "get": {
-        "tags": ["ROLL房相关"],
+        "tags": [
+          "ROLL房相关"
+        ],
         "summary": "中奖客户列表",
         "operationId": "winnerListUsingGET",
-        "produces": ["*/*"],
+        "produces": [
+          "*/*"
+        ],
         "parameters": [
           {
             "name": "giveawayId",
@@ -2511,8 +2856,8 @@
           "200": {
             "description": "OK",
             "schema": {
-              "$ref": "#/definitions/ResultData«List«RollCustomerWithGiftVo»»",
-              "originalRef": "ResultData«List«RollCustomerWithGiftVo»»"
+              "originalRef": "ResultData«List«RollCustomerWithGiftVo»»",
+              "$ref": "#/definitions/ResultData«List«RollCustomerWithGiftVo»»"
             }
           },
           "401": {
@@ -2530,11 +2875,15 @@
     },
     "/api/key/clientSeedHistory": {
       "get": {
-        "tags": ["秘钥种子相关"],
+        "tags": [
+          "秘钥种子相关"
+        ],
         "summary": "用户种子记录",
         "description": "用户种子记录",
         "operationId": "clientSeedHistoryUsingGET",
-        "produces": ["*/*"],
+        "produces": [
+          "*/*"
+        ],
         "parameters": [
           {
             "name": "page",
@@ -2559,8 +2908,8 @@
           "200": {
             "description": "OK",
             "schema": {
-              "$ref": "#/definitions/ResultData«PageInfo«RandKeyVo»»",
-              "originalRef": "ResultData«PageInfo«RandKeyVo»»"
+              "originalRef": "ResultData«PageInfo«RandKeyVo»»",
+              "$ref": "#/definitions/ResultData«PageInfo«RandKeyVo»»"
             }
           },
           "401": {
@@ -2578,17 +2927,21 @@
     },
     "/api/key/currentKey": {
       "get": {
-        "tags": ["秘钥种子相关"],
+        "tags": [
+          "秘钥种子相关"
+        ],
         "summary": "当前秘钥",
         "description": "当前秘钥",
         "operationId": "currentKeyUsingGET",
-        "produces": ["*/*"],
+        "produces": [
+          "*/*"
+        ],
         "responses": {
           "200": {
             "description": "OK",
             "schema": {
-              "$ref": "#/definitions/ResultData«RandKeyVo»",
-              "originalRef": "ResultData«RandKeyVo»"
+              "originalRef": "ResultData«RandKeyVo»",
+              "$ref": "#/definitions/ResultData«RandKeyVo»"
             }
           },
           "401": {
@@ -2606,11 +2959,15 @@
     },
     "/api/key/keyHistory": {
       "get": {
-        "tags": ["秘钥种子相关"],
+        "tags": [
+          "秘钥种子相关"
+        ],
         "summary": "已公开秘钥记录",
         "description": "已公开秘钥记录",
         "operationId": "keyHistoryUsingGET",
-        "produces": ["*/*"],
+        "produces": [
+          "*/*"
+        ],
         "parameters": [
           {
             "name": "page",
@@ -2635,8 +2992,8 @@
           "200": {
             "description": "OK",
             "schema": {
-              "$ref": "#/definitions/ResultData«PageInfo«RandKeyVo»»",
-              "originalRef": "ResultData«PageInfo«RandKeyVo»»"
+              "originalRef": "ResultData«PageInfo«RandKeyVo»»",
+              "$ref": "#/definitions/ResultData«PageInfo«RandKeyVo»»"
             }
           },
           "401": {
@@ -2654,12 +3011,18 @@
     },
     "/api/key/reset": {
       "post": {
-        "tags": ["秘钥种子相关"],
+        "tags": [
+          "秘钥种子相关"
+        ],
         "summary": "重置秘钥",
         "description": "重置秘钥",
         "operationId": "resetUsingPOST",
-        "consumes": ["application/json"],
-        "produces": ["*/*"],
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "*/*"
+        ],
         "parameters": [
           {
             "name": "clientSeed",
@@ -2673,8 +3036,8 @@
           "200": {
             "description": "OK",
             "schema": {
-              "$ref": "#/definitions/ResultData«RandKeyVo»",
-              "originalRef": "ResultData«RandKeyVo»"
+              "originalRef": "ResultData«RandKeyVo»",
+              "$ref": "#/definitions/ResultData«RandKeyVo»"
             }
           },
           "201": {
@@ -2695,11 +3058,15 @@
     },
     "/api/key/verify": {
       "get": {
-        "tags": ["秘钥种子相关"],
+        "tags": [
+          "秘钥种子相关"
+        ],
         "summary": "验证ROLL点",
         "description": "验证ROLL点",
         "operationId": "verifyUsingGET",
-        "produces": ["*/*"],
+        "produces": [
+          "*/*"
+        ],
         "parameters": [
           {
             "name": "bizId",
@@ -2721,8 +3088,8 @@
           "200": {
             "description": "OK",
             "schema": {
-              "$ref": "#/definitions/ResultData«RandKeyVo»",
-              "originalRef": "ResultData«RandKeyVo»"
+              "originalRef": "ResultData«RandKeyVo»",
+              "$ref": "#/definitions/ResultData«RandKeyVo»"
             }
           },
           "401": {
@@ -2740,11 +3107,15 @@
     },
     "/api/key/verifyById": {
       "get": {
-        "tags": ["秘钥种子相关"],
+        "tags": [
+          "秘钥种子相关"
+        ],
         "summary": "验证ROLL点",
         "description": "根据记录ID验证ROLL点",
         "operationId": "verifyUsingGET_1",
-        "produces": ["*/*"],
+        "produces": [
+          "*/*"
+        ],
         "parameters": [
           {
             "name": "verifyId",
@@ -2759,8 +3130,8 @@
           "200": {
             "description": "OK",
             "schema": {
-              "$ref": "#/definitions/ResultData«RandKeyVo»",
-              "originalRef": "ResultData«RandKeyVo»"
+              "originalRef": "ResultData«RandKeyVo»",
+              "$ref": "#/definitions/ResultData«RandKeyVo»"
             }
           },
           "401": {
@@ -2778,10 +3149,14 @@
     },
     "/api/order/getMyBoxLogPage": {
       "get": {
-        "tags": ["各种记录相关"],
+        "tags": [
+          "各种记录相关"
+        ],
         "summary": "开箱记录",
         "operationId": "getMyBoxLogPageUsingGET",
-        "produces": ["*/*"],
+        "produces": [
+          "*/*"
+        ],
         "parameters": [
           {
             "name": "page",
@@ -2806,8 +3181,8 @@
           "200": {
             "description": "OK",
             "schema": {
-              "$ref": "#/definitions/ResultData«PageInfo«MyBoxLogPageVo»»",
-              "originalRef": "ResultData«PageInfo«MyBoxLogPageVo»»"
+              "originalRef": "ResultData«PageInfo«MyBoxLogPageVo»»",
+              "$ref": "#/definitions/ResultData«PageInfo«MyBoxLogPageVo»»"
             }
           },
           "401": {
@@ -2825,11 +3200,15 @@
     },
     "/api/order/getMyRechargeOrderPage": {
       "get": {
-        "tags": ["各种记录相关"],
+        "tags": [
+          "各种记录相关"
+        ],
         "summary": "充值记录",
         "description": "state:0->未支付,1->已支付",
         "operationId": "getMyRechargeOrderPageUsingGET",
-        "produces": ["*/*"],
+        "produces": [
+          "*/*"
+        ],
         "parameters": [
           {
             "name": "page",
@@ -2854,8 +3233,8 @@
           "200": {
             "description": "OK",
             "schema": {
-              "$ref": "#/definitions/ResultData«PageInfo«MyRechargeOrderPageVo»»",
-              "originalRef": "ResultData«PageInfo«MyRechargeOrderPageVo»»"
+              "originalRef": "ResultData«PageInfo«MyRechargeOrderPageVo»»",
+              "$ref": "#/definitions/ResultData«PageInfo«MyRechargeOrderPageVo»»"
             }
           },
           "401": {
@@ -2873,11 +3252,15 @@
     },
     "/api/order/getMyRetrievalPage": {
       "get": {
-        "tags": ["各种记录相关"],
+        "tags": [
+          "各种记录相关"
+        ],
         "summary": "取回记录",
         "description": "state:1->等待发货,2->等待收货,3->取回成功,4->取回失败",
         "operationId": "getMyRetrievalPageUsingGET",
-        "produces": ["*/*"],
+        "produces": [
+          "*/*"
+        ],
         "parameters": [
           {
             "name": "page",
@@ -2902,8 +3285,8 @@
           "200": {
             "description": "OK",
             "schema": {
-              "$ref": "#/definitions/ResultData«PageInfo«MyRetrievalPageVo»»",
-              "originalRef": "ResultData«PageInfo«MyRetrievalPageVo»»"
+              "originalRef": "ResultData«PageInfo«MyRetrievalPageVo»»",
+              "$ref": "#/definitions/ResultData«PageInfo«MyRetrievalPageVo»»"
             }
           },
           "401": {
@@ -2921,10 +3304,14 @@
     },
     "/api/order/getMyStockOrderPage": {
       "get": {
-        "tags": ["各种记录相关"],
+        "tags": [
+          "各种记录相关"
+        ],
         "summary": "商城记录",
         "operationId": "getMyStockOrderPageUsingGET",
-        "produces": ["*/*"],
+        "produces": [
+          "*/*"
+        ],
         "parameters": [
           {
             "name": "page",
@@ -2949,8 +3336,8 @@
           "200": {
             "description": "OK",
             "schema": {
-              "$ref": "#/definitions/ResultData«PageInfo«MyStockOrderPageVo»»",
-              "originalRef": "ResultData«PageInfo«MyStockOrderPageVo»»"
+              "originalRef": "ResultData«PageInfo«MyStockOrderPageVo»»",
+              "$ref": "#/definitions/ResultData«PageInfo«MyStockOrderPageVo»»"
             }
           },
           "401": {
@@ -2968,10 +3355,14 @@
     },
     "/api/order/getMyUpgradePage": {
       "get": {
-        "tags": ["各种记录相关"],
+        "tags": [
+          "各种记录相关"
+        ],
         "summary": "我的升级记录分页",
         "operationId": "getMyUpgradePageUsingGET",
-        "produces": ["*/*"],
+        "produces": [
+          "*/*"
+        ],
         "parameters": [
           {
             "name": "page",
@@ -2996,9 +3387,63 @@
           "200": {
             "description": "OK",
             "schema": {
-              "$ref": "#/definitions/ResultData«PageInfo«MyUpgradePageVo»»",
-              "originalRef": "ResultData«PageInfo«MyUpgradePageVo»»"
+              "originalRef": "ResultData«PageInfo«MyUpgradePageVo»»",
+              "$ref": "#/definitions/ResultData«PageInfo«MyUpgradePageVo»»"
             }
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        },
+        "x-order": "2147483647"
+      }
+    },
+    "/api/personalCenter/bindEmail": {
+      "post": {
+        "tags": [
+          "个人中心相关"
+        ],
+        "summary": "绑定邮箱",
+        "description": "配合获取验证码接口使用,verifyCode->老邮箱验证码,newVerifyCode->新邮箱验证码,newMail->新邮箱,一个页面就行,不用下一步",
+        "operationId": "changeMailUsingPOST_1",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "*/*"
+        ],
+        "parameters": [
+          {
+            "name": "mail",
+            "in": "query",
+            "description": "mail",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "verifyCode",
+            "in": "query",
+            "description": "verifyCode",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "originalRef": "ResultData«boolean»",
+              "$ref": "#/definitions/ResultData«boolean»"
+            }
+          },
+          "201": {
+            "description": "Created"
           },
           "401": {
             "description": "Unauthorized"
@@ -3015,11 +3460,17 @@
     },
     "/api/personalCenter/bindInviter": {
       "post": {
-        "tags": ["个人中心相关"],
+        "tags": [
+          "个人中心相关"
+        ],
         "summary": "绑定上级用户推广码",
         "operationId": "bindInviterUsingPOST",
-        "consumes": ["application/json"],
-        "produces": ["*/*"],
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "*/*"
+        ],
         "parameters": [
           {
             "name": "invitationCode",
@@ -3033,8 +3484,8 @@
           "200": {
             "description": "OK",
             "schema": {
-              "$ref": "#/definitions/ResultData«boolean»",
-              "originalRef": "ResultData«boolean»"
+              "originalRef": "ResultData«boolean»",
+              "$ref": "#/definitions/ResultData«boolean»"
             }
           },
           "201": {
@@ -3055,11 +3506,17 @@
     },
     "/api/personalCenter/bindSecurityWay": {
       "post": {
-        "tags": ["个人中心相关"],
+        "tags": [
+          "个人中心相关"
+        ],
         "summary": "绑定安全方式",
         "operationId": "bindSecurityWayUsingPOST",
-        "consumes": ["application/json"],
-        "produces": ["*/*"],
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "*/*"
+        ],
         "parameters": [
           {
             "name": "id",
@@ -3092,8 +3549,8 @@
           "200": {
             "description": "OK",
             "schema": {
-              "$ref": "#/definitions/ResultData«boolean»",
-              "originalRef": "ResultData«boolean»"
+              "originalRef": "ResultData«boolean»",
+              "$ref": "#/definitions/ResultData«boolean»"
             }
           },
           "201": {
@@ -3114,12 +3571,18 @@
     },
     "/api/personalCenter/changeMail": {
       "post": {
-        "tags": ["个人中心相关"],
+        "tags": [
+          "个人中心相关"
+        ],
         "summary": "修改邮箱",
         "description": "配合获取验证码接口使用,verifyCode->老邮箱验证码,newVerifyCode->新邮箱验证码,newMail->新邮箱,一个页面就行,不用下一步",
         "operationId": "changeMailUsingPOST",
-        "consumes": ["application/json"],
-        "produces": ["*/*"],
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "*/*"
+        ],
         "parameters": [
           {
             "name": "newMail",
@@ -3147,8 +3610,8 @@
           "200": {
             "description": "OK",
             "schema": {
-              "$ref": "#/definitions/ResultData«boolean»",
-              "originalRef": "ResultData«boolean»"
+              "originalRef": "ResultData«boolean»",
+              "$ref": "#/definitions/ResultData«boolean»"
             }
           },
           "201": {
@@ -3169,12 +3632,18 @@
     },
     "/api/personalCenter/changePhone": {
       "post": {
-        "tags": ["个人中心相关"],
+        "tags": [
+          "个人中心相关"
+        ],
         "summary": "修改手机号",
         "description": "配合获取验证码接口使用,verifyCode->老手机号验证码,newVerifyCode->新手机号验证码,newPhone->新手机号,一个页面就行,不用下一步",
         "operationId": "changePhoneUsingPOST",
-        "consumes": ["application/json"],
-        "produces": ["*/*"],
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "*/*"
+        ],
         "parameters": [
           {
             "name": "newPhone",
@@ -3202,8 +3671,8 @@
           "200": {
             "description": "OK",
             "schema": {
-              "$ref": "#/definitions/ResultData«boolean»",
-              "originalRef": "ResultData«boolean»"
+              "originalRef": "ResultData«boolean»",
+              "$ref": "#/definitions/ResultData«boolean»"
             }
           },
           "201": {
@@ -3224,16 +3693,20 @@
     },
     "/api/personalCenter/customerDetail": {
       "get": {
-        "tags": ["个人中心相关"],
+        "tags": [
+          "个人中心相关"
+        ],
         "summary": "获取用户详情",
         "operationId": "customerDetailUsingGET",
-        "produces": ["*/*"],
+        "produces": [
+          "*/*"
+        ],
         "responses": {
           "200": {
             "description": "OK",
             "schema": {
-              "$ref": "#/definitions/ResultData«CustomerDetailVo»",
-              "originalRef": "ResultData«CustomerDetailVo»"
+              "originalRef": "ResultData«CustomerDetailVo»",
+              "$ref": "#/definitions/ResultData«CustomerDetailVo»"
             }
           },
           "401": {
@@ -3251,12 +3724,18 @@
     },
     "/api/personalCenter/exchangeQuantity": {
       "post": {
-        "tags": ["个人中心相关"],
+        "tags": [
+          "个人中心相关"
+        ],
         "summary": "批量使用兑换券兑换代币",
         "description": "这里ids为兑换券id，多个兑换券以逗号(,)隔开",
         "operationId": "exchangeQuantityUsingPOST_1",
-        "consumes": ["application/json"],
-        "produces": ["*/*"],
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "*/*"
+        ],
         "parameters": [
           {
             "name": "ids",
@@ -3275,8 +3754,8 @@
           "200": {
             "description": "OK",
             "schema": {
-              "$ref": "#/definitions/ResultData«boolean»",
-              "originalRef": "ResultData«boolean»"
+              "originalRef": "ResultData«boolean»",
+              "$ref": "#/definitions/ResultData«boolean»"
             }
           },
           "201": {
@@ -3297,17 +3776,21 @@
     },
     "/api/personalCenter/getAvailableSecurityWay": {
       "get": {
-        "tags": ["个人中心相关"],
+        "tags": [
+          "个人中心相关"
+        ],
         "summary": "获取用户可用的安全方式",
         "description": "返回一个json数组,表示用户可用的安全验证方式:0->手机号进行验证,1->邮箱进行验证",
         "operationId": "getAvailableSecurityWayUsingGET",
-        "produces": ["*/*"],
+        "produces": [
+          "*/*"
+        ],
         "responses": {
           "200": {
             "description": "OK",
             "schema": {
-              "$ref": "#/definitions/ResultData«List«int»»",
-              "originalRef": "ResultData«List«int»»"
+              "originalRef": "ResultData«List«int»»",
+              "$ref": "#/definitions/ResultData«List«int»»"
             }
           },
           "401": {
@@ -3325,16 +3808,20 @@
     },
     "/api/personalCenter/getGradeInfo": {
       "get": {
-        "tags": ["个人中心相关"],
+        "tags": [
+          "个人中心相关"
+        ],
         "summary": "获取当前用户的等级权益",
         "operationId": "getGradeInfoUsingGET",
-        "produces": ["*/*"],
+        "produces": [
+          "*/*"
+        ],
         "responses": {
           "200": {
             "description": "OK",
             "schema": {
-              "$ref": "#/definitions/ResultData«GradeInfoVo»",
-              "originalRef": "ResultData«GradeInfoVo»"
+              "originalRef": "ResultData«GradeInfoVo»",
+              "$ref": "#/definitions/ResultData«GradeInfoVo»"
             }
           },
           "401": {
@@ -3352,10 +3839,14 @@
     },
     "/api/personalCenter/getMyBalanceLog": {
       "get": {
-        "tags": ["个人中心相关"],
+        "tags": [
+          "个人中心相关"
+        ],
         "summary": "我的账户变动记录",
         "operationId": "getMyBalanceLogUsingGET",
-        "produces": ["*/*"],
+        "produces": [
+          "*/*"
+        ],
         "parameters": [
           {
             "name": "page",
@@ -3380,8 +3871,8 @@
           "200": {
             "description": "OK",
             "schema": {
-              "$ref": "#/definitions/ResultData«PageInfo«MyBalanceLogVo»»",
-              "originalRef": "ResultData«PageInfo«MyBalanceLogVo»»"
+              "originalRef": "ResultData«PageInfo«MyBalanceLogVo»»",
+              "$ref": "#/definitions/ResultData«PageInfo«MyBalanceLogVo»»"
             }
           },
           "401": {
@@ -3399,10 +3890,14 @@
     },
     "/api/personalCenter/getMyCouponPage": {
       "get": {
-        "tags": ["个人中心相关"],
+        "tags": [
+          "个人中心相关"
+        ],
         "summary": "礼物背包-折扣券分页",
         "operationId": "getMyCouponPageUsingGET",
-        "produces": ["*/*"],
+        "produces": [
+          "*/*"
+        ],
         "parameters": [
           {
             "name": "page",
@@ -3427,8 +3922,8 @@
           "200": {
             "description": "OK",
             "schema": {
-              "$ref": "#/definitions/ResultData«PageInfo«MyCouponPageVo»»",
-              "originalRef": "ResultData«PageInfo«MyCouponPageVo»»"
+              "originalRef": "ResultData«PageInfo«MyCouponPageVo»»",
+              "$ref": "#/definitions/ResultData«PageInfo«MyCouponPageVo»»"
             }
           },
           "401": {
@@ -3446,10 +3941,14 @@
     },
     "/api/personalCenter/getMyCoupons": {
       "get": {
-        "tags": ["个人中心相关"],
+        "tags": [
+          "个人中心相关"
+        ],
         "summary": "获取我的折扣券",
         "operationId": "getMyCouponsUsingGET",
-        "produces": ["*/*"],
+        "produces": [
+          "*/*"
+        ],
         "parameters": [
           {
             "name": "couponType",
@@ -3465,8 +3964,8 @@
           "200": {
             "description": "OK",
             "schema": {
-              "$ref": "#/definitions/ResultData«List«MyCouponVo»»",
-              "originalRef": "ResultData«List«MyCouponVo»»"
+              "originalRef": "ResultData«List«MyCouponVo»»",
+              "$ref": "#/definitions/ResultData«List«MyCouponVo»»"
             }
           },
           "401": {
@@ -3484,10 +3983,14 @@
     },
     "/api/personalCenter/getMyDreamLog": {
       "get": {
-        "tags": ["个人中心相关"],
+        "tags": [
+          "个人中心相关"
+        ],
         "summary": "我的追梦记录",
         "operationId": "getMyDreamLogUsingGET",
-        "produces": ["*/*"],
+        "produces": [
+          "*/*"
+        ],
         "parameters": [
           {
             "name": "page",
@@ -3512,8 +4015,8 @@
           "200": {
             "description": "OK",
             "schema": {
-              "$ref": "#/definitions/ResultData«PageInfo«MyUpgradePageVo»»",
-              "originalRef": "ResultData«PageInfo«MyUpgradePageVo»»"
+              "originalRef": "ResultData«PageInfo«MyUpgradePageVo»»",
+              "$ref": "#/definitions/ResultData«PageInfo«MyUpgradePageVo»»"
             }
           },
           "401": {
@@ -3531,10 +4034,14 @@
     },
     "/api/personalCenter/getMyFreeBoxPage": {
       "get": {
-        "tags": ["个人中心相关"],
+        "tags": [
+          "个人中心相关"
+        ],
         "summary": "礼物背包-免费箱子(次数)分页",
         "operationId": "getMyFreeBoxPageUsingGET",
-        "produces": ["*/*"],
+        "produces": [
+          "*/*"
+        ],
         "parameters": [
           {
             "name": "page",
@@ -3559,8 +4066,8 @@
           "200": {
             "description": "OK",
             "schema": {
-              "$ref": "#/definitions/ResultData«PageInfo«MyFreeBoxPageVo»»",
-              "originalRef": "ResultData«PageInfo«MyFreeBoxPageVo»»"
+              "originalRef": "ResultData«PageInfo«MyFreeBoxPageVo»»",
+              "$ref": "#/definitions/ResultData«PageInfo«MyFreeBoxPageVo»»"
             }
           },
           "401": {
@@ -3578,10 +4085,14 @@
     },
     "/api/personalCenter/getMyOrnamentPage": {
       "get": {
-        "tags": ["个人中心相关"],
+        "tags": [
+          "个人中心相关"
+        ],
         "summary": "饰品背包",
         "operationId": "getMyOrnamentPageUsingGET",
-        "produces": ["*/*"],
+        "produces": [
+          "*/*"
+        ],
         "parameters": [
           {
             "name": "moduleId",
@@ -3623,8 +4134,8 @@
           "200": {
             "description": "OK",
             "schema": {
-              "$ref": "#/definitions/ResultData«PageInfo«Ornament»»",
-              "originalRef": "ResultData«PageInfo«Ornament»»"
+              "originalRef": "ResultData«PageInfo«Ornament»»",
+              "$ref": "#/definitions/ResultData«PageInfo«Ornament»»"
             }
           },
           "401": {
@@ -3642,10 +4153,14 @@
     },
     "/api/personalCenter/getMyRewardPage": {
       "get": {
-        "tags": ["个人中心相关"],
+        "tags": [
+          "个人中心相关"
+        ],
         "summary": "礼物背包-礼包分页",
         "operationId": "getMyRewardPageUsingGET",
-        "produces": ["*/*"],
+        "produces": [
+          "*/*"
+        ],
         "parameters": [
           {
             "name": "page",
@@ -3670,8 +4185,8 @@
           "200": {
             "description": "OK",
             "schema": {
-              "$ref": "#/definitions/ResultData«PageInfo«MyRewardPageVo»»",
-              "originalRef": "ResultData«PageInfo«MyRewardPageVo»»"
+              "originalRef": "ResultData«PageInfo«MyRewardPageVo»»",
+              "$ref": "#/definitions/ResultData«PageInfo«MyRewardPageVo»»"
             }
           },
           "401": {
@@ -3689,11 +4204,15 @@
     },
     "/api/personalCenter/getMyVoucherPage": {
       "get": {
-        "tags": ["个人中心相关"],
+        "tags": [
+          "个人中心相关"
+        ],
         "summary": "兑换券背包",
         "description": "orderByPrice为true时表示按价格倒序排序，false->价格正序",
         "operationId": "getMyVoucherPageUsingGET",
-        "produces": ["*/*"],
+        "produces": [
+          "*/*"
+        ],
         "parameters": [
           {
             "name": "orderByPrice",
@@ -3735,8 +4254,8 @@
           "200": {
             "description": "OK",
             "schema": {
-              "$ref": "#/definitions/ResultData«ExtPageInfo«MyVoucherVo,MyVoucherCountVo»»",
-              "originalRef": "ResultData«ExtPageInfo«MyVoucherVo,MyVoucherCountVo»»"
+              "originalRef": "ResultData«ExtPageInfo«MyVoucherVo,MyVoucherCountVo»»",
+              "$ref": "#/definitions/ResultData«ExtPageInfo«MyVoucherVo,MyVoucherCountVo»»"
             }
           },
           "401": {
@@ -3754,11 +4273,17 @@
     },
     "/api/personalCenter/modifyNickname": {
       "post": {
-        "tags": ["个人中心相关"],
+        "tags": [
+          "个人中心相关"
+        ],
         "summary": "修改昵称",
         "operationId": "modifyNicknameUsingPOST",
-        "consumes": ["application/json"],
-        "produces": ["*/*"],
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "*/*"
+        ],
         "parameters": [
           {
             "name": "nickname",
@@ -3772,8 +4297,8 @@
           "200": {
             "description": "OK",
             "schema": {
-              "$ref": "#/definitions/ResultData«boolean»",
-              "originalRef": "ResultData«boolean»"
+              "originalRef": "ResultData«boolean»",
+              "$ref": "#/definitions/ResultData«boolean»"
             }
           },
           "201": {
@@ -3794,11 +4319,17 @@
     },
     "/api/personalCenter/modifySecret": {
       "post": {
-        "tags": ["个人中心相关"],
+        "tags": [
+          "个人中心相关"
+        ],
         "summary": "修改秘钥",
         "operationId": "modifySecretUsingPOST",
-        "consumes": ["application/json"],
-        "produces": ["*/*"],
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "*/*"
+        ],
         "parameters": [
           {
             "name": "secret",
@@ -3812,8 +4343,8 @@
           "200": {
             "description": "OK",
             "schema": {
-              "$ref": "#/definitions/ResultData«boolean»",
-              "originalRef": "ResultData«boolean»"
+              "originalRef": "ResultData«boolean»",
+              "$ref": "#/definitions/ResultData«boolean»"
             }
           },
           "201": {
@@ -3834,11 +4365,17 @@
     },
     "/api/personalCenter/modifyTradeUrl": {
       "post": {
-        "tags": ["个人中心相关"],
+        "tags": [
+          "个人中心相关"
+        ],
         "summary": "修改交易URL",
         "operationId": "modifyTradeUrlUsingPOST",
-        "consumes": ["application/json"],
-        "produces": ["*/*"],
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "*/*"
+        ],
         "parameters": [
           {
             "name": "smsCode",
@@ -3859,8 +4396,8 @@
           "200": {
             "description": "OK",
             "schema": {
-              "$ref": "#/definitions/ResultData«boolean»",
-              "originalRef": "ResultData«boolean»"
+              "originalRef": "ResultData«boolean»",
+              "$ref": "#/definitions/ResultData«boolean»"
             }
           },
           "201": {
@@ -3881,10 +4418,14 @@
     },
     "/api/personalCenter/openFreeBox": {
       "get": {
-        "tags": ["个人中心相关"],
+        "tags": [
+          "个人中心相关"
+        ],
         "summary": "开免费箱子",
         "operationId": "openFreeBoxUsingGET",
-        "produces": ["*/*"],
+        "produces": [
+          "*/*"
+        ],
         "parameters": [
           {
             "name": "boxId",
@@ -3908,8 +4449,8 @@
           "200": {
             "description": "OK",
             "schema": {
-              "$ref": "#/definitions/ResultData«List«OpenBoxResultVo»»",
-              "originalRef": "ResultData«List«OpenBoxResultVo»»"
+              "originalRef": "ResultData«List«OpenBoxResultVo»»",
+              "$ref": "#/definitions/ResultData«List«OpenBoxResultVo»»"
             }
           },
           "401": {
@@ -3927,12 +4468,18 @@
     },
     "/api/personalCenter/ornamentRetrieval": {
       "post": {
-        "tags": ["个人中心相关"],
+        "tags": [
+          "个人中心相关"
+        ],
         "summary": "饰品取回到steam",
         "description": "ids为奖券id，多个以逗号(,)隔开",
         "operationId": "ornamentRetrievalUsingPOST",
-        "consumes": ["application/json"],
-        "produces": ["*/*"],
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "*/*"
+        ],
         "parameters": [
           {
             "name": "ids",
@@ -3951,8 +4498,8 @@
           "200": {
             "description": "OK",
             "schema": {
-              "$ref": "#/definitions/ResultData«List«OrnamentRetrievalResultVo»»",
-              "originalRef": "ResultData«List«OrnamentRetrievalResultVo»»"
+              "originalRef": "ResultData«List«OrnamentRetrievalResultVo»»",
+              "$ref": "#/definitions/ResultData«List«OrnamentRetrievalResultVo»»"
             }
           },
           "201": {
@@ -3973,12 +4520,18 @@
     },
     "/api/personalCenter/securityCheck": {
       "post": {
-        "tags": ["个人中心相关"],
+        "tags": [
+          "个人中心相关"
+        ],
         "summary": "安全验证",
         "description": "配合获取验证码或者获取邮箱验证码进行操作,type:0->手机验证码,1->邮箱验证码,验证通过后将返回一次性安全操作码",
         "operationId": "securityCheckUsingPOST",
-        "consumes": ["application/json"],
-        "produces": ["*/*"],
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "*/*"
+        ],
         "parameters": [
           {
             "name": "id",
@@ -4004,8 +4557,8 @@
           "200": {
             "description": "OK",
             "schema": {
-              "$ref": "#/definitions/ResultData«string»",
-              "originalRef": "ResultData«string»"
+              "originalRef": "ResultData«string»",
+              "$ref": "#/definitions/ResultData«string»"
             }
           },
           "201": {
@@ -4026,11 +4579,17 @@
     },
     "/api/personalCenter/updateTradeUrl": {
       "post": {
-        "tags": ["个人中心相关"],
+        "tags": [
+          "个人中心相关"
+        ],
         "summary": "修改交易URL",
         "operationId": "updateTradeUrlUsingPOST",
-        "consumes": ["application/json"],
-        "produces": ["*/*"],
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "*/*"
+        ],
         "parameters": [
           {
             "name": "tradeUrl",
@@ -4044,8 +4603,8 @@
           "200": {
             "description": "OK",
             "schema": {
-              "$ref": "#/definitions/ResultData«boolean»",
-              "originalRef": "ResultData«boolean»"
+              "originalRef": "ResultData«boolean»",
+              "$ref": "#/definitions/ResultData«boolean»"
             }
           },
           "201": {
@@ -4066,17 +4625,23 @@
     },
     "/api/personalCenter/uploadAvatar": {
       "post": {
-        "tags": ["个人中心相关"],
+        "tags": [
+          "个人中心相关"
+        ],
         "summary": "用户头像修改",
         "operationId": "uploadAvatarUsingPOST",
-        "consumes": ["application/json"],
-        "produces": ["*/*"],
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "*/*"
+        ],
         "responses": {
           "200": {
             "description": "OK",
             "schema": {
-              "$ref": "#/definitions/ResultData«string»",
-              "originalRef": "ResultData«string»"
+              "originalRef": "ResultData«string»",
+              "$ref": "#/definitions/ResultData«string»"
             }
           },
           "201": {
@@ -4097,11 +4662,17 @@
     },
     "/api/personalCenter/uploadAvatarV2": {
       "post": {
-        "tags": ["个人中心相关"],
+        "tags": [
+          "个人中心相关"
+        ],
         "summary": "用户头像修改V2",
         "operationId": "uploadAvatarV2UsingPOST",
-        "consumes": ["application/json"],
-        "produces": ["*/*"],
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "*/*"
+        ],
         "parameters": [
           {
             "name": "headPic",
@@ -4115,8 +4686,8 @@
           "200": {
             "description": "OK",
             "schema": {
-              "$ref": "#/definitions/ResultData«boolean»",
-              "originalRef": "ResultData«boolean»"
+              "originalRef": "ResultData«boolean»",
+              "$ref": "#/definitions/ResultData«boolean»"
             }
           },
           "201": {
@@ -4137,12 +4708,18 @@
     },
     "/api/personalCenter/useRewardVoucher": {
       "post": {
-        "tags": ["个人中心相关"],
+        "tags": [
+          "个人中心相关"
+        ],
         "summary": "批量使用礼包兑换券",
         "description": "只有rewardVoucherType=0的礼包兑换券才能选中进行兑换,rewardVoucherType=1表示是折扣券,这种无需兑换",
         "operationId": "useRewardVoucherUsingPOST",
-        "consumes": ["application/json"],
-        "produces": ["*/*"],
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "*/*"
+        ],
         "parameters": [
           {
             "name": "rewardVoucherIds",
@@ -4161,8 +4738,8 @@
           "200": {
             "description": "OK",
             "schema": {
-              "$ref": "#/definitions/ResultData«List«UseRewardVoucherResultVo»»",
-              "originalRef": "ResultData«List«UseRewardVoucherResultVo»»"
+              "originalRef": "ResultData«List«UseRewardVoucherResultVo»»",
+              "$ref": "#/definitions/ResultData«List«UseRewardVoucherResultVo»»"
             }
           },
           "201": {
@@ -4181,19 +4758,54 @@
         "x-order": "2147483647"
       }
     },
-    "/api/promotion/getPromotionInfo": {
+    "/api/promotion/channel/listArchived": {
       "get": {
-        "tags": ["推广中心相关"],
-        "summary": "获取推广信息",
-        "description": "推广码链接说明:前端需要根据推广码生成推广链接用户访问推广链接时将推广码存下,注册时自动填充.如果用户使用了不同的推广链接,会覆盖上一个推广链接的推广码",
-        "operationId": "getPromotionInfoUsingGET",
-        "produces": ["*/*"],
+        "tags": [
+          "推广中心相关"
+        ],
+        "summary": "归档展示渠道列表",
+        "operationId": "listChannelArchivedUsingGET",
+        "produces": [
+          "*/*"
+        ],
         "responses": {
           "200": {
             "description": "OK",
             "schema": {
-              "$ref": "#/definitions/ResultData«PromotionInfoVo»",
-              "originalRef": "ResultData«PromotionInfoVo»"
+              "originalRef": "ResultData«Map«string,List«PromotionChannel»»»",
+              "$ref": "#/definitions/ResultData«Map«string,List«PromotionChannel»»»"
+            }
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        },
+        "x-order": "2147483647"
+      }
+    },
+    "/api/promotion/getPromotionInfo": {
+      "get": {
+        "tags": [
+          "推广中心相关"
+        ],
+        "summary": "获取推广信息",
+        "description": "推广码链接说明:前端需要根据推广码生成推广链接用户访问推广链接时将推广码存下,注册时自动填充.如果用户使用了不同的推广链接,会覆盖上一个推广链接的推广码",
+        "operationId": "getPromotionInfoUsingGET",
+        "produces": [
+          "*/*"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "originalRef": "ResultData«PromotionInfoVo»",
+              "$ref": "#/definitions/ResultData«PromotionInfoVo»"
             }
           },
           "401": {
@@ -4211,16 +4823,20 @@
     },
     "/api/promotion/list": {
       "get": {
-        "tags": ["推广中心相关"],
+        "tags": [
+          "推广中心相关"
+        ],
         "summary": "推广等级配置列表",
         "operationId": "listUsingGET_1",
-        "produces": ["*/*"],
+        "produces": [
+          "*/*"
+        ],
         "responses": {
           "200": {
             "description": "OK",
             "schema": {
-              "$ref": "#/definitions/ResultData«List«Promotion»»",
-              "originalRef": "ResultData«List«Promotion»»"
+              "originalRef": "ResultData«List«Promotion»»",
+              "$ref": "#/definitions/ResultData«List«Promotion»»"
             }
           },
           "401": {
@@ -4238,11 +4854,17 @@
     },
     "/api/promotion/modifyInvitationCode": {
       "post": {
-        "tags": ["推广中心相关"],
+        "tags": [
+          "推广中心相关"
+        ],
         "summary": "修改推广码",
         "operationId": "modifyInvitationCodeUsingPOST",
-        "consumes": ["application/json"],
-        "produces": ["*/*"],
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "*/*"
+        ],
         "parameters": [
           {
             "name": "invitationCode",
@@ -4256,8 +4878,8 @@
           "200": {
             "description": "OK",
             "schema": {
-              "$ref": "#/definitions/ResultData«boolean»",
-              "originalRef": "ResultData«boolean»"
+              "originalRef": "ResultData«boolean»",
+              "$ref": "#/definitions/ResultData«boolean»"
             }
           },
           "201": {
@@ -4278,10 +4900,14 @@
     },
     "/api/promotion/myPromotionLogPage": {
       "get": {
-        "tags": ["推广中心相关"],
+        "tags": [
+          "推广中心相关"
+        ],
         "summary": "我的推广记录",
         "operationId": "myPromotionLogPageUsingGET",
-        "produces": ["*/*"],
+        "produces": [
+          "*/*"
+        ],
         "parameters": [
           {
             "name": "page",
@@ -4306,8 +4932,8 @@
           "200": {
             "description": "OK",
             "schema": {
-              "$ref": "#/definitions/ResultData«PageInfo«MyPromotionLogPageVo»»",
-              "originalRef": "ResultData«PageInfo«MyPromotionLogPageVo»»"
+              "originalRef": "ResultData«PageInfo«MyPromotionLogPageVo»»",
+              "$ref": "#/definitions/ResultData«PageInfo«MyPromotionLogPageVo»»"
             }
           },
           "401": {
@@ -4325,11 +4951,15 @@
     },
     "/api/recharge/calculateAmount": {
       "get": {
-        "tags": ["充值相关"],
+        "tags": [
+          "充值相关"
+        ],
         "summary": "根据充值代币数量计算需要的人民币金额",
         "description": "该金额已经减去用户等级锁对应的充值优惠",
         "operationId": "calculateAmountUsingGET",
-        "produces": ["*/*"],
+        "produces": [
+          "*/*"
+        ],
         "parameters": [
           {
             "name": "quantity",
@@ -4343,8 +4973,8 @@
           "200": {
             "description": "OK",
             "schema": {
-              "$ref": "#/definitions/ResultData«AmountInfoVo»",
-              "originalRef": "ResultData«AmountInfoVo»"
+              "originalRef": "ResultData«AmountInfoVo»",
+              "$ref": "#/definitions/ResultData«AmountInfoVo»"
             }
           },
           "401": {
@@ -4362,11 +4992,15 @@
     },
     "/api/recharge/calculateQuantity": {
       "get": {
-        "tags": ["充值相关"],
+        "tags": [
+          "充值相关"
+        ],
         "summary": "根据充值代币数量计算需要的人民币金额",
         "description": "该金额已经减去用户等级锁对应的充值优惠",
         "operationId": "calculateQuantityUsingGET",
-        "produces": ["*/*"],
+        "produces": [
+          "*/*"
+        ],
         "parameters": [
           {
             "name": "amount",
@@ -4380,8 +5014,8 @@
           "200": {
             "description": "OK",
             "schema": {
-              "$ref": "#/definitions/ResultData«AmountInfoVo»",
-              "originalRef": "ResultData«AmountInfoVo»"
+              "originalRef": "ResultData«AmountInfoVo»",
+              "$ref": "#/definitions/ResultData«AmountInfoVo»"
             }
           },
           "401": {
@@ -4399,16 +5033,20 @@
     },
     "/api/recharge/coupon/rechargeCouponList": {
       "get": {
-        "tags": ["充值相关"],
+        "tags": [
+          "充值相关"
+        ],
         "summary": "折扣券管理->充值折扣券分页",
         "operationId": "rechargeCouponListUsingGET",
-        "produces": ["*/*"],
+        "produces": [
+          "*/*"
+        ],
         "responses": {
           "200": {
             "description": "OK",
             "schema": {
-              "$ref": "#/definitions/ResultData«List«RechargeCouponRecordVo»»",
-              "originalRef": "ResultData«List«RechargeCouponRecordVo»»"
+              "originalRef": "ResultData«List«RechargeCouponRecordVo»»",
+              "$ref": "#/definitions/ResultData«List«RechargeCouponRecordVo»»"
             }
           },
           "401": {
@@ -4426,12 +5064,18 @@
     },
     "/api/recharge/makePayment": {
       "post": {
-        "tags": ["充值相关"],
+        "tags": [
+          "充值相关"
+        ],
         "summary": "支付下单",
         "description": "在个人中心相关,找到:获取我的折扣券接口,可以获得可用的优惠券,如需使用优惠券,则将couponId传入本接口,不使用,则留空或-1",
         "operationId": "makePaymentUsingPOST",
-        "consumes": ["application/json"],
-        "produces": ["*/*"],
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "*/*"
+        ],
         "parameters": [
           {
             "name": "couponId",
@@ -4469,8 +5113,8 @@
           "200": {
             "description": "OK",
             "schema": {
-              "$ref": "#/definitions/ResultData«PaymentVo»",
-              "originalRef": "ResultData«PaymentVo»"
+              "originalRef": "ResultData«PaymentVo»",
+              "$ref": "#/definitions/ResultData«PaymentVo»"
             }
           },
           "201": {
@@ -4491,11 +5135,15 @@
     },
     "/api/recharge/paymentState": {
       "get": {
-        "tags": ["充值相关"],
+        "tags": [
+          "充值相关"
+        ],
         "summary": "查询充值结果",
         "description": "0->微信,1->支付宝,state:0->未支付,1->已支付2->已取消.\n",
         "operationId": "paymentStateUsingGET",
-        "produces": ["*/*"],
+        "produces": [
+          "*/*"
+        ],
         "parameters": [
           {
             "name": "orderId",
@@ -4509,8 +5157,8 @@
           "200": {
             "description": "OK",
             "schema": {
-              "$ref": "#/definitions/ResultData«RechargeOrderVo»",
-              "originalRef": "ResultData«RechargeOrderVo»"
+              "originalRef": "ResultData«RechargeOrderVo»",
+              "$ref": "#/definitions/ResultData«RechargeOrderVo»"
             }
           },
           "401": {
@@ -4528,16 +5176,20 @@
     },
     "/api/recharge/rechargeConfig": {
       "get": {
-        "tags": ["充值相关"],
+        "tags": [
+          "充值相关"
+        ],
         "summary": "支付渠道、汇率",
         "operationId": "rechargeConfigUsingGET",
-        "produces": ["*/*"],
+        "produces": [
+          "*/*"
+        ],
         "responses": {
           "200": {
             "description": "OK",
             "schema": {
-              "$ref": "#/definitions/ResultData«RechargeConfigVo»",
-              "originalRef": "ResultData«RechargeConfigVo»"
+              "originalRef": "ResultData«RechargeConfigVo»",
+              "$ref": "#/definitions/ResultData«RechargeConfigVo»"
             }
           },
           "401": {
@@ -4555,17 +5207,21 @@
     },
     "/api/recharge/rechargeDiscountInfo": {
       "get": {
-        "tags": ["充值相关"],
+        "tags": [
+          "充值相关"
+        ],
         "summary": "获取充值优惠信息",
         "description": "返回系统的代币比例和当前用户等级所对应的折扣",
         "operationId": "rechargeDiscountInfoUsingGET",
-        "produces": ["*/*"],
+        "produces": [
+          "*/*"
+        ],
         "responses": {
           "200": {
             "description": "OK",
             "schema": {
-              "$ref": "#/definitions/ResultData«RechargeDiscountInfoVo»",
-              "originalRef": "ResultData«RechargeDiscountInfoVo»"
+              "originalRef": "ResultData«RechargeDiscountInfoVo»",
+              "$ref": "#/definitions/ResultData«RechargeDiscountInfoVo»"
             }
           },
           "401": {
@@ -4583,11 +5239,17 @@
     },
     "/api/recharge/useCard": {
       "post": {
-        "tags": ["充值相关"],
+        "tags": [
+          "充值相关"
+        ],
         "summary": "使用充值卡",
         "operationId": "useCardUsingPOST",
-        "consumes": ["application/json"],
-        "produces": ["*/*"],
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "*/*"
+        ],
         "parameters": [
           {
             "name": "cardNumber",
@@ -4608,8 +5270,8 @@
           "200": {
             "description": "OK",
             "schema": {
-              "$ref": "#/definitions/ResultData«boolean»",
-              "originalRef": "ResultData«boolean»"
+              "originalRef": "ResultData«boolean»",
+              "$ref": "#/definitions/ResultData«boolean»"
             }
           },
           "201": {
@@ -4630,11 +5292,17 @@
     },
     "/api/recharge/useCdkey": {
       "post": {
-        "tags": ["充值相关"],
+        "tags": [
+          "充值相关"
+        ],
         "summary": "使用CDKEY",
         "operationId": "useCdkeyUsingPOST",
-        "consumes": ["application/json"],
-        "produces": ["*/*"],
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "*/*"
+        ],
         "parameters": [
           {
             "name": "cdkey",
@@ -4648,8 +5316,8 @@
           "200": {
             "description": "OK",
             "schema": {
-              "$ref": "#/definitions/ResultData«boolean»",
-              "originalRef": "ResultData«boolean»"
+              "originalRef": "ResultData«boolean»",
+              "$ref": "#/definitions/ResultData«boolean»"
             }
           },
           "201": {
@@ -4670,16 +5338,20 @@
     },
     "/api/redPacket/listCycleRedPacket": {
       "get": {
-        "tags": ["红包相关"],
+        "tags": [
+          "红包相关"
+        ],
         "summary": "红包列表",
         "operationId": "listCycleRedPacketUsingGET",
-        "produces": ["*/*"],
+        "produces": [
+          "*/*"
+        ],
         "responses": {
           "200": {
             "description": "OK",
             "schema": {
-              "$ref": "#/definitions/ResultData«List«CycleRedPacketVo»»",
-              "originalRef": "ResultData«List«CycleRedPacketVo»»"
+              "originalRef": "ResultData«List«CycleRedPacketVo»»",
+              "$ref": "#/definitions/ResultData«List«CycleRedPacketVo»»"
             }
           },
           "401": {
@@ -4697,11 +5369,17 @@
     },
     "/api/redPacket/receive": {
       "post": {
-        "tags": ["红包相关"],
+        "tags": [
+          "红包相关"
+        ],
         "summary": "领取红包",
         "operationId": "receiveUsingPOST",
-        "consumes": ["application/json"],
-        "produces": ["*/*"],
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "*/*"
+        ],
         "parameters": [
           {
             "name": "code",
@@ -4715,8 +5393,8 @@
           "200": {
             "description": "OK",
             "schema": {
-              "$ref": "#/definitions/ResultData«string»",
-              "originalRef": "ResultData«string»"
+              "originalRef": "ResultData«string»",
+              "$ref": "#/definitions/ResultData«string»"
             }
           },
           "201": {
@@ -4737,11 +5415,17 @@
     },
     "/api/redPacket/receiveCycleRedPacket": {
       "post": {
-        "tags": ["红包相关"],
+        "tags": [
+          "红包相关"
+        ],
         "summary": "领取周期红包",
         "operationId": "receiveCycleRedPacketUsingPOST",
-        "consumes": ["application/json"],
-        "produces": ["*/*"],
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "*/*"
+        ],
         "parameters": [
           {
             "name": "redPacketId",
@@ -4756,8 +5440,8 @@
           "200": {
             "description": "OK",
             "schema": {
-              "$ref": "#/definitions/ResultData«string»",
-              "originalRef": "ResultData«string»"
+              "originalRef": "ResultData«string»",
+              "$ref": "#/definitions/ResultData«string»"
             }
           },
           "201": {
@@ -4776,13 +5460,48 @@
         "x-order": "2147483647"
       }
     },
+    "/api/stat/onlineStat": {
+      "get": {
+        "tags": [
+          "站点维度数据"
+        ],
+        "summary": "在线统计",
+        "operationId": "onlineStatUsingGET",
+        "produces": [
+          "*/*"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "originalRef": "ResultData«BizStatVo»",
+              "$ref": "#/definitions/ResultData«BizStatVo»"
+            }
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        },
+        "x-order": "2147483647"
+      }
+    },
     "/api/stat/recentDrop": {
       "get": {
-        "tags": ["站点维度数据"],
+        "tags": [
+          "站点维度数据"
+        ],
         "summary": "最近掉落",
         "description": "limit: 长度限制, isTop: 是否最佳掉落",
         "operationId": "recentDropUsingGET",
-        "produces": ["*/*"],
+        "produces": [
+          "*/*"
+        ],
         "parameters": [
           {
             "name": "isTop",
@@ -4806,8 +5525,8 @@
           "200": {
             "description": "OK",
             "schema": {
-              "$ref": "#/definitions/ResultData«List«RecentDropVo»»",
-              "originalRef": "ResultData«List«RecentDropVo»»"
+              "originalRef": "ResultData«List«RecentDropVo»»",
+              "$ref": "#/definitions/ResultData«List«RecentDropVo»»"
             }
           },
           "401": {
@@ -4825,12 +5544,18 @@
     },
     "/api/store/exchangeVoucherStock": {
       "post": {
-        "tags": ["兑换券商城相关"],
+        "tags": [
+          "兑换券商城相关"
+        ],
         "summary": "商城商品兑换",
         "description": "在个人中心相关,找到:获取我的折扣券接口,可以获得可用的优惠券,如需使用优惠券,则将couponId传入本接口,不使用,则留空或-1",
         "operationId": "exchangeVoucherStockUsingPOST",
-        "consumes": ["application/json"],
-        "produces": ["*/*"],
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "*/*"
+        ],
         "parameters": [
           {
             "name": "couponId",
@@ -4853,8 +5578,8 @@
           "200": {
             "description": "OK",
             "schema": {
-              "$ref": "#/definitions/ResultData«boolean»",
-              "originalRef": "ResultData«boolean»"
+              "originalRef": "ResultData«boolean»",
+              "$ref": "#/definitions/ResultData«boolean»"
             }
           },
           "201": {
@@ -4875,16 +5600,20 @@
     },
     "/api/store/filters": {
       "get": {
-        "tags": ["兑换券商城相关"],
+        "tags": [
+          "兑换券商城相关"
+        ],
         "summary": "获取steam选项tags",
         "operationId": "getTagsUsingGET",
-        "produces": ["*/*"],
+        "produces": [
+          "*/*"
+        ],
         "responses": {
           "200": {
             "description": "OK",
             "schema": {
-              "$ref": "#/definitions/ResultData«List«SteamTagVo»»",
-              "originalRef": "ResultData«List«SteamTagVo»»"
+              "originalRef": "ResultData«List«SteamTagVo»»",
+              "$ref": "#/definitions/ResultData«List«SteamTagVo»»"
             }
           },
           "401": {
@@ -4902,10 +5631,14 @@
     },
     "/api/store/getItemPage": {
       "get": {
-        "tags": ["兑换券商城相关"],
+        "tags": [
+          "兑换券商城相关"
+        ],
         "summary": "商城商品分页",
         "operationId": "getVoucherStockPageUsingGET",
-        "produces": ["*/*"],
+        "produces": [
+          "*/*"
+        ],
         "parameters": [
           {
             "name": "exterior",
@@ -4984,8 +5717,8 @@
           "200": {
             "description": "OK",
             "schema": {
-              "$ref": "#/definitions/ResultData«PageInfo«VoucherStockPageVo»»",
-              "originalRef": "ResultData«PageInfo«VoucherStockPageVo»»"
+              "originalRef": "ResultData«PageInfo«VoucherStockPageVo»»",
+              "$ref": "#/definitions/ResultData«PageInfo«VoucherStockPageVo»»"
             }
           },
           "401": {
@@ -5003,16 +5736,20 @@
     },
     "/api/upgrade/getUpgradeConfig": {
       "get": {
-        "tags": ["升级相关"],
+        "tags": [
+          "升级相关"
+        ],
         "summary": "获取升级配置",
         "operationId": "getUpgradeConfigUsingGET",
-        "produces": ["*/*"],
+        "produces": [
+          "*/*"
+        ],
         "responses": {
           "200": {
             "description": "OK",
             "schema": {
-              "$ref": "#/definitions/ResultData«UpgradeConfigVo»",
-              "originalRef": "ResultData«UpgradeConfigVo»"
+              "originalRef": "ResultData«UpgradeConfigVo»",
+              "$ref": "#/definitions/ResultData«UpgradeConfigVo»"
             }
           },
           "401": {
@@ -5030,10 +5767,14 @@
     },
     "/api/upgrade/myVoucher": {
       "get": {
-        "tags": ["升级相关"],
+        "tags": [
+          "升级相关"
+        ],
         "summary": "我的兑换券",
         "operationId": "myVoucherUsingGET",
-        "produces": ["*/*"],
+        "produces": [
+          "*/*"
+        ],
         "parameters": [
           {
             "name": "page",
@@ -5058,8 +5799,8 @@
           "200": {
             "description": "OK",
             "schema": {
-              "$ref": "#/definitions/ResultData«ExtPageInfo«Voucher,MyVoucherCountVo»»",
-              "originalRef": "ResultData«ExtPageInfo«Voucher,MyVoucherCountVo»»"
+              "originalRef": "ResultData«PageInfo«Voucher»»",
+              "$ref": "#/definitions/ResultData«PageInfo«Voucher»»"
             }
           },
           "401": {
@@ -5077,10 +5818,14 @@
     },
     "/api/upgrade/page": {
       "get": {
-        "tags": ["升级相关"],
+        "tags": [
+          "升级相关"
+        ],
         "summary": "升级礼物分页",
         "operationId": "pageUsingGET_1",
-        "produces": ["*/*"],
+        "produces": [
+          "*/*"
+        ],
         "parameters": [
           {
             "name": "exterior",
@@ -5122,6 +5867,20 @@
             "format": "int32"
           },
           {
+            "name": "priceEnd",
+            "in": "query",
+            "description": "priceEnd",
+            "required": false,
+            "type": "number"
+          },
+          {
+            "name": "priceStart",
+            "in": "query",
+            "description": "priceStart",
+            "required": false,
+            "type": "number"
+          },
+          {
             "name": "quality",
             "in": "query",
             "description": "品质",
@@ -5147,8 +5906,8 @@
           "200": {
             "description": "OK",
             "schema": {
-              "$ref": "#/definitions/ResultData«PageInfo«UpgradeGiftPageVo»»",
-              "originalRef": "ResultData«PageInfo«UpgradeGiftPageVo»»"
+              "originalRef": "ResultData«PageInfo«UpgradeGiftPageVo»»",
+              "$ref": "#/definitions/ResultData«PageInfo«UpgradeGiftPageVo»»"
             }
           },
           "401": {
@@ -5166,11 +5925,15 @@
     },
     "/api/upgrade/upgradeRecordPage": {
       "get": {
-        "tags": ["升级相关"],
+        "tags": [
+          "升级相关"
+        ],
         "summary": "升级记录分页",
         "description": "state:1->升级成功,2->升级失败",
         "operationId": "upgradeRecordPageUsingGET",
-        "produces": ["*/*"],
+        "produces": [
+          "*/*"
+        ],
         "parameters": [
           {
             "name": "page",
@@ -5195,8 +5958,8 @@
           "200": {
             "description": "OK",
             "schema": {
-              "$ref": "#/definitions/ResultData«PageInfo«UpgradePageVo»»",
-              "originalRef": "ResultData«PageInfo«UpgradePageVo»»"
+              "originalRef": "ResultData«PageInfo«UpgradePageVo»»",
+              "$ref": "#/definitions/ResultData«PageInfo«UpgradePageVo»»"
             }
           },
           "401": {
@@ -5214,11 +5977,17 @@
     },
     "/api/upgrade/v3/startUpgrade": {
       "post": {
-        "tags": ["升级相关"],
+        "tags": [
+          "升级相关"
+        ],
         "summary": "V3升级",
         "operationId": "v3StartUpgradeUsingPOST",
-        "consumes": ["application/json"],
-        "produces": ["*/*"],
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "*/*"
+        ],
         "parameters": [
           {
             "name": "quantity",
@@ -5228,38 +5997,26 @@
             "type": "number"
           },
           {
-            "name": "requestRollCodeHigh",
+            "name": "upgradeGiftIds",
             "in": "query",
-            "description": "ROLL点上界, 闭区间",
-            "required": false,
-            "type": "integer",
-            "default": 0,
-            "format": "int32"
-          },
-          {
-            "name": "requestRollCodeLow",
-            "in": "query",
-            "description": "ROLL点下界, 闭区间",
-            "required": false,
-            "type": "integer",
-            "default": 0,
-            "format": "int32"
-          },
-          {
-            "name": "upgradeGiftId",
-            "in": "query",
-            "description": "upgradeGiftId",
+            "description": "upgradeGiftIds",
             "required": true,
-            "type": "integer",
-            "format": "int64"
+            "type": "string"
+          },
+          {
+            "name": "vouchers",
+            "in": "query",
+            "description": "升级使用饰品",
+            "required": false,
+            "type": "string"
           }
         ],
         "responses": {
           "200": {
             "description": "OK",
             "schema": {
-              "$ref": "#/definitions/ResultData«UpgradeResultVo»",
-              "originalRef": "ResultData«UpgradeResultVo»"
+              "originalRef": "ResultData«List«UpgradeResultVo»»",
+              "$ref": "#/definitions/ResultData«List«UpgradeResultVo»»"
             }
           },
           "201": {
@@ -5280,11 +6037,17 @@
     },
     "/api/zbt/callback": {
       "post": {
-        "tags": ["前端无需对接"],
+        "tags": [
+          "前端无需对接"
+        ],
         "summary": "callback",
         "operationId": "callbackUsingPOST",
-        "consumes": ["application/json"],
-        "produces": ["text/plain"],
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "text/plain"
+        ],
         "parameters": [
           {
             "in": "body",
@@ -5330,8 +6093,8 @@
         "activityProgress": {
           "type": "array",
           "items": {
-            "$ref": "#/definitions/ActivityProgressVo",
-            "originalRef": "ActivityProgressVo"
+            "originalRef": "ActivityProgressVo",
+            "$ref": "#/definitions/ActivityProgressVo"
           }
         },
         "currentActivity": {
@@ -5372,8 +6135,8 @@
         "prizes": {
           "type": "array",
           "items": {
-            "$ref": "#/definitions/PrizeVo",
-            "originalRef": "PrizeVo"
+            "originalRef": "PrizeVo",
+            "$ref": "#/definitions/PrizeVo"
           }
         },
         "remark": {
@@ -5455,6 +6218,9 @@
     "AuthLoginVo": {
       "type": "object",
       "properties": {
+        "promotionChannelId": {
+          "type": "string"
+        },
         "register": {
           "type": "boolean"
         },
@@ -5604,8 +6370,8 @@
         "userOpenBoxRecord": {
           "type": "array",
           "items": {
-            "$ref": "#/definitions/BattleBoxGainVo",
-            "originalRef": "BattleBoxGainVo"
+            "originalRef": "BattleBoxGainVo",
+            "$ref": "#/definitions/BattleBoxGainVo"
           }
         },
         "winner": {
@@ -5636,8 +6402,8 @@
         "userOpenBoxRecord": {
           "type": "array",
           "items": {
-            "$ref": "#/definitions/BattleBoxRecordVo",
-            "originalRef": "BattleBoxRecordVo"
+            "originalRef": "BattleBoxRecordVo",
+            "$ref": "#/definitions/BattleBoxRecordVo"
           }
         },
         "winner": {
@@ -5703,25 +6469,25 @@
       "type": "object",
       "properties": {
         "myReward": {
-          "$ref": "#/definitions/BattleRankVo",
-          "originalRef": "BattleRankVo"
+          "originalRef": "BattleRankVo",
+          "$ref": "#/definitions/BattleRankVo"
         },
         "todayRank": {
           "type": "array",
           "items": {
-            "$ref": "#/definitions/BattleRankVo",
-            "originalRef": "BattleRankVo"
+            "originalRef": "BattleRankVo",
+            "$ref": "#/definitions/BattleRankVo"
           }
         },
         "topOneYesterday": {
-          "$ref": "#/definitions/BattleRankVo",
-          "originalRef": "BattleRankVo"
+          "originalRef": "BattleRankVo",
+          "$ref": "#/definitions/BattleRankVo"
         },
         "yesterdayRank": {
           "type": "array",
           "items": {
-            "$ref": "#/definitions/BattleRankVo",
-            "originalRef": "BattleRankVo"
+            "originalRef": "BattleRankVo",
+            "$ref": "#/definitions/BattleRankVo"
           }
         }
       },
@@ -5759,8 +6525,8 @@
         "boxOpenRecords": {
           "type": "array",
           "items": {
-            "$ref": "#/definitions/BattleCustomerOpenBoxVo",
-            "originalRef": "BattleCustomerOpenBoxVo"
+            "originalRef": "BattleCustomerOpenBoxVo",
+            "$ref": "#/definitions/BattleCustomerOpenBoxVo"
           }
         },
         "createDate": {
@@ -5770,17 +6536,17 @@
         "customerGainList": {
           "type": "array",
           "items": {
-            "$ref": "#/definitions/BattleCustomerGainVo",
-            "originalRef": "BattleCustomerGainVo"
+            "originalRef": "BattleCustomerGainVo",
+            "$ref": "#/definitions/BattleCustomerGainVo"
           }
         },
         "info": {
-          "$ref": "#/definitions/BattleVo",
-          "originalRef": "BattleVo"
+          "originalRef": "BattleVo",
+          "$ref": "#/definitions/BattleVo"
         },
         "randKeyVo": {
-          "$ref": "#/definitions/RandKeyVo",
-          "originalRef": "RandKeyVo"
+          "originalRef": "RandKeyVo",
+          "$ref": "#/definitions/RandKeyVo"
         }
       },
       "title": "BattleResultVo"
@@ -5848,12 +6614,58 @@
         "winners": {
           "type": "array",
           "items": {
-            "$ref": "#/definitions/WinnerInfo",
-            "originalRef": "WinnerInfo"
+            "originalRef": "WinnerInfo",
+            "$ref": "#/definitions/WinnerInfo"
           }
         }
       },
       "title": "BattleVo"
+    },
+    "BizStatVo": {
+      "type": "object",
+      "properties": {
+        "activeSession": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "activeUser": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "battleCnt": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "battleCnt24": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "boxCnt": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "boxCnt24": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "upgradeCnt": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "upgradeCnt24": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "userTotal": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "userTotal24": {
+          "type": "integer",
+          "format": "int64"
+        }
+      },
+      "title": "BizStatVo"
     },
     "BoxDetailVo": {
       "type": "object",
@@ -5929,15 +6741,15 @@
         "boxGiftVo": {
           "type": "array",
           "items": {
-            "$ref": "#/definitions/BoxGiftVo",
-            "originalRef": "BoxGiftVo"
+            "originalRef": "BoxGiftVo",
+            "$ref": "#/definitions/BoxGiftVo"
           }
         },
         "gradeGiftProb": {
           "type": "array",
           "items": {
-            "$ref": "#/definitions/GradeGiftProb",
-            "originalRef": "GradeGiftProb"
+            "originalRef": "GradeGiftProb",
+            "$ref": "#/definitions/GradeGiftProb"
           }
         }
       },
@@ -6116,8 +6928,8 @@
         "boxList": {
           "type": "array",
           "items": {
-            "$ref": "#/definitions/BoxPageVo",
-            "originalRef": "BoxPageVo"
+            "originalRef": "BoxPageVo",
+            "$ref": "#/definitions/BoxPageVo"
           }
         },
         "boxType": {
@@ -6198,8 +7010,8 @@
         "customerBounsVos": {
           "type": "array",
           "items": {
-            "$ref": "#/definitions/GradeCustomerVo",
-            "originalRef": "GradeCustomerVo"
+            "originalRef": "GradeCustomerVo",
+            "$ref": "#/definitions/GradeCustomerVo"
           }
         },
         "customerExp": {
@@ -6238,6 +7050,9 @@
         "experiencePercentage": {
           "type": "number",
           "format": "double"
+        },
+        "firstRechargeRebate": {
+          "type": "number"
         },
         "grade": {
           "type": "integer",
@@ -6283,6 +7098,12 @@
           "type": "string"
         },
         "phone": {
+          "type": "string"
+        },
+        "promotionChannelId": {
+          "type": "string"
+        },
+        "promotionChannelName": {
           "type": "string"
         },
         "rebateType": {
@@ -6394,8 +7215,8 @@
       "type": "object",
       "properties": {
         "extData": {
-          "$ref": "#/definitions/MyVoucherCountVo",
-          "originalRef": "MyVoucherCountVo"
+          "originalRef": "MyVoucherCountVo",
+          "$ref": "#/definitions/MyVoucherCountVo"
         },
         "page": {
           "type": "integer",
@@ -6404,8 +7225,8 @@
         "pageData": {
           "type": "array",
           "items": {
-            "$ref": "#/definitions/MyVoucherVo",
-            "originalRef": "MyVoucherVo"
+            "originalRef": "MyVoucherVo",
+            "$ref": "#/definitions/MyVoucherVo"
           }
         },
         "pageSize": {
@@ -6422,39 +7243,6 @@
         }
       },
       "title": "ExtPageInfo«MyVoucherVo,MyVoucherCountVo»"
-    },
-    "ExtPageInfo«Voucher,MyVoucherCountVo»": {
-      "type": "object",
-      "properties": {
-        "extData": {
-          "$ref": "#/definitions/MyVoucherCountVo",
-          "originalRef": "MyVoucherCountVo"
-        },
-        "page": {
-          "type": "integer",
-          "format": "int32"
-        },
-        "pageData": {
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/Voucher",
-            "originalRef": "Voucher"
-          }
-        },
-        "pageSize": {
-          "type": "integer",
-          "format": "int32"
-        },
-        "totalPages": {
-          "type": "integer",
-          "format": "int32"
-        },
-        "totalRows": {
-          "type": "integer",
-          "format": "int32"
-        }
-      },
-      "title": "ExtPageInfo«Voucher,MyVoucherCountVo»"
     },
     "FuxinCallback": {
       "type": "object",
@@ -6594,8 +7382,8 @@
         "gradeBoxes": {
           "type": "array",
           "items": {
-            "$ref": "#/definitions/MyGradeBoxVo",
-            "originalRef": "MyGradeBoxVo"
+            "originalRef": "MyGradeBoxVo",
+            "$ref": "#/definitions/MyGradeBoxVo"
           }
         },
         "headGround": {
@@ -6612,8 +7400,8 @@
         "prizes": {
           "type": "array",
           "items": {
-            "$ref": "#/definitions/PrizeVo",
-            "originalRef": "PrizeVo"
+            "originalRef": "PrizeVo",
+            "$ref": "#/definitions/PrizeVo"
           }
         },
         "rechargeDiscount": {
@@ -6890,8 +7678,8 @@
         "gifts": {
           "type": "array",
           "items": {
-            "$ref": "#/definitions/BoxGiftVo",
-            "originalRef": "BoxGiftVo"
+            "originalRef": "BoxGiftVo",
+            "$ref": "#/definitions/BoxGiftVo"
           }
         },
         "graceTimes": {
@@ -6939,8 +7727,8 @@
         "gifts": {
           "type": "array",
           "items": {
-            "$ref": "#/definitions/BoxGiftVo",
-            "originalRef": "BoxGiftVo"
+            "originalRef": "BoxGiftVo",
+            "$ref": "#/definitions/BoxGiftVo"
           }
         },
         "gradeId": {
@@ -7043,6 +7831,9 @@
         },
         "delFlag": {
           "type": "boolean"
+        },
+        "feature": {
+          "type": "string"
         },
         "id": {
           "type": "integer",
@@ -7160,8 +7951,8 @@
         "prizes": {
           "type": "array",
           "items": {
-            "$ref": "#/definitions/PrizeVo",
-            "originalRef": "PrizeVo"
+            "originalRef": "PrizeVo",
+            "$ref": "#/definitions/PrizeVo"
           }
         },
         "remark": {
@@ -7245,8 +8036,8 @@
         "actions": {
           "type": "array",
           "items": {
-            "$ref": "#/definitions/TaskAction",
-            "originalRef": "TaskAction"
+            "originalRef": "TaskAction",
+            "$ref": "#/definitions/TaskAction"
           }
         },
         "activity": {
@@ -7282,8 +8073,8 @@
         "prizeList": {
           "type": "array",
           "items": {
-            "$ref": "#/definitions/PrizeVo",
-            "originalRef": "PrizeVo"
+            "originalRef": "PrizeVo",
+            "$ref": "#/definitions/PrizeVo"
           }
         },
         "quantity": {
@@ -7463,8 +8254,8 @@
         "results": {
           "type": "array",
           "items": {
-            "$ref": "#/definitions/OpenBoxResultVo",
-            "originalRef": "OpenBoxResultVo"
+            "originalRef": "OpenBoxResultVo",
+            "$ref": "#/definitions/OpenBoxResultVo"
           }
         },
         "show": {
@@ -7521,6 +8312,10 @@
         "round": {
           "type": "integer",
           "format": "int32"
+        },
+        "verifyId": {
+          "type": "integer",
+          "format": "int64"
         },
         "voucherId": {
           "type": "integer",
@@ -7676,8 +8471,8 @@
         "pageData": {
           "type": "array",
           "items": {
-            "$ref": "#/definitions/BattleVo",
-            "originalRef": "BattleVo"
+            "originalRef": "BattleVo",
+            "$ref": "#/definitions/BattleVo"
           }
         },
         "pageSize": {
@@ -7705,8 +8500,8 @@
         "pageData": {
           "type": "array",
           "items": {
-            "$ref": "#/definitions/BoxPageVo",
-            "originalRef": "BoxPageVo"
+            "originalRef": "BoxPageVo",
+            "$ref": "#/definitions/BoxPageVo"
           }
         },
         "pageSize": {
@@ -7734,8 +8529,8 @@
         "pageData": {
           "type": "array",
           "items": {
-            "$ref": "#/definitions/MyBalanceLogVo",
-            "originalRef": "MyBalanceLogVo"
+            "originalRef": "MyBalanceLogVo",
+            "$ref": "#/definitions/MyBalanceLogVo"
           }
         },
         "pageSize": {
@@ -7763,8 +8558,8 @@
         "pageData": {
           "type": "array",
           "items": {
-            "$ref": "#/definitions/MyBoxLogPageVo",
-            "originalRef": "MyBoxLogPageVo"
+            "originalRef": "MyBoxLogPageVo",
+            "$ref": "#/definitions/MyBoxLogPageVo"
           }
         },
         "pageSize": {
@@ -7792,8 +8587,8 @@
         "pageData": {
           "type": "array",
           "items": {
-            "$ref": "#/definitions/MyCouponPageVo",
-            "originalRef": "MyCouponPageVo"
+            "originalRef": "MyCouponPageVo",
+            "$ref": "#/definitions/MyCouponPageVo"
           }
         },
         "pageSize": {
@@ -7821,8 +8616,8 @@
         "pageData": {
           "type": "array",
           "items": {
-            "$ref": "#/definitions/MyFreeBoxPageVo",
-            "originalRef": "MyFreeBoxPageVo"
+            "originalRef": "MyFreeBoxPageVo",
+            "$ref": "#/definitions/MyFreeBoxPageVo"
           }
         },
         "pageSize": {
@@ -7850,8 +8645,8 @@
         "pageData": {
           "type": "array",
           "items": {
-            "$ref": "#/definitions/MyPromotionLogPageVo",
-            "originalRef": "MyPromotionLogPageVo"
+            "originalRef": "MyPromotionLogPageVo",
+            "$ref": "#/definitions/MyPromotionLogPageVo"
           }
         },
         "pageSize": {
@@ -7879,8 +8674,8 @@
         "pageData": {
           "type": "array",
           "items": {
-            "$ref": "#/definitions/MyRechargeOrderPageVo",
-            "originalRef": "MyRechargeOrderPageVo"
+            "originalRef": "MyRechargeOrderPageVo",
+            "$ref": "#/definitions/MyRechargeOrderPageVo"
           }
         },
         "pageSize": {
@@ -7908,8 +8703,8 @@
         "pageData": {
           "type": "array",
           "items": {
-            "$ref": "#/definitions/MyRetrievalPageVo",
-            "originalRef": "MyRetrievalPageVo"
+            "originalRef": "MyRetrievalPageVo",
+            "$ref": "#/definitions/MyRetrievalPageVo"
           }
         },
         "pageSize": {
@@ -7937,8 +8732,8 @@
         "pageData": {
           "type": "array",
           "items": {
-            "$ref": "#/definitions/MyRewardPageVo",
-            "originalRef": "MyRewardPageVo"
+            "originalRef": "MyRewardPageVo",
+            "$ref": "#/definitions/MyRewardPageVo"
           }
         },
         "pageSize": {
@@ -7966,8 +8761,8 @@
         "pageData": {
           "type": "array",
           "items": {
-            "$ref": "#/definitions/MyStockOrderPageVo",
-            "originalRef": "MyStockOrderPageVo"
+            "originalRef": "MyStockOrderPageVo",
+            "$ref": "#/definitions/MyStockOrderPageVo"
           }
         },
         "pageSize": {
@@ -7995,8 +8790,8 @@
         "pageData": {
           "type": "array",
           "items": {
-            "$ref": "#/definitions/MyUpgradePageVo",
-            "originalRef": "MyUpgradePageVo"
+            "originalRef": "MyUpgradePageVo",
+            "$ref": "#/definitions/MyUpgradePageVo"
           }
         },
         "pageSize": {
@@ -8024,8 +8819,8 @@
         "pageData": {
           "type": "array",
           "items": {
-            "$ref": "#/definitions/Ornament",
-            "originalRef": "Ornament"
+            "originalRef": "Ornament",
+            "$ref": "#/definitions/Ornament"
           }
         },
         "pageSize": {
@@ -8053,8 +8848,8 @@
         "pageData": {
           "type": "array",
           "items": {
-            "$ref": "#/definitions/RandKeyVo",
-            "originalRef": "RandKeyVo"
+            "originalRef": "RandKeyVo",
+            "$ref": "#/definitions/RandKeyVo"
           }
         },
         "pageSize": {
@@ -8082,8 +8877,8 @@
         "pageData": {
           "type": "array",
           "items": {
-            "$ref": "#/definitions/RollRoomPageVo",
-            "originalRef": "RollRoomPageVo"
+            "originalRef": "RollRoomPageVo",
+            "$ref": "#/definitions/RollRoomPageVo"
           }
         },
         "pageSize": {
@@ -8111,8 +8906,8 @@
         "pageData": {
           "type": "array",
           "items": {
-            "$ref": "#/definitions/UpgradeGiftPageVo",
-            "originalRef": "UpgradeGiftPageVo"
+            "originalRef": "UpgradeGiftPageVo",
+            "$ref": "#/definitions/UpgradeGiftPageVo"
           }
         },
         "pageSize": {
@@ -8140,8 +8935,8 @@
         "pageData": {
           "type": "array",
           "items": {
-            "$ref": "#/definitions/UpgradePageVo",
-            "originalRef": "UpgradePageVo"
+            "originalRef": "UpgradePageVo",
+            "$ref": "#/definitions/UpgradePageVo"
           }
         },
         "pageSize": {
@@ -8169,8 +8964,8 @@
         "pageData": {
           "type": "array",
           "items": {
-            "$ref": "#/definitions/VoucherStockPageVo",
-            "originalRef": "VoucherStockPageVo"
+            "originalRef": "VoucherStockPageVo",
+            "$ref": "#/definitions/VoucherStockPageVo"
           }
         },
         "pageSize": {
@@ -8187,6 +8982,35 @@
         }
       },
       "title": "PageInfo«VoucherStockPageVo»"
+    },
+    "PageInfo«Voucher»": {
+      "type": "object",
+      "properties": {
+        "page": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "pageData": {
+          "type": "array",
+          "items": {
+            "originalRef": "Voucher",
+            "$ref": "#/definitions/Voucher"
+          }
+        },
+        "pageSize": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "totalPages": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "totalRows": {
+          "type": "integer",
+          "format": "int32"
+        }
+      },
+      "title": "PageInfo«Voucher»"
     },
     "PaymentVo": {
       "type": "object",
@@ -8289,6 +9113,46 @@
         }
       },
       "title": "Promotion"
+    },
+    "PromotionChannel": {
+      "type": "object",
+      "properties": {
+        "available": {
+          "type": "boolean"
+        },
+        "channelCode": {
+          "type": "string"
+        },
+        "channelName": {
+          "type": "string"
+        },
+        "channelPlatform": {
+          "type": "string"
+        },
+        "channelType": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "createTime": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "delFlag": {
+          "type": "boolean"
+        },
+        "id": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "modifyTime": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "remark": {
+          "type": "string"
+        }
+      },
+      "title": "PromotionChannel"
     },
     "PromotionInfoVo": {
       "type": "object",
@@ -8566,8 +9430,8 @@
         "currencyRateVoList": {
           "type": "array",
           "items": {
-            "$ref": "#/definitions/CurrencyRateVo",
-            "originalRef": "CurrencyRateVo"
+            "originalRef": "CurrencyRateVo",
+            "$ref": "#/definitions/CurrencyRateVo"
           }
         },
         "languageList": {
@@ -8587,8 +9451,8 @@
         "rechargeChannelList": {
           "type": "array",
           "items": {
-            "$ref": "#/definitions/RechargeChannelVo",
-            "originalRef": "RechargeChannelVo"
+            "originalRef": "RechargeChannelVo",
+            "$ref": "#/definitions/RechargeChannelVo"
           }
         }
       },
@@ -8707,6 +9571,12 @@
         "delFlag": {
           "type": "boolean"
         },
+        "feature": {
+          "type": "string"
+        },
+        "firstRechargeFlag": {
+          "type": "boolean"
+        },
         "id": {
           "type": "integer",
           "format": "int64"
@@ -8756,8 +9626,8 @@
       "type": "object",
       "properties": {
         "data": {
-          "$ref": "#/definitions/ActivityInfoVo",
-          "originalRef": "ActivityInfoVo"
+          "originalRef": "ActivityInfoVo",
+          "$ref": "#/definitions/ActivityInfoVo"
         },
         "msg": {
           "type": "string"
@@ -8773,8 +9643,8 @@
       "type": "object",
       "properties": {
         "data": {
-          "$ref": "#/definitions/ActivityRewardResultVo",
-          "originalRef": "ActivityRewardResultVo"
+          "originalRef": "ActivityRewardResultVo",
+          "$ref": "#/definitions/ActivityRewardResultVo"
         },
         "msg": {
           "type": "string"
@@ -8790,8 +9660,8 @@
       "type": "object",
       "properties": {
         "data": {
-          "$ref": "#/definitions/AmountInfoVo",
-          "originalRef": "AmountInfoVo"
+          "originalRef": "AmountInfoVo",
+          "$ref": "#/definitions/AmountInfoVo"
         },
         "msg": {
           "type": "string"
@@ -8807,8 +9677,8 @@
       "type": "object",
       "properties": {
         "data": {
-          "$ref": "#/definitions/AuthLoginVo",
-          "originalRef": "AuthLoginVo"
+          "originalRef": "AuthLoginVo",
+          "$ref": "#/definitions/AuthLoginVo"
         },
         "msg": {
           "type": "string"
@@ -8824,8 +9694,8 @@
       "type": "object",
       "properties": {
         "data": {
-          "$ref": "#/definitions/BattleDetailVo",
-          "originalRef": "BattleDetailVo"
+          "originalRef": "BattleDetailVo",
+          "$ref": "#/definitions/BattleDetailVo"
         },
         "msg": {
           "type": "string"
@@ -8841,8 +9711,8 @@
       "type": "object",
       "properties": {
         "data": {
-          "$ref": "#/definitions/BattleRankPageVo",
-          "originalRef": "BattleRankPageVo"
+          "originalRef": "BattleRankPageVo",
+          "$ref": "#/definitions/BattleRankPageVo"
         },
         "msg": {
           "type": "string"
@@ -8858,8 +9728,8 @@
       "type": "object",
       "properties": {
         "data": {
-          "$ref": "#/definitions/BattleResultVo",
-          "originalRef": "BattleResultVo"
+          "originalRef": "BattleResultVo",
+          "$ref": "#/definitions/BattleResultVo"
         },
         "msg": {
           "type": "string"
@@ -8871,12 +9741,29 @@
       },
       "title": "ResultData«BattleResultVo»"
     },
+    "ResultData«BizStatVo»": {
+      "type": "object",
+      "properties": {
+        "data": {
+          "originalRef": "BizStatVo",
+          "$ref": "#/definitions/BizStatVo"
+        },
+        "msg": {
+          "type": "string"
+        },
+        "status": {
+          "type": "integer",
+          "format": "int32"
+        }
+      },
+      "title": "ResultData«BizStatVo»"
+    },
     "ResultData«BoxDetailVo»": {
       "type": "object",
       "properties": {
         "data": {
-          "$ref": "#/definitions/BoxDetailVo",
-          "originalRef": "BoxDetailVo"
+          "originalRef": "BoxDetailVo",
+          "$ref": "#/definitions/BoxDetailVo"
         },
         "msg": {
           "type": "string"
@@ -8892,8 +9779,8 @@
       "type": "object",
       "properties": {
         "data": {
-          "$ref": "#/definitions/BoxGiftInfoVo",
-          "originalRef": "BoxGiftInfoVo"
+          "originalRef": "BoxGiftInfoVo",
+          "$ref": "#/definitions/BoxGiftInfoVo"
         },
         "msg": {
           "type": "string"
@@ -8909,8 +9796,8 @@
       "type": "object",
       "properties": {
         "data": {
-          "$ref": "#/definitions/CustomerBounsPageVo",
-          "originalRef": "CustomerBounsPageVo"
+          "originalRef": "CustomerBounsPageVo",
+          "$ref": "#/definitions/CustomerBounsPageVo"
         },
         "msg": {
           "type": "string"
@@ -8926,8 +9813,8 @@
       "type": "object",
       "properties": {
         "data": {
-          "$ref": "#/definitions/CustomerDetailVo",
-          "originalRef": "CustomerDetailVo"
+          "originalRef": "CustomerDetailVo",
+          "$ref": "#/definitions/CustomerDetailVo"
         },
         "msg": {
           "type": "string"
@@ -8943,8 +9830,8 @@
       "type": "object",
       "properties": {
         "data": {
-          "$ref": "#/definitions/ExtPageInfo«MyVoucherVo,MyVoucherCountVo»",
-          "originalRef": "ExtPageInfo«MyVoucherVo,MyVoucherCountVo»"
+          "originalRef": "ExtPageInfo«MyVoucherVo,MyVoucherCountVo»",
+          "$ref": "#/definitions/ExtPageInfo«MyVoucherVo,MyVoucherCountVo»"
         },
         "msg": {
           "type": "string"
@@ -8956,29 +9843,12 @@
       },
       "title": "ResultData«ExtPageInfo«MyVoucherVo,MyVoucherCountVo»»"
     },
-    "ResultData«ExtPageInfo«Voucher,MyVoucherCountVo»»": {
-      "type": "object",
-      "properties": {
-        "data": {
-          "$ref": "#/definitions/ExtPageInfo«Voucher,MyVoucherCountVo»",
-          "originalRef": "ExtPageInfo«Voucher,MyVoucherCountVo»"
-        },
-        "msg": {
-          "type": "string"
-        },
-        "status": {
-          "type": "integer",
-          "format": "int32"
-        }
-      },
-      "title": "ResultData«ExtPageInfo«Voucher,MyVoucherCountVo»»"
-    },
     "ResultData«GradeInfoVo»": {
       "type": "object",
       "properties": {
         "data": {
-          "$ref": "#/definitions/GradeInfoVo",
-          "originalRef": "GradeInfoVo"
+          "originalRef": "GradeInfoVo",
+          "$ref": "#/definitions/GradeInfoVo"
         },
         "msg": {
           "type": "string"
@@ -8996,8 +9866,8 @@
         "data": {
           "type": "array",
           "items": {
-            "$ref": "#/definitions/BattleVo",
-            "originalRef": "BattleVo"
+            "originalRef": "BattleVo",
+            "$ref": "#/definitions/BattleVo"
           }
         },
         "msg": {
@@ -9016,8 +9886,8 @@
         "data": {
           "type": "array",
           "items": {
-            "$ref": "#/definitions/BoxThemeListVo",
-            "originalRef": "BoxThemeListVo"
+            "originalRef": "BoxThemeListVo",
+            "$ref": "#/definitions/BoxThemeListVo"
           }
         },
         "msg": {
@@ -9036,8 +9906,8 @@
         "data": {
           "type": "array",
           "items": {
-            "$ref": "#/definitions/CycleRedPacketVo",
-            "originalRef": "CycleRedPacketVo"
+            "originalRef": "CycleRedPacketVo",
+            "$ref": "#/definitions/CycleRedPacketVo"
           }
         },
         "msg": {
@@ -9056,8 +9926,8 @@
         "data": {
           "type": "array",
           "items": {
-            "$ref": "#/definitions/MyCouponVo",
-            "originalRef": "MyCouponVo"
+            "originalRef": "MyCouponVo",
+            "$ref": "#/definitions/MyCouponVo"
           }
         },
         "msg": {
@@ -9076,8 +9946,8 @@
         "data": {
           "type": "array",
           "items": {
-            "$ref": "#/definitions/MyTaskVo",
-            "originalRef": "MyTaskVo"
+            "originalRef": "MyTaskVo",
+            "$ref": "#/definitions/MyTaskVo"
           }
         },
         "msg": {
@@ -9096,8 +9966,8 @@
         "data": {
           "type": "array",
           "items": {
-            "$ref": "#/definitions/OpenBoxResultVo",
-            "originalRef": "OpenBoxResultVo"
+            "originalRef": "OpenBoxResultVo",
+            "$ref": "#/definitions/OpenBoxResultVo"
           }
         },
         "msg": {
@@ -9116,8 +9986,8 @@
         "data": {
           "type": "array",
           "items": {
-            "$ref": "#/definitions/OrnamentRetrievalResultVo",
-            "originalRef": "OrnamentRetrievalResultVo"
+            "originalRef": "OrnamentRetrievalResultVo",
+            "$ref": "#/definitions/OrnamentRetrievalResultVo"
           }
         },
         "msg": {
@@ -9136,8 +10006,8 @@
         "data": {
           "type": "array",
           "items": {
-            "$ref": "#/definitions/Promotion",
-            "originalRef": "Promotion"
+            "originalRef": "Promotion",
+            "$ref": "#/definitions/Promotion"
           }
         },
         "msg": {
@@ -9156,8 +10026,8 @@
         "data": {
           "type": "array",
           "items": {
-            "$ref": "#/definitions/RecentBoxGiftVo",
-            "originalRef": "RecentBoxGiftVo"
+            "originalRef": "RecentBoxGiftVo",
+            "$ref": "#/definitions/RecentBoxGiftVo"
           }
         },
         "msg": {
@@ -9176,8 +10046,8 @@
         "data": {
           "type": "array",
           "items": {
-            "$ref": "#/definitions/RecentDropVo",
-            "originalRef": "RecentDropVo"
+            "originalRef": "RecentDropVo",
+            "$ref": "#/definitions/RecentDropVo"
           }
         },
         "msg": {
@@ -9196,8 +10066,8 @@
         "data": {
           "type": "array",
           "items": {
-            "$ref": "#/definitions/RechargeCouponRecordVo",
-            "originalRef": "RechargeCouponRecordVo"
+            "originalRef": "RechargeCouponRecordVo",
+            "$ref": "#/definitions/RechargeCouponRecordVo"
           }
         },
         "msg": {
@@ -9216,8 +10086,8 @@
         "data": {
           "type": "array",
           "items": {
-            "$ref": "#/definitions/RollCustomerVo",
-            "originalRef": "RollCustomerVo"
+            "originalRef": "RollCustomerVo",
+            "$ref": "#/definitions/RollCustomerVo"
           }
         },
         "msg": {
@@ -9236,8 +10106,8 @@
         "data": {
           "type": "array",
           "items": {
-            "$ref": "#/definitions/RollCustomerWithGiftVo",
-            "originalRef": "RollCustomerWithGiftVo"
+            "originalRef": "RollCustomerWithGiftVo",
+            "$ref": "#/definitions/RollCustomerWithGiftVo"
           }
         },
         "msg": {
@@ -9256,8 +10126,8 @@
         "data": {
           "type": "array",
           "items": {
-            "$ref": "#/definitions/RollRoomGiftVo",
-            "originalRef": "RollRoomGiftVo"
+            "originalRef": "RollRoomGiftVo",
+            "$ref": "#/definitions/RollRoomGiftVo"
           }
         },
         "msg": {
@@ -9276,8 +10146,8 @@
         "data": {
           "type": "array",
           "items": {
-            "$ref": "#/definitions/RollRoomPageVo",
-            "originalRef": "RollRoomPageVo"
+            "originalRef": "RollRoomPageVo",
+            "$ref": "#/definitions/RollRoomPageVo"
           }
         },
         "msg": {
@@ -9296,8 +10166,8 @@
         "data": {
           "type": "array",
           "items": {
-            "$ref": "#/definitions/SteamTagVo",
-            "originalRef": "SteamTagVo"
+            "originalRef": "SteamTagVo",
+            "$ref": "#/definitions/SteamTagVo"
           }
         },
         "msg": {
@@ -9310,14 +10180,34 @@
       },
       "title": "ResultData«List«SteamTagVo»»"
     },
+    "ResultData«List«UpgradeResultVo»»": {
+      "type": "object",
+      "properties": {
+        "data": {
+          "type": "array",
+          "items": {
+            "originalRef": "UpgradeResultVo",
+            "$ref": "#/definitions/UpgradeResultVo"
+          }
+        },
+        "msg": {
+          "type": "string"
+        },
+        "status": {
+          "type": "integer",
+          "format": "int32"
+        }
+      },
+      "title": "ResultData«List«UpgradeResultVo»»"
+    },
     "ResultData«List«UseRewardVoucherResultVo»»": {
       "type": "object",
       "properties": {
         "data": {
           "type": "array",
           "items": {
-            "$ref": "#/definitions/UseRewardVoucherResultVo",
-            "originalRef": "UseRewardVoucherResultVo"
+            "originalRef": "UseRewardVoucherResultVo",
+            "$ref": "#/definitions/UseRewardVoucherResultVo"
           }
         },
         "msg": {
@@ -9350,12 +10240,35 @@
       },
       "title": "ResultData«List«int»»"
     },
+    "ResultData«Map«string,List«PromotionChannel»»»": {
+      "type": "object",
+      "properties": {
+        "data": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "array",
+            "items": {
+              "originalRef": "PromotionChannel",
+              "$ref": "#/definitions/PromotionChannel"
+            }
+          }
+        },
+        "msg": {
+          "type": "string"
+        },
+        "status": {
+          "type": "integer",
+          "format": "int32"
+        }
+      },
+      "title": "ResultData«Map«string,List«PromotionChannel»»»"
+    },
     "ResultData«OpenBoxResult»": {
       "type": "object",
       "properties": {
         "data": {
-          "$ref": "#/definitions/OpenBoxResult",
-          "originalRef": "OpenBoxResult"
+          "originalRef": "OpenBoxResult",
+          "$ref": "#/definitions/OpenBoxResult"
         },
         "msg": {
           "type": "string"
@@ -9371,8 +10284,8 @@
       "type": "object",
       "properties": {
         "data": {
-          "$ref": "#/definitions/PageInfo«BattleVo»",
-          "originalRef": "PageInfo«BattleVo»"
+          "originalRef": "PageInfo«BattleVo»",
+          "$ref": "#/definitions/PageInfo«BattleVo»"
         },
         "msg": {
           "type": "string"
@@ -9388,8 +10301,8 @@
       "type": "object",
       "properties": {
         "data": {
-          "$ref": "#/definitions/PageInfo«BoxPageVo»",
-          "originalRef": "PageInfo«BoxPageVo»"
+          "originalRef": "PageInfo«BoxPageVo»",
+          "$ref": "#/definitions/PageInfo«BoxPageVo»"
         },
         "msg": {
           "type": "string"
@@ -9405,8 +10318,8 @@
       "type": "object",
       "properties": {
         "data": {
-          "$ref": "#/definitions/PageInfo«MyBalanceLogVo»",
-          "originalRef": "PageInfo«MyBalanceLogVo»"
+          "originalRef": "PageInfo«MyBalanceLogVo»",
+          "$ref": "#/definitions/PageInfo«MyBalanceLogVo»"
         },
         "msg": {
           "type": "string"
@@ -9422,8 +10335,8 @@
       "type": "object",
       "properties": {
         "data": {
-          "$ref": "#/definitions/PageInfo«MyBoxLogPageVo»",
-          "originalRef": "PageInfo«MyBoxLogPageVo»"
+          "originalRef": "PageInfo«MyBoxLogPageVo»",
+          "$ref": "#/definitions/PageInfo«MyBoxLogPageVo»"
         },
         "msg": {
           "type": "string"
@@ -9439,8 +10352,8 @@
       "type": "object",
       "properties": {
         "data": {
-          "$ref": "#/definitions/PageInfo«MyCouponPageVo»",
-          "originalRef": "PageInfo«MyCouponPageVo»"
+          "originalRef": "PageInfo«MyCouponPageVo»",
+          "$ref": "#/definitions/PageInfo«MyCouponPageVo»"
         },
         "msg": {
           "type": "string"
@@ -9456,8 +10369,8 @@
       "type": "object",
       "properties": {
         "data": {
-          "$ref": "#/definitions/PageInfo«MyFreeBoxPageVo»",
-          "originalRef": "PageInfo«MyFreeBoxPageVo»"
+          "originalRef": "PageInfo«MyFreeBoxPageVo»",
+          "$ref": "#/definitions/PageInfo«MyFreeBoxPageVo»"
         },
         "msg": {
           "type": "string"
@@ -9473,8 +10386,8 @@
       "type": "object",
       "properties": {
         "data": {
-          "$ref": "#/definitions/PageInfo«MyPromotionLogPageVo»",
-          "originalRef": "PageInfo«MyPromotionLogPageVo»"
+          "originalRef": "PageInfo«MyPromotionLogPageVo»",
+          "$ref": "#/definitions/PageInfo«MyPromotionLogPageVo»"
         },
         "msg": {
           "type": "string"
@@ -9490,8 +10403,8 @@
       "type": "object",
       "properties": {
         "data": {
-          "$ref": "#/definitions/PageInfo«MyRechargeOrderPageVo»",
-          "originalRef": "PageInfo«MyRechargeOrderPageVo»"
+          "originalRef": "PageInfo«MyRechargeOrderPageVo»",
+          "$ref": "#/definitions/PageInfo«MyRechargeOrderPageVo»"
         },
         "msg": {
           "type": "string"
@@ -9507,8 +10420,8 @@
       "type": "object",
       "properties": {
         "data": {
-          "$ref": "#/definitions/PageInfo«MyRetrievalPageVo»",
-          "originalRef": "PageInfo«MyRetrievalPageVo»"
+          "originalRef": "PageInfo«MyRetrievalPageVo»",
+          "$ref": "#/definitions/PageInfo«MyRetrievalPageVo»"
         },
         "msg": {
           "type": "string"
@@ -9524,8 +10437,8 @@
       "type": "object",
       "properties": {
         "data": {
-          "$ref": "#/definitions/PageInfo«MyRewardPageVo»",
-          "originalRef": "PageInfo«MyRewardPageVo»"
+          "originalRef": "PageInfo«MyRewardPageVo»",
+          "$ref": "#/definitions/PageInfo«MyRewardPageVo»"
         },
         "msg": {
           "type": "string"
@@ -9541,8 +10454,8 @@
       "type": "object",
       "properties": {
         "data": {
-          "$ref": "#/definitions/PageInfo«MyStockOrderPageVo»",
-          "originalRef": "PageInfo«MyStockOrderPageVo»"
+          "originalRef": "PageInfo«MyStockOrderPageVo»",
+          "$ref": "#/definitions/PageInfo«MyStockOrderPageVo»"
         },
         "msg": {
           "type": "string"
@@ -9558,8 +10471,8 @@
       "type": "object",
       "properties": {
         "data": {
-          "$ref": "#/definitions/PageInfo«MyUpgradePageVo»",
-          "originalRef": "PageInfo«MyUpgradePageVo»"
+          "originalRef": "PageInfo«MyUpgradePageVo»",
+          "$ref": "#/definitions/PageInfo«MyUpgradePageVo»"
         },
         "msg": {
           "type": "string"
@@ -9575,8 +10488,8 @@
       "type": "object",
       "properties": {
         "data": {
-          "$ref": "#/definitions/PageInfo«Ornament»",
-          "originalRef": "PageInfo«Ornament»"
+          "originalRef": "PageInfo«Ornament»",
+          "$ref": "#/definitions/PageInfo«Ornament»"
         },
         "msg": {
           "type": "string"
@@ -9592,8 +10505,8 @@
       "type": "object",
       "properties": {
         "data": {
-          "$ref": "#/definitions/PageInfo«RandKeyVo»",
-          "originalRef": "PageInfo«RandKeyVo»"
+          "originalRef": "PageInfo«RandKeyVo»",
+          "$ref": "#/definitions/PageInfo«RandKeyVo»"
         },
         "msg": {
           "type": "string"
@@ -9609,8 +10522,8 @@
       "type": "object",
       "properties": {
         "data": {
-          "$ref": "#/definitions/PageInfo«RollRoomPageVo»",
-          "originalRef": "PageInfo«RollRoomPageVo»"
+          "originalRef": "PageInfo«RollRoomPageVo»",
+          "$ref": "#/definitions/PageInfo«RollRoomPageVo»"
         },
         "msg": {
           "type": "string"
@@ -9626,8 +10539,8 @@
       "type": "object",
       "properties": {
         "data": {
-          "$ref": "#/definitions/PageInfo«UpgradeGiftPageVo»",
-          "originalRef": "PageInfo«UpgradeGiftPageVo»"
+          "originalRef": "PageInfo«UpgradeGiftPageVo»",
+          "$ref": "#/definitions/PageInfo«UpgradeGiftPageVo»"
         },
         "msg": {
           "type": "string"
@@ -9643,8 +10556,8 @@
       "type": "object",
       "properties": {
         "data": {
-          "$ref": "#/definitions/PageInfo«UpgradePageVo»",
-          "originalRef": "PageInfo«UpgradePageVo»"
+          "originalRef": "PageInfo«UpgradePageVo»",
+          "$ref": "#/definitions/PageInfo«UpgradePageVo»"
         },
         "msg": {
           "type": "string"
@@ -9660,8 +10573,8 @@
       "type": "object",
       "properties": {
         "data": {
-          "$ref": "#/definitions/PageInfo«VoucherStockPageVo»",
-          "originalRef": "PageInfo«VoucherStockPageVo»"
+          "originalRef": "PageInfo«VoucherStockPageVo»",
+          "$ref": "#/definitions/PageInfo«VoucherStockPageVo»"
         },
         "msg": {
           "type": "string"
@@ -9673,12 +10586,29 @@
       },
       "title": "ResultData«PageInfo«VoucherStockPageVo»»"
     },
+    "ResultData«PageInfo«Voucher»»": {
+      "type": "object",
+      "properties": {
+        "data": {
+          "originalRef": "PageInfo«Voucher»",
+          "$ref": "#/definitions/PageInfo«Voucher»"
+        },
+        "msg": {
+          "type": "string"
+        },
+        "status": {
+          "type": "integer",
+          "format": "int32"
+        }
+      },
+      "title": "ResultData«PageInfo«Voucher»»"
+    },
     "ResultData«PaymentVo»": {
       "type": "object",
       "properties": {
         "data": {
-          "$ref": "#/definitions/PaymentVo",
-          "originalRef": "PaymentVo"
+          "originalRef": "PaymentVo",
+          "$ref": "#/definitions/PaymentVo"
         },
         "msg": {
           "type": "string"
@@ -9694,8 +10624,8 @@
       "type": "object",
       "properties": {
         "data": {
-          "$ref": "#/definitions/PromotionInfoVo",
-          "originalRef": "PromotionInfoVo"
+          "originalRef": "PromotionInfoVo",
+          "$ref": "#/definitions/PromotionInfoVo"
         },
         "msg": {
           "type": "string"
@@ -9711,8 +10641,8 @@
       "type": "object",
       "properties": {
         "data": {
-          "$ref": "#/definitions/RandKeyVo",
-          "originalRef": "RandKeyVo"
+          "originalRef": "RandKeyVo",
+          "$ref": "#/definitions/RandKeyVo"
         },
         "msg": {
           "type": "string"
@@ -9728,8 +10658,8 @@
       "type": "object",
       "properties": {
         "data": {
-          "$ref": "#/definitions/RechargeConfigVo",
-          "originalRef": "RechargeConfigVo"
+          "originalRef": "RechargeConfigVo",
+          "$ref": "#/definitions/RechargeConfigVo"
         },
         "msg": {
           "type": "string"
@@ -9745,8 +10675,8 @@
       "type": "object",
       "properties": {
         "data": {
-          "$ref": "#/definitions/RechargeDiscountInfoVo",
-          "originalRef": "RechargeDiscountInfoVo"
+          "originalRef": "RechargeDiscountInfoVo",
+          "$ref": "#/definitions/RechargeDiscountInfoVo"
         },
         "msg": {
           "type": "string"
@@ -9762,8 +10692,8 @@
       "type": "object",
       "properties": {
         "data": {
-          "$ref": "#/definitions/RechargeOrderVo",
-          "originalRef": "RechargeOrderVo"
+          "originalRef": "RechargeOrderVo",
+          "$ref": "#/definitions/RechargeOrderVo"
         },
         "msg": {
           "type": "string"
@@ -9779,8 +10709,8 @@
       "type": "object",
       "properties": {
         "data": {
-          "$ref": "#/definitions/RollRoomPageVo",
-          "originalRef": "RollRoomPageVo"
+          "originalRef": "RollRoomPageVo",
+          "$ref": "#/definitions/RollRoomPageVo"
         },
         "msg": {
           "type": "string"
@@ -9796,8 +10726,8 @@
       "type": "object",
       "properties": {
         "data": {
-          "$ref": "#/definitions/SignInInfoVo",
-          "originalRef": "SignInInfoVo"
+          "originalRef": "SignInInfoVo",
+          "$ref": "#/definitions/SignInInfoVo"
         },
         "msg": {
           "type": "string"
@@ -9813,8 +10743,8 @@
       "type": "object",
       "properties": {
         "data": {
-          "$ref": "#/definitions/SignInListVo",
-          "originalRef": "SignInListVo"
+          "originalRef": "SignInListVo",
+          "$ref": "#/definitions/SignInListVo"
         },
         "msg": {
           "type": "string"
@@ -9830,8 +10760,8 @@
       "type": "object",
       "properties": {
         "data": {
-          "$ref": "#/definitions/UpgradeConfigVo",
-          "originalRef": "UpgradeConfigVo"
+          "originalRef": "UpgradeConfigVo",
+          "$ref": "#/definitions/UpgradeConfigVo"
         },
         "msg": {
           "type": "string"
@@ -9842,23 +10772,6 @@
         }
       },
       "title": "ResultData«UpgradeConfigVo»"
-    },
-    "ResultData«UpgradeResultVo»": {
-      "type": "object",
-      "properties": {
-        "data": {
-          "$ref": "#/definitions/UpgradeResultVo",
-          "originalRef": "UpgradeResultVo"
-        },
-        "msg": {
-          "type": "string"
-        },
-        "status": {
-          "type": "integer",
-          "format": "int32"
-        }
-      },
-      "title": "ResultData«UpgradeResultVo»"
     },
     "ResultData«boolean»": {
       "type": "object",
@@ -9917,8 +10830,8 @@
         "giftVos": {
           "type": "array",
           "items": {
-            "$ref": "#/definitions/RollRoomGiftVo",
-            "originalRef": "RollRoomGiftVo"
+            "originalRef": "RollRoomGiftVo",
+            "$ref": "#/definitions/RollRoomGiftVo"
           }
         },
         "headGround": {
@@ -9962,8 +10875,8 @@
           "type": "number"
         },
         "winnerInfo": {
-          "$ref": "#/definitions/RollCustomerVo",
-          "originalRef": "RollCustomerVo"
+          "originalRef": "RollCustomerVo",
+          "$ref": "#/definitions/RollCustomerVo"
         }
       },
       "title": "RollRoomGiftVo"
@@ -9988,8 +10901,8 @@
         "giftVos": {
           "type": "array",
           "items": {
-            "$ref": "#/definitions/RollRoomGiftVo",
-            "originalRef": "RollRoomGiftVo"
+            "originalRef": "RollRoomGiftVo",
+            "$ref": "#/definitions/RollRoomGiftVo"
           }
         },
         "id": {
@@ -10056,8 +10969,8 @@
         "signIns": {
           "type": "array",
           "items": {
-            "$ref": "#/definitions/SignInListVo",
-            "originalRef": "SignInListVo"
+            "originalRef": "SignInListVo",
+            "$ref": "#/definitions/SignInListVo"
           }
         },
         "signedInToday": {
@@ -10107,8 +11020,8 @@
         "prizes": {
           "type": "array",
           "items": {
-            "$ref": "#/definitions/PrizeVo",
-            "originalRef": "PrizeVo"
+            "originalRef": "PrizeVo",
+            "$ref": "#/definitions/PrizeVo"
           }
         },
         "quantity": {
@@ -10145,8 +11058,8 @@
         "tags": {
           "type": "array",
           "items": {
-            "$ref": "#/definitions/Tags",
-            "originalRef": "Tags"
+            "originalRef": "Tags",
+            "$ref": "#/definitions/Tags"
           }
         }
       },
@@ -10263,8 +11176,7 @@
           "type": "boolean"
         },
         "finalGiftId": {
-          "type": "integer",
-          "format": "int64"
+          "type": "string"
         },
         "finalVoucherValue": {
           "type": "number"
@@ -10329,14 +11241,13 @@
           "type": "string"
         },
         "upgradeGiftId": {
-          "type": "integer",
-          "format": "int64"
+          "type": "string"
         },
         "voucherInfos": {
           "type": "array",
           "items": {
-            "$ref": "#/definitions/BoxGiftListVo",
-            "originalRef": "BoxGiftListVo"
+            "originalRef": "BoxGiftListVo",
+            "$ref": "#/definitions/BoxGiftListVo"
           }
         },
         "winRecoveryPrice": {
@@ -10408,9 +11319,15 @@
           "type": "integer",
           "format": "int64"
         },
+        "upgradeGiftIds": {
+          "type": "string"
+        },
         "upgradeId": {
           "type": "integer",
           "format": "int64"
+        },
+        "upgradeIds": {
+          "type": "string"
         },
         "verifyId": {
           "type": "integer",
@@ -10451,8 +11368,8 @@
         "prizes": {
           "type": "array",
           "items": {
-            "$ref": "#/definitions/PrizeVo",
-            "originalRef": "PrizeVo"
+            "originalRef": "PrizeVo",
+            "$ref": "#/definitions/PrizeVo"
           }
         },
         "remark": {
@@ -10515,6 +11432,10 @@
         },
         "remark": {
           "type": "string"
+        },
+        "retrievedState": {
+          "type": "integer",
+          "format": "int32"
         },
         "sourceId": {
           "type": "string"

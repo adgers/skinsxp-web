@@ -2,6 +2,21 @@
 /* eslint-disable */
 import { request } from '@umijs/max';
 
+/** 绑定邮箱 配合获取验证码接口使用,verifyCode->老邮箱验证码,newVerifyCode->新邮箱验证码,newMail->新邮箱,一个页面就行,不用下一步 POST /api/personalCenter/bindEmail */
+export async function changeMailUsingPOST1(
+  // 叠加生成的Param类型 (非body参数swagger默认没有生成对象)
+  params: API.changeMailUsingPOST1Params,
+  options?: { [key: string]: any },
+) {
+  return request<API.ResultDataBoolean_>('/api/personalCenter/bindEmail', {
+    method: 'POST',
+    params: {
+      ...params,
+    },
+    ...(options || {}),
+  });
+}
+
 /** 绑定上级用户推广码 POST /api/personalCenter/bindInviter */
 export async function bindInviterUsingPOST(
   // 叠加生成的Param类型 (非body参数swagger默认没有生成对象)

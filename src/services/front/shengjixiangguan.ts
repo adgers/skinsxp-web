@@ -16,7 +16,7 @@ export async function myVoucherUsingGET(
   params: API.myVoucherUsingGETParams,
   options?: { [key: string]: any },
 ) {
-  return request<API.ResultDataExtPageInfoVoucherMyVoucherCountVo_>('/api/upgrade/myVoucher', {
+  return request<API.ResultDataPageInfoVoucher_>('/api/upgrade/myVoucher', {
     method: 'GET',
     params: {
       // page has a default value: 1
@@ -74,7 +74,7 @@ export async function v3StartUpgradeUsingPOST(
   params: API.v3StartUpgradeUsingPOSTParams,
   options?: { [key: string]: any },
 ) {
-  return request<API.ResultDataUpgradeResultVo_>('/api/upgrade/v3/startUpgrade', {
+  return request<API.ResultDataListUpgradeResultVo_>('/api/upgrade/v3/startUpgrade', {
     method: 'POST',
     params: {
       ...params,

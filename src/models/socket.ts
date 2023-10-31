@@ -1,10 +1,24 @@
 import WsEventType from '@/constants/eventType';
-import { battleRankUsingGET } from '@/services/front/duizhanxiangguan';
-import { recentDropUsingGET } from '@/services/front/zhandianweidushuju';
+import {
+  onlineStatUsingGET,
+  recentDropUsingGET,
+} from '@/services/front/zhandianweidushuju';
 import { addImgHost, getSocketDomain } from '@/utils';
 import { Client } from '@stomp/stompjs';
 import { useRequest } from '@umijs/max';
 import { useEffect, useState } from 'react';
+
+export type StateVo = {
+  activeSession: number;
+  userTotal: number;
+  userTotal24: number;
+  boxCnt: number;
+  boxCnt24: number;
+  battleCnt: number;
+  battleCnt24: number;
+  upgradeCnt: number;
+  upgradeCnt24: number;
+};
 
 export default () => {
   const [recentBox, setRecentBox] = useState<API.RecentOpenBoxGiftVo[]>([]);
@@ -14,16 +28,17 @@ export default () => {
   const [battleRank, setBattleRank] = useState<API.BattleRankPageVo>();
   const [isTop, setIsTop] = useState<boolean>(false);
   const [pageLoaded, setPageLoaded] = useState<boolean>(false);
+  const [siteStat, setSiteStat] = useState<API.BizStatVo>();
 
-  const battleRankResult = useRequest(
-    async () => {
-      if (!pageLoaded) return;
-      return await battleRankUsingGET();
-    },
-    {
-      refreshDeps: [pageLoaded],
-    },
-  );
+  // const battleRankResult = useRequest(
+  //   async () => {
+  //     if (!pageLoaded) return;
+  //     return await battleRankUsingGET();
+  //   },
+  //   {
+  //     refreshDeps: [pageLoaded],
+  //   },
+  // );
 
   const recentBoxResult = useRequest(
     async () => {
@@ -38,11 +53,21 @@ export default () => {
     },
   );
 
-  useEffect(() => {
-    if (battleRankResult.data) {
-      setBattleRank(battleRankResult.data);
-    }
-  }, [battleRankResult.data]);
+  const onlineStat = useRequest(
+    async () => {
+      if (!pageLoaded) return;
+      return await onlineStatUsingGET();
+    },
+    {
+      refreshDeps: [pageLoaded],
+    },
+  );
+
+  // useEffect(() => {
+  //   if (battleRankResult.data) {
+  //     setBattleRank(battleRankResult.data);
+  //   }
+  // }, [battleRankResult.data]);
 
   useEffect(() => {
     if (recentBoxResult.data) {
@@ -52,6 +77,12 @@ export default () => {
       setTopDropBox(recentBoxResult.data);
     }
   }, [recentBoxResult.data]);
+
+  useEffect(() => {
+    if (onlineStat.data) {
+      setSiteStat(onlineStat.data);
+    }
+  }, [onlineStat.data]);
 
   const handleDropData = (data: API.RecentDropVo[]) => {
     setRecentBox((prev) => {
@@ -110,6 +141,9 @@ export default () => {
         case WsEventType.BATTLE_RANK:
           setBattleRank(data.data);
           break;
+        case WsEventType.SITE_STAT:
+          setSiteStat(data.data);
+          break;
         default:
           break;
       }
@@ -149,5 +183,6 @@ export default () => {
     setIsTop,
     setPageLoaded,
     isTop,
+    siteStat,
   };
 };

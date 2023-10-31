@@ -50,6 +50,7 @@ declare namespace API {
   };
 
   type AuthLoginVo = {
+    promotionChannelId?: string;
     register?: boolean;
     result?: number;
     token?: string;
@@ -174,6 +175,19 @@ declare namespace API {
     oneTimeSecurityCode: string;
     type?: number;
     verifyCode?: string;
+  };
+
+  type BizStatVo = {
+    activeSession?: number;
+    activeUser?: number;
+    battleCnt?: number;
+    battleCnt24?: number;
+    boxCnt?: number;
+    boxCnt24?: number;
+    upgradeCnt?: number;
+    upgradeCnt24?: number;
+    userTotal?: number;
+    userTotal24?: number;
   };
 
   type boxDetailUsingGETParams = {
@@ -305,6 +319,13 @@ declare namespace API {
     battleCode: string;
   };
 
+  type changeMailUsingPOST1Params = {
+    /** mail */
+    mail: string;
+    /** verifyCode */
+    verifyCode: string;
+  };
+
   type changeMailUsingPOSTParams = {
     /** newMail */
     newMail: string;
@@ -374,6 +395,7 @@ declare namespace API {
     experience?: number;
     experienceMax?: number;
     experiencePercentage?: number;
+    firstRechargeRebate?: number;
     grade?: number;
     headGround?: string;
     headPic?: string;
@@ -388,6 +410,8 @@ declare namespace API {
     mail?: string;
     nickname?: string;
     phone?: string;
+    promotionChannelId?: string;
+    promotionChannelName?: string;
     rebateType?: number;
     rebateValue?: number;
     secondaryBalance?: number;
@@ -397,8 +421,6 @@ declare namespace API {
     totalCheckInTimes?: number;
     tradeUrl?: string;
     verified?: boolean;
-    firstRechargeRebate?: number;
-    promotionChannelId?: string;
   };
 
   type CycleRedPacketVo = {
@@ -449,15 +471,6 @@ declare namespace API {
     extData?: MyVoucherCountVo;
     page?: number;
     pageData?: MyVoucherVo[];
-    pageSize?: number;
-    totalPages?: number;
-    totalRows?: number;
-  };
-
-  type ExtPageInfoVoucherMyVoucherCountVo_ = {
-    extData?: MyVoucherCountVo;
-    page?: number;
-    pageData?: Voucher[];
     pageSize?: number;
     totalPages?: number;
     totalRows?: number;
@@ -933,6 +946,7 @@ declare namespace API {
     currency?: string;
     customerId?: number;
     delFlag?: boolean;
+    feature?: string;
     id?: number;
     modifyTime?: string;
     orderId?: string;
@@ -1008,6 +1022,7 @@ declare namespace API {
     rewardName?: string;
     taskName?: string;
     total?: number;
+    taskAchieveType?: number
   };
 
   type MyUpgradePageVo = {
@@ -1082,6 +1097,7 @@ declare namespace API {
     recoveryPrice?: number;
     rollCode?: number;
     round?: number;
+    verifyId?: number;
     voucherId?: number;
   };
 
@@ -1274,6 +1290,14 @@ declare namespace API {
     totalRows?: number;
   };
 
+  type PageInfoVoucher_ = {
+    page?: number;
+    pageData?: Voucher[];
+    pageSize?: number;
+    totalPages?: number;
+    totalRows?: number;
+  };
+
   type PageInfoVoucherStockPageVo_ = {
     page?: number;
     pageData?: VoucherStockPageVo[];
@@ -1293,6 +1317,10 @@ declare namespace API {
     page?: number;
     /** pageSize */
     pageSize?: number;
+    /** priceEnd */
+    priceEnd?: number;
+    /** priceStart */
+    priceStart?: number;
     /** 品质 */
     quality?: string;
     /** 稀有度 */
@@ -1360,6 +1388,19 @@ declare namespace API {
     remark?: string;
     userRebateType?: number;
     userRebateValue?: number;
+  };
+
+  type PromotionChannel = {
+    available?: boolean;
+    channelCode?: string;
+    channelName?: string;
+    channelPlatform?: string;
+    channelType?: number;
+    createTime?: string;
+    delFlag?: boolean;
+    id?: number;
+    modifyTime?: string;
+    remark?: string;
   };
 
   type PromotionInfoVo = {
@@ -1514,6 +1555,8 @@ declare namespace API {
     currency?: string;
     customerId?: number;
     delFlag?: boolean;
+    feature?: string;
+    firstRechargeFlag?: boolean;
     id?: number;
     modifyTime?: string;
     orderId?: string;
@@ -1526,7 +1569,6 @@ declare namespace API {
     show?: boolean;
     showTime?: string;
     state?: number;
-    firstRechargeFlag?: boolean;
   };
 
   type resetUsingPOSTParams = {
@@ -1576,6 +1618,12 @@ declare namespace API {
     status?: number;
   };
 
+  type ResultDataBizStatVo_ = {
+    data?: BizStatVo;
+    msg?: string;
+    status?: number;
+  };
+
   type ResultDataBoolean_ = {
     data?: boolean;
     msg?: string;
@@ -1608,12 +1656,6 @@ declare namespace API {
 
   type ResultDataExtPageInfoMyVoucherVoMyVoucherCountVo_ = {
     data?: ExtPageInfoMyVoucherVoMyVoucherCountVo_;
-    msg?: string;
-    status?: number;
-  };
-
-  type ResultDataExtPageInfoVoucherMyVoucherCountVo_ = {
-    data?: ExtPageInfoVoucherMyVoucherCountVo_;
     msg?: string;
     status?: number;
   };
@@ -1726,8 +1768,20 @@ declare namespace API {
     status?: number;
   };
 
+  type ResultDataListUpgradeResultVo_ = {
+    data?: UpgradeResultVo[];
+    msg?: string;
+    status?: number;
+  };
+
   type ResultDataListUseRewardVoucherResultVo_ = {
     data?: UseRewardVoucherResultVo[];
+    msg?: string;
+    status?: number;
+  };
+
+  type ResultDataMapStringListPromotionChannel_ = {
+    data?: Record<string, any>;
     msg?: string;
     status?: number;
   };
@@ -1840,6 +1894,12 @@ declare namespace API {
     status?: number;
   };
 
+  type ResultDataPageInfoVoucher_ = {
+    data?: PageInfoVoucher_;
+    msg?: string;
+    status?: number;
+  };
+
   type ResultDataPageInfoVoucherStockPageVo_ = {
     data?: PageInfoVoucherStockPageVo_;
     msg?: string;
@@ -1908,12 +1968,6 @@ declare namespace API {
 
   type ResultDataUpgradeConfigVo_ = {
     data?: UpgradeConfigVo;
-    msg?: string;
-    status?: number;
-  };
-
-  type ResultDataUpgradeResultVo_ = {
-    data?: UpgradeResultVo[];
     msg?: string;
     status?: number;
   };
@@ -2022,6 +2076,11 @@ declare namespace API {
     verifyCode?: string;
   };
 
+  type skinsBackCallbackUsingPOSTParams = {
+    /** skinsBackCallback */
+    skinsBackCallback: Record<string, any>;
+  };
+
   type smsLoginUsingPOSTParams = {
     /** code */
     code?: string;
@@ -2097,7 +2156,7 @@ declare namespace API {
     createTime?: string;
     customerId?: number;
     delFlag?: boolean;
-    finalGiftId?: number;
+    finalGiftId?: string;
     finalVoucherValue?: number;
     grade?: number;
     headGround?: string;
@@ -2116,7 +2175,7 @@ declare namespace API {
     round?: number;
     state?: number;
     steamId?: string;
-    upgradeGiftId?: number;
+    upgradeGiftId?: string;
     voucherInfos?: BoxGiftListVo[];
     winRecoveryPrice?: string;
     winVoucherImg?: string;
@@ -2146,7 +2205,9 @@ declare namespace API {
     show?: boolean;
     showTime?: string;
     upgradeGiftId?: number;
+    upgradeGiftIds?: string;
     upgradeId?: number;
+    upgradeIds?: string;
     verifyId?: number;
     voucherId?: number;
     won?: boolean;
@@ -2200,9 +2261,9 @@ declare namespace API {
     /** 额外支付的代币 */
     quantity: number;
     /** upgradeGiftIds */
-    upgradeGiftIds?: string;
-    /** 选择的背包物品  **/
-    vouchers?: string
+    upgradeGiftIds: string;
+    /** 升级使用饰品 */
+    vouchers?: string;
   };
 
   type verifyUsingGET1Params = {
@@ -2238,6 +2299,7 @@ declare namespace API {
     modifyTime?: string;
     recoveryPrice?: number;
     remark?: string;
+    retrievedState?: number;
     sourceId?: string;
     sourceType?: string;
     state?: number;

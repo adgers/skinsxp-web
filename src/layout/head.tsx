@@ -8,6 +8,7 @@ import Benefit from '@/pages/benefit';
 import LoginConfirm from '@/pages/login/loginConfirm';
 import LoginTip from '@/pages/login/loginTip';
 import RegTip from '@/pages/login/regTip';
+import SaveEmail from '@/pages/login/saveEmail';
 import { isLogin, langs, logout, numberFixed } from '@/utils';
 import { MenuOutlined } from '@ant-design/icons';
 import { Menu, Transition } from '@headlessui/react';
@@ -75,7 +76,7 @@ export default function Header() {
       icon: 'icon-cases1',
     },
     {
-      title: <FormattedMessage id="main_tab_arena" />,
+      title: <FormattedMessage id="main_tab_arena2" />,
       link: '/battle',
       icon: 'icon-battle',
     },
@@ -93,6 +94,11 @@ export default function Header() {
       title: <FormattedMessage id="roll_room_title" />,
       link: '/giveaways',
       icon: 'icon-giveaway',
+    },
+    {
+      title: <FormattedMessage id="main_tab_event" />,
+      link: '/event',
+      icon: 'icon-message',
     },
   ];
 
@@ -234,7 +240,7 @@ export default function Header() {
     <>
       <div className="sticky left-0 top-0 z-[99]">
         <Navbar className="p-3 bg-black">
-          <div className="flex-1">
+          <div className="flex-1 overflow-hidden">
             <Link to={'/'} className=" ml-2 w-[100px] sm:w-[164px]">
               <img src={require('@/assets/wg-logo.png')} />
             </Link>
@@ -246,39 +252,9 @@ export default function Header() {
               >
                 <img src={currentLoale.flag} className="w-5 h-5" />
               </Menu.Button>
-
-              {/* <Transition
-              as={Fragment}
-              enter="transition ease-out duration-100"
-              enterFrom="transform opacity-0 scale-95"
-              enterTo="transform opacity-100 scale-100"
-              leave="transition ease-in duration-75"
-              leaveFrom="transform opacity-100 scale-100"
-              leaveTo="transform opacity-0 scale-95"
-            >
-              <Menu.Items className="z-50 flex flex-col focus:outline-none absolute left-0 top-8 h-auto origin-top-right rounded transform opacity-100 bg-dark w-[120px]">
-                {langs.map((item, i) => (
-                  <Menu.Item key={i}>
-                    {({ active }) => (
-                      <div
-                        className={`${
-                          active ? 'bg-accent bg-opacity-30 text-green' : ''
-                        } flex items-center px-2 py-1 text-xs rounded cursor-pointer w-full`}
-                        onClick={() => changeConfirmLocale(item.value)}
-                      >
-                        <img src={item.flag} className="w-5 h-5" />
-                        <span className="pl-2 whitespace-nowrap">
-                          {item.title}
-                        </span>
-                      </div>
-                    )}
-                  </Menu.Item>
-                ))}
-              </Menu.Items>
-            </Transition> */}
             </Menu>
 
-            <div className="hidden lg:flex ml-2 relative">
+            <div className="hidden lg:flex ml-2 relative overflow-x-auto">
               {[...headLinks, ...headExt].map((item, i) => {
                 const isActive = location.pathname.startsWith(item.link);
 
@@ -286,7 +262,7 @@ export default function Header() {
                   <Link
                     key={i}
                     to={item.link}
-                    className={`p-3 uppercase transition-colors font-semibold duration-200 relative hover:text-green text-sm ${
+                    className={`p-3 px-2 flex items-center uppercase transition-colors font-semibold duration-200 relative hover:text-green text-sm ${
                       isActive ? 'text-green' : 'text-white'
                     }`}
                     style={{
@@ -303,7 +279,7 @@ export default function Header() {
                         } `}
                       />
                     )}
-                    {item.title}
+                    <span>{item.title}</span>
                     {item.link === '/market' && (
                       <div className="absolute w-8 top-0.5 left-0.5 transform -rotate-[20deg]">
                         <img
@@ -312,7 +288,7 @@ export default function Header() {
                         />
                       </div>
                     )}
-                    {item.link === '/upgrade' && (
+                    {(item.link === '/upgrade' || item.link === '/event') && (
                       <div className="absolute w-8 top-0.5 left-0.5 transform -rotate-[20deg]">
                         <img
                           src={require('@/assets/new-flag.png')}
@@ -336,7 +312,7 @@ export default function Header() {
                   <FormattedMessage id="mine_fllq" />
                 </div>
                 <Link
-                  className="btn-green !btn-sm !px-1"
+                  className="btn-sm border border-green rounded-sm inline-flex gap-1"
                   to="/deposit"
                   onClick={() => {
                     window?.fbq(
@@ -348,13 +324,16 @@ export default function Header() {
                       send_to: 'AW-11345409756/EOFKCIqQy-UYENzt9KEq',
                     });
                   }}
+                  style={{
+                    background: 'rgba(53, 240, 94, 0.40)',
+                  }}
                 >
                   <IconFont type="icon-funds" className="text-xl text-green" />
                   <div className="text-xs text-white px-1 font-semibold inline-flex gap-1 items-center">
                     <span className="hidden sm:block">
                       <FormattedMessage id="wc_rewards_deposit" />
                     </span>
-                    <span className="font-num text-green font-semibold">
+                    <span className="font-num font-semibold">
                       +{(userInfo?.firstRechargeRebate || 0) + 10}%
                     </span>
                   </div>
@@ -550,6 +529,7 @@ export default function Header() {
       {loginTipShow && <LoginTip />}
       {regTipShow && <RegTip />}
       <SelectLang />
+      <SaveEmail />
     </>
   );
 }

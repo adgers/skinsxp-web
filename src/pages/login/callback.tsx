@@ -4,7 +4,7 @@ import { history, useModel } from '@umijs/max';
 import { useEffect } from 'react';
 
 export default function LoginCallback() {
-  const { getUser, hideLoginTip ,showRegTip, setRegNum} = useModel('user');
+  const { getUser, hideLoginTip, showRegTip, setRegNum } = useModel('user');
 
   const steamLogin = async () => {
     const urlParams = new URL(window.location.href).searchParams;
@@ -31,6 +31,9 @@ export default function LoginCallback() {
         window?.gtag('event', 'conversion', {
           send_to: 'AW-11379374504/qjkoCPWU7u0YEKjzjbIq',
         });
+        window?.gtag('event', 'conversion', {
+          send_to: 'AW-11379263638/nQhtCK3-9_AYEJaRh7Iq',
+        });
         /* 后续由后台配置平台列表 */
         if (['7', '21']?.includes(ret.data?.promotionChannelId)) {
           // fb 推广用户 注册成功
@@ -55,6 +58,12 @@ export default function LoginCallback() {
           // tiger_2
           window?.gtag('event', 'conversion', {
             send_to: 'AW-11366921880/B4TyCMG24ewYEJjtlawq',
+          });
+        }
+        if (ret.data?.promotionChannelId === '26') {
+          // 木瓜 gg2
+          window?.gtag('event', 'conversion', {
+            send_to: 'AW-11394247259/MztXCNrAifIYENvUmbkq',
           });
         }
         setRegNum(ret?.data?.result || 0);

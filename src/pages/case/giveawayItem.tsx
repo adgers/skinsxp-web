@@ -17,7 +17,7 @@ export default function GiveawayItem(props: GiveawayItemProps) {
   const name = item?.giftVos?.[0]?.giftName;
   return (
     <div
-      className={`relative cursor-pointer grid h-28 sm:h-36 min-w-[80%] snap-start overflow-x-visible sm:min-w-[50%] md:min-w-[33.333333%] xl:min-w-[20%] giveaways-grade giveaways-grade-${index}`}
+      className={`relative cursor-pointer grid h-40 sm:h-44 min-w-[80%] snap-start overflow-x-visible sm:min-w-[50%] md:min-w-[33.333333%] xl:min-w-[20%] giveaways-grade giveaways-grade-${index}`}
       key={`giveaways-${index}`}
       onClick={() =>
         history.push({
@@ -35,25 +35,13 @@ export default function GiveawayItem(props: GiveawayItemProps) {
         </div>
       )}
       <div className="relative overflow-hidden giveaways-grade-item w-full flex flex-col">
-        <div className="flex justify-between h-[30px] px-2 py-1 top-color text-black/70">
-          <div className="flex items-center justify-center gap-1">
-            <div
-              className={`rounded-full flex justify-center items-center bg-black/70 w-[18px] h-[18px]`}
-            >
-              <IconFont
-                type="icon-a-bestdrop"
-                className="text-[8px] icon-color"
-              />
-            </div>
-            <p className="text-xs font-semibold">{item?.title}</p>
-          </div>
-          <div className="text-xs font-semibold flex items-center justify-center">
-            <IconFont type="icon-online" className="mr-1 text-[10px]" />
-            {item?.userCount}
+        <div className="flex justify-between top-color text-black/70">
+          <div className="py-0.5 px-2 bg-[#E1E1E126] italic rounded-br font-bold text-white text-xs">
+            {item?.title}
           </div>
         </div>
         <div className="relative flex flex-1 h-full w-full overflow-hidden">
-          <div className="flex w-[45%] flex-col justify-between">
+          <div className="flex w-[45%] flex-col">
             <div className="flex min-h-0 flex-shrink">
               <div className="h-full  min-h-0 w-4/5 ml-[16px]">
                 <img
@@ -63,12 +51,12 @@ export default function GiveawayItem(props: GiveawayItemProps) {
                 />
               </div>
             </div>
-            <span className="ml-4 mb-3 truncate text-xs font-semibold text-white">
+            <span className="ml-4 mb-1 sm:mb-3 truncate text-xs font-semibold text-white">
               ${item?.poolValue}
             </span>
           </div>
           <div className="flex w-[55%] flex-col pr-2.5 justify-between">
-            <div className="flex flex-col mt-1 sm:mt-3 sm:gap-1">
+            <div className="flex flex-col mt-1 sm:mt-2 sm:gap-1">
               <span className="truncate text-xs font-semibold text-white text-opacity-70">
                 {name && parseName(name)?.[0]}
               </span>
@@ -81,59 +69,68 @@ export default function GiveawayItem(props: GiveawayItemProps) {
                 {name && parseName(name)?.[2]}
               </span>
             </div>
-            <div className="sm:mb-3 flex items-center flex-shrink-0 justify-start w-auto bg-black/50 rounded p-1.5">
-              {days > 0 && (
-                <>
-                  <div className="flex w-6 flex-shrink-0 flex-col items-center justify-center text-center">
-                    <Countdown
-                      value={days}
-                      className="days-value text-xs font-semibold tabular-nums leading-none text-white"
-                    />
-                    <span className="transform scale-75 font-medium leading-none text-white text-opacity-70">
-                      <FormattedMessage id="text_time_days" />
-                    </span>
-                  </div>
-                  <div className="mx-0.5 text-center text-xs font-semibold  text-white">
-                    :
-                  </div>
-                </>
-              )}
-              <div className="flex w-6 flex-shrink-0 flex-col items-center justify-center text-center">
-                <Countdown
-                  value={hours}
-                  className="days-value text-xs font-semibold tabular-nums leading-none text-white"
-                />
-                <span className="transform scale-75  font-medium leading-none text-white text-opacity-70">
-                  <FormattedMessage id="text_time_hour" />
-                </span>
-              </div>
-              <div className="mx-0.5 text-center text-xs font-semibold text-white">
-                :
-              </div>
-
-              <div className="flex w-6 flex-shrink-0 flex-col items-center justify-center text-center">
-                <Countdown
-                  value={minutes}
-                  className="days-value text-xs font-semibold tabular-nums leading-none text-white"
-                />
-                <span className="transform scale-75 font-medium leading-none text-white text-opacity-70">
-                  <FormattedMessage id="text_time_min" />
-                </span>
-              </div>
-              <div className="mx-0.5 text-center text-xs font-semibold text-white">
-                :
-              </div>
-              <div className="flex w-6 flex-shrink-0 flex-col items-center justify-center text-center">
-                <Countdown
-                  value={seconds}
-                  className="days-value text-xs font-semibold tabular-nums leading-none text-white"
-                />
-                <span className="transform scale-75 font-medium leading-none text-white text-opacity-70">
-                  <FormattedMessage id="text_time_sec" />
-                </span>
-              </div>
+            <div className="flex items-center gap-1 text-xs mb-1 sm:mb-3 ">
+              <IconFont type="icon-online" className="icon-color text-xs" />
+              {item?.userCount}
             </div>
           </div>
+        </div>
+      </div>
+      <div className="w-full bg-black flex items-center justify-between p-1.5 sm:p-3 pr-1.5 z-[1]">
+        <div className="flex items-center flex-shrink-0 justify-start w-auto p-1.5">
+          {days > 0 && (
+            <>
+              <div className="flex w-6 flex-shrink-0 flex-col items-center justify-center text-center">
+                <Countdown
+                  value={days}
+                  className="days-value text-xs font-semibold tabular-nums leading-none text-white"
+                />
+                <span className="transform text-xs scale-75 font-medium leading-none text-white text-opacity-70">
+                  <FormattedMessage id="text_time_days" />
+                </span>
+              </div>
+              <div className="mx-0.5 text-center text-xs font-semibold  text-white">
+                :
+              </div>
+            </>
+          )}
+          <div className="flex w-6 flex-shrink-0 flex-col items-center justify-center text-center">
+            <Countdown
+              value={hours}
+              className="days-value text-xs font-semibold tabular-nums leading-none text-white"
+            />
+            <span className="transform text-xs scale-75  font-medium leading-none text-white text-opacity-70">
+              <FormattedMessage id="text_time_hour" />
+            </span>
+          </div>
+          <div className="mx-0.5 text-center text-xs font-semibold text-white">
+            :
+          </div>
+
+          <div className="flex w-6 flex-shrink-0 flex-col items-center justify-center text-center">
+            <Countdown
+              value={minutes}
+              className="days-value text-xs font-semibold tabular-nums leading-none text-white"
+            />
+            <span className="transform text-xs scale-75 font-medium leading-none text-white text-opacity-70">
+              <FormattedMessage id="text_time_min" />
+            </span>
+          </div>
+          <div className="mx-0.5 text-center text-xs font-semibold text-white">
+            :
+          </div>
+          <div className="flex w-6 flex-shrink-0 flex-col items-center justify-center text-center">
+            <Countdown
+              value={seconds}
+              className="days-value text-xs font-semibold tabular-nums leading-none text-white"
+            />
+            <span className="transform text-xs scale-75 font-medium leading-none text-white text-opacity-70">
+              <FormattedMessage id="text_time_sec" />
+            </span>
+          </div>
+        </div>
+        <div className="btn !h-[30px] !min-h-0 text-xs btn-color !rounded">
+          <FormattedMessage id="roll_ljcy" />
         </div>
       </div>
     </div>

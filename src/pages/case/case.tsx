@@ -1,7 +1,6 @@
 import { IconFont } from '@/components/icons';
 import { getHostListUsingGET } from '@/services/front/duizhanxiangguan';
-import { getBoxListUsingGET } from '@/services/front/kaixiangxiangguan';
-import { isLogin } from '@/utils';
+import { isLogin, numberSplitCeil } from '@/utils';
 import { FormattedMessage, history, useIntl, useRequest } from '@umijs/max';
 import { useEffect, useState } from 'react';
 import LazyLoad from 'react-lazyload';
@@ -9,23 +8,28 @@ import { toast } from 'react-toastify';
 import BattleItem from './battleItem';
 import './index.less';
 
-export default function Case() {
+interface CaseProps {
+  boxList: API.BoxThemeListVo[];
+}
+
+export default function Case(props: CaseProps) {
+  const { boxList } = props;
   const [hotBoxList, setHotBoxList] = useState<API.BoxThemeListVo[]>([]);
   const [otherBoxList, setOtherBoxList] = useState<API.BoxThemeListVo[]>([]);
   const intl = useIntl();
 
   const search = location.search;
 
-  const { data: boxList = [] } = useRequest(
-    () =>
-      getBoxListUsingGET({
-        boxType: 1,
-        moduleId: 5,
-      }),
-    {
-      cacheKey: 'boxList',
-    },
-  );
+  // const { data: boxList = [] } = useRequest(
+  //   () =>
+  //     getBoxListUsingGET({
+  //       boxType: 1,
+  //       moduleId: 5,
+  //     }),
+  //   {
+  //     cacheKey: 'boxList',
+  //   },
+  // );
   const { data: battleList } = useRequest(() => getHostListUsingGET(), {
     cacheKey: 'battleList',
   });
@@ -33,10 +37,10 @@ export default function Case() {
     if (boxList.length === 0) return;
 
     if (boxList.length > 1) {
-      setHotBoxList(boxList.slice(0, 1));
+      // setHotBoxList(boxList.slice(0, 1));
       setOtherBoxList(boxList.slice(1));
     } else {
-      setHotBoxList(boxList);
+      // setHotBoxList(boxList);
     }
   }, [boxList]);
 
@@ -80,8 +84,21 @@ export default function Case() {
                   className="w-full h-full object-contain rounded-md"
                 />
                 <div className="w-full h-full absolute top-0 left-0">
+                  {Number(v?.discount) < 100 && (
+                    <div className="absolute top-[25px] left-[25px]  text-green px-1.5 rounded bg-[#123F0D]">
+                      -{100 - Number(v?.discount)}%
+                    </div>
+                  )}
                   {/* <div className="absolute top-[1.5] left-[1.75] text-green">New !</div> */}
-                  <div className="absolute top-[20px] right-0 bg-black/[0.8] rounded-l text-white px-2 py-0.5 font-num sm:text-xl">
+                  <div className="absolute top-[20px] flex flex-col items-center right-0 bg-black/[0.8] rounded-l text-white px-2 py-0.5 font-num sm:text-xl">
+                    {Number(v?.discount) < 100 && (
+                      <span className="text-gray text-sm font-normal line-through">
+                        $
+                        {numberSplitCeil(
+                          (Number(v?.openPrice) * 100) / Number(v?.discount),
+                        )}
+                      </span>
+                    )}
                     ${v?.openPrice}
                   </div>
                   <div className="absolute bottom-0 left-0 w-full bg-black bg-opacity-50 backdrop-blur-sm py-3 px-2">
