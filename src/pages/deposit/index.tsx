@@ -477,6 +477,13 @@ export default function Deposit() {
           currency: 'USD',
         });
       }
+      if (['16'].includes(userInfo?.promotionChannelId)) {
+        window?.ttq?.track('firstRecharge', {
+          // adtiger tt
+          value: ret?.data?.quantity,
+          currency: 'USD',
+        });
+      }
       if (['23'].includes(userInfo?.promotionChannelId)) {
         // 自投-蓝瀚-gg
         window?.gtag('event', 'conversion', {

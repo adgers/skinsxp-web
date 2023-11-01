@@ -54,6 +54,10 @@ export default function LoginCallback() {
             send_to: 'AW-11345409756/C-brCIeQy-UYENzt9KEq',
           });
         }
+        if (ret.data?.promotionChannelId === '16') {
+          // adtiger tt
+          window?.ttq?.track('Signup');
+        }
         if (ret.data?.promotionChannelId === '24') {
           // tiger_2
           window?.gtag('event', 'conversion', {
