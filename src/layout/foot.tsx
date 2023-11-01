@@ -160,6 +160,10 @@ export default function Foot() {
               <div className="text-xs text-gray mt-6">
                 © 2022—2023 WGSKINS.COM
               </div>
+              <div className="text-xs text-gray mt-1">
+                ALL RİGHTS RESERVED. POWERED BY STEAM. NOT AFFİLİATED WİTH VALVE
+                CORP.
+              </div>
             </div>
 
             <div className="flex justify-end gap-1 sm:gap-4 flex-wrap">
