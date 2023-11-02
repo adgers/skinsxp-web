@@ -162,13 +162,13 @@ export default function Foot() {
               </div>
               <div
                 className="text-xs text-gray mt-1"
-                onClick={() => {
+                // onClick={() => {
                   // window?.ttq?.track('Signup');
-                  // window?.ttq?.track('firstRecharge', {
+                  // window?.ttq?.track('CompletePayment', {
                   //   value: 9999,
                   //   currency: 'USD',
                   // });
-                }}
+                // }}
               >
                 ALL RİGHTS RESERVED. POWERED BY STEAM. NOT AFFİLİATED WİTH VALVE
                 CORP.

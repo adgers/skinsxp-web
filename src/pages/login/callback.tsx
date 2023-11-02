@@ -56,7 +56,7 @@ export default function LoginCallback() {
         }
         if (ret.data?.promotionChannelId === '31') {
           // adtiger tt
-          window?.ttq?.track('Signup');
+          window?.ttq?.track('CompleteRegistration');
         }
         if (ret.data?.promotionChannelId === '24') {
           // tiger_2
