@@ -8,17 +8,17 @@ export default function OpenHistory() {
 
   return (
     <div className="w-full open-history bg-dark overflow-hidden flex">
-      <div className="flex md:flex-col px-1 md:px-4 items-center justify-center gap-2 md:gap-1">
+      <div className="flex flex-col px-2 md:px-4 items-center justify-center gap-2 md:gap-1">
         <IconFont
           type="icon-a-xinhao11"
           className="text-green text-[16px] md:text-[24px]"
         />
         <div className=" whitespace-nowrap">
-          <span className="text-gray text-xs md:text-sm uppercase">
+          <span className="text-gray text-xs hidden md:block md:text-sm uppercase">
             <FormattedMessage id="site_online" />
           </span>
-          <div className="flex md:justify-center items-center gap-1">
-            <div className="rounded-full w-[6px] h-[6px] bg-green animate-pulse"></div>{' '}
+          <div className="flex md:justify-center items-center gap-1 text-xs md:text-sm">
+            <div className="rounded-full w-[6px] h-[6px] bg-green animate-pulse -ml-1"></div>
             {siteStat?.activeSession}
           </div>
         </div>
