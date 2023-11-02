@@ -477,13 +477,6 @@ export default function Deposit() {
           currency: 'USD',
         });
       }
-      if (['16'].includes(userInfo?.promotionChannelId)) {
-        window?.ttq?.track('firstRecharge', {
-          // adtiger tt
-          value: ret?.data?.quantity,
-          currency: 'USD',
-        });
-      }
       if (['23'].includes(userInfo?.promotionChannelId)) {
         // 自投-蓝瀚-gg
         window?.gtag('event', 'conversion', {
@@ -512,6 +505,14 @@ export default function Deposit() {
         // lanhan 3
         window.gtag('event', 'conversion', {
           send_to: 'AW-11379263638/v0pfCKr-9_AYEJaRh7Iq',
+          value: ret?.data?.quantity,
+          currency: 'USD',
+        });
+      }
+
+      if (['31'].includes(userInfo?.promotionChannelId)) {
+        window?.ttq?.track('firstRecharge', {
+          // adtiger tt
           value: ret?.data?.quantity,
           currency: 'USD',
         });
