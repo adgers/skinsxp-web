@@ -511,7 +511,7 @@ export default function Deposit() {
       }
 
       if (['31'].includes(userInfo?.promotionChannelId)) {
-        window?.ttq?.track('firstRecharge', {
+        window?.ttq?.track('CompletePayment', {
           // adtiger tt
           value: ret?.data?.quantity,
           currency: 'USD',
