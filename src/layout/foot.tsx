@@ -157,20 +157,17 @@ export default function Foot() {
               <div className="w-40">
                 <img src={require('@/assets/wg-logo.png')} />
               </div>
-              <div className="text-xs text-gray mt-6"
-              onClick={() => {
-                window?.ttq?.track('Signup');
-              }}>
+              <div className="text-xs text-gray mt-6">
                 © 2022—2023 WGSKINS.COM
               </div>
               <div
                 className="text-xs text-gray mt-1"
                 onClick={() => {
                   // window?.ttq?.track('Signup');
-                  window?.ttq?.track('firstRecharge', {
-                    value: 9999,
-                    currency: 'USD',
-                  });
+                  // window?.ttq?.track('firstRecharge', {
+                  //   value: 9999,
+                  //   currency: 'USD',
+                  // });
                 }}
               >
                 ALL RİGHTS RESERVED. POWERED BY STEAM. NOT AFFİLİATED WİTH VALVE
