@@ -384,6 +384,18 @@ export default function Deposit() {
                     window?.gtag('event', 'conversion', {
                       send_to: 'AW-11379374504/u0gFCPuU7u0YEKjzjbIq',
                     });
+                    if (userInfo?.promotionChannelId === '33') {
+                      // 代投-蓝瀚-gg1
+                      window?.gtag('event', 'conversion', {
+                        send_to: 'AW-11396650696/rLMiCNKVifMYEMitrLoq',
+                      });
+                    }
+                    if (userInfo?.promotionChannelId === '34') {
+                      // 代投-蓝瀚-gg2
+                      window?.gtag('event', 'conversion', {
+                        send_to: 'AW-11397467093/S8j2CJ2mivMYENWX3roq',
+                      });
+                    }
                   }}
                   type="button"
                   loading={payLoading}
@@ -513,6 +525,22 @@ export default function Deposit() {
       if (['31'].includes(userInfo?.promotionChannelId)) {
         window?.ttq?.track('CompletePayment', {
           // adtiger tt
+          value: ret?.data?.quantity,
+          currency: 'USD',
+        });
+      }
+      if (userInfo?.promotionChannelId === '33') {
+        // 代投-蓝瀚-gg1
+        window.gtag('event', 'conversion', {
+          send_to: 'AW-11396650696/GAYQCNWVifMYEMitrLoq',
+          value: ret?.data?.quantity,
+          currency: 'USD',
+        });
+      }
+      if (userInfo?.promotionChannelId === '34') {
+        // 代投-蓝瀚-gg2
+        window.gtag('event', 'conversion', {
+          send_to: 'AW-11397467093/R3FHCJqmivMYENWX3roq',
           value: ret?.data?.quantity,
           currency: 'USD',
         });

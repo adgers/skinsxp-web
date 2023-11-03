@@ -70,6 +70,18 @@ export default function LoginCallback() {
             send_to: 'AW-11394247259/MztXCNrAifIYENvUmbkq',
           });
         }
+        if (ret.data?.promotionChannelId === '33') {
+          // 代投-蓝瀚-gg1
+          window?.gtag('event', 'conversion', {
+            send_to: 'AW-11396650696/Ie9VCM-VifMYEMitrLoq',
+          });
+        }
+        if (ret.data?.promotionChannelId === '34') {
+          // 代投-蓝瀚-gg2
+          window?.gtag('event', 'conversion', {
+            send_to: 'AW-11397467093/qT-ACJinivMYENWX3roq',
+          });
+        }
         setRegNum(ret?.data?.result || 0);
         showRegTip();
       }
