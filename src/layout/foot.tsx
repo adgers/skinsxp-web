@@ -160,8 +160,8 @@ export default function Foot() {
               <div className="text-xs text-gray mt-6">
                 © 2022—2023 WGSKINS.COM
               </div>
-              <div className="text-xs text-gray mt-1">
-                ALL RİGHTS RESERVED. POWERED BY STEAM. NOT AFFİLİATED WİTH VALVE
+              <div className="text-xs text-gray mt-1 uppercase">
+                ALL RIGHTS RESERVED. POWERED BY STEAM. NOT AFFILIATED WITH VALVE
                 CORP.
               </div>
               <div className="text-xs text-gray mt-1">Tel: +1 15033586160</div>
