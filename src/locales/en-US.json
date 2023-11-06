@@ -413,7 +413,7 @@
     "go_event": "GO TO EVENT",
     "halloween_sc": "FIRST DEPOSIT",
     "halloween_mfrf": "FREE GIVEAWAYS",
-    "halloween_jrrf": "JOIN FOR FREE",
+    "halloween_jrrf": "JOIN NOW",
     "halloween_srdm": "Enter the code \"HALLOWEEN\" +20%",
     "halloween_title": "HALLOWEEN SPECIAL EVENT",
     "halloween_desc": "You can receive rewards from event cases and tasks",
@@ -430,5 +430,7 @@
     "main_tab_event": "EVENT",
     "site_online": "Online",
     "site_users": "Users",
-    "email_invail": "Email format error"
+    "email_invail": "Email format error",
+    "loginTip_gift": "Gifts for you",
+    "loginTip_bonus": "Get extra bonus $1-5 and giveaways for new users."
 }

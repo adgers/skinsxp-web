@@ -27,35 +27,14 @@ export default function LoginTip() {
                 color: 'transparent',
               }}
             >
-              <FormattedMessage id="loginTip_sign" />{' '}
+              <FormattedMessage id="loginTip_gift" />{' '}
             </div>
-            <div className="flex justify-center mt-2">
-              <div
-                style={{
-                  backgroundImage:
-                    'linear-gradient(270deg, #CB90FF 0%, #FAF3FF 93.42%)',
-                  WebkitBackgroundClip: 'text',
-                  overflow: 'visible',
-                  color: 'transparent',
-                }}
-                className="mr-1"
-              >
-                <FormattedMessage id="loginTip_get" />
-              </div>
-              <div
-                style={{
-                  backgroundImage:
-                    'linear-gradient(0deg, #FEF38C 17.5%, #F09402 50.81%, #FEF37E 77.92%)',
-                  WebkitBackgroundClip: 'text',
-                  overflow: 'visible',
-                  color: 'transparent',
-                }}
-              >
-                <FormattedMessage id="loginTip_jl" />
-              </div>
+
+            <div className=" mt-1 text-white text-xl font-semibold text-center">
+              <FormattedMessage id="loginTip_bonus" />
             </div>
           </div>
-          <div className="absolute top-[120px] sm:top-[170px] w-[50px] sm:w-[75px] left-0 sm:left-[10px] font-semibold text-right sm:text-xl">
+          {/* <div className="absolute top-[120px] sm:top-[170px] w-[50px] sm:w-[75px] left-0 sm:left-[10px] font-semibold text-right sm:text-xl">
             <FormattedMessage id="loginTip_up" />
           </div>
           <div
@@ -69,7 +48,7 @@ export default function LoginTip() {
             }}
           >
             <FormattedMessage id="roll_room_title" />
-          </div>
+          </div> */}
 
           <Button
             className="btn btn-purple absolute w-full m-auto bottom-0 max-w-xs"

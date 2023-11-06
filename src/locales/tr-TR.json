@@ -430,5 +430,7 @@
     "main_tab_event": "Etkinlik",
     "site_online": "Çevrim içi",
     "site_users": "Kullanıcılar",
-    "email_invail": "E-posta biçimi hatası"
+    "email_invail": "E-posta biçimi hatası",
+    "loginTip_gift": "Senin için hediyeler.",
+    "loginTip_bonus": "1-5 dolar fazla bonus alın ve yeni kullanıcılar için yol aç."
 }

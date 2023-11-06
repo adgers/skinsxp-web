@@ -430,5 +430,7 @@
     "main_tab_event": "Événement",
     "site_online": "En ligne",
     "site_users": "Utilisateurs",
-    "email_invail": "Erreur de format d'e-mail"
+    "email_invail": "Erreur de format d'e-mail",
+    "loginTip_gift": "Senin için hediyeler.",
+    "loginTip_bonus": "Obtenez un bonus supplémentaire de 1 $à 5 $et des cadeaux pour les nouveaux utilisateurs."
 }
