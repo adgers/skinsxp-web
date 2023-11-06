@@ -164,7 +164,7 @@ export default function Foot() {
                 ALL RIGHTS RESERVED. POWERED BY STEAM. NOT AFFILIATED WITH VALVE
                 CORP.
               </div>
-              <div className="text-xs text-gray mt-1">Tel: +1 15033586160</div>
+              <div className="text-xs text-gray mt-1">Tel: +1 {'('}503{')'}358-6160</div>
               <div className="text-xs text-gray mt-1">
                 E-mail: bd@wgskins.com
               </div>
