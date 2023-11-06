@@ -430,5 +430,7 @@
     "main_tab_event": "イベント",
     "site_online": "オンライン",
     "site_users": "ユーザー",
-    "email_invail": "メールフォーマットエラー"
+    "email_invail": "メールフォーマットエラー",
+    "loginTip_gift": "あなたへのプレゼント",
+    "loginTip_bonus": "1～5ドルの追加ボーナスと新規ユーザーへの景品がもらえる。"
 }

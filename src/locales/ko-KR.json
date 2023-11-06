@@ -430,5 +430,7 @@
     "main_tab_event": "이벤트",
     "site_online": "온라인",
     "site_users": "사용자",
-    "email_invail": "이메일 형식 오류"
+    "email_invail": "이메일 형식 오류",
+    "loginTip_gift": "너에게 줄 선물",
+    "loginTip_bonus": "1-5달러의 추가 보너스와 신규 사용자의 경품을 드립니다."
 }

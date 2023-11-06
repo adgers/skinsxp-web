@@ -430,5 +430,7 @@
     "main_tab_event": "活動",
     "site_online": "在線",
     "site_users": "玩家",
-    "email_invail": "電子郵件格式錯誤"
+    "email_invail": "電子郵件格式錯誤",
+    "loginTip_gift": "送給你的禮物",
+    "loginTip_bonus": "獲得1-5美元的額外獎金和新用戶的贈品。"
 }

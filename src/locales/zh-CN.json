@@ -430,5 +430,7 @@
     "main_tab_event": "活动",
     "site_online": "在线",
     "site_users": "用户",
-    "email_invail": "邮箱格式错误"
+    "email_invail": "邮箱格式错误",
+    "loginTip_gift": "给你的礼物",
+    "loginTip_bonus": "獲得1-5美元的額外獎金和新用戶的贈品。"
 }

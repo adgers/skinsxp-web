@@ -430,5 +430,7 @@
     "main_tab_event": "Evento",
     "site_online": "En línea",
     "site_users": "Usuarios",
-    "email_invail": "Error de formato de correo electrónico"
+    "email_invail": "Error de formato de correo electrónico",
+    "loginTip_gift": "Un regalo para ti",
+    "loginTip_bonus": "Recibe un bono adicional de $1 - 5 y un regalo de un nuevo usuario."
 }
