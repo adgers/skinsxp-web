@@ -82,6 +82,11 @@ export default function LoginCallback() {
             send_to: 'AW-11397467093/qT-ACJinivMYENWX3roq',
           });
         }
+        if (ret.data?.promotionChannelId === '23') {
+          window?.gtag('event', 'conversion', {
+            send_to: 'AW-11402898592/KvW7CIzkwPQYEKDZqb0q',
+          });
+        }
         setRegNum(ret?.data?.result || 0);
         showRegTip();
       }
