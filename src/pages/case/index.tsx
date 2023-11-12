@@ -5,6 +5,7 @@ import { useEffect, useState } from 'react';
 import LazyLoad from 'react-lazyload';
 import Case from './case';
 import Giveaways from './giveaways';
+import Banner from './banner';
 import './index.less';
 
 export default function Home() {
@@ -28,8 +29,8 @@ export default function Home() {
   }, [boxList]);
   return (
     <>
-      {/* <Banner /> */}
-      <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4 px-4 translate-y-[-40px]">
+      <Banner />
+      <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4 px-4 my-4">
         {discountBox[0]?.boxList?.map((v, idx) => (
           <div
             key={idx}
