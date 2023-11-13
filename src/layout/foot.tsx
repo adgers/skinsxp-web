@@ -222,7 +222,6 @@ export default function Foot() {
             <div>
               <div className="mt-8 flex flex-wrap items-center gap-x-8 gap-y-4">
                 <img src={VisaSvg} alt="" className="h-[20px]" />
-                <img src={AlipaySvg} alt="" className="h-[20px]" />
                 <img
                   src={ByteCoinSvg}
                   alt=""
