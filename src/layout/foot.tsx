@@ -9,7 +9,7 @@ import './index.less';
 export default function Foot() {
   const { showLogin, userInfo } = useModel('user');
   const { siteStat } = useModel('socket');
-  const [showDeposit, setShowDeposit] = useState(false);
+  // const [showDeposit, setShowDeposit] = useState(false);
   const footerTop = [
     {
       title: <FormattedMessage id="footer_collect" />,
@@ -85,19 +85,19 @@ export default function Foot() {
     }, waitTime + 10);
   };
 
-  useEffect(() => {
-    if (
-      Number(userInfo?.firstRechargeRebate) > 0 &&
-      !sessionStorage.getItem('showedDepositBanner')
-    ) {
-      setShowDeposit(true);
-      sessionStorage.setItem('showedDepositBanner', 'true');
-    }
-  }, [userInfo?.firstRechargeRebate]);
+  // useEffect(() => {
+  //   if (
+  //     Number(userInfo?.firstRechargeRebate) > 0 &&
+  //     !sessionStorage.getItem('showedDepositBanner')
+  //   ) {
+  //     setShowDeposit(true);
+  //     sessionStorage.setItem('showedDepositBanner', 'true');
+  //   }
+  // }, [userInfo?.firstRechargeRebate]);
 
   return (
     <>
-      {showDeposit && (
+      {/* {showDeposit && (
         <div
           className="bg-[url('@/assets/footer-deposit.png')] w-full h-[80px] md:h-[140px] bg-no-repeat bg-cover  bg-center sticky left-0 bottom-[64px] md:bottom-0 mt-10 z-[199]"
           onClick={() => {
@@ -114,7 +114,7 @@ export default function Foot() {
             <img src={require('@/assets/footer-deposit-close.png')} alt="" />
           </div>
         </div>
-      )}
+      )} */}
       <footer className="bg-base-300 text-base-content mt-10 flex flex-col">
         <div className="bg-black w-full flex justify-center">
           <div className="max-w-8xl w-full relative grid grid-cols-2 gap-y-4 sm:flex justify-center items-center flex-wrap text-gray py-10">
