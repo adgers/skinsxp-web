@@ -29,8 +29,8 @@ export default function Home() {
   }, [boxList]);
   return (
     <>
-      <Banner />
-      <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4 px-4 my-4">
+      {/* <Banner /> . */}
+      <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4 px-4 translate-y-[-40px]">
         {discountBox[0]?.boxList?.map((v, idx) => (
           <div
             key={idx}

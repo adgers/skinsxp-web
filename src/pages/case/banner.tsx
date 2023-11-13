@@ -29,12 +29,12 @@ export default function Banner() {
           clickable: true,
         }}
         modules={[Pagination, Autoplay]}
-        className="w-full rounded h-[125px] sm:h-[200px] md:h-[250px] lg:h-[300px] xl:h-[350px] xxl:h-[400px] flex items-center"
+        className="w-full rounded h-[210px]  md:h-[350px] lg:h-[350px] xl:h-[400px] 2xl:h-[450px] flex items-center !z-0"
       >
         {/* {data?.map((t, i) => ( */}
         <SwiperSlide
           key={0}
-          className="h-[125px] sm:h-[200px] md:h-[250px] lg:h-[300px] xl:h-[350px] xxl:h-[400px] relative"
+          className="h-[210px]  md:h-[350px] lg:h-[350px] xl:h-[400px] 2xl:h-[450px] relative"
           onClick={() => {
             history.push({
               pathname: '/deposit',
@@ -51,7 +51,7 @@ export default function Banner() {
           }}
         >
           <img
-            src={require('@/assets/banner-bg.png')}
+            src={require('@/assets/banner.png')}
             className="w-full h-full object-cover"
           />
           <div className="absolute top-0 left-0 w-full h-full flex flex-col  items-center z-30">
