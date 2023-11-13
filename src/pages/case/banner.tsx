@@ -17,7 +17,7 @@ export default function Banner() {
   // );
 
   return (
-    <div className="flex items-center w-full justify-center">
+    <div className="flex items-center w-full justify-center mt-4">
       {/* {data && data?.length > 0 && ( */}
       <Swiper
         centeredSlides={true}
@@ -106,14 +106,14 @@ export default function Banner() {
                 <FormattedMessage id="go_event"/>
               </div>
             )} */}
-            <div className="sm:text-[40px] text-center uppercase font-num font-semibold">
+            <div className="sm:text-[32px] text-center uppercase font-num font-semibold mt-5">
               {intl.formatMessage({ id: 'banner_first_recharge' })} &
             </div>
-            <div className="sm:text-[40px] sm:mb-6 text-center uppercase font-num font-semibold">
+            <div className="sm:text-[32px] sm:mb-6 text-center uppercase font-num font-semibold">
               {intl.formatMessage({ id: 'banner_promo' })}
             </div>
             <div
-              className="text-primary text-xl mt-2 sm:mt-0 sm:h-[60px] sm:leading-none sm:text-[60px] font-num uppercase font-semibold"
+              className="text-primary text-xl mt-2 sm:mt-0 sm:h-[60px] sm:leading-none sm:text-[50px] font-num uppercase font-semibold"
               style={{
                 backgroundImage:
                   'linear-gradient(270deg, #0BFF59 0.04%, #B4FC3B 99.77%)',
