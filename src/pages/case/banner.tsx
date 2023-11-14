@@ -1,4 +1,4 @@
-import { history, useIntl, useLocation } from '@umijs/max';
+import { useIntl, useLocation } from '@umijs/max';
 
 import 'swiper/css';
 import 'swiper/css/pagination';
@@ -55,58 +55,7 @@ export default function Banner() {
             className="w-full h-full object-cover"
           />
           <div className="absolute top-0 left-0 w-full h-full flex flex-col  items-center z-30">
-            {/* <div className="w-fit mt-[64px] md:mt-[140px] mx-auto flex gap-2">
-              {days > 0 && (
-                <div className="flex w-[60px] md:w-[80px] h-[36px] md:h-[50px] flex-shrink-0 flex-col items-center justify-center text-center bg-black/70 rounded">
-                  <Countdown
-                    value={days}
-                    className="days-value text-sm md:text-lg font-semibold tabular-nums leading-none text-white"
-                  />
-                  <span className="transform scale-75 font-medium leading-none text-white text-opacity-70">
-                    <FormattedMessage id="text_time_days" />
-                  </span>
-                </div>
-              )}
-              <div className="flex w-[60px] md:w-[80px] h-[36px] md:h-[50px] flex-shrink-0 flex-col items-center justify-center text-center bg-black/70 rounded">
-                <Countdown
-                  value={hours}
-                  className="days-value text-sm md:text-lg font-semibold tabular-nums leading-none text-white"
-                />
-                <span className="transform scale-75 font-medium leading-none text-white text-opacity-70">
-                  <FormattedMessage id="text_time_hour" />
-                </span>
-              </div>
-              <div className="flex w-[60px] md:w-[80px] h-[36px] md:h-[50px] flex-shrink-0 flex-col items-center justify-center text-center bg-black/70 rounded">
-                <Countdown
-                  value={minutes}
-                  className="days-value text-sm md:text-lg font-semibold tabular-nums leading-none text-white"
-                />
-                <span className="transform scale-75 font-medium leading-none text-white text-opacity-70">
-                  <FormattedMessage id="text_time_min" />
-                </span>
-              </div>
-
-              <div className="flex w-[60px] md:w-[80px] h-[36px] md:h-[50px] flex-shrink-0 flex-col items-center justify-center text-center bg-black/70 rounded">
-                <Countdown
-                  value={seconds}
-                  className="days-value text-sm md:text-lg font-semibold tabular-nums leading-none text-white"
-                />
-                <span className="transform scale-75 font-medium leading-none text-white text-opacity-70">
-                  <FormattedMessage id="text_time_sec" />
-                </span>
-              </div>
-            </div>
-            {location.pathname === '/case' && (
-              <div
-                className="btn btn-purple !h-[32px] md:!h-12 min-h-0 mt-3 md:mt-8 !px-8"
-                onClick={() => {
-                  history.push('/event');
-                }}
-              >
-                <FormattedMessage id="go_event"/>
-              </div>
-            )} */}
-            <div className="sm:text-[32px] text-center uppercase font-num font-semibold mt-5">
+            <div className="sm:text-[32px] text-center uppercase font-num font-semibold mt-10">
               {intl.formatMessage({ id: 'banner_first_recharge' })} &
             </div>
             <div className="sm:text-[32px] sm:mb-6 text-center uppercase font-num font-semibold">
@@ -127,6 +76,31 @@ export default function Banner() {
           </div>
         </SwiperSlide>
         {/* ))} */}
+        <SwiperSlide
+          key={1}
+          className="h-[150px]  md:h-[350px] lg:h-[350px] xl:h-[400px] 2xl:h-[450px] relative"
+          onClick={() => {
+            window.open('https://discord.gg/ucDMTAbAcS');
+          }}
+        >
+          <img
+            src={require('@/assets/banner-discord.png')}
+            className="w-full h-full object-cover"
+          />
+          <div className="absolute top-0 left-0 w-full h-full flex flex-col items-center z-30">
+            <div
+              className="text-[16px] md:text-[50px] text-center uppercase font-num font-semibold mt-5 md:mt-10 w-[160px] md:w-[800px] whitespace-pre-wrap"
+              style={{ fontFamily: 'Bebas' }}
+            >
+              {intl.formatMessage({ id: 'banner_discord_text' })}
+            </div>
+            <div className="w-[120px] h-[36px] md:w-[310px] md:h-[95px] bg-[url('@/assets/banner-discord-btn.png')] bg-no-repeat bg-cover mt-2 lg:mt-[60px] text-xs md:text-xl  md:py-10 flex items-center justify-center cursor-pointer">
+              <span className="pl-8">
+                {intl.formatMessage({ id: 'banner_discord_btn' })}
+              </span>
+            </div>
+          </div>
+        </SwiperSlide>
       </Swiper>
       {/* )} */}
     </div>

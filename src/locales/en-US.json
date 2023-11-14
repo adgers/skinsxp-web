@@ -432,5 +432,8 @@
     "site_users": "Users",
     "email_invail": "Email format error",
     "loginTip_gift": "Gifts for you",
-    "loginTip_bonus": "Get extra bonus $1-5 and giveaways for new users."
+    "loginTip_bonus": "Get extra bonus $1-5 and giveaways for new users.",
+    "banner_discord_text": "Get your daily benefits here",
+    "banner_discord_btn":"CLICK HERE"
+
 }
