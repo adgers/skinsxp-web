@@ -84,7 +84,7 @@ export default function LoginCallback() {
         }
         if (ret.data?.promotionChannelId === '23') {
           window?.gtag('event', 'conversion', {
-            send_to: 'AW-11402898592/KvW7CIzkwPQYEKDZqb0q',
+            send_to: 'AW-11379374504/KvW7CIzkwPQYEKDZqb0q',
           });
         }
         setRegNum(ret?.data?.result || 0);
