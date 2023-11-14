@@ -432,5 +432,7 @@
     "site_users": "玩家",
     "email_invail": "電子郵件格式錯誤",
     "loginTip_gift": "送給你的禮物",
-    "loginTip_bonus": "獲得1-5美元的額外獎金和新用戶的贈品。"
+    "loginTip_bonus": "獲得1-5美元的額外獎金和新用戶的贈品。",
+    "banner_discord_text": "在這裡獲取您的每日福利",
+    "banner_discord_btn":"點這裡"
 }

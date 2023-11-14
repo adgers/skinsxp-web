@@ -432,5 +432,7 @@
     "site_users": "ユーザー",
     "email_invail": "メールフォーマットエラー",
     "loginTip_gift": "あなたへのプレゼント",
-    "loginTip_bonus": "1～5ドルの追加ボーナスと新規ユーザーへの景品がもらえる。"
+    "loginTip_bonus": "1～5ドルの追加ボーナスと新規ユーザーへの景品がもらえる。",
+    "banner_discord_text": "毎日の特典をここで入手してください",
+    "banner_discord_btn":"ここをクリック"
 }

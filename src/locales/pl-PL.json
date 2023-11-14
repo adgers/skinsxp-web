@@ -432,5 +432,7 @@
     "site_users": "Użytkownicy",
     "email_invail": "Błąd formatu wiadomości e-mail",
     "loginTip_gift": "Prezenty dla ciebie",
-    "loginTip_bonus": "Uzyskaj dodatkowy bonus $1-5 i prezenty dla nowych użytkowników."
+    "loginTip_bonus": "Uzyskaj dodatkowy bonus $1-5 i prezenty dla nowych użytkowników.",
+    "banner_discord_text": "Zdobądź tutaj swoje codzienne korzyści",
+    "banner_discord_btn":"KLIKNIJ TUTAJ"
 }
