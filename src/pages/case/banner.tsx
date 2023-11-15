@@ -32,7 +32,7 @@ export default function Banner() {
         className="w-full rounded h-[210px]  md:h-[350px] lg:h-[350px] xl:h-[400px] 2xl:h-[450px] flex items-center !z-0"
       >
         {/* {data?.map((t, i) => ( */}
-        <SwiperSlide
+        {/* <SwiperSlide
           key={0}
           className="h-[210px]  md:h-[350px] lg:h-[350px] xl:h-[400px] 2xl:h-[450px] relative"
           onClick={() => {
@@ -74,10 +74,10 @@ export default function Banner() {
               {intl.formatMessage({ id: 'banner_bonus' })}
             </div>
           </div>
-        </SwiperSlide>
+        </SwiperSlide> */}
         {/* ))} */}
         <SwiperSlide
-          key={1}
+          key={0}
           className="h-[150px]  md:h-[350px] lg:h-[350px] xl:h-[400px] 2xl:h-[450px] relative"
           onClick={() => {
             window.open('https://discord.gg/ucDMTAbAcS');
