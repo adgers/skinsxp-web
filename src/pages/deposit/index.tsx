@@ -492,7 +492,7 @@ export default function Deposit() {
       if (['23'].includes(userInfo?.promotionChannelId)) {
         // 自投-蓝瀚-gg
         window?.gtag('event', 'conversion', {
-          send_to: 'AW-11379374504/406XCI_kwPQYEKDZqb0q',
+          send_to: 'AW-11379374504/YmJUCPiU7u0YEKjzjbIq',
           value: ret?.data?.quantity,
           currency: 'USD',
         });
