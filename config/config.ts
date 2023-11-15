@@ -246,7 +246,6 @@ export default defineConfig({
       gtag('config', 'AW-11394247259');
       gtag('config', 'AW-11396650696');
       gtag('config', 'AW-11397467093');
-      gtag('config', 'AW-11379374504');
       gtag('config', 'G-Y7T3FTBJYT');
       `,
     },
