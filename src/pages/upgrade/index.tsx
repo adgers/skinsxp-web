@@ -251,6 +251,7 @@ export default function DreamPage() {
   };
 
   const onSliderChange = (range: number) => {
+    if (rotateStart) return;
     if (!selectDreamWeapon?.length) {
       toast.error(intl.formatMessage({ id: 'upgrade_select_tip' }), {
         toastId: 'selectItem',
@@ -413,6 +414,7 @@ export default function DreamPage() {
             <div
               className="absolute right-0 top-0 bg-black text-gray w-6 h-6 rounded-full cursor-pointer  items-center justify-center hidden group-hover:flex"
               onClick={() => {
+                if (rotateStart) return;
                 let prevWeapons = JSON.parse(JSON.stringify(selectWeapon));
 
                 remove(
@@ -430,7 +432,7 @@ export default function DreamPage() {
         ))}
       </div>
     );
-  }, [selectWeapon]);
+  }, [selectWeapon, rotateStart]);
 
   const selectDreamWeaponRender = useMemo(() => {
     return (
@@ -447,6 +449,8 @@ export default function DreamPage() {
             <div
               className="absolute right-0 top-0 bg-black text-gray w-6 h-6 rounded-full cursor-pointer  items-center justify-center hidden group-hover:flex"
               onClick={() => {
+                if (rotateStart) return;
+
                 let prevWeapons = JSON.parse(JSON.stringify(selectDreamWeapon));
 
                 remove(
@@ -464,7 +468,7 @@ export default function DreamPage() {
         ))}
       </div>
     );
-  }, [selectDreamWeapon]);
+  }, [selectDreamWeapon, rotateStart]);
 
   const weaponsRender = useMemo(() => {
     const sourceData = showSelected ? selectWeapon : bagData?.pageData;
@@ -480,6 +484,7 @@ export default function DreamPage() {
                   if (item.state !== ItemState.ACTIVE) {
                     return;
                   }
+                  if (rotateStart) return;
                   let prevWeapons = JSON.parse(JSON.stringify(selectWeapon));
                   if (selectWeapon?.find((weapon) => weapon.id === item.id)) {
                     remove(
@@ -608,7 +613,15 @@ export default function DreamPage() {
         )}
       </>
     );
-  }, [bagData, selectWeapon, showSelected, searchParams, targetPrice, loading]);
+  }, [
+    bagData,
+    selectWeapon,
+    showSelected,
+    searchParams,
+    targetPrice,
+    loading,
+    rotateStart,
+  ]);
 
   const dreamsRender = useMemo(() => {
     const sourceData = showDreamSelected
@@ -624,6 +637,7 @@ export default function DreamPage() {
                 key={index}
                 className="relative h-fit"
                 onClick={() => {
+                  if (rotateStart) return;
                   let prevWeapons = JSON.parse(
                     JSON.stringify(selectDreamWeapon),
                   );
@@ -726,6 +740,7 @@ export default function DreamPage() {
     selectDreamWeapon,
     showDreamSelected,
     dreamLoading,
+    rotateStart,
   ]);
 
   return (
