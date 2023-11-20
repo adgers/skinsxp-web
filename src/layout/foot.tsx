@@ -152,7 +152,7 @@ export default function Foot() {
               );
             })}
           </div>
-          <div className="flex justify-between w-full py-8 border-t border-light border-opacity-70 px-6">
+          <div className="flex justify-between flex-col md:flex-row w-full py-8 border-t border-light border-opacity-70 px-6">
             <div>
               <div className="w-40">
                 <img src={require('@/assets/wg-logo.png')} />
@@ -168,9 +168,13 @@ export default function Foot() {
               <div className="text-xs text-gray mt-1">
                 E-mail: bd@wgskins.com
               </div>
+              <div className="text-xs text-gray mt-1">
+                SETP UP TECHNOLOGY PTE. LTD.（60 PAYA LEBARROAD #11-53 PAYA
+                LEBAR SQUARE SINGAPORE）
+              </div>
             </div>
 
-            <div className="flex justify-end gap-1 sm:gap-4 flex-wrap">
+            <div className="flex justify-start md:justify-end mt-4 gap-1 sm:gap-4 flex-wrap">
               <a
                 href="https://twitter.com/wgskins"
                 rel="noreferrer"
