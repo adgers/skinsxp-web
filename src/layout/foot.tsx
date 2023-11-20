@@ -1,9 +1,7 @@
-import AlipaySvg from '@/assets/alipay.svg';
 import ByteCoinSvg from '@/assets/byte-coin.svg';
 import VisaSvg from '@/assets/visa.svg';
 import { IconFont } from '@/components/icons';
-import { FormattedMessage, Link, history, useModel } from '@umijs/max';
-import { useEffect, useState } from 'react';
+import { FormattedMessage, Link, useModel } from '@umijs/max';
 import './index.less';
 
 export default function Foot() {
@@ -160,17 +158,19 @@ export default function Foot() {
               <div className="text-xs text-gray mt-6">
                 © 2022—2023 WGSKINS.COM
               </div>
+              <div className="text-xs text-gray mt-1">
+                SETP UP TECHNOLOGY PTE. LTD.（60 PAYA LEBARROAD #11-53 PAYA
+                LEBAR SQUARE SINGAPORE）
+              </div>
               <div className="text-xs text-gray mt-1 uppercase">
                 ALL RIGHTS RESERVED. POWERED BY STEAM. NOT AFFILIATED WITH VALVE
                 CORP.
               </div>
-              <div className="text-xs text-gray mt-1">Tel: +1 {'('}503{')'}358-6160</div>
               <div className="text-xs text-gray mt-1">
-                E-mail: bd@wgskins.com
+                Tel: +1 {'('}503{')'}358-6160
               </div>
               <div className="text-xs text-gray mt-1">
-                SETP UP TECHNOLOGY PTE. LTD.（60 PAYA LEBARROAD #11-53 PAYA
-                LEBAR SQUARE SINGAPORE）
+                E-mail: bd@wgskins.com
               </div>
             </div>
 
