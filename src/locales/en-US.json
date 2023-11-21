@@ -434,6 +434,11 @@
     "loginTip_gift": "Gifts for you",
     "loginTip_bonus": "Get extra bonus $1-5 and giveaways for new users.",
     "banner_discord_text": "Get your daily benefits here",
-    "banner_discord_btn":"CLICK HERE"
-
+    "banner_discord_btn": "CLICK HERE",
+    "black_event_zmz": "How does it work?",
+    "black_event_work1": "Inviting a new user through your partner link to complete the registration and first recharge is considered complete.",
+    "black_event_work2": "This task can be completed repeatedly without limit.",
+    "black_event_work3": "Task rewards will be added to your balance account in real time.",
+    "black_event_title": "BLACKFRIDAY LIMITED TIMEEVENT",
+    "black_event_desc": "You can get tokens from event cases and by completing event quests"
 }

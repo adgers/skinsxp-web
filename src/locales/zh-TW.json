@@ -434,5 +434,11 @@
     "loginTip_gift": "送給你的禮物",
     "loginTip_bonus": "獲得1-5美元的額外獎金和新用戶的贈品。",
     "banner_discord_text": "在這裡獲取您的每日福利",
-    "banner_discord_btn":"點這裡"
+    "banner_discord_btn": "點這裡",
+    "black_event_zmz": "它是如何運作的？",
+    "black_event_work1": "透過您的合作夥伴連結邀請新用戶完成註冊並首次充值即視為完成。",
+    "black_event_work2": "此任務可以無限次重複完成。",
+    "black_event_work3": "任務獎勵將即時添加到您的餘額帳戶。",
+    "black_event_title": "黑色星期五限時活動",
+    "black_event_desc": "您可以透過活動案例和完成活動任務來獲得代幣"
 }

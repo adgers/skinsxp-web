@@ -434,5 +434,11 @@
     "loginTip_gift": "あなたへのプレゼント",
     "loginTip_bonus": "1～5ドルの追加ボーナスと新規ユーザーへの景品がもらえる。",
     "banner_discord_text": "毎日の特典をここで入手してください",
-    "banner_discord_btn":"ここをクリック"
+    "banner_discord_btn": "ここをクリック",
+    "black_event_zmz": "どのように機能するのでしょうか?",
+    "black_event_work1": "パートナーリンクを通じて新しいユーザーを招待して登録を完了すると、最初のリチャージが完了したとみなされます。",
+    "black_event_work2": "このタスクは無制限に繰り返し完了できます。",
+    "black_event_work3": "タスクの報酬はリアルタイムで残高アカウントに追加されます。",
+    "black_event_title": "ブラックフライデー期間限定イベント",
+    "black_event_desc": "トークンはイベントケースやイベントクエストを完了することで入手できます"
 }

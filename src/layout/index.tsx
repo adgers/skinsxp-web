@@ -18,7 +18,7 @@ import Footer from './foot';
 import Header from './head';
 import RightNav from './right-nav';
 
-const showBannerRoutes = ['/case'];
+const showBannerRoutes = ['/case','/event'];
 
 export default function Layout() {
   const { pathname } = useLocation();

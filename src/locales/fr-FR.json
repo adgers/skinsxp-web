@@ -434,5 +434,11 @@
     "loginTip_gift": "Senin için hediyeler.",
     "loginTip_bonus": "Obtenez un bonus supplémentaire de 1 $à 5 $et des cadeaux pour les nouveaux utilisateurs.",
     "banner_discord_text": "Obtenez vos prestations quotidiennes ici",
-    "banner_discord_btn":"CLIQUEZ ICI"
+    "banner_discord_btn": "CLIQUEZ ICI",
+    "black_event_zmz": "Comment ça marche?",
+    "black_event_work1": "L'invitation d'un nouvel utilisateur via votre lien partenaire pour finaliser l'inscription et la première recharge est considérée comme terminée.",
+    "black_event_work2": "Cette tâche peut être accomplie à plusieurs reprises sans limite.",
+    "black_event_work3": "Les récompenses de tâches seront ajoutées à votre compte de solde en temps réel.",
+    "black_event_title": "ÉVÉNEMENT À DURÉE LIMITÉE BLACKFRIDAY",
+    "black_event_desc": "Vous pouvez obtenir des jetons à partir de cas d'événement et en accomplissant des quêtes d'événement."
 }

@@ -434,5 +434,11 @@
     "loginTip_gift": "Presentes para ti",
     "loginTip_bonus": "Receba bônus extra $ 1-5 e brindes para novos usuários.",
     "banner_discord_text": "Obtenha seus benefícios diários aqui",
-    "banner_discord_btn":"CLIQUE AQUI"
+    "banner_discord_btn": "CLIQUE AQUI",
+    "black_event_zmz": "Como funciona?",
+    "black_event_work1": "Convidar um novo usuário através do seu link de parceiro para completar o cadastro e primeira recarga é considerado concluído.",
+    "black_event_work2": "Esta tarefa pode ser concluída repetidamente sem limite.",
+    "black_event_work3": "As recompensas das tarefas serão adicionadas ao seu Görev ödülleri bakiye hesabınıza gerçek zamanlı olarak eklenecektir.\n em tempo real.",
+    "black_event_title": "EVENTO POR TEMPO LIMITADO BLACKFRIDAY",
+    "black_event_desc": "Você pode obter tokens em casos de eventos e completando missões de eventos"
 }
