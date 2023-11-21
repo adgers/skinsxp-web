@@ -57,11 +57,11 @@ export default function Foot() {
       value: 'battleCnt',
       icon: 'icon-battle',
     },
-    // {
-    //   title: <FormattedMessage id="main_tab_dream" />,
-    //   value: 'upgradeCnt',
-    //   icon: 'icon-upgrade',
-    // },
+    {
+      title: <FormattedMessage id="main_tab_dream" />,
+      value: 'upgradeCnt',
+      icon: 'icon-upgrade',
+    },
   ];
 
   let timer = null;
