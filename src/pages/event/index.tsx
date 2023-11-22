@@ -1,5 +1,7 @@
+import '@/pages/case/index.less';
 import { listHostGiveawayUsingGET } from '@/services/front/ROLLfangxiangguan';
 import {
+  completeUsingPOST,
   rewardUsingPOST,
   taskListUsingGET,
 } from '@/services/front/huodongzhongxinxiangguan';
@@ -17,7 +19,6 @@ import { toast } from 'react-toastify';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import GiveawayItem from '../case/giveawayItem';
 import './index.less';
-import '@/pages/case/index.less'
 
 enum CycleMode {
   ONE_TIME = 0,
@@ -32,6 +33,7 @@ enum TaskEvent {
   UPGRADE = 4,
   EMAIL,
   MALL,
+  FOLLOW,
 }
 
 export default () => {
@@ -55,6 +57,16 @@ export default () => {
       toast.success(intl.formatMessage({ id: 'recieve_success' }));
       refresh();
       getUser();
+    }
+  };
+
+  const completeTask = async (taskId: string) => {
+    const ret = await completeUsingPOST({
+      taskId,
+    });
+    if (ret?.status === 0) {
+      toast.success(intl.formatMessage({ id: 'recieve_success' }));
+      refresh();
     }
   };
 
@@ -92,6 +104,7 @@ export default () => {
           </div>
         );
       case TaskEvent.EMAIL:
+      case TaskEvent.FOLLOW:
         return null;
     }
   };
@@ -324,6 +337,10 @@ export default () => {
                               break;
                             case TaskEvent.MALL:
                               history.push('/market');
+                              break;
+                            case TaskEvent.FOLLOW:
+                              window.open('https://discord.gg/ucDMTAbAcS');
+                              completeTask(item?.id);
                               break;
                           }
                         } else {
