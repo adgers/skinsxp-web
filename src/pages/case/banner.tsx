@@ -90,7 +90,7 @@ export default function Banner() {
             </div>
             {location.pathname === '/case' && (
               <div
-                className="btn btn-purple !h-[32px] md:!h-12 min-h-0 mt-3 md:mt-8 !px-8"
+                className="btn btn-red !h-[32px] md:!h-12 min-h-0 mt-3 md:mt-8 !px-8"
                 onClick={() => {
                   history.push('/event');
                 }}
