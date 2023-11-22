@@ -49,7 +49,7 @@ export default function Banner() {
           <div className="absolute top-0 left-0 w-full h-full flex flex-col  items-center z-30">
             <div className="w-fit mt-[72px] md:mt-[140px] mx-auto flex gap-2">
               {days > 0 && (
-                <div className="flex w-[60px] md:w-[66px] h-[60px] md:h-[80px] flex-shrink-0 flex-col items-center justify-center text-center bg-[#4B557A]/60 rounded">
+                <div className="flex w-[60px] md:w-[66px] h-[36px] md:h-[80px] flex-shrink-0 flex-col items-center justify-center text-center bg-[#4B557A]/60 rounded">
                   <Countdown
                     value={days}
                     className="days-value text-sm md:text-lg font-semibold tabular-nums leading-none text-white"
@@ -59,7 +59,7 @@ export default function Banner() {
                   </span>
                 </div>
               )}
-              <div className="flex w-[60px] md:w-[66px] h-[60px] md:h-[80px] flex-shrink-0 flex-col items-center justify-center text-center bg-[#4B557A]/60 rounded">
+              <div className="flex w-[60px] md:w-[66px] h-[36px] md:h-[80px] flex-shrink-0 flex-col items-center justify-center text-center bg-[#4B557A]/60 rounded">
                 <Countdown
                   value={hours}
                   className="days-value text-sm md:text-lg font-semibold tabular-nums leading-none text-white"
@@ -68,7 +68,7 @@ export default function Banner() {
                   <FormattedMessage id="text_time_hour" />
                 </span>
               </div>
-              <div className="flex w-[60px] md:w-[66px] h-[60px] md:h-[80px] flex-shrink-0 flex-col items-center justify-center text-center bg-[#4B557A]/60 rounded">
+              <div className="flex w-[60px] md:w-[66px] h-[36px] md:h-[80px] flex-shrink-0 flex-col items-center justify-center text-center bg-[#4B557A]/60 rounded">
                 <Countdown
                   value={minutes}
                   className="days-value text-sm md:text-lg font-semibold tabular-nums leading-none text-white"
@@ -78,7 +78,7 @@ export default function Banner() {
                 </span>
               </div>
 
-              <div className="flex w-[60px] md:w-[66px] h-[60px] md:h-[80px] flex-shrink-0 flex-col items-center justify-center text-center bg-[#4B557A]/60 rounded">
+              <div className="flex w-[60px] md:w-[66px] h-[36px] md:h-[80px] flex-shrink-0 flex-col items-center justify-center text-center bg-[#4B557A]/60 rounded">
                 <Countdown
                   value={seconds}
                   className="days-value text-sm md:text-lg font-semibold tabular-nums leading-none text-white"

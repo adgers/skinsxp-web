@@ -440,5 +440,7 @@
     "black_event_work2": "이 작업은 제한 없이 반복해서 완료할 수 있습니다.",
     "black_event_work3": "작업 보상은 실시간으로 잔액 계정에 추가됩니다.",
     "black_event_title": "BLACKFRIDAY 기간 한정 이벤트",
-    "black_event_desc": "이벤트 케이스와 이벤트 퀘스트를 통해 토큰을 얻을 수 있습니다."
+    "black_event_desc": "이벤트 케이스와 이벤트 퀘스트를 통해 토큰을 얻을 수 있습니다.",
+    "black_event_partner": "파트너를 초대하고 보상을 받으세요",
+    "black_event_invite": "초대하다"
 }

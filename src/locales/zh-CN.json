@@ -440,5 +440,7 @@
     "black_event_work2": "此任務可以無限次重複完成。",
     "black_event_work3": "任務獎勵將即時添加到您的餘額帳戶。",
     "black_event_title": "黑色星期五限時活動",
-    "black_event_desc": "您可以透過活動案例和完成活動任務來獲得代幣"
+    "black_event_desc": "您可以透過活動案例和完成活動任務來獲得代幣",
+    "black_event_partner": "邀請夥伴並獲得獎勵",
+    "black_event_invite": "邀請"
 }

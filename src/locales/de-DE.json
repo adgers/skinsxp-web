@@ -440,5 +440,7 @@
     "black_event_work2": "Diese Aufgabe kann unbegrenzt wiederholt ausgeführt werden.",
     "black_event_work3": "Aufgabenbelohnungen werden Ihrem Guthabenkonto in Echtzeit gutgeschrieben.",
     "black_event_title": "ZEITLICH BEGRENZTES BLACKFRIDAY-EVENT",
-    "black_event_desc": "Sie können Token aus Event-Fällen und durch das Abschließen von Event-Quests erhalten"
+    "black_event_desc": "Sie können Token aus Event-Fällen und durch das Abschließen von Event-Quests erhalten",
+    "black_event_partner": "Laden Sie Partner ein und erhalten Sie Belohnungen",
+    "black_event_invite": "EINLADEN"
 }

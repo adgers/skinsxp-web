@@ -440,5 +440,7 @@
     "black_event_work2": "Esta tarefa pode ser concluída repetidamente sem limite.",
     "black_event_work3": "As recompensas das tarefas serão adicionadas ao seu Görev ödülleri bakiye hesabınıza gerçek zamanlı olarak eklenecektir.\n em tempo real.",
     "black_event_title": "EVENTO POR TEMPO LIMITADO BLACKFRIDAY",
-    "black_event_desc": "Você pode obter tokens em casos de eventos e completando missões de eventos"
+    "black_event_desc": "Você pode obter tokens em casos de eventos e completando missões de eventos",
+    "black_event_partner": "Convide parceiros e receba recompensas",
+    "black_event_invite": "CONVIDAR"
 }

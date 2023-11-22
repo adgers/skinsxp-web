@@ -440,5 +440,7 @@
     "black_event_work2": "このタスクは無制限に繰り返し完了できます。",
     "black_event_work3": "タスクの報酬はリアルタイムで残高アカウントに追加されます。",
     "black_event_title": "ブラックフライデー期間限定イベント",
-    "black_event_desc": "トークンはイベントケースやイベントクエストを完了することで入手できます"
+    "black_event_desc": "トークンはイベントケースやイベントクエストを完了することで入手できます",
+    "black_event_partner": "パートナーを招待して報酬を獲得しましょう",
+    "black_event_invite": "招待する"
 }

@@ -440,5 +440,7 @@
     "black_event_work2": "Bu görev sınırsız olarak tekrar tekrar tamamlanabilir.",
     "black_event_work3": "Görev ödülleri bakiye hesabınıza gerçek zamanlı olarak eklenecektir.",
     "black_event_title": "BLACKFRIDAY SINIRLI SÜRELİ ETKİNLİĞİ",
-    "black_event_desc": "Etkinlik vakalarından ve etkinlik görevlerini tamamlayarak jeton alabilirsiniz."
+    "black_event_desc": "Etkinlik vakalarından ve etkinlik görevlerini tamamlayarak jeton alabilirsiniz.",
+    "black_event_partner": "Ortakları davet edin ve ödüller kazanın",
+    "black_event_invite": "DAVET ETMEK"
 }

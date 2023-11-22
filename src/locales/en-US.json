@@ -440,5 +440,7 @@
     "black_event_work2": "This task can be completed repeatedly without limit.",
     "black_event_work3": "Task rewards will be added to your balance account in real time.",
     "black_event_title": "BLACKFRIDAY LIMITED TIMEEVENT",
-    "black_event_desc": "You can get tokens from event cases and by completing event quests"
+    "black_event_desc": "You can get tokens from event cases and by completing event quests",
+    "black_event_partner": "Invite partners and get rewards",
+    "black_event_invite": "INVITE"
 }

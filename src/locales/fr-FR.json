@@ -440,5 +440,7 @@
     "black_event_work2": "Cette tâche peut être accomplie à plusieurs reprises sans limite.",
     "black_event_work3": "Les récompenses de tâches seront ajoutées à votre compte de solde en temps réel.",
     "black_event_title": "ÉVÉNEMENT À DURÉE LIMITÉE BLACKFRIDAY",
-    "black_event_desc": "Vous pouvez obtenir des jetons à partir de cas d'événement et en accomplissant des quêtes d'événement."
+    "black_event_desc": "Vous pouvez obtenir des jetons à partir de cas d'événement et en accomplissant des quêtes d'événement.",
+    "black_event_partner": "Invitez des partenaires et obtenez des récompenses",
+    "black_event_invite": "INVITER"
 }

@@ -1,3 +1,4 @@
+import { listHostGiveawayUsingGET } from '@/services/front/ROLLfangxiangguan';
 import {
   rewardUsingPOST,
   taskListUsingGET,
@@ -14,7 +15,9 @@ import {
 import { useEffect, useState } from 'react';
 import { toast } from 'react-toastify';
 import { Swiper, SwiperSlide } from 'swiper/react';
+import GiveawayItem from '../case/giveawayItem';
 import './index.less';
+import '@/pages/case/index.less'
 
 enum CycleMode {
   ONE_TIME = 0,
@@ -34,6 +37,9 @@ enum TaskEvent {
 export default () => {
   const intl = useIntl();
   const [show, setShow] = useState(false);
+  const { data: giveawayList } = useRequest(() => listHostGiveawayUsingGET(), {
+    cacheKey: 'giveawayList',
+  });
   const { data, loading, refresh } = useRequest(() => taskListUsingGET());
   const { data: promotionData = {} } = useRequest(() =>
     getPromotionInfoUsingGET(),
@@ -91,7 +97,12 @@ export default () => {
   };
   return (
     <div className="w-full max-w-[1400px] m-auto relative min-h-[500px]">
-      <div className="mx-auto max-w-[80%]  md:max-w-5xl translate-y-[-50px]">
+      <div className="mx-auto max-w-[80%]  md:max-w-5xl translate-y-[-50px] flex snap-x snap-mandatory overflow-x-auto hide-scrollbar xl:grid xl:snap-none xl:grid-cols-4 opacity-100 gap-4">
+        {giveawayList?.map((item, index) => {
+          return <GiveawayItem index={index} item={item} key={index} />;
+        })}
+      </div>
+      <div className="mx-auto max-w-[80%]  md:max-w-5xl">
         <div
           className="w-full flex items-center md:items-start gap-2 md:gap-0 border border-red"
           style={{
@@ -105,16 +116,15 @@ export default () => {
                 src={require('@/assets/blackfriday-tag.png')}
                 className=" w-5 md:w-8"
               />{' '}
-              {/* <FormattedMessage id="halloween_sc" /> */}
-              Invite partners and get rewards
+              <FormattedMessage id="black_event_partner" />
             </div>
             <div
               className="rounded bg-red text-white font-bold uppercase cursor-pointer px-8 py-2"
               onClick={() => {
-                // history.push('/deposit');
+                history.push('/profile/partner');
               }}
             >
-              INVITE <RightOutlined />
+              <FormattedMessage id="black_event_invite" /> <RightOutlined />
             </div>
           </div>
           <span className="w-[1px] h-[80px] bg-light mt-2 md:mt-[30px]"></span>
