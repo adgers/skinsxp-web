@@ -8,21 +8,27 @@ export async function activityRewardUsingPOST(
   params: API.activityRewardUsingPOSTParams,
   options?: { [key: string]: any },
 ) {
-  return request<API.ResultDataActivityRewardResultVo_>('/api/activityCenter/activity/reward', {
-    method: 'POST',
-    params: {
-      ...params,
+  return request<API.ResultDataActivityRewardResultVo_>(
+    '/api/activityCenter/activity/reward',
+    {
+      method: 'POST',
+      params: {
+        ...params,
+      },
+      ...(options || {}),
     },
-    ...(options || {}),
-  });
+  );
 }
 
 /** 获取活跃度信息 GET /api/activityCenter/activityInfo */
 export async function activityInfoUsingGET(options?: { [key: string]: any }) {
-  return request<API.ResultDataActivityInfoVo_>('/api/activityCenter/activityInfo', {
-    method: 'GET',
-    ...(options || {}),
-  });
+  return request<API.ResultDataActivityInfoVo_>(
+    '/api/activityCenter/activityInfo',
+    {
+      method: 'GET',
+      ...(options || {}),
+    },
+  );
 }
 
 /** 签到 POST /api/activityCenter/signIn */
@@ -39,15 +45,18 @@ export async function signInListUsingGET(
   params: API.signInListUsingGETParams,
   options?: { [key: string]: any },
 ) {
-  return request<API.ResultDataSignInInfoVo_>('/api/activityCenter/signIn/list', {
-    method: 'GET',
-    params: {
-      // days has a default value: 7
-      days: '7',
-      ...params,
+  return request<API.ResultDataSignInInfoVo_>(
+    '/api/activityCenter/signIn/list',
+    {
+      method: 'GET',
+      params: {
+        // days has a default value: 7
+        days: '7',
+        ...params,
+      },
+      ...(options || {}),
     },
-    ...(options || {}),
-  });
+  );
 }
 
 /** 任务列表 GET /api/activityCenter/task/list */
@@ -65,6 +74,19 @@ export async function rewardUsingPOST(
   options?: { [key: string]: any },
 ) {
   return request<API.ResultDataBoolean_>('/api/activityCenter/task/reward', {
+    method: 'POST',
+    params: {
+      ...params,
+    },
+    ...(options || {}),
+  });
+}
+
+export async function completeUsingPOST(
+  params: API.rewardUsingPOSTParams,
+  options?: { [key: string]: any },
+) {
+  return request<API.ResultDataBoolean_>('/api/activityCenter/task/complete', {
     method: 'POST',
     params: {
       ...params,

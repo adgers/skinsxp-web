@@ -1,0 +1,24 @@
+.show {
+  animation: show 150ms linear forwards;
+}
+.hide {
+  animation: hide 150ms linear forwards;
+}
+
+@keyframes hide {
+  0% {
+    height: 120px;
+  }
+  100% {
+    height: 0;
+  }
+}
+
+@keyframes show {
+  0% {
+    height: 0;
+  }
+  100% {
+    height: 120px;
+  }
+}

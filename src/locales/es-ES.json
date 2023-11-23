@@ -434,5 +434,13 @@
     "loginTip_gift": "Un regalo para ti",
     "loginTip_bonus": "Recibe un bono adicional de $1 - 5 y un regalo de un nuevo usuario.",
     "banner_discord_text": "Obtén tus beneficios diarios aquí",
-    "banner_discord_btn":"CLIC AQUÍ"
+    "banner_discord_btn": "CLIC AQUÍ",
+    "black_event_zmz": "¿Como funciona?",
+    "black_event_work1": "Invitar a un nuevo usuario a través de su enlace de socio para completar el registro y la primera recarga se considera completo.",
+    "black_event_work2": "Esta tarea se puede completar repetidamente sin límite.",
+    "black_event_work3": "Las recompensas de las tareas se agregarán a su cuenta de saldo en tiempo real.",
+    "black_event_title": "EVENTO POR TIEMPO LIMITADO DE BLACKFRIDAY",
+    "black_event_desc": "Puedes obtener fichas de casos de eventos y completando misiones de eventos.",
+    "black_event_partner": "Invita socios y obtén recompensas",
+    "black_event_invite": "INVITAR"
 }

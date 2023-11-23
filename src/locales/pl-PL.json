@@ -434,5 +434,13 @@
     "loginTip_gift": "Prezenty dla ciebie",
     "loginTip_bonus": "Uzyskaj dodatkowy bonus $1-5 i prezenty dla nowych użytkowników.",
     "banner_discord_text": "Zdobądź tutaj swoje codzienne korzyści",
-    "banner_discord_btn":"KLIKNIJ TUTAJ"
+    "banner_discord_btn": "KLIKNIJ TUTAJ",
+    "black_event_zmz": "Jak to działa?",
+    "black_event_work1": "Zaproszenie nowego użytkownika poprzez link partnerski w celu dokończenia rejestracji i pierwszego doładowania uważa się za zakończone.",
+    "black_event_work2": "To zadanie można wykonywać wielokrotnie bez ograniczeń.",
+    "black_event_work3": "Nagrody za zadania zostaną dodane do Twojego salda konta w czasie rzeczywistym.",
+    "black_event_title": "OGRANICZONE WYDARZENIE CZASOWE BLACKFRIDAY",
+    "black_event_desc": "Możesz zdobyć żetony ze spraw związanych z wydarzeniami i wykonując zadania związane z wydarzeniami",
+    "black_event_partner": "Zaproś partnerów i zdobądź nagrody",
+    "black_event_invite": "ZAPRASZAĆ"
 }

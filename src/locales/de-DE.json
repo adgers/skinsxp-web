@@ -434,5 +434,13 @@
     "loginTip_gift": "Senin için hediyeler.",
     "loginTip_bonus": "Erhalten Sie zusätzlichen Bonus $1-5 und Giveaways für neue Benutzer.",
     "banner_discord_text": "Holen Sie sich hier Ihre täglichen Vorteile",
-    "banner_discord_btn":"KLICKEN HIER"
+    "banner_discord_btn": "KLICKEN HIER",
+    "black_event_zmz": "Wie funktioniert es?",
+    "black_event_work1": "Das Einladen eines neuen Benutzers über Ihren Partnerlink zum Abschluss der Registrierung und des ersten Aufladens gilt als abgeschlossen.",
+    "black_event_work2": "Diese Aufgabe kann unbegrenzt wiederholt ausgeführt werden.",
+    "black_event_work3": "Aufgabenbelohnungen werden Ihrem Guthabenkonto in Echtzeit gutgeschrieben.",
+    "black_event_title": "ZEITLICH BEGRENZTES BLACKFRIDAY-EVENT",
+    "black_event_desc": "Sie können Token aus Event-Fällen und durch das Abschließen von Event-Quests erhalten",
+    "black_event_partner": "Laden Sie Partner ein und erhalten Sie Belohnungen",
+    "black_event_invite": "EINLADEN"
 }

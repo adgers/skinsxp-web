@@ -434,5 +434,13 @@
     "loginTip_gift": "Senin için hediyeler.",
     "loginTip_bonus": "1-5 dolar fazla bonus alın ve yeni kullanıcılar için yol aç.",
     "banner_discord_text": "Günlük avantajlarınızı buradan alın",
-    "banner_discord_btn":"BURAYA TIKLAYIN"
+    "banner_discord_btn": "BURAYA TIKLAYIN",
+    "black_event_zmz": "O nasıl çalışır?",
+    "black_event_work1": "Kaydı tamamlamak ve ilk yüklemeyi tamamlamak için iş ortağı bağlantınız aracılığıyla yeni bir kullanıcıyı davet etmeniz tamamlanmış sayılır.",
+    "black_event_work2": "Bu görev sınırsız olarak tekrar tekrar tamamlanabilir.",
+    "black_event_work3": "Görev ödülleri bakiye hesabınıza gerçek zamanlı olarak eklenecektir.",
+    "black_event_title": "BLACKFRIDAY SINIRLI SÜRELİ ETKİNLİĞİ",
+    "black_event_desc": "Etkinlik vakalarından ve etkinlik görevlerini tamamlayarak jeton alabilirsiniz.",
+    "black_event_partner": "Ortakları davet edin ve ödüller kazanın",
+    "black_event_invite": "DAVET ETMEK"
 }
