@@ -309,48 +309,68 @@ export default function Deposit() {
                   </div>
                 ))}
               </div>
-              <div className="rounded-lg py-3 md:py-6 flex flex-col">
-                <div className="flex w-full gap-2 text-base">
-                  <div className="uppercase flex items-center font-semibold">
-                    <FormattedMessage id="deposit_actually_recevied" />
+              <div className="rounded-lg py-3 md:py-6 flex flex-col gap-6">
+                <div className="flex gap-4">
+                  <div className="text-base">
+                    <div className="uppercase mb-2 text-xs">
+                      <FormattedMessage id="wc_rewards_total" />
+                    </div>
+                    <div className="font-num text-white border border-[rgba(99,99,99,0.5)] py-1 px-2">
+                      $
+                      {numberFixed(
+                        Number(quantity) +
+                          ((Number(quantity) * Number(userInfo?.rebateValue)) /
+                            100 || 0) +
+                          ((Number(quantity) *
+                            Number(userInfo?.firstRechargeRebate)) /
+                            100 || 0),
+                        2,
+                      )}
+                    </div>
                   </div>
-                  <div className="font-num h-[40px] flex items-center gap-2">
-                    <span className="text-green">
-                      ${numberFixed(quantity, 2)}
-                    </span>
-                    {Number(userInfo?.firstRechargeRebate) > 0 && (
-                      <div className="flex items-center">
-                        <span className="text-green font-semibold whitespace-nowrap">
-                          +$
-                          {numberFixed(
-                            (Number(quantity) *
-                              Number(userInfo?.firstRechargeRebate)) /
-                              100,
-                          )}
-                        </span>
-                        <span className="text-xs">
-                          （<FormattedMessage id="benifit_scfl" />）
-                        </span>
-                      </div>
-                    )}
-                    {Number(userInfo?.rebateValue) > 0 && (
-                      <div className="flex items-center">
-                        <span className="text-green font-semibold">
-                          +$
-                          {userInfo?.rebateType === 0
-                            ? `${numberFixed(
-                                (Number(quantity) *
-                                  Number(userInfo?.rebateValue)) /
-                                  100,
-                              )}`
-                            : Number(userInfo?.rebateValue)}
-                        </span>
-                        <span className="text-xs">
-                          （<FormattedMessage id="vip_discount" />）
-                        </span>
-                      </div>
-                    )}
-                    {/* {selectChannel?.displayType === DisplayType.DEFAULT && (
+                  <div className="text-base">
+                    <div className="uppercase mb-2 text-xs">
+                      <FormattedMessage id="deposit_actually_recevied" />
+                    </div>
+                    <div className="font-num text-white border border-[rgba(99,99,99,0.5)] py-1 px-2 flex gap-1">
+                      <span className="text-green">
+                        ${numberFixed(quantity, 2)}
+                      </span>
+                      {Number(userInfo?.firstRechargeRebate) > 0 && (
+                        <div className="flex items-center">
+                           +
+                          <span className="text-yellow font-semibold whitespace-nowrap">
+                           $
+                            {numberFixed(
+                              (Number(quantity) *
+                                Number(userInfo?.firstRechargeRebate)) /
+                                100,
+                            )}
+                          </span>
+                          {/* <span className="text-xs">
+                            （<FormattedMessage id="benifit_scfl" />）
+                          </span> */}
+                        </div>
+                      )}
+                      {Number(userInfo?.rebateValue) > 0 && (
+                        <div className="flex items-center">
+                           +
+                          <span className="text-yellow font-semibold">
+                            $
+                            {userInfo?.rebateType === 0
+                              ? `${numberFixed(
+                                  (Number(quantity) *
+                                    Number(userInfo?.rebateValue)) /
+                                    100,
+                                )}`
+                              : Number(userInfo?.rebateValue)}
+                          </span>
+                          {/* <span className="text-xs">
+                            （<FormattedMessage id="vip_discount" />）
+                          </span> */}
+                        </div>
+                      )}
+                      {/* {selectChannel?.displayType === DisplayType.DEFAULT && (
                         <>
                           &nbsp;+&nbsp;
                           <span className="text-purple">
@@ -363,27 +383,11 @@ export default function Deposit() {
                           </span>
                         </>
                       )} */}
+                    </div>
                   </div>
-                </div>
-                <div className="flex w-full gap-2 text-base ">
-                  <div className="uppercase flex items-center font-semibold">
-                    <FormattedMessage id="wc_rewards_total" />
-                  </div>
-                  <div className='font-num text-green'>
-                    $
-                    {numberFixed(
-                      Number(quantity) +
-                        ((Number(quantity) * Number(userInfo?.rebateValue)) /
-                          100 || 0) +
-                        ((Number(quantity) *
-                          Number(userInfo?.firstRechargeRebate)) /
-                          100 || 0),
-                      2,
-                    )}
-                  </div >
                 </div>
                 <Button
-                  className="btn btn-green btn-sm md:btn-md uppercase w-full rounded font-semibold mt-6"
+                  className="btn btn-green btn-sm md:btn-md uppercase w-full rounded font-semibold"
                   onClick={() => {
                     onPay();
                     setPayLoading(true);

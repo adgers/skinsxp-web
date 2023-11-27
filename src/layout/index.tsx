@@ -15,16 +15,18 @@ import BtmNav from './btm-nav';
 
 import Banner from '@/pages/case/banner';
 import Footer from './foot';
+import GiftCase from './gift-case';
 import Header from './head';
 import RightNav from './right-nav';
 
-const showBannerRoutes = ['/case','/event'];
+const showBannerRoutes = ['/case', '/event'];
 
 export default function Layout() {
   const { pathname } = useLocation();
   const pathCls = pathname.split('/')[1];
   const { data } = useRequest(() => getLangUsingGET());
   const { setPageLoaded } = useModel('socket');
+  const { userInfo } = useModel('user');
   const params = urlParse();
 
   useEffect(() => {
@@ -66,6 +68,7 @@ export default function Layout() {
       {!headHidden() && <BtmNav />}
       {!headHidden() && <Footer />}
       {<RightNav />}
+      {!userInfo?.mail && <GiftCase />}
       <ToastContainer theme="dark" autoClose={2000} limit={1} />
     </div>
   );
