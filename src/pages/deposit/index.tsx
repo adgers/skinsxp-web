@@ -309,7 +309,7 @@ export default function Deposit() {
                   </div>
                 ))}
               </div>
-              <div className="rounded-lg py-3 md:py-6 flex flex-col gap-6">
+              <div className="rounded-lg py-3 md:py-6 flex flex-col">
                 <div className="flex w-full gap-2 text-base">
                   <div className="uppercase flex items-center font-semibold">
                     <FormattedMessage id="deposit_actually_recevied" />
@@ -320,7 +320,7 @@ export default function Deposit() {
                     </span>
                     {Number(userInfo?.firstRechargeRebate) > 0 && (
                       <div className="flex items-center">
-                        <span className="text-purple font-semibold whitespace-nowrap">
+                        <span className="text-green font-semibold whitespace-nowrap">
                           +$
                           {numberFixed(
                             (Number(quantity) *
@@ -335,7 +335,7 @@ export default function Deposit() {
                     )}
                     {Number(userInfo?.rebateValue) > 0 && (
                       <div className="flex items-center">
-                        <span className="text-purple font-semibold">
+                        <span className="text-green font-semibold">
                           +$
                           {userInfo?.rebateType === 0
                             ? `${numberFixed(
@@ -365,8 +365,25 @@ export default function Deposit() {
                       )} */}
                   </div>
                 </div>
+                <div className="flex w-full gap-2 text-base ">
+                  <div className="uppercase flex items-center font-semibold">
+                    <FormattedMessage id="wc_rewards_total" />
+                  </div>
+                  <div className='font-num text-green'>
+                    $
+                    {numberFixed(
+                      Number(quantity) +
+                        ((Number(quantity) * Number(userInfo?.rebateValue)) /
+                          100 || 0) +
+                        ((Number(quantity) *
+                          Number(userInfo?.firstRechargeRebate)) /
+                          100 || 0),
+                      2,
+                    )}
+                  </div >
+                </div>
                 <Button
-                  className="btn btn-green btn-sm md:btn-md uppercase w-full rounded font-semibold"
+                  className="btn btn-green btn-sm md:btn-md uppercase w-full rounded font-semibold mt-6"
                   onClick={() => {
                     onPay();
                     setPayLoading(true);
