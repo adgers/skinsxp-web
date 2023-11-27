@@ -1,10 +1,10 @@
 .logo {
-  background: linear-gradient(87deg, #4CFE7E 0%, #90FE4C 100%);
-  background-clip: text;
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  text-transform: uppercase;
   font-weight: 800;
+  text-transform: uppercase;
+  background: linear-gradient(87deg, #4cfe7e 0%, #90fe4c 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
 
 .topup-btn {
@@ -107,23 +107,41 @@
   display: flex;
   padding: 3px 6px;
   color: #fffb00;
-  background: linear-gradient(90deg,
-      rgba(255, 251, 0, 0.42) 0%,
-      rgba(212, 191, 0, 0) 100%);
+  background: linear-gradient(
+    90deg,
+    rgba(255, 251, 0, 0.42) 0%,
+    rgba(212, 191, 0, 0) 100%
+  );
   border: 1px solid #fffb00;
   border-radius: 4px;
   cursor: pointer;
 }
 
-.right-line{
+.right-line {
   position: relative;
-  &::after{
+  &::after {
     position: absolute;
-    content: '';
-    right: 0;
     top: 0;
+    right: 0;
     width: 1px;
     height: 68px;
     background-color: #636363;
+    content: '';
+  }
+}
+
+.shake {
+  animation: Shake 1s linear infinite;
+}
+
+@keyframes Shake {
+  0% {
+    transform: rotate(-10deg);
+  }
+  50% {
+    transform: rotate(10deg);
+  }
+  100% {
+    transform: rotate(-10deg);
   }
 }
