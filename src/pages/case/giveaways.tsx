@@ -13,7 +13,7 @@ export default function Giveaways() {
     <div className="w-full relative mx-auto max-w-screen-xxl overflow-hidden md:px-5">
       <div className="relative flex h-full">
         <div className="w-full overflow-hidden">
-          <div className="flex w-full snap-x snap-mandatory overflow-x-auto hide-scrollbar xl:grid xl:snap-none xl:grid-cols-4 opacity-100 gap-4">
+          <div className="flex w-full snap-x snap-mandatory overflow-x-auto hide-scrollbar opacity-100 gap-4">
             {giveawayList?.map((item, index) => {
               return <GiveawayItem index={index} item={item} key={index} />;
             })}
