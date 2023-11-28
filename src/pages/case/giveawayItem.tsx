@@ -17,7 +17,7 @@ export default function GiveawayItem(props: GiveawayItemProps) {
   const name = item?.giftVos?.[0]?.giftName;
   return (
     <div
-      className={`relative cursor-pointer grid h-40 sm:h-44 min-w-[80%] snap-start overflow-x-visible sm:min-w-[50%] md:min-w-[33.333333%] xl:min-w-[20%] giveaways-grade giveaways-grade-${index}`}
+      className={`relative cursor-pointer grid h-40 sm:h-44 min-w-[80%] snap-start overflow-x-visible sm:min-w-[50%] md:min-w-[300px] xl:min-w-[334px] giveaways-grade giveaways-grade-${index}`}
       key={`giveaways-${index}`}
       onClick={() =>
         history.push({
