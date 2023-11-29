@@ -444,7 +444,7 @@ export default function Deposit() {
 
   useEffect(() => {
     if (rechargeAmountAllowList && rechargeAmountAllowList.length > 0) {
-      setQuantity(rechargeAmountAllowList[0]);
+      setQuantity(rechargeAmountAllowList[1]);
     }
     if (languageList && languageList.length > 0) {
       const locale = getLocale();
