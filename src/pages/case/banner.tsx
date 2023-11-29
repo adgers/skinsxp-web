@@ -32,12 +32,12 @@ export default function Banner() {
           clickable: true,
         }}
         modules={[Pagination, Autoplay]}
-        className="w-full rounded h-[210px]  md:h-[350px] lg:h-[350px] xl:h-[400px] 2xl:h-[450px] flex items-center !z-0"
+        className="w-full rounded h-[210px] md:h-[350px] lg:h-[350px] xl:h-[400px] 2xl:h-[450px] 1080p:h-[600px] 4k:h-[880px] flex items-center !z-0"
       >
         {/* {data?.map((t, i) => ( */}
         <SwiperSlide
           key={0}
-          className="h-[210px]  md:h-[350px] lg:h-[350px] xl:h-[400px] 2xl:h-[450px] relative"
+          className="h-[210px]  md:h-[350px] lg:h-[350px] xl:h-[400px] 2xl:h-[450px] 1080p:h-[600px] 4k:h-[880px] relative"
           onClick={() => {
             history.push('/event');
           }}
@@ -47,50 +47,50 @@ export default function Banner() {
             className="w-full h-full object-cover"
           />
           <div className="absolute top-0 left-0 w-full h-full flex flex-col  items-center z-30">
-            <div className="w-fit mt-[72px] md:mt-[140px] mx-auto flex gap-2">
+            <div className="w-fit mt-[72px] md:mt-[140px] 1080p:mt-[200px] mx-auto flex gap-2">
               {days > 0 && (
-                <div className="flex w-[60px] md:w-[66px] h-[36px] md:h-[80px] flex-shrink-0 flex-col items-center justify-center text-center bg-[#4B557A]/60 rounded">
+                <div className="flex w-[60px] md:w-[66px] 4k:w-[150px] h-[36px] md:h-[80px] 4k:h-[200px] flex-shrink-0 flex-col items-center justify-center text-center bg-[#4B557A]/60 rounded">
                   <Countdown
                     value={days}
-                    className="days-value text-sm md:text-lg font-semibold tabular-nums leading-none text-white"
+                    className="days-value text-sm md:text-lg font-semibold tabular-nums 4k:text-[48px] leading-none text-white"
                   />
-                  <span className="transform scale-75 font-medium leading-none text-white text-opacity-70">
+                  <span className="transform scale-75 font-medium leading-none text-white 4k:text-[32px] text-opacity-70">
                     <FormattedMessage id="text_time_days" />
                   </span>
                 </div>
               )}
-              <div className="flex w-[60px] md:w-[66px] h-[36px] md:h-[80px] flex-shrink-0 flex-col items-center justify-center text-center bg-[#4B557A]/60 rounded">
+              <div className="flex w-[60px] md:w-[66px] 4k:w-[150px] h-[36px] md:h-[80px] 4k:h-[200px] flex-shrink-0 flex-col items-center justify-center text-center bg-[#4B557A]/60 rounded">
                 <Countdown
                   value={hours}
-                  className="days-value text-sm md:text-lg font-semibold tabular-nums leading-none text-white"
+                  className="days-value text-sm md:text-lg font-semibold tabular-nums 4k:text-[48px] leading-none text-white"
                 />
-                <span className="transform scale-75 font-medium leading-none text-white text-opacity-70">
+                <span className="transform scale-75 font-medium leading-none text-white 4k:text-[32px] text-opacity-70">
                   <FormattedMessage id="text_time_hour" />
                 </span>
               </div>
-              <div className="flex w-[60px] md:w-[66px] h-[36px] md:h-[80px] flex-shrink-0 flex-col items-center justify-center text-center bg-[#4B557A]/60 rounded">
+              <div className="flex w-[60px] md:w-[66px] 4k:w-[150px] h-[36px] md:h-[80px] 4k:h-[200px] flex-shrink-0 flex-col items-center justify-center text-center bg-[#4B557A]/60 rounded">
                 <Countdown
                   value={minutes}
-                  className="days-value text-sm md:text-lg font-semibold tabular-nums leading-none text-white"
+                  className="days-value text-sm md:text-lg font-semibold tabular-nums 4k:text-[48px] leading-none text-white"
                 />
-                <span className="transform scale-75 font-medium leading-none text-white text-opacity-70">
+                <span className="transform scale-75 font-medium leading-none text-white 4k:text-[32px] text-opacity-70">
                   <FormattedMessage id="text_time_min" />
                 </span>
               </div>
 
-              <div className="flex w-[60px] md:w-[66px] h-[36px] md:h-[80px] flex-shrink-0 flex-col items-center justify-center text-center bg-[#4B557A]/60 rounded">
+              <div className="flex w-[60px] md:w-[66px] 4k:w-[150px] h-[36px] md:h-[80px] 4k:h-[200px] flex-shrink-0 flex-col items-center justify-center text-center bg-[#4B557A]/60 rounded">
                 <Countdown
                   value={seconds}
-                  className="days-value text-sm md:text-lg font-semibold tabular-nums leading-none text-white"
+                  className="days-value text-sm md:text-lg font-semibold tabular-nums 4k:text-[48px] leading-none text-white"
                 />
-                <span className="transform scale-75 font-medium leading-none text-white text-opacity-70">
+                <span className="transform scale-75 font-medium leading-none text-white 4k:text-[32px] text-opacity-70">
                   <FormattedMessage id="text_time_sec" />
                 </span>
               </div>
             </div>
             {location.pathname === '/case' && (
               <div
-                className="btn btn-red !h-[32px] md:!h-12 min-h-0 mt-3 md:mt-8 !px-8"
+                className="btn btn-red !h-[32px] 4k:!h-[96px] 4k:text-[32px] md:!h-12 min-h-0 mt-3 md:mt-8 !px-8"
                 onClick={() => {
                   history.push('/event');
                 }}
