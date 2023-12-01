@@ -259,6 +259,9 @@ export default defineConfig({
       }(window, document, 'ttq');
   `,
     },
+    // {
+    //   src: 'https://challenges.cloudflare.com/turnstile/v0/api.js?render=explicit',
+    // },
   ],
   presets: ['umi-presets-pro'],
   openAPI: [

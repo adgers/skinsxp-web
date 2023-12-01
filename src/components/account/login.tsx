@@ -1,9 +1,10 @@
 import { loginUsingPOST } from '@/services/front/qiantaishouquanxiangguan';
 import { LockOutlined, UserOutlined } from '@ant-design/icons';
+import { Turnstile } from '@marsidev/react-turnstile';
 import { useModel } from '@umijs/max';
 import { Input, InputRef } from 'antd';
 import { useRef, useState } from 'react';
-import { Button, Checkbox, Modal } from 'react-daisyui';
+import { Button, Modal } from 'react-daisyui';
 import { toast } from 'react-toastify';
 
 export default function Login() {
@@ -74,7 +75,7 @@ export default function Login() {
           ref={idRef}
           allowClear
           autoComplete="username"
-          size='large'
+          size="large"
         />
 
         <Input.Password
@@ -83,9 +84,25 @@ export default function Login() {
           prefix={<LockOutlined />}
           allowClear
           autoComplete="current-password"
-          size='large'
+          size="large"
         />
 
+        <Turnstile
+          siteKey="0x4AAAAAAAN4Ou8ut65lzmuz"
+          // injectScript={false}
+          onLoadScript={() => {
+            console.log('onLoad');
+          }}
+          onError={() => {
+            console.log('error');
+          }}
+          onSuccess={(token) => {
+            console.log(token);
+          }}
+          options={{
+            theme: 'light',
+          }}
+        />
         {/* <div className="flex justify-between">
           <div className="flex text-sm">
             还没有账号？

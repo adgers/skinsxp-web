@@ -2213,6 +2213,11 @@
     hoist-non-react-statics "^3.3.1"
     react-is "^16.12.0"
 
+"@marsidev/react-turnstile@^0.4.0":
+  version "0.4.0"
+  resolved "https://registry.npmmirror.com/@marsidev/react-turnstile/-/react-turnstile-0.4.0.tgz#1ab8694ee0b219a8f3a137f761fa443708294600"
+  integrity sha512-U0lwTWQhP04AnIdWEbLpF/phpqtblNbrnE4yJMdvGyeOZOTmuHW3wB+V8X+BO55pTXZitp2GgJsrGkbUjwJIeQ==
+
 "@nicolo-ribaudo/chokidar-2@2.1.8-no-fsevents.3":
   version "2.1.8-no-fsevents.3"
   resolved "https://registry.npmmirror.com/@nicolo-ribaudo/chokidar-2/-/chokidar-2-2.1.8-no-fsevents.3.tgz#323d72dd25103d0c4fbdce89dadf574a787b1f9b"
