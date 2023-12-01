@@ -95,7 +95,7 @@ export default function LoginConfirm() {
             </span>
           </div>
         </div>
-        <Turnstile
+        {/* <Turnstile
           siteKey="0x4AAAAAAAN4Ou8ut65lzmuz"
           onError={() => {
             console.warn('you===bot');
@@ -111,7 +111,7 @@ export default function LoginConfirm() {
           className="mx-auto mt-3"
           scriptOptions={{
           }}
-        />
+        /> */}
         <Button
           className="btn btn-green mt-8 w-full md:w-[60%] "
           onClick={() => {
@@ -119,10 +119,10 @@ export default function LoginConfirm() {
               toast.error(intl.formatMessage({ id: 'register_qydbjsxy' }));
               return;
             }
-            if (!cloudToken) {
-              toast.error(intl.formatMessage({ id: 'bot_verify_tip' }));
-              return;
-            }
+            // if (!cloudToken) {
+            //   toast.error(intl.formatMessage({ id: 'bot_verify_tip' }));
+            //   return;
+            // }
             // onOK();
             // hideSteamLogin();
             setLoading(true);
