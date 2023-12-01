@@ -443,5 +443,6 @@
     "black_event_desc": "トークンはイベントケースやイベントクエストを完了することで入手できます",
     "black_event_partner": "パートナーを招待して報酬を獲得しましょう",
     "black_event_invite": "招待する",
-    "home_lqlw": "ギフトを受け取る"
+    "home_lqlw": "ギフトを受け取る",
+    "bot_verify_tip": "人間と機械による検証に合格してください"
 }

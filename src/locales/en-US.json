@@ -443,5 +443,6 @@
     "black_event_desc": "You can get tokens from event cases and by completing event quests",
     "black_event_partner": "Invite partners and get rewards",
     "black_event_invite": "INVITE",
-    "home_lqlw": "CLAIM GIFT"
+    "home_lqlw": "CLAIM GIFT",
+    "bot_verify_tip": "Please pass human-machine verification"
 }

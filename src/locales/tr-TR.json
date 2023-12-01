@@ -443,5 +443,6 @@
     "black_event_desc": "Etkinlik vakalarından ve etkinlik görevlerini tamamlayarak jeton alabilirsiniz.",
     "black_event_partner": "Ortakları davet edin ve ödüller kazanın",
     "black_event_invite": "DAVET ETMEK",
-    "home_lqlw": "HEDİYE TALEP ET"
+    "home_lqlw": "HEDİYE TALEP ET",
+    "bot_verify_tip": "Lütfen insan-makine doğrulamasını geçin"
 }

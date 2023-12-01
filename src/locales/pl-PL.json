@@ -443,5 +443,6 @@
     "black_event_desc": "Możesz zdobyć żetony ze spraw związanych z wydarzeniami i wykonując zadania związane z wydarzeniami",
     "black_event_partner": "Zaproś partnerów i zdobądź nagrody",
     "black_event_invite": "ZAPRASZAĆ",
-    "home_lqlw": "ODBIERZ PREZENT"
+    "home_lqlw": "ODBIERZ PREZENT",
+    "bot_verify_tip": "Proszę przejść weryfikację człowiek-maszyna"
 }

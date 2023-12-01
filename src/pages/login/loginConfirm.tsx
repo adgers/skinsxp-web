@@ -1,6 +1,7 @@
 import { IconFont } from '@/components/icons';
 import { getSteamLoginUrl } from '@/utils';
-import { FormattedMessage, useIntl, useModel } from '@umijs/max';
+import { Turnstile } from '@marsidev/react-turnstile';
+import { FormattedMessage, getLocale, useIntl, useModel } from '@umijs/max';
 import { useEffect, useState } from 'react';
 import { Button, Checkbox, Modal } from 'react-daisyui';
 import { toast } from 'react-toastify';
@@ -8,6 +9,8 @@ import { toast } from 'react-toastify';
 export default function LoginConfirm() {
   const { steamLoginShow, hideSteamLogin } = useModel('user');
   const [loading, setLoading] = useState(false);
+  const [cloudToken, setCloudToken] = useState('');
+  const locale = getLocale();
   const intl = useIntl();
 
   const [agreeForm, setAgreeForm] = useState({
@@ -37,9 +40,16 @@ export default function LoginConfirm() {
         </div>
       </Modal.Header>
       <Modal.Body className="flex flex-col items-center px-8 py-4">
-        <div className="mb-8 text-xl font-semibold text-center" onClick={()=>{
-          window?.fbq('trackSingleCustom','1024868335308144','click_confirm_LOGIN')
-        }}>
+        <div
+          className="mb-8 text-xl font-semibold text-center"
+          onClick={() => {
+            window?.fbq(
+              'trackSingleCustom',
+              '1024868335308144',
+              'click_confirm_LOGIN',
+            );
+          }}
+        >
           <FormattedMessage id="login_need_tip" />
         </div>
         <div className="flex flex-col gap-1 w-full">
@@ -85,11 +95,32 @@ export default function LoginConfirm() {
             </span>
           </div>
         </div>
+        <Turnstile
+          siteKey="0x4AAAAAAAN4Ou8ut65lzmuz"
+          onError={() => {
+            console.warn('you===bot');
+          }}
+          onSuccess={(token: string) => {
+            setCloudToken(token);
+          }}
+          options={{
+            theme: 'light',
+            language: locale,
+            retryInterval: 8000
+          }}
+          className="mx-auto mt-3"
+          scriptOptions={{
+          }}
+        />
         <Button
           className="btn btn-green mt-8 w-full md:w-[60%] "
           onClick={() => {
             if (!agreeForm?.form_1_agree || !agreeForm?.form_2_agree) {
               toast.error(intl.formatMessage({ id: 'register_qydbjsxy' }));
+              return;
+            }
+            if (!cloudToken) {
+              toast.error(intl.formatMessage({ id: 'bot_verify_tip' }));
               return;
             }
             // onOK();
