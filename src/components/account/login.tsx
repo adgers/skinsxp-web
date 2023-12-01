@@ -1,7 +1,6 @@
 import { loginUsingPOST } from '@/services/front/qiantaishouquanxiangguan';
 import { LockOutlined, UserOutlined } from '@ant-design/icons';
-import { Turnstile } from '@marsidev/react-turnstile';
-import { getLocale, useModel } from '@umijs/max';
+import { useModel } from '@umijs/max';
 import { Input, InputRef } from 'antd';
 import { useEffect, useRef, useState } from 'react';
 import { Button, Modal } from 'react-daisyui';
@@ -15,9 +14,6 @@ export default function Login() {
   const idRef = useRef<InputRef>(null);
   const pwdRef = useRef<InputRef>(null);
   // const checkRef = useRef<HTMLInputElement>(null);
-  const cloudRef = useRef(null);
-  const [cloudToken, setCloudToken] = useState<string>('');
-  const locale = getLocale();
 
   const onPwdLogin = async () => {
     const id = idRef.current?.input?.value;
@@ -52,10 +48,6 @@ export default function Login() {
       location.reload();
     }
   };
-
-  useEffect(() => {
-    setCloudToken('');
-  }, [loginShow]);
 
   return (
     <Modal open={loginShow} className="max-w-md">
@@ -93,21 +85,6 @@ export default function Login() {
           autoComplete="current-password"
           size="large"
         />
-        <Turnstile
-          siteKey="0x4AAAAAAAN4Ou8ut65lzmuz"
-          onError={() => {
-            console.warn('you===bot');
-          }}
-          onSuccess={(token: string) => {
-            setCloudToken(token);
-          }}
-          options={{
-            theme: 'light',
-            language: locale,
-          }}
-          ref={cloudRef}
-          className="mx-auto"
-        />
         {/* <div className="flex justify-between">
           <div className="flex text-sm">
             还没有账号？
@@ -136,9 +113,7 @@ export default function Login() {
         <Button
           className={`btn-primary w-full `}
           onClick={() => {
-            if (!!cloudToken) {
-              onPwdLogin();
-            }
+            onPwdLogin();
           }}
           loading={loading}
         >
