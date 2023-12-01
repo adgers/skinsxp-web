@@ -443,5 +443,6 @@
     "black_event_desc": "Puedes obtener fichas de casos de eventos y completando misiones de eventos.",
     "black_event_partner": "Invita socios y obtén recompensas",
     "black_event_invite": "INVITAR",
-    "home_lqlw": "REGALO DE RECLAMACIÓN"
+    "home_lqlw": "REGALO DE RECLAMACIÓN",
+    "bot_verify_tip": "Por favor pase la verificación hombre-máquina"
 }

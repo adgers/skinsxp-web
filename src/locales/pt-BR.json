@@ -443,5 +443,6 @@
     "black_event_desc": "Você pode obter tokens em casos de eventos e completando missões de eventos",
     "black_event_partner": "Convide parceiros e receba recompensas",
     "black_event_invite": "CONVIDAR",
-    "home_lqlw": "REIVINDICAR PRESENTE"
+    "home_lqlw": "REIVINDICAR PRESENTE",
+    "bot_verify_tip": "請通過人機驗證"
 }

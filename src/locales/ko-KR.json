@@ -443,5 +443,6 @@
     "black_event_desc": "이벤트 케이스와 이벤트 퀘스트를 통해 토큰을 얻을 수 있습니다.",
     "black_event_partner": "파트너를 초대하고 보상을 받으세요",
     "black_event_invite": "초대하다",
-    "home_lqlw": "선물 받기"
+    "home_lqlw": "선물 받기",
+    "bot_verify_tip": "인간-기계 검증을 통과하십시오"
 }
