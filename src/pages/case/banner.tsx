@@ -7,7 +7,7 @@ import { Autoplay, Pagination } from 'swiper/modules';
 import { Swiper, SwiperSlide } from 'swiper/react';
 
 export default function Banner() {
-  const [countdown, formattedRes] = useCountDown({ targetDate: 1701359999000 });
+  const [countdown, formattedRes] = useCountDown({ targetDate: 1702223999000 });
   const { days, hours, minutes, seconds } = formattedRes;
   const location = useLocation();
 
