@@ -444,5 +444,9 @@
     "black_event_partner": "Zaproś partnerów i zdobądź nagrody",
     "black_event_invite": "ZAPRASZAĆ",
     "home_lqlw": "ODBIERZ PREZENT",
-    "bot_verify_tip": "Proszę przejść weryfikację człowiek-maszyna"
+    "bot_verify_tip": "Proszę przejść weryfikację człowiek-maszyna",
+    "partner_step1": "Udostępnij swój kod zaproszenia lub link polecający swoim znajomym.",
+    "partner_step2": "Za każdym razem, gdy użytkownik powiąże Twój kod zaproszenia i dokona doładowania, oboje na tym skorzystacie",
+    "partner_step3": "Więcej znajomych i więcej doładowań zwiększy Twój poziom promocji.",
+    "partner_step4": "Im wyższy poziom promocji, tym większy rabat otrzymasz"
 }

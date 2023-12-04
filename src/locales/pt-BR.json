@@ -444,5 +444,9 @@
     "black_event_partner": "Convide parceiros e receba recompensas",
     "black_event_invite": "CONVIDAR",
     "home_lqlw": "REIVINDICAR PRESENTE",
-    "bot_verify_tip": "請通過人機驗證"
+    "bot_verify_tip": "Passe na verificação homem-máquina",
+    "partner_step1": "Compartilhe seu código de convite ou link de indicação com seus amigos.",
+    "partner_step2": "Cada vez que um usuário vincula seu código de convite e faz uma recarga, vocês dois se beneficiarão disso",
+    "partner_step3": "Mais amigos e mais recargas aumentarão seu nível de promoção.",
+    "partner_step4": "Quanto maior o seu nível de promoção, mais descontos você receberá"
 }

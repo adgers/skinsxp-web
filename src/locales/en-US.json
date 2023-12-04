@@ -444,5 +444,9 @@
     "black_event_partner": "Invite partners and get rewards",
     "black_event_invite": "INVITE",
     "home_lqlw": "CLAIM GIFT",
-    "bot_verify_tip": "Please pass human-machine verification"
+    "bot_verify_tip": "Please pass human-machine verification",
+    "partner_step1": "Share your invitation code or referral link with your friends.",
+    "partner_step2": "Every time a user binds your invitation code and makes a recharge, you both will benefit from it",
+    "partner_step3": "More friends and more recharges will increase your promotion level.",
+    "partner_step4": "The higher your promotion level, the more rebate you will receive"
 }

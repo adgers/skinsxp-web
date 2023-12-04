@@ -444,5 +444,9 @@
     "black_event_partner": "Laden Sie Partner ein und erhalten Sie Belohnungen",
     "black_event_invite": "EINLADEN",
     "home_lqlw": "GESCHENK ANFORDERN",
-    "bot_verify_tip": "Bitte bestehen Sie die Mensch-Maschine-Verifizierung"
+    "bot_verify_tip": "Bitte bestehen Sie die Mensch-Maschine-Verifizierung",
+    "partner_step1": "Teilen Sie Ihren Einladungscode oder Empfehlungslink mit Ihren Freunden.",
+    "partner_step2": "Jedes Mal, wenn ein Benutzer Ihren Einladungscode bindet und eine Aufladung vornimmt, profitieren Sie beide davon",
+    "partner_step3": "Mehr Freunde und mehr Aufladungen erhöhen Ihren Aufstiegslevel.",
+    "partner_step4": "Je höher Ihr Promotion-Level, desto mehr Rabatt erhalten Sie"
 }

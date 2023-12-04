@@ -1,3 +1,4 @@
+import { IconFont } from '@/components/icons';
 import {
   getPromotionInfoUsingGET,
   listUsingGET1,
@@ -121,6 +122,25 @@ export default function PromotePage() {
     },
   ];
 
+  const stepsArr = [
+    {
+      icon: 'icon-invitation',
+      desc: 'partner_step1',
+    },
+    {
+      icon: 'icon-connection',
+      desc: 'partner_step2',
+    },
+    {
+      icon: 'icon-levelup',
+      desc: 'partner_step3',
+    },
+    {
+      icon: 'icon-benefit',
+      desc: 'partner_step4',
+    },
+  ];
+
   const { loading } = useRequest(
     async () => {
       const ret = await myPromotionLogPageUsingGET({
@@ -226,6 +246,28 @@ export default function PromotePage() {
             </div>
           </div>
         </div>
+      </div>
+      <div className="p-4 bg-black rounded mt-4 flex justify-center flex-wrap gap-12 py-6">
+        {stepsArr.map((item, index) => {
+          return (
+            <div
+              key={index}
+              className="flex flex-col items-center gap-4 md:max-w-[284px]"
+            >
+              <div className='border border-green p-4 rounded-full'>
+                <div className="border-[2px] border-green w-[60px] h-[60px] md:w-[120px] md:h-[120px] flex items-center justify-center rounded-full">
+                  <IconFont
+                    type={item.icon}
+                    className="text-[36px] md:text-[72px] text-green"
+                  />
+                </div>
+              </div>
+              <div className="text-sm text-gray text-center ">
+                <FormattedMessage id={item.desc} />
+              </div>
+            </div>
+          );
+        })}
       </div>
       <div className="p-4 bg-black rounded mt-4">
         <div className="grid grid-cols-3 sm:grid-cols-6 flex-shrink-0">

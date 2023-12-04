@@ -444,5 +444,9 @@
     "black_event_partner": "邀請夥伴並獲得獎勵",
     "black_event_invite": "邀請",
     "home_lqlw": "领取礼物",
-    "bot_verify_tip": "请通过人机验证"
+    "bot_verify_tip": "请通过人机验证",
+    "partner_step1": "与您的朋友分享您的邀请码或推荐链接。",
+    "partner_step2": "用户每次绑定您的邀请码并充值，您双方都将受益",
+    "partner_step3": "更多的朋友和更多的充值將提高您的晉升等級。",
+    "partner_step4": "您的促销级别越高，您获得的返利就越多"
 }

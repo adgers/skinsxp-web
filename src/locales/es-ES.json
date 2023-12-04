@@ -444,5 +444,9 @@
     "black_event_partner": "Invita socios y obtén recompensas",
     "black_event_invite": "INVITAR",
     "home_lqlw": "REGALO DE RECLAMACIÓN",
-    "bot_verify_tip": "Por favor pase la verificación hombre-máquina"
+    "bot_verify_tip": "Por favor pase la verificación hombre-máquina",
+    "partner_step1": "Comparte tu código de invitación o enlace de referencia con tus amigos.",
+    "partner_step2": "Cada vez que un usuario vincula su código de invitación y realiza una recarga, ambos se beneficiarán",
+    "partner_step3": "Más amigos y más recargas aumentarán tu nivel de promoción.",
+    "partner_step4": "Cuanto mayor sea tu nivel de promoción, más reembolso recibirás"
 }

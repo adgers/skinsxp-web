@@ -444,5 +444,9 @@
     "black_event_partner": "邀請夥伴並獲得獎勵",
     "black_event_invite": "邀請",
     "home_lqlw": "領取禮物",
-    "bot_verify_tip": "Passe na verificação homem-máquina"
+    "bot_verify_tip": "請通過人機驗證",
+    "partner_step1": "與您的朋友分享您的邀請碼或推薦連結。",
+    "partner_step2": "用戶每次綁定您的邀請碼並充值，您雙方都將受益",
+    "partner_step3": "更多的朋友和更多的充值將提高您的晉升等級。",
+    "partner_step4": "您的促銷等級越高，您獲得的回饋就越多"
 }
