@@ -26,3 +26,21 @@ export async function recentDropUsingGET(
     ...(options || {}),
   });
 }
+
+/** 最近掉落 limit: 长度限制, isTop: 是否最佳掉落 GET /api/stat/recentDrop */
+export async function cloudflareTokenUsingPOST(
+  // 叠加生成的Param类型 (非body参数swagger默认没有生成对象)
+  params: { 'cf-turnstile-response': string },
+  options?: { [key: string]: any },
+) {
+  return request<{ data?: boolean; msg?: string; status?: number }>(
+    '/api/stat/recentDrop',
+    {
+      method: 'POST',
+      params: {
+        ...params,
+      },
+      ...(options || {}),
+    },
+  );
+}
