@@ -18,6 +18,7 @@ import Footer from './foot';
 import GiftCase from './gift-case';
 import Header from './head';
 import RightNav from './right-nav';
+import { modifyShowCloudFlareUsingPOST } from '@/services/front/zhandianweidushuju';
 
 const showBannerRoutes = ['/case', '/event'];
 
@@ -28,6 +29,13 @@ export default function Layout() {
   const { setPageLoaded } = useModel('socket');
   const { userInfo } = useModel('user');
   const params = urlParse();
+
+  const verifyCloudflare =async ()=>{
+    const ret = await modifyShowCloudFlareUsingPOST()
+    if(ret.status){
+
+    }
+  }
 
   useEffect(() => {
     if (params?.lang) {
@@ -49,6 +57,7 @@ export default function Layout() {
     }
     sessionStorage.setItem('channelCode', params?.cCode as string);
     setPageLoaded(true);
+    verifyCloudflare()
   }, []);
 
   useEffect(() => {
