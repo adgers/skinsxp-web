@@ -1,7 +1,6 @@
 import { IconFont } from '@/components/icons';
 import { getSteamLoginUrl } from '@/utils';
-import { Turnstile } from '@marsidev/react-turnstile';
-import { FormattedMessage, getLocale, useIntl, useModel } from '@umijs/max';
+import { FormattedMessage, useIntl, useModel } from '@umijs/max';
 import { useEffect, useState } from 'react';
 import { Button, Checkbox, Modal } from 'react-daisyui';
 import { toast } from 'react-toastify';
@@ -9,8 +8,6 @@ import { toast } from 'react-toastify';
 export default function LoginConfirm() {
   const { steamLoginShow, hideSteamLogin } = useModel('user');
   const [loading, setLoading] = useState(false);
-  const [cloudToken, setCloudToken] = useState('');
-  const locale = getLocale();
   const intl = useIntl();
 
   const [agreeForm, setAgreeForm] = useState({
@@ -110,6 +107,7 @@ export default function LoginConfirm() {
           }}
           className="mx-auto mt-3"
           scriptOptions={{
+            appendTo:'body'
           }}
         /> */}
         <Button
