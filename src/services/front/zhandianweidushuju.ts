@@ -34,7 +34,7 @@ export async function cloudflareTokenUsingPOST(
   options?: { [key: string]: any },
 ) {
   return request<{ data?: boolean; msg?: string; status?: number }>(
-    '/api/stat/recentDrop',
+    '/api/auth/captcha',
     {
       method: 'POST',
       params: {
