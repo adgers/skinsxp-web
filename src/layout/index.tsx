@@ -68,6 +68,8 @@ export default function Layout() {
     }
   }, [data]);
 
+  let interval: any = null;
+
   useEffect(() => {
     const channelCode = params.channelCode || 'wgskins';
     if (window?.gtag) {
@@ -78,6 +80,14 @@ export default function Layout() {
     sessionStorage.setItem('channelCode', params?.cCode as string);
     setPageLoaded(true);
     verifyCloudflare();
+    interval = setInterval(() => {
+      verifyCloudflare();
+    }, 7200000);
+    return () => {
+      if (interval) {
+        clearInterval(interval);
+      }
+    };
   }, []);
 
   useEffect(() => {
