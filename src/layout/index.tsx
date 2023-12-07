@@ -39,7 +39,7 @@ export default function Layout() {
 
   const verifyCloudflare = async () => {
     const ret = await modifyShowCloudFlareUsingPOST();
-    if (ret.status) {
+    if (ret.status === 0) {
       if (ret?.data) {
         setShowCloudflare(false);
       } else {
