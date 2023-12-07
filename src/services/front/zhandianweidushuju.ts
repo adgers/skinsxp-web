@@ -44,3 +44,17 @@ export async function cloudflareTokenUsingPOST(
     },
   );
 }
+
+/** 最近掉落 limit: 长度限制, isTop: 是否最佳掉落 GET /api/stat/recentDrop */
+export async function modifyShowCloudFlareUsingPOST(
+  // 叠加生成的Param类型 (非body参数swagger默认没有生成对象)
+  options?: { [key: string]: any },
+) {
+  return request<{ data?: boolean; msg?: string; status?: number }>(
+    '/api/auth/captchaView',
+    {
+      method: 'POST',
+      ...(options || {}),
+    },
+  );
+}
