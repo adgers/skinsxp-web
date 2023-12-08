@@ -19,7 +19,6 @@ import {
   cloudflareTokenUsingPOST,
   modifyShowCloudFlareUsingPOST,
 } from '@/services/front/zhandianweidushuju';
-import { Turnstile } from '@marsidev/react-turnstile';
 import Footer from './foot';
 import GiftCase from './gift-case';
 import Header from './head';
@@ -98,7 +97,7 @@ export default function Layout() {
 
   return (
     <>
-      {showCloudflare ? (
+      {/* {showCloudflare ? (
         <div className="bg-white w-[100vw] h-[100vh] pt-8 md:pt-[150px]">
           <div className="text-[32px] font-semibold mb-4 text-black pl-5 md:pl-[200px]">
             WGSKINS.COM
@@ -119,21 +118,21 @@ export default function Layout() {
             className="ml-5 md:ml-[200px]"
           />
         </div>
-      ) : (
-        <div className={`root-bg ${pathCls}`}>
-          {!headHidden() && <Header />}
-          {showBannerRoutes.includes(location.pathname) && <Banner />}
+      ) : ( */}
+      <div className={`root-bg ${pathCls}`}>
+        {!headHidden() && <Header />}
+        {showBannerRoutes.includes(location.pathname) && <Banner />}
 
-          <div className="max-w-8xl w-full min-h-[calc(100vh-64px)] m-auto relative">
-            <Outlet />
-          </div>
-          {!headHidden() && <BtmNav />}
-          {!headHidden() && <Footer />}
-          {<RightNav />}
-          {!userInfo?.mail && <GiftCase />}
-          <ToastContainer theme="dark" autoClose={2000} limit={1} />
+        <div className="max-w-8xl w-full min-h-[calc(100vh-64px)] m-auto relative">
+          <Outlet />
         </div>
-      )}
+        {!headHidden() && <BtmNav />}
+        {!headHidden() && <Footer />}
+        {<RightNav />}
+        {!userInfo?.mail && <GiftCase />}
+        <ToastContainer theme="dark" autoClose={2000} limit={1} />
+      </div>
+      {/* )} */}
     </>
   );
 }
