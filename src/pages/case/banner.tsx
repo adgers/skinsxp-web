@@ -5,7 +5,6 @@ import { Autoplay, Pagination } from 'swiper/modules';
 import { Swiper, SwiperSlide } from 'swiper/react';
 
 export default function Banner() {
-
   const intl = useIntl();
   // const { data, loading } = useRequest(
   //   () => getBannerListUsingGET({ topN: 10 }),
@@ -33,10 +32,13 @@ export default function Banner() {
         <SwiperSlide
           key={0}
           className="h-[150px]  md:h-[350px] lg:h-[350px] xl:h-[400px] 2xl:h-[450px] 1080p:h-[600px] 4k:h-[880px] relative"
+          onClick={() => {
+            window.open('https://t.me/+nLl1Wg9toBhlNjc5');
+          }}
         >
           <img
             src={require('@/assets/banner-steam.png')}
-            className="w-full h-full object-cover"
+            className="w-full h-full object-cover cursor-pointer"
           />
         </SwiperSlide>
         {/* ))} */}
