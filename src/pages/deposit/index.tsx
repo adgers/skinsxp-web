@@ -334,7 +334,7 @@ export default function Deposit() {
                     </div>
                     <div className="font-num text-white py-1 px-2 flex gap-1 overflow-hidden">
                       =
-                      <div className='flex gap-1 overflow-hidden  flex-wrap'>
+                      <div className="flex gap-1 overflow-hidden  flex-wrap">
                         <span className="text-green ml-3">
                           ${numberFixed(quantity, 2)}
                         </span>
@@ -470,7 +470,7 @@ export default function Deposit() {
         transaction_id: '',
       });
 
-      if (['7', '21']?.includes(userInfo?.promotionChannelId)) {
+      if (['7', '21', '12']?.includes(userInfo?.promotionChannelId)) {
         // fb
         window?.fbq('track', 'Purchase', {
           currency: 'USD',

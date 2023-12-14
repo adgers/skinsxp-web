@@ -45,6 +45,11 @@ export default function LoginConfirm() {
               '1024868335308144',
               'click_confirm_LOGIN',
             );
+            window?.fbq(
+              'trackSingleCustom',
+              '328518876380399',
+              'click_confirm_LOGIN',
+            );
           }}
         >
           <FormattedMessage id="login_need_tip" />
