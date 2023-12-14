@@ -4,7 +4,6 @@ import {
   rewardUsingPOST,
   taskListUsingGET,
 } from '@/services/front/huodongzhongxinxiangguan';
-import { getPromotionInfoUsingGET } from '@/services/front/tuiguangzhongxinxiangguan';
 import { DownOutlined, UpOutlined } from '@ant-design/icons';
 import { FormattedMessage, useIntl, useModel, useRequest } from '@umijs/max';
 import { useEffect, useState } from 'react';
@@ -32,11 +31,8 @@ export default () => {
   const intl = useIntl();
   const [show, setShow] = useState(false);
   const { data, loading, refresh } = useRequest(() => taskListUsingGET());
-  const { data: promotionData = {} } = useRequest(() =>
-    getPromotionInfoUsingGET(),
-  );
-
   const { showEmail, userInfo, getUser } = useModel('user');
+  const [list, setList] = useState<API.MyTaskVo[] | []>([]);
 
   const reward = async (taskId: string) => {
     const ret = await rewardUsingPOST({
@@ -64,6 +60,14 @@ export default () => {
       refresh();
     }
   }, [userInfo?.mail]);
+
+  useEffect(() => {
+    if (data?.length) {
+      const arr = [...data];
+      arr.reverse();
+      setList(arr);
+    }
+  }, [data]);
 
   const renderProgress = (item: API.MyTaskVo) => {
     switch (item.taskAchieveType) {
@@ -123,28 +127,29 @@ export default () => {
 
       {data && data?.length > 0 && (
         <div className="flex flex-col gap-4 mx-4 md:mx-0">
-          {data?.map((item, index) => {
+          {list?.map((item, index) => {
             return (
               <div
                 className="flex flex-col md:flex-row pb-4 justify-between items-center bg-black rounded border md:border-none border-light"
                 key={index}
               >
                 <div className="md:flex-1 flex flex-col md:flex-row items-center py-2 md:px-10 w-full md:w-fit bg-[url('@/assets/halloween-issue-bg.png')] bg-no-repeat bg-contain bg-center md:bg-left">
-                  <div className="w-12 md:w-[158px] h-12 md:h-[118px] overflow-hidden flex items-center">
+                  <div className="w-[122px] md:w-[158px] h-[96px] md:h-[118px] overflow-hidden flex items-center">
                     <img
-                      src={require('@/assets/xmas-xiaolu.png')}
+                      src={require(`@/assets/${
+                        index < 5 ? `xmas-event${index}` : 'xmas-xiaolu'
+                      }.png`)}
                       className="w-full object-cover"
                     />
                   </div>
-                  <div className=" flex flex-col md:flex-row items-center gap-2">
-                    {/* {item?.taskName}
-                    {renderProgress(item)} */}
-                    123
+                  <div className=" flex flex-col md:flex-row items-center gap-2 text-center md:text-start">
+                    {item?.taskName}
+                    {renderProgress(item)}
                   </div>
                 </div>
                 <div className="flex flex-col md:flex-row items-center md:pr-16 md:gap-20">
                   <div className="text-green text-lg font-semibold">
-                    {/* {item?.quantity ? `$${item?.quantity}` : null} */}
+                    {item?.quantity ? `$${item?.quantity}` : null}
                   </div>
                   {/* {item?.reward ? (
                     <div className="w-[256px] h-[48px] bg-light rounded flex items-center justify-center  cursor-not-allowed ">
@@ -224,7 +229,8 @@ export default () => {
             setShow(!show);
           }}
         >
-          <FormattedMessage id="event_xmas_tip" /> {show ? <UpOutlined /> : <DownOutlined />}
+          <FormattedMessage id="event_xmas_tip" />{' '}
+          {show ? <UpOutlined /> : <DownOutlined />}
         </div>
         <div
           className={`w-full overflow-y-clip mt-2  ${show ? 'show' : 'hide'}`}
