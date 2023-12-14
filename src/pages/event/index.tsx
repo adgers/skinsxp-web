@@ -5,7 +5,13 @@ import {
   taskListUsingGET,
 } from '@/services/front/huodongzhongxinxiangguan';
 import { DownOutlined, UpOutlined } from '@ant-design/icons';
-import { FormattedMessage, useIntl, useModel, useRequest } from '@umijs/max';
+import {
+  FormattedMessage,
+  history,
+  useIntl,
+  useModel,
+  useRequest,
+} from '@umijs/max';
 import { useEffect, useState } from 'react';
 import { toast } from 'react-toastify';
 import { Swiper, SwiperSlide } from 'swiper/react';
@@ -151,7 +157,7 @@ export default () => {
                   <div className="text-green text-lg font-semibold">
                     {item?.quantity ? `$${item?.quantity}` : null}
                   </div>
-                  {/* {item?.reward ? (
+                  {item?.reward ? (
                     <div className="w-[256px] h-[48px] bg-light rounded flex items-center justify-center  cursor-not-allowed ">
                       <FormattedMessage id="event_recieved" />
                     </div>
@@ -162,29 +168,34 @@ export default () => {
                       } `}
                       onClick={() => {
                         if (!item?.complete) {
-                          switch (item.taskAchieveType) {
-                            case TaskEvent.BOX:
-                              history.push('/case');
-                              break;
-                            case TaskEvent.BATTLE:
-                              history.push('/battle');
-                              break;
-                            case TaskEvent.RECHARGE:
-                              history.push('/deposit');
-                              break;
-                            case TaskEvent.UPGRADE:
-                              history.push('/upgrade');
-                              break;
-                            case TaskEvent.EMAIL:
-                              showEmail();
-                              break;
-                            case TaskEvent.MALL:
-                              history.push('/market');
-                              break;
-                            case TaskEvent.FOLLOW:
-                              window.open('https://discord.gg/ucDMTAbAcS');
-                              completeTask(item?.id);
-                              break;
+                          // switch (item.taskAchieveType) {
+                          //   case TaskEvent.BOX:
+                          //     history.push('/case');
+                          //     break;
+                          //   case TaskEvent.BATTLE:
+                          //     history.push('/battle');
+                          //     break;
+                          //   case TaskEvent.RECHARGE:
+                          //     history.push('/deposit');
+                          //     break;
+                          //   case TaskEvent.UPGRADE:
+                          //     history.push('/upgrade');
+                          //     break;
+                          //   case TaskEvent.EMAIL:
+                          //     showEmail();
+                          //     break;
+                          //   case TaskEvent.MALL:
+                          //     history.push('/market');
+                          //     break;
+                          //   case TaskEvent.FOLLOW:
+                          //     window.open('https://discord.gg/ucDMTAbAcS');
+                          //     completeTask(item?.id);
+                          //     break;
+                          // }
+                          if (index < 5) {
+                            history.push(`/case/${85 + index}`);
+                          } else {
+                            history.push('/case');
                           }
                         } else {
                           if (!item?.reward) {
@@ -201,7 +212,7 @@ export default () => {
                         <FormattedMessage id="event_recieve" />
                       )}
                     </div>
-                  )} */}
+                  )}
                 </div>
               </div>
             );
