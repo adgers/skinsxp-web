@@ -35,7 +35,7 @@ export default function LoginCallback() {
           send_to: 'AW-11379263638/nQhtCK3-9_AYEJaRh7Iq',
         });
         /* 后续由后台配置平台列表 */
-        if (['7', '21']?.includes(ret.data?.promotionChannelId)) {
+        if (['7', '21', '12']?.includes(ret.data?.promotionChannelId)) {
           // fb 推广用户 注册成功
           window?.fbq('track', 'Lead');
         }
