@@ -320,6 +320,11 @@ export default function Header() {
                       '1024868335308144',
                       'InitiateCheckout',
                     );
+                    window?.fbq(
+                      'trackSingleCustom',
+                      '328518876380399',
+                      'InitiateCheckout',
+                    );
                     window?.gtag('event', 'conversion', {
                       send_to: 'AW-11345409756/EOFKCIqQy-UYENzt9KEq',
                     });
@@ -458,6 +463,11 @@ export default function Header() {
                       '1024868335308144',
                       'click_LOGIN',
                     );
+                    window?.fbq(
+                      'trackSingleCustom',
+                      '328518876380399',
+                      'click_LOGIN',
+                    );
                   }}
                   style={{
                     background:
@@ -499,6 +509,11 @@ export default function Header() {
                           window?.fbq(
                             'trackSingleCustom',
                             '1024868335308144',
+                            'click_LOGIN',
+                          );
+                          window?.fbq(
+                            'trackSingleCustom',
+                            '328518876380399',
                             'click_LOGIN',
                           );
                         }}

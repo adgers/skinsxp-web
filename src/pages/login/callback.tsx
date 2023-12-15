@@ -24,6 +24,8 @@ export default function LoginCallback() {
       }
       if (ret.data?.register) {
         window.fbq('trackSingleCustom', '1024868335308144', 'register_success');
+        window.fbq('trackSingleCustom', '328518876380399', 'register_success');
+        
         window?.gtag('event', 'conversion', {
           // lanhan
           send_to: 'AW-11366618499/WyYOCOeNlewYEIOrg6wq',
@@ -35,15 +37,15 @@ export default function LoginCallback() {
           send_to: 'AW-11379263638/nQhtCK3-9_AYEJaRh7Iq',
         });
         /* 后续由后台配置平台列表 */
-        if (['7', '21', '12']?.includes(ret.data?.promotionChannelId)) {
-          // fb 推广用户 注册成功
-          // window?.fbq('track', 'Lead');
-          window.fbq(
-            'trackSingleCustom',
-            '328518876380399',
-            'register_success',
-          );
-        }
+        // if (['7', '21', '12']?.includes(ret.data?.promotionChannelId)) {
+        //   // fb 推广用户 注册成功
+        //   // window?.fbq('track', 'Lead');
+        //   window.fbq(
+        //     'trackSingleCustom',
+        //     '328518876380399',
+        //     'register_success',
+        //   );
+        // }
         if (['2'].includes(ret.data?.promotionChannelId)) {
           // gg 推广用户 注册成功
           window?.gtag('event', 'signup_mg');
