@@ -123,7 +123,7 @@ export default function Layout() {
         className="ml-5 md:ml-[200px]"
       />
     );
-  }, []);
+  }, [siteKey]);
 
   return (
     <>
