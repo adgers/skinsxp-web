@@ -37,7 +37,12 @@ export default function LoginCallback() {
         /* 后续由后台配置平台列表 */
         if (['7', '21', '12']?.includes(ret.data?.promotionChannelId)) {
           // fb 推广用户 注册成功
-          window?.fbq('track', 'Lead');
+          // window?.fbq('track', 'Lead');
+          window.fbq(
+            'trackSingleCustom',
+            '328518876380399',
+            'register_success',
+          );
         }
         if (['2'].includes(ret.data?.promotionChannelId)) {
           // gg 推广用户 注册成功
