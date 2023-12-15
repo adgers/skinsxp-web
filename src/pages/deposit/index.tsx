@@ -472,7 +472,11 @@ export default function Deposit() {
 
       if (['7', '21', '12']?.includes(userInfo?.promotionChannelId)) {
         // fb
-        window?.fbq('track', 'Purchase', {
+        // window?.fbq('track', 'Purchase', {
+        //   currency: 'USD',
+        //   value: ret?.data?.quantity,
+        // });
+        window?.fbq('trackSingleCustom', '1024868335308144', 'fistRecharge', {
           currency: 'USD',
           value: ret?.data?.quantity,
         });
