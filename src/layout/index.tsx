@@ -9,7 +9,7 @@ import {
   useModel,
   useRequest,
 } from '@umijs/max';
-import { useEffect, useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import BtmNav from './btm-nav';
@@ -19,6 +19,8 @@ import {
   cloudflareTokenUsingPOST,
   modifyShowCloudFlareUsingPOST,
 } from '@/services/front/zhandianweidushuju';
+import { RedoOutlined } from '@ant-design/icons';
+import { Turnstile } from '@marsidev/react-turnstile';
 import Footer from './foot';
 import GiftCase from './gift-case';
 import Header from './head';
@@ -86,15 +88,15 @@ export default function Layout() {
     }
     sessionStorage.setItem('channelCode', params?.cCode as string);
     setPageLoaded(true);
-    // verifyCloudflare();
-    // interval = setInterval(() => {
-    //   verifyCloudflare();
-    // }, 7200000);
-    // return () => {
-    //   if (interval) {
-    //     clearInterval(interval);
-    //   }
-    // };
+    verifyCloudflare();
+    interval = setInterval(() => {
+      verifyCloudflare();
+    }, 7200000);
+    return () => {
+      if (interval) {
+        clearInterval(interval);
+      }
+    };
   }, []);
 
   useEffect(() => {
@@ -103,44 +105,53 @@ export default function Layout() {
     }
   }, [history, pathname]);
 
+  const TurnstileDom = useMemo(() => {
+    return (
+      <Turnstile
+        siteKey={siteKey}
+        onError={() => {
+          console.warn('you===bot');
+        }}
+        onSuccess={(token: string) => {
+          handleSendToken(token);
+        }}
+        options={{
+          theme: 'light',
+          language: locale,
+          retryInterval: 8000,
+        }}
+        className="ml-5 md:ml-[200px]"
+      />
+    );
+  }, []);
+
   return (
     <>
-      {/* {showCloudflare ? (
+      {showCloudflare ? (
         <div className="bg-white w-[100vw] h-[100vh] pt-8 md:pt-[150px]">
           <div className="text-[32px] font-semibold mb-4 text-black pl-5 md:pl-[200px]">
             WGSKINS.COM
           </div>
-          <Turnstile
-            siteKey={siteKey}
-            onError={() => {
-              console.warn('you===bot');
-            }}
-            onSuccess={(token: string) => {
-              handleSendToken(token);
-            }}
-            options={{
-              theme: 'light',
-              language: locale,
-              retryInterval: 8000,
-            }}
-            className="ml-5 md:ml-[200px]"
-          />
+          {TurnstileDom}
+          <RedoOutlined className="text-gray mt-4 cursor-pointer pl-5 md:pl-[200px] text-[24px]" onClick={()=>{
+            location.reload()
+          }} />
         </div>
-      ) : ( */}
-      <div className={`root-bg ${pathCls}`}>
-        {!headHidden() && <Header />}
-        {showBannerRoutes.includes(location.pathname) && <Banner />}
+      ) : (
+        <div className={`root-bg ${pathCls}`}>
+          {!headHidden() && <Header />}
+          {showBannerRoutes.includes(location.pathname) && <Banner />}
 
-        <div className="max-w-8xl w-full min-h-[calc(100vh-64px)] m-auto relative">
-          <Outlet />
+          <div className="max-w-8xl w-full min-h-[calc(100vh-64px)] m-auto relative">
+            <Outlet />
+          </div>
+          {!headHidden() && <BtmNav />}
+          {!headHidden() && <Footer />}
+          {<RightNav />}
+          {!userInfo?.mail && <GiftCase />}
+          <ToastContainer theme="dark" autoClose={2000} limit={1} />
         </div>
-        {!headHidden() && <BtmNav />}
-        {!headHidden() && <Footer />}
-        {<RightNav />}
-        {!userInfo?.mail && <GiftCase />}
-        <ToastContainer theme="dark" autoClose={2000} limit={1} />
-      </div>
-      {/* )} */}
+      )}
     </>
   );
 }
