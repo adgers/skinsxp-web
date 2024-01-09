@@ -34,7 +34,7 @@ export default function Banner() {
         modules={[Pagination, Autoplay]}
         className="w-full rounded h-[180px] md:h-[350px] lg:h-[350px] xl:h-[400px] 2xl:h-[450px] 1080p:h-[600px] 4k:h-[880px] flex items-center !z-0"
       >
-        <SwiperSlide
+        {/* <SwiperSlide
           key={0}
           className="h-[150px]  md:h-[350px] lg:h-[350px] xl:h-[400px] 2xl:h-[450px] 1080p:h-[600px] 4k:h-[880px] relative"
           onClick={() => {}}
@@ -96,7 +96,7 @@ export default function Banner() {
               </div>
             )}
           </div>
-        </SwiperSlide>
+        </SwiperSlide> */}
 
         {location.pathname === '/case' && (
           <>
