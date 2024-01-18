@@ -16,7 +16,7 @@ configResponsive({
 });
 
 export const request: RequestConfig = {
-  timeout: 15000,
+  timeout: 150000,
   errorConfig: {
     errorHandler: (error: any, opts: any) => {
       if (opts?.skipErrorHandler) throw error;
