@@ -24,10 +24,15 @@ const globalEventEmitter = new EventEmitter();
 export function getApiDomain() {
   if (
     location.href.indexOf('localhost') > -1 ||
-    location.href.indexOf('127.0.0.1') > -1 ||
-    location.href.indexOf('114.55.56.184') > -1
+    location.href.indexOf('127.0.0.1') > -1
   ) {
-    return 'https://api.wgskins.com';
+    return 'http://localhost:9999';
+  } else if (
+    //  连接线上的api
+    location.href.indexOf('skinsxp.com') > -1 ||
+    location.href.indexOf('47.87.8.145') > -1
+  ) {
+    return 'https://api.skinsxp.com';
   } else {
     let url = location.href;
     let mainDomain = url.match(
@@ -38,13 +43,31 @@ export function getApiDomain() {
 }
 
 export function getSocketDomain() {
-  if (
+  // if (
+  //   location.href.indexOf('localhost') > -1 ||
+  //   location.href.indexOf('127.0.0.1') > -1 ||
+  //   location.href.indexOf('114.55.56.184') > -1
+  // ) {
+  //   return 'ss://114.55.56.184:9999/ws';
+  // } else {
+  //   let url = location.href;
+  //   let mainDomain = url.match(
+  //     /^(?:https?:\/\/)?(?:[^@\n]+@)?(?:www\.)?([^:\/\n]+\.[^:\/\n.]+)/im,
+  //   )?.[1];
+  //   return 'wss://api.' + mainDomain + '/ws';
+  // }
+   if (
     location.href.indexOf('localhost') > -1 ||
-    location.href.indexOf('127.0.0.1') > -1 ||
-    location.href.indexOf('114.55.56.184') > -1
+    location.href.indexOf('127.0.0.1') > -1
   ) {
-    return 'ss://114.55.56.184:9999/ws';
-  } else {
+    return 'ws://localhost:9999/ws';
+  } else if (
+    location.href.indexOf('47.87.8.145') > -1 ||
+    location.href.indexOf('skinsxp.com') > -1)
+    {
+    return 'ws://47.87.8.145:9999/ws';
+  }
+  else {
     let url = location.href;
     let mainDomain = url.match(
       /^(?:https?:\/\/)?(?:[^@\n]+@)?(?:www\.)?([^:\/\n]+\.[^:\/\n.]+)/im,
@@ -54,16 +77,27 @@ export function getSocketDomain() {
 }
 
 export function getImgHost() {
-  if (
+  // if (
+  //   location.href.indexOf('localhost') > -1 ||
+  //   location.href.indexOf('127.0.0.1') > -1 ||
+  //   location.href.indexOf('114.55.56.184') > -1
+  // ) {
+  //   return 'https://img.wgskins.com/cdn/image/';
+  //
+  //   return 'http://test-wgskins-file.oss-cn-hangzhou.aliyuncs.com/cdn/image/';
+  // } else {
+  //   return 'https://img.wgskins.com/cdn/image/';
+  // }
+    if (
     location.href.indexOf('localhost') > -1 ||
     location.href.indexOf('127.0.0.1') > -1 ||
-    location.href.indexOf('114.55.56.184') > -1
+    location.href.indexOf('47.87.8.145') > -1
   ) {
-    return 'https://img.wgskins.com/cdn/image/';
-
-    return 'http://test-wgskins-file.oss-cn-hangzhou.aliyuncs.com/cdn/image/';
-  } else {
-    return 'https://img.wgskins.com/cdn/image/';
+    return 'https://img.skinsxp.com/cdn/image/';
+  } else if (location.href.indexOf('skinsxp.com') > -1)  {
+    return 'https://img.skinsxp.com/cdn/image/';
+  }else {
+    return 'http://skinsxp-file.oss-na-south-1.aliyuncs.com/cdn/image';
   }
 }
 

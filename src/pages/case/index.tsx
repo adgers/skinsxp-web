@@ -23,6 +23,7 @@ export default function Home() {
   );
   useEffect(() => {
     if (boxList?.length > 0) {
+       // 推荐箱子
       setDiscountBox(boxList.slice(0, 1));
     }
   }, [boxList]);

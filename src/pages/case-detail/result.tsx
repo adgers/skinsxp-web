@@ -137,7 +137,7 @@ export default function Result({
               <div className="w-full flex flex-col px-[15px] z-20 gap-2">
                 <div className="flex justify-between">
                   <div className="text-sm flex gap-1 font-num text-green">
-                    ${item.recoveryPrice}
+                    R${item.recoveryPrice}
                   </div>
                 </div>
 

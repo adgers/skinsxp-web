@@ -28,8 +28,8 @@ import RightNav from './right-nav';
 
 const showBannerRoutes = ['/case', '/event'];
 const cloudKey = {
-  SHOP: '0x4AAAAAAAOSfdL-BVsZQjhK',
-  COM: '0x4AAAAAAAN4Ou8ut65lzmuz',
+  SHOP: '0x4AAAAAABClFga2lkYCmERu',
+  COM: '0x4AAAAAABClFga2lkYCmERu',
 };
 
 export default function Layout() {
@@ -47,6 +47,9 @@ export default function Layout() {
     const ret = await modifyShowCloudFlareUsingPOST();
     if (ret.status === 0) {
       if (ret?.data) {
+        setShowCloudflare(false);
+      } else if (location.href.indexOf('localhost') >1  ){
+        // 开发环境不显示cf 验证
         setShowCloudflare(false);
       } else {
         setShowCloudflare(true);

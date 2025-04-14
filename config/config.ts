@@ -3,7 +3,7 @@ import { join } from 'path';
 import postcssGapProperties from 'postcss-gap-properties';
 
 export default defineConfig({
-  title: 'CS:GO Cases | Best drop | wgskins.com',
+  title: 'CS:GO Cases | Best drop | skinsxp.com',
   favicons: ['/favicon.ico'],
   model: {},
   initialState: {},
