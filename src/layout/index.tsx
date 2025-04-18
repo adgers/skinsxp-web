@@ -83,7 +83,7 @@ export default function Layout() {
     const isShop = location.hostname.includes('shop');
     setSiteKey(isShop ? cloudKey.SHOP : cloudKey.COM);
 
-    const channelCode = params.channelCode || 'wgskins';
+    const channelCode = params.channelCode || 'skinsxp';
     if (window?.gtag) {
       gtag('event', 'pageview', {
         channelCode: channelCode,
@@ -133,12 +133,16 @@ export default function Layout() {
       {showCloudflare ? (
         <div className="bg-white w-[100vw] h-[100vh] pt-8 md:pt-[150px]">
           <div className="text-[32px] font-semibold mb-4 text-black pl-5 md:pl-[200px]">
-            WGSKINS.COM
+            <span>
+              SKINSXP.COM
+            </span>
+
           </div>
           {TurnstileDom}
           <RedoOutlined className="text-gray mt-4 cursor-pointer pl-5 md:pl-[200px] text-[24px]" onClick={()=>{
             location.reload()
           }} />
+
         </div>
       ) : (
         <div className={`root-bg ${pathCls}`}>
@@ -150,7 +154,7 @@ export default function Layout() {
           </div>
           {!headHidden() && <BtmNav />}
           {!headHidden() && <Footer />}
-          {<RightNav />}
+          {/*{<RightNav />}*/}
           {!userInfo?.mail && <GiftCase />}
           <ToastContainer theme="dark" autoClose={2000} limit={1} />
         </div>

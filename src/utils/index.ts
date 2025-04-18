@@ -26,7 +26,8 @@ export function getApiDomain() {
     location.href.indexOf('localhost') > -1 ||
     location.href.indexOf('127.0.0.1') > -1
   ) {
-    return 'http://localhost:9999';
+        return 'https://api.skinsxp.com';
+    // return 'http://localhost:9999';
   } else if (
     //  连接线上的api
     location.href.indexOf('skinsxp.com') > -1 ||
@@ -43,19 +44,7 @@ export function getApiDomain() {
 }
 
 export function getSocketDomain() {
-  // if (
-  //   location.href.indexOf('localhost') > -1 ||
-  //   location.href.indexOf('127.0.0.1') > -1 ||
-  //   location.href.indexOf('114.55.56.184') > -1
-  // ) {
-  //   return 'ss://114.55.56.184:9999/ws';
-  // } else {
-  //   let url = location.href;
-  //   let mainDomain = url.match(
-  //     /^(?:https?:\/\/)?(?:[^@\n]+@)?(?:www\.)?([^:\/\n]+\.[^:\/\n.]+)/im,
-  //   )?.[1];
-  //   return 'wss://api.' + mainDomain + '/ws';
-  // }
+
    if (
     location.href.indexOf('localhost') > -1 ||
     location.href.indexOf('127.0.0.1') > -1
@@ -77,17 +66,7 @@ export function getSocketDomain() {
 }
 
 export function getImgHost() {
-  // if (
-  //   location.href.indexOf('localhost') > -1 ||
-  //   location.href.indexOf('127.0.0.1') > -1 ||
-  //   location.href.indexOf('114.55.56.184') > -1
-  // ) {
-  //   return 'https://img.wgskins.com/cdn/image/';
-  //
-  //   return 'http://test-wgskins-file.oss-cn-hangzhou.aliyuncs.com/cdn/image/';
-  // } else {
-  //   return 'https://img.wgskins.com/cdn/image/';
-  // }
+
     if (
     location.href.indexOf('localhost') > -1 ||
     location.href.indexOf('127.0.0.1') > -1 ||
@@ -335,39 +314,39 @@ export const langs = [
     value: 'zh-TW',
     flag: cnFlag,
   },
-  {
-    title: 'Türk(TR)',
-    value: 'tr-TR',
-    flag: trFlag,
-  },
-  {
-    title: 'Français(FR)',
-    value: 'fr-FR',
-    flag: frFlag,
-  },
-  {
-    title: 'Deutsch(DE)',
-    value: 'de-DE',
-    flag: deFlag,
-  },
-  {
-    title: 'Polski(PL)',
-    value: 'pl-PL',
-    flag: plFlag,
-  },
-  {
-    title: 'España(ES)',
-    value: 'es-ES',
-    flag: esFlag,
-  },
-  {
-    title: '日本語(JP)',
-    value: 'ja-JP',
-    flag: jaFlag,
-  },
-  {
-    title: '한국인(KR)',
-    value: 'ko-KR',
-    flag: krFlag,
-  },
+  // {
+  //   title: 'Türk(TR)',
+  //   value: 'tr-TR',
+  //   flag: trFlag,
+  // },
+  // {
+  //   title: 'Français(FR)',
+  //   value: 'fr-FR',
+  //   flag: frFlag,
+  // },
+  // {
+  //   title: 'Deutsch(DE)',
+  //   value: 'de-DE',
+  //   flag: deFlag,
+  // },
+  // {
+  //   title: 'Polski(PL)',
+  //   value: 'pl-PL',
+  //   flag: plFlag,
+  // },
+  // {
+  //   title: 'España(ES)',
+  //   value: 'es-ES',
+  //   flag: esFlag,
+  // },
+  // {
+  //   title: '日本語(JP)',
+  //   value: 'ja-JP',
+  //   flag: jaFlag,
+  // },
+  // {
+  //   title: '한국인(KR)',
+  //   value: 'ko-KR',
+  //   flag: krFlag,
+  // },
 ];
