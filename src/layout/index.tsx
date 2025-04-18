@@ -24,7 +24,7 @@ import { Turnstile } from '@marsidev/react-turnstile';
 import Footer from './foot';
 import GiftCase from './gift-case';
 import Header from './head';
-import RightNav from './right-nav';
+// import RightNav from './right-nav';
 
 const showBannerRoutes = ['/case', '/event'];
 const cloudKey = {

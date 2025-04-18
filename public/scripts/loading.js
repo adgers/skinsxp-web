@@ -97,7 +97,7 @@
       
       </style>
 
-      <div class="wg-ring">WGSKINS
+      <div class="wg-ring">SKINSXP
         <span></span>
       </div>    
     `;
