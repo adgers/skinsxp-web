@@ -231,12 +231,12 @@ export default function Deposit() {
                       .split('\\n')[1]
                       ?.trim()}
                   </p>
-                  <p className="mt-2">
-                    <FormattedMessage id="deposit_channel_remark"/>
-                  </p>
+                  {/*<p className="mt-2">*/}
+                  {/*  <FormattedMessage id="deposit_channel_remark"/>*/}
+                  {/*</p>*/}
                   <p className="mt-2">
                     <FormattedMessage id="deposit_default_tgmnr" />
-                    <span className="text-primary ml-2">{`"WGSKINS"`}</span>
+                    <span className="text-primary ml-2">{`"SKINSXP"`}</span>
                   </p>
 
                 </div>

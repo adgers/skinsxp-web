@@ -236,7 +236,7 @@ export function addImgHost(data: any) {
 }
 
 export function isInApp() {
-  return /wgskins/i.test(navigator.userAgent);
+  return /skinsxp/i.test(navigator.userAgent);
 }
 
 export function headHidden() {

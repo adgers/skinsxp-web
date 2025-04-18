@@ -156,7 +156,7 @@ export default function Foot() {
                 <img src={require('@/assets/wg-logo.png')} />
               </div>
               <div className="text-xs text-gray mt-6">
-                © 2022—2023 WGSKINS.COM
+                © 2022—2025 SKINSXP.COM
               </div>
               <div className="text-xs text-gray mt-1">
                 SETP UP TECHNOLOGY PTE. LTD.（60 PAYA LEBARROAD #11-53 PAYA
@@ -170,7 +170,7 @@ export default function Foot() {
                 Tel: +1 {'('}503{')'}358-6160
               </div>
               <div className="text-xs text-gray mt-1">
-                E-mail: bd@wgskins.com
+                E-mail: bd@skinsxp.com
               </div>
             </div>
 
