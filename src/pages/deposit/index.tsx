@@ -93,7 +93,7 @@ export default function Deposit() {
     const ret = await makePaymentUsingPOST({
       // couponId: selectCoupon?.id,
       //  直接传渠道支持的货币
-      currencyCode: selectChannel.currencyCode || 'USD',
+      currencyCode: selectChannel.currencyCodeList[0] || 'USD',
       quantity,
       rechargeChannelId: selectChannel?.id || 0,
     });

@@ -26,8 +26,8 @@ export function getApiDomain() {
     location.href.indexOf('localhost') > -1 ||
     location.href.indexOf('127.0.0.1') > -1
   ) {
-        return 'https://api.skinsxp.com';
-    // return 'http://localhost:9999';
+        // return 'https://api.skinsxp.com';
+    return 'http://localhost:9999';
   } else if (
     //  连接线上的api
     location.href.indexOf('skinsxp.com') > -1 ||

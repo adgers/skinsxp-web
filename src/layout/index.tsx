@@ -152,10 +152,10 @@ export default function Layout() {
           <div className="max-w-8xl w-full min-h-[calc(100vh-64px)] m-auto relative">
             <Outlet />
           </div>
-          {!headHidden() && <BtmNav />}
+          {/*{!headHidden() && <BtmNav />}*/}
           {!headHidden() && <Footer />}
           {/*{<RightNav />}*/}
-          {!userInfo?.mail && <GiftCase />}
+          {/*{!userInfo?.mail && <GiftCase />}*/}
           <ToastContainer theme="dark" autoClose={2000} limit={1} />
         </div>
       )}
