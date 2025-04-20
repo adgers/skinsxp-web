@@ -136,7 +136,6 @@ export default function Layout() {
             <span>
               SKINSXP.COM
             </span>
-
           </div>
           {TurnstileDom}
           <RedoOutlined className="text-gray mt-4 cursor-pointer pl-5 md:pl-[200px] text-[24px]" onClick={()=>{
@@ -147,7 +146,7 @@ export default function Layout() {
       ) : (
         <div className={`root-bg ${pathCls}`}>
           {!headHidden() && <Header />}
-          {showBannerRoutes.includes(location.pathname) && <Banner />}
+          {/*{showBannerRoutes.includes(location.pathname) && <Banner />}*/}
 
           <div className="max-w-8xl w-full min-h-[calc(100vh-64px)] m-auto relative">
             <Outlet />

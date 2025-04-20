@@ -63,7 +63,7 @@ export default function BalanceRecord() {
           >
             {record.eventType === 0 ? '+' : '-'}
             {record.balanceType === 0 ? (
-              <>&nbsp;$</>
+              <>&nbsp;R$</>
             ) : (
               <IconFont type="icon-coin" className="mx-1" />
             )}
@@ -83,7 +83,7 @@ export default function BalanceRecord() {
           }`}
         >
           {record.balanceType === 0 ? (
-            <>$</>
+            <>R$</>
           ) : (
             <IconFont type="icon-coin" className="mr-1" />
           )}
