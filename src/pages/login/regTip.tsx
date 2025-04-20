@@ -22,7 +22,7 @@ export default function RegTip() {
           </div>
 
           <div className="left-[70px] sm:left-[100px] top-[85px] sm:top-[120px] relative flex gap-1 items-center">
-            <span className="text-green text-2xl sm:text-3xl font-semibold">$</span>
+            <span className="text-green text-2xl sm:text-3xl font-semibold">R$</span>
             <span className="text-2xl sm:text-3xl font-num">{numberFixed(regNum)}</span>
           </div>
 
