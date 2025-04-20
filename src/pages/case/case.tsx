@@ -121,7 +121,6 @@ export default function Case(props: CaseProps) {
   return (
     <>
       {hotBoxList.map((t, i) => renderBox(t, i))}
-
       {battleList && battleList.length > 0 && (
         <div className="px-4">
           <div className="relative mb-4 sm:mb-10 flex border-b border-light">
@@ -142,6 +141,7 @@ export default function Case(props: CaseProps) {
             </div>
             <div className="flex w-1/6 items-end sm:w-1/3"></div>
           </div>
+
           <div className="relative flex h-full">
             <div className="flex w-full snap-x snap-mandatory overflow-x-auto xl:grid xl:snap-none xl:grid-cols-4 opacity-100 gap-2 hide-scrollbar">
               {battleList?.map((item, index) => {

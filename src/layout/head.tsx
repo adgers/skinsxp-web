@@ -352,7 +352,7 @@ export default function Header() {
 
                 <div className="flex flex-col text-xs font-num">
                   <div className="text-green">
-                    $
+                    R$
                     <CountUp
                       end={numberFixed(userInfo?.balance || 0)}
                       duration={1}

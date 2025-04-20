@@ -309,11 +309,11 @@ export const langs = [
     value: 'pt-BR',
     flag: brFlag,
   },
-  {
-    title: '繁體中文(HK)',
-    value: 'zh-TW',
-    flag: cnFlag,
-  },
+  // {
+  //   title: '繁體中文(HK)',
+  //   value: 'zh-TW',
+  //   flag: cnFlag,
+  // },
   // {
   //   title: 'Türk(TR)',
   //   value: 'tr-TR',
