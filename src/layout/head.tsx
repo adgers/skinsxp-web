@@ -234,8 +234,8 @@ export default function Header() {
     </>
   );
 
-  const currentLoale = langs.filter((item) => item.value === locale)[0];
-
+  // const currentLoale = langs.filter((item) => item.value === locale)[0] 　;
+  const currentLoale = langs.filter((item) => item.value === "pt-BR")[0];
   return (
     <>
       <div className="sticky left-0 top-0 z-[99]">
@@ -250,7 +250,7 @@ export default function Header() {
                 className="select select-xs flex items-center border-0 bg-black focus:outline-none"
                 onClick={() => showLang()}
               >
-                <img src={currentLoale.flag} className="w-5 h-5" />
+                <img  src={currentLoale.flag } alt="" className="w-5 h-5" />
               </Menu.Button>
             </Menu>
 

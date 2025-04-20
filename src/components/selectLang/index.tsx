@@ -8,7 +8,8 @@ import { Button, Modal } from 'react-daisyui';
 export default function SelectLang() {
   const { langShow, hideLang } = useModel('user');
   const locale = getLocale();
-  const currentLoale = langs.filter((item) => item.value === locale)[0];
+  // const currentLoale = langs.filter((item) => item.value === locale)[0];
+  const currentLoale = langs.filter((item) => item.value === "pt-BR")[0];
 
   const changeConfirmLocale = (val: string) => {
     setLocale(val);
@@ -34,7 +35,7 @@ export default function SelectLang() {
             }
           >
             <div className="flex items-center gap-2">
-              <img src={currentLoale.flag} className="w-5 h-5" />
+              <img src={currentLoale.flag} alt="" className="w-5 h-5" />
               {currentLoale.title}
             </div>
             <DownOutlined />
