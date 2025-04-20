@@ -136,7 +136,6 @@ export default function Layout() {
             <span>
               SKINSXP.COM
             </span>
-
           </div>
           {TurnstileDom}
           <RedoOutlined className="text-gray mt-4 cursor-pointer pl-5 md:pl-[200px] text-[24px]" onClick={()=>{
