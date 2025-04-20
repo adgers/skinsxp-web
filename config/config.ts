@@ -195,7 +195,7 @@ export default defineConfig({
     { src: 'https://client.crisp.chat/l.js', defer: true, async: true },
     {
       content: `window.$crisp = [];
-    window.CRISP_WEBSITE_ID = '341c8e90-8633-4cb8-a31b-37b6a95ddb05';`,
+        window.CRISP_WEBSITE_ID = '64854b17-ea32-4825-b545-51357071e729';`,
     },
     {
       content: `!function(f,b,e,v,n,t,s)

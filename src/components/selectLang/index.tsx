@@ -8,8 +8,8 @@ import { Button, Modal } from 'react-daisyui';
 export default function SelectLang() {
   const { langShow, hideLang } = useModel('user');
   const locale = getLocale();
-  // const currentLoale = langs.filter((item) => item.value === locale)[0];
-  const currentLoale = langs.filter((item) => item.value === "pt-BR")[0];
+  const currentLoale = langs.filter((item) => item.value === locale)[0] || langs[0];
+  // const currentLoale = langs.filter((item) => item.value === "pt-BR")[0];
 
   const changeConfirmLocale = (val: string) => {
     setLocale(val);

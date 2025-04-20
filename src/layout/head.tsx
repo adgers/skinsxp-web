@@ -234,8 +234,9 @@ export default function Header() {
     </>
   );
 
-  // const currentLoale = langs.filter((item) => item.value === locale)[0] 　;
-  const currentLoale = langs.filter((item) => item.value === "pt-BR")[0];
+  const currentLoale = langs.filter((item) => item.value === locale)[0] || langs[0];
+  // const currentLoale = langs.filter((item) => item.value === locale)[0];
+
   return (
     <>
       <div className="sticky left-0 top-0 z-[99]">
