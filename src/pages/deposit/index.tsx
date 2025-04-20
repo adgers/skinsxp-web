@@ -120,7 +120,7 @@ export default function Deposit() {
 
 
   const renderChannel = useMemo(() => {
-    console.log("selectCurrency:",selectCurrency)
+    console.log("selectCurrency:----",selectCurrency)
     if (!loading && rechargeConfig)
       return (
         <div className="flex flex-col gap-4">
