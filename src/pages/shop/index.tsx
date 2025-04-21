@@ -83,7 +83,7 @@ export default () => {
       <div className="banner w-full py-[44px] md:py-[88px] mt-3 md:mt-8 bg-[url('@/assets/store-banner.png')] bg-no-repeat bg-cover flex justify-center items-center md:justify-start md:pl-[90px]">
         <div className=" max-w-[540px] flex flex-col items-center">
           <div className="text-lg md:text-xl font-semibold">
-            <FormattedMessage id="wg_store_what" />
+            <FormattedMessage id="xp_store_what" />
           </div>
           <div className="text-center mt-2 px-2 text-xs md:text-base">
             <FormattedMessage id="store_banner_content" />
@@ -102,7 +102,6 @@ export default () => {
               if (filter.key && !['Type'].includes(filter.key)) {
                 return null;
               }
-
               return (
                 <Menu as="div" className="relative" key={i}>
                   <Menu.Button className="select select-sm select-accent border-opacity-50 rounded uppercase w-full font-semibold flex justify-between items-center focus:outline-none text-xs">
