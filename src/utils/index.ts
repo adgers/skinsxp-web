@@ -26,7 +26,7 @@ export function getApiDomain() {
         location.href.indexOf('localhost') > -1 ||
         location.href.indexOf('127.0.0.1') > -1
     ) {
-        return 'https://api.skinsxp.com';
+        // return 'https://api.skinsxp.com';
         return 'http://localhost:9999';
     } else if (
         //  连接线上的api
@@ -307,11 +307,11 @@ export const langs = [
         value: 'pt-BR',
         flag: brFlag,
     },
-    {
-        title: '繁體中文(HK)',
-        value: 'zh-TW',
-        flag: cnFlag,
-    },
+    // {
+    //     title: '繁體中文(HK)',
+    //     value: 'zh-TW',
+    //     flag: cnFlag,
+    // },
     // {
     //   title: 'Türk(TR)',
     //   value: 'tr-TR',
