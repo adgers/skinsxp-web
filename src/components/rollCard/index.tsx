@@ -11,6 +11,9 @@ export default React.memo(function RollCard({
 }: {
   data: API.RollRoomPageVo;
 }) {
+
+  console.log('render', data);
+
   const topImg = data?.giftVos?.[0]?.giftImage;
   const gifts = data?.giftVos?.slice(1);
   const isEnd = data?.state === 2;
@@ -93,7 +96,7 @@ export default React.memo(function RollCard({
         </div>
         <div>
           <FormattedMessage id="battle_room_total" />:{' '}
-          <span className="text-green font-semibold">${data?.poolValue}</span>
+          <span className="text-green font-semibold">R${data?.poolValue}</span>
         </div>
       </div>
       <div className="w-full absolute bottom-0 left-0">

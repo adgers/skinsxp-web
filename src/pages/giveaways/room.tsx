@@ -208,7 +208,7 @@ export default function Room() {
             <FormattedMessage id={'total_price'} />
           </div>
           <div className="sm:text-lg text-green font-num">
-            ${roomInfo?.data?.poolValue}
+            R${roomInfo?.data?.poolValue}
           </div>
         </div>
         <div>

@@ -137,7 +137,7 @@ const ResultCard = ({ result }: { result: API.BattleCustomerGainVo }) => {
           </div>
           <div className="flex gap-1 items-center font-num text-green text-xs sm:text-base uppercase">
             <FormattedMessage id="battle_room_total" />
-            <span>$</span>
+            <span>R$</span>
             <CountUp
               end={result?.totalPrice || 0}
               duration={1}
@@ -201,6 +201,7 @@ const ResultBoxs = ({
           }}
           timeout={500}
         >
+
           <WeaponCard data={item} mini={mini} showRoll={false} />
         </CSSTransition>
       ))}
@@ -371,6 +372,7 @@ export default function RoomDetail() {
       battleCode: battleCode || '',
       pos,
     });
+    console.log(ret)
     setJoinLoading(false);
     if (ret.status === 0) {
       // toast.success(<FormattedMessage id="roll_detail_jrcg" />);
@@ -378,6 +380,7 @@ export default function RoomDetail() {
         readyAudio.play();
       }
       getUser();
+      refresh();
     }
   };
 
@@ -392,6 +395,7 @@ export default function RoomDetail() {
       if (voice) {
         readyAudio.play();
       }
+      refresh();
     }
   };
 
@@ -598,7 +602,7 @@ export default function RoomDetail() {
                 to={`/battle/create/${battleCode}`}
               >
                 <IconFont type="icon-battle" />
-                <FormattedMessage id="battle_create_same" /> ${data?.totalPrice}
+                <FormattedMessage id="battle_create_same" /> R${data?.totalPrice}
               </Link>
 
               <Link className="btn-purple " to={`/battle/create`}>
@@ -842,7 +846,7 @@ export default function RoomDetail() {
                     )}
                   </div>
                   <div className="flex gap-1 items-center text-xs sm:text-sm text-green font-num">
-                    $
+                    R$
                     <CountUp
                       end={price || 0}
                       duration={1}

@@ -74,6 +74,7 @@ export default function BattlePage() {
             <div className="flex items-center">
               {filters.map((t) => {
                 const selected = t.key === filter;
+
                 return (
                   <div
                     className={`cursor-pointer font-semibold px-4 text-base uppercase leading-none h-full inline-flex gap-1 items-center transition-colors duration-200 hover:text-green border-b ${

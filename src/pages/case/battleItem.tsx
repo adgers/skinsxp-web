@@ -124,7 +124,7 @@ export default function BattleItem(props: BattleItemProps) {
             <FormattedMessage id="room_battle_cost" />
           </span>
           <span className="text-white text-xs font-num">
-            ${data?.totalPrice}
+            R${data?.totalPrice}
           </span>
         </div>
         <div className="flex gap-2">

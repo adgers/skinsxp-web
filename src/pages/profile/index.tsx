@@ -69,7 +69,7 @@ export default function User() {
                         <FormattedMessage id="balanceAfter" />
                       </div>
                       <div className="text-green  truncate font-num">
-                        ${userInfo?.balance}
+                        R${userInfo?.balance}
                       </div>
                     </div>
                     <div className="lg:w-fit">

@@ -14,6 +14,7 @@ import {
   useIntl,
   useModel,
   useRequest,
+
 } from '@umijs/max';
 import { useResponsive } from 'ahooks';
 import { Spin } from 'antd';
@@ -21,6 +22,8 @@ import { remove } from 'lodash';
 import { Fragment, useEffect, useMemo, useState } from 'react';
 import { Button } from 'react-daisyui';
 import { toast } from 'react-toastify';
+
+
 
 enum PromoCodeState { // 只要有邀请码 就不能编辑了
   USING = 1, // 正在使用
@@ -43,14 +46,14 @@ export default function Deposit() {
   );
   const [currentTab, setCurrentTab] = useState<number>(1); // 1 | 2
   const [selectCurrency, setSelectCurrency] = useState<string>('');
-  const [selectChannel, setSelectChannel] = useState<API.RechargeChannelVo>();
+  const [selectChannel, setSelectChannel] = useState<API.RechargeChannelVo>({});
   const [promoCodeState, setPromoCodeState] = useState<number>(
     PromoCodeState.EDIT,
   );
   const [inputCode, setInputCode] = useState('');
   const [quantity, setQuantity] = useState(0);
   const [payLoading, setPayLoading] = useState<boolean>(false);
-  const { languageList, rechargeAmountAllowList, rechargeChannelList } =
+  const { currencyRateVoList,languageList, rechargeAmountAllowList, rechargeChannelList } =
     rechargeConfig || {};
   const [payOrderId, setPayOrderId] = useState<string>();
   const responsive = useResponsive();
@@ -81,6 +84,7 @@ export default function Deposit() {
     }
   };
 
+
   const onPay = async () => {
     if (!selectChannel) {
       toast.error(intl.formatMessage({ id: 'recharge_unselect_channcel' }));
@@ -88,7 +92,8 @@ export default function Deposit() {
     }
     const ret = await makePaymentUsingPOST({
       // couponId: selectCoupon?.id,
-      // currencyCode: selectCurrency || '',
+      //  直接传渠道支持的货币
+      currencyCode: selectChannel.currencyCodeList[0] || 'USD',
       quantity,
       rechargeChannelId: selectChannel?.id || 0,
     });
@@ -104,8 +109,18 @@ export default function Deposit() {
       }
     }
   };
+  //  获取充值渠道的货币符号
+  const getChannelSymbol = (channel: API.RechargeChannelVo): string | undefined => {
+    if (!channel) {
+      return "$"
+    }
+    const rateItem = currencyRateVoList?.find((item) => item.currencyFrom === channel.currencyCode)
+    return rateItem?.symbol
+  }
+
 
   const renderChannel = useMemo(() => {
+    console.log("selectCurrency:----",selectCurrency)
     if (!loading && rechargeConfig)
       return (
         <div className="flex flex-col gap-4">
@@ -117,6 +132,7 @@ export default function Deposit() {
                     langs.find((item) => item.value === selectCurrency)?.flag
                   }
                   className="w-5 h-5"
+                  alt=''
                 />
                 {langs.find((item) => item.value === selectCurrency)?.title}
               </div>
@@ -155,7 +171,7 @@ export default function Deposit() {
                 return (
                   <li className="h-[8rem] min-h-[5rem] md:h-auto" key={index}>
                     <div
-                      className={`trainstion relative cursor-pointer flex items-center justify-center h-full min-h-0 flex-col rounded-lg border bg-black bg-opacity-90 bg-clip-padding bg-no-repeat outline-none overflow-hidden duration-300 focus:outline-none focus-visible:light ${
+                      className={`trainstion relative cursor-pointer flex items-center justify-between h-full min-h-0 flex-row rounded-lg border bg-black bg-opacity-90 bg-clip-padding bg-no-repeat outline-none overflow-hidden duration-300 focus:outline-none focus-visible:light p-4 ${
                         item?.id === selectChannel?.id
                           ? 'border-green'
                           : 'border-light'
@@ -171,9 +187,16 @@ export default function Deposit() {
                         src={`${getImgHost()}${item?.logo}${
                           item?.logo?.includes('.') ? '' : '.png'
                         }`}
-                        className="h-full min-h-0 w-full max-w-full object-contain text-center leading-[100px]"
-                        alt="visa_mastercard"
+                        // className="rounded h-full min-h-0 w-full max-w-full object-contain text-center leading-[100px]"
+                        className="w-14 h-14 max-w-full object-left object-contain basis-1/3"
+                        alt="Pix "
                       />
+                      <div className='basis-2/3  text-center  justify-center'>
+                        <span className='text-xl font-semibold'
+                        > {item?.channelName}
+                        </span>
+                        <span className='text-sm'> {getChannelSymbol(item)} </span>
+                      </div>
                     </div>
                   </li>
                 );
@@ -183,8 +206,12 @@ export default function Deposit() {
       );
   }, [selectCurrency, selectChannel, languageList, loading, rechargeConfig]);
 
+
+
   const renderQuantity = useMemo(() => {
+
     if (!loading && rechageInfo && rechargeConfig)
+
       return (
         <div className="flex flex-col">
           {
@@ -204,10 +231,14 @@ export default function Deposit() {
                       .split('\\n')[1]
                       ?.trim()}
                   </p>
+                  {/*<p className="mt-2">*/}
+                  {/*  <FormattedMessage id="deposit_channel_remark"/>*/}
+                  {/*</p>*/}
                   <p className="mt-2">
                     <FormattedMessage id="deposit_default_tgmnr" />
-                    <span className="text-primary ml-2">{`"WGSKINS"`}</span>
+                    <span className="text-primary ml-2">{`"SKINSXP"`}</span>
                   </p>
+
                 </div>
                 <div className="w-48 relative z-10  aspect-square sm:block">
                   <img src={require('@/assets/promo-img.png')} alt="" />
@@ -292,6 +323,7 @@ export default function Deposit() {
           }
           {
             <>
+
               <div className="grid grid-cols-3 gap-3 md:gap-6">
                 {rechargeAmountAllowList?.map((item, i) => (
                   <div
@@ -305,10 +337,11 @@ export default function Deposit() {
                       setQuantity(item);
                     }}
                   >
-                    ${numberFixed(item)}
+                    {getChannelSymbol(selectChannel)}{numberFixed(item)}
                   </div>
                 ))}
               </div>
+
               <div className="rounded-lg py-3 md:py-6 flex flex-col gap-6">
                 <div className="flex gap-3">
                   <div className="text-base">
@@ -316,7 +349,7 @@ export default function Deposit() {
                       <FormattedMessage id="wc_rewards_total" />
                     </div>
                     <div className="font-num text-white border border-[rgba(99,99,99,0.5)] py-1 px-2">
-                      $
+                    {getChannelSymbol(selectChannel)}
                       {numberFixed(
                         Number(quantity) +
                           ((Number(quantity) * Number(userInfo?.rebateValue)) /
@@ -325,7 +358,7 @@ export default function Deposit() {
                             Number(userInfo?.firstRechargeRebate)) /
                             100 || 0),
                         2,
-                      )}
+                      ) }
                     </div>
                   </div>
                   <div className="text-base">
@@ -336,7 +369,7 @@ export default function Deposit() {
                       =
                       <div className="flex gap-1 overflow-hidden  flex-wrap">
                         <span className="text-green ml-3">
-                          ${numberFixed(quantity, 2)}
+                        {getChannelSymbol(selectChannel)}{numberFixed(quantity, 2) }
                         </span>
                         {Number(userInfo?.firstRechargeRebate) > 0 && (
                           <div className="flex items-center">
@@ -358,7 +391,7 @@ export default function Deposit() {
                           <div className="flex items-center">
                             +
                             <span className="text-yellow font-semibold">
-                              $
+                              {getChannelSymbol(selectChannel)}
                               {userInfo?.rebateType === 0
                                 ? `${numberFixed(
                                     (Number(quantity) *
@@ -411,8 +444,8 @@ export default function Deposit() {
                   type="button"
                   loading={payLoading}
                 >
-                  <FormattedMessage id={'pay_amount'} /> $
-                  {numberFixed(quantity, 2)}
+                  <FormattedMessage id={'pay_amount'} /> {getChannelSymbol(selectChannel)}
+                  {numberFixed(quantity, 2) }
                 </Button>
               </div>
             </>
@@ -420,6 +453,7 @@ export default function Deposit() {
         </div>
       );
   }, [
+    currencyRateVoList,
     rechargeAmountAllowList,
     quantity,
     selectCurrency,
@@ -437,10 +471,13 @@ export default function Deposit() {
       setQuantity(rechargeAmountAllowList[1]);
     }
     if (languageList && languageList.length > 0) {
+      //  获取渠道的货币符号优先匹配第一个
       const locale = getLocale();
       if (languageList.includes(locale)) {
+        console.log('locale', locale);
         setSelectCurrency(locale);
       } else {
+        console.log('locale not found', languageList);
         setSelectCurrency(languageList[0]);
       }
     }
@@ -623,7 +660,7 @@ export default function Deposit() {
           onClick={() => {
             if (currentTab !== 1) {
               setCurrentTab(1);
-              setSelectChannel();
+              // setSelectChannel();
             }
           }}
         >

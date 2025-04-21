@@ -234,7 +234,8 @@ export default function Header() {
     </>
   );
 
-  const currentLoale = langs.filter((item) => item.value === locale)[0];
+  const currentLoale = langs.filter((item) => item.value === locale)[0] || langs[0];
+  // const currentLoale = langs.filter((item) => item.value === locale)[0];
 
   return (
     <>
@@ -250,7 +251,7 @@ export default function Header() {
                 className="select select-xs flex items-center border-0 bg-black focus:outline-none"
                 onClick={() => showLang()}
               >
-                <img src={currentLoale.flag} className="w-5 h-5" />
+                <img  src={currentLoale.flag } alt="" className="w-5 h-5" />
               </Menu.Button>
             </Menu>
 
@@ -352,7 +353,7 @@ export default function Header() {
 
                 <div className="flex flex-col text-xs font-num">
                   <div className="text-green">
-                    $
+                    R$
                     <CountUp
                       end={numberFixed(userInfo?.balance || 0)}
                       duration={1}

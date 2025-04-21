@@ -113,7 +113,7 @@ export default function CaseModal({
 
                   <div className="absolute right-0 top-3 flex h-7 items-center justify-center rounded-sm px-2 bg-white bg-opacity-20 backdrop-blur">
                     <span className="text-xs font-semibold text-white">
-                      ${t.openPrice}
+                      R${t.openPrice}
                     </span>
                   </div>
                   <div className="absolute w-full bottom-4 left-0 text-sm text-white truncate text-center">
@@ -165,7 +165,7 @@ export default function CaseModal({
           >
             <FormattedMessage id="roll_detail_zjz" />
             <div className="font-num ml-1">
-              ${' '}
+              R${' '}
               <CountUp
                 end={numberFixed(totalPrice)}
                 duration={1}

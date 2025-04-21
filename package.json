@@ -18,6 +18,7 @@
     "@marsidev/react-turnstile": "^0.4.0",
     "@react-spring/web": "^9.7.3",
     "@stomp/stompjs": "^7.0.0",
+    "@umijs/preset-umi": "^4.4.7",
     "ahooks": "^3.7.8",
     "animate.css": "^4.1.1",
     "antd": "^5.7.1",

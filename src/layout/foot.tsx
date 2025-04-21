@@ -156,7 +156,7 @@ export default function Foot() {
                 <img src={require('@/assets/wg-logo.png')} />
               </div>
               <div className="text-xs text-gray mt-6">
-                © 2022—2023 WGSKINS.COM
+                © 2023—2025 SKINSXP.COM
               </div>
               <div className="text-xs text-gray mt-1">
                 SETP UP TECHNOLOGY PTE. LTD.（60 PAYA LEBARROAD #11-53 PAYA
@@ -166,61 +166,61 @@ export default function Foot() {
                 ALL RIGHTS RESERVED. POWERED BY STEAM. NOT AFFILIATED WITH VALVE
                 CORP.
               </div>
-              <div className="text-xs text-gray mt-1">
-                Tel: +1 {'('}503{')'}358-6160
-              </div>
-              <div className="text-xs text-gray mt-1">
-                E-mail: bd@wgskins.com
-              </div>
+              {/*<div className="text-xs text-gray mt-1">*/}
+              {/*  Tel: +1 {'('}503{')'}358-6160*/}
+              {/*</div>*/}
+              {/*<div className="text-xs text-gray mt-1">*/}
+              {/*  E-mail: bd@skinsxp.com*/}
+              {/*</div>*/}
             </div>
 
-            <div className="flex justify-start md:justify-end mt-4 gap-1 sm:gap-4 flex-wrap">
-              <a
-                href="https://twitter.com/wgskins"
-                rel="noreferrer"
-                target="_blank"
-              >
-                <IconFont type="icon-X" className="text-[24px]" />
-              </a>
-              <a
-                href="https://youtube.com/@WGskins?si=UwhJtVEFuX4j6WNd"
-                rel="noreferrer"
-                target="_blank"
-              >
-                <IconFont type="icon-youtube" className="text-[24px]" />
-              </a>
-              <a
-                href="https://www.facebook.com/profile.php?id=61551644411431"
-                rel="noreferrer"
-                target="_blank"
-              >
-                <IconFont type="icon-facebook" className="text-[24px]" />
-              </a>
-              <a
-                href="https://instagram.com/wgskinscom"
-                rel="noreferrer"
-                target="_blank"
-              >
-                <IconFont type="icon-ins" className="text-[24px]" />
-              </a>
-              <a href="https://t.me/wgskin" rel="noreferrer" target="_blank">
-                <IconFont type="icon-telegram" className="text-[24px]" />
-              </a>
-              <a
-                href="https://www.tiktok.com/@wgskinscom"
-                rel="noreferrer"
-                target="_blank"
-              >
-                <IconFont type="icon-tiktok" className="text-[24px]" />
-              </a>
-              <a
-                href="https://discord.gg/aG67xJwWDH"
-                rel="noreferrer"
-                target="_blank"
-              >
-                <IconFont type="icon-discord" className="text-[24px]" />
-              </a>
-            </div>
+            {/*<div className="flex justify-start md:justify-end mt-4 gap-1 sm:gap-4 flex-wrap">*/}
+            {/*  <a*/}
+            {/*    href="https://twitter.com/wgskins"*/}
+            {/*    rel="noreferrer"*/}
+            {/*    target="_blank"*/}
+            {/*  >*/}
+            {/*    <IconFont type="icon-X" className="text-[24px]" />*/}
+            {/*  </a>*/}
+            {/*  <a*/}
+            {/*    href="https://youtube.com/@WGskins?si=UwhJtVEFuX4j6WNd"*/}
+            {/*    rel="noreferrer"*/}
+            {/*    target="_blank"*/}
+            {/*  >*/}
+            {/*    <IconFont type="icon-youtube" className="text-[24px]" />*/}
+            {/*  </a>*/}
+            {/*  <a*/}
+            {/*    href="https://www.facebook.com/profile.php?id=61551644411431"*/}
+            {/*    rel="noreferrer"*/}
+            {/*    target="_blank"*/}
+            {/*  >*/}
+            {/*    <IconFont type="icon-facebook" className="text-[24px]" />*/}
+            {/*  </a>*/}
+            {/*  <a*/}
+            {/*    href="https://instagram.com/wgskinscom"*/}
+            {/*    rel="noreferrer"*/}
+            {/*    target="_blank"*/}
+            {/*  >*/}
+            {/*    <IconFont type="icon-ins" className="text-[24px]" />*/}
+            {/*  </a>*/}
+            {/*  <a href="https://t.me/wgskin" rel="noreferrer" target="_blank">*/}
+            {/*    <IconFont type="icon-telegram" className="text-[24px]" />*/}
+            {/*  </a>*/}
+            {/*  <a*/}
+            {/*    href="https://www.tiktok.com/@wgskinscom"*/}
+            {/*    rel="noreferrer"*/}
+            {/*    target="_blank"*/}
+            {/*  >*/}
+            {/*    <IconFont type="icon-tiktok" className="text-[24px]" />*/}
+            {/*  </a>*/}
+            {/*  <a*/}
+            {/*    href="https://discord.gg/aG67xJwWDH"*/}
+            {/*    rel="noreferrer"*/}
+            {/*    target="_blank"*/}
+            {/*  >*/}
+            {/*    <IconFont type="icon-discord" className="text-[24px]" />*/}
+            {/*  </a>*/}
+            {/*</div>*/}
           </div>
           <div className="grid  grid-flow-row sm:grid-flow-col w-full pb-8 px-4 gap-y-10">
             <div>

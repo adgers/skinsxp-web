@@ -256,7 +256,7 @@ export default function Create() {
               </div>
               <div className="absolute right-0 top-3 z-[20] flex h-7 items-center justify-center rounded-sm px-2 bg-white bg-opacity-20 backdrop-blur">
                 <span className="text-xs font-semibold text-white">
-                  ${item.openPrice}
+                  R${item.openPrice}
                 </span>
               </div>
 
@@ -369,7 +369,7 @@ export default function Create() {
                 <FormattedMessage id="battle_total_price" />
               </p>
               <span className="text-base font-semibold leading-none text-green">
-                ${totalPrice}
+                R${totalPrice}
               </span>
             </div>
             {isLogin() && (
