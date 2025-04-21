@@ -112,7 +112,7 @@ export default React.memo(function WeaponCard({
           {isShopList ? (
             <IconFont type="icon-coin" className="mr-1 text-purple" />
           ) : (
-            '$'
+            'R$'
           )}
           {price && numberFixed(Number(price))}
         </span>

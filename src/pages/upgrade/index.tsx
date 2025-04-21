@@ -792,7 +792,7 @@ export default function DreamPage() {
                 </div>
                 <div className="flex flex-col items-end">
                   <p className="text-white text-xl font-bold">
-                    ${numberFixed(itemsTotal)}
+                    R${numberFixed(itemsTotal)}
                   </p>
                   <p className="text-sm text-green mt-2">
                     +{numberFixed(itemsPercent)}%
@@ -879,7 +879,7 @@ export default function DreamPage() {
             }}
           >
             <div className="text-green text-xl">
-              ${numberFixed(Number(itemsTotal) + balance, 2)}
+              R${numberFixed(Number(itemsTotal) + balance, 2)}
             </div>
             <div className="text-white/50 text-xs">
               <FormattedMessage id="upgrade_zjz" />
@@ -910,7 +910,7 @@ export default function DreamPage() {
                     <FormattedMessage id="recoveryPrice" />
                   </p>
                   <p className="text-xl font-bold mt-2">
-                    $
+                    R$
                     {numberFixed(
                       selectDreamWeapon.reduce(
                         (a: number, b: API.UpgradeGiftPageVo) => {
@@ -1002,8 +1002,8 @@ export default function DreamPage() {
                   %
                 </span>
                 <div className="text-gray">
-                  <span className="text-white">${numberFixed(balance)}</span>
-                  /${numberFixed(maxBalance, 2)}
+                  <span className="text-white">R${numberFixed(balance)}</span>
+                  /R${numberFixed(maxBalance, 2)}
                 </div>
               </div>
               <Slider
@@ -1125,7 +1125,7 @@ export default function DreamPage() {
               </div>
               <div className="flex items-center text-white/20 gap-2">
                 <div className="flex border w-[90px] rounded border-[rgba(255,255,255,0.2)] h-10 items-center py-[1px] pl-2">
-                  <span className="text-white">$</span>
+                  <span className="text-white">R$</span>
                   <input
                     className="input w-full border border-l-0 rounded-r h-full focus:outline-none text-white text-sm bg-transparent"
                     onChange={(e) => {
@@ -1145,7 +1145,7 @@ export default function DreamPage() {
                 </div>
                 -
                 <div className="flex border w-[90px] rounded border-[rgba(255,255,255,0.2)] h-10 items-center py-[1px] pl-2">
-                  <span className="text-white">$</span>
+                  <span className="text-white">R$</span>
                   <input
                     className="input w-full border border-l-0 rounded-r h-full focus:outline-none text-white text-sm bg-transparent"
                     onChange={(e) => {

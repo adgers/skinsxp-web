@@ -42,6 +42,7 @@ export default function RollList() {
           <div className="flex items-center">
             {roomTypes.map((t) => {
               const selected = t.value === roomType;
+
               return (
                 <div
                   className={`cursor-pointer px-4 text-base uppercase leading-none h-full inline-flex gap-1 items-center text-center transition-colors duration-200 hover:text-green border-b ${

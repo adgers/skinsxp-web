@@ -129,7 +129,7 @@ const RoomCard = memo(
         </div>
         <div className="flex flex-col md:flex-row flex-shrink-0 gap-2 md:gap-0">
           <div className="md:w-28 flex items-center justify-center">
-            <span className="text-green">${totalPrice}</span>
+            <span className="text-green">R${totalPrice}</span>
           </div>
           <div className="md:w-48 flex items-center justify-center">
             <div className="flex gap-2 md:grid md:grid-cols-2">

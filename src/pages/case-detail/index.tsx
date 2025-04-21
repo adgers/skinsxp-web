@@ -163,6 +163,7 @@ export default function BoxPage() {
           </div>
         </div>
         <div className="rounded ring-1 ring-light mt-4 py-3 px-1 relative h-[204px] md:h-[324px] lottery-bg">
+
           {openCount === 1 && !hasOpen && boxDetails?.boxImage && (
             <div className="absolute inset-0 z-30 bg-dark bg-opacity-60">
               <div className="absolute left-1/2 h-full -translate-x-1/2 transform w-[200px] sm:w-[300px]">
@@ -266,7 +267,7 @@ export default function BoxPage() {
                   }}
                 >
                   {openLoading && <LoadingOutlined />}
-                  $
+                  R$
                   <CountUp
                     end={numberFixed((boxDetails?.openPrice || 0) * openCount)}
                     duration={0.3}

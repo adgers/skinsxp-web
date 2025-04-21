@@ -52,7 +52,7 @@ export default function GiveawayItem(props: GiveawayItemProps) {
               </div>
             </div>
             <span className="ml-4 mb-1 sm:mb-3 truncate text-xs font-semibold text-white">
-              ${item?.poolValue}
+              R${item?.poolValue}
             </span>
           </div>
           <div className="flex w-[55%] flex-col pr-2.5 justify-between">

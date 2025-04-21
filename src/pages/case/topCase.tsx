@@ -40,6 +40,7 @@ export default function TopCase({ v }: { v: any }) {
   };
   return (
     <div className="[perspective:800px]">
+
       <animated.div
         className="w-full h-full relative cursor-pointer case-wrap aspect-[1/1.4] rounded-md overflow-hidden group"
         onClick={() => {
@@ -69,13 +70,13 @@ export default function TopCase({ v }: { v: any }) {
           <div className="absolute top-[20px] right-0 flex flex-col items-center bg-black/[0.8] rounded-l text-white px-2 py-0.5 font-num sm:text-xl">
             {Number(v?.discount) < 100 && (
               <span className="text-gray text-sm font-normal line-through">
-                $
+                R$
                 {numberSplitCeil(
                   (Number(v?.openPrice) * 100) / Number(v?.discount),
                 )}
               </span>
             )}
-            ${v?.openPrice}
+            R${v?.openPrice}
           </div>
           <div className="absolute bottom-0 left-0 w-full bg-black bg-opacity-50 backdrop-blur-sm py-3 px-2">
             <div className="w-full text-white truncate text-center">

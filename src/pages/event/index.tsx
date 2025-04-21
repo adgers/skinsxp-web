@@ -86,8 +86,8 @@ export default () => {
       case TaskEvent.RECHARGE:
         return (
           <div className="text-gray">
-            <span className="text-green">${item.currentRechargeAmount}</span> /
-            ${item.rechargeAmount}
+            <span className="text-green">R${item.currentRechargeAmount}</span> /
+            R${item.rechargeAmount}
           </div>
         );
       case TaskEvent.BATTLE:
