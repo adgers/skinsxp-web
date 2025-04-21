@@ -305,13 +305,13 @@ export default function Header() {
           <div className="flex-none flex gap-4">
             {userInfo ? (
               <>
-                <div
-                  className="uppercase transition-colors font-semibold duration-200 text-white hover:text-green text-sm rounded-md cursor-pointer hidden sm:block"
-                  onClick={showBenefit}
-                >
-                  <IconFont type="icon-promocode" className="mr-1" />
-                  <FormattedMessage id="mine_fllq" />
-                </div>
+                {/*<div*/}
+                {/*  className="uppercase transition-colors font-semibold duration-200 text-white hover:text-green text-sm rounded-md cursor-pointer hidden sm:block"*/}
+                {/*  onClick={showBenefit}*/}
+                {/*>*/}
+                {/*  <IconFont type="icon-promocode" className="mr-1" />*/}
+                {/*  <FormattedMessage id="mine_fllq" />*/}
+                {/*</div>*/}
                 <Link
                   className="btn-sm border border-green rounded-sm inline-flex gap-1"
                   to="/deposit"

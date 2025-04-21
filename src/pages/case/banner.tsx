@@ -20,7 +20,7 @@ export default function Banner() {
   // );
 
   return (
-    <div className="flex items-center w-full justify-center mt-4">
+    <div className="flex items-center w-full justify-center mt-4 ">
       {/* {data && data?.length > 0 && ( */}
       <Swiper
         centeredSlides={true}
@@ -100,25 +100,25 @@ export default function Banner() {
 
         {location.pathname === '/case' && (
           <>
-            <SwiperSlide
-              key={1}
-              className="h-[150px]  md:h-[350px] lg:h-[350px] xl:h-[400px] 2xl:h-[450px] 1080p:h-[600px] 4k:h-[880px] relative"
-              onClick={() => {
-                window.open('https://t.me/+nLl1Wg9toBhlNjc5');
-              }}
-            >
-              <img
-                src={require('@/assets/banner-steam.png')}
-                className="w-full h-full object-cover cursor-pointer"
-              />
-            </SwiperSlide>
+            {/*<SwiperSlide*/}
+            {/*  key={1}*/}
+            {/*  className="h-[150px]  md:h-[350px] lg:h-[350px] xl:h-[400px] 2xl:h-[450px] 1080p:h-[600px] 4k:h-[880px] relative"*/}
+            {/*  onClick={() => {*/}
+            {/*    window.open('https://t.me/+nLl1Wg9toBhlNjc5');*/}
+            {/*  }}*/}
+            {/*>*/}
+            {/*  <img*/}
+            {/*    src={require('@/assets/banner-steam.png')}*/}
+            {/*    className="w-full h-full object-cover cursor-pointer"*/}
+            {/*  />*/}
+            {/*</SwiperSlide>*/}
 
             <SwiperSlide
               key={2}
               className="h-[150px]  md:h-[350px] lg:h-[350px] xl:h-[400px] 2xl:h-[450px] 1080p:h-[600px] 4k:h-[880px] relative"
-              onClick={() => {
-                window.open('https://discord.gg/ucDMTAbAcS');
-              }}
+              // onClick={() => {
+              //   window.open('https://discord.gg/ucDMTAbAcS');
+              // }}
             >
               <img
                 src={require('@/assets/banner-discord.png')}
@@ -129,13 +129,13 @@ export default function Banner() {
                   className="text-[16px] md:text-[50px] text-center uppercase font-num font-semibold mt-5 md:mt-10 1080p:mt-40 w-[160px] md:w-[800px] whitespace-pre-wrap"
                   style={{ fontFamily: 'Bebas' }}
                 >
-                  {intl.formatMessage({ id: 'banner_discord_text' })}
+                  {/*{intl.formatMessage({ id: 'banner_discord_text' })}*/}
                 </div>
-                <div className="w-[120px] h-[36px] md:w-[310px] md:h-[95px] bg-[url('@/assets/banner-discord-btn.png')] bg-no-repeat bg-cover mt-2 lg:mt-[60px] text-xs md:text-xl  md:py-10 flex items-center justify-center cursor-pointer">
-                  <span className="pl-8">
-                    {intl.formatMessage({ id: 'banner_discord_btn' })}
-                  </span>
-                </div>
+                {/*<div className="w-[120px] h-[36px] md:w-[310px] md:h-[95px] bg-[url('@/assets/banner-discord-btn.png')] bg-no-repeat bg-cover mt-2 lg:mt-[60px] text-xs md:text-xl  md:py-10 flex items-center justify-center cursor-pointer">*/}
+                {/*  <span className="pl-8">*/}
+                {/*    {intl.formatMessage({ id: 'banner_discord_btn' })}*/}
+                {/*  </span>*/}
+                {/*</div>*/}
               </div>
             </SwiperSlide>
           </>
