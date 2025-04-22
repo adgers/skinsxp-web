@@ -335,6 +335,7 @@ export default function Header() {
                   }}
                 >
                   <IconFont type="icon-funds" className="text-xl text-green" />
+
                   <div className="text-xs text-white px-1 font-semibold inline-flex gap-1 items-center">
                     <span className="hidden sm:block">
                       <FormattedMessage id="wc_rewards_deposit" />
@@ -362,6 +363,9 @@ export default function Header() {
                       className="font-num"
                     />
                   </div>
+
+
+
                   <span className="text-purple">
                     <IconFont type="icon-coin" className="mr-1" />
                     <CountUp
