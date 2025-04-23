@@ -1,13 +1,17 @@
 import { IconFont } from '@/components/icons';
 import { getSteamLoginUrl } from '@/utils';
-import { FormattedMessage, useIntl, useModel } from '@umijs/max';
+import { FormattedMessage, useIntl, useModel, useNavigate } from '@umijs/max';
 import { useEffect, useState } from 'react';
 import { Button, Checkbox, Modal } from 'react-daisyui';
 import { toast } from 'react-toastify';
-
+import { message } from 'antd';
+import { getGoogleRedirectUrl } from '@/services/common/tongyongxiangguan';
+  
 export default function LoginConfirm() {
   const { steamLoginShow, hideSteamLogin } = useModel('user');
+  const navigate = useNavigate();
   const [loading, setLoading] = useState(false);
+  const [googleLoading, setGoogleLoading] = useState(false);
   const intl = useIntl();
 
   const [agreeForm, setAgreeForm] = useState({
@@ -17,6 +21,19 @@ export default function LoginConfirm() {
   useEffect(() => {
     setLoading(false);
   }, [steamLoginShow]);
+
+  const handleGoogleLogin = async () => {
+    setGoogleLoading(true);
+    try {
+      await getGoogleRedirectUrl().then((res) => {
+        window.location.href = res.data
+      })
+    } catch (error) {
+      message.error('Google 登录失败');
+      setGoogleLoading(false);
+    }
+  };
+
   return (
     <Modal
       open={steamLoginShow}
@@ -135,6 +152,14 @@ export default function LoginConfirm() {
         >
           <IconFont type="icon-steam" className="mr-2" />
           <FormattedMessage id="sign_in" />
+        </Button>
+        <Button
+          className="btn btn-green mt-8 w-full md:w-[60%]"
+          onClick={handleGoogleLogin}
+          loading={googleLoading}
+        >
+          <img src={require('@/assets/google.png')} className="mr-2 w-3 h-3" />
+          Google
         </Button>
       </Modal.Body>
     </Modal>

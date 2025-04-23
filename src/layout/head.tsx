@@ -6,6 +6,7 @@ import { IconFont } from '@/components/icons';
 import SelectLang from '@/components/selectLang';
 import Benefit from '@/pages/benefit';
 import LoginConfirm from '@/pages/login/loginConfirm';
+import GoogleCallback from '@/pages/auth/google/callback';
 import LoginTip from '@/pages/login/loginTip';
 import RegTip from '@/pages/login/regTip';
 import SaveEmail from '@/pages/login/saveEmail';
@@ -27,7 +28,6 @@ import { Button, Navbar } from 'react-daisyui';
 import './index.less';
 import OpenHistory from './open-history';
 import Placard from './placard';
-
 export default function Header() {
   const {
     userInfo,
@@ -64,11 +64,13 @@ export default function Header() {
     setLocale(val);
   };
 
+
   useEffect(() => {
     if (!isLogin()) {
       showLoginTip();
     }
   }, []);
+  
 
   const headLinks = [
     {
@@ -522,6 +524,7 @@ export default function Header() {
       {findPwdShow && <FindPwd />}
       {benefitShow && <Benefit />}
       {steamLoginShow && <LoginConfirm />}
+      {steamLoginShow && <GoogleCallback />}
       {loginTipShow && <LoginTip />}
       {regTipShow && <RegTip />}
       <SelectLang />
