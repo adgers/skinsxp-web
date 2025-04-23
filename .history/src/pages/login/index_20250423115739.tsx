@@ -13,7 +13,8 @@ export default function LoginPage() {
       </h2>
 
 
-      <Button
+
+      {/* <Button
         className="mt-5 w-52 btn  text-black gap-1 rounded uppercase"
         onClick={() => showSteamLogin()}
         style={{
@@ -22,7 +23,7 @@ export default function LoginPage() {
       >
         <IconFont type="icon-steam" className="text-xl" />
         <FormattedMessage id="register_ljdl" />
-      </Button>
+      </Button> */}
     </div>
   );
 }

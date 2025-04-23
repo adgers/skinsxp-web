@@ -11,8 +11,6 @@ export default function LoginPage() {
       <h2 className="mt-5 text-[1.6vw] leading-none text-green font-semibold">
         <FormattedMessage id="not_login_subtitle" />
       </h2>
-
-
       <Button
         className="mt-5 w-52 btn  text-black gap-1 rounded uppercase"
         onClick={() => showSteamLogin()}

@@ -37,7 +37,8 @@
     "react-syntax-highlighter": "^15.5.0",
     "react-toastify": "^9.1.3",
     "react-transition-group": "^4.4.5",
-    "swiper": "^10.0.4"
+    "swiper": "^10.0.4",
+    "wgskins": "file:"
   },
   "devDependencies": {
     "@tailwindcss/nesting": "^0.0.0-insiders.565cd3e",

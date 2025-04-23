@@ -21,7 +21,7 @@ export default function LoginPage() {
         }}
       >
         <IconFont type="icon-steam" className="text-xl" />
-        <FormattedMessage id="register_ljdl" />
+        <FormattedMessage id="register_ljdl" />111123123
       </Button>
     </div>
   );

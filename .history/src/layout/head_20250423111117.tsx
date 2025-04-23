@@ -49,6 +49,10 @@ export default function Header() {
   const location = useLocation();
   const locale = getLocale();
 
+
+
+
+
   const hidePlacard = () => {
     return matchRoutes(
       [
@@ -379,58 +383,84 @@ export default function Header() {
                   </span>
                 </div>
 
-               <Menu as="div" className="relative flex justify-center items-center">
-                <Menu.Button
+                <Menu
                   as="div"
-                  className="flex gap-1 items-center cursor-pointer"
+                  className="relative flex justify-center items-center"
                 >
-                  <div className="w-8 h-8 cursor-pointer relative hidden sm:block">
-                    <img src={userInfo.headPic} className="rounded-full" />
-                  </div>
-                  <div className="py-1 px-2 bg-dark">
-                    <MenuOutlined />
-                  </div>
-                </Menu.Button>
-                <Transition
-                  as={Fragment}
-                  enter="transition ease-out duration-100"
-                  enterFrom="transform opacity-0 scale-95"
-                  enterTo="transform opacity-100 scale-100"
-                  leave="transition ease-in duration-75"
-                  leaveFrom="transform opacity-100 scale-100"
-                  leaveTo="transform opacity-0 scale-95"
-                >
-                  <Menu.Items
-                    className="fixed left-0 top-0 z-[999] flex h-screen w-full origin-top flex-col overflow-scroll focus:outline-none md:absolute md:left-auto md:right-0 md:top-10 md:h-auto md:w-48 md:origin-top-right md:overflow-hidden md:rounded-b transform opacity-100 bg-base-100"
+                  <Menu.Button
+                    as="div"
+                    className="flex gap-1 items-center cursor-pointer"
                   >
-                    <div className="my-3 ml-auto mr-3 flex aspect-square md:hidden">
-                      <Menu.Button as={Button} size="xs" shape="circle" color="ghost">
-                        ✕
-                      </Menu.Button>
+                    <div className="w-8 h-8 cursor-pointer relative hidden sm:block">
+                      <img src={userInfo.headPic} className="rounded-full" />
                     </div>
-                    <div className="flex items-center px-2.5 pb-5 md:hidden">
-                      {/* 用户信息 */}
+                    <div className="py-1 px-2 bg-dark">
+                      <MenuOutlined />
                     </div>
-                    <div className="bg-neutral pb-2">
-                      {menus}
-                      <Button
-                        className="btn btn-sm px-0 gap-0 w-full justify-start bg-transparent"
-                        onClick={() => {
-                          logout();
-                        }}
-                      >
-                        <IconFont
-                          type={'icon-logout'}
-                          className="mx-5 md:mx-3 text-base"
-                        />
-                        <span className="capitalize text-sm">
-                          <FormattedMessage id="mine_tcdl" />
-                        </span>
-                      </Button>
+                  </Menu.Button>
+                  <Transition
+                    as={Fragment}
+                    enter="transition ease-out duration-100"
+                    enterFrom="transform opacity-0 scale-95"
+                    enterTo="transform opacity-100 scale-100"
+                    leave="transition ease-in duration-75"
+                    leaveFrom="transform opacity-100 scale-100"
+                    leaveTo="transform opacity-0 scale-95"
+                  >
+                    <div className="fixed left-0 top-0 z-[999] flex h-screen w-full origin-top flex-col overflow-scroll focus:outline-none md:absolute md:left-auto md:right-0 md:top-10 md:h-auto md:w-48 md:origin-top-right md:overflow-hidden md:rounded-b transform opacity-100 bg-base-100">
+                      <div className="my-3 ml-auto mr-3 flex aspect-square  md:hidden">
+                        <Button
+                          size="xs"
+                          shape="circle"
+                          color="ghost"
+                          onClick={close}
+                        >
+                          ✕
+                        </Button>
+                      </div>
+                      <div className="flex items-center px-2.5 pb-5 md:hidden">
+                        <div className="flex-shrink-0 relative mr-4 ">
+                          <img
+                            src={userInfo?.headPic}
+                            className="h-12 w-12 rounded-full object-cover"
+                          />
+                        </div>
+                        <div className="w-full">
+                          <div className="block text-base font-semibold uppercase">
+                            {userInfo?.nickname}
+                          </div>
+                          <div className="flex mt-2 text-xs font-num gap-2">
+                            <div className="text-green">
+                              <span className="mr-1">$</span>
+                              {numberFixed(userInfo?.balance || 0)}
+                            </div>
+                            <span className="text-purple">
+                              <IconFont type="icon-coin" className="mr-1" />
+                              {numberFixed(userInfo?.secondaryBalance || 0)}
+                            </span>
+                          </div>
+                        </div>
+                      </div>
+                      <div className="bg-neutral pb-2">
+                        {menus}
+                        <Button
+                          className="btn btn-sm px-0 gap-0 w-full justify-start bg-transparent"
+                          onClick={() => {
+                            logout();
+                          }}
+                        >
+                          <IconFont
+                            type={'icon-logout'}
+                            className="mx-5 md:mx-3 text-base"
+                          />
+                          <span className="capitalize text-sm">
+                            <FormattedMessage id="mine_tcdl" />
+                          </span>
+                        </Button>
+                      </div>
                     </div>
-                  </Menu.Items>
-                </Transition>
-              </Menu>
+                  </Transition>
+                </Menu>
               </>
             ) : (
               <>
