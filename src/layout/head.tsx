@@ -45,8 +45,13 @@ export default function Header() {
     showLang,
   } = useModel('user');
 
+
   const location = useLocation();
   const locale = getLocale();
+
+
+
+
 
   const hidePlacard = () => {
     return matchRoutes(
@@ -242,8 +247,8 @@ export default function Header() {
       <div className="sticky left-0 top-0 z-[99]">
         <Navbar className="p-3 bg-black">
           <div className="flex-1 overflow-hidden">
-            <Link to={'/'} className=" ml-2 w-[100px] sm:w-[164px]">
-              <img src={require('@/assets/wg-logo.png')} />
+            <Link to={'/'} className="ml-2 w-[100px] h-8 sm:w-[164px]">
+              <img src={require('@/assets/wg-logo.png')}   alt="logo"/>
             </Link>
 
             <Menu as="div" className="relative ml-2">
@@ -345,11 +350,11 @@ export default function Header() {
                     </span>
                   </div>
 
-                  {/* {!!userInfo?.rebateValue && userInfo?.rebateValue > 0 && (
-                    <div className="text-green font-semibold">
-                      +{Number(userInfo?.rebateValue)}%
-                    </div>
-                  )} */}
+                 {/*{!!userInfo?.rebateValue && userInfo?.rebateValue > 0 && (*/}
+                 {/*   <div className="text-green font-semibold">*/}
+                 {/*     +{Number(userInfo?.rebateValue)}%*/}
+                 {/*   </div>*/}
+                 {/* )}*/}
                 </Link>
 
                 <div className="flex flex-col text-xs font-num">
@@ -482,6 +487,7 @@ export default function Header() {
                   <IconFont type="icon-steam" className="text-xl" />
                   <FormattedMessage id="register_ljdl" />
                 </Button>
+
                 <Menu as="div" className="relative md:hidden">
                   <Menu.Button as="div" className="py-1 px-2 bg-dark">
                     <MenuOutlined />

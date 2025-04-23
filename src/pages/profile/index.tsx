@@ -81,7 +81,6 @@ export default function User() {
                           type="icon-coin"
                           className="text-purple mr-1"
                         />
-
                         {userInfo?.secondaryBalance}
                       </div>
                     </div>
