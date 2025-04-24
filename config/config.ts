@@ -102,6 +102,10 @@ export default defineConfig({
           component: 'login/callback',
         },
         {
+          path: '/login/googleCallback',
+          component: 'login/googleCallback',
+        },
+        {
           path: 'profile',
           component: 'profile',
           routes: [

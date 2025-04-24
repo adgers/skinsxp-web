@@ -1,5 +1,5 @@
 import ModifySteamLink from '@/components/account/steamLink';
-import { IconFont } from '@/components/icons';
+import { IconFont,IconFont2 } from '@/components/icons';
 import { headHidden } from '@/utils';
 import {
   FormattedMessage,
@@ -77,8 +77,12 @@ export default function User() {
                         <FormattedMessage id="profile_integral" />
                       </div>
                       <div className="text-purple truncate font-num">
-                        <IconFont
-                          type="icon-coin"
+                        {/*<IconFont*/}
+                        {/*  type="icon-coin"*/}
+                        {/*  className="text-purple mr-1"*/}
+                        {/*/>*/}
+                        <IconFont2
+                          type="icon-meiyuan9"
                           className="text-purple mr-1"
                         />
                         {userInfo?.secondaryBalance}
