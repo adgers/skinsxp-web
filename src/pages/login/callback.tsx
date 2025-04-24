@@ -116,10 +116,10 @@ export default function LoginCallback() {
     // const oauth_verifier = params.get('oauth_verifier');
 
     // 确保至少有 code 或其他必要参数
-    // if (!code && !auth_code && !authorization_code) {
-    //   history.push('/login');
-    //   return;
-    // }
+    if (!code && !auth_code && !authorization_code) {
+      history.push('/login');
+      return;
+    }
 
     hideLoginTip();
     const ret = await doGoogleLogin({

@@ -241,28 +241,29 @@ export default defineConfig({
 `,
     },
     {
-      src: 'https://www.googletagmanager.com/gtag/js?id=G-6LDWG1BWSC',
+      src: 'https://www.googletagmanager.com/gtag/js?id=G-BLNBZ320RJ',
       async: true,
     },
     // {
     //   src: 'https://www.googletagmanager.com/gtag/js?id=AW-11334119378',
     //   async: true,
     // },
+    // gtag('config', 'G-6LDWG1BWSC');
+      // gtag('config', 'AW-11366921880');
+      // gtag('config', 'AW-11345409756');
+      // gtag('config', 'AW-11366618499');
+      // gtag('config', 'AW-11379374504',{'allow_enhanced_conversions':true});
+      // gtag('config', 'AW-11379263638');
+      // gtag('config', 'AW-11394247259');
+      // gtag('config', 'AW-11396650696');
+      // gtag('config', 'AW-11397467093');
+      // gtag('config', 'G-Y7T3FTBJYT');
     {
       content: `window.dataLayer =window.dataLayer || [];
       function gtag(){dataLayer.push(arguments);};
       gtag('js', new Date());
-      gtag('config', 'AW-11334119378');
-      gtag('config', 'G-6LDWG1BWSC');
-      gtag('config', 'AW-11366921880');
-      gtag('config', 'AW-11345409756');
-      gtag('config', 'AW-11366618499');
-      gtag('config', 'AW-11379374504',{'allow_enhanced_conversions':true});
-      gtag('config', 'AW-11379263638');
-      gtag('config', 'AW-11394247259');
-      gtag('config', 'AW-11396650696');
-      gtag('config', 'AW-11397467093');
-      gtag('config', 'G-Y7T3FTBJYT');
+      gtag('config', 'G-BLNBZ320RJ');
+      // gtag('config', 'AW-11334119378');
       `,
     },
     {
