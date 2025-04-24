@@ -258,12 +258,13 @@ export default defineConfig({
       // gtag('config', 'AW-11396650696');
       // gtag('config', 'AW-11397467093');
       // gtag('config', 'G-Y7T3FTBJYT');
+       // gtag('config', 'AW-11334119378');
     {
-      content: `window.dataLayer =window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);};
-      gtag('js', new Date());
-      gtag('config', 'G-BLNBZ320RJ');
-      // gtag('config', 'AW-11334119378');
+      content: `window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+      
+        gtag('config', 'G-BLNBZ320RJ');
       `,
     },
     {

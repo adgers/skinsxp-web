@@ -343,9 +343,13 @@ export default function Header() {
                     <span className="hidden sm:block">
                       <FormattedMessage id="wc_rewards_deposit" />
                     </span>
-                    <span className="font-num font-semibold">
-                      +{(userInfo?.firstRechargeRebate || 0) + 10}%
-                    </span>
+
+
+                    {((userInfo?.firstRechargeRebate || 0) ) !== 0 && (
+                      <span className="font-num font-semibold">
+                        +{(userInfo?.firstRechargeRebate || 0)}%
+                      </span>
+                    )}
                   </div>
 
                  {/*{!!userInfo?.rebateValue && userInfo?.rebateValue > 0 && (*/}
