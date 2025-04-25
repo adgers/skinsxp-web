@@ -419,6 +419,12 @@ export default function Deposit() {
                       '1315380846220735',
                       'click_CHECKOUT',
                     );
+                    window?.fbq(
+                      'track',
+                      'click_CHECKOUT_track',
+                    );
+
+
                     window?.gtag('event', 'conversion', {
                       send_to: 'AW-11345409756/X-e6CI2Qy-UYENzt9KEq',
                     });
@@ -490,8 +496,8 @@ export default function Deposit() {
 
     if (ret?.data?.state === 1) {
       window?.fbq('trackSingleCustom', '1315380846220735', 'payment_success');
-      // window?.fbq('trackSingleCustom', '328518876380399', 'payment_success');
 
+      // window?.fbq('trackSingleCustom', '328518876380399', 'payment_success');
     }
     if (ret?.data?.state === 1 && ret?.data?.firstRechargeFlag) {
       /* 后续由后台配置平台列表 */
@@ -504,7 +510,7 @@ export default function Deposit() {
         value: ret?.data?.quantity,
         currency: 'USD',
       });
-      gtag('event', 'conversion', {
+      window?.gtag('event', 'conversion', {
         send_to: 'AW-11379263638/v0pfCKr-9_AYEJaRh7Iq',
         value: ret?.data?.quantity,
         currency: 'USD',

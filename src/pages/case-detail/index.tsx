@@ -264,7 +264,15 @@ export default function BoxPage() {
                       '1315380846220735',
                       'click_OpenBox',
                     );
+                      window?.fbq(
+                      'track',
+                      'click_OpenBox_track',
+                    );
+
+
                   }}
+
+
                 >
                   {openLoading && <LoadingOutlined />}
                   R$

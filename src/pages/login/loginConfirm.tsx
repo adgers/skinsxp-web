@@ -26,6 +26,7 @@ export default function LoginConfirm() {
     setGoogleLoading(true);
     try {
       await getGoogleRedirectUrl().then((res) => {
+        window.fbq('track', 'google_login_click');
         window.location.href = res.data
       })
     } catch (error) {
@@ -58,8 +59,7 @@ export default function LoginConfirm() {
           className="mb-8 text-xl font-semibold text-center"
           onClick={() => {
             window?.fbq(
-              'trackSingleCustom',
-              '1315380846220735',
+              'track',
               'click_confirm_LOGIN',
             );
             // window?.fbq(
@@ -147,6 +147,7 @@ export default function LoginConfirm() {
             // hideSteamLogin();
             setLoading(true);
             window.location.href = getSteamLoginUrl();
+            window.fbq('track', 'steam_login_click');
           }}
           loading={loading}
         >
@@ -160,6 +161,7 @@ export default function LoginConfirm() {
         >
           <img src={require('@/assets/google.png')} className="mr-2 w-3 h-3" />
           Google
+
         </Button>
       </Modal.Body>
     </Modal>
