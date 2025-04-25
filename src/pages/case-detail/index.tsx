@@ -288,9 +288,13 @@ export default function BoxPage() {
               ) : (
                 <div
                   onClick={() => {
-                    window?.fbq(
-                      'trackSingleCustom',
-                      '1315380846220735',
+                    // window?.fbq(
+                    //   'trackSingleCustom',
+                    //   '1315380846220735',
+                    //   'click_Login_To_Open',
+                    // );
+                     window?.fbq(
+                      'track',
                       'click_Login_To_Open',
                     );
                   }}

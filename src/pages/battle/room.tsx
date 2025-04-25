@@ -107,11 +107,17 @@ const WartingCard = ({
                 }`}
                 onClick={() => {
                   onJoin();
-                  window?.fbq(
-                    'trackSingleCustom',
-                    '1024868335308144',
+                  // window?.fbq(
+                  //   'trackSingleCustom',
+                  //   '1024868335308144',
+                  //   'join_battle',
+                  // );
+                   window?.fbq(
+                    'track',
+
                     'join_battle',
                   );
+
                 }}
               >
                 {joinBotLoading && <LoadingOutlined />}

@@ -95,11 +95,18 @@ export default function User() {
                           pathname: '/deposit',
                           search: location.search,
                         });
+                        // window?.fbq(
+                        //   'trackSingleCustom',
+                        //   '1024868335308144',
+                        //   'InitiateCheckout',
+                        // );
+
                         window?.fbq(
-                          'trackSingleCustom',
-                          '1024868335308144',
+                          'track',
                           'InitiateCheckout',
                         );
+
+
                         window?.gtag('event', 'conversion', {
                           send_to: 'AW-11345409756/EOFKCIqQy-UYENzt9KEq',
                         });

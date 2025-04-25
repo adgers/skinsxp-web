@@ -495,14 +495,17 @@ export default function Deposit() {
     const ret = await paymentStateUsingGET({ orderId: id });
 
     if (ret?.data?.state === 1) {
-      window?.fbq('trackSingleCustom', '1315380846220735', 'payment_success');
+      // window?.fbq('trackSingleCustom', '1315380846220735', 'payment_success');
+            window?.fbq('track', 'payment_success');
 
       // window?.fbq('trackSingleCustom', '328518876380399', 'payment_success');
     }
     if (ret?.data?.state === 1 && ret?.data?.firstRechargeFlag) {
       /* 后续由后台配置平台列表 */
       // 首次充值成功
-      window?.fbq('trackSingleCustom', '1315380846220735', 'fistRecharge');
+      window?.fbq('track', 'fistRecharge');
+
+      // window?.fbq('trackSingleCustom', '1315380846220735', 'fistRecharge');
       // window?.fbq('trackSingleCustom', '328518876380399', 'fistRecharge');
 
       window?.gtag('event', 'conversion', {

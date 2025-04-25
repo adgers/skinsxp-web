@@ -319,19 +319,24 @@ export default function Header() {
                   className="btn-sm border border-green rounded-sm inline-flex gap-1"
                   to="/deposit"
                   onClick={() => {
+                    // window?.fbq(
+                    //   'trackSingleCustom',
+                    //   '1315380846220735',
+                    //   'InitiateCheckout',
+                    // );
                     window?.fbq(
-                      'trackSingleCustom',
-                      '1315380846220735',
+                      'track',
                       'InitiateCheckout',
                     );
+
                     // window?.fbq(
                     //   'trackSingleCustom',
                     //   '328518876380399',
                     //   'InitiateCheckout',
                     // );
-                    window?.gtag('event', 'conversion', {
-                      send_to: 'AW-11345409756/EOFKCIqQy-UYENzt9KEq',
-                    });
+                    // window?.gtag('event', 'conversion', {
+                    //   send_to: 'AW-11345409756/EOFKCIqQy-UYENzt9KEq',
+                    // });
                   }}
                   style={{
                     background: 'rgba(53, 240, 94, 0.40)',
@@ -493,11 +498,18 @@ export default function Header() {
                         className="btn btn-sm text-black gap-1 rounded uppercase mx-3 mt-4"
                         onClick={() => {
                           showSteamLogin();
-                          window?.fbq(
-                            'trackSingleCustom',
-                            '1315380846220735',
-                            'click_LOGIN',
-                          );
+                          // window?.fbq(
+                          //   'trackSingleCustom',
+                          //   '1315380846220735',
+                          //   'click_LOGIN',
+                          // );
+                           window?.fbq(
+                              'track',
+                              'click_LOGIN',
+                            );
+
+
+
                           // window?.fbq(
                           //   'trackSingleCustom',
                           //   '328518876380399',

@@ -27,7 +27,8 @@ export default function LoginCallback() {
       if (ret.data?.register) {
         window.fbq('trackSingleCustom', '1315380846220735', 'register_success');
         // window.fbq('trackSingleCustom', '328518876380399', 'register_success');
-        
+        window?.fbq('track', 'steam_register_success');
+
         window?.gtag('event', 'conversion', {
           // lanhan
           send_to: 'AW-11366618499/WyYOCOeNlewYEIOrg6wq',
@@ -135,6 +136,7 @@ export default function LoginCallback() {
       if (ret.data?.register) {
         window.fbq('trackSingleCustom', '1315380846220735', 'register_success');
         // window.fbq('trackSingleCustom', '328518876380399', 'register_success');
+        window.fbq('track',  'google_register_success');
 
         window?.gtag('event', 'conversion', {
           send_to: 'AW-11366618499/WyYOCOeNlewYEIOrg6wq',
