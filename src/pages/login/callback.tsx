@@ -8,7 +8,7 @@ export default function LoginCallback() {
   const { getUser, hideLoginTip, showRegTip, setRegNum } = useModel('user');
 
   const steamLogin = async () => {
-    console.log("steam 回调")
+
     const urlParams = new URL(window.location.href).searchParams;
     let query = location.href.split('?')[1];
 

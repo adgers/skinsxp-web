@@ -413,10 +413,36 @@ body {
   }
 }
 
-
-/* Force the position to be respected */
-body .crisp-client .cc-tlyw[data-full-view='true'] .cc-kxkl .cc-nsge {
+body .crisp-client .cc-tlyw[data-full-view='true'] .cc-157aw .cc-1kgzy {
   bottom: 120px !important;
+}
+
+/* Crisp 聊天按钮位置调整 */
+#crisp-chatbox,
+.crisp-client,
+.crisp-client div[role="button"],
+.crisp-client .crisp-1rjpbb7,
+.crisp-client .crisp-1rf4xdh {
+  bottom: 120px !important;
+  z-index: 999 !important;
+}
+
+/* 聊天窗口位置调整 */
+.crisp-client .cc-kxkl,
+.crisp-client .cc-tlyw,
+.crisp-client .cc-nsge {
+  bottom: 120px !important;
+}
+
+/* 确保所有 Crisp 相关元素都被调整 */
+[class*="crisp-"] {
+  bottom: 120px !important;
+}
+
+/* 修复可能的定位问题 */
+.crisp-client {
+  position: fixed !important;
+  right: 20px !important;
 }
 
 input::-webkit-outer-spin-button,

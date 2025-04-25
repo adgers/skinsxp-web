@@ -198,10 +198,8 @@ export default defineConfig({
     { src: '/scripts/loading.js', async: true },
     { src: 'https://client.crisp.chat/l.js', defer: true, async: true },
     {
-      content: `
-        window.$crisp = [];
-        window.CRISP_WEBSITE_ID = '64854b17-ea32-4825-b545-51357071e729';
-       `,
+      content: `window.$crisp = [];
+        window.CRISP_WEBSITE_ID = '64854b17-ea32-4825-b545-51357071e729';`,
     },
 //     {
 //       content: `!function(f,b,e,v,n,t,s)
@@ -253,19 +251,6 @@ export default defineConfig({
         s.parentNode.insertBefore(t,s)}(window, document,'script',
         'https://connect.facebook.net/en_US/fbevents.js');
         fbq('init', '1315380846220735');
-        fbq('track', 'PageView');`
-    },
-
-    {
-      content: `!function(f,b,e,v,n,t,s)
-        {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
-        n.callMethod.apply(n,arguments):n.queue.push(arguments)};
-        if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
-        n.queue=[];t=b.createElement(e);t.async=!0;
-        t.src=v;s=b.getElementsByTagName(e)[0];
-        s.parentNode.insertBefore(t,s)}(window, document,'script',
-        'https://connect.facebook.net/en_US/fbevents.js');
-        fbq('init', '1725637008026892');
         fbq('track', 'PageView');`
     },
 

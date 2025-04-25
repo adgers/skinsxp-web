@@ -414,11 +414,7 @@ export default function Deposit() {
                   onClick={() => {
                     onPay();
                     setPayLoading(true);
-                    window?.fbq(
-                      'trackSingleCustom',
-                      '1315380846220735',
-                      'click_CHECKOUT',
-                    );
+
                     window?.fbq(
                       'track',
                       'click_CHECKOUT_track',

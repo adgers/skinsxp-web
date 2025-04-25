@@ -413,6 +413,17 @@ body {
   }
 }
 
+/* Crisp chat button position override */
+body #crisp-chatbox,
+body .crisp-client .cc-kxkl,
+body .crisp-client [class*="cc-"] {
+  bottom: 120px !important;
+}
+
+/* Ensure the chat button is above other elements */
+body .crisp-client {
+  z-index: 1000000 !important;
+}
 
 /* Force the position to be respected */
 body .crisp-client .cc-tlyw[data-full-view='true'] .cc-kxkl .cc-nsge {
