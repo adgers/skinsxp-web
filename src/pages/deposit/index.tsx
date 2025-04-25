@@ -375,7 +375,7 @@ export default function Deposit() {
                           <div className="flex items-center">
                             +
                             <span className="text-yellow font-semibold whitespace-nowrap">
-                              $
+                              R$
                               {numberFixed(
                                 (Number(quantity) *
                                   Number(userInfo?.firstRechargeRebate)) /
