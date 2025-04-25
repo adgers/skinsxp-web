@@ -321,14 +321,14 @@ export default function Header() {
                   onClick={() => {
                     window?.fbq(
                       'trackSingleCustom',
-                      '1024868335308144',
+                      '1315380846220735',
                       'InitiateCheckout',
                     );
-                    window?.fbq(
-                      'trackSingleCustom',
-                      '328518876380399',
-                      'InitiateCheckout',
-                    );
+                    // window?.fbq(
+                    //   'trackSingleCustom',
+                    //   '328518876380399',
+                    //   'InitiateCheckout',
+                    // );
                     window?.gtag('event', 'conversion', {
                       send_to: 'AW-11345409756/EOFKCIqQy-UYENzt9KEq',
                     });
@@ -446,14 +446,14 @@ export default function Header() {
                     showSteamLogin();
                     window?.fbq(
                       'trackSingleCustom',
-                      '1024868335308144',
+                      '1315380846220735',
                       'click_LOGIN',
                     );
-                    window?.fbq(
-                      'trackSingleCustom',
-                      '328518876380399',
-                      'click_LOGIN',
-                    );
+                    // window?.fbq(
+                    //   'trackSingleCustom',
+                    //   '328518876380399',
+                    //   'click_LOGIN',
+                    // );
                   }}
                   style={{
                     background:
@@ -495,14 +495,14 @@ export default function Header() {
                           showSteamLogin();
                           window?.fbq(
                             'trackSingleCustom',
-                            '1024868335308144',
+                            '1315380846220735',
                             'click_LOGIN',
                           );
-                          window?.fbq(
-                            'trackSingleCustom',
-                            '328518876380399',
-                            'click_LOGIN',
-                          );
+                          // window?.fbq(
+                          //   'trackSingleCustom',
+                          //   '328518876380399',
+                          //   'click_LOGIN',
+                          // );
                         }}
                         style={{
                           background:

@@ -261,7 +261,7 @@ export default function BoxPage() {
                   onClick={() => {
                     window?.fbq(
                       'trackSingleCustom',
-                      '1024868335308144',
+                      '1315380846220735',
                       'click_OpenBox',
                     );
                   }}
@@ -282,7 +282,7 @@ export default function BoxPage() {
                   onClick={() => {
                     window?.fbq(
                       'trackSingleCustom',
-                      '1024868335308144',
+                      '1315380846220735',
                       'click_Login_To_Open',
                     );
                   }}

@@ -59,14 +59,14 @@ export default function LoginConfirm() {
           onClick={() => {
             window?.fbq(
               'trackSingleCustom',
-              '1024868335308144',
+              '1315380846220735',
               'click_confirm_LOGIN',
             );
-            window?.fbq(
-              'trackSingleCustom',
-              '328518876380399',
-              'click_confirm_LOGIN',
-            );
+            // window?.fbq(
+            //   'trackSingleCustom',
+            //   '1315380846220735',
+            //   'click_confirm_LOGIN',
+            // );
           }}
         >
           <FormattedMessage id="login_need_tip" />

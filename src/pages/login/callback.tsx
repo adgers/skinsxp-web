@@ -25,8 +25,8 @@ export default function LoginCallback() {
         localStorage.setItem('token', ret.data.token);
       }
       if (ret.data?.register) {
-        window.fbq('trackSingleCustom', '1024868335308144', 'register_success');
-        window.fbq('trackSingleCustom', '328518876380399', 'register_success');
+        window.fbq('trackSingleCustom', '1315380846220735', 'register_success');
+        // window.fbq('trackSingleCustom', '328518876380399', 'register_success');
         
         window?.gtag('event', 'conversion', {
           // lanhan
@@ -133,8 +133,8 @@ export default function LoginCallback() {
         localStorage.setItem('token', ret.data.token);
       }
       if (ret.data?.register) {
-        window.fbq('trackSingleCustom', '1024868335308144', 'register_success');
-        window.fbq('trackSingleCustom', '328518876380399', 'register_success');
+        window.fbq('trackSingleCustom', '1315380846220735', 'register_success');
+        // window.fbq('trackSingleCustom', '328518876380399', 'register_success');
 
         window?.gtag('event', 'conversion', {
           send_to: 'AW-11366618499/WyYOCOeNlewYEIOrg6wq',
